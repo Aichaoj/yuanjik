@@ -1,0 +1,195 @@
+=== 0 打包（把最新 open_api.py / serve.py / web/docs.html 纳入构件）===
+  SHA256 站点 = 40495320C5F850310977DB343F03295C52E2E13BC7ACA1DF14D3863F1ADF4E04
+  SHA256 运行时 = A43BF5D1854973BB9F0A22417A94F7D818A784FF976E10C690BF336BE435F63C
+完成。
+    构件内 server/open_api.py   存在: True
+    构件内 server/serve.py      存在: True
+    构件内 web/docs.html        存在: True
+
+=== 1 清库并起真服务（port 15088）===
+    服务健康检查: PASS
+
+=== 2 准备：后台登录与凭据签发 ===
+    后台登录 → HTTP 200 code=0 token=DJM6yMkk…
+    签发凭据 #1（默认配额）→ HTTP 200 key_id=key_30bce167aa2d 前缀=yjk_VfUc 明文长度=36
+
+=== 断言 #7 · API 凭据只存 SHA-256 哈希 + 前 8 位前缀，明文只在签发时返回一次（库里搜不到明文） ===
+    [PASS] 签发接口需后台令牌：未携带 → 401（既有 20000）  HTTP 401 code=20000
+    [PASS] 签发接口**错后台令牌 → 401**（不泄露令牌是否存在）  HTTP 401 code=20000
+    [PASS] 签发响应**带明文**（api_key）且前缀 = 明文前 8 位、key_id 非空  prefix=yjk_VfUc 明文长度=36
+    [PASS] 库里 key_hash == SHA-256(明文)（脚本独立复算，逐字比对）  key_hash=6261d6ad4440d7a4…（前 16 位） 独立复算一致=True
+    [PASS] 明文**在库里搜不到**（DB 主文件与 -wal 逐字节搜索均 0 命中）  DB 命中=False / WAL 命中=False
+    [PASS] 明文**不进服务端日志**（server 日志逐字节搜索 0 命中）  日志文件=D:\Deepseek智能体\AI元健康\shuzi\_verify_v10\test_open_api_server.log
+    [PASS] 默认配额 = **免费 10 万次/月**（未传 monthly_quota 时按常量落库）  库里 monthly_quota=100000 响应=100000
+    [PASS] 台账只回前缀与用量：**不含明文、不含 key_hash**（响应体逐字搜索）  HTTP 200 明文命中=False key_hash 命中=False
+    [PASS] 二次签发得到**不同的明文**（随机源，非同值重发）  key_id=key_5b452c359942
+
+=== 断言 #1 · L1 四条接口 200 / 免鉴权 / 含 license:CC-BY-4.0 与 disclaimer（并与内核直算对账） ===
+    [PASS] GET /api/v1/open/yunqi/2026 → 200，**免鉴权**（未带任何令牌）  HTTP 200 code=0
+    [PASS] 运气盘含 license == CC-BY-4.0 与非空 disclaimer  license=CC-BY-4.0 disclaimer[:16]=本产品不属于医疗器械，不用于疾病
+    [PASS] 运气盘与**内核直算逐字一致**（ganzhi/中运/太过不及/司天/在泉/六步）  ganzhi=丙午 中运=水 六步=6
+    [PASS] 运气盘含 lineage 可解释链（13 条，格式 [规则ID] …）  首条=[YQ-001] 天干化五运（中运）｜出处：《素问·五运行大论》｜要点：甲己化土，乙庚化金，丙辛
+    [PASS] GET /api/v1/open/solar-terms/2026 → 200，免鉴权，**恰好 24 条**  HTTP 200 count=24
+    [PASS] 节气时刻与**内核直算逐字一致**（24/24 条全等）  首条={"at": "2026-01-05 16:23:10", "name": "小寒", "seq": 1} 末条={"at": "2026-12-22 04:50:14", "name": "冬至", "seq": 24}
+    [PASS] 节气响应含 license/disclaimer  license=CC-BY-4.0
+    [PASS] GET /api/v1/open/shichen → 200，免鉴权，**12 条**时辰且起点为子时 23:00–01:00  HTTP 200 count=12 首条={"seq": 1, "zhi": "子", "start": "23:00", "end": "01:00", "channel": "胆", "wuxing": "木", "kernel_weight_at_center": 1.0, "kernel_cross_check": true}
+    [PASS] 时辰当令脏腑与内核 ZF-002 表逐条一致（12/12），且内核交叉校验位为 true  交叉校验=True
+    [PASS] GET /api/v1/open/wuxing → 200，免鉴权，**5 行**且与内核五行表一致  HTTP 200 五行=['木', '火', '土', '金', '水']
+    [PASS] 四条 L1 接口**都不需要任何令牌**（全部 200 且响应含 license=CC-BY-4.0）  license 集合={'CC-BY-4.0'}
+    [PASS] 年份越界 → 既有 10002（HTTP 400）+ 可读 detail（不静默兜底）  HTTP 400 code=10002 detail={"field": "year", "got": 9999, "min_year": 1900, "max_year": 2100}
+
+=== 断言 #2 · L2 两条接口需 X-API-Key：无 key→401、错 key→403、合法→200 且含 lineage ===
+    [PASS] POST /api/v1/calc/ganzhi **无 key → 401**（既有 20000）  HTTP 401 code=20000
+    [PASS] POST /api/v1/calc/ganzhi **错 key → 403**（7xxxx 码段的专用码 70005，带可读原因）  HTTP 403 code=70005 reason=invalid_api_key
+    [PASS] POST /api/v1/calc/ganzhi **合法 key → 200 且含 lineage**  HTTP 200 四柱=['庚午', '辛巳', '辛未', '壬辰'] lineage=7 条
+    [PASS] 四柱与**内核直算逐字一致**（真太阳时校正后的年/月/日/时柱）  pillars=['庚午', '辛巳', '辛未', '壬辰'] 真太阳时=1990-05-06T08:19:00 偏移=-10.854
+    [PASS] POST /api/v1/calc/chart **无 key → 401**  HTTP 401 code=20000
+    [PASS] POST /api/v1/calc/chart **合法 key → 200，含 lineage 与 chart_id**  HTTP 200 chart_id=chart_65995c6a0a8b624167d2bd98
+    [PASS] **已停用凭据 → 403 且 code=70006** reason=api_key_revoked（改库后下一次请求即生效，不做缓存）  HTTP 403 code=70006 reason=api_key_revoked
+
+=== 断言 #3 · 每个成功响应强制携带 disclaimer / ai_generated / rule_version / param_hash ===
+    [PASS] rule_version 与内核常量逐字一致（TYH-RULES-1.3.0），ai_generated 一律 false（内核确定性推演）  L1=TYH-RULES-1.3.0 L2=TYH-RULES-1.3.0
+    [PASS] param_hash 同输入必得同值（重复调用逐字相等）  param_hash=4df3394e042731b3…
+
+=== 断言 #4 · 绝不返回病名字段：键名与取值双向扫描 0 命中 ===
+    [PASS] **键名**扫描 612 个字段名 → 病名/诊断类 0 命中  命中=无
+    [PASS] **取值**扫描 14 份响应正文（已剔除强制携带的固定免责声明）→ 病名列表 0 命中  命中=无
+    [PASS] L2 生辰盘**刻意不输出个体节律结论**（响应里无 score/level/focus 类字段，个人节律属 L3 需授权）  字段抽查=[]
+
+=== 断言 #5 · 配额：免费 10 万次/月；临时改成 3 次 → 前 3 次 200、第 4 次 429 且提示可读 ===
+    [PASS] 免费档配额 = **100000 次/月**（响应 quota.monthly_limit 与库里字段一致）  响应={"period": "2026-10", "unit": "call", "monthly_limit": 100000, "used": 3, "remaining": 99997, "free_default": 100000}
+    测试前置：把 key_id=key_8f4a1e506b0e 的 monthly_quota 临时改为 3（改库 1 行）
+      第 1 次 → HTTP 200 code=0 quota.used=1
+      第 2 次 → HTTP 200 code=0 quota.used=2
+      第 3 次 → HTTP 200 code=0 quota.used=3
+      第 4 次 → HTTP 429 code=40001 quota.used=None
+    [PASS] 改额后**前 3 次 200**（used 依次 1/2/3）  前三次=[(200, 1), (200, 2), (200, 3)]
+    [PASS] **第 4 次 429** 且业务码 40001、提示含已用/上限（本月调用额度已用尽（3/3 次，周期 2026-10）：）  HTTP 429 code=40001 message=本月调用额度已用尽（3/3 次，周期 2026-10）：免费档默认 100000 次/月，下个自然月自动恢复；需要更高配额请联系运营调整
+    [PASS] 被拒的第 4 次**不耗额度**（库里 used_this_month 仍为 3）  库里 used=3
+    [PASS] 额度耗尽只影响该凭据：主凭据（10 万档）仍然 200  主凭据 HTTP 200
+
+=== 断言 #6 · 计量：每次调用写 api_call_log（key_id/路径/状态/耗时/耗用额度）；5 次调用 +5 行 ===
+    调用前：api_call_log 总行数=18（该凭据 0 行）
+    调用后：总行数=23（该凭据 5 行）；5 次状态=[200, 200, 200, 200, 200]
+    [PASS] 调用 5 次 → 表中**正好 +5 行**（18 → 23）  Δ总行数=5 该凭据行数=5
+    逐行 = [{"key_id": "key_260b554a162d", "path": "/v1/calc/ganzhi", "status": 200, "code": 0, "elapsed_ms": 0, "cost": 1, "created_at": "2026-10-09T23:53:37"}, {"key_id": "key_260b554a162d", "path": "/v1/calc/ganzhi", "status": 200, "code": 0, "elapsed_ms": 1, "cost": 1, "created_at": "2026-10-09T23:53:37"}, {"key_id": "key_260b554a162d", "path": "/v1/calc/ganzhi", "status": 200, "code": 0, "elapsed_ms": 1, "cost": 1, "created_at": "2026-10-09T23:53:37"}, {"key_id": "key_260b554a162d", "path": "/v1/calc/ganzhi", "status": 200, "code": 0, "elapsed_ms": 2, "cost": 1, "created_at": "2026-10-09T23:53:37"}, {"key_id": "key_260b554a162d", "path": "/v1/calc/ganzhi", "status": 200, "code": 0, "elapsed_ms": 2, "cost": 1, "created_at": "2026-10-09T23:53:37"}]
+    [PASS] 每行都带 key_id / 路径 / 状态 / 耗时 / 耗用额度 / 时间，且 cost=1（真实执行）  不合格行数=0 列=['code', 'cost', 'created_at', 'elapsed_ms', 'id', 'idempotency_key', 'key_id', 'key_prefix', 'method', 'path', 'status']
+    [PASS] Σcost == 5 且库里 used_this_month == 5（额度与计量同步）  Σcost=5 used=5
+    [PASS] 被拒调用也留痕但**不耗额度**：前面无 key/错 key/429 三类都写过一行（cost=0）  cost=0 且状态 401/403/429 的行数=6
+
+=== 断言 #9 · 幂等：L2 带 Idempotency-Key 重复提交只计一次调用与一次业务 ===
+    第 1 次 → HTTP 200 chart_id=chart_65995c6a0a8b624167d2bd98；第 2 次 → HTTP 200 replay=True chart_id=chart_65995c6a0a8b624167d2bd98
+    [PASS] 同 key 同体重复提交 → **同一业务结果**（chart_id 逐字相同、HTTP 200）  chart_id=chart_65995c6a0a8b624167d2bd98
+    [PASS] 第 2 次标 idempotent_replay=true（回放首次响应，不重复计算）  first=False second=True
+    [PASS] **只计一次调用**：api_call_log 该凭据 1 行（1 → 1），额度 used 仍为 1  行数 1→1 used 1→1
+    [PASS] **同 key 异体 → 既有 10003（HTTP 409）**，不产生第二次业务  HTTP 409 code=10003 行数=2
+
+=== 断言 #8 · 文档：/openapi.json（OpenAPI 3.0）可解析且接口数与实现一致；/docs 静态说明页可读 ===
+    /openapi.json → HTTP 200，解析成功，paths=7，operations=8
+    [PASS] /openapi.json → 200，**可被 json.loads 解析**，openapi 版本为 3.0.x  HTTP 200 openapi=3.0.3
+    [PASS] **接口数与实现一致**：文档 8 个操作 == 期望清单 8 条，且逐条（方法+路径模板）相等  文档-期望 差集=[]；计数字段=8
+    逐条实调：["GET /v1/open/yunqi/{year} → 200/0", "GET /v1/open/solar-terms/{year} → 200/0", "GET /v1/open/shichen → 200/0", "GET /v1/open/wuxing → 200/0", "POST /v1/calc/ganzhi → 401/20000", "POST /v1/calc/chart → 401/20000", "POST /v1/admin/api-keys → 401/20000", "GET /v1/admin/api-keys → 401/20000"]
+    [PASS] 文档里每条接口**都能被真服务命中**（L1 200；L2/运营无凭据 → 401；无一条落到「未知接口 10000」）  实测状态=[('GET', 200, 0), ('GET', 200, 0), ('GET', 200, 0), ('GET', 200, 0), ('POST', 401, 20000), ('POST', 401, 20000), ('POST', 401, 20000), ('GET', 401, 20000)]
+    [PASS] 文档声明了合规口径：license=CC-BY-4.0、四件套 schema、错误码表、配额与限流  license=CC-BY-4.0 x-error-codes=['10002', '10003', '20000', '40000', '40001', '70005', '70006']
+    /docs → HTTP 200，Content-Type=text/html; charset=utf-8，字节=9319
+    [PASS] /docs → 200 且 Content-Type 为 text/html，页面可读（≥4000 字节、含全部 8 条接口路径）  HTTP 200 ctype=text/html; charset=utf-8 bytes=9319 缺路径=无
+    [PASS] /docs 写明鉴权、配额、幂等、许可与免责声明（关键串全在）  关键串命中={'X-API-Key': True, '100000': True, 'Idempotency-Key': True, 'CC-BY-4.0': True, '不属于医疗器械': True}
+
+=== 断言 #F · 自检 F · 表结构与字段口径核对（api_key / api_call_log 列名与落库要求一致） ===
+    api_key 列      = ['key_id', 'name', 'key_prefix', 'key_hash', 'status', 'monthly_quota', 'used_this_month', 'quota_period', 'created_at', 'last_used_at']
+    api_call_log 列 = ['id', 'key_id', 'key_prefix', 'method', 'path', 'status', 'code', 'elapsed_ms', 'cost', 'idempotency_key', 'created_at']
+    [PASS] api_key 含落库要求全部字段：SHA-256 哈希 / 8 位前缀 / 名称 / 配额 / 已用量 / 状态 / 创建时间  缺少=[]
+    [PASS] api_call_log 含计量要求全部字段：key_id / 路径 / 状态 / 耗时 / 耗用额度 / 时间  缺少=[]
+    [PASS] 两张表落在**同一份 state.db**（沿用既有库，不另开库）  DB=D:\Deepseek智能体\AI元健康\shuzi\_verify_v10\open_api_v10.db
+    [PASS] 库里**搜不到任何明文凭据**：全表扫 key_prefix/key_hash，明文串 0 命中  三把测试凭据明文均未落库；台账 HTTP 200
+
+=== 断言 #10 · 既有 C 端接口零回归（daily/index/friends 行为不变 + 7 套既有回归实跑） ===
+    [PASS] 既有 POST /api/v1/auth/guest → 200 且发令牌（游客身份链路不变）  HTTP 200 member=…cdf9eb1a
+    daily 字段数=23，缺字段=无
+    [PASS] 既有 GET /api/v1/rhythm/daily → 200，**冻结字段一个都不缺**（19 个）  缺=无
+    [PASS] daily 的 index（时相指数）与 personalized（个体化摘要）仍在，口径字段齐  index.score=74 personalized=NoneType
+    [PASS] daily 的 profile/打卡链路不变（建档与打卡均 200，观测数 ≥1）  birth=200 checkin=200 observation_count=1
+    [PASS] 既有 friends 三件套形状不变：friends / 隐私三开关 / 邀请链接  friends=200 privacy=200 referral=200
+    [PASS] 既有 /api/health → 200，规则版本 TYH-RULES-1.3.0，服务版本与表清单未变  rule=TYH-RULES-1.3.0
+    [PASS] 既有首页与 GEO 静态资产不变：/ 200 且首页直含 JSON-LD（Dataset 与 SoftwareApplication），/llms.txt、/robots.txt、/sitemap.xml 均 200  首页 HTTP 200 JSON-LD=True
+    [PASS] 既有信封形状不变：未登录访问受保护接口 → 401，响应键仍为 code/message/data/trace_id  HTTP 401 keys=['code', 'data', 'detail', 'message', 'trace_id']
+
+=== 断言 #3 · 每个成功响应强制携带 disclaimer / ai_generated / rule_version / param_hash ===
+    [PASS] 全部 30 个成功响应均含四件套且类型/长度合法（disclaimer 非空字符串、ai_generated 布尔、param_hash 为 64 位十六进制、rule_version 非空）  通过 30/30；问题项=无
+    [PASS] 四件套覆盖到**全部 8 条接口**（L1 四条 + L2 两条 + 运营两条），不是只覆盖一两条  已覆盖 8/8 个资源；缺=无
+
+=== 断言 #E · 自检 E · 禁用词扫描：open_api.py 与全部新增文件 0 命中 ===
+    BANNED_WORDS 索引（本脚本不打印词面，避免扫描器命中自身输出）
+    词表条目数 = 18
+    open_api.py                                                字节=71520   命中=0 
+    serve.py                                                   字节=55356   命中=0 
+    docs.html                                                  字节=12555   命中=0 
+    test_open_api.py                                           字节=63995   命中=0 
+    openapi_live.json                                          字节=12967   命中=0 
+    docs_live.html                                             字节=12555   命中=0 
+    [PASS] 禁用词扫描：6 个文件 × 18 条词表 → **命中 0**（要求 0）  命中合计=0
+
+=== 断言 #10（b） · 既有回归实跑（社交 51 / 推荐 45 / 支付佣金 80 / 独立后台 144 / 积分 77 / 内核 335 / 服务端 104）===
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\test_social.py
+        断言 #9  A DELETE /friends/{B} 后：双方 friends/feed/ranking 均不再出现对方  —— PASS（8/8 项通过）
+        断言 #10 昵称去敏感词；invite_code 8 位且唯一（并发创建 50 个不重复）  —— PASS（8/8 项通过）
+        合计 51 项子断言，通过 51，失败 0；断言 #1-#10 全部通过
+        明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\test_social_result.json
+    [PASS] 社交 51：既有轻社交端到端验证（合计 51 项子断言，通过 51，失败 0，5s）  rc=0 含汇总行=True 项数=51（期望 51）
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe D:\Deepseek智能体\AI元健康\shuzi\_verify_v6\test_referral.py
+        断言 #C  补充 C · 预览限流：同 IP 连打 61 次，第 61 次被拒（40000 / HTTP 429） —— PASS（4/4 项通过）
+        断言 #V  补充 V · 不传 auto_accept 时仍是 pending（v3 原路径零改动） —— PASS（3/3 项通过）
+        合计 45 项子断言，通过 45，失败 0；本脚本范围 全部通过
+        明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v6\test_referral_result.json
+    [PASS] 推荐 45：既有推荐关系端到端验证（合计 45 项子断言，通过 45，失败 0，5s）  rc=0 含汇总行=True 项数=45（期望 45）
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\test_pay_commission.py
+        断言 #D  追加 D · 边界：带参路径鉴权 / 后台闸门 / 未知通道拒绝 —— PASS（6/6 项通过）
+        合计 80 项子断言，通过 80，失败 0；本脚本范围 全部通过
+        未验证项（如实标注）：真实微信/支付宝通道与 P2 资质疑材料、前端订阅页与后台页面、线上部署、真实资金结算与提现（P3）
+        明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\test_pay_commission_result.json
+    [PASS] 支付佣金 80：P1 自建支付与佣金账本全过（合计 80 项子断言，通过 80，失败 0，15s）  rc=0 含汇总行=True 项数=80（期望 80）
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\test_admin.py
+        管理口令未进入服务端日志：是
+        退出码：0
+      ==============================================================================
+      验收明细已写入：D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\test_admin_result.json
+    [PASS] 独立后台 144：既有后台端到端验证（合计 144 项断言，通过 144，失败 0，20s）  rc=0 含汇总行=True 项数=144（期望 144）
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe D:\Deepseek智能体\AI元健康\shuzi\_verify_v8\test_points.py
+        未验证项（如实标注）：前端订阅页/「我的积分」/提现按钮置灰（验收 #9，另一位同事交付）、真实微信/支付宝通道与 P2 资质、**提现与银联分账（P3）**、线上部署、真实资金结算
+        回退：删 points 相关路由与两张表（订单/佣金表不变，历史订单仍在）。
+        明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v8\test_points_result.json
+        控制台完整输出: D:\Deepseek智能体\AI元健康\shuzi\_verify_v8\test_points_output.txt
+    [PASS] 积分 77：v8 积分余额与佣金路线全过（本次扩展未破坏 v8）（合计 77 项子断言，通过 77，失败 0，54s）  rc=0 含汇总行=True 项数=77（期望 77）
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe -m unittest discover -s tests -t .
+      ............................
+      ----------------------------------------------------------------------
+      Ran 335 tests in 3.369s
+      OK
+    [PASS] 内核 335：核心测试全过（便携运行时）（Ran 335 tests，4s）  rc=0 含汇总行=True 项数=335（期望 335）
+    $ C:\Users\41692\AppData\Local\Programs\Python\Python312\python.EXE -m unittest discover -s tests -t .
+      ........................................................................................................
+      ----------------------------------------------------------------------
+      Ran 104 tests in 0.815s
+      OK
+    [PASS] 服务端 104：服务层测试全过（解释器 C:\Users\41692\AppData\Local\Programs\Python\Python312\python.EXE）（Ran 104 tests，1s）  rc=0 含汇总行=True 项数=104（期望 104）
+    [PASS] 既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同（抽查 8 个文件）  全同=8 不一致=无
+
+=== 汇总（#1–#10 = 变更单 §三 Ⅱ 开放 API 的 10 条；E/F = 本次额外自检）===
+  断言 #1  L1 四条接口 200 / 免鉴权 / 含 license:CC-BY-4.0 与 disclaimer —— PASS（12/12 项通过）
+  断言 #2  L2 两条接口需 X-API-Key：无 key→401、错 key→403、合法→200 且含 lin —— PASS（7/7 项通过）
+  断言 #3  每个成功响应强制携带 disclaimer / ai_generated / rule_version  —— PASS（4/4 项通过）
+  断言 #4  绝不返回病名字段：键名与取值双向扫描 0 命中 —— PASS（3/3 项通过）
+  断言 #5  配额：免费 10 万次/月；临时改成 3 次 → 前 3 次 200、第 4 次 429 且提示可读 —— PASS（5/5 项通过）
+  断言 #6  计量：每次调用写 api_call_log（key_id/路径/状态/耗时/耗用额度）；5 次调用 +5 —— PASS（4/4 项通过）
+  断言 #7  API 凭据只存 SHA-256 哈希 + 前 8 位前缀，明文只在签发时返回一次（库里搜不到明文） —— PASS（9/9 项通过）
+  断言 #8  文档：/openapi.json（OpenAPI 3.0）可解析且接口数与实现一致；/docs 静态说明 —— PASS（6/6 项通过）
+  断言 #9  幂等：L2 带 Idempotency-Key 重复提交只计一次调用与一次业务 —— PASS（4/4 项通过）
+  断言 #10 既有 C 端接口零回归（daily/index/friends 行为不变 + 7 套既有回归实跑） —— PASS（16/16 项通过）
+  断言 #E  自检 E · 禁用词扫描：open_api.py 与全部新增文件 0 命中 —— PASS（1/1 项通过）
+  断言 #F  自检 F · 表结构与字段口径核对（api_key / api_call_log 列名与落库要求一致） —— PASS（4/4 项通过）
+
+  合计 75 项子断言，通过 75，失败 0；本脚本范围 全部通过
+  未验证项（如实标注）：线上部署（本单明令禁止）、真实第三方调用方、L3 个人节律与 L4 群体接口（本期不做，需用户授权与合同）、真实大模型 GEO 可见度（另见 _geo/）。
+  回退：删 server/open_api.py + serve.py 的注册行（import / Stack 一行构造 / _dispatch 转发分支 / /openapi.json 分支 / EXTRA_STATIC 的 /docs 两行），接口即整体消失，C 端不受影响；两张表可留可清。
+  明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v10\test_open_api_result.json
+  控制台完整输出: D:\Deepseek智能体\AI元健康\shuzi\_verify_v10\test_open_api_output.txt

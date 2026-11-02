@@ -1,0 +1,92 @@
+[
+ {
+  "name": "源码含新文案：server/social.py",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "源码不再含旧文案：server/social.py",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "源码含新文案：web/app.js",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "源码不再含旧文案：web/app.js",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "version.json web=189",
+  "ok": true,
+  "detail": "189"
+ },
+ {
+  "name": "version.json 首条=邀请文案",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 资源戳 i ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "index.html 旧资源戳 h 已清零",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地服务 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "游客登录拿到令牌",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "接口有 share_text",
+  "ok": true,
+  "detail": "我是用户2489，邀请您建立自己的AI元神，随时查看自己的健康指数：https://shuzi.yuanjk.cn/?invite=%E7%94%A8%E6%88%B72489"
+ },
+ {
+  "name": "share_text 含新文案",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "share_text 不含旧文案",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "share_text 含邀请链接",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "落地提示含「大艾」",
+  "ok": true,
+  "detail": "大艾 邀请您建立自己的AI元神"
+ },
+ {
+  "name": "落地提示=邀请您建立自己的AI元神",
+  "ok": true,
+  "detail": "大艾 邀请您建立自己的AI元神"
+ },
+ {
+  "name": "落地提示不含旧文案",
+  "ok": true,
+  "detail": "大艾 邀请您建立自己的AI元神"
+ },
+ {
+  "name": "无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

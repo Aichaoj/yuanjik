@@ -1,0 +1,141 @@
+{
+ "account": "13993014344",
+ "results": [
+  {
+   "tag": "首页指数有值",
+   "pass": true,
+   "detail": "home=56"
+  },
+  {
+   "tag": "首页能量有值",
+   "pass": true,
+   "detail": "energy=78.8"
+  },
+  {
+   "tag": "节律页与首页一致",
+   "pass": true,
+   "detail": "home=56 rhythm=56"
+  },
+  {
+   "tag": "我的页能量与首页一致",
+   "pass": true,
+   "detail": "home=78.8 mine=78.8"
+  },
+  {
+   "tag": "我的页健康分与首页一致",
+   "pass": false,
+   "detail": "home=56 mine=66 (今日 66 分 | )"
+  },
+  {
+   "tag": "音乐推荐能量与首页一致",
+   "pass": false,
+   "detail": "home=78.8 rec=150"
+  },
+  {
+   "tag": "签到可点击并回到首页",
+   "pass": true,
+   "detail": "前=今日签到 后=今日签到"
+  },
+  {
+   "tag": "签到后文案变化",
+   "pass": false,
+   "detail": "after=今日签到"
+  },
+  {
+   "tag": "/rhythm/daily 200",
+   "pass": true,
+   "detail": "status=200"
+  },
+  {
+   "tag": "随手记弹窗打开",
+   "pass": true,
+   "detail": "seen=True"
+  },
+  {
+   "tag": "随手记有保存按钮",
+   "pass": false,
+   "detail": "未找到保存按钮"
+  },
+  {
+   "tag": "五音可播放（计时走动）",
+   "pass": true,
+   "detail": "宫音（脾）\n          00:01\n        \n        \n → 宫音（脾）\n          00:04\n        \n        \n"
+  },
+  {
+   "tag": "播放器显示曲名",
+   "pass": true,
+   "detail": "宫音（脾）\n          00:04\n        \n        \n          \n         "
+  },
+  {
+   "tag": "佛音可播放",
+   "pass": true,
+   "detail": "地藏经（节选·电子诵）\n          00:01\n         → 地藏经（节选·电子诵）\n          00:04\n        "
+  },
+  {
+   "tag": "呼吸引导可进入",
+   "pass": true,
+   "detail": "screen-breath"
+  },
+  {
+   "tag": "呼吸开始后状态变化",
+   "pass": true,
+   "detail": "呼吸引导       跟着圆圈：吸气 4 秒 · 停 4 秒 · 呼气 6 秒。头晕或不舒服就立刻停。                   "
+  },
+  {
+   "tag": "贡献能量页可进入",
+   "pass": true,
+   "detail": "screen-contribute"
+  },
+  {
+   "tag": "意念注入有反馈（会话/计时）",
+   "pass": true,
+   "detail": "贡献能量       把能量送进能量场：每满 5 分钟自动 +10。念咒或静心都可。                                                "
+  },
+  {
+   "tag": "积分兑换按钮存在",
+   "pass": true,
+   "detail": "[{'t': '50 积分兑换', 'disabled': True}, {'t': '300 积分兑换', 'disabled': True}]"
+  },
+  {
+   "tag": "“暂未开放”与兑换按钮不矛盾",
+   "pass": true,
+   "detail": "按钮=2 含暂未开放=True"
+  },
+  {
+   "tag": "家人表单空提交有校验",
+   "pass": false,
+   "detail": ""
+  },
+  {
+   "tag": "本草目录加载",
+   "pass": true,
+   "detail": "共 338 味 · 按药名检索 · 古籍原文展示 · 非医疗建议 · 不作为用药依据"
+  },
+  {
+   "tag": "本草检索有结果",
+   "pass": true,
+   "detail": "“人参” 命中 1 味（共 338 味） · 古籍原文展示 · 非医疗建议 · 不作为用药依据"
+  },
+  {
+   "tag": "慢网 4G 首屏可用（文字已出）",
+   "pass": true,
+   "detail": "DCL=4075ms FCP=1608ms 资源=17 659KB 文字=644"
+  },
+  {
+   "tag": "未登录进“我的”有引导",
+   "pass": true,
+   "detail": "我的 ·  未登录  用「手机号」或「昵称」登录，档案与打卡记录跟着账号走  登录 / 注册 我的当下能量指数 10-2"
+  },
+  {
+   "tag": "未登录无 JS 报错",
+   "pass": false,
+   "detail": "Failed to load resource: the server responded with a status of 401 (Unauthorized); Failed to load resource: the server responded with a stat"
+  },
+  {
+   "tag": "本次流程无 JS 报错",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "console_errors": []
+}

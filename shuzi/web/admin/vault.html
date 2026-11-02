@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>能量仓后台 · 补发与对账</title>
+<style>
+  body { margin:0; font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif; color:#1c2430; background:#f6f8fa; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 18px 16px 60px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color:#7a8794; font-size:12.5px; margin:0 0 16px; }
+  .card { background:#fff; border:1px solid #e5e9ee; border-radius:14px; padding:14px 16px; margin-bottom:14px; }
+  label { display:block; font-size:12.5px; color:#7a8794; margin:9px 0 4px; }
+  input { width:100%; padding:9px 11px; border:1px solid #e5e9ee; border-radius:10px; font:inherit; }
+  button { font:inherit; padding:8px 13px; border-radius:10px; border:1px solid #e5e9ee; background:#fff; cursor:pointer; }
+  button.primary { background:#d6335a; color:#fff; border-color:#d6335a; }
+  button.small { padding:4px 9px; font-size:12.5px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:7px 6px; border-bottom:1px solid #e5e9ee; }
+  th { color:#7a8794; font-size:12px; }
+  .msg { font-size:12.5px; color:#7a8794; min-height:18px; }
+  .err { color:#c0392b; }
+  .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  pre { background:#0f1720; color:#d7e2ec; padding:12px; border-radius:10px; overflow:auto; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>能量仓后台</h1>
+  <p class="sub">折算补发（rewarded=0）与月度对账。执行动作都会进后台审计。</p>
+
+  <section class="card" id="loginCard">
+    <label for="pwd">管理口令</label>
+    <input id="pwd" type="password" placeholder="与运营后台相同">
+    <div class="toolbar" style="margin-top:10px">
+      <button class="primary" id="btnLogin">登录</button><span class="msg" id="loginMsg"></span>
+    </div>
+  </section>
+
+  <section class="card" id="srcCard" hidden>
+    <div class="toolbar" style="margin:0 0 8px">
+      <strong>宇宙原始能量注入</strong>
+      <span class="msg" id="srcNow"></span>
+      <button class="small" id="btnSrcReload" style="margin-left:auto">刷新</button>
+    </div>
+    <p class="msg">每天自动往共享能量场注入一份，默认 <b id="srcDefault">500</b>；可改某一天的数字，改完前端立即同步。</p>
+    <div class="toolbar" style="margin-top:10px">
+      <label for="srcDay" style="margin:0;white-space:nowrap">日期</label>
+      <input id="srcDay" type="date" style="width:170px">
+      <label for="srcAmount" style="margin:0;white-space:nowrap">数值</label>
+      <input id="srcAmount" type="number" min="0" step="10" style="width:130px">
+      <button class="primary" id="btnSrcSave">保存</button>
+      <span class="msg" id="srcMsg"></span>
+    </div>
+    <table style="margin-top:10px"><thead><tr><th>日期</th><th>数值</th><th>修改时间</th><th>修改人</th><th></th></tr></thead>
+      <tbody id="srcRows"></tbody></table>
+  </section>
+
+  <section class="card" id="unCard" hidden>
+    <div class="toolbar" style="margin:0 0 8px">
+      <strong>待补发（能量已记、积分未发）</strong>
+      <span class="msg" id="unCount"></span>
+      <button class="small" id="btnReload" style="margin-left:auto">刷新</button>
+      <button class="small" id="btnLogout">退出</button>
+    </div>
+    <table><thead><tr><th>流水</th><th>会员</th><th>能量值</th><th>时间</th><th>操作</th></tr></thead>
+      <tbody id="unRows"></tbody></table>
+    <p class="msg" id="unMsg"></p>
+  </section>
+
+  <section class="card" id="repCard" hidden>
+    <strong>月度对账</strong>
+    <label for="month">月份（YYYY-MM）</label>
+    <input id="month" placeholder="2026-10">
+    <div class="toolbar" style="margin-top:10px">
+      <button class="primary" id="btnReport">生成 CSV</button>
+      <button id="btnDownload" disabled>下载 CSV</button>
+      <span class="msg" id="repMsg"></span>
+    </div>
+    <pre id="repOut" hidden></pre>
+  </section>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var API = '/api/v1';
+  var token = '';
+  function $(id) { return document.getElementById(id); }
+  function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function msg(el, t, err) { el.textContent = t || ''; el.className = 'msg' + (err ? ' err' : ''); }
+  function post(path, body) {
+    return fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token }, body: JSON.stringify(body || {}) })
+      .then(function (r) { return r.json(); });
+  }
+  function get(path) {
+    return fetch(API + path, { headers: { Authorization: 'Bearer ' + token } })
+      .then(function (r) { return r.json(); });
+  }
+
+  function login() {
+    fetch(API + '/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: $('pwd').value }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!(j && j.data && j.data.admin_token)) { msg($('loginMsg'), (j && j.message) || '登录失败', true); return; }
+        token = j.data.admin_token;
+        $('loginCard').hidden = true; $('unCard').hidden = false; $('repCard').hidden = false;
+        $('srcCard').hidden = false;
+        $('month').value = new Date().toISOString().slice(0, 7);
+        $('srcDay').value = new Date().toISOString().slice(0, 10);
+        loadUn();
+        loadSrc();
+      });
+  }
+  function loadUn() {
+    get('/admin/vault/unrewarded').then(function (j) {
+      var rows = (j && j.data && j.data.items) || [];
+      $('unCount').textContent = '共 ' + rows.length + ' 条';
+      $('unRows').innerHTML = rows.length ? rows.map(function (r) {
+        return '<tr><td class="muted">' + esc(r.id) + '</td><td>' + esc(r.member_id) + '</td>' +
+               '<td>' + esc(r.amount) + '</td><td>' + esc(r.at) + '</td>' +
+               '<td><button class="small" data-replay="' + esc(r.id) + '">补发积分</button></td></tr>';
+      }).join('') : '<tr><td colspan="5" class="muted">没有待补发的流水</td></tr>';
+    });
+  }
+  function report() {
+    post('/admin/vault/report', { month: $('month').value }).then(function (j) {
+      if (!(j && j.data && j.data.csv)) { msg($('repMsg'), '生成失败', true); return; }
+      $('repOut').hidden = false; $('repOut').textContent = j.data.csv;
+      window.__csv = j.data.csv; window.__csvName = j.data.filename || ('vault_' + $('month').value + '.csv');
+      $('btnDownload').disabled = false;
+      msg($('repMsg'), '已生成，可下载');
+    });
+  }
+
+  function loadSrc() {
+    get('/admin/vault/source').then(function (j) {
+      var d = (j && j.data) || {};
+      if (d.default_daily != null) { $('srcDefault').textContent = d.default_daily; }
+      var t = d.today || {};
+      if (!$('srcDay').value) { $('srcDay').value = t.day || new Date().toISOString().slice(0, 10); }
+      if (!$('srcAmount').value && t.amount != null) { $('srcAmount').value = t.amount; }
+      $('srcNow').textContent = '今天 ' + (t.amount != null ? t.amount : '—') +
+        ' · 累计 ' + (d.total != null ? d.total : '—') + ' · 共享指数 ' + (d.index != null ? d.index : '—');
+      var rows = d.items || [];
+      $('srcRows').innerHTML = rows.length ? rows.map(function (r) {
+        return '<tr><td>' + esc(r.day) + '</td><td>' + esc(r.amount) + '</td>' +
+               '<td class="muted">' + esc(r.at) + '</td><td>' + esc(r.updated_by) + '</td>' +
+               '<td><button class="small" data-srcday="' + esc(r.day) + '" data-srcamount="' + esc(r.amount) + '">改这天</button></td></tr>';
+      }).join('') : '<tr><td colspan="5" class="muted">还没有记录（今天会按默认值自动生成一行）</td></tr>';
+    });
+  }
+  function saveSrc(day, amount) {
+    day = day || $('srcDay').value;
+    amount = amount != null ? amount : $('srcAmount').value;
+    if (!day) { msg($('srcMsg'), '请选日期', true); return; }
+    if (amount === '' || amount == null) { msg($('srcMsg'), '请填数值', true); return; }
+    post('/admin/vault/source', { day: day, amount: Number(amount) }).then(function (j) {
+      if (j && j.data && j.data.ok) {
+        msg($('srcMsg'), '已保存：' + day + ' → ' + j.data.amount + '（共享指数 ' + j.data.index + '）');
+        loadSrc();
+      } else { msg($('srcMsg'), (j && j.message) || '保存失败', true); }
+    });
+  }
+
+  $('btnLogin').addEventListener('click', login);
+  $('pwd').addEventListener('keydown', function (e) { if (e.key === 'Enter') { login(); } });
+  $('btnReload').addEventListener('click', loadUn);
+  $('btnSrcReload').addEventListener('click', loadSrc);
+  $('btnSrcSave').addEventListener('click', function () { saveSrc(); });
+  $('srcRows').addEventListener('click', function (e) {
+    var day = e.target.getAttribute && e.target.getAttribute('data-srcday');
+    if (!day) { return; }
+    $('srcDay').value = day;
+    $('srcAmount').value = e.target.getAttribute('data-srcamount');
+    $('srcAmount').focus();
+  });
+  $('btnReport').addEventListener('click', report);
+  $('btnLogout').addEventListener('click', function () { token = ''; location.reload(); });
+  $('btnDownload').addEventListener('click', function () {
+    if (!window.__csv) { return; }
+    var blob = new Blob([window.__csv], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = window.__csvName; a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  });
+  $('unRows').addEventListener('click', function (e) {
+    var id = e.target.getAttribute && e.target.getAttribute('data-replay');
+    if (!id) { return; }
+    post('/admin/vault/replay', { id: id }).then(function (j) {
+      if (j && j.data) { msg($('unMsg'), '已补发 +' + (j.data.points || 0) + ' 积分'); loadUn(); }
+      else { msg($('unMsg'), (j && j.message) || '补发失败', true); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

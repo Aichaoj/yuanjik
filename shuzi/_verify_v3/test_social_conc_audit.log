@@ -1,0 +1,55 @@
+[23:55:08] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[23:55:08] login account_id=acc_4ec5d8b358d7c814 at=1791561308.9355514 device_id=v3-conc-1009235504-00 device_info={}
+[23:55:08] login account_id=acc_51b108e8e5d69aba at=1791561308.9365475 device_id=v3-conc-1009235504-01 device_info={}
+[23:55:08] login account_id=acc_040deeb7ec076174 at=1791561308.9365475 device_id=v3-conc-1009235504-02 device_info={}
+[23:55:08] login account_id=acc_67c3a08d1876b091 at=1791561308.9365475 device_id=v3-conc-1009235504-03 device_info={}
+[23:55:08] login account_id=acc_ea17ac05738ae64a at=1791561308.9365475 device_id=v3-conc-1009235504-04 device_info={}
+[23:55:08] login account_id=acc_86ef425d0afd18a7 at=1791561308.9365475 device_id=v3-conc-1009235504-05 device_info={}
+[23:55:08] login account_id=acc_161457ea898af9ca at=1791561308.9365475 device_id=v3-conc-1009235504-06 device_info={}
+[23:55:08] login account_id=acc_2ba4c2e8996ff1f5 at=1791561308.9365475 device_id=v3-conc-1009235504-07 device_info={}
+[23:55:08] login account_id=acc_f51238c029ceea27 at=1791561308.9365475 device_id=v3-conc-1009235504-08 device_info={}
+[23:55:08] login account_id=acc_e6eeaa0b236bd41e at=1791561308.9365475 device_id=v3-conc-1009235504-09 device_info={}
+[23:55:08] login account_id=acc_91e40f7a71082153 at=1791561308.9365475 device_id=v3-conc-1009235504-10 device_info={}
+[23:55:08] login account_id=acc_9429806968f07f31 at=1791561308.9365475 device_id=v3-conc-1009235504-11 device_info={}
+[23:55:08] login account_id=acc_98cb987aab4625e2 at=1791561308.9365475 device_id=v3-conc-1009235504-12 device_info={}
+[23:55:08] login account_id=acc_b2dd23c0a764e988 at=1791561308.9365475 device_id=v3-conc-1009235504-13 device_info={}
+[23:55:08] login account_id=acc_bcf5b2da805b31c4 at=1791561308.9365475 device_id=v3-conc-1009235504-14 device_info={}
+[23:55:08] login account_id=acc_0c0abb56b4c4fb12 at=1791561308.9365475 device_id=v3-conc-1009235504-15 device_info={}
+[23:55:08] login account_id=acc_c7ccbaa4a51c202e at=1791561308.9365475 device_id=v3-conc-1009235504-16 device_info={}
+[23:55:08] login account_id=acc_242536982c15bdea at=1791561308.9365475 device_id=v3-conc-1009235504-17 device_info={}
+[23:55:08] login account_id=acc_2264e1f3e0d6bf1d at=1791561308.9365475 device_id=v3-conc-1009235504-18 device_info={}
+[23:55:08] login account_id=acc_05bb5cb10c5c6f5a at=1791561308.9365475 device_id=v3-conc-1009235504-19 device_info={}
+[23:55:08] login account_id=acc_5c75d3e9b6d2c71b at=1791561308.9365475 device_id=v3-conc-1009235504-20 device_info={}
+[23:55:08] login account_id=acc_b2ced6866dd73c30 at=1791561308.9365475 device_id=v3-conc-1009235504-21 device_info={}
+[23:55:08] login account_id=acc_6ba4301ae91423e3 at=1791561308.9365475 device_id=v3-conc-1009235504-22 device_info={}
+[23:55:08] login account_id=acc_b9bc0bccbc0c5681 at=1791561308.9365475 device_id=v3-conc-1009235504-23 device_info={}
+[23:55:08] login account_id=acc_4feaa3b98e9ce7df at=1791561308.9365475 device_id=v3-conc-1009235504-24 device_info={}
+[23:55:08] login account_id=acc_206a41205bec9b90 at=1791561308.9365475 device_id=v3-conc-1009235504-25 device_info={}
+[23:55:08] login account_id=acc_826ab566a431bdcb at=1791561308.937773 device_id=v3-conc-1009235504-26 device_info={}
+[23:55:08] login account_id=acc_17956cf66b432bbd at=1791561308.937773 device_id=v3-conc-1009235504-27 device_info={}
+[23:55:08] login account_id=acc_5d9430da1495c937 at=1791561308.937773 device_id=v3-conc-1009235504-28 device_info={}
+[23:55:08] login account_id=acc_57ae6eccf7e1e7b1 at=1791561308.937773 device_id=v3-conc-1009235504-29 device_info={}
+[23:55:08] login account_id=acc_a5a32cc85f6ed199 at=1791561308.937773 device_id=v3-conc-1009235504-30 device_info={}
+[23:55:08] login account_id=acc_b4d9c30516ae4f2a at=1791561308.937773 device_id=v3-conc-1009235504-31 device_info={}
+[23:55:08] login account_id=acc_fcc210579c2650ac at=1791561308.937773 device_id=v3-conc-1009235504-32 device_info={}
+[23:55:08] login account_id=acc_cf70f614b6c94c95 at=1791561308.937773 device_id=v3-conc-1009235504-33 device_info={}
+[23:55:08] login account_id=acc_cef8bebe6d597706 at=1791561308.937773 device_id=v3-conc-1009235504-34 device_info={}
+[23:55:08] login account_id=acc_a344f936e247d736 at=1791561308.937773 device_id=v3-conc-1009235504-35 device_info={}
+[23:55:08] login account_id=acc_811072d7c2fcbf8d at=1791561308.937773 device_id=v3-conc-1009235504-36 device_info={}
+[23:55:08] login account_id=acc_508b6e78c4b7d723 at=1791561308.937773 device_id=v3-conc-1009235504-37 device_info={}
+[23:55:08] login account_id=acc_887821d527be3afa at=1791561308.937773 device_id=v3-conc-1009235504-38 device_info={}
+[23:55:08] login account_id=acc_986f9a0aed483318 at=1791561308.937773 device_id=v3-conc-1009235504-39 device_info={}
+[23:55:08] login account_id=acc_46081d60de2aeff2 at=1791561308.937773 device_id=v3-conc-1009235504-40 device_info={}
+[23:55:08] login account_id=acc_c2978e29b1ca7c02 at=1791561308.937773 device_id=v3-conc-1009235504-41 device_info={}
+[23:55:08] login account_id=acc_245186418cec3a82 at=1791561308.937773 device_id=v3-conc-1009235504-42 device_info={}
+[23:55:08] login account_id=acc_3623f1fc28590759 at=1791561308.937773 device_id=v3-conc-1009235504-43 device_info={}
+[23:55:08] login account_id=acc_63fa94af6455072c at=1791561308.937773 device_id=v3-conc-1009235504-44 device_info={}
+[23:55:08] login account_id=acc_9d383cb857eea3c3 at=1791561308.937773 device_id=v3-conc-1009235504-45 device_info={}
+[23:55:08] login account_id=acc_43d1a798e2c44697 at=1791561308.9387927 device_id=v3-conc-1009235504-46 device_info={}
+[23:55:08] login account_id=acc_ac327adbc050c84f at=1791561308.9387927 device_id=v3-conc-1009235504-47 device_info={}
+[23:55:08] login account_id=acc_be1a76e7a898eb13 at=1791561308.9387927 device_id=v3-conc-1009235504-48 device_info={}
+[23:55:08] login account_id=acc_2667642a3a61c533 at=1791561308.9387927 device_id=v3-conc-1009235504-49 device_info={}

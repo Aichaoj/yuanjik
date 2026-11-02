@@ -1,0 +1,15 @@
+PASS home 200  
+PASS token f in html  
+PASS energy index card markup  
+PASS invite/bind sheets  
+PASS my family link card  
+PASS live version 213  213
+PASS v213 notes present  
+PASS app.js 200  419693
+PASS app.js has v213 fns  
+PASS WEB_VER 213  
+PASS home renders  
+PASS rhythm visible  
+PASS rhythm has readable placeholder  ��ʱ�޷���ȡ����ָ��  �ӿ���ʱû�з������ݣ����Ժ����ԣ��·����������Կ������
+FAIL no js errors  ['Failed to load resource: the server responded with a status of 401 ()', 'Failed to load resource: the server responded with a status of 401 ()', 'Failed to lo
+RESULT 13/14

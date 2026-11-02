@@ -1,0 +1,172 @@
+[
+ {
+  "name": "app.js 有权限弹窗函数",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 录音分片留在内存",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 32kbps 录音（省内存）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 录音走 Blob（本地对象，不是上传）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 有弹窗 DOM",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 有录音条 DOM",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 录音条在贡献卡前面",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "style.css 有录音条样式",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 已无「不上传、不保存」旧说法",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "文案说明只在本机内存",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "version.json web=191",
+  "ok": true,
+  "detail": "191"
+ },
+ {
+  "name": "首条说明=麦克风弹窗",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "资源戳 b ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "app.js WEB_VER=191",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地服务 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "游客登录",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "v190 回归：3 次空会话后仍是 5 次",
+  "ok": true,
+  "detail": "5"
+ },
+ {
+  "name": "拒绝权限 → 弹窗出现",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "弹窗说明不占次数",
+  "ok": true,
+  "detail": "要先允许麦克风  没拿到麦克风权限。这次没有开始，也不占今天的次数。  弹窗询问时点「允许」；以前点过「拒绝」的，到手机"
+ },
+ {
+  "name": "弹窗有三个出口",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "拒绝权限 → 没发 session/start",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "弹窗「改用意念注入」能直接开一轮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "改用意念后卡片进行中",
+  "ok": true,
+  "detail": "进行中"
+ },
+ {
+  "name": "无 JS 异常（拒绝场景）",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "录音条出现",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "录音条状态=录音中",
+  "ok": true,
+  "detail": "录音中"
+ },
+ {
+  "name": "录音条在贡献卡上方",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "录音时长在走",
+  "ok": true,
+  "detail": "00:04"
+ },
+ {
+  "name": "录音是本地 blob（没有上传）",
+  "ok": true,
+  "detail": "blob:http://127.0.0.1:15"
+ },
+ {
+  "name": "回放按钮可点",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "结束态文案=已录",
+  "ok": true,
+  "detail": "已录 00:04"
+ },
+ {
+  "name": "点了回放真的在播",
+  "ok": true,
+  "detail": "t=1.44 paused=False"
+ },
+ {
+  "name": "录制期间没有把音频发去服务器",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "无 JS 异常（录音场景）",
+  "ok": true,
+  "detail": "[]"
+ }
+]

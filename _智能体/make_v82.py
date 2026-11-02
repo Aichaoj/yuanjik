@@ -1,0 +1,5 @@
+s=open(r'_智能体\deploy\_tool_v81_run.py',encoding='utf-8').read().replace('v81','v82').replace('V81','V82')
+open(r'_智能体\deploy\_tool_v82_run.py','w',encoding='utf-8',newline='\n').write(s)
+t=open(r'_资料\部署载荷\_shuzi_v81.ps1',encoding='utf-8').read().replace('V81','V82').replace('v81','v82')
+open(r'_资料\部署载荷\_shuzi_v82.ps1','w',encoding='utf-8',newline='\n').write(t)
+print('v82 ready')

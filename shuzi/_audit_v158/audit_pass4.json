@@ -1,0 +1,91 @@
+{
+ "account": "13193014080",
+ "results": [
+  {
+   "tag": "随手记上报后自动收起",
+   "pass": true,
+   "detail": "chips=2"
+  },
+  {
+   "tag": "首页显示“今日已报”一行",
+   "pass": true,
+   "detail": "今日已报：饮食 较好 · 睡眠 7.5h点这里修改"
+  },
+  {
+   "tag": "上报已落库（diet/mood/sleep 有值）",
+   "pass": true,
+   "detail": "{\"diet\": 4, \"exercise\": -1, \"sleep\": -1, \"smoke_alcohol\": -1, \"sedentary\": -1, \"mood\": -1, \"work_stress\": -1, \"environme"
+  },
+  {
+   "tag": "我的页可点“家人管理”",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "tag": "进入家庭档案页",
+   "pass": true,
+   "detail": "screen-family"
+  },
+  {
+   "tag": "家人空表单提交有校验提示",
+   "pass": true,
+   "detail": "请填写称呼。 | 请选择出生日期。 | 请选择出生地城市，或手动填写经纬度。"
+  },
+  {
+   "tag": "我的页可点“综合健康分”",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "tag": "进入综合健康分页",
+   "pass": true,
+   "detail": "screen-healthscore"
+  },
+  {
+   "tag": "健康分保存后得分更新",
+   "pass": true,
+   "detail": "39.9 分 → 35.9 分 (选项 3)"
+  },
+  {
+   "tag": "我的页可点“本草文献”",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "tag": "进入本草页",
+   "pass": true,
+   "detail": "screen-bencao"
+  },
+  {
+   "tag": "本草目录有内容",
+   "pass": true,
+   "detail": "共 338 味 · 按药名检索 · 古籍原文展示 · 非医疗建议 · 不作为用药依据"
+  },
+  {
+   "tag": "本草检索“人参”有结果",
+   "pass": true,
+   "detail": "条目=1 “人参” 命中 1 味（共 338 味） · 古籍原文展示 · 非医疗建议 · "
+  },
+  {
+   "tag": "后台页可打开 /admin/",
+   "pass": true,
+   "detail": "HTTP 200"
+  },
+  {
+   "tag": "后台页可打开 /admin/music.html",
+   "pass": true,
+   "detail": "HTTP 200"
+  },
+  {
+   "tag": "后台页可打开 /admin/vault.html",
+   "pass": true,
+   "detail": "HTTP 200"
+  },
+  {
+   "tag": "本轮无 JS 报错",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "errors": []
+}

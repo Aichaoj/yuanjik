@@ -1,0 +1,40 @@
+20:48:41 V213_START HOST=WIN-EALBV48S1PE
+20:48:42 DL web\app.js bytes=500336 ok=True
+20:48:43 DL web\index.html bytes=149373 ok=True
+20:48:43 DL web\style.css bytes=133544 ok=True
+20:48:43 DL web\version.json bytes=20465 ok=True
+20:48:43 DL server\family_link.py bytes=13453 ok=True
+20:48:43 DL server\family.py bytes=51709 ok=True
+20:48:43 DL server\serve.py bytes=76215 ok=True
+20:48:44 BAK done -> D:\www\yjk\shuzi\_bak-v213-20261102-204843
+20:48:49 PUT web\app.js
+20:48:49 PUT web\index.html
+20:48:49 PUT web\style.css
+20:48:49 PUT web\version.json
+20:48:49 PUT server\family_link.py
+20:48:49 PUT server\family.py
+20:48:49 PUT server\serve.py
+20:48:57 HEALTH_READY after 5s
+20:48:57 CHK web\app.js match=True
+20:48:57 CHK web\index.html match=True
+20:48:57 CHK web\style.css match=True
+20:48:57 CHK web\version.json match=True
+20:48:57 CHK server\family_link.py match=True
+20:48:57 CHK server\family.py match=True
+20:48:57 CHK server\serve.py match=True
+20:48:57 JS_WEBVER213=True
+20:48:57 JS_V213=True
+20:48:57 VERSION213=True
+20:48:57 ASSET_TOKEN_F=6 OLD=0
+20:48:57 UI_V213=True
+20:48:57 CSS_V213=True
+20:48:57 PY_FAMILY_LINK=True
+20:48:57 PY_FAMILY_LINKED=True
+20:48:57 PY_SERVE_REG=True
+20:48:57 HTTP_TOKEN_F=True
+20:48:57 LIVE_VERSION213=True
+20:48:57 LIVE_ROUTE_FAMILY=401
+20:48:57 SERVICE=Running
+20:48:57 CRIT_FAILURES=0
+20:48:57 EXIT=0
+20:48:57 V213_DONE

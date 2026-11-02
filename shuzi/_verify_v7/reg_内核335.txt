@@ -1,0 +1,80 @@
+..............D:\Deepseek智能体\AI元健康\核心\tests\test_device_guardrail.py:203: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\guardrail.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_device_guardrail.py:203: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\realtime.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_device_guardrail.py:203: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\dimensions.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_device_guardrail.py:203: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\engine.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.................................................D:\Deepseek智能体\AI元健康\核心\tests\test_dimensions.py:381: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\dimensions.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod_name + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_dimensions.py:381: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\realtime.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod_name + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_dimensions.py:381: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\zangfu_layer.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod_name + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_dimensions.py:381: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\yunqi_layer.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, mod_name + '.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.................................................................................................................................................................D:\Deepseek智能体\AI元健康\核心\tests\test_param_registry.py:131: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\调研\\运气学引擎规格书.md' mode='r' encoding='utf-8'>
+  text = open(_SPEC, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...........................................................................D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:101: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\规则清单.md' mode='r' encoding='utf-8'>
+  text = open(p, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:88: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\规则清单.md' mode='r' encoding='utf-8'>
+  text = open(p, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\__init__.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\calendar_layer.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\dimensions.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\engine.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\guardrail.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\intake.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\jiazi_codec.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\offset_layer.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\phase_index.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\realtime.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\security_policy.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\yunqi_layer.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:116: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\核心\\tianyuanheng\\zangfu_layer.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(base, fn), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.D:\Deepseek智能体\AI元健康\核心\tests\test_rules_registry.py:140: ResourceWarning: unclosed file <_io.TextIOWrapper name='D:\\Deepseek智能体\\AI元健康\\调研\\schema_v1.sql' mode='r' encoding='utf-8'>
+  text = open(p, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................
+----------------------------------------------------------------------
+Ran 335 tests in 3.228s
+
+OK

@@ -1,0 +1,482 @@
+[
+ {
+  "criteria": "3",
+  "name": "订阅套餐接口可用且价格为整数分",
+  "ok": true,
+  "detail": "plan_id→price_cents = {'month': 9900, 'quarter': 19900, 'year': 199000}"
+ },
+ {
+  "criteria": "3",
+  "name": "推荐关系（referral 表，一级）已建立：B → A",
+  "ok": true,
+  "detail": "referral 行数=1"
+ },
+ {
+  "criteria": "6",
+  "name": "测试前置：已为 D 注入\"推荐人=自己\"的异常推荐行（仅测试侧直写）",
+  "ok": true,
+  "detail": "referee=D referrer=…36d6e672"
+ },
+ {
+  "criteria": "1",
+  "name": "下单成功：status=created、金额=套餐价（整数分）",
+  "ok": true,
+  "detail": "order_no=SO20261009235441A0C716 amount_cents=9900"
+ },
+ {
+  "criteria": "1",
+  "name": "重复请求返回**同一张**订单（不报错、不新建）",
+  "ok": true,
+  "detail": "order_no 一致=True"
+ },
+ {
+  "criteria": "1",
+  "name": "库里该 idempotency_key 只有 1 张订单",
+  "ok": true,
+  "detail": "sub_order 行数=1"
+ },
+ {
+  "criteria": "1",
+  "name": "下单**不产生**佣金（计佣只认支付成功）",
+  "ok": true,
+  "detail": "该单账本行数=0"
+ },
+ {
+  "criteria": "1",
+  "name": "未知套餐 → 既有 10002（HTTP 400），不落单",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "2",
+  "name": "回调被接受（HTTP 200 / code=0），订单转为 paid",
+  "ok": true,
+  "detail": "order_status=paid"
+ },
+ {
+  "criteria": "2",
+  "name": "回调同时产生 1 条佣金（实付 9900 分 → 2970 分）",
+  "ok": true,
+  "detail": "delta=2970 amount=2970"
+ },
+ {
+  "criteria": "2",
+  "name": "GET /subscribe/order/{order_no} 查得 status=paid、paid_cents 正确",
+  "ok": true,
+  "detail": "status=paid paid_cents=9900"
+ },
+ {
+  "criteria": "2",
+  "name": "重放被识别（replayed=true）且不重复计佣（delta=0）",
+  "ok": true,
+  "detail": "delta=0"
+ },
+ {
+  "criteria": "2",
+  "name": "重放后该单账本仍只有 1 行",
+  "ok": true,
+  "detail": "账本行数=1"
+ },
+ {
+  "criteria": "2",
+  "name": "回调留痕：验签通过的报文**只留一行**，重放记在原行上（replay_count=1、可审计）",
+  "ok": true,
+  "detail": "留痕行数=1 replayed=1 replay_count=1"
+ },
+ {
+  "criteria": "2",
+  "name": "同订单换报文再回调 → 不重复计佣（订单级幂等闸门）",
+  "ok": true,
+  "detail": "delta=0 账本行数=1"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金逐分比对：月卡 9900 → 期望 2970 分、实测 2970 分",
+  "ok": true,
+  "detail": "order=SO20261009235441A0C716 base_cents=9900 rate_bp=3000"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金逐分比对：季卡 19900 → 期望 5970 分、实测 5970 分",
+  "ok": true,
+  "detail": "order=SO202610092354416A1BA6 base_cents=19900 rate_bp=3000"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金逐分比对：年卡 199000 → 期望 59700 分、实测 59700 分",
+  "ok": true,
+  "detail": "order=SO20261009235441B9A365 base_cents=199000 rate_bp=3000"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金逐分比对：季卡标价 19900、优惠实付 9900 → 期望 2970 分、实测 2970 分",
+  "ok": true,
+  "detail": "order=SO2026100923544194CC17 base_cents=9900 rate_bp=3000"
+ },
+ {
+  "criteria": "3",
+  "name": "变更单样例逐字对上：19900 分 → 5970 分",
+  "ok": true,
+  "detail": "19900×30%% = 5970"
+ },
+ {
+  "criteria": "3",
+  "name": "优惠实付场景：**基数取实付**（标价 19900、实付 9900 → 佣金 2970，不是 5970）",
+  "ok": true,
+  "detail": "base_cents=9900 amount_cents=2970"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金比例常量为 3000（万分比 = 30.00%，写在 pay.py 一处）",
+  "ok": true,
+  "detail": "rate_bp=3000"
+ },
+ {
+  "criteria": "4",
+  "name": "续费是新订单号（不是复用首单）",
+  "ok": true,
+  "detail": "o1=SO20261009235441A0C716 o2=SO20261009235441A7D3F0"
+ },
+ {
+  "criteria": "4",
+  "name": "续费同样产生 1 条佣金（2970 分）",
+  "ok": true,
+  "detail": "delta=2970"
+ },
+ {
+  "criteria": "4",
+  "name": "续费佣金**不与首单合并**（两行、两个 order_no、各自金额）",
+  "ok": true,
+  "detail": "首单行=1 续费行=1"
+ },
+ {
+  "criteria": "4",
+  "name": "续费后 A 的累计佣金 = 首单 + 续费（合计 2×2970 = 5940 分）",
+  "ok": true,
+  "detail": "实测 total_cents=74580 期望=74580"
+ },
+ {
+  "criteria": "5",
+  "name": "全额退款 → 订单 status=refunded、refund_cents=实付全款",
+  "ok": true,
+  "detail": "status=refunded refund_cents=19900"
+ },
+ {
+  "criteria": "5",
+  "name": "全额退款 → 该笔佣金 status=reversed、reversed_cents=全额佣金 5970",
+  "ok": true,
+  "detail": "status=reversed reversed=5970"
+ },
+ {
+  "criteria": "5",
+  "name": "退款回调重放 → 不重复冲正（reversed_cents 不变）",
+  "ok": true,
+  "detail": "reversed=5970"
+ },
+ {
+  "criteria": "5",
+  "name": "第 1 次部分退 50000：reversed_cents 按比例（累计退 50000 → 冲减 15000）",
+  "ok": true,
+  "detail": "reversed=15000 期望=15000 status=partially_refunded"
+ },
+ {
+  "criteria": "5",
+  "name": "第 2 次部分退 49000：reversed_cents 按比例（累计退 99000 → 冲减 29700）",
+  "ok": true,
+  "detail": "reversed=29700 期望=29700 status=partially_refunded"
+ },
+ {
+  "criteria": "5",
+  "name": "退清后 → 订单 status=refunded、佣金 status=reversed、reversed=全额 59700",
+  "ok": true,
+  "detail": "status=refunded 账本=reversed reversed=59700"
+ },
+ {
+  "criteria": "5",
+  "name": "未支付订单退款 → 既有 30004 REFUND_WINDOW_CLOSED（不静默成功）",
+  "ok": true,
+  "detail": "HTTP 402 code=30004"
+ },
+ {
+  "criteria": "6",
+  "name": "自推自买**不计佣**（commission_delta_cents = 0，订单仍正常 paid）",
+  "ok": true,
+  "detail": "order_status=paid delta=0"
+ },
+ {
+  "criteria": "6",
+  "name": "落了**人工复核标记**（status=manual_review、金额 0、基数照记）",
+  "ok": true,
+  "detail": "status=manual_review amount=0 base=9900"
+ },
+ {
+  "criteria": "6",
+  "name": "该复核行挂在 D 自己名下（referrer=referee=D），不进推荐人收益",
+  "ok": true,
+  "detail": "referrer=…36d6e672 referee=…36d6e672"
+ },
+ {
+  "criteria": "6",
+  "name": "D 的「我的推广收益」为 0，但能看到 1 条待复核",
+  "ok": true,
+  "detail": "total=0 manual_review=1"
+ },
+ {
+  "criteria": "7",
+  "name": "无推荐人 → **不报错**（HTTP 200 / code=0，订单照常 paid）",
+  "ok": true,
+  "detail": "HTTP 200 code=0 status=paid"
+ },
+ {
+  "criteria": "7",
+  "name": "无推荐人 → **不产生佣金**（该单 0 行账本）",
+  "ok": true,
+  "detail": "账本行数=0 delta=0"
+ },
+ {
+  "criteria": "7",
+  "name": "C 的「我的推广收益」为 0（没有被\"猜\"一个推荐人）",
+  "ok": true,
+  "detail": "total=0"
+ },
+ {
+  "criteria": "C",
+  "name": "浮点实付（9900.5）被拒 → 既有 10002（HTTP 400），不落库不改状态",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "C",
+  "name": "纯数字字符串（\"9900\"）按整数分受理 → code=0",
+  "ok": true,
+  "detail": "code=0 paid_cents=9900"
+ },
+ {
+  "criteria": "C",
+  "name": "所有金额字段都是 int（18 个字段抽样），无 float/str",
+  "ok": true,
+  "detail": "[[\"paid_cents\", 9900, \"int\"], [\"refund_cents\", 0, \"int\"], [\"commission_delta_cents\", 0, \"int\"], [\"commission_amount_cents\", 0, \"int\"], [\"commission_reversed_cents\", 0, \"int\"], [\"amount_cents\", 9900, \"int\"]]"
+ },
+ {
+  "criteria": "8",
+  "name": "用户端累计/待结算/已结算/冲正/净额/条数 与独立模型**逐项一致**",
+  "ok": true,
+  "detail": "实测={\"total_cents\": 74580, \"pending_cents\": 8910, \"settled_cents\": 0, \"reversed_cents\": 65670, \"net_cents\": 8910, \"count\": 5}"
+ },
+ {
+  "criteria": "8",
+  "name": "明细逐条可查（条数一致、字段齐全）",
+  "ok": true,
+  "detail": "items=5"
+ },
+ {
+  "criteria": "8",
+  "name": "提现口径：P1 关闭（withdraw_enabled=false + 说明）",
+  "ok": true,
+  "detail": "withdraw_enabled=False"
+ },
+ {
+  "criteria": "8",
+  "name": "收益只算自己的：B 的收益为 0（推荐人收益不落到买家名下）",
+  "ok": true,
+  "detail": "B total=0"
+ },
+ {
+  "criteria": "8",
+  "name": "后台接口**默认拒绝**（未带口令 → 既有 20000，HTTP 401）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "8",
+  "name": "后台可查**全量**流水（total = 账本总行数，含复核行）",
+  "ok": true,
+  "detail": "total=6 账本=6"
+ },
+ {
+  "criteria": "8",
+  "name": "后台分页正确（page_size=3 → 3 条、has_more=true）",
+  "ok": true,
+  "detail": "items=3 has_more=True"
+ },
+ {
+  "criteria": "8",
+  "name": "后台每条流水都带 order_no / 推荐人 / 被推荐人 / 基数 / 比例 / 金额 / 状态",
+  "ok": true,
+  "detail": "样例={\"order_no\": \"SO202610092354421011F5\", \"base_cents\": 9900, \"rate_bp\": 3000, \"amount_cents\": 0, \"status\": \"manual_review\", \"reversed_cents\": 0, \"net_cents\": 0, \"settled_at\": null, \"created_at\": \"2026-10-09T23:54:42\", \"ref"
+ },
+ {
+  "criteria": "8",
+  "name": "末页 has_more=false（不越界、不重复）",
+  "ok": true,
+  "detail": "page=2 items=3 has_more=False"
+ },
+ {
+  "criteria": "8",
+  "name": "越界页返回空列表且不报错",
+  "ok": true,
+  "detail": "items=[]"
+ },
+ {
+  "criteria": "8",
+  "name": "后台汇总与用户端口径一致（sum_amount 含 D 的 0 元复核行）",
+  "ok": true,
+  "detail": "sum=74580 reversed=65670 review=1"
+ },
+ {
+  "criteria": "B",
+  "name": "T+7 后 pending → settled（惰性结算，读路径触发）",
+  "ok": true,
+  "detail": "status=settled settled_at=2026-10-09T23:54:42"
+ },
+ {
+  "criteria": "B",
+  "name": "结算后 待结算/已结算 分布与模型一致（净额不变）",
+  "ok": true,
+  "detail": "实测 settled=2970 pending=5940 net=8910；期望 settled=2970 pending=5940 net=8910"
+ },
+ {
+  "criteria": "B",
+  "name": "结算不改变总额（total 不变，仍 74580 分）",
+  "ok": true,
+  "detail": "total=74580"
+ },
+ {
+  "criteria": "9",
+  "name": "pay.py 存在验签位函数（签名逐字为 verify_signature(channel, headers, raw_body)）",
+  "ok": true,
+  "detail": "找到=True"
+ },
+ {
+  "criteria": "9",
+  "name": "**未签名**一律拒绝（HTTP 401 / 既有 20000）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "9",
+  "name": "**签名不符**一律拒绝（HTTP 401 / 20000）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "9",
+  "name": "用别的材料算出来的签名同样被拒（占位材料唯一）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "9",
+  "name": "被拒的回调**不改任何状态**（订单仍 created、无账本行、不重复计佣）",
+  "ok": true,
+  "detail": "status=created 账本行=0"
+ },
+ {
+  "criteria": "9",
+  "name": "正确签名（脚本按同一算法现算）→ 受理（HTTP 200 / code=0）",
+  "ok": true,
+  "detail": "HTTP 200 code=0"
+ },
+ {
+  "criteria": "9",
+  "name": "pay.py 里**没有**任何真实通道凭据 / 商户号字面量（P1 不接真钱）",
+  "ok": true,
+  "detail": "凭据字面量=无；P2 清单含 vault: 引用=True"
+ },
+ {
+  "criteria": "9",
+  "name": "pay.py 文件头写明 P2 清单（商户号 / API 证书 / 对公账户 / 回调白名单）",
+  "ok": true,
+  "detail": "四项关键词齐全"
+ },
+ {
+  "criteria": "A",
+  "name": "三级链路下佣金只给 E 的**直接**推荐人 B（1 行）",
+  "ok": true,
+  "detail": "账本行数=1 referrer=…7d2b420e"
+ },
+ {
+  "criteria": "A",
+  "name": "上上一级 A **不因下级成交获得任何佣金**（不递归）",
+  "ok": true,
+  "detail": "A 成交前=77550 成交后=77550"
+ },
+ {
+  "criteria": "A",
+  "name": "账本里同一订单**不存在**第二条给上线的行（无多级分成）",
+  "ok": true,
+  "detail": "该单账本行数=1"
+ },
+ {
+  "criteria": "A",
+  "name": "无入门费 / 无按人头收费：未支付订单（SO202610092354427031E1）不产生任何账本行",
+  "ok": true,
+  "detail": "该单账本行数=0"
+ },
+ {
+  "criteria": "A",
+  "name": "合规口径随响应公开（compliance 文案含\"仅一级分销 / 无入门费 / 不按人头\"）",
+  "ok": true,
+  "detail": "compliance=仅一级分销（只认 referral 表的一级推荐人，不递归）；按实际成交计佣（基数 = 订单实付金额 paid_cents）；无入门费、不按人头收费；自推自买不计佣并转人工复核"
+ },
+ {
+  "criteria": "D",
+  "name": "查单接口**必须鉴权**（无令牌 → 既有 20000 / HTTP 401）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "D",
+  "name": "**别人的单**查不到（同一回答，不泄露订单是否存在）",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "D",
+  "name": "不存在的单同样是 10002（口径一致）",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "D",
+  "name": "P1 未支持的通道（wechat）→ 拒绝，不静默放行（P2 才加入白名单）",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "D",
+  "name": "后台**错口令**拒绝（HTTP 401 / 20000）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "D",
+  "name": "后台只看口令、不看会员令牌（无令牌但口令对 → 放行；P1 口径已写明）",
+  "ok": true,
+  "detail": "HTTP 200 code=0"
+ },
+ {
+  "criteria": "10",
+  "name": "社交 51：既有轻社交端到端验证全过（51/51，失败 0，退出码 0，5s）",
+  "ok": true,
+  "detail": "合计=51 通过=51 失败=0 rc=0"
+ },
+ {
+  "criteria": "10",
+  "name": "内核 335：核心测试全过（Ran 335 tests / OK，4s）",
+  "ok": true,
+  "detail": "Ran=335 rc=0"
+ },
+ {
+  "criteria": "10",
+  "name": "服务端 104：服务层测试全过（Ran 104 tests / OK，1s，解释器 C:\\Users\\41692\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE）",
+  "ok": true,
+  "detail": "Ran=104 rc=0"
+ },
+ {
+  "criteria": "10",
+  "name": "既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同（抽查 8 个文件）",
+  "ok": true,
+  "detail": "全同=8 不一致=无"
+ }
+]

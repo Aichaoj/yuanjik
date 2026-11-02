@@ -1,0 +1,1 @@
+import{d as n,b as s,o as a,c,a as _,w as r,g as d,_ as l}from"./index-D51PlIMn.js";const p={class:"nav-box"},i=n({__name:"index",setup(m){const e=()=>{console.log("返回列表"),history.back()};return(x,o)=>{const t=s("el-button");return a(),c("div",p,[_(t,{onClick:e},{default:r(()=>o[0]||(o[0]=[d("返回列表")])),_:1})])}}}),f=l(i,[["__scopeId","data-v-4d3a386f"]]);export{f as n};

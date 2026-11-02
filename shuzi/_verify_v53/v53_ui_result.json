@@ -1,0 +1,56 @@
+{
+  "pass": 10,
+  "total": 10,
+  "items": [
+    {
+      "name": "U0 账号就绪（手机号 139…）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "U1 页面打开且无致命白屏",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "U2 体型按钮命中测试（点得到、不被遮挡）",
+      "ok": true,
+      "detail": "{'ok': True, 'x': 324, 'y': 50}"
+    },
+    {
+      "name": "U3 保存后账号里已有 176/72/男",
+      "ok": true,
+      "detail": "{'gender': 'male', 'height_cm': 176, 'weight_kg': 72, 'updated_at': '2026-10-23T12:05:54', 'saved': True}"
+    },
+    {
+      "name": "★U4 清掉本机缓存后重新登录，体型被自动回填（甲方诉求①的反证）",
+      "ok": true,
+      "detail": "{\"gender\":\"male\",\"height_cm\":176,\"weight_kg\":72}"
+    },
+    {
+      "name": "U5 面板里回显 176 / 72（不是空）",
+      "ok": true,
+      "detail": "176/72"
+    },
+    {
+      "name": "U6 家人表单出现身高/体重/性别三项",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "U7 家人卡片带体型（158cm · 55kg）",
+      "ok": true,
+      "detail": "妈 妈妈 母亲 · 71 岁 · 1955-06-01 12:00 · 女 · 158cm · 55kg 69 分 C · 中  基线建立中 0/7  关怀提醒 编辑 删除"
+    },
+    {
+      "name": "U8 刷新后编辑回填 158 / 55（真落库）",
+      "ok": true,
+      "detail": "158/55"
+    },
+    {
+      "name": "U9 控制台无真正 JS 报错（只忽略 404/422 这类资源状态噪声）",
+      "ok": true,
+      "detail": "[]"
+    }
+  ]
+}

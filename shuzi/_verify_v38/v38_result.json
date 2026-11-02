@@ -1,0 +1,77 @@
+[
+ {
+  "name": "A1 6 节 / 30 条（实测 6 节 / 30 条）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A2 六节标题齐全",
+  "ok": true,
+  "detail": "['身体常识', '避孕与防护', '性传播感染与检测', '同意、边界与关系', '常见误区（都是错的）', '就医与求助']"
+ },
+ {
+  "name": "A1 每条都有标题与正文（缺 0）",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "A3 三条须知 + 来源说明",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3 正文无 markdown 星号残留",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A4 「该就医」提示覆盖 23/30（≥21）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1 入口在经典药方之后",
+  "ok": true,
+  "detail": "50910 < 51654"
+ },
+ {
+  "name": "B2 新屏 #screen-lxkt 在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B3 renderLxkt / bindLxkt / VIEWS / 版本号",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C0 真服务 + 静态前端就绪",
+  "ok": true,
+  "detail": "http://127.0.0.1:15213"
+ },
+ {
+  "name": "C1 6 个分节、30 个条目（实测 6 / 30）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3 顶部须知三条可见",
+  "ok": true,
+  "detail": "本页是健康科普，不含诊疗建议，不替代医生。 /  / 不含色情内容与具体行为描述；未成年人建议在监护人指导下阅读。 /  / 出现身体不"
+ },
+ {
+  "name": "C2 点「月经周期怎么算」→ 展开且有正文（148 字）",
+  "ok": true,
+  "detail": "{'open': True, 'aria': 'true', 'len': 148}"
+ },
+ {
+  "name": "C2 手风琴：打开第二条时第一条自动收起（同时展开 1 个）",
+  "ok": true,
+  "detail": "{'firstHidden': True, 'firstAria': 'false', 'openCount': 1}"
+ },
+ {
+  "name": "C4 全流程 0 条代码错",
+  "ok": true,
+  "detail": "[]"
+ }
+]

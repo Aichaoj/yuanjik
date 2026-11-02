@@ -1,0 +1,524 @@
+{
+  "summary": {
+    "total": 55,
+    "passed": 55,
+    "failed": 0,
+    "server_log_no_secret": true,
+    "server_log_bytes": 4147
+  },
+  "checks": [
+    {
+      "name": "A1 硬开关 ALLOW_REAL_NETWORK=False（本期绝不发真实网络请求）",
+      "ok": true,
+      "expect": "False",
+      "actual": "False",
+      "note": ""
+    },
+    {
+      "name": "A2 MockChannel 实现统一四方法",
+      "ok": true,
+      "expect": "4 个",
+      "actual": "4 个 ['create_order', 'query_order', 'refund', 'verify_callback']",
+      "note": ""
+    },
+    {
+      "name": "A2 WeChatPayChannel 实现统一四方法",
+      "ok": true,
+      "expect": "4 个",
+      "actual": "4 个 ['create_order', 'query_order', 'refund', 'verify_callback']",
+      "note": ""
+    },
+    {
+      "name": "A2 AlipayChannel 实现统一四方法",
+      "ok": true,
+      "expect": "4 个",
+      "actual": "4 个 ['create_order', 'query_order', 'refund', 'verify_callback']",
+      "note": ""
+    },
+    {
+      "name": "A3 服务是\"我们自己起的那个\"（health.data_file 指向本次独立库）",
+      "ok": true,
+      "expect": "D:\\shuzi\\_verify_v7\\pay_channels_v7.db",
+      "actual": "D:\\shuzi\\_verify_v7\\pay_channels_v7.db",
+      "note": ""
+    },
+    {
+      "name": "A4 出网边界被硬堵死：_dispatch() 抛 PayChannelNetworkDisabled",
+      "ok": true,
+      "expect": "抛异常",
+      "actual": "已抛异常",
+      "note": ""
+    },
+    {
+      "name": "B1 Mock 签名与 P1(pay.py) 占位验签位逐字一致",
+      "ok": true,
+      "expect": "a6f8865e09291b017411e11b4c0c896c12c01b77b6f20d3617bef0071b567d21",
+      "actual": "a6f8865e09291b017411e11b4c0c896c12c01b77b6f20d3617bef0071b567d21",
+      "note": ""
+    },
+    {
+      "name": "B2 正确签名 → 放行且解析出事件（result 口径与 P1 一致 = success）",
+      "ok": true,
+      "expect": "ok=True + 字段齐全",
+      "actual": "{\"ok\": true, \"channel\": \"mock\", \"event_type\": \"payment\", \"event_id\": \"d8e76c0628de9379008fc1e606591cdc\", \"order_no\": \"SO-TEST-0001\", \"result\": \"success\", \"paid_cents\": 19900, \"refund_cents\": null, \"raw_sha256\": \"d8e76c0628de9379008fc1e606591cdc8179ffd078254808a7a907e9f9187d8b\", \"verified_by\": \"mock-hmac-sha256\"}",
+      "note": ""
+    },
+    {
+      "name": "B3 伪造签名 → 拒绝",
+      "ok": true,
+      "expect": "ok=False/签名校验未通过",
+      "actual": "{\"ok\": false, \"reason\": \"签名校验未通过\", \"channel\": \"mock\"}",
+      "note": ""
+    },
+    {
+      "name": "B4 无签名头 → 拒绝",
+      "ok": true,
+      "expect": "ok=False/缺少签名头",
+      "actual": "{\"ok\": false, \"reason\": \"缺少签名头 X-Pay-Signature\", \"channel\": \"mock\"}",
+      "note": ""
+    },
+    {
+      "name": "B5 通道名不匹配 → 拒绝（防拿 A 通道验签器放行 B 通道）",
+      "ok": true,
+      "expect": "ok=False/通道不匹配",
+      "actual": "{\"ok\": false, \"reason\": \"通道不匹配\", \"channel\": \"wechat\"}",
+      "note": ""
+    },
+    {
+      "name": "B6 报文非 JSON（签名正确）→ 拒绝",
+      "ok": true,
+      "expect": "ok=False/报文不是合法 JSON",
+      "actual": "{\"ok\": false, \"reason\": \"报文不是合法 JSON\", \"channel\": \"mock\"}",
+      "note": ""
+    },
+    {
+      "name": "B7 Mock 下单返回三件套且 network_request_sent=False",
+      "ok": true,
+      "expect": "pay_url/qr/prepay_id + 未出网",
+      "actual": "{\"channel\": \"mock\", \"order_no\": \"SO-TEST-0001\", \"amount_cents\": 19900, \"mode\": \"mock\", \"network_request_sent\": false, \"pay_url\": \"mock://pay/SO-TEST-0001\", \"qr\": \"mock://qr/SO-TEST-0001\", \"prepay_id\": \"MOCKPREPAYE0E97C1D8E642499\", \"notify_url\": \"https://callback.yuanjk.cn/api/v1/pay/callback/mock\", \"note\": \"Mock 通道：本地模拟，不产生任何真实支付\"}",
+      "note": ""
+    },
+    {
+      "name": "B8 Mock 退款受理（整数分）",
+      "ok": true,
+      "expect": "5000/accepted",
+      "actual": "{\"channel\": \"mock\", \"order_no\": \"SO-TEST-0001\", \"refund_cents\": 5000, \"refund_id\": \"MOCKREFUNDB6C6EDBD8141\", \"status\": \"accepted\", \"mode\": \"mock\", \"network_request_sent\": false, \"note\": \"Mock 通道：本地模拟退款受理，不产生任何真实资金动作\"}",
+      "note": ""
+    },
+    {
+      "name": "B9 Mock 查单不编造状态（如实回 unknown，以本地订单表为准）",
+      "ok": true,
+      "expect": "unknown",
+      "actual": "{\"channel\": \"mock\", \"order_no\": \"SO-TEST-0001\", \"status\": \"unknown\", \"mode\": \"mock\", \"network_request_sent\": false, \"note\": \"Mock 通道无远端订单状态，请以本地 sub_order 状态为准\"}",
+      "note": ""
+    },
+    {
+      "name": "B10 事件→P1 载荷映射：付/退字段互不串味",
+      "ok": true,
+      "expect": "两条映射正确",
+      "actual": "[{\"order_no\": \"SO-TEST-0001\", \"result\": \"success\", \"paid_cents\": 19900}, {\"order_no\": \"SO-TEST-0001\", \"result\": \"refund\", \"refund_cents\": 5000}]",
+      "note": ""
+    },
+    {
+      "name": "B11 微信 APIv3 请求签名串逐字符符合官方规范（方法\\nURL\\n时间戳\\n随机串\\n报文\\n）",
+      "ok": true,
+      "expect": "5 行 + 末尾换行",
+      "actual": "'POST\\n/v3/pay/transactions/h5\\n1554208460\\n593BEC0C930BF1AFEB40B4A08C8FB242\\n{\"a\":1}\\n'",
+      "note": ""
+    },
+    {
+      "name": "B12 微信 APIv3 回调验签串逐字符符合官方规范（时间戳\\n随机串\\n报文\\n）",
+      "ok": true,
+      "expect": "3 行 + 末尾换行",
+      "actual": "'1554208460\\nnonce123\\n{\"b\":2}\\n'",
+      "note": ""
+    },
+    {
+      "name": "B13 支付宝待签名串：剔除 sign/sign_type 与空值、按参数名字典序、& 连接",
+      "ok": true,
+      "expect": "app_id=...&biz_content=...&charset=...&method=...",
+      "actual": "app_id=2021000000000000&biz_content={\"a\":1}&charset=utf-8&method=alipay.trade.wap.pay",
+      "note": ""
+    },
+    {
+      "name": "B14 金额口径：内部一律整数分，元↔分换算无浮点（并拒绝 float 入参）",
+      "ok": true,
+      "expect": "19900↔199.00/0.01↔1/拒 float",
+      "actual": "换算正确且已拒绝 float",
+      "note": ""
+    },
+    {
+      "name": "B15 微信回调时间戳超窗（±300 秒）→ 拒绝（防重放）",
+      "ok": true,
+      "expect": "ok=False/超出容忍窗口",
+      "actual": "{\"ok\": false, \"reason\": \"回调时间戳超出 ±300 秒容忍窗口（防重放）\", \"channel\": \"wechat\", \"skew_sec\": 1791424483}",
+      "note": ""
+    },
+    {
+      "name": "B16 微信回调：验签密钥不可用 → 拒绝（绝不因缺件而放行）",
+      "ok": true,
+      "expect": "ok=False",
+      "actual": "{\"ok\": false, \"reason\": \"通道错误：真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。\", \"channel\": \"wechat\"}",
+      "note": ""
+    },
+    {
+      "name": "B17 支付宝回调缺 sign → 拒绝",
+      "ok": true,
+      "expect": "ok=False/缺少 sign",
+      "actual": "{\"ok\": false, \"reason\": \"缺少 sign（支付宝异步通知必须带签名）\", \"channel\": \"alipay\"}",
+      "note": ""
+    },
+    {
+      "name": "B18 支付宝回调：公钥不可用 → 拒绝（绝不因缺件而放行）",
+      "ok": true,
+      "expect": "ok=False",
+      "actual": "{\"ok\": false, \"reason\": \"通道错误：真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。\", \"channel\": \"alipay\"}",
+      "note": ""
+    },
+    {
+      "name": "B19 凭据引用名与《P2支付通道_资质与凭据清单》逐字对齐（示例名全覆盖）",
+      "ok": true,
+      "expect": "清单里的 6 个示例引用名全覆盖",
+      "actual": "wechat=6 项 / alipay=3 项",
+      "note": ""
+    },
+    {
+      "name": "C1 两个游客身份建立（推荐人 / 购买人）",
+      "ok": true,
+      "expect": "两个不同 member",
+      "actual": "mbr_7df4377e / mbr_874b7437",
+      "note": ""
+    },
+    {
+      "name": "C2 推荐关系绑定（只一级：购买人 → 推荐人）",
+      "ok": true,
+      "expect": "referred_by=推荐人",
+      "actual": "{\"member_id\": \"mbr_7df4377eab72e7da\", \"nickname\": \"用户2857\", \"bound_at\": \"2026-10-08T09:54:44\", \"source\": \"link\"}",
+      "note": ""
+    },
+    {
+      "name": "C3 下单：quarter = 19900 分，状态 created",
+      "ok": true,
+      "expect": "19900/created",
+      "actual": "{\"order_no\": \"SO20261008095444806C4C\", \"plan_id\": \"quarter\", \"amount_cents\": 19900, \"amount\": 19900, \"paid_cents\": 0, \"status\": \"created\", \"channel\": \"\", \"paid_at\": null, \"refund_cents\": 0, \"created_at\": \"2026-10-08T09:54:44\", \"currency\": \"CNY\", \"unit\": \"cents\", \"idempotent_replay\": false}",
+      "note": ""
+    },
+    {
+      "name": "C4 适配层为订单1 取回本地支付入口（mock://）",
+      "ok": true,
+      "expect": "mock://pay/<order_no>",
+      "actual": "mock://pay/SO20261008095444806C4C",
+      "note": ""
+    },
+    {
+      "name": "C5 正确签名回调 → HTTP 200 / code 0 / 订单 paid / 本次计佣 5970 分",
+      "ok": true,
+      "expect": "HTTP200/code0/paid/delta=5970",
+      "actual": "200/0/paid/5970",
+      "note": ""
+    },
+    {
+      "name": "C6 落库逐分核对：paid_cents=19900，佣金=round(19900×30%)=5970，rate_bp=3000",
+      "ok": true,
+      "expect": "ledger=5970/base=19900/rate=3000",
+      "actual": "{\"order\": {\"order_no\": \"SO20261008095444806C4C\", \"paid_cents\": 19900, \"status\": \"paid\", \"channel\": \"mock\"}, \"ledger\": {\"base_cents\": 19900, \"rate_bp\": 3000, \"amount_cents\": 5970, \"status\": \"pending\", \"reversed_cents\": 0}}",
+      "note": ""
+    },
+    {
+      "name": "C7 适配层与线上口径一致：本期所有真通道状态为 degrade-to-mock",
+      "ok": true,
+      "expect": "degrade-to-mock",
+      "actual": "{\"mock\": \"builtin\", \"wechat\": \"degrade-to-mock\", \"alipay\": \"degrade-to-mock\"}",
+      "note": ""
+    },
+    {
+      "name": "C8 回调重放（同报文再打一次）→ 不重复计佣",
+      "ok": true,
+      "expect": "replayed=True/delta=0/账本仍 1 行",
+      "actual": "True/0/行数=1",
+      "note": ""
+    },
+    {
+      "name": "C9 推荐人收益：累计 5970 / 净额 5970（重放未翻倍）",
+      "ok": true,
+      "expect": "total=5970/net=5970/count=1",
+      "actual": "total=5970/net=5970/count=1",
+      "note": ""
+    },
+    {
+      "name": "C10 部分退款 5000 分 → reversed_cents=round(5000×30%)=1500，订单 partially_refunded",
+      "ok": true,
+      "expect": "reversed_cents=1500/pending/partially_refunded",
+      "actual": "{\"reversed_cents\": 1500, \"ledger_status\": \"pending\", \"order_status\": \"partially_refunded\", \"refund_cents\": 5000}",
+      "note": ""
+    },
+    {
+      "name": "C11 退满全额 → 佣金 reversed，reversed_cents=5970，订单 refunded",
+      "ok": true,
+      "expect": "reversed/5970/refunded",
+      "actual": "{\"ledger_status\": \"reversed\", \"reversed_cents\": 5970, \"order_status\": \"refunded\"}",
+      "note": ""
+    },
+    {
+      "name": "C12 订单2 整单退（报文不带 refund_cents）→ 佣金 reversed/5970",
+      "ok": true,
+      "expect": "reversed/5970",
+      "actual": "{\"ledger_status\": \"reversed\", \"reversed_cents\": 5970}",
+      "note": ""
+    },
+    {
+      "name": "C13 伪造签名回调 → HTTP 401 / 业务码 20000（拒绝）",
+      "ok": true,
+      "expect": "HTTP 401 / code 20000",
+      "actual": "HTTP 401 / code 20000",
+      "note": ""
+    },
+    {
+      "name": "C14 无签名回调 → HTTP 401 / 业务码 20000（拒绝）",
+      "ok": true,
+      "expect": "HTTP 401 / code 20000",
+      "actual": "HTTP 401 / code 20000",
+      "note": ""
+    },
+    {
+      "name": "C15 被拒回调后：订单状态仍 created、paid_cents=0、不产生任何佣金",
+      "ok": true,
+      "expect": "created/0/0 行",
+      "actual": "{\"status\": \"created\", \"paid_cents\": 0, \"ledger_rows\": 0}",
+      "note": ""
+    },
+    {
+      "name": "C16 被拒回调后推荐人收益未被污染（仍 total=11940 / reversed=11940）",
+      "ok": true,
+      "expect": "total=11940/reversed=11940/net=0",
+      "actual": "total=11940/reversed=11940/net=0",
+      "note": ""
+    },
+    {
+      "name": "C17 回调留痕表区分了\"验签失败\"与\"已受理\"（审计可查）",
+      "ok": true,
+      "expect": "既有 signature_ok=0 也有 =1",
+      "actual": "[{\"signature_ok\": 0, \"accepted\": 0, \"c\": 2}, {\"signature_ok\": 1, \"accepted\": 1, \"c\": 5}]",
+      "note": ""
+    },
+    {
+      "name": "C18 适配层 verify_callback → event_to_callback_payload → P1 账本（可直接接线）",
+      "ok": true,
+      "expect": "paid/5970/账本 1 行",
+      "actual": "{\"adapter_ok\": true, \"http\": 200, \"code\": 0, \"payload\": {\"order_no\": \"SO202610080954443DEB5A\", \"result\": \"success\", \"paid_cents\": 19900}, \"delta\": 5970, \"ledger_rows\": 1}",
+      "note": ""
+    },
+    {
+      "name": "D1 wechat 未配置凭据 → 构造降级为 Mock（degraded=True，保留原通道名）",
+      "ok": true,
+      "expect": "MockChannel(degraded_from=wechat)",
+      "actual": "MockChannel(degraded_from=wechat)",
+      "note": ""
+    },
+    {
+      "name": "D1 alipay 未配置凭据 → 构造降级为 Mock（degraded=True，保留原通道名）",
+      "ok": true,
+      "expect": "MockChannel(degraded_from=alipay)",
+      "actual": "MockChannel(degraded_from=alipay)",
+      "note": ""
+    },
+    {
+      "name": "D2 通道选择开关纯环境变量：YJK_PAY_CHANNEL 未设 → mock；设为 wechat 且无凭据 → 降级 Mock",
+      "ok": true,
+      "expect": "默认 mock / wechat 无凭据→降级",
+      "actual": "MockChannel(degraded=False) / MockChannel(degraded_from=wechat)",
+      "note": ""
+    },
+    {
+      "name": "D3 降级日志逐字写明「未配置凭据，使用 Mock」",
+      "ok": true,
+      "expect": "含该文案 ≥2 次",
+      "actual": "[pay_channels] channel_degrade_to_mock channel=wechat network_request_sent=False reason=未配置凭据，使用 Mock required_refs=6 | [pay_channels] channel_degrade_to_mock channel=alipay network_request_sent=False",
+      "note": ""
+    },
+    {
+      "name": "D4 只配一半凭据 → 明确报错（列出缺失引用名，绝不静默降级）",
+      "ok": true,
+      "expect": "PayChannelCredentialError 列出缺失项",
+      "actual": "wechat 通道凭据不完整：缺少引用名 YJK_WXPAY_APPID、YJK_WXPAY_APIV3_KEY、YJK_WXPAY_APICLIENT_KEY_PATH、YJK_WXPAY_SERIAL_NO、YJK_WXPAY_PLATFORM_CERT_PATH（已配置 1 个）。为避免\"以为在收真钱其实没收\"，本模块拒绝静默降级为 Mock。",
+      "note": ""
+    },
+    {
+      "name": "D5 报错信息里不含已配置的凭据值（只留引用名）",
+      "ok": true,
+      "expect": "不含 FAKE-VALUE-MUST-NOT-BE-LOGGED-9527",
+      "actual": "已确认不含",
+      "note": ""
+    },
+    {
+      "name": "D6 wechat 凭据齐全但本机缺 cryptography → 明确报错（不静默降级）",
+      "ok": true,
+      "expect": "PayChannelDependencyMissing",
+      "actual": "PayChannelDependencyMissing: 真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。",
+      "note": ""
+    },
+    {
+      "name": "D7 wechat 依赖报错指明需要 cryptography 且不含凭据值",
+      "ok": true,
+      "expect": "含 cryptography、不含凭据值",
+      "actual": "真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。",
+      "note": ""
+    },
+    {
+      "name": "D6 alipay 凭据齐全但本机缺 cryptography → 明确报错（不静默降级）",
+      "ok": true,
+      "expect": "PayChannelDependencyMissing",
+      "actual": "PayChannelDependencyMissing: 真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。",
+      "note": ""
+    },
+    {
+      "name": "D7 alipay 依赖报错指明需要 cryptography 且不含凭据值",
+      "ok": true,
+      "expect": "含 cryptography、不含凭据值",
+      "actual": "真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。",
+      "note": ""
+    },
+    {
+      "name": "D8 channel_status() 只报\"引用名是否存在\"，整份 JSON 不含任何凭据值",
+      "ok": true,
+      "expect": "不含凭据值 + 含引用名与布尔",
+      "actual": "{\"allow_real_network\": false, \"channels\": {\"mock\": {\"available\": true, \"state\": \"builtin\", \"required_refs\": {}, \"optional_refs\": {}, \"reason\": \"内置通道，永远可用（不出网、不碰 ...(截断)",
+      "note": ""
+    },
+    {
+      "name": "D9 捕获到的通道日志里不含任何凭据值",
+      "ok": true,
+      "expect": "干净",
+      "actual": "日志行数=3",
+      "note": ""
+    }
+  ],
+  "evidence": {
+    "files": {
+      "pay_channels.py": 62242,
+      "test_pay_channels.py": 42561
+    },
+    "network_guard": "本期（P2 骨架）不发真实网络请求：请求已按官方规范签好名，但 POST https://api.mch.weixin.qq.com/v3/pay/transactions/h5 被硬开关拦下（ALLOW_REAL_NETWORK=False）。",
+    "mock_forged": {
+      "ok": false,
+      "reason": "签名校验未通过",
+      "channel": "mock"
+    },
+    "callback_paid": {
+      "code": 0,
+      "message": "ok",
+      "data": {
+        "channel": "mock",
+        "order_no": "SO20261008095444806C4C",
+        "order_status": "paid",
+        "paid_cents": 19900,
+        "refund_cents": 0,
+        "replayed": false,
+        "commission_delta_cents": 5970,
+        "commission_status": "pending",
+        "commission_amount_cents": 5970,
+        "commission_reversed_cents": 0,
+        "note": "计佣基数=实付金额；bucket=referrer"
+      },
+      "trace_id": "6ac6f7e42f8da287358316b7"
+    },
+    "callback_replay": {
+      "code": 0,
+      "message": "ok",
+      "data": {
+        "channel": "mock",
+        "order_no": "SO20261008095444806C4C",
+        "order_status": "paid",
+        "paid_cents": 19900,
+        "refund_cents": 0,
+        "replayed": true,
+        "commission_delta_cents": 0,
+        "commission_status": "pending",
+        "commission_amount_cents": 5970,
+        "commission_reversed_cents": 0,
+        "note": "重放：未产生任何变更"
+      },
+      "trace_id": "6ac6f7e4462a7a963485d6fd"
+    },
+    "partial_refund": {
+      "code": 0,
+      "message": "ok",
+      "data": {
+        "channel": "mock",
+        "order_no": "SO20261008095444806C4C",
+        "order_status": "partially_refunded",
+        "paid_cents": 19900,
+        "refund_cents": 5000,
+        "replayed": false,
+        "commission_delta_cents": 0,
+        "commission_status": "pending",
+        "commission_amount_cents": 5970,
+        "commission_reversed_cents": 1500,
+        "note": "退款冲正：本次冲减 1500 分"
+      },
+      "trace_id": "6ac6f7e4f61177ecab139daa"
+    },
+    "forged_callback": {
+      "http": 401,
+      "body": {
+        "code": 20000,
+        "message": "签名校验未通过",
+        "data": null,
+        "detail": {},
+        "trace_id": "6ac6f7e4ed7df5737127b0a0"
+      }
+    },
+    "unsigned_callback": {
+      "http": 401,
+      "body": {
+        "code": 20000,
+        "message": "签名校验未通过",
+        "data": null,
+        "detail": {},
+        "trace_id": "6ac6f7e4bfb893e7cf17401d"
+      }
+    },
+    "callback_log": [
+      {
+        "signature_ok": 0,
+        "accepted": 0,
+        "c": 2
+      },
+      {
+        "signature_ok": 1,
+        "accepted": 1,
+        "c": 5
+      }
+    ],
+    "adapter_to_p1": {
+      "payload": {
+        "order_no": "SO202610080954443DEB5A",
+        "result": "success",
+        "paid_cents": 19900
+      },
+      "response": {
+        "code": 0,
+        "message": "ok",
+        "data": {
+          "channel": "mock",
+          "order_no": "SO202610080954443DEB5A",
+          "order_status": "paid",
+          "paid_cents": 19900,
+          "refund_cents": 0,
+          "replayed": false,
+          "commission_delta_cents": 5970,
+          "commission_status": "pending",
+          "commission_amount_cents": 5970,
+          "commission_reversed_cents": 0,
+          "note": "计佣基数=实付金额；bucket=referrer"
+        },
+        "trace_id": "6ac6f7e4049e62a95f57c17f"
+      }
+    },
+    "degrade_log": "[pay_channels] channel_degrade_to_mock channel=wechat network_request_sent=False reason=未配置凭据，使用 Mock required_refs=6\n[pay_channels] channel_degrade_to_mock channel=alipay network_request_sent=False reason=未配置凭据，使用 Mock required_refs=3\n[pay_channels] channel_degrade_to_mock channel=wechat network_request_sent=False reason=未配置凭据，使用 Mock required_refs=6",
+    "dependency_error": {
+      "wechat": "真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。",
+      "alipay": "真实支付通道需要 `cryptography` 依赖（本机未安装，ModuleNotFoundError）。本文件不自造密码学算法，因此拒绝工作；请先在获授权的运行环境安装该依赖，再配置通道凭据。当前**不会**自动降级为 Mock。"
+    }
+  }
+}

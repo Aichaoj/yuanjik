@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>曲库管理 · AI元神</title>
+<style>
+  :root { --brand:#d6335a; --ink:#1c2430; --ink3:#7a8794; --line:#e5e9ee; --bg:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+         color:var(--ink); background:var(--bg); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 18px 16px 60px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--ink3); font-size: 12.5px; margin: 0 0 16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin-bottom:14px; }
+  label { display:block; font-size:12.5px; color:var(--ink3); margin:10px 0 4px; }
+  input, textarea { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:10px; font:inherit; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  button { font:inherit; padding:9px 14px; border-radius:10px; border:1px solid var(--line);
+           background:#fff; cursor:pointer; }
+  button.primary { background:var(--brand); color:#fff; border-color:var(--brand); }
+  button.small { padding:5px 10px; font-size:12.5px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--ink3); font-weight:600; font-size:12px; }
+  .tag { display:inline-block; padding:1px 7px; border-radius:8px; font-size:11.5px; }
+  .on { background:#e8f6ef; color:#1f7a4d; }
+  .off { background:#f1f3f5; color:#7a8794; }
+  .muted { color:var(--ink3); font-size:12px; }
+  .msg { min-height:20px; font-size:12.5px; color:var(--ink3); }
+  .err { color:#c0392b; }
+  .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>曲库管理</h1>
+  <p class="sub">后台加曲目 / 上架下架。改动立即对 C 端「音疗 → 佛音」生效；删除只删记录，不删音频文件。</p>
+
+  <section class="card" id="loginCard">
+    <label for="pwd">管理口令</label>
+    <input id="pwd" type="password" placeholder="输入后台口令（与运营后台相同）" autocomplete="current-password">
+    <div class="toolbar">
+      <button class="primary" id="btnLogin">登录</button>
+      <span class="msg" id="loginMsg"></span>
+    </div>
+  </section>
+
+  <section class="card" id="listCard" hidden>
+    <div class="toolbar" style="margin:0 0 8px">
+      <strong>曲目</strong>
+      <span class="muted" id="countInfo"></span>
+      <button class="small" id="btnReload" style="margin-left:auto">刷新</button>
+      <button class="small" id="btnLogout">退出</button>
+    </div>
+    <table>
+      <thead><tr><th>排序</th><th>标题 / 出自</th><th>文件</th><th>授权</th><th>状态</th><th>操作</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="msg" id="listMsg"></p>
+  </section>
+
+  <section class="card" id="formCard" hidden>
+    <strong id="formTitle">新增曲目</strong>
+    <input type="hidden" id="fId">
+    <div class="row">
+      <div><label for="fTitle">标题（≤20 字）</label><input id="fTitle" placeholder="如：大悲咒（节选）"></div>
+      <div><label for="fSort">排序（小的在前）</label><input id="fSort" type="number" value="100"></div>
+    </div>
+    <label for="fSub">出处 / 演奏者 / 授权（一句话，显示在曲目下）</label>
+    <input id="fSub" placeholder="如：某寺梵呗 · CC BY-SA 4.0">
+    <label for="fFile">文件（music/ 下的相对路径，或 https 地址）</label>
+    <input id="fFile" placeholder="music/xxx.ogg">
+    <label>或直接上传音频（≤20 MB，自动分片，绕开单请求限制）</label>
+    <div class="toolbar" style="margin-top:0">
+      <input type="file" id="upFile" accept="audio/*" style="max-width:260px">
+      <button class="small" id="btnUpload">上传</button>
+      <span class="msg" id="upMsg"></span>
+    </div>
+    <progress id="upBar" value="0" max="100" style="width:100%;display:none"></progress>
+    <div class="row">
+      <div><label for="fLicense">授权</label><input id="fLicense" placeholder="CC0 / CC BY-SA 3.0 …"></div>
+      <div><label for="fAuthor">作者 / 演出者</label><input id="fAuthor" placeholder="必填（用于署名）"></div>
+    </div>
+    <label for="fSource">原始页面 URL（可追溯）</label>
+    <input id="fSource" placeholder="https://commons.wikimedia.org/…">
+    <div class="toolbar">
+      <button class="primary" id="btnSave">保存</button>
+      <button id="btnCancelEdit" hidden>取消编辑</button>
+      <span class="msg" id="formMsg"></span>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var API = '/api/v1/admin';
+  var token = '';
+
+  function $(id) { return document.getElementById(id); }
+  function esc(v) {
+    return String(v === null || v === undefined ? '' : v)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function msg(el, text, isErr) {
+    el.textContent = text || '';
+    el.className = 'msg' + (isErr ? ' err' : '');
+  }
+  function call(path, body) {
+    var opt = { method: 'POST', headers: { 'Content-Type': 'application/json' } };
+    if (token) { opt.headers.Authorization = 'Bearer ' + token; }
+    opt.body = JSON.stringify(body || {});
+    return fetch(API + path, opt).then(function (r) {
+      return r.json().then(function (j) { return { status: r.status, j: j }; });
+    });
+  }
+
+  function login() {
+    var pwd = $('pwd').value;
+    if (!pwd) { msg($('loginMsg'), '请输入口令', true); return; }
+    fetch(API + '/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pwd })
+    }).then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (x) {
+        if (x.s !== 200 || !(x.j.data && x.j.data.admin_token)) {
+          msg($('loginMsg'), (x.j && x.j.message) || '登录失败', true); return;
+        }
+        token = x.j.data.admin_token;
+        try { sessionStorage.setItem('yh.admin.token', token); } catch (e) {}
+        msg($('loginMsg'), '登录成功');
+        $('loginCard').hidden = true;
+        $('listCard').hidden = false;
+        $('formCard').hidden = false;
+        load();
+      }).catch(function () { msg($('loginMsg'), '网络错误', true); });
+  }
+
+  function load() {
+    var opt = { headers: {} };
+    if (token) { opt.headers.Authorization = 'Bearer ' + token; }
+    fetch(API + '/music', opt).then(function (r) { return r.json(); }).then(function (j) {
+      var rows = (j && j.data && j.data.tracks) || [];
+      $('countInfo').textContent = '共 ' + rows.length + ' 条';
+      $('rows').innerHTML = rows.map(function (t) {
+        return '<tr>' +
+          '<td>' + esc(t.sort) + '</td>' +
+          '<td><strong>' + esc(t.title) + '</strong><div class="muted">' + esc(t.subtitle) + '</div></td>' +
+          '<td class="muted">' + esc(t.file) + '</td>' +
+          '<td class="muted">' + esc(t.license) + '</td>' +
+          '<td><span class="tag ' + (t.enabled ? 'on' : 'off') + '">' + (t.enabled ? '上架' : '下架') + '</span></td>' +
+          '<td>' +
+            '<button class="small" data-act="toggle" data-id="' + esc(t.id) + '" data-on="' + (t.enabled ? '1' : '0') + '">' +
+              (t.enabled ? '下架' : '上架') + '</button> ' +
+            '<button class="small" data-act="edit" data-id="' + esc(t.id) + '">编辑</button> ' +
+            '<button class="small" data-act="del" data-id="' + esc(t.id) + '">删除</button>' +
+          '</td></tr>';
+      }).join('') || '<tr><td colspan="6" class="muted">还没有曲目</td></tr>';
+      window.__tracks = rows;
+      msg($('listMsg'), '');
+    }).catch(function () { msg($('listMsg'), '读取失败（令牌可能过期，重新登录）', true); });
+  }
+
+  function fill(t) {
+    $('fId').value = t.id || '';
+    $('fTitle').value = t.title || '';
+    $('fSort').value = (t.sort === undefined ? 100 : t.sort);
+    $('fSub').value = t.subtitle || '';
+    $('fFile').value = t.file || '';
+    $('fLicense').value = t.license || '';
+    $('fAuthor').value = t.author || '';
+    $('fSource').value = t.source || '';
+    $('formTitle').textContent = t.id ? '编辑曲目' : '新增曲目';
+    $('btnCancelEdit').hidden = !t.id;
+  }
+
+  function save() {
+    var body = {
+      id: $('fId').value || undefined,
+      title: $('fTitle').value,
+      subtitle: $('fSub').value,
+      file: $('fFile').value,
+      license: $('fLicense').value,
+      author: $('fAuthor').value,
+      source: $('fSource').value,
+      sort: Number($('fSort').value) || 100
+    };
+    call('/music/save', body).then(function (x) {
+      if (x.status !== 200) { msg($('formMsg'), (x.j && x.j.message) || '保存失败', true); return; }
+      msg($('formMsg'), '已保存');
+      fill({});
+      load();
+    });
+  }
+
+  function b64(buf) {
+    var bytes = new Uint8Array(buf), s = '', i;
+    for (i = 0; i < bytes.length; i += 0x8000) {
+      s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    }
+    return btoa(s);
+  }
+
+  function uploadAudio() {
+    var f = $('upFile').files && $('upFile').files[0];
+    if (!f) { msg($('upMsg'), '先选一个音频文件', true); return; }
+    if (f.size > 20 * 1024 * 1024) { msg($('upMsg'), '文件超过 20 MB', true); return; }
+    var bar = $('upBar');
+    bar.style.display = 'block'; bar.value = 0;
+    msg($('upMsg'), '开始上传：' + f.name + '（' + Math.round(f.size / 1024) + ' KB）');
+    call('/music/upload/begin', { filename: f.name, size: f.size }).then(function (x) {
+      if (x.status !== 200) { throw new Error((x.j && x.j.message) || 'begin 失败'); }
+      var uid = x.j.data.upload_id;
+      var chunkMax = x.j.data.chunk_max || 2097152;
+      var chunks = Math.ceil(f.size / chunkMax);
+      var seq = 0;
+      function next() {
+        if (seq >= chunks) { return finish(uid); }
+        var start = seq * chunkMax, end = Math.min(f.size, start + chunkMax);
+        var slice = f.slice(start, end);
+        return new Promise(function (res, rej) {
+          var fr = new FileReader();
+          fr.onload = function () { res(fr.result.split(',')[1]); };
+          fr.onerror = rej;
+          fr.readAsDataURL(slice);
+        }).then(function (data) {
+          return call('/music/upload/chunk', { upload_id: uid, seq: seq, data_b64: data });
+        }).then(function (y) {
+          if (y.status !== 200) { throw new Error((y.j && y.j.message) || ('分片 ' + seq + ' 失败')); }
+          seq++;
+          bar.value = Math.round(seq / chunks * 100);
+          msg($('upMsg'), '已传 ' + seq + '/' + chunks + ' 片');
+          return next();
+        });
+      }
+      function finish(id) {
+        return call('/music/upload/finish', { upload_id: id }).then(function (z) {
+          if (z.status !== 200) { throw new Error((z.j && z.j.message) || 'finish 失败'); }
+          $('fFile').value = z.j.data.file;
+          msg($('upMsg'), '上传完成：' + z.j.data.file + '（' + z.j.data.bytes + ' 字节）');
+          bar.value = 100;
+        });
+      }
+      return next();
+    }).catch(function (e) {
+      msg($('upMsg'), '上传失败：' + e.message, true);
+      bar.style.display = 'none';
+    });
+  }
+
+  $('btnLogin').addEventListener('click', login);
+  $('btnUpload').addEventListener('click', uploadAudio);
+  $('pwd').addEventListener('keydown', function (e) { if (e.key === 'Enter') { login(); } });
+  $('btnReload').addEventListener('click', load);
+  $('btnSave').addEventListener('click', save);
+  $('btnCancelEdit').addEventListener('click', function () { fill({}); msg($('formMsg'), ''); });
+  $('btnLogout').addEventListener('click', function () {
+    token = '';
+    try { sessionStorage.removeItem('yh.admin.token'); } catch (e) {}
+    $('loginCard').hidden = false; $('listCard').hidden = true; $('formCard').hidden = true;
+  });
+  $('rows').addEventListener('click', function (e) {
+    var btn = e.target;
+    if (!btn.getAttribute || !btn.getAttribute('data-act')) { return; }
+    var act = btn.getAttribute('data-act'), id = btn.getAttribute('data-id');
+    var list = window.__tracks || [];
+    var cur = null;
+    list.forEach(function (t) { if (t.id === id) { cur = t; } });
+    if (act === 'edit' && cur) { fill(cur); window.scrollTo(0, document.body.scrollHeight); return; }
+    if (act === 'toggle') {
+      call('/music/toggle', { id: id, enabled: btn.getAttribute('data-on') !== '1' })
+        .then(function (x) { if (x.status === 200) { load(); } else { msg($('listMsg'), '操作失败', true); } });
+      return;
+    }
+    if (act === 'del') {
+      if (!window.confirm('删除这条曲目记录？（音频文件不会被删除）')) { return; }
+      call('/music/delete', { id: id }).then(function (x) {
+        if (x.status === 200) { load(); } else { msg($('listMsg'), '删除失败', true); }
+      });
+    }
+  });
+
+  // 会话内记得住令牌
+  try {
+    var saved = sessionStorage.getItem('yh.admin.token');
+    if (saved) { token = saved; $('loginCard').hidden = true; $('listCard').hidden = false; $('formCard').hidden = false; load(); }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+[
+ {
+  "tag": "C1 公开列表 6 条且已裁剪管理字段",
+  "ok": true,
+  "detail": "n=6 keys=['author', 'file', 'id', 'license', 'source', 'subtitle', 'title']"
+ },
+ {
+  "tag": "C2 后台登录",
+  "ok": true,
+  "detail": "http=200 len=43"
+ },
+ {
+  "tag": "C2b 后台列表含管理字段",
+  "ok": true,
+  "detail": "n=6"
+ },
+ {
+  "tag": "C3 新增 → 公开 7 条",
+  "ok": true,
+  "detail": "id=trk_16c43e73db41 public=7"
+ },
+ {
+  "tag": "C3b 下架 → 公开回 6 条",
+  "ok": true,
+  "detail": "public=6"
+ },
+ {
+  "tag": "C3c 删除 → 后台 6 条",
+  "ok": true,
+  "detail": "admin=6"
+ },
+ {
+  "tag": "C4 后台页可访问",
+  "ok": true,
+  "detail": "http=200 bytes=9995"
+ },
+ {
+  "tag": "A1 器官层（示意）可选并播放（心→徵）",
+  "ok": true,
+  "detail": "layer=organ chip=已选 1 处 now={'id': 'zhi', 'name': '徵音（心）', 'kind': 'wuyin'}"
+ },
+ {
+  "tag": "B1 节拍音随阶段触发、关闭后停止",
+  "ok": true,
+  "detail": "cues_on=1 cues_off=1"
+ },
+ {
+  "tag": "B2 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

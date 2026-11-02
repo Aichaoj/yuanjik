@@ -1,0 +1,210 @@
+{
+ "before": {
+  "organs": [
+   {
+    "id": "og_heart",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 109.14375915725516
+   },
+   {
+    "id": "og_lungL",
+    "vis": true,
+    "label": false,
+    "cx": 148.39096934772243,
+    "cy": 95.34317388650422
+   },
+   {
+    "id": "og_lungR",
+    "vis": true,
+    "label": false,
+    "cx": 183.60903065227754,
+    "cy": 95.34317388650422
+   },
+   {
+    "id": "og_liver",
+    "vis": true,
+    "label": false,
+    "cx": 182.40834652200425,
+    "cy": 144.86687935403972
+   },
+   {
+    "id": "og_spleen",
+    "vis": true,
+    "label": false,
+    "cx": 150.44223620066956,
+    "cy": 145.3360674055608
+   },
+   {
+    "id": "og_kidneyL",
+    "vis": true,
+    "label": false,
+    "cx": 149.57234131034252,
+    "cy": 186.07081593965262
+   },
+   {
+    "id": "og_kidneyR",
+    "vis": true,
+    "label": false,
+    "cx": 182.42765868965748,
+    "cy": 186.07081593965262
+   },
+   {
+    "id": "og_gall",
+    "vis": true,
+    "label": false,
+    "cx": 188.0817774990989,
+    "cy": 156.8281488226859
+   },
+   {
+    "id": "og_stomach",
+    "vis": true,
+    "label": false,
+    "cx": 161.86578663531833,
+    "cy": 162.20506585281788
+   },
+   {
+    "id": "og_sintest",
+    "vis": true,
+    "label": false,
+    "cx": 173.0514288098499,
+    "cy": 180.21301596569785
+   },
+   {
+    "id": "og_lintest",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 200.39503927777218
+   },
+   {
+    "id": "og_bladder",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 219.6813698202996
+   },
+   {
+    "id": "og_sanjiao",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 161.77390595647964
+   },
+   {
+    "id": "og_peri",
+    "vis": true,
+    "label": false,
+    "cx": 166.8365828709789,
+    "cy": 121.6612492966391
+   }
+  ],
+  "w": 332,
+  "h": 392
+ },
+ "after": {
+  "organs": [
+   {
+    "id": "og_heart",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 109.14375915725516
+   },
+   {
+    "id": "og_lungL",
+    "vis": true,
+    "label": true,
+    "cx": 148.39096934772243,
+    "cy": 95.34317388650422
+   },
+   {
+    "id": "og_lungR",
+    "vis": true,
+    "label": true,
+    "cx": 183.60903065227754,
+    "cy": 95.34317388650422
+   },
+   {
+    "id": "og_liver",
+    "vis": true,
+    "label": false,
+    "cx": 182.40834652200425,
+    "cy": 144.86687935403972
+   },
+   {
+    "id": "og_spleen",
+    "vis": true,
+    "label": false,
+    "cx": 150.44223620066956,
+    "cy": 145.3360674055608
+   },
+   {
+    "id": "og_kidneyL",
+    "vis": true,
+    "label": false,
+    "cx": 149.57234131034252,
+    "cy": 186.07081593965262
+   },
+   {
+    "id": "og_kidneyR",
+    "vis": true,
+    "label": false,
+    "cx": 182.42765868965748,
+    "cy": 186.07081593965262
+   },
+   {
+    "id": "og_gall",
+    "vis": true,
+    "label": false,
+    "cx": 188.0817774990989,
+    "cy": 156.8281488226859
+   },
+   {
+    "id": "og_stomach",
+    "vis": true,
+    "label": true,
+    "cx": 161.86578663531833,
+    "cy": 162.20506585281788
+   },
+   {
+    "id": "og_sintest",
+    "vis": true,
+    "label": false,
+    "cx": 173.0514288098499,
+    "cy": 180.21301596569785
+   },
+   {
+    "id": "og_lintest",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 200.39503927777218
+   },
+   {
+    "id": "og_bladder",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 219.6813698202996
+   },
+   {
+    "id": "og_sanjiao",
+    "vis": true,
+    "label": false,
+    "cx": 166,
+    "cy": 161.77390595647964
+   },
+   {
+    "id": "og_peri",
+    "vis": true,
+    "label": false,
+    "cx": 166.8365828709789,
+    "cy": 121.6612492966391
+   }
+  ],
+  "w": 332,
+  "h": 392
+ }
+}

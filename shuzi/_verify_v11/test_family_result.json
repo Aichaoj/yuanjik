@@ -1,0 +1,518 @@
+[
+ {
+  "criteria": "1",
+  "name": "未登录 GET /api/v1/family → **401**（既有 20000，响应键仍为 code/message/data/trace_id）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000 keys=['code', 'data', 'detail', 'message', 'trace_id']"
+ },
+ {
+  "criteria": "1",
+  "name": "**错令牌** GET /api/v1/family → 401（不泄露任何数据）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "1",
+  "name": "登录 GET /api/v1/family → 200，code=0，`data.members` 为**数组**（新账号为空数组）",
+  "ok": true,
+  "detail": "HTTP 200 members=[] summary={\"count\": 0, \"avg_score\": null, \"attention_count\": 0, \"attention_band\": \"C\"}"
+ },
+ {
+  "criteria": "2",
+  "name": "POST /api/v1/family/members → 200，code=0，返回 family_id（形如 fam_xxx）与非空 member",
+  "ok": true,
+  "detail": "HTTP 200 family_id=fam_d34e23322d52"
+ },
+ {
+  "criteria": "2",
+  "name": "GET /api/v1/family **能读到**刚添加的家人（昵称/关系/生辰/经纬度一致）",
+  "ok": true,
+  "detail": "HTTP 200 命中 1 条：[{\"family_id\": \"fam_d34e23322d52\", \"nickname\": \"阿妈测试甲\", \"relation\": \"母亲\", \"relation_code\": \"mother\", \"birth_local\": \"1962-03-08 06:20\", \"index\": {\"score\": 69, \"band\": \"C\", \"band_name\": \"中\", \"score_kernel\": 69, \"basis\": \""
+ },
+ {
+  "criteria": "2",
+  "name": "家人 index.score 与「内核对该生辰直算 + display_normalize」**逐字相等**（复算=69，实测=69）",
+  "ok": true,
+  "detail": "内核原分=69 展示分复算=69 实测=69"
+ },
+ {
+  "criteria": "2",
+  "name": "第二条复算路径（按构件公开锚点**独立重算**线性拉伸）与第一条一致，且都为实测值",
+  "ok": true,
+  "detail": "锚点法=69 函数法=69 实测=69"
+ },
+ {
+  "criteria": "2",
+  "name": "index.band / band_name 与内核 `band_of(展示分)` 逐字一致（阈值 85/70/55 单一来源）",
+  "ok": true,
+  "detail": "内核=C/中 实测=C/中"
+ },
+ {
+  "criteria": "2",
+  "name": "同一生辰走 `GET /api/v1/rhythm/daily`：本人 index.score 与家人 index.score **逐字相等**（证明家人与「我」完全同一条链路）",
+  "ok": true,
+  "detail": "本人 daily=69(内核 69) 家人=69(内核 69)；建档 HTTP 200 / daily HTTP 200"
+ },
+ {
+  "criteria": "3",
+  "name": "家人的 `level` 字段**恒为 null**（本轮实测 1 位家人）",
+  "ok": true,
+  "detail": "level 取值集合={'null'}"
+ },
+ {
+  "criteria": "3",
+  "name": "家人 `baseline_text` 形如「基线建立中 n/7」（实测逐字为「基线建立中 0/7」）",
+  "ok": true,
+  "detail": "baseline_text 集合={'基线建立中 0/7'}"
+ },
+ {
+  "criteria": "3",
+  "name": "响应正文**不出现** L0–L4 字样（GET /family 与 POST /members 两份正文扫描 0 命中）",
+  "ok": true,
+  "detail": "命中=无"
+ },
+ {
+  "criteria": "4",
+  "name": "九类非法入参**逐项 400**（HTTP 400 + 既有 10001/10002 业务码）",
+  "ok": true,
+  "detail": "非 400 的项=[]"
+ },
+ {
+  "criteria": "4",
+  "name": "每一条报错都是**具体可读中文 + 指明字段**（不是「请求无法完成」这类兜底串）",
+  "ok": true,
+  "detail": "逐条报文=[('昵称超 12 字', '称呼需 1-12 个字'), ('昵称为空', '称呼需 1-12 个字'), ('关系 code 非法', '关系需为 self / father / mother / spouse / child / sibling / grandparent / other 之一'), ('出生时间不存在（2 月 30 日）', '这一天或这个时刻不存在，请检查月份、日期与时刻'), ('出生时间格式非法', '出生时间格式应为「YYYY-MM-DD HH:MM」（只给日期时按正午 12:00）'), ('出生时间晚于现在', '出生时间不能晚于现在'), ('经度越界 181', '经度需在 -180 与 180 之间'), ('纬度越界 -91', '纬度需在 -90 与 90 之间'), ('经纬度非数值', '经度需填写数值')]"
+ },
+ {
+  "criteria": "4",
+  "name": "被拒的调用**没有落库**：非法入参后家人数仍为 1",
+  "ok": true,
+  "detail": "当前家人数=1"
+ },
+ {
+  "criteria": "5",
+  "name": "同属主「昵称+生辰」重复 → **被拒**且提示「这个家人已经添加过了」",
+  "ok": true,
+  "detail": "HTTP 400 code=10002 message=这个家人已经添加过了"
+ },
+ {
+  "criteria": "5",
+  "name": "重复被拒后**列表没有多出第 2 条**（仍为 1 位）",
+  "ok": true,
+  "detail": "家人数=1"
+ },
+ {
+  "criteria": "5",
+  "name": "累计添加满 **8 位**（席位上限）全部 200",
+  "ok": true,
+  "detail": "当前家人数=8"
+ },
+ {
+  "criteria": "5",
+  "name": "第 9 位家人 → **被拒**且提示「家庭席位已满（8 位）」",
+  "ok": true,
+  "detail": "HTTP 400 code=10004 message=家庭席位已满（8 位）：如需继续添加，请先删除一位家人。"
+ },
+ {
+  "criteria": "5",
+  "name": "席位满的错误语义 = **HTTP 400 + code 10004**（师父 2026-10-08 口径；不是 402/30003）",
+  "ok": true,
+  "detail": "HTTP 400 code=10004"
+ },
+ {
+  "criteria": "5",
+  "name": "席位满**不再是 402**（3xxxx 段只留给\"需付费\"类语义）",
+  "ok": true,
+  "detail": "HTTP 400"
+ },
+ {
+  "criteria": "5",
+  "name": "席位满被拒后**列表仍是 8 位**（没有把第 9 位写进去）",
+  "ok": true,
+  "detail": "家人数=8"
+ },
+ {
+  "criteria": "6",
+  "name": "POST /api/v1/family/remind → 200，返回记录含 family_id/kind/text/on_date/created_at",
+  "ok": true,
+  "detail": "HTTP 200 {\"reminder_id\": 1, \"family_id\": \"fam_d34e23322d52\", \"nickname\": \"阿妈测试甲\", \"kind\": \"care\", \"text\": \"今天记得早点休息\", \"created_at\": \"2026-10-09T23:51:17\", \"on_date\": \"2026-10-09\", \"repeated\": false, \"disclaime"
+ },
+ {
+  "criteria": "6",
+  "name": "当日**重复调用只留一条**（库里同名同日同 kind 行数 = 1），且第二次 `repeated=true`",
+  "ok": true,
+  "detail": "行数=1 第二次 repeated=True id=1/1"
+ },
+ {
+  "criteria": "6",
+  "name": "重复调用**保留最先那条文案**（不会被后一次覆盖）",
+  "ok": true,
+  "detail": "返回文案=今天记得早点休息 库里文案=今天记得早点休息"
+ },
+ {
+  "criteria": "6",
+  "name": "重复调用返回的就是**原记录**（除 `repeated` 标记外，两次响应逐字相同）",
+  "ok": true,
+  "detail": "两次差异={}"
+ },
+ {
+  "criteria": "6",
+  "name": "GET /api/v1/family/reminders 能读到该条，**含昵称与时间**",
+  "ok": true,
+  "detail": "HTTP 200 items=1 首条=[{\"reminder_id\": 1, \"family_id\": \"fam_d34e23322d52\", \"nickname\": \"阿妈测试甲\", \"kind\": \"care\", \"text\": \"今天记得早点休息\", \"created_at\": \"2026-10-09T23:51:17\", \"on_date\": \"2026-10-09\"}]"
+ },
+ {
+  "criteria": "6",
+  "name": "未知 kind → 400 且报错可读（不静默当 care 处理）",
+  "ok": true,
+  "detail": "HTTP 400 code=10002 message=提醒类型需为 care / checkin / birthday / custom 之一"
+ },
+ {
+  "criteria": "7",
+  "name": "**换一个账号**删同一个 family_id → **404**（不泄露存在性）",
+  "ok": true,
+  "detail": "HTTP 404 code=10002 message=没有找到这位家人，可能已被删除，请刷新后重试。"
+ },
+ {
+  "criteria": "7",
+  "name": "越权删除后 A 的家人**一位没少**（仍为 8 位）",
+  "ok": true,
+  "detail": "家人数=8"
+ },
+ {
+  "criteria": "7",
+  "name": "未登录删除 → 401（先鉴权、后业务）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "7",
+  "name": "**本人删除 → 200**，且列表**少一个**（8 → 7），该 id 不在列表里",
+  "ok": true,
+  "detail": "HTTP 200 家人数 8→7"
+ },
+ {
+  "criteria": "7",
+  "name": "删除家人时**一并清掉我发给 TA 的关怀提醒**（合规最小化：不留孤儿历史）",
+  "ok": true,
+  "detail": "残留提醒行数=0"
+ },
+ {
+  "criteria": "7",
+  "name": "本人**重复删除同一个 id → 404**（同一句可读提示，仍然不泄露存在性）",
+  "ok": true,
+  "detail": "HTTP 404 message=没有找到这位家人，可能已被删除，请刷新后重试。"
+ },
+ {
+  "criteria": "8",
+  "name": "前置：A 重新添加一位独特昵称的家人（阿妈测试甲），用于隐私搜索",
+  "ok": true,
+  "detail": "HTTP 200 family_id=fam_81bf083fad55"
+ },
+ {
+  "criteria": "8",
+  "name": "B 账号 `GET /api/v1/family` **看不到 A 的任何家人**（B 的空数组，且正文搜不到 A 的昵称）",
+  "ok": true,
+  "detail": "HTTP 200 B 家人数=0 昵称命中=False"
+ },
+ {
+  "criteria": "8",
+  "name": "前置：A、B 已成为好友，且 A 打开三个公开开关（否则排行榜本来就看不到 A）",
+  "ok": true,
+  "detail": "invite HTTP 200 privacy HTTP 200"
+ },
+ {
+  "criteria": "8",
+  "name": "家人昵称**不出现在** `GET /friends`（A、B 两侧响应正文逐字搜索）",
+  "ok": true,
+  "detail": "A 命中=False B 命中=False"
+ },
+ {
+  "criteria": "8",
+  "name": "家人昵称**不出现在** `GET /friends/feed`",
+  "ok": true,
+  "detail": "命中=False"
+ },
+ {
+  "criteria": "8",
+  "name": "家人昵称**不出现在** `GET /friends/ranking`",
+  "ok": true,
+  "detail": "命中=False"
+ },
+ {
+  "criteria": "8",
+  "name": "家人昵称**不出现在** `GET /invite/preview`（邀请预览只回昵称，且不含家人）",
+  "ok": true,
+  "detail": "命中=False"
+ },
+ {
+  "criteria": "8",
+  "name": "家人**没有 member_id**：响应里除录入者外不含任何 member_id 形字段（家人不是账号，只有 family_id）",
+  "ok": true,
+  "detail": "家人字段=['age', 'baseline_text', 'birth_local', 'family_id', 'index', 'last_reminded_at', 'level', 'nickname', 'relation', 'relation_code']"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：用户区有「添加家人」入口（首页可见、文案为「添加家人」）",
+  "ok": true,
+  "detail": "按钮文案='添加家人'"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：建档屏（用户区）内同样有家庭档案入口",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：进入 screen-family，空态引导可见（一句引导 + 添加按钮）",
+  "ok": true,
+  "detail": "空态文案='还没有添加家人\\n\\n点下面的「添加家人」，填上称呼、关系与出生信息，就能看到 TA 的今日指数； 最多可以添加 8 位家人'"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：家庭档案屏**无横向滚动**（scrollWidth 430 ≤ clientWidth 430）",
+  "ok": true,
+  "detail": "{'sw': 430, 'cw': 430}"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：**表单展开态**也不溢出、无横向滚动（越界元素 0 个）",
+  "ok": true,
+  "detail": "scroll={'sw': 430, 'cw': 430} 越界=[]"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：选城市后自动填入经纬度（['116.4074', '39.9042']）",
+  "ok": true,
+  "detail": "经纬度=['116.4074', '39.9042']"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：添加成功 → 卡片出现，显示今日指数（69 分）与分档（C · 中）",
+  "ok": true,
+  "detail": "卡片正文='妈 | 妈妈 | 母亲 · 64 岁 · 1962-03-08 06:20 | 69 | 分 | C · 中 |  | 基线建立中 0/7 |  | 关怀提醒 | 编辑 | 删除'"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：卡片显示「基线建立中 0/7」，且**等级一律不显示**（屏内不出现 L0–L4）",
+  "ok": true,
+  "detail": "含基线文案=True"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：全家概览更新为「全家 1 人 · 平均指数 … · 需关注 … 人」",
+  "ok": true,
+  "detail": "概览='全家 1 人 · 平均指数 69 · 需关注 1 人'"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：卡片与文字都**不溢出、无横向滚动**（越界元素 0 个）",
+  "ok": true,
+  "detail": "scroll={'sw': 430, 'cw': 430} 越界=[]"
+ },
+ {
+  "criteria": "9",
+  "name": "430x932：家庭档案全流程执行完成",
+  "ok": false,
+  "detail": "TimeoutError: Page.wait_for_selector: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"#screen-home:not([hidden])\") to be visible\n"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：用户区有「添加家人」入口（首页可见、文案为「添加家人」）",
+  "ok": true,
+  "detail": "按钮文案='添加家人'"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：建档屏（用户区）内同样有家庭档案入口",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：进入 screen-family，空态引导可见（一句引导 + 添加按钮）",
+  "ok": true,
+  "detail": "空态文案='还没有添加家人\\n\\n点下面的「添加家人」，填上称呼、关系与出生信息，就能看到 TA 的今日指数； 最多可以添加 8 位家人'"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：家庭档案屏**无横向滚动**（scrollWidth 1440 ≤ clientWidth 1440）",
+  "ok": true,
+  "detail": "{'sw': 1440, 'cw': 1440}"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：**表单展开态**也不溢出、无横向滚动（越界元素 0 个）",
+  "ok": true,
+  "detail": "scroll={'sw': 1440, 'cw': 1440} 越界=[]"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：选城市后自动填入经纬度（['116.4074', '39.9042']）",
+  "ok": true,
+  "detail": "经纬度=['116.4074', '39.9042']"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：添加成功 → 卡片出现，显示今日指数（69 分）与分档（C · 中）",
+  "ok": true,
+  "detail": "卡片正文='妈 | 妈妈 | 母亲 · 64 岁 · 1962-03-08 06:20 | 69 | 分 | C · 中 |  | 基线建立中 0/7 |  | 关怀提醒 | 编辑 | 删除'"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：卡片显示「基线建立中 0/7」，且**等级一律不显示**（屏内不出现 L0–L4）",
+  "ok": true,
+  "detail": "含基线文案=True"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：全家概览更新为「全家 1 人 · 平均指数 … · 需关注 … 人」",
+  "ok": true,
+  "detail": "概览='全家 1 人 · 平均指数 69 · 需关注 1 人'"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：卡片与文字都**不溢出、无横向滚动**（越界元素 0 个）",
+  "ok": true,
+  "detail": "scroll={'sw': 1440, 'cw': 1440} 越界=[]"
+ },
+ {
+  "criteria": "9",
+  "name": "1440x900：家庭档案全流程执行完成",
+  "ok": false,
+  "detail": "TimeoutError: Page.wait_for_selector: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"#screen-home:not([hidden])\") to be visible\n"
+ },
+ {
+  "criteria": "9",
+  "name": "既有四屏 · 改前 console error 合计 = 0（{'430x932': [], '1440x900': []}）",
+  "ok": true,
+  "detail": "改前=0"
+ },
+ {
+  "criteria": "9",
+  "name": "既有四屏 · 改后 console error 合计 = 2（{'430x932': ['Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)'], '1440x900': ['Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)']}），**未新增**（改后 ≤ 改前）",
+  "ok": false,
+  "detail": "改前=0 改后=2"
+ },
+ {
+  "criteria": "9",
+  "name": "家庭档案新屏 · 两个视口 console error 合计 = 0（**新增屏 0 报错**）",
+  "ok": true,
+  "detail": "family={}"
+ },
+ {
+  "criteria": "9",
+  "name": "整轮浏览器会话未捕获异常 = 0 个",
+  "ok": true,
+  "detail": "异常=[]"
+ },
+ {
+  "criteria": "9",
+  "name": "结论行：真浏览器 26 项断言全过（rc=2）",
+  "ok": false,
+  "detail": "浏览器断言 26 项，通过 23，失败 3；console error：改前 0 → 改后 2，新屏 0"
+ },
+ {
+  "criteria": "10",
+  "name": "既有 /api/health → 200 且规则版本 TYH-RULES-1.3.0 未变",
+  "ok": true,
+  "detail": "HTTP 200 rule=TYH-RULES-1.3.0"
+ },
+ {
+  "criteria": "10",
+  "name": "既有首页 → 200 且 JSON-LD（Dataset / SoftwareApplication）仍在",
+  "ok": true,
+  "detail": "HTTP 200"
+ },
+ {
+  "criteria": "10",
+  "name": "构件内 `app/*`、`tianyuanheng/*` 与工作区正本 **SHA-256 全同**（既有源码一字未动，抽查 8 个文件）",
+  "ok": true,
+  "detail": "不一致=无"
+ },
+ {
+  "criteria": "10",
+  "name": "构件内 web 三件与工作区正本 **SHA-256 全同**（测的就是将要部署的那三份）",
+  "ok": true,
+  "detail": "不一致=无"
+ },
+ {
+  "criteria": "F",
+  "name": "family_member 含全部要求字段（属主 owner_member / family_id / 称呼 / 关系 / 生辰 / 经纬度 / 时间）",
+  "ok": true,
+  "detail": "缺少=[]"
+ },
+ {
+  "criteria": "F",
+  "name": "family_reminder 含全部要求字段（属主 / 家人 / kind / 文案 / 日期 / 时间）",
+  "ok": true,
+  "detail": "缺少=[]"
+ },
+ {
+  "criteria": "F",
+  "name": "两张表落在**同一份 state.db**（沿用既有库，不另开库）",
+  "ok": true,
+  "detail": "DB=D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v11\\family_v11.db"
+ },
+ {
+  "criteria": "F",
+  "name": "家人行的属主**就是录入者本人**：库里 family_member 只有 A 的 member_id（10 行 / 属主 3 个；家人自己不是账号、没有 member_id）",
+  "ok": false,
+  "detail": "属主集合={'mbr_820591e395fb8800', 'mbr_e0bd42a650aef768', 'mbr_ee494b057188aaad'} 总行数=10（期望仅 A 的 …fb8800，8 行）"
+ },
+ {
+  "criteria": "E",
+  "name": "禁用词扫描：10 个文件 × 18 条词表 → **命中 0**（要求 0）",
+  "ok": true,
+  "detail": "命中合计=0"
+ },
+ {
+  "criteria": "10",
+  "name": "社交 51：既有轻社交端到端验证（含汇总行「合计 51 项子断言，通过 51，失败 0」，5s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=51（期望 51）"
+ },
+ {
+  "criteria": "10",
+  "name": "推荐 45：既有推荐关系端到端验证（含汇总行「合计 45 项子断言，通过 45，失败 0」，5s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=45（期望 45）"
+ },
+ {
+  "criteria": "10",
+  "name": "支付佣金 80：P1 自建支付与佣金账本全过（含汇总行「合计 80 项子断言，通过 80，失败 0」，15s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=80（期望 80）"
+ },
+ {
+  "criteria": "10",
+  "name": "独立后台 144：既有后台端到端验证（含汇总行「合计 144 项断言，通过 144，失败 0」，20s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=144（期望 144）"
+ },
+ {
+  "criteria": "10",
+  "name": "积分 77：v8 积分余额与佣金路线全过（含汇总行「合计 77 项子断言，通过 77，失败 0」，55s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=77（期望 77）"
+ },
+ {
+  "criteria": "10",
+  "name": "开放 API 75：v10 开放 API 端到端验证（本次改动未破坏 v10）（含汇总行「合计 75 项子断言，通过 75，失败 0」，109s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=75（期望 75）"
+ },
+ {
+  "criteria": "10",
+  "name": "内核 335：核心测试全过（便携运行时）（含汇总行「Ran 335 tests」，3s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=335（期望 335）"
+ },
+ {
+  "criteria": "10",
+  "name": "服务端 104：服务层测试全过（解释器 C:\\Users\\41692\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE）（含汇总行「Ran 104 tests」，1s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=104（期望 104）"
+ }
+]

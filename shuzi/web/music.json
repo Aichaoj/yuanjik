@@ -1,0 +1,97 @@
+{
+  "_note": "佛音/静心录音清单。把音频放进本站 music/ 目录，再在 tracks 里加一条即可，前端无需改代码。file 支持相对路径（music/xxx.ogg）与 https 绝对地址。每条请在 license / source / author 里写清，公开上架前必须核对来源与授权（见 music/NOTICE.md）。",
+  "_schema": {
+    "title": "曲目名（≤20 字）",
+    "subtitle": "出处 / 演奏者 / 授权（一句话，会显示在曲目下面）",
+    "file": "music/文件名.ogg 或 https://...",
+    "license": "CC0 / CC BY-SA 3.0 / CC BY 3.0 …",
+    "source": "原始页面 URL",
+    "author": "作者 / 演出者"
+  },
+  "tracks": [
+    {
+      "title": "地藏经（节选·电子诵）",
+      "subtitle": "忉利天宫神通品第一 · 本站合成 · 经文公有领域",
+      "file": "music/dizangjing-jiexuan-tts.mp3",
+      "license": "本站自制（经文为公有领域）",
+      "source": "本站合成（edge-tts 神经语音，未使用任何第三方录音）",
+      "author": "本站（语音合成）",
+      "sort": -20
+    },
+    {
+      "title": "金刚经（节选·电子诵）",
+      "subtitle": "法会因由分至如理实见分 · 本站合成 · 经文公有领域",
+      "file": "music/jingangjing-jiexuan-tts.mp3",
+      "license": "本站自制（经文为公有领域）",
+      "source": "本站合成（edge-tts 神经语音，未使用任何第三方录音）",
+      "author": "本站（语音合成）",
+      "sort": -10
+    },
+    {
+      "title": "吟唱·蒹葭（本站合成）",
+      "subtitle": "诗经·秦风 · 慢速男声吟诵 · 本站合成",
+      "file": "music/yinchang-jianjia-tts.mp3",
+      "license": "本站自制（诗经为公有领域）",
+      "source": "本站合成（edge-tts 神经语音，未使用任何第三方录音）",
+      "author": "本站（语音合成）",
+      "sort": -9
+    },
+    {
+      "title": "吟唱·关雎（本站合成）",
+      "subtitle": "诗经·周南 · 慢速男声吟诵 · 本站合成",
+      "file": "music/yinchang-guanju-tts.mp3",
+      "license": "本站自制（诗经为公有领域）",
+      "source": "本站合成（edge-tts 神经语音，未使用任何第三方录音）",
+      "author": "本站（语音合成）",
+      "sort": -8
+    },
+    {
+      "title": "般若心经（普通话）",
+      "subtitle": "心经念诵 · CC0 公有领域",
+      "file": "music/bore-xinjing-cc0.ogg",
+      "license": "CC0 1.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bore_Xinjing_%E8%88%AC%E8%8B%A5%E5%BF%83%E7%BB%8F_(Heart_Sutra)_in_Mandarin_recited_by_a_Chinese_Buddhist_layperson.ogg",
+      "author": "Nyarlathotep1001（Wikimedia Commons，CC0）"
+    },
+    {
+      "title": "灵隐寺梵呗（现场）",
+      "subtitle": "杭州灵隐寺 · CC BY-SA 3.0",
+      "file": "music/lingyin-chant-ccbysa3.ogg",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Chanting_at_Lingyin_Temple,_Hangzhou.ogg",
+      "author": "LouiseBrown1981（Wikimedia Commons）"
+    },
+    {
+      "title": "楞严咒（节选·长）",
+      "subtitle": "宣化上人念诵节选 · CC BY-SA 3.0",
+      "file": "music/shurangama-long-ccbysa3.ogg",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Usnidha_Sitatapatra_dharani,_Siddham_chant_and_Buddhist_Sanskrit_mantra_chant_420_590.ogg",
+      "author": "Ven. Chan Master Hsuan Hua（剪辑者以 CC BY-SA 3.0 释出）"
+    },
+    {
+      "title": "楞严咒（节选·短）",
+      "subtitle": "宣化上人念诵节选 · CC BY-SA 3.0",
+      "file": "music/shurangama-short-ccbysa3.ogg",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Buddhism_Shurangama_dharani_chant_120_150.ogg",
+      "author": "Ven. Chan Master Hsuan Hua（剪辑者以 CC BY-SA 3.0 释出）"
+    },
+    {
+      "title": "楞严咒（第二段·长）",
+      "subtitle": "宣化上人念诵节选 · CC BY-SA 3.0",
+      "file": "music/shurangama-v2-long-ccbysa3.ogg",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Usnidha_Sitatapatra_dharani,_Siddham_chant_and_Buddhist_Sanskrit_mantra_chant_2_long_version_1075_1210.ogg",
+      "author": "Ven. Chan Master Hsuan Hua（剪辑者以 CC BY-SA 3.0 释出）"
+    },
+    {
+      "title": "楞严咒（第二段·短）",
+      "subtitle": "宣化上人念诵节选 · CC BY-SA 3.0",
+      "file": "music/shurangama-v2-short-ccbysa3.ogg",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Usnidha_Sitatapatra_dharani,_Siddham_chant_and_Buddhist_Sanskrit_mantra_chant_2_short_version_1075_1110.ogg",
+      "author": "Ven. Chan Master Hsuan Hua（剪辑者以 CC BY-SA 3.0 释出）"
+    }
+  ]
+}

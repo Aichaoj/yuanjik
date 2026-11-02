@@ -1,0 +1,27 @@
+[
+ {
+  "tag": "P1 公网版本 + three.js",
+  "ok": true,
+  "detail": "ver=200 three=200/669884"
+ },
+ {
+  "tag": "P2 佛音 6 条",
+  "ok": true,
+  "detail": "items=6"
+ },
+ {
+  "tag": "P3 生产立体图就绪（WebGL）",
+  "ok": true,
+  "detail": "{'ready': True, 'w': 664, 'h': 784}"
+ },
+ {
+  "tag": "P4 多部位混音",
+  "ok": true,
+  "detail": "now={'id': 'mix:gong+zhi', 'name': '混音：宫音 + 徵音', 'kind': 'mix'}"
+ },
+ {
+  "tag": "P5 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

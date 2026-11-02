@@ -1,0 +1,281 @@
+[09:30:49] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[09:30:49] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=47 service=TYH-SVC-0.1.0
+[09:30:49] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\_verify_v53\state.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15053
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\_verify_v53\state.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\服务端
+             tianyuanheng=D:\Deepseek智能体\AI元健康\核心
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[09:30:54] 127.0.0.1 "GET /api/v1/health HTTP/1.1" 400 -
+[09:30:59] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 401 -
+[09:30:59] login account_id=acc_38ee80dc682c1162 at=1792719059.9052339 device_id=v53-f1ee303276a7 device_info={'channel': 'guest'}
+[09:30:59] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[09:30:59] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:30:59] body_saved member_id=mbr_485df96640a7f3e9
+[09:30:59] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:30:59] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 400 -
+[09:30:59] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 400 -
+[09:31:00] login account_id=acc_62619a74c9a514b9 at=1792719060.0046299 device_id=v53-reg-99ae0c3b device_info={'channel': 'password'}
+[09:31:00] password_register account_id=acc_62619a74c9a514b9 phone_masked=139****9921
+[09:31:00] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:31:00] login account_id=acc_62619a74c9a514b9 at=1792719060.0785186 device_id=v53-devA-ce1f5296 device_info={'channel': 'password'}
+[09:31:00] password_login account_id=acc_62619a74c9a514b9 phone_masked=139****9921
+[09:31:00] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:31:00] body_saved member_id=mbr_e698878c1b6616f5
+[09:31:00] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:31:00] login account_id=acc_62619a74c9a514b9 at=1792719060.1705363 device_id=v53-devB-b87e0413 device_info={'channel': 'password'}
+[09:31:00] password_login account_id=acc_62619a74c9a514b9 phone_masked=139****9921
+[09:31:00] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:31:00] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:31:00] login account_id=acc_15ca45908fd86269 at=1792719060.1803265 device_id=v53-34736784605e device_info={'channel': 'guest'}
+[09:31:00] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[09:31:00] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:31:00] body_cleared member_id=mbr_e698878c1b6616f5
+[09:31:00] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:31:00] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:31:00] login account_id=acc_7fa3196949ee1238 at=1792719060.1965783 device_id=v53-bce6b4a5b527 device_info={'channel': 'guest'}
+[09:31:00] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[09:31:00] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[09:31:00] family_member_added account_id=acc_7fa3196949ee1238 family_id=fam_8574df9034dc relation_code=mother
+[09:31:00] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[09:31:00] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:31:00] family_member_updated account_id=acc_7fa3196949ee1238 family_id=fam_8574df9034dc
+[09:31:00] 127.0.0.1 "POST /api/v1/family/members/update HTTP/1.1" 200 -
+[09:31:00] 127.0.0.1 "POST /api/v1/family/members/update HTTP/1.1" 400 -
+[09:31:00] family_member_updated account_id=acc_7fa3196949ee1238 family_id=fam_8574df9034dc
+[09:31:00] 127.0.0.1 "POST /api/v1/family/members/update HTTP/1.1" 200 -
+[09:31:00] family_member_added account_id=acc_7fa3196949ee1238 family_id=fam_94a1603bd92b relation_code=father
+[09:31:00] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[09:31:29] login account_id=acc_1931791e528aa2c6 at=1792719089.2363734 device_id=v53ui-reg-c9ee59c0 device_info={'channel': 'password'}
+[09:31:29] password_register account_id=acc_1931791e528aa2c6 phone_masked=139****6230
+[09:31:29] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:31:29] login account_id=acc_1931791e528aa2c6 at=1792719089.329734 device_id=v53ui-0702b72c5f68 device_info={'channel': 'password'}
+[09:31:29] password_login account_id=acc_1931791e528aa2c6 phone_masked=139****6230
+[09:31:29] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:31:30] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:31:30] 127.0.0.1 "GET /api/v1/v1/body/status HTTP/1.1" 400 -
+[09:31:31] 127.0.0.1 "POST /api/v1/v1/body/save HTTP/1.1" 400 -
+[09:31:32] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:31:32] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:31:32] 127.0.0.1 "GET /api/v1/v1/body/status HTTP/1.1" 400 -
+[09:32:20] login account_id=acc_999fd1bc1db3ef0a at=1792719140.7972777 device_id=dbg-reg device_info={'channel': 'password'}
+[09:32:20] password_register account_id=acc_999fd1bc1db3ef0a phone_masked=139****5661
+[09:32:20] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:32:20] login account_id=acc_999fd1bc1db3ef0a at=1792719140.8882062 device_id=dbg-fb348c device_info={'channel': 'password'}
+[09:32:20] password_login account_id=acc_999fd1bc1db3ef0a phone_masked=139****5661
+[09:32:20] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET /energy-flow.js?v=20261021e HTTP/1.1" 404 -
+[09:32:21] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:32:21] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:32:21] 127.0.0.1 "GET /api/v1/v1/body/status HTTP/1.1" 400 -
+[09:32:22] 127.0.0.1 "GET /version.json?t=1792719142751 HTTP/1.1" 404 -
+[09:32:24] 127.0.0.1 "POST /api/v1/v1/body/save HTTP/1.1" 400 -
+[09:32:25] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:32:33] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 400 -
+[09:32:34] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 401 -
+[09:32:38] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 400 -
+[09:32:38] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 401 -
+[09:32:45] login account_id=acc_d84ec3f23c92f127 at=1792719165.2043293 device_id=dbg-02932b7c device_info={'channel': 'password'}
+[09:32:45] password_register account_id=acc_d84ec3f23c92f127 phone_masked=139****5078
+[09:32:45] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:32:45] login account_id=acc_d84ec3f23c92f127 at=1792719165.293301 device_id=dbg-93ddfd device_info={'channel': 'password'}
+[09:32:45] password_login account_id=acc_d84ec3f23c92f127 phone_masked=139****5078
+[09:32:45] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET /energy-flow.js?v=20261021e HTTP/1.1" 404 -
+[09:32:45] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:32:45] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:32:45] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:32:47] 127.0.0.1 "GET /version.json?t=1792719167127 HTTP/1.1" 404 -
+[09:32:48] body_saved member_id=mbr_4348984f58521dcb
+[09:32:48] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:32:50] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:32:57] login account_id=acc_85d5f2bb2fc3e748 at=1792719177.5191934 device_id=v53ui-reg-b20b369f device_info={'channel': 'password'}
+[09:32:57] password_register account_id=acc_85d5f2bb2fc3e748 phone_masked=139****4843
+[09:32:57] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:32:57] login account_id=acc_85d5f2bb2fc3e748 at=1792719177.6228566 device_id=v53ui-16dfd6f595d2 device_info={'channel': 'password'}
+[09:32:57] password_login account_id=acc_85d5f2bb2fc3e748 phone_masked=139****4843
+[09:32:57] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:32:58] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:32:58] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:32:59] body_saved member_id=mbr_59570fdc3c3a9e74
+[09:32:59] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:00] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:00] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:03] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:03] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:06] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:33:06] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:33:06] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:33:06] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:33:06] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:33:06] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:06] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:06] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:08] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:08] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:45] login account_id=acc_92e8c97730d01e44 at=1792719225.51995 device_id=v53ui-reg-3adb1b1a device_info={'channel': 'password'}
+[09:33:45] password_register account_id=acc_92e8c97730d01e44 phone_masked=139****8078
+[09:33:45] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:33:45] login account_id=acc_92e8c97730d01e44 at=1792719225.6235378 device_id=v53ui-86c41de18cc2 device_info={'channel': 'password'}
+[09:33:45] password_login account_id=acc_92e8c97730d01e44 phone_masked=139****8078
+[09:33:45] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:46] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:46] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:47] body_saved member_id=mbr_bf604157841e0466
+[09:33:47] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:48] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:48] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:51] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:51] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:52] family_member_added account_id=acc_92e8c97730d01e44 family_id=fam_0ff5e60e7000 relation_code=mother
+[09:33:52] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[09:33:52] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:52] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:54] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:33:54] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:33:54] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:33:54] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:33:54] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:33:54] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:54] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:33:54] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:33:56] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:33:56] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:03] login account_id=acc_359ab5ca04089e71 at=1792719243.7475667 device_id=v53ui-reg-ca8dbabc device_info={'channel': 'password'}
+[09:34:03] password_register account_id=acc_359ab5ca04089e71 phone_masked=139****2365
+[09:34:03] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:34:03] login account_id=acc_359ab5ca04089e71 at=1792719243.8610005 device_id=v53ui-072cb6809860 device_info={'channel': 'password'}
+[09:34:03] password_login account_id=acc_359ab5ca04089e71 phone_masked=139****2365
+[09:34:03] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:04] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:04] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:06] body_saved member_id=mbr_2333d17413f0bbbc
+[09:34:06] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:06] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:06] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:09] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:09] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:11] family_member_added account_id=acc_359ab5ca04089e71 family_id=fam_19e3fd5f7743 relation_code=mother
+[09:34:11] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[09:34:11] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:11] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:12] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[09:34:12] 127.0.0.1 "GET /style.css?v=20261023a HTTP/1.1" 200 -
+[09:34:12] 127.0.0.1 "GET /app.js?v=20261023a HTTP/1.1" 200 -
+[09:34:12] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[09:34:12] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[09:34:12] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:12] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:12] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:14] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:14] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-23 HTTP/1.1" 422 -
+[09:34:16] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 401 -
+[09:34:16] login account_id=acc_bb0023de1a1df991 at=1792719256.8460321 device_id=v53-bfa8d252f2bb device_info={'channel': 'guest'}
+[09:34:16] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[09:34:16] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:16] body_saved member_id=mbr_3627852b6a110048
+[09:34:16] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:34:16] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 400 -
+[09:34:16] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 400 -
+[09:34:16] login account_id=acc_af7f1a358a93f2f7 at=1792719256.9892626 device_id=v53-reg-460418b6 device_info={'channel': 'password'}
+[09:34:16] password_register account_id=acc_af7f1a358a93f2f7 phone_masked=139****1464
+[09:34:16] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[09:34:17] login account_id=acc_af7f1a358a93f2f7 at=1792719257.0779128 device_id=v53-devA-6b3a816a device_info={'channel': 'password'}
+[09:34:17] password_login account_id=acc_af7f1a358a93f2f7 phone_masked=139****1464
+[09:34:17] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:34:17] body_saved member_id=mbr_9469739f941b6663
+[09:34:17] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:34:17] login account_id=acc_af7f1a358a93f2f7 at=1792719257.1808803 device_id=v53-devB-a18709bc device_info={'channel': 'password'}
+[09:34:17] password_login account_id=acc_af7f1a358a93f2f7 phone_masked=139****1464
+[09:34:17] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[09:34:17] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:17] login account_id=acc_af9d5b7c599225ad at=1792719257.188704 device_id=v53-daba1c398eba device_info={'channel': 'guest'}
+[09:34:17] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[09:34:17] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:17] body_cleared member_id=mbr_9469739f941b6663
+[09:34:17] 127.0.0.1 "POST /api/v1/body/save HTTP/1.1" 200 -
+[09:34:17] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[09:34:17] login account_id=acc_37426601524906ae at=1792719257.2276318 device_id=v53-c19110592298 device_info={'channel': 'guest'}
+[09:34:17] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[09:34:17] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[09:34:17] family_member_added account_id=acc_37426601524906ae family_id=fam_13f9fce66601 relation_code=mother
+[09:34:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[09:34:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[09:34:17] family_member_updated account_id=acc_37426601524906ae family_id=fam_13f9fce66601
+[09:34:17] 127.0.0.1 "POST /api/v1/family/members/update HTTP/1.1" 200 -
+[09:34:17] 127.0.0.1 "POST /api/v1/family/members/update HTTP/1.1" 400 -
+[09:34:17] family_member_updated account_id=acc_37426601524906ae family_id=fam_13f9fce66601
+[09:34:17] 127.0.0.1 "POST /api/v1/family/members/update HTTP/1.1" 200 -
+[09:34:17] family_member_added account_id=acc_37426601524906ae family_id=fam_490d3158efaa relation_code=father
+[09:34:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -

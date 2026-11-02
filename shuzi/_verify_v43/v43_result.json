@@ -1,0 +1,92 @@
+[
+ {
+  "name": "A0 服务就绪（含 records 模块）",
+  "ok": true,
+  "detail": "http://127.0.0.1:15302"
+ },
+ {
+  "name": "A1 未登录 → 401",
+  "ok": true,
+  "detail": "http=401"
+ },
+ {
+  "name": "A2 注册账号",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "name": "B1 上传报告（png）",
+  "ok": true,
+  "detail": "http=200 ok"
+ },
+ {
+  "name": "B2 列表含 1 条且带备注",
+  "ok": true,
+  "detail": "[{\"id\": \"b92fd8a2e7c94e88a2bf9c43a20bf2ef\", \"name\": \"体检报告.png\", \"mime\": \"image/png\", \"bytes\": 70, \"note\": \"2026 年体检\", \"created_at\": \"2026-10-22T00:10:"
+ },
+ {
+  "name": "B3 取回内容与上传一致",
+  "ok": true,
+  "detail": "len=96"
+ },
+ {
+  "name": "B4 不支持的类型被拒",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "name": "B5 超过 5MB 被拒",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "name": "B6 删除后列表为空",
+  "ok": true,
+  "detail": "del=200"
+ },
+ {
+  "name": "C1 文字口述保存",
+  "ok": true,
+  "detail": "http=200 ok"
+ },
+ {
+  "name": "C2 口述列表 1 条",
+  "ok": true,
+  "detail": "1"
+ },
+ {
+  "name": "C3 取回文字一致",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C4 不支持的音频类型被拒",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "name": "C5 删除口述",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "name": "D1 账号隔离（他人看到 0 条）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "D2 他人按 id 取不到（400/401）",
+  "ok": true,
+  "detail": "http=401"
+ },
+ {
+  "name": "E1 文件落在 <data>\\uploads（不在 web）",
+  "ok": true,
+  "detail": "files=1"
+ },
+ {
+  "name": "E2 web 目录无上传文件",
+  "ok": true,
+  "detail": ""
+ }
+]

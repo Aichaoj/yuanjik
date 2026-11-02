@@ -1,0 +1,62 @@
+[
+ {
+  "tag": "L1 榜单按贡献降序",
+  "ok": true,
+  "detail": "[21, 14, 7]"
+ },
+ {
+  "tag": "L2 不泄露手机号与会员号",
+  "ok": true,
+  "detail": "phones_in=False mbr_in=False"
+ },
+ {
+  "tag": "L3 我的名次正确",
+  "ok": true,
+  "detail": "mine={'contribution': 7, 'injections': 1, 'rank': 3}（我 1 次，应第 3）"
+ },
+ {
+  "tag": "U0 后台登录",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "U1a 非音频扩展名被拒",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "tag": "U1 begin 成功",
+  "ok": true,
+  "detail": "uid=453ff33cc9dc4176 chunk_max=2097152"
+ },
+ {
+  "tag": "U2a 单片超 2 MB 被拒",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "tag": "U2 分片上传 (2 片)",
+  "ok": true,
+  "detail": "chunks=2"
+ },
+ {
+  "tag": "U3 finish 落盘 + 校验",
+  "ok": true,
+  "detail": "file=music/u20261025110448_e089e3945c.ogg bytes=3269184 sha_ok=True"
+ },
+ {
+  "tag": "U3b 取回字节一致",
+  "ok": true,
+  "detail": "http=200 bytes=3269184"
+ },
+ {
+  "tag": "U4 上传的文件可上架（公开 7 条）",
+  "ok": true,
+  "detail": "public=7 id=trk_a7b8cfdccc65"
+ },
+ {
+  "tag": "U5 测试数据已清理",
+  "ok": true,
+  "detail": "music/u20261025110448_e089e3945c.ogg"
+ }
+]

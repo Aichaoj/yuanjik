@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#D6234A">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="AI数显 · 元健康 —— 内部运营后台。数据展示遵循最小必要原则，不展示精确出生时刻、体征数值与病史原文。">
+<title>AI数显 · 元健康 · 独立后台</title>
+<!-- 站点图标：内联 data URI，不引用任何外网资源，离线可用 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23D6234A'/%3E%3Cstop offset='1' stop-color='%23FF7A9A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M5 19c3.4 0 4.2-8 7.2-8s3.6 10 7 10 3.2-5 7.8-5' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     一、登录界面（未登录 / 令牌失效时显示）
+     ══════════════════════════════════════════════════════════ -->
+<section class="login" id="loginView" aria-labelledby="loginTitle">
+  <div class="login-card">
+    <div class="login-brand">
+      <span class="brand-mark" aria-hidden="true">AI</span>
+      <div class="brand-text">
+        <strong id="loginTitle">AI数显 · 元健康</strong>
+        <span>独立运营后台</span>
+      </div>
+    </div>
+
+    <form class="login-form" id="loginForm" autocomplete="off" novalidate>
+      <div class="field">
+        <label class="field-label" for="loginPwd">管理口令</label>
+        <input class="input" type="password" id="loginPwd" name="password"
+               placeholder="请输入管理口令" autocomplete="current-password"
+               aria-describedby="loginHint" required>
+      </div>
+
+      <!-- 错误提示条：登录失败 / 口令错误 / 锁定时长 -->
+      <p class="field-err" id="loginErr" role="alert" hidden></p>
+
+      <button class="btn btn-primary btn-block" type="button" id="loginBtn">进入后台</button>
+
+      <p class="login-hint" id="loginHint">
+        口令由运维统一配置。为保护数据，连续失败 <b>5 次</b>将锁定 <b>15 分钟</b>，锁定期间请输入正确口令或稍后再试。
+      </p>
+    </form>
+
+    <p class="login-foot">
+      本页面仅限授权运营人员使用。后台数据展示遵循最小必要原则。
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     二、后台主体（登录成功后显示）
+     ══════════════════════════════════════════════════════════ -->
+<div class="shell" id="appView" hidden>
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand-mark" aria-hidden="true">AI</span>
+      <div class="brand-text brand-text-sm">
+        <strong>AI数显 · 元健康</strong>
+        <span>独立运营后台</span>
+      </div>
+      <span class="topbar-spacer"></span>
+      <span class="chip chip-quiet" id="tokenChip" title="后台令牌仅保存在本浏览器会话中">会话令牌已就绪</span>
+      <button class="btn btn-ghost btn-sm" type="button" id="logoutBtn">退出登录</button>
+    </div>
+  </header>
+
+  <!-- 全局错误条：接口失败时给出可读提示，不白屏 -->
+  <div class="banner banner-global" id="globalErr" role="alert" hidden>
+    <span class="banner-text" id="globalErrText"></span>
+    <button class="btn btn-ghost btn-sm" type="button" id="globalErrRetry" hidden>重试</button>
+    <button class="icon-btn" type="button" id="globalErrClose" aria-label="关闭提示">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div class="layout">
+
+    <!-- 导航：桌面端左侧竖排，移动端一行横向滚动 -->
+    <nav class="nav" id="nav" aria-label="后台板块">
+      <button class="nav-btn is-on" type="button" data-panel="users" aria-selected="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 19c0-3.3 3.6-5 8-5s8 1.7 8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span>用户</span>
+      </button>
+      <button class="nav-btn" type="button" data-panel="stats" aria-selected="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>运营指标</span>
+      </button>
+      <button class="nav-btn" type="button" data-panel="social" aria-selected="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <span>好友圈治理</span>
+      </button>
+      <button class="nav-btn" type="button" data-panel="export" aria-selected="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>导出</span>
+      </button>
+      <button class="nav-btn" type="button" data-panel="audit" aria-selected="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h7M9 16h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>审计</span>
+      </button>
+    </nav>
+
+    <!-- 内容区 -->
+    <main class="main" id="main">
+
+      <!-- ── 板块 1：用户 ───────────────────────────────── -->
+      <section class="panel" id="panel-users" data-panel="users">
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">用户</h2>
+            <span class="card-note" id="usersNote">—</span>
+          </div>
+
+          <div class="toolbar">
+            <div class="field field-grow">
+              <label class="sr-only" for="userQ">关键词搜索</label>
+              <input class="input" type="search" id="userQ" placeholder="搜索昵称 / 邀请码 / 用户标识" autocomplete="off">
+            </div>
+            <button class="btn btn-primary btn-sm" type="button" id="userSearchBtn">搜索</button>
+            <button class="btn btn-ghost btn-sm" type="button" id="userResetBtn">重置</button>
+            <button class="btn btn-ghost btn-sm" type="button" id="userReloadBtn">刷新</button>
+          </div>
+
+          <div class="banner banner-inline" id="userErr" role="alert" hidden></div>
+
+          <div class="table-wrap">
+            <table class="table">
+              <caption class="sr-only">用户列表</caption>
+              <thead>
+                <tr>
+                  <th scope="col">用户标识</th>
+                  <th scope="col">昵称</th>
+                  <th scope="col">手机号</th>
+                  <th scope="col">建档状态</th>
+                  <th scope="col">基线进度</th>
+                  <th scope="col">最近活跃</th>
+                  <th scope="col">重置密码</th>
+                  <th scope="col">连续天数</th>
+                </tr>
+              </thead>
+              <tbody id="userRows"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="userPager"></div>
+          <p class="card-foot">点击任意一行查看用户详情（详情按合规要求脱敏展示）。</p>
+        </div>
+      </section>
+
+      <!-- ── 板块 2：运营指标 ───────────────────────────── -->
+      <section class="panel" id="panel-stats" data-panel="stats" hidden>
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">运营指标</h2>
+            <button class="btn btn-ghost btn-sm" type="button" id="statsReloadBtn">刷新</button>
+          </div>
+          <div class="banner banner-inline" id="statsErr" role="alert" hidden></div>
+          <div class="stat-grid" id="statsGrid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">指数分布</h2>
+            <span class="card-note">A / B / C / D 占比</span>
+          </div>
+          <div class="bars" id="bandList"></div>
+        </div>
+      </section>
+
+      <!-- ── 板块 3：好友圈治理 ─────────────────────────── -->
+      <section class="panel" id="panel-social" data-panel="social" hidden>
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">好友圈治理</h2>
+            <span class="card-note" id="socialNote">—</span>
+          </div>
+          <div class="toolbar">
+            <!-- 关系 / 加油记录切换（后端按 kind 分别分页返回） -->
+            <div class="seg" id="socialKind" role="group" aria-label="记录类型">
+              <button class="seg-btn is-on" type="button" data-kind="relations" aria-pressed="true">好友关系</button>
+              <button class="seg-btn" type="button" data-kind="cheers" aria-pressed="false">加油记录</button>
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" id="socialReloadBtn">刷新</button>
+          </div>
+          <div class="banner banner-inline" id="socialErr" role="alert" hidden></div>
+          <div class="table-wrap">
+            <table class="table">
+              <caption class="sr-only">好友圈关系与加油记录</caption>
+              <thead>
+                <tr>
+                  <th scope="col">时间</th>
+                  <th scope="col">关系</th>
+                  <th scope="col">类型</th>
+                  <th scope="col">加油次数</th>
+                  <th scope="col">状态</th>
+                  <th scope="col">操作</th>
+                </tr>
+              </thead>
+              <tbody id="socialRows"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="socialPager"></div>
+          <p class="card-foot">封禁后该用户的社交功能停用（好友圈与加油均不可用），解封后恢复。每次操作都会写入审计日志。</p>
+        </div>
+      </section>
+
+      <!-- ── 板块 4：导出 ───────────────────────────────── -->
+      <section class="panel" id="panel-export" data-panel="export" hidden>
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">数据导出</h2>
+            <span class="card-note">脱敏 CSV</span>
+          </div>
+          <p class="para">
+            导出内容为脱敏数据：<b>不含</b>精确出生时刻、体征数值与病史原文。导出文件请按内部数据管理规定存放与销毁。
+          </p>
+          <div class="banner banner-inline" id="exportErr" role="alert" hidden></div>
+          <button class="btn btn-primary" type="button" id="exportBtn">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>下载脱敏 CSV</span>
+          </button>
+          <p class="card-foot">下载通过带令牌的请求获取文件内容（浏览器直接点击链接无法携带令牌）。</p>
+        </div>
+      </section>
+
+      <!-- ── 板块 5：审计 ───────────────────────────────── -->
+      <section class="panel" id="panel-audit" data-panel="audit" hidden>
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">审计日志</h2>
+            <span class="card-note" id="auditNote">—</span>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-ghost btn-sm" type="button" id="auditReloadBtn">刷新</button>
+          </div>
+          <div class="banner banner-inline" id="auditErr" role="alert" hidden></div>
+          <div class="table-wrap">
+            <table class="table">
+              <caption class="sr-only">后台审计日志</caption>
+              <thead>
+                <tr>
+                  <th scope="col">时间</th>
+                  <th scope="col">操作者</th>
+                  <th scope="col">动作</th>
+                  <th scope="col">目标</th>
+                </tr>
+              </thead>
+              <tbody id="auditRows"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="auditPager"></div>
+          <p class="card-foot">后台每次查看用户详情、封禁与解封都会留痕。</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 页脚免责声明 -->
+  <footer class="foot">
+    <p><b>AI数显 · 元健康 · 独立后台</b>——仅限授权运营人员使用。</p>
+    <p>本产品不属于医疗器械，不替代专业医疗意见。后台数据展示遵循最小必要原则：不展示精确出生时刻、体征数值与病史原文。</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     三、用户详情抽屉（脱敏展示）
+     ══════════════════════════════════════════════════════════ -->
+<div class="mask" id="drawerMask" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+  <div class="drawer-head">
+    <h2 id="drawerTitle">用户详情</h2>
+    <button class="icon-btn" type="button" id="drawerClose" aria-label="关闭详情">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════
+     四、二次确认弹窗（封禁 / 解封）
+     ══════════════════════════════════════════════════════════ -->
+<div class="mask mask-modal" id="modalMask" hidden>
+  <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
+    <h3 class="modal-title" id="modalTitle">确认操作</h3>
+    <p class="modal-text" id="modalText"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" type="button" id="modalCancel">取消</button>
+      <button class="btn btn-danger" type="button" id="modalOk">确认</button>
+    </div>
+  </div>
+</div>
+
+<!-- 轻提示容器 -->
+<div class="toasts" id="toastWrap" aria-live="polite" aria-atomic="false"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

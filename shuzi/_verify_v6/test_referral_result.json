@@ -1,0 +1,272 @@
+[
+ {
+  "criteria": "1",
+  "name": "invite_url 逐字等于 https://shuzi.yuanjk.cn/?invite=<invite_code>",
+  "ok": false,
+  "detail": "invite_url=https://shuzi.yuanjk.cn/?invite=%E7%94%A8%E6%88%B75158"
+ },
+ {
+  "criteria": "1",
+  "name": "URL 里带 ?invite= 且码为 8 位大写字母数字",
+  "ok": true,
+  "detail": "code=U7HV04RZ"
+ },
+ {
+  "criteria": "1",
+  "name": "A 尚未被推荐（referred_by 为 null）",
+  "ok": true,
+  "detail": "referred_by=None"
+ },
+ {
+  "criteria": "1",
+  "name": "GET /me/referral 是只读接口：连调两次不产生 referral 行",
+  "ok": true,
+  "detail": "referral 行数=0"
+ },
+ {
+  "criteria": "2",
+  "name": "调用成功且 status=accepted（跳过 pending/accept 流程）",
+  "ok": true,
+  "detail": "HTTP 200 status=accepted"
+ },
+ {
+  "criteria": "2",
+  "name": "A 的 GET /friends 里 B 为 accepted",
+  "ok": true,
+  "detail": "A→B=accepted"
+ },
+ {
+  "criteria": "2",
+  "name": "B 的 GET /friends 里 A 为 accepted",
+  "ok": true,
+  "detail": "B→A=accepted"
+ },
+ {
+  "criteria": "2",
+  "name": "A 侧没有收到任何 pending 申请（无需 A 再确认）",
+  "ok": true,
+  "detail": "A 的全部关系=['accepted']"
+ },
+ {
+  "criteria": "2",
+  "name": "数据库里这一对关系只有 1 行",
+  "ok": true,
+  "detail": "social_friend 行数=1"
+ },
+ {
+  "criteria": "3",
+  "name": "referral 表总共只有 1 行",
+  "ok": true,
+  "detail": "行数=1"
+ },
+ {
+  "criteria": "3",
+  "name": "这一行 referee=B 且 referrer=A",
+  "ok": true,
+  "detail": "referee=72f5d236 referrer=8aa71928"
+ },
+ {
+  "criteria": "3",
+  "name": "invite_code=A 的码、source=link、bound_at 非空",
+  "ok": true,
+  "detail": "code=U7HV04RZ source=link bound_at=2026-10-09T23:54:36"
+ },
+ {
+  "criteria": "3",
+  "name": "referral 行只存 member_id / 邀请码（无手机号/真名/生辰列）",
+  "ok": true,
+  "detail": "列=['bound_at', 'invite_code', 'referee_member_id', 'referrer_member_id', 'source']"
+ },
+ {
+  "criteria": "4",
+  "name": "B 再次调用不报错，返回体 referred_by 仍是 A",
+  "ok": true,
+  "detail": "HTTP 200 referred_by={\"member_id\": \"mbr_d621ebbd8aa71928\", \"nickname\": \"用户5158\", \"bound_at\": \"2026-10-09T23:54:36\", \"source\": \"link\"}"
+ },
+ {
+  "criteria": "4",
+  "name": "B 改用 C 的码也不报错，referred_by 仍是 A（不可改绑）",
+  "ok": true,
+  "detail": "HTTP 200 referred_by={\"member_id\": \"mbr_d621ebbd8aa71928\", \"nickname\": \"用户5158\", \"bound_at\": \"2026-10-09T23:54:36\", \"source\": \"link\"}"
+ },
+ {
+  "criteria": "4",
+  "name": "GET /me/referral 的 referred_by 也是 A（与写路径同口径）",
+  "ok": true,
+  "detail": "GET referred_by={\"member_id\": \"mbr_d621ebbd8aa71928\", \"nickname\": \"用户5158\", \"bound_at\": \"2026-10-09T23:54:36\", \"source\": \"link\"}"
+ },
+ {
+  "criteria": "4",
+  "name": "库里 referee=B 只有 1 行，且 referrer 仍是 A",
+  "ok": true,
+  "detail": "referee=B 行数=1 referrer=8aa71928"
+ },
+ {
+  "criteria": "5",
+  "name": "被拒且错误码沿用既有 30005（HTTP 4xx）",
+  "ok": true,
+  "detail": "HTTP 402 code=30005"
+ },
+ {
+  "criteria": "5",
+  "name": "自荐不产生 referral 行（前后行数不变：1）",
+  "ok": true,
+  "detail": "referral 行数=1"
+ },
+ {
+  "criteria": "5",
+  "name": "A 对自己也没有产生好友关系",
+  "ok": true,
+  "detail": "pair 行数=0"
+ },
+ {
+  "criteria": "8",
+  "name": "重复调用全部 HTTP 200 / code=0 / status=accepted（不报错）",
+  "ok": true,
+  "detail": "结果=[(200, 0, 'accepted'), (200, 0, 'accepted'), (200, 0, 'accepted')]"
+ },
+ {
+  "criteria": "8",
+  "name": "不重复绑定：referral 行数仍为 1",
+  "ok": true,
+  "detail": "referral 行数=1"
+ },
+ {
+  "criteria": "8",
+  "name": "不重复建关系：social_friend 行数仍为 1",
+  "ok": true,
+  "detail": "行数=1"
+ },
+ {
+  "criteria": "8",
+  "name": "反复 GET /me/referral 返回稳定且不产生新行",
+  "ok": true,
+  "detail": "urls={'https://shuzi.yuanjk.cn/?invite=%E7%94%A8%E6%88%B75158'}"
+ },
+ {
+  "criteria": "A",
+  "name": "POST /me/nickname 回传新昵称",
+  "ok": true,
+  "detail": "返回=晨光小友"
+ },
+ {
+  "criteria": "A",
+  "name": "GET /me/referral 的 nickname 立刻是新昵称",
+  "ok": true,
+  "detail": "nickname=晨光小友"
+ },
+ {
+  "criteria": "A",
+  "name": "share_text 含新昵称 + 含邀请链接（逐字含 invite_url）",
+  "ok": false,
+  "detail": "share_text=我是晨光小友，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=%E6%99%A8%E5%85%89%E5%B0%8F%E5%8F%8B"
+ },
+ {
+  "criteria": "A",
+  "name": "B 的 GET /friends 里 A 的昵称也同步为新值",
+  "ok": true,
+  "detail": "nickname=晨光小友"
+ },
+ {
+  "criteria": "A",
+  "name": "越界（1 字）仍返回既有 10002（HTTP 400）",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "A",
+  "name": "越界时昵称不被改动（仍是「晨光小友」）",
+  "ok": true,
+  "detail": "nickname=晨光小友"
+ },
+ {
+  "criteria": "B",
+  "name": "免鉴权可访问（HTTP 200 / code=0，不是 401）",
+  "ok": true,
+  "detail": "HTTP 200 code=0"
+ },
+ {
+  "criteria": "B",
+  "name": "有效码 → valid=true 且 nickname 是邀请人当前昵称",
+  "ok": true,
+  "detail": "valid=True nickname=晨光小友"
+ },
+ {
+  "criteria": "B",
+  "name": "响应体**只有** valid / nickname 两个字段（字段级断言）",
+  "ok": true,
+  "detail": "字段=['nickname', 'valid']"
+ },
+ {
+  "criteria": "B",
+  "name": "响应体里不含 member_id（整包文本级断言）",
+  "ok": true,
+  "detail": "payload={\"code\": 0, \"message\": \"ok\", \"data\": {\"valid\": true, \"nickname\": \"晨光小友\"}, \"trace_id\": \"6ac90e3d003da93d845c350e\"}"
+ },
+ {
+  "criteria": "B",
+  "name": "无效码 → {valid:false, nickname:null} 且 HTTP 200（不抛错）",
+  "ok": true,
+  "detail": "HTTP 200 data={\"valid\": false, \"nickname\": null}"
+ },
+ {
+  "criteria": "B",
+  "name": "格式不合法的码同样 valid:false 且 200（前端不用处理异常分支）",
+  "ok": true,
+  "detail": "HTTP 200 data={\"valid\": false, \"nickname\": null}"
+ },
+ {
+  "criteria": "B",
+  "name": "缺参数同样 valid:false 且 200",
+  "ok": true,
+  "detail": "HTTP 200 data={\"valid\": false, \"nickname\": null}"
+ },
+ {
+  "criteria": "B",
+  "name": "改昵称后 preview 也立刻返回新昵称（现读 social_profile）",
+  "ok": true,
+  "detail": "nickname=晨光小友"
+ },
+ {
+  "criteria": "V",
+  "name": "仍是 pending（未跳过对方确认）",
+  "ok": true,
+  "detail": "status=pending"
+ },
+ {
+  "criteria": "V",
+  "name": "A accept 后双方 accepted（既有流程照旧）",
+  "ok": true,
+  "detail": "D→A=accepted"
+ },
+ {
+  "criteria": "V",
+  "name": "手工输码路径的 referral 也记一行，source=manual",
+  "ok": true,
+  "detail": "rows=[{\"referee_member_id\": \"mbr_b682660e129dd642\", \"referrer_member_id\": \"mbr_d621ebbd8aa71928\", \"invite_code\": \"U7HV04RZ\", \"bound_at\": \"2026-10-09T23:54:37\", \"source\": \"manual\"}]"
+ },
+ {
+  "criteria": "C",
+  "name": "全脚本 preview 成功总数恰为 60（与 LIMITS[api_anon]=60 次/60 秒 一致，可复算）",
+  "ok": true,
+  "detail": "成功总数=60（本节前 4 + 本节 56）"
+ },
+ {
+  "criteria": "C",
+  "name": "第 61 次调用即被拒（既有 40000 RATE_LIMITED + HTTP 429）",
+  "ok": true,
+  "detail": "第一次被拒=(57, 429, 40000, {'scope': 'api_anon', 'reset_in_sec': 0})"
+ },
+ {
+  "criteria": "C",
+  "name": "被限流时连无效码也一并挡掉（防枚举，而不是只挡有效码）",
+  "ok": true,
+  "detail": "HTTP 429 code=40000"
+ },
+ {
+  "criteria": "C",
+  "name": "限流只拒请求、不写库（referral 行数不变）",
+  "ok": true,
+  "detail": "行数=2"
+ }
+]

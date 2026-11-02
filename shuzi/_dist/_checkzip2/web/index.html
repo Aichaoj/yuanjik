@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#D6234A">
+<meta name="description" content="AI元健康 · 做自己的健康导师 —— 基于个人时间节律的生活方式参考。本产品不属于医疗器械，不用于疾病的诊断、治疗或预防。">
+<title>AI元健康 · 做自己的健康导师</title>
+<!-- 站点图标：内联 data URI，不引用任何外网资源，离线可用 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23D6234A'/%3E%3Cstop offset='1' stop-color='%23FF7A9A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M5 19c3.4 0 4.2-8 7.2-8s3.6 10 7 10 3.2-5 7.8-5' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 跳转到主内容：键盘/读屏用户可用 -->
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="app" id="app">
+
+  <!-- ── 顶部品牌区 ─────────────────────────────────────────── -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28" focusable="false">
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#D6234A"/>
+              <stop offset="0.55" stop-color="#E8456B"/>
+              <stop offset="1" stop-color="#FF7A9A"/>
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="9" fill="url(#brandGrad)"/>
+          <path d="M5 19c3.4 0 4.2-8 7.2-8s3.6 10 7 10 3.2-5 7.8-5"
+                fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong class="brand-name">AI元健康</strong>
+        <span class="brand-sub">做自己的健康导师</span>
+      </span>
+    </div>
+    <!-- 返回按钮：仅在非首屏显示 -->
+    <button type="button" class="btn-back" id="btnBack" hidden>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+        <path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>返回</span>
+    </button>
+  </header>
+
+  <!-- ── 全局错误条（接口异常时显示可读错误，不白屏）─────────── -->
+  <div class="alert" id="alertBox" role="alert" aria-live="assertive" hidden>
+    <span class="alert-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+        <path d="M12 3.6 21 20H3z" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linejoin="round"/>
+        <path d="M12 9.5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="12" cy="17.2" r="1.05" fill="currentColor"/>
+      </svg>
+    </span>
+    <p class="alert-text" id="alertText"></p>
+    <button type="button" class="alert-close" id="alertClose" aria-label="关闭提示">×</button>
+  </div>
+
+  <main class="main" id="main">
+
+    <!-- ═══════════ 一、首屏 ═══════════ -->
+    <section class="screen" id="screen-home" aria-labelledby="home-title">
+      <div class="hero">
+        <p class="hero-kicker">AI元健康</p>
+        <h1 class="hero-title" id="home-title">
+          做自己的健康导师
+        </h1>
+        <p class="hero-slogan">为自己的健康加分</p>
+        <p class="hero-desc">
+          只需出生日期、时刻与出生地，生成属于你个人的时间节律参考，
+          输出「今天宜养、宜慎、宜静」的生活方式取向。
+        </p>
+
+        <ul class="hero-points">
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            只与你自己比：结论来自你个人的历史观测基线
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            结论可核验：每条提示都能展开看到依据链与古典出处
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            数据归你：支持导出与删除，随时可撤回同意
+          </li>
+        </ul>
+
+        <button type="button" class="btn btn-primary btn-lg" id="btnStart">
+          <span>开始建档</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- 已建档用户：直接进入今日节律 -->
+        <button type="button" class="btn btn-ghost" id="btnHomeRhythm" hidden>
+          查看今日节律
+        </button>
+      </div>
+
+      <footer class="home-foot">
+        <p class="fineprint" id="homeDisclaimer">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+          所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。
+        </p>
+        <p class="fineprint fineprint-dim">本内容由 AI 生成，仅供参考。</p>
+      </footer>
+    </section>
+
+    <!-- ═══════════ 二、建档屏 ═══════════ -->
+    <section class="screen" id="screen-profile" aria-labelledby="profile-title" hidden>
+      <h1 class="screen-title" id="profile-title">生辰建档</h1>
+      <p class="screen-desc">出生信息仅用于完成真太阳时校正与个人节律模型计算。</p>
+
+      <form id="profileForm" novalidate>
+        <!-- 出生日期 -->
+        <div class="field">
+          <label class="field-label" for="inBirthDate">
+            出生日期<span class="req" aria-hidden="true">*</span>
+          </label>
+          <input class="input" type="date" id="inBirthDate" name="birth_date"
+                 required autocomplete="bday" min="1900-01-01">
+          <p class="field-err" id="errBirthDate" role="alert" hidden></p>
+        </div>
+
+        <!-- 出生时间（可留空） -->
+        <div class="field">
+          <label class="field-label" for="inBirthTime">
+            出生时间<span class="opt">选填</span>
+          </label>
+          <input class="input" type="time" id="inBirthTime" name="birth_time">
+          <p class="field-hint">不确定可留空，系统将按正午 12:00 参与计算。</p>
+        </div>
+
+        <!-- 出生地：内置城市下拉 -->
+        <div class="field">
+          <label class="field-label" for="inCity">
+            出生地<span class="req" aria-hidden="true">*</span>
+          </label>
+          <select class="input select" id="inCity" name="city">
+            <option value="">请选择常用城市</option>
+            <option value="__manual__">手动输入经纬度…</option>
+          </select>
+          <p class="field-hint" id="cityHint">已内置常用城市及其经纬度，选择后自动填入。</p>
+        </div>
+
+        <!-- 经纬度 -->
+        <fieldset class="coord-set">
+          <legend class="field-label">经纬度<span class="req" aria-hidden="true">*</span></legend>
+          <div class="coord-grid">
+            <div class="field field-tight">
+              <label class="field-label-sm" for="inLng">经度（东经为正）</label>
+              <input class="input" type="number" id="inLng" name="longitude"
+                     inputmode="decimal" step="0.0001" min="-180" max="180"
+                     placeholder="116.4074" readonly>
+            </div>
+            <div class="field field-tight">
+              <label class="field-label-sm" for="inLat">纬度（北纬为正）</label>
+              <input class="input" type="number" id="inLat" name="latitude"
+                     inputmode="decimal" step="0.0001" min="-90" max="90"
+                     placeholder="39.9042" readonly>
+            </div>
+          </div>
+          <p class="field-err" id="errCoord" role="alert" hidden></p>
+        </fieldset>
+
+        <!-- 单独勾选的数据处理告知同意（默认不勾选） -->
+        <div class="consent">
+          <label class="consent-label" for="inConsent">
+            <input type="checkbox" id="inConsent" name="consent">
+            <span>
+              我已阅读并单独同意
+              <button type="button" class="linklike" id="btnShowConsent">《健康数据处理告知同意书》</button>
+            </span>
+          </label>
+          <div class="consent-body" id="consentBody" hidden>
+            <p>一、处理目的：完成真太阳时校正、生成个人节律模型并输出生活方式参考。</p>
+            <p>二、处理范围：出生日期、出生时刻、出生地经纬度，以及你主动提交的打卡记录。</p>
+            <p>三、保存与撤回：数据默认归你本人所有；你可随时在「我的」中导出或申请删除，
+              也可随时撤回本同意，撤回后系统将停止相应处理。</p>
+            <p>四、边界说明：本产品不属于医疗器械，不用于疾病的诊断、治疗或预防。
+              涉及身体不适请咨询执业医师。</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitProfile">
+          <span id="submitProfileText">完成建档</span>
+        </button>
+        <p class="fineprint fineprint-dim form-note">
+          提交后本内容由 AI 生成，仅供参考；不用于疾病的诊断、治疗或预防。
+        </p>
+      </form>
+    </section>
+
+    <!-- ═══════════ 三、今日节律屏 ═══════════ -->
+    <section class="screen" id="screen-rhythm" aria-labelledby="rhythm-title" hidden>
+      <div class="rhythm-head">
+        <h1 class="screen-title" id="rhythm-title">今日节律</h1>
+        <span class="rhythm-head-right">
+          <!-- 连续记录天数：由打卡结果或历史记录推导，取不到就不显示 -->
+          <span class="chip chip-quiet" id="streakChip" hidden></span>
+          <span class="chip" id="rhythmDate">—</span>
+        </span>
+      </div>
+
+      <!-- 危机转介引导（仅当接口返回危机转介时出现） -->
+      <div class="crisis" id="crisisBox" role="alert" hidden>
+        <h2 class="crisis-title">请优先寻求专业帮助</h2>
+        <p class="crisis-text" id="crisisText"></p>
+        <ul class="crisis-list">
+          <li>全国心理援助热线 <strong>12356</strong></li>
+          <li>北京心理危机研究与干预中心 <strong>010-82951332</strong></li>
+          <li>紧急情况请直接拨打 <strong>120</strong>，或前往就近医院急诊</li>
+        </ul>
+        <p class="crisis-text crisis-dim">本页不提供任何健康解读，请以专业人员的判断为准。</p>
+      </div>
+
+      <!-- ═══ ① 今日健康指数：建档成功后首屏第一眼就是它 ═══ -->
+      <article class="card index-card" id="indexCard" aria-labelledby="indexCardTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="indexCardTitle">今日健康指数</h2>
+          <span class="card-note">当日时相推算</span>
+        </div>
+        <div id="indexBody">
+          <p class="placeholder">正在读取今日指数…</p>
+        </div>
+      </article>
+
+      <!-- ═══ ② 个体化校准进度：紧贴指数卡下方，与时相推算区分开 ═══ -->
+      <section class="card calib-card" id="calibCard" hidden>
+        <div class="card-head">
+          <h2 class="card-title">个体化校准</h2>
+          <span class="chip chip-quiet" id="calibChip" hidden>校准中</span>
+        </div>
+        <div id="calibBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ═══ ③ 个体化结果：personalized 非空后才出现（指数卡本身不变）═══ -->
+      <section class="card" id="personalizedCard" hidden aria-labelledby="personalizedTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="personalizedTitle">个体化</h2>
+          <span class="chip" id="personalizedChip" hidden></span>
+        </div>
+        <div id="personalizedBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ═══ ④ 今日关注：index.attention 的通道标签，点击展开中性说明 ═══ -->
+      <section class="card" id="attentionCard" aria-labelledby="attentionTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="attentionTitle">今日关注</h2>
+          <span class="card-note">点击标签查看依据</span>
+        </div>
+        <div id="attentionBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ═══ ⑤ 黄金时段：index.windows 渲染成 24 小时时间条 ═══ -->
+      <section class="card" id="windowsCard" aria-labelledby="windowsTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="windowsTitle">黄金时段</h2>
+          <span class="card-note">00:00–24:00</span>
+        </div>
+        <div id="windowsBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 观察等级：仅在个人基线建立后展示（未建立时由上面的校准卡承担） -->
+      <article class="card level-card" id="levelCard" aria-live="polite">
+        <div class="card-head">
+          <h2 class="card-title">观察等级</h2>
+          <span class="chip chip-quiet" id="levelChip" hidden></span>
+        </div>
+        <div id="levelBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </article>
+
+      <!-- 关注通道（个体化，相对个人基线的 Δ） -->
+      <section class="card" id="focusCard">
+        <div class="card-head">
+          <h2 class="card-title">关注通道</h2>
+          <span class="card-note">Δ 为相对你个人基线的偏移量（需 7 次打卡）</span>
+        </div>
+        <div id="focusBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 生活方式取向 / 建议 -->
+      <section class="card" id="adviceCard">
+        <div class="card-head">
+          <h2 class="card-title">生活方式取向</h2>
+        </div>
+        <div id="adviceBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 十二通道态势（可折叠） -->
+      <details class="card accordion" id="channelsAcc">
+        <summary>
+          <span class="card-title">十二通道态势</span>
+          <span class="acc-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-body" id="channelsBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </details>
+
+      <!-- 依据链（可折叠） -->
+      <details class="card accordion" id="lineageAcc">
+        <summary>
+          <span class="card-title">依据链</span>
+          <span class="acc-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-body" id="lineageBody">
+          <p class="placeholder">展开后显示规则 ID 与古典出处。</p>
+        </div>
+      </details>
+
+      <!-- 合规声明区 -->
+      <section class="card compliance" id="complianceCard">
+        <h2 class="card-title">合规声明</h2>
+        <div class="ai-tag" id="aiTag">
+          <span class="ai-tag-mark" aria-hidden="true">AI</span>
+          <span>本内容由 AI 生成，仅供参考。</span>
+        </div>
+        <p class="compliance-text" id="disclaimerText">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+          所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。
+        </p>
+        <p class="compliance-text compliance-referral" id="referralText">
+          建议咨询执业医师或前往正规医疗机构。
+        </p>
+        <dl class="meta-list" id="metaList"></dl>
+      </section>
+
+      <!-- ═══ 页脚：分享文案（纯文本 + 复制按钮，不引入任何外网 SDK）═══ -->
+      <section class="card share-card" id="shareCard" aria-labelledby="shareTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="shareTitle">分享给朋友</h2>
+          <span class="card-note">纯文本，可自由粘贴</span>
+        </div>
+        <p class="share-text" id="shareText"></p>
+        <button type="button" class="btn btn-ghost" id="btnCopyShare">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <rect x="9" y="9" width="11" height="11" rx="2.4" fill="none"
+                  stroke="currentColor" stroke-width="1.8"/>
+            <path d="M15.5 5.6A2 2 0 0 0 13.6 4H6.4A2.4 2.4 0 0 0 4 6.4v7.2a2 2 0 0 0 1.6 1.96"
+                  fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span id="copyShareText">复制分享文案</span>
+        </button>
+      </section>
+
+      <!-- 底部操作 -->
+      <div class="actions">
+        <button type="button" class="btn btn-primary btn-lg" id="btnCheckin">
+          <span id="checkinText">今日打卡</span>
+        </button>
+        <button type="button" class="btn btn-ghost" id="btnHistory">历史记录</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 历史记录：抽屉面板 ─────────────────────────────────── -->
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <section class="sheet" id="historySheet" role="dialog" aria-modal="true"
+           aria-labelledby="historyTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="historyTitle">打卡历史</h2>
+      <button type="button" class="sheet-close" id="btnCloseHistory" aria-label="关闭历史记录">×</button>
+    </div>
+    <div class="sheet-body" id="historyBody">
+      <p class="placeholder">正在读取…</p>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost btn-sm" id="btnMoreHistory" hidden>
+        加载更多
+      </button>
+    </div>
+  </section>
+
+  <!-- ── 轻提示 ─────────────────────────────────────────────── -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- ── 全屏忙碌遮罩 ───────────────────────────────────────── -->
+  <div class="busy" id="busy" hidden aria-hidden="true">
+    <span class="spinner"></span>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

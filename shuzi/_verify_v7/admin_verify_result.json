@@ -1,0 +1,697 @@
+{
+  "assertions_total": 134,
+  "assertions_pass": 134,
+  "assertions_fail": 0,
+  "console_errors": [],
+  "page_errors": [],
+  "checks": [
+    {
+      "name": "[430x932] 登录页展示『失败 5 次锁定 15 分钟』说明",
+      "ok": true,
+      "detail": "口令由运维统一配置。为保护数据，连续失败 5 次将锁定 15 分钟，锁定期间请输"
+    },
+    {
+      "name": "[430x932] 口令错误 → 可读错误提示",
+      "ok": true,
+      "detail": "口令错误，请重新输入。连续失败 5 次将锁定 15 分钟。"
+    },
+    {
+      "name": "[430x932] 登录失败时不写入会话令牌",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 登录成功 → 令牌存 sessionStorage",
+      "ok": true,
+      "detail": "STUB-TOKEN"
+    },
+    {
+      "name": "[430x932] 登录成功 → 不进 localStorage",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 用户列表首屏渲染页码 1 数据",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 列表列含建档状态/基线进度/连续天数",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] member_id 超长已截断（带省略号）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 下一页 → 请求 page=2",
+      "ok": true,
+      "detail": "/api/v1/admin/users?page=2&size=20"
+    },
+    {
+      "name": "[430x932] 下一页 → 列表换页（用户21 出现）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 搜索 → 请求带 q 且回到第 1 页",
+      "ok": true,
+      "detail": "/api/v1/admin/users?page=1&size=20&q=%E9%98%BF%E5%AE%9D"
+    },
+    {
+      "name": "[430x932] 搜索 → 关键词按 URL 编码",
+      "ok": true,
+      "detail": "/api/v1/admin/users?page=1&size=20&q=%E9%98%BF%E5%AE%9D"
+    },
+    {
+      "name": "[430x932] 搜索 → 结果渲染命中项",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 【前置】桩返回确实含敏感字段",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 详情不含精确出生时刻字段名/值",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 详情不含体征数值",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 详情不含病史原文",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 详情保留合规必需信息（出生年月日/出生城市/是否已填体征）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 详情显式写明合规口径",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 指标卡 5 项齐全",
+      "ok": true,
+      "detail": "总用户 | 137 | 今日新增 | 9 | 建档率 | 62% | 打卡用户 | 88 | 好友圈关系数 | 45"
+    },
+    {
+      "name": "[430x932] 建档率 0.62 → 62%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 指数分布 A/B/C/D 四条横向条",
+      "ok": true,
+      "detail": "['A', 'B', 'C', 'D']"
+    },
+    {
+      "name": "[430x932] A+B+C+D 占比之和 = 100%（±1）",
+      "ok": true,
+      "detail": "[41, 33, 18, 8]"
+    },
+    {
+      "name": "[430x932] 好友圈表渲染关系与加油次数",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 封禁前弹出二次确认（含目标与后果说明）",
+      "ok": true,
+      "detail": "确认封禁用户 M0002 ？封禁后其社交功能将停用（好友圈与加油均不可用）。"
+    },
+    {
+      "name": "[430x932] 二次确认前不发封禁请求",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 确认后发出 POST /admin/ban",
+      "ok": true,
+      "detail": "POST"
+    },
+    {
+      "name": "[430x932] ban 请求体字段为 member_id/banned",
+      "ok": true,
+      "detail": "{\"member_id\":\"M0002\",\"banned\":true}"
+    },
+    {
+      "name": "[430x932] ban 请求带 Bearer 令牌",
+      "ok": true,
+      "detail": "Bearer STUB-TOKEN"
+    },
+    {
+      "name": "[430x932] 导出触发浏览器下载",
+      "ok": true,
+      "detail": "ai-users-export.csv"
+    },
+    {
+      "name": "[430x932] 下载内容为 CSV 且脱敏表头",
+      "ok": true,
+      "detail": "member_id,nickname,profile_done,baseline"
+    },
+    {
+      "name": "[430x932] 导出走 fetch（非 a[href] 导航）",
+      "ok": true,
+      "detail": "/api/v1/admin/export.csv"
+    },
+    {
+      "name": "[430x932] 导出请求带 Bearer 令牌",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 401 → 自动回到登录界面",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 401 → 会话令牌被清除",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 401 → 登录界面给出失效提示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 500 → 后台骨架仍在（不白屏）",
+      "ok": true,
+      "detail": "{'app': True, 'active': 'panel-users', 'errShown': True, 'tableShown': True, 'bodyLen': 304}"
+    },
+    {
+      "name": "[430x932] 500 → 界面出现可读错误条",
+      "ok": true,
+      "detail": "用户列表加载失败：服务端内部错误\n重试 用户列表加载失败：服务端内部错误\n重试"
+    },
+    {
+      "name": "[430x932] 500 → 错误条含重试按钮",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932] 审计表含 时间/操作者/动作/目标",
+      "ok": true,
+      "detail": "审计日志 | 共 88 条日志 | 刷新 | 后台审计日志 | 时间\t操作者\t动作\t目标 | 2026-10-08 18:05\tops\t查看用户详情\tM0001 | 2026-10-08 18:06\tops\t封禁用户\tM0002 | 上一页"
+    },
+    {
+      "name": "[430x932] 页面本身无横向溢出",
+      "ok": true,
+      "detail": "{'s': 430, 'c': 430}"
+    },
+    {
+      "name": "[430x932] 宽表在容器内可横向滚动",
+      "ok": true,
+      "detail": "{'sw': 660, 'cw': 376}"
+    },
+    {
+      "name": "[430x932·实现口径] 信封 {code,message,data} 能正确解包并登录",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 列表用 archive_status 渲染建档状态",
+      "ok": true,
+      "detail": "M0001-ab…56\t用户1\t未建档\t1 / 7\t2026-10-02 08:00\t1 天 | M0002-ab…56\t用户2\t已建档\t2 / 7\t2026-10-03 08:0"
+    },
+    {
+      "name": "[430x932·实现口径] 列表用 baseline_progress 渲染 n/7",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 指标卡用 users_total/new_today/archive_rate/checkin_users_total",
+      "ok": true,
+      "detail": "总用户 | 137 | 今日新增 | 9 | 建档率 | 62% | 已建档 85 人 | 打卡用户 | 88 | 今日打卡 12 人 | 好友圈关系数 | 30 | 待确认 15 · 加油 120"
+    },
+    {
+      "name": "[430x932·实现口径] 好友圈关系数取 friend_circle.accepted 并带子项",
+      "ok": true,
+      "detail": "总用户 | 137 | 今日新增 | 9 | 建档率 | 62% | 已建档 85 人 | 打卡用户 | 88 | 今日打卡 12 人 | 好友圈关系数 | 30 | 待确认 15 · 加油 120"
+    },
+    {
+      "name": "[430x932·实现口径] 建档率卡带已建档人数",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] index_distribution.items → A/B/C/D 四条",
+      "ok": true,
+      "detail": "['A', 'B', 'C', 'D']"
+    },
+    {
+      "name": "[430x932·实现口径] 实现口径占比之和 = 100%",
+      "ok": true,
+      "detail": "[41.2, 32.9, 17.7, 8.2]"
+    },
+    {
+      "name": "[430x932·实现口径] relations 行渲染双方昵称与状态",
+      "ok": true,
+      "detail": "2026-10-08 10:00\t小明 → 小红　M0001/M0002\t已建立\t—\t—\t封禁"
+    },
+    {
+      "name": "[430x932·实现口径] 封禁对象取 b_member",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 切到加油记录 → 请求带 kind=cheers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] cheers 行渲染加油模板与日期",
+      "ok": true,
+      "detail": "2026-10-08 10:00\t小明 → 小红　M0001/M0002\t加油模板A　2026-10-08\t1\t—\t封禁"
+    },
+    {
+      "name": "[430x932·实现口径] 封禁对象取 to_member（加油行）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 封禁请求体与契约一致",
+      "ok": true,
+      "detail": "{\"member_id\":\"M0002\",\"banned\":true}"
+    },
+    {
+      "name": "[430x932·实现口径] 审计用 at/actor/action/target 渲染时间列",
+      "ok": true,
+      "detail": "审计日志 | 共 88 条日志 | 刷新 | 后台审计日志 | 时间\t操作者\t动作\t目标 | 2026-10-08 09:57\tadmin\tlogin_ok\t—　127.0.0.1 | 2026-10-08 09:58\t"
+    },
+    {
+      "name": "[430x932·实现口径] 详情取 birth.birth_date / birth.birth_city",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] archive.vitals_collected=false → 未采集",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 今日指数（展示分 + 分档）已渲染",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 嵌套敏感字段仍不渲染",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 服务端脱敏口径原样展示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[430x932·实现口径] 信封模式下导出仍为 blob 下载",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 登录页展示『失败 5 次锁定 15 分钟』说明",
+      "ok": true,
+      "detail": "口令由运维统一配置。为保护数据，连续失败 5 次将锁定 15 分钟，锁定期间请输"
+    },
+    {
+      "name": "[1440x900] 口令错误 → 可读错误提示",
+      "ok": true,
+      "detail": "口令错误，请重新输入。连续失败 5 次将锁定 15 分钟。"
+    },
+    {
+      "name": "[1440x900] 登录失败时不写入会话令牌",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 登录成功 → 令牌存 sessionStorage",
+      "ok": true,
+      "detail": "STUB-TOKEN"
+    },
+    {
+      "name": "[1440x900] 登录成功 → 不进 localStorage",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 用户列表首屏渲染页码 1 数据",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 列表列含建档状态/基线进度/连续天数",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] member_id 超长已截断（带省略号）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 下一页 → 请求 page=2",
+      "ok": true,
+      "detail": "/api/v1/admin/users?page=2&size=20"
+    },
+    {
+      "name": "[1440x900] 下一页 → 列表换页（用户21 出现）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 搜索 → 请求带 q 且回到第 1 页",
+      "ok": true,
+      "detail": "/api/v1/admin/users?page=1&size=20&q=%E9%98%BF%E5%AE%9D"
+    },
+    {
+      "name": "[1440x900] 搜索 → 关键词按 URL 编码",
+      "ok": true,
+      "detail": "/api/v1/admin/users?page=1&size=20&q=%E9%98%BF%E5%AE%9D"
+    },
+    {
+      "name": "[1440x900] 搜索 → 结果渲染命中项",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 【前置】桩返回确实含敏感字段",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 详情不含精确出生时刻字段名/值",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 详情不含体征数值",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 详情不含病史原文",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 详情保留合规必需信息（出生年月日/出生城市/是否已填体征）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 详情显式写明合规口径",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 指标卡 5 项齐全",
+      "ok": true,
+      "detail": "总用户 | 137 | 今日新增 | 9 | 建档率 | 62% | 打卡用户 | 88 | 好友圈关系数 | 45"
+    },
+    {
+      "name": "[1440x900] 建档率 0.62 → 62%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 指数分布 A/B/C/D 四条横向条",
+      "ok": true,
+      "detail": "['A', 'B', 'C', 'D']"
+    },
+    {
+      "name": "[1440x900] A+B+C+D 占比之和 = 100%（±1）",
+      "ok": true,
+      "detail": "[41, 33, 18, 8]"
+    },
+    {
+      "name": "[1440x900] 好友圈表渲染关系与加油次数",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 封禁前弹出二次确认（含目标与后果说明）",
+      "ok": true,
+      "detail": "确认封禁用户 M0002 ？封禁后其社交功能将停用（好友圈与加油均不可用）。"
+    },
+    {
+      "name": "[1440x900] 二次确认前不发封禁请求",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 确认后发出 POST /admin/ban",
+      "ok": true,
+      "detail": "POST"
+    },
+    {
+      "name": "[1440x900] ban 请求体字段为 member_id/banned",
+      "ok": true,
+      "detail": "{\"member_id\":\"M0002\",\"banned\":true}"
+    },
+    {
+      "name": "[1440x900] ban 请求带 Bearer 令牌",
+      "ok": true,
+      "detail": "Bearer STUB-TOKEN"
+    },
+    {
+      "name": "[1440x900] 导出触发浏览器下载",
+      "ok": true,
+      "detail": "ai-users-export.csv"
+    },
+    {
+      "name": "[1440x900] 下载内容为 CSV 且脱敏表头",
+      "ok": true,
+      "detail": "member_id,nickname,profile_done,baseline"
+    },
+    {
+      "name": "[1440x900] 导出走 fetch（非 a[href] 导航）",
+      "ok": true,
+      "detail": "/api/v1/admin/export.csv"
+    },
+    {
+      "name": "[1440x900] 导出请求带 Bearer 令牌",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 401 → 自动回到登录界面",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 401 → 会话令牌被清除",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 401 → 登录界面给出失效提示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 500 → 后台骨架仍在（不白屏）",
+      "ok": true,
+      "detail": "{'app': True, 'active': 'panel-users', 'errShown': True, 'tableShown': True, 'bodyLen': 311}"
+    },
+    {
+      "name": "[1440x900] 500 → 界面出现可读错误条",
+      "ok": true,
+      "detail": "用户列表加载失败：服务端内部错误\n重试 用户列表加载失败：服务端内部错误\n重试"
+    },
+    {
+      "name": "[1440x900] 500 → 错误条含重试按钮",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900] 审计表含 时间/操作者/动作/目标",
+      "ok": true,
+      "detail": "审计日志 | 共 88 条日志 | 刷新 | 后台审计日志 | 时间\t操作者\t动作\t目标 | 2026-10-08 18:05\tops\t查看用户详情\tM0001 | 2026-10-08 18:06\tops\t封禁用户\tM0002 | 上一页"
+    },
+    {
+      "name": "[1440x900·实现口径] 信封 {code,message,data} 能正确解包并登录",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 列表用 archive_status 渲染建档状态",
+      "ok": true,
+      "detail": "M0001-ab…56\t用户1\t未建档\t1 / 7\t2026-10-02 08:00\t1 天 | M0002-ab…56\t用户2\t已建档\t2 / 7\t2026-10-03 08:0"
+    },
+    {
+      "name": "[1440x900·实现口径] 列表用 baseline_progress 渲染 n/7",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 指标卡用 users_total/new_today/archive_rate/checkin_users_total",
+      "ok": true,
+      "detail": "总用户 | 137 | 今日新增 | 9 | 建档率 | 62% | 已建档 85 人 | 打卡用户 | 88 | 今日打卡 12 人 | 好友圈关系数 | 30 | 待确认 15 · 加油 120"
+    },
+    {
+      "name": "[1440x900·实现口径] 好友圈关系数取 friend_circle.accepted 并带子项",
+      "ok": true,
+      "detail": "总用户 | 137 | 今日新增 | 9 | 建档率 | 62% | 已建档 85 人 | 打卡用户 | 88 | 今日打卡 12 人 | 好友圈关系数 | 30 | 待确认 15 · 加油 120"
+    },
+    {
+      "name": "[1440x900·实现口径] 建档率卡带已建档人数",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] index_distribution.items → A/B/C/D 四条",
+      "ok": true,
+      "detail": "['A', 'B', 'C', 'D']"
+    },
+    {
+      "name": "[1440x900·实现口径] 实现口径占比之和 = 100%",
+      "ok": true,
+      "detail": "[41.2, 32.9, 17.7, 8.2]"
+    },
+    {
+      "name": "[1440x900·实现口径] relations 行渲染双方昵称与状态",
+      "ok": true,
+      "detail": "2026-10-08 10:00\t小明 → 小红　M0001/M0002\t已建立\t—\t—\t封禁"
+    },
+    {
+      "name": "[1440x900·实现口径] 封禁对象取 b_member",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 切到加油记录 → 请求带 kind=cheers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] cheers 行渲染加油模板与日期",
+      "ok": true,
+      "detail": "2026-10-08 10:00\t小明 → 小红　M0001/M0002\t加油模板A　2026-10-08\t1\t—\t封禁"
+    },
+    {
+      "name": "[1440x900·实现口径] 封禁对象取 to_member（加油行）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 封禁请求体与契约一致",
+      "ok": true,
+      "detail": "{\"member_id\":\"M0002\",\"banned\":true}"
+    },
+    {
+      "name": "[1440x900·实现口径] 审计用 at/actor/action/target 渲染时间列",
+      "ok": true,
+      "detail": "审计日志 | 共 88 条日志 | 刷新 | 后台审计日志 | 时间\t操作者\t动作\t目标 | 2026-10-08 09:57\tadmin\tlogin_ok\t—　127.0.0.1 | 2026-10-08 09:58\t"
+    },
+    {
+      "name": "[1440x900·实现口径] 详情取 birth.birth_date / birth.birth_city",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] archive.vitals_collected=false → 未采集",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 今日指数（展示分 + 分档）已渲染",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 嵌套敏感字段仍不渲染",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 服务端脱敏口径原样展示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[1440x900·实现口径] 信封模式下导出仍为 blob 下载",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[截图] 01_login_430x932.png 存在且非空",
+      "ok": true,
+      "detail": "52817 bytes"
+    },
+    {
+      "name": "[截图] 01_login_1440x900.png 存在且非空",
+      "ok": true,
+      "detail": "98576 bytes"
+    },
+    {
+      "name": "[截图] 02_users_430x932.png 存在且非空",
+      "ok": true,
+      "detail": "55489 bytes"
+    },
+    {
+      "name": "[截图] 02_users_1440x900.png 存在且非空",
+      "ok": true,
+      "detail": "69853 bytes"
+    },
+    {
+      "name": "[截图] 03_detail_430x932.png 存在且非空",
+      "ok": true,
+      "detail": "37195 bytes"
+    },
+    {
+      "name": "[截图] 03_detail_1440x900.png 存在且非空",
+      "ok": true,
+      "detail": "91978 bytes"
+    },
+    {
+      "name": "[截图] 04_stats_430x932.png 存在且非空",
+      "ok": true,
+      "detail": "49988 bytes"
+    },
+    {
+      "name": "[截图] 04_stats_1440x900.png 存在且非空",
+      "ok": true,
+      "detail": "61842 bytes"
+    },
+    {
+      "name": "[截图] 05_ban_confirm_430x932.png 存在且非空",
+      "ok": true,
+      "detail": "51665 bytes"
+    },
+    {
+      "name": "[截图] 05_ban_confirm_1440x900.png 存在且非空",
+      "ok": true,
+      "detail": "74240 bytes"
+    }
+  ],
+  "shots": [
+    "01_login_1440x900.png",
+    "01_login_430x932.png",
+    "02_users_1440x900.png",
+    "02_users_430x932.png",
+    "03_detail_1440x900.png",
+    "03_detail_430x932.png",
+    "04_stats_1440x900.png",
+    "04_stats_430x932.png",
+    "05_ban_confirm_1440x900.png",
+    "05_ban_confirm_430x932.png",
+    "06_login_401_1440x900.png",
+    "06_login_401_430x932.png",
+    "07_err500_1440x900.png",
+    "07_err500_430x932.png",
+    "08_audit_1440x900.png",
+    "08_audit_430x932.png"
+  ]
+}

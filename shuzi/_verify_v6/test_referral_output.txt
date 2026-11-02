@@ -1,0 +1,114 @@
+=== 0 打包 ===
+  SHA256 站点 = 91ABDA6A46A0E0AE1179F9179D9C2EB65EEBFCEFDE0FFD817F1D3F054A9AF72B
+  SHA256 运行时 = D4038B254B08337A1DF3150796513F7AB988ECCDC8675011683AB3C8B2A3E287
+完成。
+
+=== 1 清库并起真服务（port 15092）===
+    服务健康检查: PASS
+    A: HTTP 200 member=…990994d3
+    B: HTTP 200 member=…b59e3a6c
+    C: HTTP 200 member=…fb7a0805
+
+=== 断言 #1 · GET /me/referral 的 invite_url 逐字为 https://shuzi.yuanjk.cn/?invite=<code> ===
+    A 的 invite_code=16YSL8T6
+    A 的 invite_url =https://shuzi.yuanjk.cn/?invite=16YSL8T6
+    A 的 share_text =我是用户2491，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=16YSL8T6
+    [PASS] invite_url 逐字等于 https://shuzi.yuanjk.cn/?invite=<invite_code>  invite_url=https://shuzi.yuanjk.cn/?invite=16YSL8T6
+    [PASS] URL 里带 ?invite= 且码为 8 位大写字母数字  code=16YSL8T6
+    [PASS] A 尚未被推荐（referred_by 为 null）  referred_by=None
+    [PASS] GET /me/referral 是只读接口：连调两次不产生 referral 行  referral 行数=0
+
+=== 断言 #2 · B 用 A 的码 + auto_accept=true → 双方互为 accepted（无需 A 再确认） ===
+    B 调 POST /friends/invite {auto_accept:true} → HTTP 200 code=0 data={"friend_id": "mbr_8843c6be990994d3", "status": "accepted", "requested_by": "mbr_1a438e07b59e3a6c", "already_requested": false, "referred_by": {"member_id": "mbr_8843c6be990994d3", "nickname": "用户2491", "bound_at": "2026-10-08T09:32:52", "source": "link"}}
+    [PASS] 调用成功且 status=accepted（跳过 pending/accept 流程）  HTTP 200 status=accepted
+    [PASS] A 的 GET /friends 里 B 为 accepted  A→B=accepted
+    [PASS] B 的 GET /friends 里 A 为 accepted  B→A=accepted
+    [PASS] A 侧没有收到任何 pending 申请（无需 A 再确认）  A 的全部关系=['accepted']
+    [PASS] 数据库里这一对关系只有 1 行  social_friend 行数=1
+
+=== 断言 #3 · 同一调用后 referral 表新增且仅新增 1 行：referee=B、referrer=A ===
+    referral 行数=1 [{"referee_member_id": "mbr_1a438e07b59e3a6c", "referrer_member_id": "mbr_8843c6be990994d3", "invite_code": "16YSL8T6", "bound_at": "2026-10-08T09:32:52", "source": "link"}]
+    [PASS] referral 表总共只有 1 行  行数=1
+    [PASS] 这一行 referee=B 且 referrer=A  referee=b59e3a6c referrer=990994d3
+    [PASS] invite_code=A 的码、source=link、bound_at 非空  code=16YSL8T6 source=link bound_at=2026-10-08T09:32:52
+    [PASS] referral 行只存 member_id / 邀请码（无手机号/真名/生辰列）  列=['bound_at', 'invite_code', 'referee_member_id', 'referrer_member_id', 'source']
+
+=== 断言 #4 · B 再调用 / 改用 C 的码 → referral 仍指向 A（不可改绑） ===
+    B 重复用 A 的码 → HTTP 200 code=0 referred_by={"member_id": "mbr_8843c6be990994d3", "nickname": "用户2491", "bound_at": "2026-10-08T09:32:52", "source": "link"}
+    [PASS] B 再次调用不报错，返回体 referred_by 仍是 A  HTTP 200 referred_by={"member_id": "mbr_8843c6be990994d3", "nickname": "用户2491", "bound_at": "2026-10-08T09:32:52", "source": "link"}
+    B 改用 C 的码(BXV0OIOE) → HTTP 200 code=0 referred_by={"member_id": "mbr_8843c6be990994d3", "nickname": "用户2491", "bound_at": "2026-10-08T09:32:52", "source": "link"}
+    [PASS] B 改用 C 的码也不报错，referred_by 仍是 A（不可改绑）  HTTP 200 referred_by={"member_id": "mbr_8843c6be990994d3", "nickname": "用户2491", "bound_at": "2026-10-08T09:32:52", "source": "link"}
+    [PASS] GET /me/referral 的 referred_by 也是 A（与写路径同口径）  GET referred_by={"member_id": "mbr_8843c6be990994d3", "nickname": "用户2491", "bound_at": "2026-10-08T09:32:52", "source": "link"}
+    [PASS] 库里 referee=B 只有 1 行，且 referrer 仍是 A  referee=B 行数=1 referrer=990994d3
+
+=== 断言 #5 · A 用自己的码 → 拒绝（30005），且不产生 referral 行 ===
+    A 用自己的码 → HTTP 402 code=30005 detail={"field": "invite_code"}
+    [PASS] 被拒且错误码沿用既有 30005（HTTP 4xx）  HTTP 402 code=30005
+    [PASS] 自荐不产生 referral 行（前后行数不变：1）  referral 行数=1
+    [PASS] A 对自己也没有产生好友关系  pair 行数=0
+
+=== 断言 #8 · 链接参数重复访问/刷新：不重复绑定、不报错（幂等） ===
+    同一链接参数再打 3 次：[(200, 0, 'accepted'), (200, 0, 'accepted'), (200, 0, 'accepted')]
+    [PASS] 重复调用全部 HTTP 200 / code=0 / status=accepted（不报错）  结果=[(200, 0, 'accepted'), (200, 0, 'accepted'), (200, 0, 'accepted')]
+    [PASS] 不重复绑定：referral 行数仍为 1  referral 行数=1
+    [PASS] 不重复建关系：social_friend 行数仍为 1  行数=1
+    [PASS] 反复 GET /me/referral 返回稳定且不产生新行  urls={'https://shuzi.yuanjk.cn/?invite=16YSL8T6'}
+
+=== 断言 #A · 补充 A · 改昵称后 nickname / share_text 立刻反映新昵称 ===
+    改昵称 → HTTP 200 code=0 data={"nickname": "晨光小友"}
+    [PASS] POST /me/nickname 回传新昵称  返回=晨光小友
+    改后 GET /me/referral: nickname=晨光小友
+    改后 share_text=我是晨光小友，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=16YSL8T6
+    [PASS] GET /me/referral 的 nickname 立刻是新昵称  nickname=晨光小友
+    [PASS] share_text 含新昵称 + 含邀请链接（逐字含 invite_url）  share_text=我是晨光小友，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=16YSL8T6
+    [PASS] B 的 GET /friends 里 A 的昵称也同步为新值  nickname=晨光小友
+    [PASS] 越界（1 字）仍返回既有 10002（HTTP 400）  HTTP 400 code=10002
+    [PASS] 越界时昵称不被改动（仍是「晨光小友」）  nickname=晨光小友
+
+=== 断言 #B · 补充 B · 免鉴权 GET /invite/preview：有效码回昵称、无效码 valid:false 且 200、只回昵称 ===
+    无 Authorization 调 preview → HTTP 200 code=0 data={"valid": true, "nickname": "晨光小友"}
+    [PASS] 免鉴权可访问（HTTP 200 / code=0，不是 401）  HTTP 200 code=0
+    [PASS] 有效码 → valid=true 且 nickname 是邀请人当前昵称  valid=True nickname=晨光小友
+    [PASS] 响应体**只有** valid / nickname 两个字段（字段级断言）  字段=['nickname', 'valid']
+    [PASS] 响应体里不含 member_id（整包文本级断言）  payload={"code": 0, "message": "ok", "data": {"valid": true, "nickname": "晨光小友"}, "trace_id": "6ac6f2c460690b875c703b40"}
+    无效码 → HTTP 200 code=0 data={"valid": false, "nickname": null}
+    [PASS] 无效码 → {valid:false, nickname:null} 且 HTTP 200（不抛错）  HTTP 200 data={"valid": false, "nickname": null}
+    [PASS] 格式不合法的码同样 valid:false 且 200（前端不用处理异常分支）  HTTP 200 data={"valid": false, "nickname": null}
+    [PASS] 缺参数同样 valid:false 且 200  HTTP 200 data={"valid": false, "nickname": null}
+    [PASS] 改昵称后 preview 也立刻返回新昵称（现读 social_profile）  nickname=晨光小友
+
+=== 断言 #V · 补充 V · 不传 auto_accept 时仍是 pending（v3 原路径零改动） ===
+    D 不传 auto_accept 用 A 的码 → HTTP 200 code=0 data={"friend_id": "mbr_8843c6be990994d3", "status": "pending", "requested_by": "mbr_20172e7860948d56", "already_requested": false, "referred_by": {"member_id": "mbr_8843c6be990994d3", "nickname": "晨光小友", "bound_at": "2026-10-08T09:32:53", "source": "manual"}}
+    [PASS] 仍是 pending（未跳过对方确认）  status=pending
+    [PASS] A accept 后双方 accepted（既有流程照旧）  D→A=accepted
+    [PASS] 手工输码路径的 referral 也记一行，source=manual  rows=[{"referee_member_id": "mbr_20172e7860948d56", "referrer_member_id": "mbr_8843c6be990994d3", "invite_code": "16YSL8T6", "bound_at": "2026-10-08T09:32:53", "source": "manual"}]
+
+=== 断言 #C · 补充 C · 预览限流：同 IP 连打 61 次，第 61 次被拒（40000 / HTTP 429） ===
+    本节之前已成功 preview 4 次（同一本账，桶容量 60）
+    连打 61 次（耗时 0.48s）：本节成功 56 次；第一次被拒：(57, 429, 40000, {'scope': 'api_anon', 'reset_in_sec': 0})
+    [PASS] 全脚本 preview 成功总数恰为 60（与 LIMITS[api_anon]=60 次/60 秒 一致，可复算）  成功总数=60（本节前 4 + 本节 56）
+    [PASS] 第 61 次调用即被拒（既有 40000 RATE_LIMITED + HTTP 429）  第一次被拒=(57, 429, 40000, {'scope': 'api_anon', 'reset_in_sec': 0})
+    [PASS] 被限流时连无效码也一并挡掉（防枚举，而不是只挡有效码）  HTTP 429 code=40000
+    [PASS] 限流只拒请求、不写库（referral 行数不变）  行数=2
+
+=== referral 表（state.db 直读）===
+    行数 = 2
+    referee=b59e3a6c referrer=990994d3 invite_code=16YSL8T6 source=link bound_at=2026-10-08T09:32:52
+    referee=60948d56 referrer=990994d3 invite_code=16YSL8T6 source=manual bound_at=2026-10-08T09:32:53
+    成员对照：A=…990994d3  B=…b59e3a6c  C=…fb7a0805  D=…60948d56
+    referral 覆盖：referee=B→referrer=A（link）、referee=D→referrer=A（manual）
+
+=== 汇总（#1–#5、#8 为变更单验收项；A/B/C/V 为本次追加项）===
+  断言 #1  GET /me/referral 的 invite_url 逐字为 https://shuzi.yuanjk.cn/?invite=<code> —— PASS（4/4 项通过）
+  断言 #2  B 用 A 的码 + auto_accept=true → 双方互为 accepted（无需 A 再确认） —— PASS（5/5 项通过）
+  断言 #3  同一调用后 referral 表新增且仅新增 1 行：referee=B、referrer=A —— PASS（4/4 项通过）
+  断言 #4  B 再调用 / 改用 C 的码 → referral 仍指向 A（不可改绑） —— PASS（4/4 项通过）
+  断言 #5  A 用自己的码 → 拒绝（30005），且不产生 referral 行 —— PASS（3/3 项通过）
+  断言 #8  链接参数重复访问/刷新：不重复绑定、不报错（幂等） —— PASS（4/4 项通过）
+  断言 #A  补充 A · 改昵称后 nickname / share_text 立刻反映新昵称 —— PASS（6/6 项通过）
+  断言 #B  补充 B · 免鉴权 GET /invite/preview：有效码回昵称、无效码 valid:false 且 200、只回昵称 —— PASS（8/8 项通过）
+  断言 #C  补充 C · 预览限流：同 IP 连打 61 次，第 61 次被拒（40000 / HTTP 429） —— PASS（4/4 项通过）
+  断言 #V  补充 V · 不传 auto_accept 时仍是 pending（v3 原路径零改动） —— PASS（3/3 项通过）
+
+  合计 45 项子断言，通过 45，失败 0；本脚本范围 全部通过
+  明细 JSON: D:\shuzi\_verify_v6\test_referral_result.json

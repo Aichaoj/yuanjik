@@ -1,0 +1,42 @@
+[
+ {
+  "name": "线色=白 0xffffff",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "旧青绿 0x63d6c2 已清零",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "选中色 0xffb03a",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "未选中压暗 0.30",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "24 条经络管",
+  "ok": true,
+  "detail": "24"
+ },
+ {
+  "name": "选中后仍 24 条",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

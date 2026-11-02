@@ -1,0 +1,6 @@
+s=open(r'_智能体\deploy\_tool_v83_run.py',encoding='utf-8').read().replace('v83','v84').replace('V83','V84')
+s=s.replace('"server/_app/auth.py",','"server/_app/auth.py", "web/vendor/GLTFLoader.js",')
+open(r'_智能体\deploy\_tool_v84_run.py','w',encoding='utf-8',newline='\n').write(s)
+t=open(r'_资料\部署载荷\_shuzi_v83.ps1',encoding='utf-8').read().replace('V83','V84').replace('v83','v84').replace("WEB_VER = '75'","WEB_VER = '76'").replace('APPJS_WEBVER75','APPJS_WEBVER76').replace('"web": "75"','"web": "76"').replace('LIVE_VERSION75','LIVE_VERSION76')
+open(r'_资料\部署载荷\_shuzi_v84.ps1','w',encoding='utf-8',newline='\n').write(t)
+print('v84 ready nonascii', sum(1 for c in t if ord(c)>127))

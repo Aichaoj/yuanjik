@@ -1,0 +1,57 @@
+[
+ {
+  "tag": "Q0 测试账号",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "Q0b 预置电脑端记录",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "Q1 首页摘要带回服务端记录（饮食 较好 / 心情 一般）",
+  "ok": true,
+  "detail": "上次记录：饮食 较好 · 心情 一般 · 睡眠 7h点这里修改或补报今天"
+ },
+ {
+  "tag": "Q2 弹窗打开且已回填（diet=4 mood=3 sleep=7）",
+  "ok": true,
+  "detail": "open=True {'diet': '4', 'mood': '3', 'sleep': '7'}"
+ },
+ {
+  "tag": "Q3 上报后弹窗自动收起",
+  "ok": true,
+  "detail": "hidden=True"
+ },
+ {
+  "tag": "Q4 摘要变「今日已报」且带新值",
+  "ok": true,
+  "detail": "今日已报：饮食 很好 · 心情 一般 · 睡眠 7h点这里修改"
+ },
+ {
+  "tag": "Q5 手机登录后仍是同一份（不必重填）",
+  "ok": true,
+  "detail": "login=200 :: 上次记录：饮食 很好 · 心情 一般 · 睡眠 7h点这里修改或补报今天"
+ },
+ {
+  "tag": "M1 五音 5 / 静心音 3 / 佛音空态",
+  "ok": true,
+  "detail": "{'wuyin': 5, 'ambient': 3, 'chant': '佛音素材准备中：把录音放进 music/ 目录并在 music.json 里登记，这里就会自动出现（不用改代码）。'}"
+ },
+ {
+  "tag": "M2 宫音进入播放态",
+  "ok": true,
+  "detail": "now={'id': 'gong', 'name': '宫音（脾）', 'kind': 'wuyin'} mp=宫音（脾）"
+ },
+ {
+  "tag": "M3 停止清空播放态",
+  "ok": true,
+  "detail": "now=None"
+ },
+ {
+  "tag": "M4 控制台无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

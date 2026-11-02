@@ -1,0 +1,47 @@
+[
+ {
+  "tag": "U0 初始指数",
+  "ok": true,
+  "detail": "index=10000"
+ },
+ {
+  "tag": "U2 第 1 分钟扣 1",
+  "ok": true,
+  "detail": "cost=1 used=1 index=10004 (base+gained-1=10004)"
+ },
+ {
+  "tag": "U3a 第 16 分钟累计扣 2",
+  "ok": true,
+  "detail": "used=2 index=10104"
+ },
+ {
+  "tag": "U3b 第 31 分钟累计扣 3",
+  "ok": true,
+  "detail": "used=3 index=10208"
+ },
+ {
+  "tag": "U4 结束返回本次消耗",
+  "ok": true,
+  "detail": "used=3"
+ },
+ {
+  "tag": "U5 指数 = 10000 + 贡献 - 消耗",
+  "ok": true,
+  "detail": "index=10208 contrib=211 consumed=3"
+ },
+ {
+  "tag": "U1 文案已改",
+  "ok": true,
+  "detail": "你在任何地方按下「意念注入」，都会计入这个共享的仓；"
+ },
+ {
+  "tag": "U6 UI 显示共享能量与本次消耗",
+  "ok": true,
+  "detail": "shared=10,214 cost=1"
+ },
+ {
+  "tag": "U7 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

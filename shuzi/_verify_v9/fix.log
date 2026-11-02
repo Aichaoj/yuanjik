@@ -1,0 +1,40 @@
+003004 cands 2
+001003 cands 3
+006004 cands 43
+001004 cands 16
+002001 cands 2
+001002 cands 11
+002002 cands 3
+003003 cands 44
+004002 cands 28
+003001 cands 50
+004004 cands 44
+002003 cands 7
+006003 cands 45
+003002 cands 25
+006002 cands 58
+004003 cands 36
+004001 cands 38
+=== downloading 33 replacements
+001003 replaced: [(2, '001003_2.jpg')]
+   <- ['File:����ݧ֧٧ߧ��� ��ӧ�ۧ��ӧ� ����ҧڧ��ڧܧ� Saccharomyces spp.png']
+002001 replaced: [(1, '002001_1.jpg')]
+   <- ['File:Goji bessensap.JPG']
+002002 replaced: [(2, '002002_2.jpg')]
+   <- ['File:Moxa-H��tchen.JPG']
+003003 replaced: [(4, '003003_4.jpg')]
+   <- ['File:Digital spoon scale weighing principle 2 analogue.jpg']
+004004 replaced: [(1, '004004_1.jpg'), (2, '004004_2.jpg'), (3, '004004_3.jpg'), (4, '004004_4.jpg')]
+   <- ['File:Using a percution massage gun to do a foot massage.jpg', 'File:Physion Massage Gun.jpg', 'File:Man testing massage device (44133836).jpg', 'File:2019-VCT-MB01-electric-massage-table-thermal.jpg']
+004002 replaced: [(2, '004002_2.jpg')]
+   <- ['File:Exercise routine focuses on weight training at home on ']
+004003 replaced: [(3, '004003_3.jpg')]
+   <- ['File:Candles and Knee Brace at Pray 4 Rose Shrine (167767947']
+004001 replaced: [(3, '004001_3.jpg')]
+   <- ['File:Gym Dumbbells For Working Out (193383405).jpeg']
+006003 replaced: [(1, '006003_1.jpg')]
+   <- ['File:Michele Linger, left, Sexual Assault Response Coordinat']
+002003 replaced: [(1, '002003_1.jpg'), (3, '002003_3.jpg'), (4, '002003_4.jpg')]
+   <-    dl fail: The read operation timed out
+   dl fail: The read operation timed out
+   dl fail: The read operation timed out

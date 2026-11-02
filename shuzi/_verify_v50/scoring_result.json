@@ -1,0 +1,122 @@
+[
+ {
+  "name": "A1 权重和 = 1.00",
+  "ok": true,
+  "detail": "1.0"
+ },
+ {
+  "name": "A2 子权重和 = 域权重",
+  "ok": true,
+  "detail": "{'lifestyle': {'smoking': 3, 'alcohol': 2, 'exercise': 12, 'sleep': 11, 'diet': 5, 'sedentary': 2}, 'metabolic': {'bmi': 9, 'waist': 5, 'bp': 5, 'glucose': 4, 'family': 2}, 'mood': {'mood': 5, 'stress"
+ },
+ {
+  "name": "B1 吸烟：未超量不扣分",
+  "ok": true,
+  "detail": "(100, '未达扣分阈值（<10 支/天）：不扣分')"
+ },
+ {
+  "name": "B2 吸烟：超量但无病史 → 中性 100",
+  "ok": true,
+  "detail": "(100, '超量但无相关病史：按中性处理，不扣分')"
+ },
+ {
+  "name": "B2b 吸烟：超量且有病史 → 扣分",
+  "ok": true,
+  "detail": "(40, 0)"
+ },
+ {
+  "name": "B2c 饮酒：超量但无病史 → 中性；有病史才扣",
+  "ok": true,
+  "detail": "(100, 40)"
+ },
+ {
+  "name": "B3 运动锚点",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B4 BMI 锚点",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B5 腰围分性别",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B6 血压锚点",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C1 全量 → 置信度 100%",
+  "ok": true,
+  "detail": "1.0"
+ },
+ {
+  "name": "C2 全量分数在 0–100",
+  "ok": true,
+  "detail": "65.5"
+ },
+ {
+  "name": "C3 六域都有分",
+  "ok": true,
+  "detail": "{'spacetime': 72.0, 'lifestyle': 69.29, 'metabolic': 60.0, 'mood': 37.5, 'sexual': 85.0, 'env': 77.0}"
+ },
+ {
+  "name": "D1 缺项 → 只算已用权重（0.20+0.35=0.55）",
+  "ok": true,
+  "detail": "0.55"
+ },
+ {
+  "name": "D2 缺项不算 0 分（分数仍高）",
+  "ok": true,
+  "detail": "92.73"
+ },
+ {
+  "name": "D3 置信度 <60% 给区间提示",
+  "ok": true,
+  "detail": "置信度 55%：低于 60% 时只给区间参考"
+ },
+ {
+  "name": "D4 两性未开启 → 该域未参与、权重归一",
+  "ok": true,
+  "detail": "0.95"
+ },
+ {
+  "name": "E1 近两周持续低落 → 情绪域封顶 40",
+  "ok": true,
+  "detail": "40.0"
+ },
+ {
+  "name": "E2 给出就医提示（措辞不是诊断）",
+  "ok": true,
+  "detail": "近两周持续低落：该域封顶 40，并提示就医（不是诊断）"
+ },
+ {
+  "name": "F1 单次变动封顶 ±8",
+  "ok": true,
+  "detail": "(78.0, 62.0, 74)"
+ },
+ {
+  "name": "G1 吸烟 25 支 + 有病史，分数下降",
+  "ok": true,
+  "detail": "65.5 → 62.5"
+ },
+ {
+  "name": "G2 解释里能看到\"吸烟\"子项变化",
+  "ok": true,
+  "detail": "[{'domain': '生活方式', 'sub': '吸烟', 'before': 100, 'after': 0, 'delta': -100, 'weight': 3, 'note': '子项变化'}]"
+ },
+ {
+  "name": "H1 同一输入指纹相同",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "H2 改一项指纹不同",
+  "ok": true,
+  "detail": ""
+ }
+]

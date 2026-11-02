@@ -1,0 +1,239 @@
+[2026-10-24T14:36:20] tag=job_shuzi_diag4body
+﻿{
+ "admin_audit_cols": [
+  "id",
+  "at",
+  "actor",
+  "session",
+  "action",
+  "target",
+  "ip",
+  "detail"
+ ],
+ "api_call_log_cols": [
+  "id",
+  "key_id",
+  "key_prefix",
+  "method",
+  "path",
+  "status",
+  "code",
+  "elapsed_ms",
+  "cost",
+  "idempotency_key",
+  "created_at"
+ ],
+ "admin_audit_recent": [
+  {
+   "id": 20,
+   "at": "2026-10-21T22:05:13",
+   "actor": "admin",
+   "session": "408c654871c6",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 19,
+   "at": "2026-10-21T22:05:04",
+   "actor": "admin",
+   "session": "",
+   "action": "login_fail",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{\"attempt\": 1, \"limit\": 5}"
+  },
+  {
+   "id": 18,
+   "at": "2026-10-18T19:56:49",
+   "actor": "admin",
+   "session": "",
+   "action": "login_fail",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{\"attempt\": 1, \"limit\": 5}"
+  },
+  {
+   "id": 17,
+   "at": "2026-10-16T14:07:37",
+   "actor": "admin",
+   "session": "730e7453cbc9",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 16,
+   "at": "2026-10-16T14:07:28",
+   "actor": "admin",
+   "session": "",
+   "action": "login_fail",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{\"attempt\": 1, \"limit\": 5}"
+  },
+  {
+   "id": 15,
+   "at": "2026-10-09T21:39:08",
+   "actor": "admin",
+   "session": "05bde5aaeb45",
+   "action": "user_detail",
+   "target": "mbr_736a705e6074342f",
+   "ip": "127.0.0.1",
+   "detail": "{\"birth_returned\": \"day-only\", \"score\": 80}"
+  },
+  {
+   "id": 14,
+   "at": "2026-10-09T21:38:40",
+   "actor": "admin",
+   "session": "05bde5aaeb45",
+   "action": "user_detail",
+   "target": "mbr_0242f619a77089d5",
+   "ip": "127.0.0.1",
+   "detail": "{\"birth_returned\": \"day-only\", \"score\": 74}"
+  },
+  {
+   "id": 13,
+   "at": "2026-10-09T21:38:19",
+   "actor": "admin",
+   "session": "05bde5aaeb45",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 12,
+   "at": "2026-10-09T21:07:15",
+   "actor": "admin",
+   "session": "552765db1407",
+   "action": "user_detail",
+   "target": "mbr_736a705e6074342f",
+   "ip": "127.0.0.1",
+   "detail": "{\"birth_returned\": \"day-only\", \"score\": 80}"
+  },
+  {
+   "id": 11,
+   "at": "2026-10-09T21:06:54",
+   "actor": "admin",
+   "session": "552765db1407",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 10,
+   "at": "2026-10-09T21:04:58",
+   "actor": "admin",
+   "session": "bb7c39113630",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 9,
+   "at": "2026-10-09T19:48:50",
+   "actor": "admin",
+   "session": "97ccd760a84d",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 8,
+   "at": "2026-10-09T19:47:23",
+   "actor": "admin",
+   "session": "aa4b0c631525",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 7,
+   "at": "2026-10-08T20:23:17",
+   "actor": "admin",
+   "session": "33a49248ff11",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 6,
+   "at": "2026-10-08T14:09:44",
+   "actor": "admin",
+   "session": "01058099103b",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 5,
+   "at": "2026-10-08T12:41:54",
+   "actor": "admin",
+   "session": "4c544c515a7e",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 4,
+   "at": "2026-10-08T12:40:36",
+   "actor": "admin",
+   "session": "24d14677af2c",
+   "action": "user_detail",
+   "target": "mbr_736a705e6074342f",
+   "ip": "127.0.0.1",
+   "detail": "{\"birth_returned\": \"day-only\", \"score\": 80}"
+  },
+  {
+   "id": 3,
+   "at": "2026-10-08T12:39:38",
+   "actor": "admin",
+   "session": "24d14677af2c",
+   "action": "login_ok",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{}"
+  },
+  {
+   "id": 2,
+   "at": "2026-10-08T10:41:15",
+   "actor": "admin",
+   "session": "",
+   "action": "login_fail",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{\"attempt\": 2, \"limit\": 5}"
+  },
+  {
+   "id": 1,
+   "at": "2026-10-08T10:32:15",
+   "actor": "admin",
+   "session": "",
+   "action": "login_fail",
+   "target": "",
+   "ip": "127.0.0.1",
+   "detail": "{\"attempt\": 1, \"limit\": 5}"
+  }
+ ],
+ "audit_by_account_err": "no such column: account_id",
+ "calls_by_account_err": "no such column: account_id",
+ "accounts_of_member": [
+  {
+   "account_id": "acc_55e9bfcfc15bc98a",
+   "member_id": "mbr_736a705e6074342f",
+   "phone": "18911408241",
+   "merged_into": "",
+   "created": "1791412735.68548"
+  }
+ ]
+}

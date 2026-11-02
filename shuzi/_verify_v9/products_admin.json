@@ -1,0 +1,246 @@
+{
+  "totalCount": 192,
+  "distinct_codes": 24,
+  "products": [
+    {
+      "code": "001001",
+      "name": "维生素C咀嚼片",
+      "categoryName": "营养保健 >> 维生素矿物质",
+      "sku": "YJK-001001-1-PF",
+      "price": 38.4,
+      "marketPrice": 128.0,
+      "coverUrl": "products/001001_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "001002",
+      "name": "乳清蛋白粉",
+      "categoryName": "营养保健 >> 蛋白粉氨基酸",
+      "sku": "YJK-001002-1-PF",
+      "price": 119.4,
+      "marketPrice": 398.0,
+      "coverUrl": "products/001002_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "001003",
+      "name": "复合益生菌冻干粉",
+      "categoryName": "营养保健 >> 益生菌肠道",
+      "sku": "YJK-001003-1-PF",
+      "price": 77.4,
+      "marketPrice": 258.0,
+      "coverUrl": "products/001003_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "001004",
+      "name": "深海鱼油软胶囊",
+      "categoryName": "营养保健 >> 鱼油心脑",
+      "sku": "YJK-001004-1-PF",
+      "price": 86.4,
+      "marketPrice": 288.0,
+      "coverUrl": "products/001004_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "002001",
+      "name": "枸杞原浆",
+      "categoryName": "中医养生 >> 药食同源",
+      "sku": "YJK-002001-1-PF",
+      "price": 47.4,
+      "marketPrice": 158.0,
+      "coverUrl": "products/002001_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "002002",
+      "name": "艾灸盒随身灸",
+      "categoryName": "中医养生 >> 艾灸理疗",
+      "sku": "YJK-002002-1-PF",
+      "price": 38.4,
+      "marketPrice": 128.0,
+      "coverUrl": "products/002002_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "002003",
+      "name": "阿胶固元膏",
+      "categoryName": "中医养生 >> 膏方滋补",
+      "sku": "YJK-002003-1-PF",
+      "price": 137.4,
+      "marketPrice": 458.0,
+      "coverUrl": "products/002003_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "002004",
+      "name": "西洋参切片",
+      "categoryName": "中医养生 >> 参茸贵细",
+      "sku": "YJK-002004-1-ZH",
+      "price": 206.4,
+      "marketPrice": 688.0,
+      "coverUrl": "products/002004_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "003001",
+      "name": "智能健康手环",
+      "categoryName": "智能设备 >> 智能手环手表",
+      "sku": "YJK-003001-1-PF",
+      "price": 119.7,
+      "marketPrice": 399.0,
+      "coverUrl": "products/003001_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "003002",
+      "name": "上臂式电子血压计",
+      "categoryName": "智能设备 >> 血压血糖仪",
+      "sku": "YJK-003002-1-PF",
+      "price": 89.7,
+      "marketPrice": 299.0,
+      "coverUrl": "products/003002_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "003003",
+      "name": "智能体脂秤",
+      "categoryName": "智能设备 >> 体脂健康秤",
+      "sku": "YJK-003003-1-PF",
+      "price": 59.7,
+      "marketPrice": 199.0,
+      "coverUrl": "products/003003_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "003004",
+      "name": "睡眠监测手环",
+      "categoryName": "智能设备 >> 睡眠监测仪",
+      "sku": "YJK-003004-1-PF",
+      "price": 209.7,
+      "marketPrice": 699.0,
+      "coverUrl": "products/003004_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "004001",
+      "name": "可调哑铃套装",
+      "categoryName": "运动健身 >> 家用健身器材",
+      "sku": "YJK-004001-1-PF",
+      "price": 149.7,
+      "marketPrice": 499.0,
+      "coverUrl": "products/004001_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "004002",
+      "name": "天然橡胶瑜伽垫",
+      "categoryName": "运动健身 >> 瑜伽普拉提",
+      "sku": "YJK-004002-1-PF",
+      "price": 77.4,
+      "marketPrice": 258.0,
+      "coverUrl": "products/004002_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "004003",
+      "name": "专业护膝",
+      "categoryName": "运动健身 >> 运动护具",
+      "sku": "YJK-004003-1-PF",
+      "price": 47.4,
+      "marketPrice": 158.0,
+      "coverUrl": "products/004003_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "004004",
+      "name": "迷你筋膜枪",
+      "categoryName": "运动健身 >> 筋膜枪按摩器",
+      "sku": "YJK-004004-1-PF",
+      "price": 119.7,
+      "marketPrice": 399.0,
+      "coverUrl": "products/004004_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "005001",
+      "name": "有机五谷杂粮礼盒",
+      "categoryName": "健康食品 >> 有机杂粮",
+      "sku": "YJK-005001-1-PF",
+      "price": 47.4,
+      "marketPrice": 158.0,
+      "coverUrl": "products/005001_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "005002",
+      "name": "全营养代餐奶昔",
+      "categoryName": "健康食品 >> 代餐轻食",
+      "sku": "YJK-005002-1-PF",
+      "price": 77.4,
+      "marketPrice": 258.0,
+      "coverUrl": "products/005002_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "005003",
+      "name": "桂圆红枣枸杞茶",
+      "categoryName": "健康食品 >> 养生茶饮",
+      "sku": "YJK-005003-1-PF",
+      "price": 20.4,
+      "marketPrice": 68.0,
+      "coverUrl": "products/005003_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "005004",
+      "name": "低GI全麦面包",
+      "categoryName": "健康食品 >> 低GI食品",
+      "sku": "YJK-005004-1-PF",
+      "price": 14.4,
+      "marketPrice": 48.0,
+      "coverUrl": "products/005004_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "006001",
+      "name": "基础体检套餐",
+      "categoryName": "康养服务 >> 健康体检",
+      "sku": "YJK-006001-1-PF",
+      "price": 204.0,
+      "marketPrice": 680.0,
+      "coverUrl": "products/006001_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "006002",
+      "name": "中医在线问诊",
+      "categoryName": "康养服务 >> 中医问诊",
+      "sku": "YJK-006002-1-PF",
+      "price": 29.7,
+      "marketPrice": 99.0,
+      "coverUrl": "products/006002_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "006003",
+      "name": "心理咨询60分钟",
+      "categoryName": "康养服务 >> 心理咨询",
+      "sku": "YJK-006003-1-PF",
+      "price": 144.0,
+      "marketPrice": 480.0,
+      "coverUrl": "products/006003_1.jpg",
+      "count": 8
+    },
+    {
+      "code": "006004",
+      "name": "肩颈推拿理疗",
+      "categoryName": "康养服务 >> 康复理疗",
+      "sku": "YJK-006004-1-PF",
+      "price": 89.4,
+      "marketPrice": 298.0,
+      "coverUrl": "products/006004_1.jpg",
+      "count": 8
+    }
+  ]
+}

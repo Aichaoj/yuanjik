@@ -1,0 +1,265 @@
+{
+ "organs": [
+  {
+   "id": "og_heart",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 213,
+   "sy": 348,
+   "ndcZ": 0.9453,
+   "pos": [
+    0,
+    1.345,
+    0.035
+   ]
+  },
+  {
+   "id": "og_lungL",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 197,
+   "sy": 338,
+   "ndcZ": 0.9458,
+   "pos": [
+    -0.075,
+    1.395,
+    0.01
+   ]
+  },
+  {
+   "id": "og_lungR",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 228,
+   "sy": 338,
+   "ndcZ": 0.9458,
+   "pos": [
+    0.075,
+    1.395,
+    0.01
+   ]
+  },
+  {
+   "id": "og_liver",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 226,
+   "sy": 387,
+   "ndcZ": 0.9459,
+   "pos": [
+    0.068,
+    1.155,
+    0.01
+   ]
+  },
+  {
+   "id": "og_gall",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 234,
+   "sy": 397,
+   "ndcZ": 0.9462,
+   "pos": [
+    0.105,
+    1.105,
+    0
+   ]
+  },
+  {
+   "id": "og_spleen",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 198,
+   "sy": 388,
+   "ndcZ": 0.946,
+   "pos": [
+    -0.07,
+    1.15,
+    0.005
+   ]
+  },
+  {
+   "id": "og_stomach",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 208,
+   "sy": 406,
+   "ndcZ": 0.9456,
+   "pos": [
+    -0.02,
+    1.065,
+    0.03
+   ]
+  },
+  {
+   "id": "og_kidneyL",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 198,
+   "sy": 424,
+   "ndcZ": 0.9469,
+   "pos": [
+    -0.07,
+    0.975,
+    -0.035
+   ]
+  },
+  {
+   "id": "og_kidneyR",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 227,
+   "sy": 424,
+   "ndcZ": 0.9469,
+   "pos": [
+    0.07,
+    0.975,
+    -0.035
+   ]
+  },
+  {
+   "id": "og_intest",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 213,
+   "sy": 438,
+   "ndcZ": 0.9457,
+   "pos": [
+    0,
+    0.905,
+    0.03
+   ]
+  },
+  {
+   "id": "og_bladder",
+   "visible": true,
+   "opacity": 0.9,
+   "transparent": true,
+   "depthWrite": true,
+   "depthTest": true,
+   "renderOrder": 0,
+   "sx": 213,
+   "sy": 457,
+   "ndcZ": 0.9457,
+   "pos": [
+    0,
+    0.815,
+    0.03
+   ]
+  }
+ ],
+ "body": [
+  {
+   "id": "head",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "neck",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "shL",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "shR",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "chest",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "upper",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "lower",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "armL",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "armR",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "legL",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  },
+  {
+   "id": "legR",
+   "opacity": 0.26,
+   "transparent": true,
+   "depthWrite": true
+  }
+ ],
+ "rect": [
+  29,
+  239.171875,
+  367,
+  392
+ ]
+}

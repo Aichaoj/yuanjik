@@ -1,0 +1,317 @@
+静态服务 http://127.0.0.1:15243/ (dir=D:\shuzi\web)
+
+=== 场景 empty @ 430x932 ===
+  [PASS] [empty/430x932] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [empty/430x932] 返回按钮复用 btnBack 机制
+  [PASS] [empty/430x932] console 无 error
+  [PASS] [empty/430x932] 无未捕获异常
+  [PASS] [empty/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [empty/430x932] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [empty/430x932] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [empty/430x932] 无白屏（各区块均有可读文案）  -> {'feed': '用\n用户4821\n我\n刚刚\n今日指数 未公开\n\n好友动态还是空的。把上方邀请码发给朋友，对方确认后，这里就会出现彼此愿意公开的记录。', 'rank': '圈内暂时还没有人上榜。开启排行后你也会出现在这里。\n\n你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。\n\n参与健康排行\n仅好友圈内可见，不做全区排行。', 'cheer': '还没
+  [PASS] [empty/430x932] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83]]
+  [PASS] [empty/430x932] 好友圈正文无禁用词（合规区外）
+  [PASS] [empty/430x932] 未展示生辰/体征/通道明细/病历
+  [PASS] [empty/430x932] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [empty/430x932] 邀请码 8 位且已显示  -> K7QM2X9P
+  [PASS] [empty/430x932] 昵称显示（不含真名/手机号）  -> 昵称：用户4821
+  [PASS] [empty/430x932] 空态：动态有友好文案  -> 用用户4821我刚刚今日指数 未公开好友动态还是空的。把上方邀请码发给朋友，对方确认后，这里就会出现彼此愿意公开的记录。
+  [PASS] [empty/430x932] 空态：互促有引导文案
+  [PASS] [empty/430x932] 空态：排行有提示  -> 圈内暂时还没有人上榜。开启排行后你也会出现在这里。你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。参与健康排行仅好友圈内可见，不做全区排行。
+  [PASS] [empty/430x932] 空态：待确认区隐藏
+  [PASS] [empty/430x932] 未开启 in_ranking 时显示开关提示
+
+=== 场景 public @ 430x932 ===
+  [PASS] [public/430x932] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [public/430x932] 返回按钮复用 btnBack 机制
+  [PASS] [public/430x932] console 无 error
+  [PASS] [public/430x932] 无未捕获异常
+  [PASS] [public/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [public/430x932] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [public/430x932] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [public/430x932] 无白屏（各区块均有可读文案）  -> {'feed': '用\n用户4821\n我\n刚刚\n今日指数 未公开\n小\n小明 给 我 加油：早点休息，明天见\n小\n小明\n刚刚\n今日指数\n91\n分\n连续记录\n12\n天', 'rank': '1\n小\n小明\n91\n\n你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。\n\n参与健康排行\n仅好友圈内可见，不做全区排行。', 'cheer': '小
+  [PASS] [public/430x932] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83], ['#cheerB
+  [PASS] [public/430x932] 好友圈正文无禁用词（合规区外）
+  [PASS] [public/430x932] 未展示生辰/体征/通道明细/病历
+  [PASS] [public/430x932] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [public/430x932] 邀请码 8 位且已显示  -> K7QM2X9P
+  [PASS] [public/430x932] 昵称显示（不含真名/手机号）  -> 昵称：用户4821
+  [PASS] [public/430x932] 待确认列表可见
+  [PASS] [public/430x932] 待确认含接受/拒绝按钮
+  [PASS] [public/430x932] 我发出的请求显示等待对方确认
+  [PASS] [public/430x932] 对方公开时动态显示分数 91 与连续 12 天  -> 用用户4821我刚刚今日指数 未公开小小明 给 我 加油：早点休息，明天见小小明刚刚今日指数 91 分连续记录 12 天
+  [PASS] [public/430x932] 动态含加油记录
+  [PASS] [public/430x932] 自己未开启 share_index → 动态里自己显示未公开
+  [PASS] [public/430x932] 开启 share_index 后自己立即出现分数 82  -> 今日指数
+82
+分
+  [PASS] [public/430x932] 开关切换调用 POST /friends/privacy  -> [{'share_index': True}]
+  [PASS] [public/430x932] 关闭 share_index 后自己立即变为「未公开」  -> 今日指数 未公开
+  [PASS] [public/430x932] 键盘 Enter 可开启开关  -> true
+  [PASS] [public/430x932] 键盘 Space 可关闭开关  -> false
+  [PASS] [public/430x932] 开启 in_ranking 后自己出现在排行且高亮  -> 1小小明912用用户4821我82
+  [PASS] [public/430x932] 排行按分数降序（小明 91 > 我 82）  -> ['91', '82']
+  [PASS] [public/430x932] 加油模板可选 6 条  -> 6
+  [PASS] [public/430x932] 加油模板为中性文案
+  [PASS] [public/430x932] 选模板后调用 POST /friends/cheer  -> [{'friend_id': 'F1024', 'template_id': 's1'}]
+  [PASS] [public/430x932] 今日次数递减为 2  -> 今日还可送 2 次
+  [PASS] [public/430x932] 加油记录出现在动态里  -> 用用户4821我刚刚今日指数 未公开用用户4821 给 小明 加油：今天也照顾好自己小小明 给 我 加油：早点休息，明天见小小明刚刚今日指数 91 分连续记录 12 天
+  [PASS] [public/430x932] 解除好友需二次确认（先弹确认框，不直接删除）  -> 确定要解除与「小明」的好友关系吗？解除后双方立刻互不可见，动态与排行里都不再出现对方。此操作不可撤销。
+  [PASS] [public/430x932] 确认框文案说明解除后果
+  [PASS] [public/430x932] 取消后不删除好友
+  [PASS] [public/430x932] 二次确认后调用 DELETE /friends/{id}  -> ['/api/v1/friends/F1024']
+  [PASS] [public/430x932] 解除后列表/动态不再出现对方  -> 还没有好友。把上方邀请码发给朋友，或填入对方的邀请码发起添加；对方确认后就能互相加油。
+
+=== 场景 private_friend @ 430x932 ===
+  [PASS] [private_friend/430x932] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [private_friend/430x932] 返回按钮复用 btnBack 机制
+  [PASS] [private_friend/430x932] console 无 error
+  [PASS] [private_friend/430x932] 无未捕获异常
+  [PASS] [private_friend/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [private_friend/430x932] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [private_friend/430x932] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [private_friend/430x932] 无白屏（各区块均有可读文案）  -> {'feed': '用\n用户4821\n我\n刚刚\n今日指数 未公开\n小\n小静\n刚刚\n今日指数 未公开', 'rank': '1\n小\n小静\n未公开\n\n你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。\n\n参与健康排行\n仅好友圈内可见，不做全区排行。', 'cheer': '小\n小静\n今日指数 未公开 · 刚刚\n加油\n解除\n\n加油只是一句中
+  [PASS] [private_friend/430x932] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83], ['#cheerB
+  [PASS] [private_friend/430x932] 好友圈正文无禁用词（合规区外）
+  [PASS] [private_friend/430x932] 未展示生辰/体征/通道明细/病历
+  [PASS] [private_friend/430x932] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [private_friend/430x932] 邀请码 8 位且已显示  -> K7QM2X9P
+  [PASS] [private_friend/430x932] 昵称显示（不含真名/手机号）  -> 昵称：用户4821
+  [PASS] [private_friend/430x932] 对方未公开 → 动态显示「未公开」  -> 用用户4821我刚刚今日指数 未公开小小静刚刚今日指数 未公开
+  [PASS] [private_friend/430x932] 对方未公开 → 分数 88 绝不出现  -> 用用户4821我刚刚今日指数 未公开小小静刚刚今日指数 未公开
+  [PASS] [private_friend/430x932] 未开启 share_streak → 不显示连续天数  -> 用用户4821我刚刚今日指数 未公开小小静刚刚今日指数 未公开
+  [PASS] [private_friend/430x932] 互促列表同样不显示对方分数
+  [PASS] [private_friend/430x932] 接口只给 3 条模板时补足到 6 条  -> 6
+
+=== 场景 error500 @ 430x932 ===
+  [PASS] [error500/430x932] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [error500/430x932] 返回按钮复用 btnBack 机制
+  [PASS] [error500/430x932] console 无 error
+  [PASS] [error500/430x932] 无未捕获异常
+  [PASS] [error500/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [error500/430x932] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [error500/430x932] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [error500/430x932] 无白屏（各区块均有可读文案）  -> {'feed': '动态暂时读取失败，请稍后重试；其余区块仍可正常浏览。', 'rank': '排行暂时读取失败，请稍后重试。', 'cheer': '好友列表暂时读取失败，请稍后重试。', 'invite': '暂不可用'}
+  [PASS] [error500/430x932] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83]]
+  [PASS] [error500/430x932] 好友圈正文无禁用词（合规区外）
+  [PASS] [error500/430x932] 未展示生辰/体征/通道明细/病历
+  [PASS] [error500/430x932] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [error500/430x932] 邀请码读取失败有可读占位  -> 暂不可用
+  [PASS] [error500/430x932] 接口 500 有可读错误条  -> 好友圈部分内容读取失败：服务暂时不可用，请稍后重试。（追踪号 stub-v3-err）（其余区块仍可正常浏览，可退出后重新进入本屏重试。）
+
+=== 场景 empty @ 1440x900 ===
+  [PASS] [empty/1440x900] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [empty/1440x900] 返回按钮复用 btnBack 机制
+  [PASS] [empty/1440x900] console 无 error
+  [PASS] [empty/1440x900] 无未捕获异常
+  [PASS] [empty/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [empty/1440x900] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [empty/1440x900] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [empty/1440x900] 无白屏（各区块均有可读文案）  -> {'feed': '用\n用户4821\n我\n刚刚\n今日指数 未公开\n\n好友动态还是空的。把上方邀请码发给朋友，对方确认后，这里就会出现彼此愿意公开的记录。', 'rank': '圈内暂时还没有人上榜。开启排行后你也会出现在这里。\n\n你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。\n\n参与健康排行\n仅好友圈内可见，不做全区排行。', 'cheer': '还没
+  [PASS] [empty/1440x900] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83]]
+  [PASS] [empty/1440x900] 好友圈正文无禁用词（合规区外）
+  [PASS] [empty/1440x900] 未展示生辰/体征/通道明细/病历
+  [PASS] [empty/1440x900] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [empty/1440x900] 邀请码 8 位且已显示  -> K7QM2X9P
+  [PASS] [empty/1440x900] 昵称显示（不含真名/手机号）  -> 昵称：用户4821
+  [PASS] [empty/1440x900] 空态：动态有友好文案  -> 用用户4821我刚刚今日指数 未公开好友动态还是空的。把上方邀请码发给朋友，对方确认后，这里就会出现彼此愿意公开的记录。
+  [PASS] [empty/1440x900] 空态：互促有引导文案
+  [PASS] [empty/1440x900] 空态：排行有提示  -> 圈内暂时还没有人上榜。开启排行后你也会出现在这里。你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。参与健康排行仅好友圈内可见，不做全区排行。
+  [PASS] [empty/1440x900] 空态：待确认区隐藏
+  [PASS] [empty/1440x900] 未开启 in_ranking 时显示开关提示
+
+=== 场景 public @ 1440x900 ===
+  [PASS] [public/1440x900] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [public/1440x900] 返回按钮复用 btnBack 机制
+  [PASS] [public/1440x900] console 无 error
+  [PASS] [public/1440x900] 无未捕获异常
+  [PASS] [public/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [public/1440x900] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [public/1440x900] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [public/1440x900] 无白屏（各区块均有可读文案）  -> {'feed': '用\n用户4821\n我\n刚刚\n今日指数 未公开\n小\n小明 给 我 加油：早点休息，明天见\n小\n小明\n刚刚\n今日指数\n91\n分\n连续记录\n12\n天', 'rank': '1\n小\n小明\n91\n\n你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。\n\n参与健康排行\n仅好友圈内可见，不做全区排行。', 'cheer': '小
+  [PASS] [public/1440x900] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83], ['#cheerB
+  [PASS] [public/1440x900] 好友圈正文无禁用词（合规区外）
+  [PASS] [public/1440x900] 未展示生辰/体征/通道明细/病历
+  [PASS] [public/1440x900] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [public/1440x900] 邀请码 8 位且已显示  -> K7QM2X9P
+  [PASS] [public/1440x900] 昵称显示（不含真名/手机号）  -> 昵称：用户4821
+  [PASS] [public/1440x900] 待确认列表可见
+  [PASS] [public/1440x900] 待确认含接受/拒绝按钮
+  [PASS] [public/1440x900] 我发出的请求显示等待对方确认
+  [PASS] [public/1440x900] 对方公开时动态显示分数 91 与连续 12 天  -> 用用户4821我刚刚今日指数 未公开小小明 给 我 加油：早点休息，明天见小小明刚刚今日指数 91 分连续记录 12 天
+  [PASS] [public/1440x900] 动态含加油记录
+  [PASS] [public/1440x900] 自己未开启 share_index → 动态里自己显示未公开
+  [PASS] [public/1440x900] 开启 share_index 后自己立即出现分数 82  -> 今日指数
+82
+分
+  [PASS] [public/1440x900] 开关切换调用 POST /friends/privacy  -> [{'share_index': True}]
+  [PASS] [public/1440x900] 关闭 share_index 后自己立即变为「未公开」  -> 今日指数 未公开
+  [PASS] [public/1440x900] 键盘 Enter 可开启开关  -> true
+  [PASS] [public/1440x900] 键盘 Space 可关闭开关  -> false
+  [PASS] [public/1440x900] 开启 in_ranking 后自己出现在排行且高亮  -> 1小小明912用用户4821我82
+  [PASS] [public/1440x900] 排行按分数降序（小明 91 > 我 82）  -> ['91', '82']
+  [PASS] [public/1440x900] 加油模板可选 6 条  -> 6
+  [PASS] [public/1440x900] 加油模板为中性文案
+  [PASS] [public/1440x900] 选模板后调用 POST /friends/cheer  -> [{'friend_id': 'F1024', 'template_id': 's1'}]
+  [PASS] [public/1440x900] 今日次数递减为 2  -> 今日还可送 2 次
+  [PASS] [public/1440x900] 加油记录出现在动态里  -> 用用户4821我刚刚今日指数 未公开用用户4821 给 小明 加油：今天也照顾好自己小小明 给 我 加油：早点休息，明天见小小明刚刚今日指数 91 分连续记录 12 天
+  [PASS] [public/1440x900] 解除好友需二次确认（先弹确认框，不直接删除）  -> 确定要解除与「小明」的好友关系吗？解除后双方立刻互不可见，动态与排行里都不再出现对方。此操作不可撤销。
+  [PASS] [public/1440x900] 确认框文案说明解除后果
+  [PASS] [public/1440x900] 取消后不删除好友
+  [PASS] [public/1440x900] 二次确认后调用 DELETE /friends/{id}  -> ['/api/v1/friends/F1024']
+  [PASS] [public/1440x900] 解除后列表/动态不再出现对方  -> 还没有好友。把上方邀请码发给朋友，或填入对方的邀请码发起添加；对方确认后就能互相加油。
+
+=== 场景 private_friend @ 1440x900 ===
+  [PASS] [private_friend/1440x900] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [private_friend/1440x900] 返回按钮复用 btnBack 机制
+  [PASS] [private_friend/1440x900] console 无 error
+  [PASS] [private_friend/1440x900] 无未捕获异常
+  [PASS] [private_friend/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [private_friend/1440x900] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [private_friend/1440x900] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [private_friend/1440x900] 无白屏（各区块均有可读文案）  -> {'feed': '用\n用户4821\n我\n刚刚\n今日指数 未公开\n小\n小静\n刚刚\n今日指数 未公开', 'rank': '1\n小\n小静\n未公开\n\n你还没有参与排行。开启后才会出现在榜单里，关闭时别人也看不到你的名次。\n\n参与健康排行\n仅好友圈内可见，不做全区排行。', 'cheer': '小\n小静\n今日指数 未公开 · 刚刚\n加油\n解除\n\n加油只是一句中
+  [PASS] [private_friend/1440x900] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83], ['#cheerB
+  [PASS] [private_friend/1440x900] 好友圈正文无禁用词（合规区外）
+  [PASS] [private_friend/1440x900] 未展示生辰/体征/通道明细/病历
+  [PASS] [private_friend/1440x900] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [private_friend/1440x900] 邀请码 8 位且已显示  -> K7QM2X9P
+  [PASS] [private_friend/1440x900] 昵称显示（不含真名/手机号）  -> 昵称：用户4821
+  [PASS] [private_friend/1440x900] 对方未公开 → 动态显示「未公开」  -> 用用户4821我刚刚今日指数 未公开小小静刚刚今日指数 未公开
+  [PASS] [private_friend/1440x900] 对方未公开 → 分数 88 绝不出现  -> 用用户4821我刚刚今日指数 未公开小小静刚刚今日指数 未公开
+  [PASS] [private_friend/1440x900] 未开启 share_streak → 不显示连续天数  -> 用用户4821我刚刚今日指数 未公开小小静刚刚今日指数 未公开
+  [PASS] [private_friend/1440x900] 互促列表同样不显示对方分数
+  [PASS] [private_friend/1440x900] 接口只给 3 条模板时补足到 6 条  -> 6
+
+=== 场景 error500 @ 1440x900 ===
+  [PASS] [error500/1440x900] 首页有「好友圈」入口  -> 
+          
+            
+            
+            
+          
+          好友圈
+        
+  [PASS] [error500/1440x900] 返回按钮复用 btnBack 机制
+  [PASS] [error500/1440x900] console 无 error
+  [PASS] [error500/1440x900] 无未捕获异常
+  [PASS] [error500/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [error500/1440x900] 三件套区块（动态/排行/互促）可见  -> {'feed': True, 'rank': True, 'cheer': True}
+  [PASS] [error500/1440x900] 三个隐私开关齐备且默认全关  -> [3, ['false', 'false', 'false']]
+  [PASS] [error500/1440x900] 无白屏（各区块均有可读文案）  -> {'feed': '动态暂时读取失败，请稍后重试；其余区块仍可正常浏览。', 'rank': '排行暂时读取失败，请稍后重试。', 'cheer': '好友列表暂时读取失败，请稍后重试。', 'invite': '暂不可用'}
+  [PASS] [error500/1440x900] 可见点击区 ≥44px  -> [['#btnBack', 44], ['#btnCopyInvite', 44], ['#btnAddFriend', 44], ['#inInviteCode', 44], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 84], ['#privacyBody .switch-row', 83]]
+  [PASS] [error500/1440x900] 好友圈正文无禁用词（合规区外）
+  [PASS] [error500/1440x900] 未展示生辰/体征/通道明细/病历
+  [PASS] [error500/1440x900] 结果屏保留免责声明与 AI 标识  -> 
+        合规声明
+        
+          AI
+          本内容由 AI 生成，仅供参考。
+        
+        
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代
+  [PASS] [error500/1440x900] 邀请码读取失败有可读占位  -> 暂不可用
+  [PASS] [error500/1440x900] 接口 500 有可读错误条  -> 好友圈部分内容读取失败：服务暂时不可用，请稍后重试。（追踪号 stub-v3-err）（其余区块仍可正常浏览，可退出后重新进入本屏重试。）
+
+==============================================================
+断言通过 178 / 178
+console error 总数 = 0，未捕获异常总数 = 0
+耗时 40.8s
+截图与报告：D:\shuzi\web\_shots_v3

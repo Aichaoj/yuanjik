@@ -1,0 +1,38 @@
+[13:35:53] ��̨������ȡ�ã����� 329��
+  + web/index.html 139167 408849057C e4ca8d49c7fdbbf7f42.html
+  + web/app.js 451593 304CC3F110 14d19ac7545d3f9bd6222.js
+  + web/version.json 15663 55352DF330 64ea75ee9c95a056d2b.json
+  + web/style.css 125714 EFA381C5E1 4a59a68530ca44b6771d.css
+�﷨�Լ�: SYNTAX_OK
+�غ� 6999 �ַ�����ASCII��
+[13:35:58] Ͷ�ݻ�ִ: OK out_job_shuzi_v188_20261027_133558.txt
+��ҵ��Ͷ�ݣ��ȴ���ִ��
+  �ȴ���
+  �ȴ���
+  �ȴ���
+  �ȴ���
+�Ѵ� D:\Deepseek������\AIԪ����\_����\�����غ�\shuzi_v188_result.txt
+  13:36:41 DL web\index.html bytes=139167 ok=True
+  13:36:42 DL web\app.js bytes=451593 ok=True
+  13:36:42 DL web\version.json bytes=15663 ok=True
+  13:36:42 DL web\style.css bytes=125714 ok=True
+  13:36:42 BAK done -> D:\www\yjk\shuzi\_bak-v188-20261027-133642
+  13:36:47 PUT web\index.html
+  13:36:47 PUT web\app.js
+  13:36:47 PUT web\version.json
+  13:36:47 PUT web\style.css
+  13:36:54 HEALTH_READY after 5s
+  13:36:55 ASSET_TOKEN_H=6
+  13:36:55 ASSET_TOKEN_G_LEFT=0
+  13:36:55 JS_WEBVER188=True
+  13:36:55 VERSION188=True
+  13:36:55 VERSION_APP_113=True
+  13:36:55 CSS_RING_CENTER=True
+  13:36:55 CSS_FX_CENTER=True
+  13:36:55 CSS_CORE_ANCHOR=True
+  13:36:55 HTTP_TOKEN_H=True
+  13:36:55 HTTP_CSS_RULE=True
+  13:36:55 LIVE_VERSION188=True
+  13:36:55 SERVICE=Running
+  13:36:55 CRIT_FAILURES=0
+  13:36:55 EXIT=0

@@ -1,0 +1,228 @@
+
+== S8 静态自检 ==
+  index.html   32291 bytes
+  style.css    46157 bytes
+  app.js       121745 bytes
+  [PASS] [S8] 三个文件不含违规词
+  [PASS] [S8] app.js 无外网引用（http:// / https:// 只出现在注释与文案里）
+  [PASS] [S8] 新增功能使用的接口路径齐全
+  [PASS] [S8] 复制按钮文案为「复制邀请链接」
+  [PASS] [S8] 存在「我的推荐人」区
+  [PASS] [S8] 存在修改昵称入口
+  [PASS] [S8] 存在邀请落地提示条
+
+== S1 复制邀请链接（430x932） ==
+  [PASS] [S1/430x932] 按钮文案为「复制邀请链接」  -> 复制邀请链接
+  [PASS] [S1/430x932] 只读邀请链接含 ?invite= 与 8 位码  -> https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/430x932] 链接带分享人昵称参数 n=  -> https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/430x932] 复制成功（走剪贴板 API）  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/430x932] 复制内容含 ?invite= 与 8 位码  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/430x932] 复制内容优先用服务端 share_text（含昵称）  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/430x932] 复制成功 toast 写清用途  -> 邀请链接已复制，发给朋友——对方打开并建档后，会自动成为你的好友
+  [PASS] [S1/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [S1/430x932] 复制邀请链接 点击区 ≥44px  -> {'w': 145.8125, 'h': 44}
+  [PASS] [S1/430x932] 保存昵称 点击区 ≥44px  -> {'w': 104, 'h': 44}
+  [PASS] [S1/430x932] 添加好友 点击区 ≥44px  -> {'w': 92, 'h': 44}
+  [PASS] [S1/430x932] console 无 error
+  [PASS] [S1/430x932] 无未捕获异常
+
+== S1 复制邀请链接（1440x900） ==
+  [PASS] [S1/1440x900] 按钮文案为「复制邀请链接」  -> 复制邀请链接
+  [PASS] [S1/1440x900] 只读邀请链接含 ?invite= 与 8 位码  -> https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/1440x900] 链接带分享人昵称参数 n=  -> https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/1440x900] 复制成功（走剪贴板 API）  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/1440x900] 复制内容含 ?invite= 与 8 位码  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/1440x900] 复制内容优先用服务端 share_text（含昵称）  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S1/1440x900] 复制成功 toast 写清用途  -> 邀请链接已复制，发给朋友——对方打开并建档后，会自动成为你的好友
+  [PASS] [S1/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [S1/1440x900] 复制邀请链接 点击区 ≥44px  -> {'w': 145.8125, 'h': 44}
+  [PASS] [S1/1440x900] 保存昵称 点击区 ≥44px  -> {'w': 104, 'h': 44}
+  [PASS] [S1/1440x900] 添加好友 点击区 ≥44px  -> {'w': 92, 'h': 44}
+  [PASS] [S1/1440x900] console 无 error
+  [PASS] [S1/1440x900] 无未捕获异常
+
+== S2 落地自动绑定 + 幂等（430x932） ==
+  [PASS] [S2/430x932] 地址栏参数已清掉（invite= 不再出现）  -> http://127.0.0.1:15311/
+  [PASS] [S2/430x932] 首屏提示条显示「<昵称> 邀请你一起看每日健康指数」  -> 小明 邀请你一起看每日健康指数
+  [PASS] [S2/430x932] 落地页调用了公开 preview 接口  -> [{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423259913}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-i0nkmewhvr3r00qd3jpf-muyv5lvt'}, 'at'
+  [PASS] [S2/430x932] 建档后指数卡正常渲染  -> 82
+分
+良
+优
+良
+中
+需关注
+
+按出生时空与当日时相推算·仅为生活方式参考
+  [PASS] [S2/430x932] 触发了自动绑定  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423261691}]
+  [PASS] [S2/430x932] 绑定 toast 含邀请人昵称  -> 已与 小明 成为好友
+  [PASS] [S2/430x932] 恰好调用一次 friends/invite  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423261691}]
+  [PASS] [S2/430x932] 请求体为 {invite_code, auto_accept:true}  -> {'invite_code': 'K7QM2X9P', 'auto_accept': True}
+  [PASS] [S2/430x932] 成功后清掉 pending_invite  -> {'pending': None, 'log': '{"code":"K7QM2X9P","ok":true,"at":1791423261691}', 'url': 'http://127.0.0.1:15311/'}
+  [PASS] [S2/430x932] 成功后留下绑定留痕 ok=true  -> {"code":"K7QM2X9P","ok":true,"at":1791423261691}
+  [PASS] [S2/430x932] 刷新后不重复调用  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423261691}]
+  [PASS] [S2/430x932] 再次带邀请码打开仍不重复调用  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423261691}]
+  [PASS] [S2/430x932] 好友圈显示「我的推荐人：小明」  -> 小明
+  [PASS] [S2/430x932] 好友列表含邀请人（自动成为好友）  -> 小
+小明
+今日指数 未公开 · 刚刚
+加油
+解除
+
+加油只是一句中性问候，每人每天最多 3 次；对方会在动态里看到。解除好友后双方立刻互不可见。
+  [PASS] [S2/430x932] 三隐私开关仍默认全关  -> ['false', 'false', 'false']
+  [PASS] [S2/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [S2/430x932] console 无 error
+  [PASS] [S2/430x932] 无未捕获异常
+
+== S2 落地自动绑定 + 幂等（1440x900） ==
+  [PASS] [S2/1440x900] 地址栏参数已清掉（invite= 不再出现）  -> http://127.0.0.1:15311/
+  [PASS] [S2/1440x900] 首屏提示条显示「<昵称> 邀请你一起看每日健康指数」  -> 小明 邀请你一起看每日健康指数
+  [PASS] [S2/1440x900] 落地页调用了公开 preview 接口  -> [{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423265442}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-erwab8oldiubiujahyq8-muyv5q5e'}, 'at'
+  [PASS] [S2/1440x900] 建档后指数卡正常渲染  -> 82
+分
+良
+优
+良
+中
+需关注
+
+按出生时空与当日时相推算·仅为生活方式参考
+  [PASS] [S2/1440x900] 触发了自动绑定  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423267238}]
+  [PASS] [S2/1440x900] 绑定 toast 含邀请人昵称  -> 已与 小明 成为好友
+  [PASS] [S2/1440x900] 恰好调用一次 friends/invite  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423267238}]
+  [PASS] [S2/1440x900] 请求体为 {invite_code, auto_accept:true}  -> {'invite_code': 'K7QM2X9P', 'auto_accept': True}
+  [PASS] [S2/1440x900] 成功后清掉 pending_invite  -> {'pending': None, 'log': '{"code":"K7QM2X9P","ok":true,"at":1791423267239}', 'url': 'http://127.0.0.1:15311/'}
+  [PASS] [S2/1440x900] 成功后留下绑定留痕 ok=true  -> {"code":"K7QM2X9P","ok":true,"at":1791423267239}
+  [PASS] [S2/1440x900] 刷新后不重复调用  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423267238}]
+  [PASS] [S2/1440x900] 再次带邀请码打开仍不重复调用  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423267238}]
+  [PASS] [S2/1440x900] 好友圈显示「我的推荐人：小明」  -> 小明
+  [PASS] [S2/1440x900] 好友列表含邀请人（自动成为好友）  -> 小
+小明
+今日指数 未公开 · 刚刚
+加油
+解除
+
+加油只是一句中性问候，每人每天最多 3 次；对方会在动态里看到。解除好友后双方立刻互不可见。
+  [PASS] [S2/1440x900] 三隐私开关仍默认全关  -> ['false', 'false', 'false']
+  [PASS] [S2/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [S2/1440x900] console 无 error
+  [PASS] [S2/1440x900] 无未捕获异常
+
+== S3 邀请码无效不阻塞建档（430x932） ==
+  [PASS] [S3] 码无效时建档仍成功（进入今日节律屏）  -> http://127.0.0.1:15311/
+  [PASS] [S3/430x932] 码无效时指数卡仍正常渲染  -> 82
+分
+良
+优
+良
+中
+需关注
+
+按出生时空与当日时相推算·仅为生活方式参考
+  [PASS] [S3/430x932] 仍尝试了一次绑定  -> [{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423272912}]
+  [PASS] [S3/430x932] 轻提示「邀请码无效」  -> 邀请码无效，未自动添加好友。
+  [PASS] [S3/430x932] 无效码不再保留在待绑定状态
+  [PASS] [S3/430x932] 失败留痕 ok=false（幂等）
+  [PASS] [S3/430x932] 无白屏（页面有可读文案）  -> 今日节律
+已记录 9 天
+2026年10月8日 星期四
+今日健康指数
+当日时相推算
+82
+分
+良
+优
+良
+中
+需关注
+
+按出生时空与当日时相推算·仅为生活方式参
+  [PASS] [S3/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [S3/430x932] console 无 error
+  [PASS] [S3/430x932] 无未捕获异常
+
+== S4 已有推荐人不再提交（430x932） ==
+  [PASS] [S4/430x932] 已有推荐人时未调用 friends/invite
+  [PASS] [S4/430x932] 已绑定则清掉待绑定状态
+  [PASS] [S4/430x932] 我的推荐人显示老王  -> 老王
+  [PASS] [S4/430x932] console 无 error
+  [PASS] [S4/430x932] 无未捕获异常
+
+== S5 preview 不可用时用 n 参数兜底（430x932） ==
+  [PASS] [S5/430x932] preview 挂掉时用 n 参数显示「李四 邀请你…」  -> 李四 邀请你一起看每日健康指数
+  [PASS] [S5/430x932] preview 确实被调用过（才谈得上兜底）  -> [{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423276526}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-6ight9qph64fl6pgop8i-muyv5yp9'}, 'at'
+  [PASS] [S5/430x932] console 无 error
+  [PASS] [S5/430x932] 无未捕获异常
+
+== S5 preview 不可用时用 n 参数兜底（1440x900） ==
+  [PASS] [S5/1440x900] preview 挂掉时用 n 参数显示「李四 邀请你…」  -> 李四 邀请你一起看每日健康指数
+  [PASS] [S5/1440x900] preview 确实被调用过（才谈得上兜底）  -> [{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423278206}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-b853mosojqm9i1mtqt7e-muyv5zzx'}, 'at'
+  [PASS] [S5/1440x900] console 无 error
+  [PASS] [S5/1440x900] 无未捕获异常
+
+== S6 preview 判无效且无 n 参数 → 中性文案 ==
+  [PASS] [S6] 无昵称时显示中性文案  -> 你的朋友邀请你一起看每日健康指数
+  [PASS] [S6] 中性文案不含任何虚构昵称  -> 你的朋友邀请你一起看每日健康指数
+
+== S7 修改昵称（430x932） ==
+  [PASS] [S7/430x932] 改名前的分享文案含旧昵称  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S7/430x932] 改名前的排行榜自己那条是旧昵称  -> 1
+用
+用户4821
+我
+82
+  [PASS] [S7/430x932] 昵称输入框已回填当前昵称  -> 用户4821
+  [PASS] [S7/430x932] 昵称过短给出可读提示  -> 昵称需要 2–12 个字，请修改后重试。
+  [PASS] [S7/430x932] 过短时不发请求
+  [PASS] [S7/430x932] 调用了 POST /me/nickname  -> [{'url': '/api/v1/me/nickname', 'method': 'POST', 'body': {'nickname': '健康小明'}, 'at': 1791423283687}]
+  [PASS] [S7/430x932] 请求体为 {nickname}（2–12 字）  -> {'nickname': '健康小明'}
+  [PASS] [S7/430x932] 我的昵称立即更新  -> 昵称：健康小明
+  [PASS] [S7/430x932] 分享文案昵称立即变化（含新昵称、不含旧昵称）  -> 我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E
+  [PASS] [S7/430x932] 分享文案仍含 ?invite= 与 8 位码  -> 我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E
+  [PASS] [S7/430x932] 排行榜自己那条立即更新  -> 1
+健
+健康小明
+我
+82
+  [PASS] [S7/430x932] 改名成功 toast  -> 昵称已改为「健康小明」。
+  [PASS] [S7/430x932] 改名后复制内容也带新昵称  -> 我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E
+  [PASS] [S7/430x932] 服务端拒绝时显示可读提示  -> 昵称包含不允许的内容，请修改后重试。（追踪号 stub-v6-err）
+  [PASS] [S7/430x932] 服务端拒绝后昵称未被改动  -> 昵称：健康小明
+  [PASS] [S7/430x932] 无横向滚动  -> {'sw': 430, 'iw': 430}
+  [PASS] [S7/430x932] console 无 error
+  [PASS] [S7/430x932] 无未捕获异常
+
+== S7 修改昵称（1440x900） ==
+  [PASS] [S7/1440x900] 改名前的分享文案含旧昵称  -> 我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821
+  [PASS] [S7/1440x900] 改名前的排行榜自己那条是旧昵称  -> 1
+用
+用户4821
+我
+82
+  [PASS] [S7/1440x900] 昵称输入框已回填当前昵称  -> 用户4821
+  [PASS] [S7/1440x900] 昵称过短给出可读提示  -> 昵称需要 2–12 个字，请修改后重试。
+  [PASS] [S7/1440x900] 过短时不发请求
+  [PASS] [S7/1440x900] 调用了 POST /me/nickname  -> [{'url': '/api/v1/me/nickname', 'method': 'POST', 'body': {'nickname': '健康小明'}, 'at': 1791423288218}]
+  [PASS] [S7/1440x900] 请求体为 {nickname}（2–12 字）  -> {'nickname': '健康小明'}
+  [PASS] [S7/1440x900] 我的昵称立即更新  -> 昵称：健康小明
+  [PASS] [S7/1440x900] 分享文案昵称立即变化（含新昵称、不含旧昵称）  -> 我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E
+  [PASS] [S7/1440x900] 分享文案仍含 ?invite= 与 8 位码  -> 我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E
+  [PASS] [S7/1440x900] 排行榜自己那条立即更新  -> 1
+健
+健康小明
+我
+82
+  [PASS] [S7/1440x900] 改名成功 toast  -> 昵称已改为「健康小明」。
+  [PASS] [S7/1440x900] 改名后复制内容也带新昵称  -> 我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E
+  [PASS] [S7/1440x900] 服务端拒绝时显示可读提示  -> 昵称包含不允许的内容，请修改后重试。（追踪号 stub-v6-err）
+  [PASS] [S7/1440x900] 服务端拒绝后昵称未被改动  -> 昵称：健康小明
+  [PASS] [S7/1440x900] 无横向滚动  -> {'sw': 1440, 'iw': 1440}
+  [PASS] [S7/1440x900] console 无 error
+  [PASS] [S7/1440x900] 无未捕获异常
+
+================= 汇总 =================
+断言：130 通过 / 0 失败（共 130）
+console error：0；未捕获异常：0
+截图：20 张 -> D:\shuzi\web\_shots_v6
+报告：D:\shuzi\web\_shots_v6\report.json

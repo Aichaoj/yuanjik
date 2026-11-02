@@ -1,0 +1,72 @@
+[
+ {
+  "tag": "R0 账号就绪",
+  "ok": true,
+  "detail": "member=mbr_6f5fc02a3ddc689b"
+ },
+ {
+  "tag": "R1a 8 次注入 = 56 积分",
+  "ok": true,
+  "detail": "balance=56"
+ },
+ {
+  "tag": "R1 兑换「今日 +10 次」扣 50",
+  "ok": true,
+  "detail": "cost=50 bal=6"
+ },
+ {
+  "tag": "R2 上限与剩余正确",
+  "ok": true,
+  "detail": "{'injections': 8, 'contribution': 56, 'first_at': '2026-10-25T11:38:50', 'last_at': '2026-10-25T11:38:51', 'today': 8, 'remaining': 32, 'cap': 40, 'extra_today': 10, 'title': ''}"
+ },
+ {
+  "tag": "R3 同日第 3 次买额度被拒（429）",
+  "ok": true,
+  "detail": "second=200 third=429"
+ },
+ {
+  "tag": "R4 兑换称号",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "R4b 称号出现在榜单",
+  "ok": true,
+  "detail": "[{'rank': 1, 'label': '爱心用户689b', 'contribution': 56, 'injections': 8, 'title': '能量使者'}]"
+ },
+ {
+  "tag": "R5 重复兑换称号被拒",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "tag": "R6a 待补发清单能看到该行",
+  "ok": true,
+  "detail": "n=1"
+ },
+ {
+  "tag": "R6b 补发成功且积分增加",
+  "ok": true,
+  "detail": "before=256 after=263"
+ },
+ {
+  "tag": "R6c 标记为已折算",
+  "ok": true,
+  "detail": "rewarded=1"
+ },
+ {
+  "tag": "R7 月度对账 CSV",
+  "ok": true,
+  "detail": "section,item,count,value | inject,calls,8,56 | inject,people,1,1 | inject,unrewarded,0,0 | redeem,quota,2,100 | redeem,title,1,300 | "
+ },
+ {
+  "tag": "R8 权益区两条 + 称号提示",
+  "ok": true,
+  "detail": "perks=2 hint=我的称号：能量使者。这是参与式体验数值：显示的是你在空间能量仓里投入的\"意念值\"，不是生理指标，也不构成任何健康结论或疗效；记录永久保留、只增不减。"
+ },
+ {
+  "tag": "R9 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

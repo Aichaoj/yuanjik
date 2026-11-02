@@ -1,0 +1,170 @@
+
+=== 场景 index @ 430x932 ===
+  截图 D:\shuzi\web\_shots_v3_v2reg\shot_430x932_index.png
+  [PASS] [index/430x932] console 无 error
+  [PASS] [index/430x932] 无未捕获异常
+  [PASS] [index/430x932] 无横向滚动  → {'sw': 430, 'iw': 430}
+  [PASS] [index/430x932] 指数卡在首屏内  → {'top': 130.1875, 'bottom': 339.265625, 'h': 932}
+  [PASS] [index/430x932] 指数卡是结果页首卡  → indexCard
+  [PASS] [index/430x932] 分数/生成中文案在首屏可见  → {'bottom': 241.078125, 'h': 932}
+  [PASS] [index/430x932] 可见按钮点击区 ≥44px  → [['#attentionBody .att-tag', 44], ['#attentionBody .att-tag', 44], ['#btnCopyShare', 51], ['#btnCheckin', 52], ['#btnHistory', 51], ['#btnBack', 44]]
+  [PASS] [index/430x932] 结果页无禁用词（合规区外）
+  [PASS] [index/430x932] 保留 AI 生成标识
+  [PASS] [index/430x932] 保留免责声明
+  [PASS] [index/430x932] 分享文案含站点链接  → AI数显 · 元健康（做自己的健康导师）——我在用它看每天的节律：今日健康指数 82（良）。按出生时空看当日节律取向，仅供参考。 https://shuzi.yuanjk.cn
+  [PASS] [index/430x932] 分数=82  → 82
+  [PASS] [index/430x932] 分档胶囊=良 / 蓝色  → idx-band tone-b
+  [PASS] [index/430x932] basis 原文可见  → 按出生时空与当日运气推算·非诊断
+  [PASS] [index/430x932] 今日关注标签=2  → 2
+  [PASS] [index/430x932] 首个标签="心 偏亢"  → 心
+偏亢
+  [PASS] [index/430x932] 点击区 ≥44px  → [44, 44, 50.796875]
+  [PASS] [index/430x932] 标签展开显示 raw 0.12  → 心（偏亢）当日相对数值：0.12该通道今日相对当日基准偏活跃，可适当放缓节奏、留出休息时间。以上为时间节律的生活方式参考，仅供日常安排参考。
+  [PASS] [index/430x932] 展开说明无诊疗词  → 心（偏亢）当日相对数值：0.12该通道今日相对当日基准偏活跃，可适当放缓节奏、留出休息时间。以上为时间节律的生活方式参考，仅供日常安排参考。
+  [PASS] [index/430x932] 黄金时段=3 条  → 3
+  [PASS] [index/430x932] 含 心经当令 11:00–13:00  → 心经当令11:00–13:0000:0012:0024:00肺经当令03:00–05:0000:0012:0024:00跨零时段23:00–01:0000:0012:0024:00时间条为 00:00–24:00，标色段即对应时段的覆盖范围。黄金时段指当日节律中更适合安排休息与活动的窗口。
+  [PASS] [index/430x932] 跨零时段拆成两段且不裁切
+  [PASS] [index/430x932] 校准进度 3/7  → 基线建立中 3/743%个体化校准 3/7：完成后将结合你自己的历史数据，给出相对你个人基线的偏移。上方的今日指数来自当日时相推算，不依赖打卡次数；本进度只影响下面「关注通道」里的个体化偏移。校准完成后，系统才能给出「相对你自己」的节律偏移
+  [PASS] [index/430x932] personalized 卡隐藏
+  [PASS] [index/430x932] 观察等级卡隐藏（冷启动）
+  [PASS] [index/430x932] 顶部连续记录 chip 可见  → 连续记录 3 天
+  [PASS] [index/430x932] 键盘 Enter 可展开标签
+  [PASS] [index/430x932] 复制按钮有反馈 toast  → 分享文案已复制，可直接粘贴。
+  console error 数 = 0，未捕获异常数 = 0
+
+=== 场景 index_null @ 430x932 ===
+  截图 D:\shuzi\web\_shots_v3_v2reg\shot_430x932_index_null.png
+  [PASS] [index_null/430x932] console 无 error
+  [PASS] [index_null/430x932] 无未捕获异常
+  [PASS] [index_null/430x932] 无横向滚动  → {'sw': 430, 'iw': 430}
+  [PASS] [index_null/430x932] 指数卡在首屏内  → {'top': 130.1875, 'bottom': 309.578125, 'h': 932}
+  [PASS] [index_null/430x932] 指数卡是结果页首卡  → indexCard
+  [PASS] [index_null/430x932] 分数/生成中文案在首屏可见  → {'bottom': 206.1875, 'h': 932}
+  [PASS] [index_null/430x932] 可见按钮点击区 ≥44px  → [['#btnCopyShare', 51], ['#btnCheckin', 52], ['#btnHistory', 51], ['#btnBack', 44]]
+  [PASS] [index_null/430x932] 结果页无禁用词（合规区外）
+  [PASS] [index_null/430x932] 保留 AI 生成标识
+  [PASS] [index_null/430x932] 保留免责声明
+  [PASS] [index_null/430x932] 分享文案含站点链接  → AI数显 · 元健康（做自己的健康导师）——我在用它看每天的节律。按出生时空看当日节律取向，仅供参考。 https://shuzi.yuanjk.cn
+  [PASS] [index_null/430x932] 显示"指数生成中"
+  [PASS] [index_null/430x932] 页面未白屏（其余区块仍在）
+  [PASS] [index_null/430x932] 校准 0/7  → 基线建立中 0/70%个体化校准 0/7：完成后将结合你自己的历史数据，给出相对你个人基线的偏移。上方的今日指数来自当日时相推算，不依赖打卡次数；本进度只影响下面「关注通道」里的个体化偏移。
+  [PASS] [index_null/430x932] personalized 卡隐藏
+  [PASS] [index_null/430x932] basis 兜底标识仍显示
+  console error 数 = 0，未捕获异常数 = 0
+
+=== 场景 personalized @ 430x932 ===
+  截图 D:\shuzi\web\_shots_v3_v2reg\shot_430x932_personalized.png
+  [PASS] [personalized/430x932] console 无 error
+  [PASS] [personalized/430x932] 无未捕获异常
+  [PASS] [personalized/430x932] 无横向滚动  → {'sw': 430, 'iw': 430}
+  [PASS] [personalized/430x932] 指数卡在首屏内  → {'top': 130.1875, 'bottom': 339.265625, 'h': 932}
+  [PASS] [personalized/430x932] 指数卡是结果页首卡  → indexCard
+  [PASS] [personalized/430x932] 分数/生成中文案在首屏可见  → {'bottom': 241.078125, 'h': 932}
+  [PASS] [personalized/430x932] 可见按钮点击区 ≥44px  → [['#attentionBody .att-tag', 44], ['#attentionBody .att-tag', 44], ['#btnCopyShare', 51], ['#btnCheckin', 52], ['#btnHistory', 51], ['#btnBack', 44]]
+  [PASS] [personalized/430x932] 结果页无禁用词（合规区外）
+  [PASS] [personalized/430x932] 保留 AI 生成标识
+  [PASS] [personalized/430x932] 保留免责声明
+  [PASS] [personalized/430x932] 分享文案含站点链接  → AI数显 · 元健康（做自己的健康导师）——我在用它看每天的节律：今日健康指数 82（良）。按出生时空看当日节律取向，仅供参考。 https://shuzi.yuanjk.cn
+  [PASS] [personalized/430x932] 个体化卡可见
+  [PASS] [personalized/430x932] 等级=宜养  → 宜养
+  [PASS] [personalized/430x932] 关注通道含 心
+  [PASS] [personalized/430x932] 指数卡不变（仍有 82 分）
+  [PASS] [personalized/430x932] 观察等级卡可见=宜养
+  [PASS] [personalized/430x932] 校准卡隐藏（基线已建立）
+  [PASS] [personalized/430x932] 十二通道条形图有 12 行  → 12
+  console error 数 = 0，未捕获异常数 = 0
+
+=== 场景 index @ 1440x900 ===
+  截图 D:\shuzi\web\_shots_v3_v2reg\shot_1440x900_index.png
+  [PASS] [index/1440x900] console 无 error
+  [PASS] [index/1440x900] 无未捕获异常
+  [PASS] [index/1440x900] 无横向滚动  → {'sw': 1440, 'iw': 1440}
+  [PASS] [index/1440x900] 指数卡在首屏内  → {'top': 134.1875, 'bottom': 343.265625, 'h': 900}
+  [PASS] [index/1440x900] 指数卡是结果页首卡  → indexCard
+  [PASS] [index/1440x900] 分数/生成中文案在首屏可见  → {'bottom': 245.078125, 'h': 900}
+  [PASS] [index/1440x900] 可见按钮点击区 ≥44px  → [['#attentionBody .att-tag', 44], ['#attentionBody .att-tag', 44], ['#btnCopyShare', 51], ['#btnCheckin', 52], ['#btnHistory', 51], ['#btnBack', 44]]
+  [PASS] [index/1440x900] 结果页无禁用词（合规区外）
+  [PASS] [index/1440x900] 保留 AI 生成标识
+  [PASS] [index/1440x900] 保留免责声明
+  [PASS] [index/1440x900] 分享文案含站点链接  → AI数显 · 元健康（做自己的健康导师）——我在用它看每天的节律：今日健康指数 82（良）。按出生时空看当日节律取向，仅供参考。 https://shuzi.yuanjk.cn
+  [PASS] [index/1440x900] 分数=82  → 82
+  [PASS] [index/1440x900] 分档胶囊=良 / 蓝色  → idx-band tone-b
+  [PASS] [index/1440x900] basis 原文可见  → 按出生时空与当日运气推算·非诊断
+  [PASS] [index/1440x900] 今日关注标签=2  → 2
+  [PASS] [index/1440x900] 首个标签="心 偏亢"  → 心
+偏亢
+  [PASS] [index/1440x900] 点击区 ≥44px  → [44, 44, 50.796875]
+  [PASS] [index/1440x900] 标签展开显示 raw 0.12  → 心（偏亢）当日相对数值：0.12该通道今日相对当日基准偏活跃，可适当放缓节奏、留出休息时间。以上为时间节律的生活方式参考，仅供日常安排参考。
+  [PASS] [index/1440x900] 展开说明无诊疗词  → 心（偏亢）当日相对数值：0.12该通道今日相对当日基准偏活跃，可适当放缓节奏、留出休息时间。以上为时间节律的生活方式参考，仅供日常安排参考。
+  [PASS] [index/1440x900] 黄金时段=3 条  → 3
+  [PASS] [index/1440x900] 含 心经当令 11:00–13:00  → 心经当令11:00–13:0000:0012:0024:00肺经当令03:00–05:0000:0012:0024:00跨零时段23:00–01:0000:0012:0024:00时间条为 00:00–24:00，标色段即对应时段的覆盖范围。黄金时段指当日节律中更适合安排休息与活动的窗口。
+  [PASS] [index/1440x900] 跨零时段拆成两段且不裁切
+  [PASS] [index/1440x900] 校准进度 3/7  → 基线建立中 3/743%个体化校准 3/7：完成后将结合你自己的历史数据，给出相对你个人基线的偏移。上方的今日指数来自当日时相推算，不依赖打卡次数；本进度只影响下面「关注通道」里的个体化偏移。校准完成后，系统才能给出「相对你自己」的节律偏移
+  [PASS] [index/1440x900] personalized 卡隐藏
+  [PASS] [index/1440x900] 观察等级卡隐藏（冷启动）
+  [PASS] [index/1440x900] 顶部连续记录 chip 可见  → 连续记录 3 天
+  [PASS] [index/1440x900] 键盘 Enter 可展开标签
+  [PASS] [index/1440x900] 复制按钮有反馈 toast  → 分享文案已复制，可直接粘贴。
+  console error 数 = 0，未捕获异常数 = 0
+
+=== 场景 index_null @ 1440x900 ===
+  截图 D:\shuzi\web\_shots_v3_v2reg\shot_1440x900_index_null.png
+  [PASS] [index_null/1440x900] console 无 error
+  [PASS] [index_null/1440x900] 无未捕获异常
+  [PASS] [index_null/1440x900] 无横向滚动  → {'sw': 1440, 'iw': 1440}
+  [PASS] [index_null/1440x900] 指数卡在首屏内  → {'top': 134.1875, 'bottom': 313.578125, 'h': 900}
+  [PASS] [index_null/1440x900] 指数卡是结果页首卡  → indexCard
+  [PASS] [index_null/1440x900] 分数/生成中文案在首屏可见  → {'bottom': 210.1875, 'h': 900}
+  [PASS] [index_null/1440x900] 可见按钮点击区 ≥44px  → [['#btnCopyShare', 51], ['#btnCheckin', 52], ['#btnHistory', 51], ['#btnBack', 44]]
+  [PASS] [index_null/1440x900] 结果页无禁用词（合规区外）
+  [PASS] [index_null/1440x900] 保留 AI 生成标识
+  [PASS] [index_null/1440x900] 保留免责声明
+  [PASS] [index_null/1440x900] 分享文案含站点链接  → AI数显 · 元健康（做自己的健康导师）——我在用它看每天的节律。按出生时空看当日节律取向，仅供参考。 https://shuzi.yuanjk.cn
+  [PASS] [index_null/1440x900] 显示"指数生成中"
+  [PASS] [index_null/1440x900] 页面未白屏（其余区块仍在）
+  [PASS] [index_null/1440x900] 校准 0/7  → 基线建立中 0/70%个体化校准 0/7：完成后将结合你自己的历史数据，给出相对你个人基线的偏移。上方的今日指数来自当日时相推算，不依赖打卡次数；本进度只影响下面「关注通道」里的个体化偏移。
+  [PASS] [index_null/1440x900] personalized 卡隐藏
+  [PASS] [index_null/1440x900] basis 兜底标识仍显示
+  console error 数 = 0，未捕获异常数 = 0
+
+=== 场景 personalized @ 1440x900 ===
+  截图 D:\shuzi\web\_shots_v3_v2reg\shot_1440x900_personalized.png
+  [PASS] [personalized/1440x900] console 无 error
+  [PASS] [personalized/1440x900] 无未捕获异常
+  [PASS] [personalized/1440x900] 无横向滚动  → {'sw': 1440, 'iw': 1440}
+  [PASS] [personalized/1440x900] 指数卡在首屏内  → {'top': 134.1875, 'bottom': 343.265625, 'h': 900}
+  [PASS] [personalized/1440x900] 指数卡是结果页首卡  → indexCard
+  [PASS] [personalized/1440x900] 分数/生成中文案在首屏可见  → {'bottom': 245.078125, 'h': 900}
+  [PASS] [personalized/1440x900] 可见按钮点击区 ≥44px  → [['#attentionBody .att-tag', 44], ['#attentionBody .att-tag', 44], ['#btnCopyShare', 51], ['#btnCheckin', 52], ['#btnHistory', 51], ['#btnBack', 44]]
+  [PASS] [personalized/1440x900] 结果页无禁用词（合规区外）
+  [PASS] [personalized/1440x900] 保留 AI 生成标识
+  [PASS] [personalized/1440x900] 保留免责声明
+  [PASS] [personalized/1440x900] 分享文案含站点链接  → AI数显 · 元健康（做自己的健康导师）——我在用它看每天的节律：今日健康指数 82（良）。按出生时空看当日节律取向，仅供参考。 https://shuzi.yuanjk.cn
+  [PASS] [personalized/1440x900] 个体化卡可见
+  [PASS] [personalized/1440x900] 等级=宜养  → 宜养
+  [PASS] [personalized/1440x900] 关注通道含 心
+  [PASS] [personalized/1440x900] 指数卡不变（仍有 82 分）
+  [PASS] [personalized/1440x900] 观察等级卡可见=宜养
+  [PASS] [personalized/1440x900] 校准卡隐藏（基线已建立）
+  [PASS] [personalized/1440x900] 十二通道条形图有 12 行  → 12
+  console error 数 = 0，未捕获异常数 = 0
+
+=== 场景 api_error @ 430x932 ===
+  [PASS] [api_error/430x932] 显示可读错误条  → 服务暂时不可用，请稍后重试。（追踪号 stub-err-1）
+  [PASS] [api_error/430x932] 页面未白屏
+  [PASS] [api_error/430x932] 免责声明仍在
+  [PASS] [api_error/430x932] console 无 error
+  [PASS] [api_error/430x932] 无未捕获异常
+
+=== 场景 api_error @ 1440x900 ===
+  [PASS] [api_error/1440x900] 显示可读错误条  → 服务暂时不可用，请稍后重试。（追踪号 stub-err-1）
+  [PASS] [api_error/1440x900] 页面未白屏
+  [PASS] [api_error/1440x900] 免责声明仍在
+  [PASS] [api_error/1440x900] console 无 error
+  [PASS] [api_error/1440x900] 无未捕获异常
+
+==============================================================
+断言通过 134 / 134
+console error 总数 = 0，未捕获异常总数 = 0
+耗时 43.3s
+截图与报告目录：D:\shuzi\web\_shots_v3_v2reg

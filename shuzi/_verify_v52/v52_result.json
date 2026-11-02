@@ -1,0 +1,276 @@
+{
+  "pass": 54,
+  "total": 54,
+  "items": [
+    {
+      "name": "[390x844] S0 游客登录 200 且拿到令牌",
+      "ok": true,
+      "detail": "member_id=mbr_b3ce2e6ed68eeccf"
+    },
+    {
+      "name": "[390x844] S1 本人建档 200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "[390x844] S2 添加家人「艾登燕」200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "[390x844] S2 添加家人「范东云」200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "[390x844] S3 /family 返回 2 位家人",
+      "ok": true,
+      "detail": "['艾登燕', '范东云']"
+    },
+    {
+      "name": "[390x844] S5 家人 index 带 channels（v52 新增字段）",
+      "ok": true,
+      "detail": "channels=12"
+    },
+    {
+      "name": "[390x844] S4 本人 daily 有 index.score",
+      "ok": true,
+      "detail": "55"
+    },
+    {
+      "name": "[390x844] A1 切换器 = 我 + 2 位家人，顺序一致",
+      "ok": true,
+      "detail": "['我', '艾登燕', '范东云']"
+    },
+    {
+      "name": "[390x844] A2 点「我」大字分数 = daily.index.score",
+      "ok": true,
+      "detail": "ui=55 api=55"
+    },
+    {
+      "name": "[390x844] A4a 本人视图含等级或基线 n/7",
+      "ok": true,
+      "detail": "55 分 C · 中 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断 本人 · 基线建立中 0/7 看完整的今日节律 ›"
+    },
+    {
+      "name": "[390x844] A3.1 点「艾登燕」分数一致",
+      "ok": true,
+      "detail": "ui=63 api=63"
+    },
+    {
+      "name": "[390x844] A3.1 分档含 C · 中",
+      "ok": true,
+      "detail": "C · 中"
+    },
+    {
+      "name": "[390x844] A4b.1 家人视图不出现 L0–L4 且含「基线建立中」",
+      "ok": true,
+      "detail": "63 分 C · 中 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断 父亲 · 78 岁 · 基线建立中 0/7 · 这些资料只有你自己能看到"
+    },
+    {
+      "name": "[390x844] A3.2 点「范东云」分数一致",
+      "ok": true,
+      "detail": "ui=63 api=63"
+    },
+    {
+      "name": "[390x844] A3.2 分档含 C · 中",
+      "ok": true,
+      "detail": "C · 中"
+    },
+    {
+      "name": "[390x844] A4b.2 家人视图不出现 L0–L4 且含「基线建立中」",
+      "ok": true,
+      "detail": "63 分 C · 中 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断 母亲 · 77 岁 · 基线建立中 0/7 · 这些资料只有你自己能看到"
+    },
+    {
+      "name": "[390x844] A5 切换不跳屏且 /family 请求 0 次",
+      "ok": true,
+      "detail": "visible=True family_gets=0"
+    },
+    {
+      "name": "[390x844] A8 Enter 切换生效且全组仅一个选中",
+      "ok": true,
+      "detail": "selected=['false', 'false', 'true'] ui=63 api=63"
+    },
+    {
+      "name": "[390x844] A7 点「编辑」→ 表单展开且标题为「编辑家人」",
+      "ok": true,
+      "detail": "shown=True title=编辑家人"
+    },
+    {
+      "name": "[390x844] A9a 今日节律屏能量卡可见",
+      "ok": true,
+      "detail": "hidden=False"
+    },
+    {
+      "name": "[390x844] A9b 能量图切换器 = 我 + 2 位家人",
+      "ok": true,
+      "detail": "['我', '艾登燕', '范东云']"
+    },
+    {
+      "name": "[390x844] A10.1 切到「艾登燕」→ 图重画 + 注明推算对象",
+      "ok": true,
+      "detail": "svg=True who=按「艾登燕」的出生时空推算 · 非诊断"
+    },
+    {
+      "name": "[390x844] A10.2 切到「范东云」→ 图重画 + 注明推算对象",
+      "ok": true,
+      "detail": "svg=True who=按「范东云」的出生时空推算 · 非诊断"
+    },
+    {
+      "name": "[390x844] A11 点回「我」→ 图复原且不再显示推算对象",
+      "ok": true,
+      "detail": "svg=True who_hidden=True"
+    },
+    {
+      "name": "[390x844] A6a 无横向溢出",
+      "ok": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[390x844] A6b HTTP 4xx/5xx = 0（已排除本机不托管的 /version.json, /energy-flow.js）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[390x844] A6c 无 JS 异常/console error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[1440x900] S0 游客登录 200 且拿到令牌",
+      "ok": true,
+      "detail": "member_id=mbr_ef66a5db3e946d0c"
+    },
+    {
+      "name": "[1440x900] S1 本人建档 200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "[1440x900] S2 添加家人「艾登燕」200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "[1440x900] S2 添加家人「范东云」200",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "[1440x900] S3 /family 返回 2 位家人",
+      "ok": true,
+      "detail": "['艾登燕', '范东云']"
+    },
+    {
+      "name": "[1440x900] S5 家人 index 带 channels（v52 新增字段）",
+      "ok": true,
+      "detail": "channels=12"
+    },
+    {
+      "name": "[1440x900] S4 本人 daily 有 index.score",
+      "ok": true,
+      "detail": "55"
+    },
+    {
+      "name": "[1440x900] A1 切换器 = 我 + 2 位家人，顺序一致",
+      "ok": true,
+      "detail": "['我', '艾登燕', '范东云']"
+    },
+    {
+      "name": "[1440x900] A2 点「我」大字分数 = daily.index.score",
+      "ok": true,
+      "detail": "ui=55 api=55"
+    },
+    {
+      "name": "[1440x900] A4a 本人视图含等级或基线 n/7",
+      "ok": true,
+      "detail": "55 分 C · 中 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断 本人 · 基线建立中 0/7 看完整的今日节律 ›"
+    },
+    {
+      "name": "[1440x900] A3.1 点「艾登燕」分数一致",
+      "ok": true,
+      "detail": "ui=63 api=63"
+    },
+    {
+      "name": "[1440x900] A3.1 分档含 C · 中",
+      "ok": true,
+      "detail": "C · 中"
+    },
+    {
+      "name": "[1440x900] A4b.1 家人视图不出现 L0–L4 且含「基线建立中」",
+      "ok": true,
+      "detail": "63 分 C · 中 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断 父亲 · 78 岁 · 基线建立中 0/7 · 这些资料只有你自己能看到"
+    },
+    {
+      "name": "[1440x900] A3.2 点「范东云」分数一致",
+      "ok": true,
+      "detail": "ui=63 api=63"
+    },
+    {
+      "name": "[1440x900] A3.2 分档含 C · 中",
+      "ok": true,
+      "detail": "C · 中"
+    },
+    {
+      "name": "[1440x900] A4b.2 家人视图不出现 L0–L4 且含「基线建立中」",
+      "ok": true,
+      "detail": "63 分 C · 中 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断 母亲 · 77 岁 · 基线建立中 0/7 · 这些资料只有你自己能看到"
+    },
+    {
+      "name": "[1440x900] A5 切换不跳屏且 /family 请求 0 次",
+      "ok": true,
+      "detail": "visible=True family_gets=0"
+    },
+    {
+      "name": "[1440x900] A8 Enter 切换生效且全组仅一个选中",
+      "ok": true,
+      "detail": "selected=['false', 'false', 'true'] ui=63 api=63"
+    },
+    {
+      "name": "[1440x900] A7 点「编辑」→ 表单展开且标题为「编辑家人」",
+      "ok": true,
+      "detail": "shown=True title=编辑家人"
+    },
+    {
+      "name": "[1440x900] A9a 今日节律屏能量卡可见",
+      "ok": true,
+      "detail": "hidden=False"
+    },
+    {
+      "name": "[1440x900] A9b 能量图切换器 = 我 + 2 位家人",
+      "ok": true,
+      "detail": "['我', '艾登燕', '范东云']"
+    },
+    {
+      "name": "[1440x900] A10.1 切到「艾登燕」→ 图重画 + 注明推算对象",
+      "ok": true,
+      "detail": "svg=True who=按「艾登燕」的出生时空推算 · 非诊断"
+    },
+    {
+      "name": "[1440x900] A10.2 切到「范东云」→ 图重画 + 注明推算对象",
+      "ok": true,
+      "detail": "svg=True who=按「范东云」的出生时空推算 · 非诊断"
+    },
+    {
+      "name": "[1440x900] A11 点回「我」→ 图复原且不再显示推算对象",
+      "ok": true,
+      "detail": "svg=True who_hidden=True"
+    },
+    {
+      "name": "[1440x900] A6a 无横向溢出",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "[1440x900] A6b HTTP 4xx/5xx = 0（已排除本机不托管的 /version.json, /energy-flow.js）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[1440x900] A6c 无 JS 异常/console error",
+      "ok": true,
+      "detail": "[]"
+    }
+  ]
+}

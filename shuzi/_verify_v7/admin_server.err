@@ -1,0 +1,112 @@
+[23:54:55] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=46 service=TYH-SVC-0.1.0
+[23:54:55] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\admin_v7.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15088
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\admin_v7.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+             tianyuanheng=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[23:54:55] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:54:55] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:54:55] login account_id=acc_5c9546d721c967de at=1791561295.914841 device_id=adm-verify-dev-1 device_info={'channel': 'guest'}
+[23:54:55] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:55] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:54:55] login account_id=acc_d431c10f94629108 at=1791561295.9305341 device_id=adm-verify-dev-2 device_info={'channel': 'guest'}
+[23:54:55] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:55] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:54:55] login account_id=acc_8891df07a5ed0bd5 at=1791561295.9609623 device_id=adm-verify-dev-3 device_info={'channel': 'guest'}
+[23:54:55] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:55] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:54:55] login account_id=acc_4e81cc8ff19aa272 at=1791561295.9918547 device_id=adm-verify-dev-4 device_info={'channel': 'guest'}
+[23:54:55] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:54:56] login account_id=acc_41a92077b43a4a15 at=1791561296.0239425 device_id=adm-verify-dev-5 device_info={'channel': 'guest'}
+[23:54:56] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:54:56] login account_id=acc_644755874eda9459 at=1791561296.0559435 device_id=adm-verify-dev-6 device_info={'channel': 'guest'}
+[23:54:56] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:54:56] social_invite_auto_accept account_id=acc_d431c10f94629108 to_member=mbr_431104d847ea9ebb
+[23:54:56] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:56] social_cheer account_id=acc_d431c10f94629108 template_id=care_self to_member=mbr_431104d847ea9ebb
+[23:54:56] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:56] admin_login_fail action=login_fail ip=127.0.0.1
+[23:54:56] 127.0.0.1 "POST /api/v1/admin/login HTTP/1.1" 401 -
+[23:54:56] admin_login_ok action=login_ok ip=127.0.0.1 session=8374d6f8a1ff
+[23:54:56] 127.0.0.1 "POST /api/v1/admin/login HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?page=1&size=20 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/auth/me HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/stats HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/stats HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/social HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/audit HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/export.csv HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/user/mbr_431104d847ea9ebb HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "POST /api/v1/admin/ban HTTP/1.1" 401 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?page=1&size=20 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?page=1&size=2 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?page=2&size=2 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?q=GN3WRYCL HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?q=mbr_431104d8 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/users?banned=1 HTTP/1.1" 200 -
+[23:54:56] admin_user_detail action=user_detail ip=127.0.0.1 session=8374d6f8a1ff target=mbr_431104d847ea9ebb
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/user/mbr_431104d847ea9ebb HTTP/1.1" 200 -
+[23:54:56] admin_user_detail action=user_detail ip=127.0.0.1 session=8374d6f8a1ff target=mbr_4338ad2a8b9b8584
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/user/mbr_4338ad2a8b9b8584 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/audit?page=1&size=5 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/audit?page=1&size=5 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/audit?action=ban&page=1 HTTP/1.1" 200 -
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/stats HTTP/1.1" 200 -
+[23:54:56] admin_export action=export ip=127.0.0.1 session=8374d6f8a1ff target=csv
+[23:54:56] 127.0.0.1 "GET /api/v1/admin/export.csv HTTP/1.1" 200 -
+[23:54:57] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:57] social_cheer account_id=acc_d431c10f94629108 template_id=sleep_early to_member=mbr_431104d847ea9ebb
+[23:54:57] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 200 -
+[23:54:57] admin_ban action=ban ip=127.0.0.1 session=8374d6f8a1ff target=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "POST /api/v1/admin/ban HTTP/1.1" 200 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 402 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 402 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 402 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 402 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "GET /api/v1/friends/privacy HTTP/1.1" 402 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 402 -
+[23:54:57] social_blocked_by_ban member_id=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 402 -
+[23:54:57] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:57] admin_unban action=unban ip=127.0.0.1 session=8374d6f8a1ff target=mbr_4338ad2a8b9b8584
+[23:54:57] 127.0.0.1 "POST /api/v1/admin/ban HTTP/1.1" 200 -
+[23:54:57] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:57] social_cheer account_id=acc_d431c10f94629108 template_id=drink_water to_member=mbr_431104d847ea9ebb
+[23:54:57] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 200 -
+[23:54:57] 127.0.0.1 "POST /api/v1/admin/ban HTTP/1.1" 400 -
+[23:54:57] 127.0.0.1 "POST /api/v1/admin/ban HTTP/1.1" 400 -
+[23:54:57] 127.0.0.1 "GET /admin/ HTTP/1.1" 200 -
+[23:54:57] 127.0.0.1 "GET /admin/app.js HTTP/1.1" 200 -
+[23:54:57] 127.0.0.1 "GET /admin/style.css HTTP/1.1" 200 -
+[23:54:57] 127.0.0.1 "GET /api/v1/admin/users?page=1&size=1 HTTP/1.1" 200 -

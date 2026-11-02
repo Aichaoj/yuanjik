@@ -1,0 +1,14 @@
+login 200 True
+RESP 200 http://127.0.0.1:15053/api/v1/family
+CONSOLE error Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)
+CONSOLE error Failed to load resource: the server responded with a status of 404 (Not Found)
+daily after profile: 200
+RESP 200 http://127.0.0.1:15053/api/v1/family
+CONSOLE error Failed to load resource: the server responded with a status of 404 (Not Found)
+RESP 200 http://127.0.0.1:15053/api/v1/family
+form state: {'nick': '�ְ�', 'date': '1958-03-02', 'city': '����', 'lng': '112.454', 'lat': '34.6197', 'relation': 'mother', 'cardHidden': False}
+RESP 200 http://127.0.0.1:15053/api/v1/family/members
+RESP 200 http://127.0.0.1:15053/api/v1/family
+form errors: []
+alert: 
+family 200 1

@@ -1,0 +1,33 @@
+PASS login A/B  
+PASS profile 1975-03-12  ok
+PASS profile 1968-07-05  ok
+family score=60 linked=False
+PASS rhythm screen visible  
+PASS energy index card visible  
+PASS self health score shown  45
+PASS self energy shown  148.8
+PASS switch has family chip  ��
+����
+���Լ���
+PASS A1 family health score switches  60 vs 60
+PASS A1 title names the family  �����衹���ս���ָ��
+PASS A2 unbound energy shows dash  
+PASS A2 invite button present  
+PASS self-only cards hidden  
+PASS invite sheet open  
+PASS A3 code 6 digits  402147
+PASS A3 countdown shown  ��Ч�� 23:59:58 �� һ��һ��
+PASS family screen bind entry  
+PASS bind sheet open  
+PASS A4 consent dialog shown  
+PASS A4 consent wording  
+PASS A4 bound after confirm  {'linked': True, 'family_id': 'fam_v213_ui', 'family_nickname': '����', 'linked_at': '2026-11-02T20:31:14'}
+PASS A5 bound family energy equals API  138.5 vs 138.5
+PASS A5 family score still matches  
+PASS unbind button visible  
+PASS A7 unbind -> API null  False
+PASS A7 unbound energy back to dash  ��
+
+�����衹��û���Լ��������������� 6 λ�����뷢�� TA��TA ���Լ��ֻ���ȷ�Ϻ�����ͻ���ʾ TA ������ָ��
+PASS no JS console errors  []
+RESULT 27/27

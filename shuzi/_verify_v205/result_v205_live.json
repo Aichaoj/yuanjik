@@ -1,0 +1,47 @@
+[
+ {
+  "name": "线上 web=205",
+  "ok": true,
+  "detail": "205"
+ },
+ {
+  "name": "选择条已出现",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "13 个胶囊（全部 + 十二经）",
+  "ok": true,
+  "detail": "13"
+ },
+ {
+  "name": "默认选中「肺」",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "默认只亮 1 条（左右各一）",
+  "ok": true,
+  "detail": "['mer_肺']"
+ },
+ {
+  "name": "点「全部」→ 无单独选中（24 条全显）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "点「胃」→ 选中足阳明胃经",
+  "ok": true,
+  "detail": "['mer_胃']"
+ },
+ {
+  "name": "转身后选中保持",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

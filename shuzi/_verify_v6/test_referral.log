@@ -1,0 +1,132 @@
+[23:54:35] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[23:54:35] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=46 service=TYH-SVC-0.1.0
+[23:54:35] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\_verify_v6\referral_v6.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15092
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\_verify_v6\referral_v6.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+             tianyuanheng=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[23:54:36] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:54:36] login account_id=acc_e9787eb21a2d1822 at=1791561276.7446952 device_id=v6-a-1009235433 device_info={'channel': 'guest'}
+[23:54:36] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:36] login account_id=acc_089c718ae6f1726b at=1791561276.746713 device_id=v6-b-1009235433 device_info={'channel': 'guest'}
+[23:54:36] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:36] login account_id=acc_7a88878d64296dd9 at=1791561276.759332 device_id=v6-c-1009235433 device_info={'channel': 'guest'}
+[23:54:36] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] social_invite_auto_accept account_id=acc_089c718ae6f1726b to_member=mbr_d621ebbd8aa71928
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:36] social_invite_auto_accept account_id=acc_089c718ae6f1726b repeated=True to_member=mbr_d621ebbd8aa71928
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] social_invite_auto_accept account_id=acc_089c718ae6f1726b to_member=mbr_1d58762a54dc1bc1
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 402 -
+[23:54:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:36] social_invite_auto_accept account_id=acc_089c718ae6f1726b repeated=True to_member=mbr_d621ebbd8aa71928
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:36] social_invite_auto_accept account_id=acc_089c718ae6f1726b repeated=True to_member=mbr_d621ebbd8aa71928
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:36] social_invite_auto_accept account_id=acc_089c718ae6f1726b repeated=True to_member=mbr_d621ebbd8aa71928
+[23:54:36] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] social_nickname_set account_id=acc_e9787eb21a2d1822
+[23:54:36] 127.0.0.1 "POST /api/v1/me/nickname HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:36] 127.0.0.1 "POST /api/v1/me/nickname HTTP/1.1" 400 -
+[23:54:37] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=ZZZZZZZZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=abc HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview HTTP/1.1" 200 -
+[23:54:37] login account_id=acc_d35b3e4438387059 at=1791561277.071865 device_id=v6-d-1009235433 device_info={'channel': 'guest'}
+[23:54:37] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:37] social_invite account_id=acc_d35b3e4438387059 to_member=mbr_d621ebbd8aa71928
+[23:54:37] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:37] social_accept account_id=acc_e9787eb21a2d1822 friend_id=mbr_b682660e129dd642
+[23:54:37] 127.0.0.1 "POST /api/v1/friends/accept HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 200 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 429 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 429 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 429 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 429 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=U7HV04RZ HTTP/1.1" 429 -
+[23:54:37] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=ZZZZZZZZ HTTP/1.1" 429 -

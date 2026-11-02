@@ -1,0 +1,443 @@
+==============================================================================
+AI 数显独立后台 · 端到端真服务验收（口径源：变更单 §二 的 10 条）
+==============================================================================
+解释器     : D:\shuzi\runtime\python.exe
+站点树     : D:\shuzi\_dist\_stage_site
+端口       : 15088（只连本机回环）
+管理口令   : VerifyPw-************（本进程随机生成，经环境变量 YJK_ADMIN_PASSWORD 注入）
+口令摘要   : sha256=d01fe82093f270b7…
+------------------------------------------------------------------------------
+==============================================================================
+第 0 步 · 打包（pwsh -NoProfile -File D:\shuzi\build_pack.ps1）
+==============================================================================
+  SHA256 站点 = 1B5E86A03467DB4D16F924CE73D6B10F841A4DB0A7729C5C6A965161D14EF7A9
+  SHA256 运行时 = 4E751433D3052F3211CBDEAD46EA7EC7B24D3C2894D89369CE3B66D2DA4AE8F4
+完成。
+    打包退出码 = 0
+    [PASS] 打包成功（退出码 0），站点树已更新到 _dist/_stage_site
+    [PASS] admin_api.py 已进入站点树
+          -> 65870 字节
+    [PASS] serve.py 已进入站点树
+          -> 48158 字节
+    [PASS] social.py 已进入站点树
+          -> 65662 字节
+    [PASS] 交付物模块从**打包后的站点树**加载（与真服务同一份代码）
+          -> D:\shuzi\_dist\_stage_site\server\admin_api.py
+    [PASS] 后台口令只从环境变量读（源码含 YJK_ADMIN_PASSWORD）
+          -> 已含
+    [PASS] 源码里没有任何写死的口令（本次随机口令不出现在源码中）
+          -> 已确认不含
+    [PASS] 口令比对用标准库 hmac.compare_digest（不自造密码学）
+          -> 已使用
+    [PASS] CSV 表头与测试期望一致（交付物 ↔ 独立期望 交叉验证）
+          -> ['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']
+    [PASS] 合规禁词检查：生命先知 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：先知日历 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：八息象数 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：八息基因 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：ZYDGENE 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：中易道 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：九元情绪 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：华医道 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：老祖太极 不出现在 admin_api.py / social.py
+          -> 不出现
+    [PASS] 合规禁词检查：抗量子 不出现在 admin_api.py / social.py
+          -> 不出现
+
+==============================================================================
+A 段 · 起真服务（数据文件 admin_v7.db）
+==============================================================================
+    [PASS] A0 服务就绪且是"我们自己起的那个"（health.data_file = 本次独立库）
+          -> D:\shuzi\_verify_v7\admin_v7.db
+    [PASS] A1-① 游客登录 #1（北京）
+          -> 200 mbr_f9866a719bd9287a
+    [PASS] A1-② 建档 #1（北京，出生 1988-11-27 03:47）
+          -> 200
+    [PASS] A1-① 游客登录 #2（上海）
+          -> 200 mbr_b893eb8a99e37da7
+    [PASS] A1-② 建档 #2（上海，出生 1975-03-09 18:20）
+          -> 200
+    [PASS] A1-① 游客登录 #3（广州）
+          -> 200 mbr_3640bf9455df1cf8
+    [PASS] A1-② 建档 #3（广州，出生 1996-07-15 09:05）
+          -> 200
+    [PASS] A1-① 游客登录 #4（成都）
+          -> 200 mbr_c35cc86b3e79e378
+    [PASS] A1-② 建档 #4（成都，出生 1962-12-30 23:11）
+          -> 200
+    [PASS] A1-① 游客登录 #5（哈尔滨）
+          -> 200 mbr_7947b5b765b3f4da
+    [PASS] A1-② 建档 #5（哈尔滨，出生 2001-02-03 06:40）
+          -> 200
+    [PASS] A1-① 游客登录 #6（乌鲁木齐）
+          -> 200 mbr_17aafc48c5ad82d4
+    [PASS] A1-② 建档 #6（乌鲁木齐，出生 1954-08-21 13:58）
+          -> 200
+    [PASS] A1-③ m1 打卡 8 个不同日期 → 基线观测数 8（同一天重复只算一次）
+          -> [{'observation_count': 8}]
+    [PASS] A1-④ m2 用 m1 的邀请码自动成为好友（accepted）
+          -> 200 accepted
+    [PASS] A1-⑤ m2 给 m1 送加油（封禁前，正常放行）
+          -> 200
+    [PASS] A1-⑥ GET /v1/rhythm/daily 行为不变：index 含 score 与 score_kernel，基线建立后 personalized 非空
+          -> score=69 kernel=69 personalized=True
+    [PASS] A1-⑦ GET /v1/friends 行为不变（正常会员拿到 accepted 好友）
+          -> 200 1
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #1 · 后台可登录（错口令 401 / 正确口令拿到令牌）
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #1-① 错口令 → HTTP 401 + 业务码 20000
+          -> 401 / 20000
+    [PASS] #1-② 正确口令 → HTTP 200 + admin_token + expires_in=7200（TTL 2 小时）
+          -> 200=True token_len=43 expires_in=7200
+    [PASS] #1-③ 拿令牌可访问受保护接口（GET /v1/admin/users → 200）
+          -> 200
+    [PASS] #1-④ 用**后台令牌**调 C 端接口 → 401（后台令牌不是 C 端令牌）
+          -> 401
+    [PASS] #1-⑤ 用**C 端游客令牌**调后台接口 → 401（两条链路互不相通）
+          -> 401 / 20000
+    [PASS] #1-⑥ 不带令牌 → 401（除 login 外所有 /v1/admin/* 都必须校验后台令牌）
+          -> 401 / 20000
+    [PASS] #1-⑦ 乱令牌 → 401
+          -> 401
+    [PASS] #1-⑧ 无令牌访问 GET /api/v1/admin/stats → 401
+          -> 401
+    [PASS] #1-⑧ 无令牌访问 GET /api/v1/admin/social → 401
+          -> 401
+    [PASS] #1-⑧ 无令牌访问 GET /api/v1/admin/audit → 401
+          -> 401
+    [PASS] #1-⑧ 无令牌访问 GET /api/v1/admin/export.csv → 401
+          -> 401
+    [PASS] #1-⑧ 无令牌访问 GET /api/v1/admin/user/mbr_f9866a719bd9287a → 401
+          -> 401
+    [PASS] #1-⑧ 无令牌访问 POST /api/v1/admin/ban → 401
+          -> 401
+    [PASS] #1-⑨ `/admin`（无尾斜杠）解析到 admin/index.html
+          -> C:\Users\41692\AppData\Local\Temp\admin_static_71nltqwn\admin\index.html / text/html; charset=utf-8
+    [PASS] #1-⑩ `/admin/assets/main.js` 可取且 Content-Type 正确
+          -> C:\Users\41692\AppData\Local\Temp\admin_static_71nltqwn\admin\assets\main.js / application/javascript; charset=utf-8
+    [PASS] #1-⑪ `/admin/` 下路径穿越一律拒绝（4 种写法）
+          -> [None, None, None, None]
+    [PASS] #1-⑫ 既有静态路由未被影响（/data/x.csv 仍解析为 text/csv）
+          -> text/csv; charset=utf-8
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #3 · 用户列表分页结构 {total,page,size,items} 与字段
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #3-① 分页结构含 total/page/size/items
+          -> ['items', 'note', 'page', 'pages', 'q', 'size', 'total']
+    [PASS] #3-② 共 6 个会员、每页 20 条
+          -> total=6 size=20
+    [PASS] #3-③ items 字段覆盖变更单「用户列表」要求（member_id/昵称/建档状态/基线进度/最近活跃/连续天数）
+          -> ['account_present', 'archive_status', 'banned', 'baseline_progress', 'checkin_days', 'created_at', 'friends_accepted', 'friends_pending', 'invite_code', 'last_active', 'member_id', 'nickname', 'observation_count', 'profile_completed', 'referrer_member_id', 'streak_days']
+    [PASS] #3-④ 基线进度为 n/7 口径（min_observations=7）
+          -> ['2/7', '8/7', '0/7', '0/7', '0/7', '0/7']
+    [PASS] #3-⑤ 分页切片正确（page=1/2，size=2 → 各 2 条、页码回显、不重叠）
+          -> mbr_b893eb8a99e37da7 vs mbr_17aafc48c5ad82d4
+    [PASS] #3-⑥ 关键词搜索（邀请码）命中 1 条且就是 m1
+          -> 1 / mbr_f9866a719bd9287a
+    [PASS] #3-⑦ 关键词搜索（member_id 前缀）同样命中
+          -> 1
+    [PASS] #3-⑧ 支持按封禁状态过滤（当前无人被封 → total=0）
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #4 · 用户详情**字段级脱敏**（无精确出生时刻 / 体征数值 / 病史原文）
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #4-① 详情接口 200
+          -> 200
+        ── 用户详情响应字段清单（共 49 个叶字段）──
+           member_id                                          = mbr_f9866a719bd9287a
+           nickname                                           = 用户0974
+           invite_code                                        = S6KVGQJF
+           created_at                                         = 2026-10-08T10:04:34
+           account_present                                    = True
+           profile_completed                                  = True
+           archive_status                                     = 已建档
+           baseline_progress.observation_count                = 8
+           baseline_progress.min_observations                 = 7
+           baseline_progress.established                      = True
+           baseline_progress.text                             = 8/7
+           last_active                                        = 2026-09-17
+           streak_days                                        = 0
+           checkin_days                                       = 8
+           banned                                             = False
+           birth.completed                                    = True
+           birth.birth_date                                   = 1988-11-27
+           birth.precision                                    = day
+           birth.birth_city                                   = 北京
+           birth.birth_region                                 = 华北
+           birth.city_source                                  = app.js
+           birth.exact_time_returned                          = False
+           birth.coordinates_returned                         = False
+           birth.note                                         = 脱敏：只回出生年月日与出生地城市；精确出生时刻与经纬度**不返回**（它们只参与服务端计算）。
+           archive.vitals_collected                           = False
+           archive.history_collected                          = False
+           archive.note                                       = 本服务未采集身高体重血压心率等体征数值与病史自述（无对应存储、无对应接口），因此后台只回该布尔标记，**不返回任何体
+           today_index.date                                   = 2026-10-08
+           today_index.score                                  = 69
+           today_index.score_kernel                           = 69
+           today_index.band_code                              = C
+           today_index.band                                   = 中
+           today_index.basis                                  = 与 GET /v1/rhythm/daily 的 index 同一公式（内核分 + 展示层归一化）
+           checkins.total                                     = 8
+           checkins.items[0].on_date                          = 2026-09-17
+           checkins.items[0].channels                         = 12
+           checkins.items[1].on_date                          = 2026-09-16
+           checkins.items[1].channels                         = 12
+           checkins.items[...共8项]                             = 
+           checkins.truncated                                 = False
+           checkins.note                                      = 只回打卡日期与通道数；**观测数值不返回**（最小必要）。
+           social.friends_accepted                            = 1
+           social.friends_pending                             = 0
+           social.cheer_sent                                  = 0
+           social.cheer_received                              = 1
+           referral                                           = None
+           masking_policy[0]                                  = 出生信息只到日（不回精确出生时刻，也不回经纬度）
+           masking_policy[1]                                  = 体征数值未采集，不返回
+           masking_policy[...共4项]                             = 
+    [PASS] #4-② 前提：库里确实存着**精确出生时刻**与经纬度（不是"本来就没存"）
+          -> 1988-11-27 03:47
+    [PASS] #4-③ 响应里**不存在**禁止字段名（birth_local / birth_time / blood_pressure / history_note / height_cm / weight_kg / longitude / latitude …）
+    [PASS] #4-④ 响应序列化后**不含**原始出生串 '1988-11-27 03:47'
+          -> 已确认不含
+    [PASS] #4-⑤ 响应序列化后**不含**精确出生时刻 '03:47'
+          -> 已确认不含
+    [PASS] #4-⑥ 响应序列化后不含经纬度原文（116.4074 / 39.9042）
+          -> 已确认不含
+    [PASS] #4-⑦ 正例：出生信息**确实回到了"日"级**（birth_date = 1988-11-27）
+          -> 1988-11-27
+    [PASS] #4-⑧ 出生地城市已回（脱敏允许项）且显式标注"不回精确时刻与经纬度"
+          -> 北京 / False
+    [PASS] #4-⑨ 体征与病史显式标记为"未采集"，响应里没有任何数值
+          -> {"vitals_collected": false, "history_collected": false, "note": "本服务未采集身高体重血压心率等体征数值与病史自述（无对应存储、无对应接口），因此后台只回该布尔标记，**不返回任何体征数值或病史原文**。"}
+    [PASS] #4-⑩ 打卡记录只回日期与通道数（不回观测数值）
+          -> [{'on_date': '2026-09-17', 'channels': 12}]
+    [PASS] #4-⑪ 全库表结构里不存在体征/病史列（本项目未采集，故无从泄露）
+    [PASS] #4-⑫ 出口自检存在且 fail-closed（_assert_no_secrets + FORBIDDEN_KEYS）
+          -> 已确认存在
+    [PASS] #4-⑬ 详情接口不返回口令/令牌等运维凭据
+          -> 已确认不含
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #8 · 审计：查看详情后恰好新增 1 条（操作者/目标/时间/IP）
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #8-① 查看一次用户详情 → 审计**恰好**新增 1 条
+          -> 3 → 4（+1）
+    [PASS] #8-② 审计行含**操作者 / 动作 / 目标 / 时间 / 会话 / IP**
+          -> {'actor': 'admin', 'action': 'user_detail', 'target': 'mbr_b893eb8a99e37da7', 'at': '2026-10-08T10:04:34', 'ip': '127.0.0.1', 'session': 'f8de6c856635'}
+    [PASS] #8-③ 审计时间可解析（ISO 8601）
+          -> 2026-10-08T10:04:34
+    [PASS] #8-④ 审计里**不含**口令与后台令牌原文
+          -> 已确认不含
+    [PASS] #8-⑤ GET /v1/admin/audit 返回审计日志（分页 + 动作计数）
+          -> total=4 counts={'login_ok': 1, 'login_fail': 1, 'login_locked': 0, 'user_detail': 2, 'ban': 0, 'unban': 0, 'export': 0}
+    [PASS] #8-⑥ 查看审计日志本身**不**新增审计行（不自我放大）
+          -> 4 → 4
+    [PASS] #8-⑦ 审计支持按动作过滤（action=ban）
+          -> ban
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #5 · 指数分布 A+B+C+D 占比之和 = 100%
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #5-① GET /v1/admin/stats 200 且含运营指标
+          -> ['accounts_total', 'admin', 'archive_rate', 'banned_users', 'checkin_rate_today', 'checkin_users_7d', 'checkin_users_today', 'checkin_users_total', 'friend_circle', 'index_distribution', 'new_today', 'on_date']
+    [PASS] #5-② 四档 A/B/C/D 齐全
+          -> ['A', 'B', 'C', 'D']
+    [PASS] #5-③ A+B+C+D 占比之和 = 100%（±1 舍入）
+          -> 100.0（各档 [0.0, 33.3, 66.7, 0.0]）
+    [PASS] #5-④ 接口自报的 pct_sum 与实际求和一致
+          -> pct_sum=100.0 实算=100.00
+    [PASS] #5-⑤ 分母口径自洽（band_total = Σ各档人数 = profiled_total - unavailable）
+          -> total=6 Σcount=6 profiled=6 unavailable=0
+    [PASS] #5-⑥ 统计口径与 /v1/rhythm/daily 同源（basis 声明含 display 与 band_of）
+          -> 展示分口径：内核 phase_index → 装配层 display_normalize → 内核 band_of；与 GET /v1/rhythm/daily
+    [PASS] #5-⑦ 建档率与打卡数一致（6 人全部建档，6/6 = 1.0）
+          -> 6/6 rate=1.0
+    [PASS] #5-⑧ 今日新增 = 6（本测试刚建的号）
+          -> 6
+    [PASS] #5-⑨ 好友圈规模：1 条 accepted、1 条加油
+          -> {'accepted': 1, 'pending': 0, 'members_with_friends': 2, 'cheer_total': 1, 'cheer_today': 1}
+        指数分布：[{"code": "A", "name": "优", "count": 0, "pct": 0.0, "pct_raw": 0.0}, {"code": "B", "name": "良", "count": 2, "pct": 33.3, "pct_raw": 33.3333}, {"code": "C", "name": "中", "count": 4, "pct": 66.7, "pct_raw": 66.6667}, {"code": "D", "name": "需关注", "count": 0, "pct": 0.0, "pct_raw": 0.0}]
+    [PASS] #5-⑩ 每档给出中文档名（取自内核 band_of，不自造）
+          -> ['优', '良', '中', '需关注']
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #6 · CSV 导出表头与行数正确、扫描无敏感字段
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #6-① GET /v1/admin/export.csv 200 且返回 CSV 文本（带 UTF-8 BOM）
+          -> 200 / 前 60 字节='\ufeffmember_id,nickname,invite_code,created_at,archive_status,ob'
+    [PASS] #6-② 表头与期望（独立写的）逐字一致
+          -> ['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']
+    [PASS] #6-③ 行数正确（表头 + 全部会员数 = 6）
+          -> 6 行
+    [PASS] #6-④ 导出的 member_id 集合与用户列表一致
+          -> 6 个 id
+    [PASS] #6-⑤ 扫描导出内容：不含任何敏感字段名
+    [PASS] #6-⑥ 扫描导出内容：不含出生信息（原始串 '1988-11-27 03:47' / 日期 1988-11-27 / 时刻 03:47）
+          -> 已确认不含
+    [PASS] #6-⑦ CSV 里没有任何出生相关列（列头不含 birth）
+          -> ['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']
+    [PASS] #6-⑧ 导出含 score/band（与统计同口径），且值为内核分档码 A-D
+          -> ['C', 'C', 'C', 'B', 'B', 'C']
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #7 · 封禁后 /friends 与 cheer 被拒（可读业务码）；解封恢复
+──────────────────────────────────────────────────────────────────────────────
+        封禁前 GET  /v1/friends        → HTTP 200 / code 0
+        封禁前 POST /v1/friends/cheer  → HTTP 200 / code 0
+    [PASS] #7-① 前提：封禁前该会员社交功能正常（friends 200 / cheer 200）
+          -> 200 / 200
+    [PASS] #7-② POST /v1/admin/ban {banned:true} → 200 且标记生效
+          -> 200 True
+        封禁后 GET  /v1/friends        → HTTP 402 / code 30002 / 该账号的社交功能已被管理员暂停，如有疑问请联系管理员
+        封禁后 POST /v1/friends/cheer  → HTTP 402 / code 30002 / 该账号的社交功能已被管理员暂停，如有疑问请联系管理员
+    [PASS] #7-③ 封禁后 GET /friends 被拒（可读业务码 30002 + 明确文案）
+          -> 402 / 30002 / 该账号的社交功能已被管理员暂停，如有疑问请联系管理员
+    [PASS] #7-④ 封禁后 POST /friends/cheer 被拒（同一业务码）
+          -> 402 / 30002
+    [PASS] #7-⑤ 封禁覆盖全部 /v1/friends*（feed/ranking/privacy/templates 同样被拒）
+          -> [('/api/v1/friends/feed', 402, 30002), ('/api/v1/friends/ranking', 402, 30002), ('/api/v1/friends/privacy', 402, 30002), ('/api/v1/friends/cheer/templates', 402, 30002), ('/api/v1/friends/privacy', 402, 30002)]
+    [PASS] #7-⑥ **未封禁的其他人不受影响**（m1 的 friends 仍 200，零回归）
+          -> 200
+        解封后 GET  /v1/friends        → HTTP 200 / code 0
+        解封后 POST /v1/friends/cheer  → HTTP 200 / code 0
+    [PASS] #7-⑦ 解封后立刻恢复（friends 200 / cheer 200，无需重启、无缓存）
+          -> 200/200/200
+    [PASS] #7-⑧ 封禁状态落在 admin_ban 表（解封后行保留 banned=0，留痕不删行）
+          -> [{'member_id': 'mbr_b893eb8a99e37da7', 'banned': 0}]
+    [PASS] #7-⑨ 封禁不存在的会员 → 明确拒绝（不产生幽灵封禁行）
+          -> 400 / 10002
+    [PASS] #7-⑩ 缺少 banned 字段 → 10001 缺字段（不做猜测式解释）
+          -> 10001
+    [PASS] #7-⑪ 封禁/解封各写 1 条审计（ban=1 / unban=1）
+          -> ban=1 unban=1
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #9 · 前端双视口可操作（前端归他人；本脚本做托管/契约/浏览器实测）  （前端由另一位同事交付）
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #9-① `GET /admin/` 返回 200 且是真 HTML（前端产物已落地）
+          -> HTTP 200 / 13425 字节
+    [PASS] #9-② `/admin/app.js` 与 `/admin/style.css` 均可取（服务端托管正常）
+          -> js=200(41383) css=200(18757)
+    [PASS] #9-③ 后台接口返回**同源纯 JSON 信封**（code/message/data/trace_id），前端可直接 fetch，无跨域依赖
+          -> ['code', 'data', 'message', 'trace_id']
+    [PASS] #9-④ 前端调用的路径全部落在后端契约内（['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users']）
+          -> ['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users'] / API 声明=True
+    [PASS] #9-⑤ 前端的 CSV 导出与登录字段名与后端一致（export.csv / admin_token）
+          -> 已对齐
+    [PASS] #9-⑥ 双视口（430×932 / 1440×900）浏览器实测在下一阶段单独跑（无 Playwright 时自动 SKIP，不计入失败）
+          -> 见下一阶段
+    [PASS] S1 服务端日志里**不含管理口令**原文
+          -> 已确认不含
+    [PASS] S2 服务端日志里**不含后台令牌**原文
+          -> 已确认不含
+    [PASS] S3 服务端日志已记录后台审计事件（login_ok / user_detail / ban / export）
+          -> ['admin_login_ok', 'admin_user_detail', 'admin_ban', 'admin_export']
+    [PASS] S4 服务端日志里记录了"封禁拦截"（social_blocked_by_ban ≥ 5 次）
+          -> 7
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #9 · 前端双视口可操作（前端归他人；本脚本做托管/契约/浏览器实测）  （浏览器实测 · 可选阶段）
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] #9-⑦ 430x932 登录成功且用户列表渲染出真行
+          -> login=True rows=2
+    [PASS] #9-⑧ 430x932 无 JS 运行时错误（pageerror）
+          -> 无
+    [PASS] #9-⑨ 430x932 无 console error
+          -> 无
+    [PASS] #9-⑩ 430x932 无横向滚动（scrollWidth == innerWidth，登录前后各一次）
+          -> 登录前 [430, 430] / 登录后 [430, 430]
+    [PASS] #9-⑦ 1440x900 登录成功且用户列表渲染出真行
+          -> login=True rows=2
+    [PASS] #9-⑧ 1440x900 无 JS 运行时错误（pageerror）
+          -> 无
+    [PASS] #9-⑨ 1440x900 无 console error
+          -> 无
+    [PASS] #9-⑩ 1440x900 无横向滚动（scrollWidth == innerWidth，登录前后各一次）
+          -> 登录前 [1440, 1440] / 登录后 [1440, 1440]
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #2 · 连续 5 次错口令 → 第 6 次被锁（含剩余锁定时长）  （独立数据文件 admin_lock_v7.db）
+──────────────────────────────────────────────────────────────────────────────
+        第 1 次错口令 → HTTP 401 / code 20000 / 剩余尝试 4
+        第 2 次错口令 → HTTP 401 / code 20000 / 剩余尝试 3
+        第 3 次错口令 → HTTP 401 / code 20000 / 剩余尝试 2
+        第 4 次错口令 → HTTP 401 / code 20000 / 剩余尝试 1
+        第 5 次错口令 → HTTP 401 / code 20000 / 剩余尝试 0
+    [PASS] #2-① 前 5 次错口令都是 401 + 20000，剩余次数递减到 0
+          -> [4, 3, 2, 1, 0]
+        第 6 次 → HTTP 429 / code 40000 / message=口令连续错误次数过多，已锁定 15 分钟 / 剩余锁定 900 秒
+    [PASS] #2-② 第 6 次被锁：HTTP 429 + 业务码 40000 + 可读错误
+          -> 429 / 40000 / 口令连续错误次数过多，已锁定 15 分钟
+    [PASS] #2-③ 返回**剩余锁定时长**（1..900 秒，锁定口径 15 分钟）
+          -> remaining_sec=900 lock_seconds=900
+    [PASS] #2-④ 锁定期内**即使口令正确**也仍然被拒（锁定按来源 IP）
+          -> 429 / 40000
+    [PASS] #2-⑤ 失败与锁定都留了审计（login_fail = 5、login_locked ≥ 1）
+          -> [{'action': 'login_fail', 'n': 5}, {'action': 'login_locked', 'n': 2}]
+
+──────────────────────────────────────────────────────────────────────────────
+附加 · 管理口令缺失时的 fail-closed 行为（不注入 YJK_ADMIN_PASSWORD）
+──────────────────────────────────────────────────────────────────────────────
+    [PASS] F1 缺口令时服务仍启动（C 端不受影响：/api/health 200）
+          -> 200
+    [PASS] F2 启动即**报错**：stderr 明确写出「独立后台未启用」与变量名
+          -> ['[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。']
+    [PASS] F3 后台**整体不启用**：/v1/admin/* 未注册（登录与列表都不是 200）
+          -> login=400 users=400
+    [PASS] F4 连后台表都不建（admin_ban / admin_audit 不存在）
+          -> 无 admin* 表
+    [PASS] F5 C 端业务照常（游客登录 200、friends 200）
+          -> 200 / 200
+
+──────────────────────────────────────────────────────────────────────────────
+验收 #10 · 既有接口与测试零回归（社交 51 / 内核 335 / 服务端 104）
+──────────────────────────────────────────────────────────────────────────────
+        社交51      退出码=0 含「合计 51 项子断言，通过 51，失败 0」=True
+                    合计 51 项子断言，通过 51，失败 0；断言 #1-#10 全部通过
+                    明细 JSON: D:\shuzi\_verify_v3\test_social_result.json
+    [PASS] #10 社交51：退出码 0 且输出含「合计 51 项子断言，通过 51，失败 0」
+          -> 退出码=0 含=True
+        内核335     退出码=0 含「Ran 335 tests」=True
+                  Ran 335 tests in 3.189s
+                  OK
+    [PASS] #10 内核335：退出码 0 且输出含「Ran 335 tests」
+          -> 退出码=0 含=True
+        服务端104    退出码=0 含「Ran 104 tests」=True
+                  [Redis 测试后端] fakeredis 2.39.0（本机未安装 redis-server，真实实例未验证）
+                  [撤销时延] revoke→旧令牌被判失效 耗时 0.0000 秒，返回码 20002
+    [PASS] #10 服务端104：退出码 0 且输出含「Ran 104 tests」
+          -> 退出码=0 含=True
+    [PASS] #10-④ 三条既有回归全部以 0 退出（无失败）
+          -> {'社交51': 0, '内核335': 0, '服务端104': 0}
+    [PASS] #10-⑤ 服务端回归用系统 Python 3.12 的原因已核实：便携运行时缺 psycopg （缺则 PG/Redis 两组整模块跳过 → 只有 83 项）
+          -> returncode=1
+
+==============================================================================
+§二 十条验收 · 逐条结果
+==============================================================================
+  验收 #1  后台可登录（错口令 401 / 正确口令拿到令牌）                    PASS（17/17 项）
+  验收 #2  连续 5 次错口令 → 第 6 次被锁（含剩余锁定时长）                 PASS（5/5 项）
+  验收 #3  用户列表分页结构 {total,page,size,items} 与字段         PASS（8/8 项）
+  验收 #4  用户详情**字段级脱敏**（无精确出生时刻 / 体征数值 / 病史原文）         PASS（13/13 项）
+  验收 #5  指数分布 A+B+C+D 占比之和 = 100%                     PASS（10/10 项）
+  验收 #6  CSV 导出表头与行数正确、扫描无敏感字段                        PASS（8/8 项）
+  验收 #7  封禁后 /friends 与 cheer 被拒（可读业务码）；解封恢复          PASS（11/11 项）
+  验收 #8  审计：查看详情后恰好新增 1 条（操作者/目标/时间/IP）               PASS（7/7 项）
+  验收 #9  前端双视口可操作（前端归他人；本脚本做托管/契约/浏览器实测）              PASS（14/14 项）
+  验收 #10 既有接口与测试零回归（社交 51 / 内核 335 / 服务端 104）         PASS（5/5 项）
+
+  合计 144 项断言，通过 144，失败 0
+  管理口令未进入服务端日志：是
+  退出码：0
+==============================================================================
+验收明细已写入：D:\shuzi\_verify_v7\test_admin_result.json

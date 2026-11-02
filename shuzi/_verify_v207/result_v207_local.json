@@ -1,0 +1,115 @@
+{
+ "base": "http://127.0.0.1:18041",
+ "items": [
+  {
+   "name": "version.json web=207",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "app.js WEB_VER=207",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "body3d 器官层不写深度",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "index.html 有器官选择条",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "资产戳已换 20261101e",
+   "ok": true,
+   "detail": "6"
+  },
+  {
+   "name": "部位层：三个层按钮齐",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "器官层：全部器官 visible",
+   "ok": true,
+   "detail": "14"
+  },
+  {
+   "name": "器官层：躯干不写深度（修遮挡）",
+   "ok": true,
+   "detail": "[False, False, False]"
+  },
+  {
+   "name": "器官选择条 12 项",
+   "ok": true,
+   "detail": "['肺', '大肠', '胃', '脾', '心', '小肠', '膀胱', '肾', '心包', '三焦', '胆', '肝']"
+  },
+  {
+   "name": "十二脏腑齐全",
+   "ok": true,
+   "detail": "['肺', '大肠', '胃', '脾', '心', '小肠', '膀胱', '肾', '心包', '三焦', '胆', '肝']"
+  },
+  {
+   "name": "器官条默认可见",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "看得见的器官 >= 12 个（改前只有 3 个）",
+   "ok": true,
+   "detail": "见=13 未见=['og_sanjiao']"
+  },
+  {
+   "name": "点「胃」选中 og_stomach",
+   "ok": true,
+   "detail": "['og_stomach']"
+  },
+  {
+   "name": "选中后显示名字标签",
+   "ok": true,
+   "detail": "['og_stomach']"
+  },
+  {
+   "name": "点「肺」左右肺一起选",
+   "ok": true,
+   "detail": "['og_stomach', 'og_lungL', 'og_lungR']"
+  },
+  {
+   "name": "再点「肺」取消左右肺",
+   "ok": true,
+   "detail": "['og_stomach']"
+  },
+  {
+   "name": "回部位层：躯干恢复写深度",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "回部位层：器官隐藏",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "回部位层：器官条隐藏",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "经络层：默认只亮肺经",
+   "ok": true,
+   "detail": "['mer_肺']"
+  },
+  {
+   "name": "经络层：器官条隐藏",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "无 JS 异常",
+   "ok": true,
+   "detail": "[]"
+  }
+ ]
+}

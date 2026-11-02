@@ -1,0 +1,55 @@
+# AI数显 · 元健康 —— 抓取策略
+# 公共数据集与知识页欢迎搜索引擎与生成式引擎抓取、引用。
+# 后台与接口不对外开放，一律禁止抓取。
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://shuzi.yuanjk.cn/sitemap.xml

@@ -1,0 +1,102 @@
+[
+ {
+  "name": "index 不再有复制按钮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "分享卡与纯文本仍在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 不再有 copyShare",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 不再绑 btnCopyShare",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "邀请复制仍在（未被误删）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "fallbackCopy 仍在（邀请复制要用）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "version.json web=192",
+  "ok": true,
+  "detail": "192"
+ },
+ {
+  "name": "首条说明=删按钮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "资源戳 c ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "app.js WEB_VER=192",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地：首屏无 JS 异常（删绑定没崩）",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "本地：DOM 里没有复制按钮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地：分享卡里一个按钮都不剩",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上 web=192",
+  "ok": true,
+  "detail": "192"
+ },
+ {
+  "name": "线上无复制按钮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上仍有分享卡",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上资源戳 c ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "线上：无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "线上：分享卡无按钮",
+  "ok": true,
+  "detail": ""
+ }
+]

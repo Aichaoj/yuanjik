@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>十二时辰脏腑当令 ｜ AI数显 · 元健康</title>
+<meta name="description" content="十二时辰把一昼夜等分为 12 段，每段 2 小时，各配一个地支；子午流注学说再把它与十二正经、脏腑一一对应。本文用固定 5 问给出完整对应表。">
+<link rel="canonical" href="https://shuzi.yuanjk.cn/k/shichen-zangfu-dangling.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","name":"十二时辰脏腑当令 ｜ AI数显 · 元健康","mainEntity":[{"@type":"Question","name":"Q：什么是十二时辰？","acceptedAnswer":{"@type":"Answer","text":"A：十二时辰是中国传统的计时单位：把一昼夜等分为 12 段，每段 2 小时，每段用一个地支命名，依次为子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥。子时起于 23:00，其余时辰顺推。换算关系为：时支序号 =（hour + 1）// 2 mod 12，见天元衡规则 CAL-007。因为子时被 23:00 这个点一分为二，所以传统上又有「早子时」（00:00–01:00）与「晚子时」（23:00–24:00）之分；晚子时的日柱是否进为次日属历法争议项，见规则 CAL-006，本站内核默认进为次日并开放配置。还需要说明一点可核对的边界：十二时辰与脏腑的对应关系与年份无关，本站公开的运气表覆盖 1984 年至 2043 年这一个完整六十甲子周期，在这 60 年里这张对应表逐行不变；每年变化的是五运六气，而不是时辰当令。"}},{"@type":"Question","name":"Q：十二时辰分别对应哪十二地支？","acceptedAnswer":{"@type":"Answer","text":"A：按起于子时、每两小时一个时辰排列：子时 23:00–01:00、丑时 01:00–03:00、寅时 03:00–05:00、卯时 05:00–07:00、辰时 07:00–09:00、巳时 09:00–11:00、午时 11:00–13:00、未时 13:00–15:00、申时 15:00–17:00、酉时 17:00–19:00、戌时 19:00–21:00、亥时 21:00–23:00。十二个时辰首尾相接，正好覆盖全天 24 小时，没有空隙也不重叠。注意时辰的划分依据是真太阳时而非钟表时，因此在中国西部地区，钟表上同样的时刻可能落在不同的时辰里，换算公式见天元衡规则 CAL-005。"}},{"@type":"Question","name":"Q：「脏腑当令」的完整对应是什么？","acceptedAnswer":{"@type":"Answer","text":"A：依子午流注学说（针灸学共识），十二时辰与十二正经、脏腑的对应为：子时胆、丑时肝、寅时肺、卯时大肠、辰时胃、巳时脾、午时心、未时小肠、申时膀胱、酉时肾、戌时心包、亥时三焦，见天元衡规则 ZF-002。与之配套的是经络的五行属性：胆与肝属木，心、小肠、心包、三焦属火，胃与脾属土，肺与大肠属金，膀胱与肾属水，见规则 ZF-001。本站把这套对应做成可下载的 12 行表格 /data/shichen-dangling.csv，每一行包含地支、时辰、起止时间、当令脏腑、经络名称与五行属性。"}},{"@type":"Question","name":"Q：十二时辰的五行属性分别是什么？","acceptedAnswer":{"@type":"Answer","text":"A：十二时辰的五行按各自当令脏腑归属：子时与丑时属木（胆、肝），寅时与卯时属金（肺、大肠），辰时与巳时属土（胃、脾），午时与未时属火（心、小肠），申时与酉时属水（膀胱、肾），戌时与亥时属火（心包、三焦）。可见五行与十二时辰并非一一对应：木、金、土、水各占两个时辰，火则占四个时辰，因为相火被拆分为心包与三焦两条，这也是天元衡内核在内场向量中单列十二通道以容纳心包与三焦的原因，见规则 ZF-001。"}},{"@type":"Question","name":"Q：十二时辰当令表在生活里怎么用？","acceptedAnswer":{"@type":"Answer","text":"A：它的用途是把「一天」切成 12 个有名称、有归属的时段，作为安排作息与自我观察的时间坐标，而不是任何健康结论。公开表格里每一行都附一句生活参考，例如卯时对应起床与饮水，辰时对应进食早餐，午时对应短时休息，酉时对应清淡晚餐，亥时对应准备入睡。使用时的边界必须说清：本站不属于医疗器械，不用于疾病的诊断、治疗或预防；十二时辰当令属传统学说，其对应关系是可核对的文化与技术事实，但其对个人身体的影响不在本站承诺范围内。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://shuzi.yuanjk.cn/"},{"@type":"ListItem","position":2,"name":"知识页","item":"https://shuzi.yuanjk.cn/k/index.html"},{"@type":"ListItem","position":3,"name":"十二时辰脏腑当令","item":"https://shuzi.yuanjk.cn/k/shichen-zangfu-dangling.html"}]},{"@type":"Dataset","name":"六十甲子五运六气全表（1984–2043）","description":"按《素问》运气七篇规则推演的一个完整六十甲子周期的中运、司天、在泉、六步客主加临数据。","license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"AI数显 · 元健康"},"temporalCoverage":"1984/2043","variableMeasured":["中运","司天","在泉","主气","客气","客主加临"],"url":"https://shuzi.yuanjk.cn/data/yunqi-1984-2043.csv"}]}</script>
+<style>
+:root{--ink:#1d2430;--muted:#5b6675;--line:#e2e6ec;--bg:#f7f8fa;--brand:#1f6f5c;--accent:#0f4c5c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.85;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+header.site{background:#fff;border-bottom:1px solid var(--line);padding:14px 20px}
+header.site .wrap{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+header.site .brand{font-weight:700;color:var(--brand);letter-spacing:.5px}
+header.site nav a{color:var(--muted);text-decoration:none;margin-right:14px;font-size:14px}
+header.site nav a:hover{color:var(--brand)}
+main{max-width:860px;margin:0 auto;padding:26px 20px 60px}
+article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 26px 30px}
+h1{font-size:26px;line-height:1.5;margin:0 0 6px}
+p.lead{color:var(--muted);font-size:15px;margin:0 0 22px}
+h2{font-size:17px;margin:26px 0 8px;padding-left:10px;border-left:4px solid var(--brand)}
+p.answer{margin:0;font-size:15px}
+ol.refs,ul.plain{margin:8px 0 0;padding-left:22px;font-size:14px;color:var(--muted)}
+ol.refs li,ul.plain li{margin-bottom:6px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+th{background:#f0f4f3;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.note{background:#f0f4f3;border-radius:8px;padding:12px 14px;font-size:14px;color:var(--muted);margin:14px 0}
+footer.site{border-top:1px solid var(--line);background:#fff;margin-top:26px;padding:20px}
+footer.site .wrap{max-width:860px;margin:0 auto;font-size:13px;color:var(--muted)}
+footer.site .fbrand{font-weight:700;color:var(--brand);font-size:14px;margin:0 0 6px}
+footer.site .disclaimer{margin:0 0 10px;color:#3c4653}
+footer.site a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><span class="brand">AI数显 · 元健康</span><nav><a href="/">首页</a><a href="/k/index.html">知识页</a><a href="/data/yunqi-1984-2043.csv">运气表</a><a href="/llms.txt">llms.txt</a></nav></div></header>
+<main><article>
+<h1>十二时辰脏腑当令</h1>
+<p class="lead">十二时辰把一昼夜等分为 12 段，每段 2 小时，各配一个地支；子午流注学说再把它与十二正经、脏腑一一对应。本文用固定 5 问给出完整对应表。</p>
+<h2>Q1：什么是十二时辰？</h2>
+<p class="answer">A：十二时辰是中国传统的计时单位：把一昼夜等分为 12 段，每段 2 小时，每段用一个地支命名，依次为子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥。子时起于 23:00，其余时辰顺推。换算关系为：时支序号 =（hour + 1）// 2 mod 12，见天元衡规则 CAL-007。因为子时被 23:00 这个点一分为二，所以传统上又有「早子时」（00:00–01:00）与「晚子时」（23:00–24:00）之分；晚子时的日柱是否进为次日属历法争议项，见规则 CAL-006，本站内核默认进为次日并开放配置。还需要说明一点可核对的边界：十二时辰与脏腑的对应关系与年份无关，本站公开的运气表覆盖 1984 年至 2043 年这一个完整六十甲子周期，在这 60 年里这张对应表逐行不变；每年变化的是五运六气，而不是时辰当令。</p>
+<h2>Q2：十二时辰分别对应哪十二地支？</h2>
+<p class="answer">A：按起于子时、每两小时一个时辰排列：子时 23:00–01:00、丑时 01:00–03:00、寅时 03:00–05:00、卯时 05:00–07:00、辰时 07:00–09:00、巳时 09:00–11:00、午时 11:00–13:00、未时 13:00–15:00、申时 15:00–17:00、酉时 17:00–19:00、戌时 19:00–21:00、亥时 21:00–23:00。十二个时辰首尾相接，正好覆盖全天 24 小时，没有空隙也不重叠。注意时辰的划分依据是真太阳时而非钟表时，因此在中国西部地区，钟表上同样的时刻可能落在不同的时辰里，换算公式见天元衡规则 CAL-005。</p>
+<h2>Q3：「脏腑当令」的完整对应是什么？</h2>
+<p class="answer">A：依子午流注学说（针灸学共识），十二时辰与十二正经、脏腑的对应为：子时胆、丑时肝、寅时肺、卯时大肠、辰时胃、巳时脾、午时心、未时小肠、申时膀胱、酉时肾、戌时心包、亥时三焦，见天元衡规则 ZF-002。与之配套的是经络的五行属性：胆与肝属木，心、小肠、心包、三焦属火，胃与脾属土，肺与大肠属金，膀胱与肾属水，见规则 ZF-001。本站把这套对应做成可下载的 12 行表格 /data/shichen-dangling.csv，每一行包含地支、时辰、起止时间、当令脏腑、经络名称与五行属性。</p>
+<h2>Q4：十二时辰的五行属性分别是什么？</h2>
+<p class="answer">A：十二时辰的五行按各自当令脏腑归属：子时与丑时属木（胆、肝），寅时与卯时属金（肺、大肠），辰时与巳时属土（胃、脾），午时与未时属火（心、小肠），申时与酉时属水（膀胱、肾），戌时与亥时属火（心包、三焦）。可见五行与十二时辰并非一一对应：木、金、土、水各占两个时辰，火则占四个时辰，因为相火被拆分为心包与三焦两条，这也是天元衡内核在内场向量中单列十二通道以容纳心包与三焦的原因，见规则 ZF-001。</p>
+<h2>Q5：十二时辰当令表在生活里怎么用？</h2>
+<p class="answer">A：它的用途是把「一天」切成 12 个有名称、有归属的时段，作为安排作息与自我观察的时间坐标，而不是任何健康结论。公开表格里每一行都附一句生活参考，例如卯时对应起床与饮水，辰时对应进食早餐，午时对应短时休息，酉时对应清淡晚餐，亥时对应准备入睡。使用时的边界必须说清：本站不属于医疗器械，不用于疾病的诊断、治疗或预防；十二时辰当令属传统学说，其对应关系是可核对的文化与技术事实，但其对个人身体的影响不在本站承诺范围内。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。</p>
+<h2>十二时辰脏腑当令全表</h2><table><thead><tr><th>地支</th><th>时辰</th><th>现代时间</th><th>当令脏腑</th><th>经络</th><th>五行</th><th>生活参考</th></tr></thead><tbody><tr><td>子</td><td>子时</td><td>23:00-01:00</td><td>胆</td><td>足少阳胆经</td><td>木</td><td>宜入睡。胆经当令，此时入睡最养胆气，熬夜最伤。</td></tr><tr><td>丑</td><td>丑时</td><td>01:00-03:00</td><td>肝</td><td>足厥阴肝经</td><td>木</td><td>须深睡。肝藏血、主疏泄，此时不睡则肝血不归。</td></tr><tr><td>寅</td><td>寅时</td><td>03:00-05:00</td><td>肺</td><td>手太阴肺经</td><td>金</td><td>深睡期。肺朝百脉，此时宜静，忌惊醒劳作。</td></tr><tr><td>卯</td><td>卯时</td><td>05:00-07:00</td><td>大肠</td><td>手阳明大肠经</td><td>金</td><td>宜起床、饮温水、排便。大肠传导之官。</td></tr><tr><td>辰</td><td>辰时</td><td>07:00-09:00</td><td>胃</td><td>足阳明胃经</td><td>土</td><td>宜吃早餐。胃经当令，此时进食最易运化。</td></tr><tr><td>巳</td><td>巳时</td><td>09:00-11:00</td><td>脾</td><td>足太阴脾经</td><td>土</td><td>脾运化最旺，宜专注工作，忌久坐不动。</td></tr><tr><td>午</td><td>午时</td><td>11:00-13:00</td><td>心</td><td>手少阴心经</td><td>火</td><td>宜小憩。心经当令，午睡 15–30 分钟养心气。</td></tr><tr><td>未</td><td>未时</td><td>13:00-15:00</td><td>小肠</td><td>手太阳小肠经</td><td>火</td><td>小肠分清泌浊，宜多饮水，助吸收。</td></tr><tr><td>申</td><td>申时</td><td>15:00-17:00</td><td>膀胱</td><td>足太阳膀胱经</td><td>水</td><td>膀胱经当令，宜多饮水、适度活动。</td></tr><tr><td>酉</td><td>酉时</td><td>17:00-19:00</td><td>肾</td><td>足少阴肾经</td><td>水</td><td>肾藏精，宜清淡晚餐，忌过劳。</td></tr><tr><td>戌</td><td>戌时</td><td>19:00-21:00</td><td>心包</td><td>手厥阴心包经</td><td>火</td><td>心包代心受邪，宜放松、散步、交谈。</td></tr><tr><td>亥</td><td>亥时</td><td>21:00-23:00</td><td>三焦</td><td>手少阳三焦经</td><td>火</td><td>宜准备入睡，百脉得养。</td></tr></tbody></table>
+<h2>古典出处与规则依据</h2>
+<ol class="refs">
+<li>[ZF-001] 五行配五脏六腑｜出处：中医基础理论·藏象学说（教科书共识）｜要点：木→肝胆，火→心小肠，土→脾胃，金→肺大肠，水→肾膀胱；另心包与三焦配相火。</li>
+<li>[ZF-002] 十二时辰脏腑当令｜出处：子午流注学说（针灸学共识）｜要点：子胆、丑肝、寅肺、卯大肠、辰胃、巳脾、午心、未小肠、申膀胱、酉肾、戌心包、亥三焦。</li>
+<li>[ZF-003] 五气（六气）配脏腑｜出处：《素问·至真要大论》病机十九条 + 运气学通例｜要点：厥阴风木→肝，少阴君火→心，少阳相火→心包三焦，太阴湿土→脾，阳明燥金→肺，太阳寒水→肾。</li>
+<li>[ZF-004] 五行生克有向图｜出处：中医基础理论·五行学说｜要点：相生 木→火→土→金→水→木；相克 木克土、土克水、水克火、火克金、金克木。</li>
+<li>[CAL-005] 真太阳时校正｜出处：天文历法通例｜要点：真太阳时 = 标准时 +（当地经度 − 标准经线）× 4 分钟 + 均时差；中国采用东八区，标准经线 120°E；均时差取 NOAA 近似式，精度约 ±0.5 分钟。</li>
+<li>[CAL-007] 十二时辰划分｜出处：历法通例｜要点：子时 23:00–01:00，其后每两小时一个时辰，时支序号 =（hour + 1）// 2 mod 12。</li>
+</ol>
+<h2>数据来源与复核方式</h2>
+<ul class="plain">
+<li>运气字段由天元衡内核 tianyuanheng.yunqi_layer 依规则 YQ-001~YQ-013 推演；可用任意一本万年历独立复核。</li>
+<li>节气时刻由天元衡内核 tianyuanheng.calendar_layer 依规则 CAL-001~CAL-007 计算，按东八区标准经线 120°E 发布。</li>
+<li>全量数据可从 <a href="/data/yunqi-1984-2043.csv">/data/yunqi-1984-2043.csv</a>、<a href="/data/solar-terms.csv">/data/solar-terms.csv</a>、<a href="/data/shichen-dangling.csv">/data/shichen-dangling.csv</a> 下载（CC BY 4.0）。</li>
+<li>十二时辰脏腑当令数据取自公开种子《中医本体字典·十二时辰脏腑当令（子午流注）》表，共 12 行。</li>
+</ul>
+</article></main>
+<footer class="site"><div class="wrap"><p class="fbrand">AI数显 · 元健康</p><p class="disclaimer">本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。</p><p>数据来源：天元衡内核（规则 YQ-001~YQ-013、CAL-001~CAL-007、ZF-001~ZF-004）与公开种子数据。公共数据集采用 <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 许可。</p><p><a href="/llms.txt">/llms.txt</a> · <a href="/sitemap.xml">/sitemap.xml</a> · <a href="/data/yunqi-1984-2043.csv">/data/yunqi-1984-2043.csv</a> · <a href="/data/shichen-dangling.csv">/data/shichen-dangling.csv</a> · <a href="/data/solar-terms.csv">/data/solar-terms.csv</a></p></div></footer>
+</body></html>

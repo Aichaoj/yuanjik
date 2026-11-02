@@ -1,0 +1,138 @@
+{
+  "checks": [
+    {
+      "name": "[真实] serve.py 起在 http://127.0.0.1:15124",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 已播种 3 个会员",
+      "ok": true,
+      "detail": "[{'member_id': 'mbr_a8385932216520e1', 'checkins': 7}, {'member_id': 'mbr_70eb9cb9c75ed926', 'checkins': 5}, {'member_id': 'mbr_a66492bcc88868ee', 'checkins': 2}]"
+    },
+    {
+      "name": "[真实] GET /admin/ 返回可用页面（登录界面可见）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 错口令 → 真后端错误文案透出",
+      "ok": true,
+      "detail": "口令错误，请重新输入。连续失败 5 次将锁定 15 分钟。"
+    },
+    {
+      "name": "[真实] 用户列表从真后端取到 3 行",
+      "ok": true,
+      "detail": "mbr_70eb…26\t（未设置）\t已建档\t5 / 7\t2026-10-08 08:00\t5 天 | mbr_a664…ee\t（未设置）\t未建档\t2 / 7\t2026-10-08 08:00\t2 天 | mbr_a838…e1\t（未设置）\t已建档\t7 / 7\t2026-10-08 08:00\t7 天"
+    },
+    {
+      "name": "[真实] 建档状态由 archive_status 渲染",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 基线进度渲染 n/7",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 指标卡渲染真数据",
+      "ok": true,
+      "detail": "总用户 | 3 | 今日新增 | 3 | 建档率 | 66.7% | 已建档 2 人 | 打卡用户 | 3 | 今日打卡 3 人 | 好友圈关系数 | 0 | 待确认 0 · 加油 0"
+    },
+    {
+      "name": "[真实] 指数分布占比之和 = 100%%（±1，真后端残差处理）",
+      "ok": true,
+      "detail": "[0, 100, 0, 0]"
+    },
+    {
+      "name": "[真实] 详情含出生日（只到日）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 详情含出生地城市",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] ★ 详情不含精确出生时刻 09:30",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] ★ 详情不含体征数值/病史原文",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 审计含 user_detail（查看详情留痕）",
+      "ok": true,
+      "detail": "审计日志 | 共 3 条日志 | 刷新 | 后台审计日志 | 时间\t操作者\t动作\t目标 | 2026-10-08 10:00\tadmin\tuser_detail\tmbr_70eb9cb9c75ed926　127.0.0.1 | 2026-10-08 10:00\tadmin\tlogin_ok\t—　127.0.0.1 | "
+    },
+    {
+      "name": "[真实] 审计含 login_ok / login_fail 留痕",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 审计时间列由 at 渲染为可读时间",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 好友圈空库给出空态而不是报错",
+      "ok": true,
+      "detail": "暂无好友关系记录"
+    },
+    {
+      "name": "[真实] 导出 CSV 表头与实现一致",
+      "ok": true,
+      "detail": "member_id,nickname,invite_code,created_at,archive_status,obs"
+    },
+    {
+      "name": "[真实] CSV 行数 = 3 位会员 + 1 表头",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "[真实] ★ CSV 不含出生时刻 09:30",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] ★ CSV 不含出生日期 1990-05-12",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] ★ CSV 不含经纬度",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[真实] 真后端列表接口字段（member_id/archive_status/baseline_progress）",
+      "ok": true,
+      "detail": "['account_present', 'archive_status', 'banned', 'baseline_progress', 'checkin_days', 'created_at', 'friends_accepted', 'friends_pending', 'invite_code', 'last_active', 'member_id', 'nickname']"
+    },
+    {
+      "name": "[真实] 后端 ban 接口可用",
+      "ok": true,
+      "detail": "200 {\"code\": 0, \"message\": \"ok\", \"data\": {\"member_id\": \"mbr_a8385932216520e1\", \"banned\": true, \"reason\":"
+    },
+    {
+      "name": "[真实] social?kind=cheers 可用",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "[真实] 解封接口可用（已回滚测试封禁）",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "page_errors": []
+}

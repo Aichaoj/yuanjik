@@ -1,0 +1,46 @@
+0 次观测: observation_count=0 personalized=null index.score=71
+  checkin 2026-10-01 -> 200 observation_count=1 established=False
+  checkin 2026-10-02 -> 200 observation_count=2 established=False
+  checkin 2026-10-03 -> 200 observation_count=3 established=False
+  checkin 2026-10-04 -> 200 observation_count=4 established=False
+  checkin 2026-10-05 -> 200 observation_count=5 established=False
+  checkin 2026-10-06 -> 200 observation_count=6 established=False
+  checkin 2026-10-07 -> 200 observation_count=7 established=True
+
+7 次观测后: observation_count=7 baseline_established=True
+既有字段 level='L2' level_name='宜养' focus=[{"channel": "脾", "delta": -0.2, "direction": "偏虚"}, {"channel": "胃", "delta": -0.2, "direction": "偏虚"}, {"channel": "膀胱", "delta": -0.2, "direction": "偏虚"}, {"channel": "心", "delta": 0.15, "direction": "偏亢"}]
+calibration = None
+personalized = {
+  "score": 61,
+  "score_band": "C",
+  "score_band_name": "中",
+  "level": "L2",
+  "level_name": "宜养",
+  "focus": [
+    {
+      "channel": "脾",
+      "delta": -0.2,
+      "direction": "偏虚"
+    },
+    {
+      "channel": "胃",
+      "delta": -0.2,
+      "direction": "偏虚"
+    },
+    {
+      "channel": "膀胱",
+      "delta": -0.2,
+      "direction": "偏虚"
+    },
+    {
+      "channel": "心",
+      "delta": 0.15,
+      "direction": "偏亢"
+    }
+  ],
+  "observation_count": 7,
+  "min_observations": 7,
+  "basis": "按个体自身基线对照·非诊断",
+  "note": "L1–L4 为内核既有观察等级口径，与本时相指数分档 A–D 不同源，不可互换。"
+}
+index 仍在（且非空）: score=71 band=B ref=0.35

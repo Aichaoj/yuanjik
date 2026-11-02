@@ -1,0 +1,70 @@
+{
+  "entry_text": "登录",
+  "home_ready": 1,
+  "sheet_open": true,
+  "prefill_phone": "",
+  "notice": "登录：手机号 或 昵称 ＋ 密码都可以；忘记密码点下面的提示。",
+  "wrong_pwd_seconds": 1.62,
+  "wrong_pwd_error": "手机号/昵称或密码不正确。（追踪号 6ae7eafe4032ee8f9c8bbf7c）",
+  "wrong_pwd_busy_left": false,
+  "wrong_pwd_saving_flag": false,
+  "right_pwd_seconds": 1.64,
+  "right_pwd_entry_text": "139****0001",
+  "right_pwd_token_len": 43,
+  "right_pwd_busy_left": false,
+  "after_reload_entry": "139****0001",
+  "after_reload_token_len": 43,
+  "after_reload_refresh_len": 43,
+  "auth_net": [
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/guest",
+      "status": 200,
+      "ms": 550
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/status",
+      "status": 200,
+      "ms": 589
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/refresh",
+      "status": 200,
+      "ms": 598
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/status",
+      "status": 200,
+      "ms": 3198
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/login",
+      "status": 401,
+      "ms": 4609
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/refresh",
+      "status": 200,
+      "ms": 4660
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/login",
+      "status": 401,
+      "ms": 5309
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/login",
+      "status": 200,
+      "ms": 6258
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/status",
+      "status": 200,
+      "ms": 7089
+    },
+    {
+      "url": "https://shuzi.yuanjk.cn/api/v1/auth/password/status",
+      "status": 200,
+      "ms": 9380
+    }
+  ]
+}

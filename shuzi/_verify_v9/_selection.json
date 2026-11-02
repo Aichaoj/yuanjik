@@ -1,0 +1,1346 @@
+{
+ "001001": {
+  "name": "维生素C咀嚼片",
+  "category": "营养保健 >> 维生素矿物质",
+  "icon": "pills",
+  "slots": [
+   {
+    "file": "001001_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Vitamin C Tablets.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vitamin_C_Tablets.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Vitamin_C_Tablets.jpg/960px-Vitamin_C_Tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Vitamin_C_Tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "vitamin C tablets",
+    "cached_1400": false,
+    "local_thumb_520": null
+   },
+   {
+    "file": "001001_2.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Vitamin C supplements 1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vitamin_C_supplements_1.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Vitamin_C_supplements_1.jpg/960px-Vitamin_C_supplements_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Vitamin_C_supplements_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "vitamin C tablets",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001001_3.jpg"
+   },
+   {
+    "file": "001001_3.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Pile of round aciclovir tablets.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pile_of_round_aciclovir_tablets.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Pile_of_round_aciclovir_tablets.jpg/960px-Pile_of_round_aciclovir_tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Pile_of_round_aciclovir_tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "white round tablets",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001001_4.jpg"
+   },
+   {
+    "file": "001001_4.jpg",
+    "kind": "cand",
+    "merged_index": 6,
+    "pool": "strict",
+    "pool_index": 6,
+    "title": "File:Vitamin C supplements 2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vitamin_C_supplements_2.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Vitamin_C_supplements_2.jpg/960px-Vitamin_C_supplements_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Vitamin_C_supplements_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "vitamin C tablets",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001001_6.jpg"
+   }
+  ]
+ },
+ "001002": {
+  "name": "乳清蛋白粉",
+  "category": "营养保健 >> 蛋白粉氨基酸",
+  "icon": "powder",
+  "slots": [
+   {
+    "file": "001002_1.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Milk powder cropped.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Milk_powder_cropped.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Milk_powder_cropped.jpg/960px-Milk_powder_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Milk_powder_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "milk powder",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001002_4.jpg"
+   },
+   {
+    "file": "001002_2.jpg",
+    "kind": "cand",
+    "merged_index": 13,
+    "pool": "sup",
+    "pool_index": 5,
+    "title": "File:Milk powder.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Milk_powder.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Milk_powder.jpg/960px-Milk_powder.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Milk_powder.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "powdered milk",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_001002_5.jpg"
+   },
+   {
+    "file": "001002_3.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   },
+   {
+    "file": "001002_4.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   }
+  ]
+ },
+ "001003": {
+  "name": "复合益生菌冻干粉",
+  "category": "营养保健 >> 益生菌肠道",
+  "icon": "capsule",
+  "slots": [
+   {
+    "file": "001003_1.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Spirulina Capsules.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Spirulina_Capsules.jpg",
+    "thumb_url_520": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Spirulina_Capsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Spirulina_Capsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dietary supplement capsules",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001003_4.jpg"
+   },
+   {
+    "file": "001003_2.jpg",
+    "kind": "cand",
+    "merged_index": 5,
+    "pool": "strict",
+    "pool_index": 5,
+    "title": "File:Probiotic with FOS.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Probiotic_with_FOS.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Probiotic_with_FOS.jpg/960px-Probiotic_with_FOS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Probiotic_with_FOS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "probiotic capsules",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001003_5.jpg"
+   },
+   {
+    "file": "001003_3.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Kolostrum.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Kolostrum.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Kolostrum.JPG/960px-Kolostrum.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Kolostrum.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dietary supplement capsules",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001003_7.jpg"
+   },
+   {
+    "file": "001003_4.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Probiotic Supplements (13621543955).png",
+    "page": "https://commons.wikimedia.org/wiki/File:Probiotic_Supplements_(13621543955).png",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Probiotic_Supplements_%2813621543955%29.png/960px-Probiotic_Supplements_%2813621543955%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Probiotic_Supplements_%2813621543955%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "probiotic supplement bottle",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001003_3.jpg"
+   }
+  ]
+ },
+ "001004": {
+  "name": "深海鱼油软胶囊",
+  "category": "营养保健 >> 鱼油心脑",
+  "icon": "softgel",
+  "slots": [
+   {
+    "file": "001004_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Fish Oil Capsules.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fish_Oil_Capsules.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Fish_Oil_Capsules.jpg/960px-Fish_Oil_Capsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Fish_Oil_Capsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "fish oil capsules",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001004_0.jpg"
+   },
+   {
+    "file": "001004_2.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Omega 3 Fish oil softgel capsules.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Omega_3_Fish_oil_softgel_capsules.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Omega_3_Fish_oil_softgel_capsules.jpg/960px-Omega_3_Fish_oil_softgel_capsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Omega_3_Fish_oil_softgel_capsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "fish oil capsules",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001004_1.jpg"
+   },
+   {
+    "file": "001004_3.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Cod liver oil capsules.png",
+    "page": "https://commons.wikimedia.org/wiki/File:Cod_liver_oil_capsules.png",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Cod_liver_oil_capsules.png/960px-Cod_liver_oil_capsules.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Cod_liver_oil_capsules.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "cod liver oil capsules",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001004_3.jpg"
+   },
+   {
+    "file": "001004_4.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Codliveroilcapsules.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Codliveroilcapsules.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Codliveroilcapsules.jpg/960px-Codliveroilcapsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Codliveroilcapsules.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "cod liver oil capsules",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\001004_7.jpg"
+   }
+  ]
+ },
+ "002001": {
+  "name": "枸杞原浆",
+  "category": "中医养生 >> 药食同源",
+  "icon": "berry",
+  "slots": [
+   {
+    "file": "002001_1.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Goji berries in Northern Ghana.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Goji_berries_in_Northern_Ghana.jpg",
+    "thumb_url_520": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Goji_berries_in_Northern_Ghana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Goji_berries_in_Northern_Ghana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "goji berries",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002001_3.jpg"
+   },
+   {
+    "file": "002001_2.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Goji Berries.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Goji_Berries.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Goji_Berries.jpg/960px-Goji_Berries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Goji_Berries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "goji berries",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002001_4.jpg"
+   },
+   {
+    "file": "002001_3.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Goji berries and cashews (7343134078).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Goji_berries_and_cashews_(7343134078).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Goji_berries_and_cashews_%287343134078%29.jpg/960px-Goji_berries_and_cashews_%287343134078%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Goji_berries_and_cashews_%287343134078%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "goji berries",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002001_2.jpg"
+   },
+   {
+    "file": "002001_4.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Goji berries.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Goji_berries.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Goji_berries.jpg/960px-Goji_berries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Goji_berries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "goji berries",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002001_7.jpg"
+   }
+  ]
+ },
+ "002002": {
+  "name": "艾灸盒随身灸",
+  "category": "中医养生 >> 艾灸理疗",
+  "icon": "moxa",
+  "slots": [
+   {
+    "file": "002002_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Stick-on-moxa-rolls-japan.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stick-on-moxa-rolls-japan.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Stick-on-moxa-rolls-japan.jpg/960px-Stick-on-moxa-rolls-japan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Stick-on-moxa-rolls-japan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "moxa stick",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002002_0.jpg"
+   },
+   {
+    "file": "002002_2.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Moxa-Hütchen.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Moxa-H%C3%BCtchen.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Moxa-H%C3%BCtchen.JPG/960px-Moxa-H%C3%BCtchen.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Moxa-H%C3%BCtchen.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "moxibustion moxa",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002002_3.jpg"
+   },
+   {
+    "file": "002002_3.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Artemis argyi plant.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Artemis_argyi_plant.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Artemis_argyi_plant.jpg/960px-Artemis_argyi_plant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Artemis_argyi_plant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "artemisia argyi",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002002_4.jpg"
+   },
+   {
+    "file": "002002_4.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   }
+  ]
+ },
+ "002003": {
+  "name": "阿胶固元膏",
+  "category": "中医养生 >> 膏方滋补",
+  "icon": "gelatin",
+  "slots": [
+   {
+    "file": "002003_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Donkey-hide gelatin candied jujube(Laoling Ejiao Mizao).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Donkey-hide_gelatin_candied_jujube(Laoling_Ejiao_Mizao).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Donkey-hide_gelatin_candied_jujube%28Laoling_Ejiao_Mizao%29.jpg/960px-Donkey-hide_gelatin_candied_jujube%28Laoling_Ejiao_Mizao%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Donkey-hide_gelatin_candied_jujube%28Laoling_Ejiao_Mizao%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "donkey hide gelatin",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002003_0.jpg"
+   },
+   {
+    "file": "002003_2.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Donkey-hide gelatin (E'jiao) slices.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Donkey-hide_gelatin_(E%27jiao)_slices.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Donkey-hide_gelatin_%28E%27jiao%29_slices.jpg/960px-Donkey-hide_gelatin_%28E%27jiao%29_slices.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Donkey-hide_gelatin_%28E%27jiao%29_slices.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "donkey hide gelatin",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002003_1.jpg"
+   },
+   {
+    "file": "002003_3.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   },
+   {
+    "file": "002003_4.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   }
+  ]
+ },
+ "002004": {
+  "name": "西洋参切片",
+  "category": "中医养生 >> 参茸贵细",
+  "icon": "root",
+  "slots": [
+   {
+    "file": "002004_1.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Dried american ginseng slices (1).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dried_american_ginseng_slices_(1).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Dried_american_ginseng_slices_%281%29.jpg/960px-Dried_american_ginseng_slices_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Dried_american_ginseng_slices_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "ginseng slices dried",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002004_2.jpg"
+   },
+   {
+    "file": "002004_2.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Dried american ginseng slices (2).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dried_american_ginseng_slices_(2).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Dried_american_ginseng_slices_%282%29.jpg/960px-Dried_american_ginseng_slices_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Dried_american_ginseng_slices_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "ginseng slices dried",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002004_3.jpg"
+   },
+   {
+    "file": "002004_3.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Panax quinquefolius, American Ginseng seed, GFG, Howard County, Md 2019-03-22-15.06.30 ZS PMax UDR (50000077941).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Panax_quinquefolius,_American_Ginseng_seed,_GFG,_Howard_County,_Md_2019-03-22-15.06.30_ZS_PMax_UDR_(50000077941).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Panax_quinquefolius%2C_American_Ginseng_seed%2C_GFG%2C_Howard_County%2C_Md_2019-03-22-15.06.30_ZS_PMax_UDR_%2850000077941%29.jpg/960px-Panax_quinquefolius%2C_American_Ginseng_seed%2C_GFG%2C_Howard_County%2C_Md_2019-03-22-15.06.30_ZS_PMax_UDR_%2850000077941%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Panax_quinquefolius%2C_American_Ginseng_seed%2C_GFG%2C_Howard_County%2C_Md_2019-03-22-15.06.30_ZS_PMax_UDR_%2850000077941%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "panax quinquefolius root",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002004_4.jpg"
+   },
+   {
+    "file": "002004_4.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Panax quinquefolius 2, American Ginseng root, GFG, Howard County, Md 2019-03-22-15.19.18 ZS PMax UDR (50000077421).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Panax_quinquefolius_2,_American_Ginseng_root,_GFG,_Howard_County,_Md_2019-03-22-15.19.18_ZS_PMax_UDR_(50000077421).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Panax_quinquefolius_2%2C_American_Ginseng_root%2C_GFG%2C_Howard_County%2C_Md_2019-03-22-15.19.18_ZS_PMax_UDR_%2850000077421%29.jpg/960px-Panax_quinquefolius_2%2C_American_Ginseng_root%2C_GFG%2C_Howard_County%2C_Md_2019-03-22-15.19.18_ZS_PMax_UDR_%2850000077421%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Panax_quinquefolius_2%2C_American_Ginseng_root%2C_GFG%2C_Howard_County%2C_Md_2019-03-22-15.19.18_ZS_PMax_UDR_%2850000077421%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "american ginseng root",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\002004_0.jpg"
+   }
+  ]
+ },
+ "003001": {
+  "name": "智能健康手环",
+  "category": "智能设备 >> 智能手环手表",
+  "icon": "band",
+  "slots": [
+   {
+    "file": "003001_1.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Acme activity tracker.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Acme_activity_tracker.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Acme_activity_tracker.JPG/960px-Acme_activity_tracker.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Acme_activity_tracker.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "fitness tracker device",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003001_1.jpg"
+   },
+   {
+    "file": "003001_2.jpg",
+    "kind": "cand",
+    "merged_index": 11,
+    "pool": "sup",
+    "pool_index": 3,
+    "title": "File:Huawei Smartwatch (Band 4).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Huawei_Smartwatch_(Band_4).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Huawei_Smartwatch_%28Band_4%29.jpg/960px-Huawei_Smartwatch_%28Band_4%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Huawei_Smartwatch_%28Band_4%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "smartwatch product",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_003001_3.jpg"
+   },
+   {
+    "file": "003001_3.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   },
+   {
+    "file": "003001_4.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   }
+  ]
+ },
+ "003002": {
+  "name": "上臂式电子血压计",
+  "category": "智能设备 >> 血压血糖仪",
+  "icon": "bpmonitor",
+  "slots": [
+   {
+    "file": "003002_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Sphygmomanometer, automatic blood pressure monitor. Oscillometric measurements, millimeter of mercury (mmHg) unit.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sphygmomanometer,_automatic_blood_pressure_monitor._Oscillometric_measurements,_millimeter_of_mercury_(mmHg)_unit.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Sphygmomanometer%2C_automatic_blood_pressure_monitor._Oscillometric_measurements%2C_millimeter_of_mercury_%28mmHg%29_unit.jpg/960px-Sphygmomanometer%2C_automatic_blood_pressure_monitor._Oscillometric_measurements%2C_millimeter_of_mercury_%28mmHg%29_unit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Sphygmomanometer%2C_automatic_blood_pressure_monitor._Oscillometric_measurements%2C_millimeter_of_mercury_%28mmHg%29_unit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "sphygmomanometer",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003002_0.jpg"
+   },
+   {
+    "file": "003002_2.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Sphygmomanometer&Cuff.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Sphygmomanometer%26Cuff.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Sphygmomanometer%26Cuff.JPG/960px-Sphygmomanometer%26Cuff.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Sphygmomanometer%26Cuff.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "sphygmomanometer",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003002_2.jpg"
+   },
+   {
+    "file": "003002_3.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Advanced Digital Sphygmomanometer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Advanced_Digital_Sphygmomanometer.jpg",
+    "thumb_url_520": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Advanced_Digital_Sphygmomanometer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Advanced_Digital_Sphygmomanometer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "sphygmomanometer",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003002_3.jpg"
+   },
+   {
+    "file": "003002_4.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Clinical sphygmomanometer in the Třebíč, Třebíč District.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Clinical_sphygmomanometer_in_the_T%C5%99eb%C3%AD%C4%8D,_T%C5%99eb%C3%AD%C4%8D_District.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Clinical_sphygmomanometer_in_the_T%C5%99eb%C3%AD%C4%8D%2C_T%C5%99eb%C3%AD%C4%8D_District.jpg/960px-Clinical_sphygmomanometer_in_the_T%C5%99eb%C3%AD%C4%8D%2C_T%C5%99eb%C3%AD%C4%8D_District.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Clinical_sphygmomanometer_in_the_T%C5%99eb%C3%AD%C4%8D%2C_T%C5%99eb%C3%AD%C4%8D_District.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "sphygmomanometer",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003002_7.jpg"
+   }
+  ]
+ },
+ "003003": {
+  "name": "智能体脂秤",
+  "category": "智能设备 >> 体脂健康秤",
+  "icon": "scale",
+  "slots": [
+   {
+    "file": "003003_1.jpg",
+    "kind": "cand",
+    "merged_index": 6,
+    "pool": "strict",
+    "pool_index": 6,
+    "title": "File:Health o meter Bathroom Scale.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Health_o_meter_Bathroom_Scale.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Health_o_meter_Bathroom_Scale.JPG/960px-Health_o_meter_Bathroom_Scale.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Health_o_meter_Bathroom_Scale.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "digital bathroom scale",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003003_6.jpg"
+   },
+   {
+    "file": "003003_2.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Fitness digital scale weight loss (33837094584).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fitness_digital_scale_weight_loss_(33837094584).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Fitness_digital_scale_weight_loss_%2833837094584%29.jpg/960px-Fitness_digital_scale_weight_loss_%2833837094584%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Fitness_digital_scale_weight_loss_%2833837094584%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "digital bathroom scale",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003003_7.jpg"
+   },
+   {
+    "file": "003003_3.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Digital Body Scale.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Digital_Body_Scale.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Digital_Body_Scale.jpg/960px-Digital_Body_Scale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Digital_Body_Scale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "digital bathroom scale",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\003003_1.jpg"
+   },
+   {
+    "file": "003003_4.jpg",
+    "kind": "derived",
+    "note": "crop of the first real photo of this code (centre/top/zoom/bottom variant by slot)"
+   }
+  ]
+ },
+ "003004": {
+  "name": "睡眠监测手环",
+  "category": "智能设备 >> 睡眠监测仪",
+  "icon": "band",
+  "slots": [
+   {
+    "file": "003004_1.jpg",
+    "kind": "cand",
+    "merged_index": 12,
+    "pool": "sup",
+    "pool_index": 4,
+    "title": "File:Mi Band 6 - 1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mi_Band_6_-_1.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Mi_Band_6_-_1.jpg/960px-Mi_Band_6_-_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Mi_Band_6_-_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "smart band",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_003004_4.jpg"
+   },
+   {
+    "file": "003004_2.jpg",
+    "kind": "cand",
+    "merged_index": 13,
+    "pool": "sup",
+    "pool_index": 5,
+    "title": "File:Mi Band 6 - 3.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mi_Band_6_-_3.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Mi_Band_6_-_3.jpg/960px-Mi_Band_6_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Mi_Band_6_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "smart band",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_003004_5.jpg"
+   },
+   {
+    "file": "003004_3.jpg",
+    "kind": "cand",
+    "merged_index": 14,
+    "pool": "sup",
+    "pool_index": 6,
+    "title": "File:Mi Band 6 - 4.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mi_Band_6_-_4.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Mi_Band_6_-_4.jpg/960px-Mi_Band_6_-_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Mi_Band_6_-_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "smart band",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_003004_6.jpg"
+   },
+   {
+    "file": "003004_4.jpg",
+    "kind": "cand",
+    "merged_index": 15,
+    "pool": "sup",
+    "pool_index": 7,
+    "title": "File:Mi Band 6 - 5.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mi_Band_6_-_5.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Mi_Band_6_-_5.jpg/960px-Mi_Band_6_-_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Mi_Band_6_-_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "smart band",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_003004_7.jpg"
+   }
+  ]
+ },
+ "004001": {
+  "name": "可调哑铃套装",
+  "category": "运动健身 >> 家用健身器材",
+  "icon": "dumbbell",
+  "slots": [
+   {
+    "file": "004001_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:A pair of dumbbells.jpeg",
+    "page": "https://commons.wikimedia.org/wiki/File:A_pair_of_dumbbells.jpeg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/A_pair_of_dumbbells.jpeg/960px-A_pair_of_dumbbells.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/A_pair_of_dumbbells.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dumbbell set",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004001_0.jpg"
+   },
+   {
+    "file": "004001_2.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Heavy Dumbbells 200 pound.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Heavy_Dumbbells_200_pound.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Heavy_Dumbbells_200_pound.JPG/960px-Heavy_Dumbbells_200_pound.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Heavy_Dumbbells_200_pound.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dumbbells",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004001_1.jpg"
+   },
+   {
+    "file": "004001_3.jpg",
+    "kind": "cand",
+    "merged_index": 6,
+    "pool": "strict",
+    "pool_index": 6,
+    "title": "File:Purple dumbbells on a pile.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Purple_dumbbells_on_a_pile.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Purple_dumbbells_on_a_pile.jpg/960px-Purple_dumbbells_on_a_pile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Purple_dumbbells_on_a_pile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dumbbells",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004001_6.jpg"
+   },
+   {
+    "file": "004001_4.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Colorful pile of dumbbells at the gym.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Colorful_pile_of_dumbbells_at_the_gym.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Colorful_pile_of_dumbbells_at_the_gym.jpg/960px-Colorful_pile_of_dumbbells_at_the_gym.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Colorful_pile_of_dumbbells_at_the_gym.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dumbbells",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004001_7.jpg"
+   }
+  ]
+ },
+ "004002": {
+  "name": "天然橡胶瑜伽垫",
+  "category": "运动健身 >> 瑜伽普拉提",
+  "icon": "mat",
+  "slots": [
+   {
+    "file": "004002_1.jpg",
+    "kind": "cand",
+    "merged_index": 6,
+    "pool": "strict",
+    "pool_index": 6,
+    "title": "File:Yoga mat.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Yoga_mat.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Yoga_mat.jpg/960px-Yoga_mat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Yoga_mat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "yoga mat",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004002_6.jpg"
+   },
+   {
+    "file": "004002_2.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Gaim Yoga Mat 1 2019-05-15.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gaim_Yoga_Mat_1_2019-05-15.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Gaim_Yoga_Mat_1_2019-05-15.jpg/960px-Gaim_Yoga_Mat_1_2019-05-15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Gaim_Yoga_Mat_1_2019-05-15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "yoga mat",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004002_7.jpg"
+   },
+   {
+    "file": "004002_3.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Tomare Yoga Mats.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomare_Yoga_Mats.JPG",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Tomare_Yoga_Mats.JPG/960px-Tomare_Yoga_Mats.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Tomare_Yoga_Mats.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "yoga mat",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004002_0.jpg"
+   },
+   {
+    "file": "004002_4.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Yoga mats.png",
+    "page": "https://commons.wikimedia.org/wiki/File:Yoga_mats.png",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Yoga_mats.png/960px-Yoga_mats.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Yoga_mats.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "yoga mat",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\004002_3.jpg"
+   }
+  ]
+ },
+ "004003": {
+  "name": "专业护膝",
+  "category": "运动健身 >> 运动护具",
+  "icon": "kneebrace",
+  "slots": [
+   {
+    "file": "004003_1.jpg",
+    "kind": "ph",
+    "icon": "kneebrace",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "004003_2.jpg",
+    "kind": "ph",
+    "icon": "kneebrace",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "004003_3.jpg",
+    "kind": "ph",
+    "icon": "kneebrace",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "004003_4.jpg",
+    "kind": "ph",
+    "icon": "kneebrace",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   }
+  ]
+ },
+ "004004": {
+  "name": "迷你筋膜枪",
+  "category": "运动健身 >> 筋膜枪按摩器",
+  "icon": "massagegun",
+  "slots": [
+   {
+    "file": "004004_1.jpg",
+    "kind": "ph",
+    "icon": "massagegun",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "004004_2.jpg",
+    "kind": "ph",
+    "icon": "massagegun",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "004004_3.jpg",
+    "kind": "ph",
+    "icon": "massagegun",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "004004_4.jpg",
+    "kind": "ph",
+    "icon": "massagegun",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   }
+  ]
+ },
+ "005001": {
+  "name": "有机五谷杂粮礼盒",
+  "category": "健康食品 >> 有机杂粮",
+  "icon": "grains",
+  "slots": [
+   {
+    "file": "005001_1.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Egyptian Grains.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egyptian_Grains.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Egyptian_Grains.jpg/960px-Egyptian_Grains.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Egyptian_Grains.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "cereal grains variety",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005001_2.jpg"
+   },
+   {
+    "file": "005001_2.jpg",
+    "kind": "cand",
+    "merged_index": 5,
+    "pool": "strict",
+    "pool_index": 5,
+    "title": "File:Grains and bread.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Grains_and_bread.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Grains_and_bread.jpg/960px-Grains_and_bread.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Grains_and_bread.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "legumes grains bowl",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005001_5.jpg"
+   },
+   {
+    "file": "005001_3.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Grains of Selim in a basket.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Grains_of_Selim_in_a_basket.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Grains_of_Selim_in_a_basket.jpg/960px-Grains_of_Selim_in_a_basket.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Grains_of_Selim_in_a_basket.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "grain basket",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005001_0.jpg"
+   },
+   {
+    "file": "005001_4.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:'Dun'- a basket made of bamboo and rattan cane holding five seers of grain used in Assam extensively before use of weighing pans.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%27Dun%27-_a_basket_made_of_bamboo_and_rattan_cane_holding_five_seers_of_grain_used_in_Assam_extensively_before_use_of_weighing_pans.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/%27Dun%27-_a_basket_made_of_bamboo_and_rattan_cane_holding_five_seers_of_grain_used_in_Assam_extensively_before_use_of_weighing_pans.jpg/960px-%27Dun%27-_a_basket_made_of_bamboo_and_rattan_cane_holding_five_seers_of_grain_used_in_Assam_extensively_before_use_of_weighing_pans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/%27Dun%27-_a_basket_made_of_bamboo_and_rattan_cane_holding_five_seers_of_grain_used_in_Assam_extensively_before_use_of_weighing_pans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "grain basket",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005001_7.jpg"
+   }
+  ]
+ },
+ "005002": {
+  "name": "全营养代餐奶昔",
+  "category": "健康食品 >> 代餐轻食",
+  "icon": "shake",
+  "slots": [
+   {
+    "file": "005002_1.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Strawberry milk shake in cola glass.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Strawberry_milk_shake_in_cola_glass.jpg",
+    "thumb_url_520": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Strawberry_milk_shake_in_cola_glass.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Strawberry_milk_shake_in_cola_glass.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "milkshake glass",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005002_1.jpg"
+   },
+   {
+    "file": "005002_2.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Strawberry milk shake (cropped).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Strawberry_milk_shake_(cropped).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Strawberry_milk_shake_%28cropped%29.jpg/960px-Strawberry_milk_shake_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Strawberry_milk_shake_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "milkshake glass",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005002_4.jpg"
+   },
+   {
+    "file": "005002_3.jpg",
+    "kind": "cand",
+    "merged_index": 5,
+    "pool": "strict",
+    "pool_index": 5,
+    "title": "File:GLASS OF HAPPINESS.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:GLASS_OF_HAPPINESS.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/GLASS_OF_HAPPINESS.jpg/960px-GLASS_OF_HAPPINESS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/GLASS_OF_HAPPINESS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "milkshake glass",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005002_5.jpg"
+   },
+   {
+    "file": "005002_4.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:A glass of hyderabad smoothie.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:A_glass_of_hyderabad_smoothie.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/A_glass_of_hyderabad_smoothie.jpg/960px-A_glass_of_hyderabad_smoothie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/A_glass_of_hyderabad_smoothie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "smoothie glass",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005002_7.jpg"
+   }
+  ]
+ },
+ "005003": {
+  "name": "桂圆红枣枸杞茶",
+  "category": "健康食品 >> 养生茶饮",
+  "icon": "tea",
+  "slots": [
+   {
+    "file": "005003_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Dried jujube.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dried_jujube.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Dried_jujube.jpg/960px-Dried_jujube.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Dried_jujube.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dried jujube",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005003_0.jpg"
+   },
+   {
+    "file": "005003_2.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Huizao 灰枣 Chinese data - jujube.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Huizao_%E7%81%B0%E6%9E%A3_Chinese_data_-_jujube.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Huizao_%E7%81%B0%E6%9E%A3_Chinese_data_-_jujube.jpg/960px-Huizao_%E7%81%B0%E6%9E%A3_Chinese_data_-_jujube.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Huizao_%E7%81%B0%E6%9E%A3_Chinese_data_-_jujube.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dried jujube",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005003_2.jpg"
+   },
+   {
+    "file": "005003_3.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Dried longan meat.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dried_longan_meat.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Dried_longan_meat.jpg/960px-Dried_longan_meat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Dried_longan_meat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "longan dried",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005003_3.jpg"
+   },
+   {
+    "file": "005003_4.jpg",
+    "kind": "cand",
+    "merged_index": 5,
+    "pool": "strict",
+    "pool_index": 5,
+    "title": "File:AA grade dried longan.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:AA_grade_dried_longan.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/AA_grade_dried_longan.jpg/960px-AA_grade_dried_longan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/AA_grade_dried_longan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "longan dried",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005003_5.jpg"
+   }
+  ]
+ },
+ "005004": {
+  "name": "低GI全麦面包",
+  "category": "健康食品 >> 低GI食品",
+  "icon": "bread",
+  "slots": [
+   {
+    "file": "005004_1.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:Vegan no-knead whole wheat bread loaf, sliced, September 2010.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_no-knead_whole_wheat_bread_loaf,_sliced,_September_2010.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Vegan_no-knead_whole_wheat_bread_loaf%2C_sliced%2C_September_2010.jpg/960px-Vegan_no-knead_whole_wheat_bread_loaf%2C_sliced%2C_September_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Vegan_no-knead_whole_wheat_bread_loaf%2C_sliced%2C_September_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "whole wheat bread",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005004_0.jpg"
+   },
+   {
+    "file": "005004_2.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Vegan no-knead whole wheat bread loaf, September 2010.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_no-knead_whole_wheat_bread_loaf,_September_2010.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Vegan_no-knead_whole_wheat_bread_loaf%2C_September_2010.jpg/960px-Vegan_no-knead_whole_wheat_bread_loaf%2C_September_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Vegan_no-knead_whole_wheat_bread_loaf%2C_September_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "whole wheat bread",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005004_1.jpg"
+   },
+   {
+    "file": "005004_3.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Rye and whole wheat bread, September 2009.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rye_and_whole_wheat_bread,_September_2009.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Rye_and_whole_wheat_bread%2C_September_2009.jpg/960px-Rye_and_whole_wheat_bread%2C_September_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Rye_and_whole_wheat_bread%2C_September_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "whole wheat bread",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005004_2.jpg"
+   },
+   {
+    "file": "005004_4.jpg",
+    "kind": "cand",
+    "merged_index": 4,
+    "pool": "strict",
+    "pool_index": 4,
+    "title": "File:Whole Wheat Bread 01.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Whole_Wheat_Bread_01.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Whole_Wheat_Bread_01.jpg/960px-Whole_Wheat_Bread_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Whole_Wheat_Bread_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "whole wheat bread",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\005004_4.jpg"
+   }
+  ]
+ },
+ "006001": {
+  "name": "基础体检套餐",
+  "category": "康养服务 >> 健康体检",
+  "icon": "tubes",
+  "slots": [
+   {
+    "file": "006001_1.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:Laboratory Test Tubes; from a medical laboratory in Abuja, Nigeria.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Laboratory_Test_Tubes;_from_a_medical_laboratory_in_Abuja,_Nigeria.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Laboratory_Test_Tubes%3B_from_a_medical_laboratory_in_Abuja%2C_Nigeria.jpg/960px-Laboratory_Test_Tubes%3B_from_a_medical_laboratory_in_Abuja%2C_Nigeria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Laboratory_Test_Tubes%3B_from_a_medical_laboratory_in_Abuja%2C_Nigeria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "medical test tubes laboratory",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006001_1.jpg"
+   },
+   {
+    "file": "006001_2.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:Blood collection tube (1 kind).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blood_collection_tube_(1_kind).jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Blood_collection_tube_%281_kind%29.jpg/960px-Blood_collection_tube_%281_kind%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Blood_collection_tube_%281_kind%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "blood test tubes",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006001_7.jpg"
+   },
+   {
+    "file": "006001_3.jpg",
+    "kind": "cand",
+    "merged_index": 3,
+    "pool": "strict",
+    "pool_index": 3,
+    "title": "File:Blood collection renal function test tube.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blood_collection_renal_function_test_tube.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Blood_collection_renal_function_test_tube.jpg/960px-Blood_collection_renal_function_test_tube.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Blood_collection_renal_function_test_tube.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "blood test tubes",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006001_3.jpg"
+   },
+   {
+    "file": "006001_4.jpg",
+    "kind": "cand",
+    "merged_index": 5,
+    "pool": "strict",
+    "pool_index": 5,
+    "title": "File:Blood collection tubes.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blood_collection_tubes.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Blood_collection_tubes.jpg/960px-Blood_collection_tubes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Blood_collection_tubes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "vacutainer blood collection",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006001_5.jpg"
+   }
+  ]
+ },
+ "006002": {
+  "name": "中医在线问诊",
+  "category": "康养服务 >> 中医问诊",
+  "icon": "herbs",
+  "slots": [
+   {
+    "file": "006002_1.jpg",
+    "kind": "cand",
+    "merged_index": 7,
+    "pool": "strict",
+    "pool_index": 7,
+    "title": "File:HK SKD TKO 寶琳 Po Lam 新都城中心商場 Metro City Plaza MCP Three Discovery mall shop 藥材店 Chinese herbs January 2023 Px3 05.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_SKD_TKO_%E5%AF%B6%E7%90%B3_Po_Lam_%E6%96%B0%E9%83%BD%E5%9F%8E%E4%B8%AD%E5%BF%83%E5%95%86%E5%A0%B4_Metro_City_Plaza_MCP_Three_Discovery_mall_shop_%E8%97%A5%E6%9D%90%E5%BA%97_Chinese_herbs_January_2023_Px3_05.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/HK_SKD_TKO_%E5%AF%B6%E7%90%B3_Po_Lam_%E6%96%B0%E9%83%BD%E5%9F%8E%E4%B8%AD%E5%BF%83%E5%95%86%E5%A0%B4_Metro_City_Plaza_MCP_Three_Discovery_mall_shop_%E8%97%A5%E6%9D%90%E5%BA%97_Chinese_herbs_January_2023_Px3_05.jpg/960px-HK_SKD_TKO_%E5%AF%B6%E7%90%B3_Po_Lam_%E6%96%B0%E9%83%BD%E5%9F%8E%E4%B8%AD%E5%BF%83%E5%95%86%E5%A0%B4_Metro_City_Plaza_MCP_Three_Discovery_mall_shop_%E8%97%A5%E6%9D%90%E5%BA%97_Chinese_herbs_January_2023_Px3_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/HK_SKD_TKO_%E5%AF%B6%E7%90%B3_Po_Lam_%E6%96%B0%E9%83%BD%E5%9F%8E%E4%B8%AD%E5%BF%83%E5%95%86%E5%A0%B4_Metro_City_Plaza_MCP_Three_Discovery_mall_shop_%E8%97%A5%E6%9D%90%E5%BA%97_Chinese_herbs_January_2023_Px3_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "chinese medicine herbs",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006002_7.jpg"
+   },
+   {
+    "file": "006002_2.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:Chinese traditional medicine.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chinese_traditional_medicine.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Chinese_traditional_medicine.jpg/960px-Chinese_traditional_medicine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Chinese_traditional_medicine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "chinese herbal medicine",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006002_2.jpg"
+   },
+   {
+    "file": "006002_3.jpg",
+    "kind": "cand",
+    "merged_index": 8,
+    "pool": "sup",
+    "pool_index": 0,
+    "title": "File:Dried herbs 2026-05-24 Philippines 02.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dried_herbs_2026-05-24_Philippines_02.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Dried_herbs_2026-05-24_Philippines_02.jpg/960px-Dried_herbs_2026-05-24_Philippines_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Dried_herbs_2026-05-24_Philippines_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dried herbs",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_006002_0.jpg"
+   },
+   {
+    "file": "006002_4.jpg",
+    "kind": "cand",
+    "merged_index": 11,
+    "pool": "sup",
+    "pool_index": 3,
+    "title": "File:Dried herbs 2026-05-24 Philippines 06.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dried_herbs_2026-05-24_Philippines_06.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Dried_herbs_2026-05-24_Philippines_06.jpg/960px-Dried_herbs_2026-05-24_Philippines_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Dried_herbs_2026-05-24_Philippines_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "dried herbs",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\sup_006002_3.jpg"
+   }
+  ]
+ },
+ "006003": {
+  "name": "心理咨询60分钟",
+  "category": "康养服务 >> 心理咨询",
+  "icon": "couch",
+  "slots": [
+   {
+    "file": "006003_1.jpg",
+    "kind": "ph",
+    "icon": "couch",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "006003_2.jpg",
+    "kind": "ph",
+    "icon": "couch",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "006003_3.jpg",
+    "kind": "ph",
+    "icon": "couch",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   },
+   {
+    "file": "006003_4.jpg",
+    "kind": "ph",
+    "icon": "couch",
+    "note": "self-drawn placeholder card (see placeholders.py make_card)"
+   }
+  ]
+ },
+ "006004": {
+  "name": "肩颈推拿理疗",
+  "category": "康养服务 >> 康复理疗",
+  "icon": "table",
+  "slots": [
+   {
+    "file": "006004_1.jpg",
+    "kind": "cand",
+    "merged_index": 5,
+    "pool": "strict",
+    "pool_index": 5,
+    "title": "File:Skye Massage Table .jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Skye_Massage_Table_.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Skye_Massage_Table_.jpg/960px-Skye_Massage_Table_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Skye_Massage_Table_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "massage table",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006004_5.jpg"
+   },
+   {
+    "file": "006004_2.jpg",
+    "kind": "cand",
+    "merged_index": 1,
+    "pool": "strict",
+    "pool_index": 1,
+    "title": "File:EFTA00000484 - White-covered massage table sits in a luxurious ornately decorated room with patterned carpeting and wooden cabinetry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:EFTA00000484_-_White-covered_massage_table_sits_in_a_luxurious_ornately_decorated_room_with_patterned_carpeting_and_wooden_cabinetry.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/EFTA00000484_-_White-covered_massage_table_sits_in_a_luxurious_ornately_decorated_room_with_patterned_carpeting_and_wooden_cabinetry.jpg/960px-EFTA00000484_-_White-covered_massage_table_sits_in_a_luxurious_ornately_decorated_room_with_patterned_carpeting_and_wooden_cabinetry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/EFTA00000484_-_White-covered_massage_table_sits_in_a_luxurious_ornately_decorated_room_with_patterned_carpeting_and_wooden_cabinetry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "massage table",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006004_1.jpg"
+   },
+   {
+    "file": "006004_3.jpg",
+    "kind": "cand",
+    "merged_index": 2,
+    "pool": "strict",
+    "pool_index": 2,
+    "title": "File:EFTA00000485 - Massage table covered with a blue blanket positioned in a room with patterned wallpaper and framed artwork.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:EFTA00000485_-_Massage_table_covered_with_a_blue_blanket_positioned_in_a_room_with_patterned_wallpaper_and_framed_artwork.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/EFTA00000485_-_Massage_table_covered_with_a_blue_blanket_positioned_in_a_room_with_patterned_wallpaper_and_framed_artwork.jpg/960px-EFTA00000485_-_Massage_table_covered_with_a_blue_blanket_positioned_in_a_room_with_patterned_wallpaper_and_framed_artwork.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/EFTA00000485_-_Massage_table_covered_with_a_blue_blanket_positioned_in_a_room_with_patterned_wallpaper_and_framed_artwork.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "massage table",
+    "cached_1400": false,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006004_2.jpg"
+   },
+   {
+    "file": "006004_4.jpg",
+    "kind": "cand",
+    "merged_index": 0,
+    "pool": "strict",
+    "pool_index": 0,
+    "title": "File:EFTA00000167 - Luxurious spa room features a massage table ornate wooden shelves stocked with skincare products and an artful wall mural.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:EFTA00000167_-_Luxurious_spa_room_features_a_massage_table_ornate_wooden_shelves_stocked_with_skincare_products_and_an_artful_wall_mural.jpg",
+    "thumb_url_520": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/EFTA00000167_-_Luxurious_spa_room_features_a_massage_table_ornate_wooden_shelves_stocked_with_skincare_products_and_an_artful_wall_mural.jpg/960px-EFTA00000167_-_Luxurious_spa_room_features_a_massage_table_ornate_wooden_shelves_stocked_with_skincare_products_and_an_artful_wall_mural.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "orig_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/EFTA00000167_-_Luxurious_spa_room_features_a_massage_table_ornate_wooden_shelves_stocked_with_skincare_products_and_an_artful_wall_mural.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "query": "massage table",
+    "cached_1400": true,
+    "local_thumb_520": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v9\\review\\006004_0.jpg"
+   }
+  ]
+ }
+}

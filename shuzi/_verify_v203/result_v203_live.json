@@ -1,0 +1,32 @@
+[
+ {
+  "name": "线上 web=203",
+  "ok": true,
+  "detail": "203"
+ },
+ {
+  "name": "立体图就绪",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "24 条经络管",
+  "ok": true,
+  "detail": "24"
+ },
+ {
+  "name": "前视 18 条",
+  "ok": true,
+  "detail": "18"
+ },
+ {
+  "name": "背视 8 条",
+  "ok": true,
+  "detail": "8"
+ },
+ {
+  "name": "无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

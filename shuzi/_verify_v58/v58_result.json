@@ -1,0 +1,57 @@
+[
+ {
+  "tag": "E0 测试账号",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "E0b 建档（进音疗需要已建档态）",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "E1 两个入口 + 进入能量注入屏",
+  "ok": true,
+  "detail": "entries=True screen=True"
+ },
+ {
+  "tag": "E2 多选与取消",
+  "ok": true,
+  "detail": "two=已选 2 处 one=已选 1 处"
+ },
+ {
+  "tag": "E3 注入后开始播放（胸口→徵音）",
+  "ok": true,
+  "detail": "now={'id': 'zhi', 'name': '徵音（心）', 'kind': 'wuyin'}"
+ },
+ {
+  "tag": "E4 静音与恢复",
+  "ok": true,
+  "detail": "muted=None back={'id': 'zhi', 'name': '徵音（心）', 'kind': 'wuyin'}"
+ },
+ {
+  "tag": "E5 转身 + 重选",
+  "ok": true,
+  "detail": "turn=转回正面 chip=未选部位"
+ },
+ {
+  "tag": "B1 呼吸启动（阶段与倒计时）",
+  "ok": true,
+  "detail": "screen=True phase1=吸气 phase2=停一停 count=2:59"
+ },
+ {
+  "tag": "B2 停止复位",
+  "ok": true,
+  "detail": "phase=准备好了就开始 btn=开始"
+ },
+ {
+  "tag": "M1 佛音清单 4 条且可播",
+  "ok": true,
+  "detail": "items=4 chip=4 条 now={'id': 'chant:0', 'name': '般若心经（普通话）', 'kind': 'chant'}"
+ },
+ {
+  "tag": "M2 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

@@ -1,0 +1,414 @@
+{
+ "001001": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "cand",
+   "idx": 6
+  }
+ ],
+ "001002": [
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "cand",
+   "idx": 13
+  },
+  {
+   "kind": "derived"
+  },
+  {
+   "kind": "derived"
+  }
+ ],
+ "001003": [
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "cand",
+   "idx": 5
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  }
+ ],
+ "001004": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  }
+ ],
+ "002001": [
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  }
+ ],
+ "002002": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "derived"
+  }
+ ],
+ "002003": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "derived"
+  },
+  {
+   "kind": "derived"
+  }
+ ],
+ "002004": [
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "cand",
+   "idx": 0
+  }
+ ],
+ "003001": [
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 11
+  },
+  {
+   "kind": "derived"
+  },
+  {
+   "kind": "derived"
+  }
+ ],
+ "003002": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  }
+ ],
+ "003003": [
+  {
+   "kind": "cand",
+   "idx": 6
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  },
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "derived"
+  }
+ ],
+ "003004": [
+  {
+   "kind": "cand",
+   "idx": 12
+  },
+  {
+   "kind": "cand",
+   "idx": 13
+  },
+  {
+   "kind": "cand",
+   "idx": 14
+  },
+  {
+   "kind": "cand",
+   "idx": 15
+  }
+ ],
+ "004001": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 6
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  }
+ ],
+ "004002": [
+  {
+   "kind": "cand",
+   "idx": 6
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  },
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  }
+ ],
+ "004003": [
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  }
+ ],
+ "004004": [
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  }
+ ],
+ "005001": [
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 5
+  },
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  }
+ ],
+ "005002": [
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 4
+  },
+  {
+   "kind": "cand",
+   "idx": 5
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  }
+ ],
+ "005003": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 5
+  }
+ ],
+ "005004": [
+  {
+   "kind": "cand",
+   "idx": 0
+  },
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 4
+  }
+ ],
+ "006001": [
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 7
+  },
+  {
+   "kind": "cand",
+   "idx": 3
+  },
+  {
+   "kind": "cand",
+   "idx": 5
+  }
+ ],
+ "006002": [
+  {
+   "kind": "cand",
+   "idx": 7
+  },
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 8
+  },
+  {
+   "kind": "cand",
+   "idx": 11
+  }
+ ],
+ "006003": [
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  },
+  {
+   "kind": "ph"
+  }
+ ],
+ "006004": [
+  {
+   "kind": "cand",
+   "idx": 5
+  },
+  {
+   "kind": "cand",
+   "idx": 1
+  },
+  {
+   "kind": "cand",
+   "idx": 2
+  },
+  {
+   "kind": "cand",
+   "idx": 0
+  }
+ ]
+}

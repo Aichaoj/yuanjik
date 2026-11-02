@@ -1,0 +1,101 @@
+{
+  "pass": 19,
+  "total": 19,
+  "items": [
+    {
+      "name": "A1 错误密码 ≤1.5s 给出提示",
+      "ok": true,
+      "detail": "0.16s / 手机号/昵称或密码不正确。（追踪号 6ae7ec3e23d75e29c40b5d11）"
+    },
+    {
+      "name": "A1 提示文案是账号密码错",
+      "ok": true,
+      "detail": "手机号/昵称或密码不正确。（追踪号 6ae7ec3e23d75e29c40b5d11）"
+    },
+    {
+      "name": "A1 不再触发 /auth/refresh",
+      "ok": true,
+      "detail": "refresh=0"
+    },
+    {
+      "name": "A1 遮罩已收起",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A1 面板仍开着可重试",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "登录成功拿到令牌",
+      "ok": true,
+      "detail": "token_len=43"
+    },
+    {
+      "name": "A3 登录后已记住账号密码",
+      "ok": true,
+      "detail": "cred_len=76"
+    },
+    {
+      "name": "A3 记忆不是明文",
+      "ok": true,
+      "detail": "AkgbDFlQVFcXRgIACElbWx9B"
+    },
+    {
+      "name": "登录后右上角显示手机号掩码",
+      "ok": true,
+      "detail": "139****0101"
+    },
+    {
+      "name": "A3 清令牌后刷新自动登录",
+      "ok": true,
+      "detail": "entry=139****0101"
+    },
+    {
+      "name": "A4 access 过期静默续期",
+      "ok": true,
+      "detail": "139****0101"
+    },
+    {
+      "name": "A4 未弹登录面板",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A5 断网续期保留登录态",
+      "ok": true,
+      "detail": "refresh_len=43"
+    },
+    {
+      "name": "A5 未误报「登录已过期」",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A2 登录 10 秒内退出面板",
+      "ok": true,
+      "detail": "closed_at=10.07"
+    },
+    {
+      "name": "A2 超时回到首页",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A2 有超时提示",
+      "ok": true,
+      "detail": "登录超时（10 秒），已返回首页；请检查网络后重试。"
+    },
+    {
+      "name": "A2 遮罩已收起",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A2 超时后仍可再点登录",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

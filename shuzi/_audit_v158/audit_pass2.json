@@ -1,0 +1,1269 @@
+{
+ "account": "13893013675",
+ "screens": {
+  "screen-home": {
+   "tab": "home",
+   "items": [
+    {
+     "k": "id:homeDailyCard",
+     "t": "今日健康指数 2026年10月26日 星期一 56 ",
+     "tag": "section",
+     "cls": "card home-daily"
+    },
+    {
+     "k": "id:homeEnergyRow",
+     "t": "今日能量指数 10-26 19:21 81.1/10",
+     "tag": "section",
+     "cls": "card home-energy"
+    },
+    {
+     "k": "id:btnHomeCheckin",
+     "t": "今日签到",
+     "tag": "button",
+     "cls": "btn btn-primary"
+    },
+    {
+     "k": "id:btnHomeDailyMore",
+     "t": "查看今日详细节律",
+     "tag": "button",
+     "cls": "btn btn-ghost"
+    },
+    {
+     "k": "id:homeNeedCard",
+     "t": "今日需注意 戌时 戌时 · 心包经当令（19:00–",
+     "tag": "section",
+     "cls": "card home-need"
+    },
+    {
+     "k": "id:btnOpenQr",
+     "t": "随手记一下今天的饮食 / 心情",
+     "tag": "button",
+     "cls": "qr-summary-btn"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-home.png"
+  },
+  "screen-rhythm": {
+   "from": "screen-home",
+   "via": "查看今日详细节律",
+   "items": [
+    {
+     "k": "id:indexCard",
+     "t": "今日健康指数 当日时相推算 56 分 中 优 良 中",
+     "tag": "article",
+     "cls": "card index-card"
+    },
+    {
+     "k": "id:energyCard",
+     "t": "人类能量粒子流变图 读数可视化 · 非诊断 肺 +0",
+     "tag": "article",
+     "cls": "card energy-card"
+    },
+    {
+     "k": "id:shichenCard",
+     "t": "此刻时辰 19:00–20:59 戌时 心包经当令 ",
+     "tag": "article",
+     "cls": "card shichen-card"
+    },
+    {
+     "k": "id:btnShichenTable",
+     "t": "查看十二时辰表",
+     "tag": "button",
+     "cls": "btn btn-ghost sc-more"
+    },
+    {
+     "k": "id:calibCard",
+     "t": "个体化校准 校准中 基线建立中 1/7 14% 个体",
+     "tag": "section",
+     "cls": "card calib-card"
+    },
+    {
+     "k": "id:attentionCard",
+     "t": "今日关注 点击标签查看依据 心 偏亢 肺 偏亢 肾 ",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:6",
+     "t": "心 偏亢",
+     "tag": "button",
+     "cls": "att-tag"
+    },
+    {
+     "k": "ix:7",
+     "t": "肺 偏亢",
+     "tag": "button",
+     "cls": "att-tag"
+    },
+    {
+     "k": "ix:8",
+     "t": "肾 偏亢",
+     "tag": "button",
+     "cls": "att-tag"
+    },
+    {
+     "k": "ix:9",
+     "t": "大肠 偏亢",
+     "tag": "button",
+     "cls": "att-tag"
+    },
+    {
+     "k": "id:windowsCard",
+     "t": "黄金时段 00:00–24:00 心经当令 11:0",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:focusCard",
+     "t": "关注通道 Δ 为相对你个人基线的偏移量（需 7 次打",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:adviceCard",
+     "t": "生活方式取向 【今日节律参考】 你的个人基线正在校准",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:channelsAcc",
+     "t": "十二通道态势",
+     "tag": "details",
+     "cls": "card accordion"
+    },
+    {
+     "k": "id:lineageAcc",
+     "t": "依据链",
+     "tag": "details",
+     "cls": "card accordion"
+    },
+    {
+     "k": "id:complianceCard",
+     "t": "合规声明 AI 本内容由 AI 生成，仅供参考。 本",
+     "tag": "section",
+     "cls": "card compliance"
+    },
+    {
+     "k": "id:shareCard",
+     "t": "分享给朋友 纯文本，可自由粘贴 数字健康-AI元神（",
+     "tag": "section",
+     "cls": "card share-card"
+    },
+    {
+     "k": "id:btnCopyShare",
+     "t": "复制分享文案",
+     "tag": "button",
+     "cls": "btn btn-ghost"
+    },
+    {
+     "k": "id:btnCheckin",
+     "t": "今日打卡",
+     "tag": "button",
+     "cls": "btn btn-primary btn-lg"
+    },
+    {
+     "k": "id:btnHistory",
+     "t": "历史记录",
+     "tag": "button",
+     "cls": "btn btn-ghost"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-rhythm.png"
+  },
+  "screen-music": {
+   "tab": "music",
+   "items": [
+    {
+     "k": "id:musicRecCard",
+     "t": "今天建议听 能量 153.1 宫音（土 · 脾/胃）",
+     "tag": "section",
+     "cls": "card music-rec"
+    },
+    {
+     "k": "id:btnPlayRec",
+     "t": "播放",
+     "tag": "button",
+     "cls": "btn btn-primary"
+    },
+    {
+     "k": "id:btnPlayNext",
+     "t": "换一个",
+     "tag": "button",
+     "cls": "btn btn-ghost"
+    },
+    {
+     "k": "ix:3",
+     "t": "宫音（土 · 脾/胃） 能量 153.1（低于 20",
+     "tag": "button",
+     "cls": "rec-row"
+    },
+    {
+     "k": "ix:4",
+     "t": "羽音（水 · 肾/膀胱） 羽音低缓，配合呼吸把节奏慢",
+     "tag": "button",
+     "cls": "rec-row"
+    },
+    {
+     "k": "ix:5",
+     "t": "地藏经（节选·电子诵） 配合宫音（土 · 脾/胃），",
+     "tag": "button",
+     "cls": "rec-row"
+    },
+    {
+     "k": "ix:6",
+     "t": "金刚经（节选·电子诵） 配合宫音（土 · 脾/胃），",
+     "tag": "button",
+     "cls": "rec-row"
+    },
+    {
+     "k": "ix:7",
+     "t": "呼吸引导 按节奏吸气 · 停一停 · 呼气，1 分钟",
+     "tag": "section",
+     "cls": "card entry-pair"
+    },
+    {
+     "k": "id:btnGoBreath",
+     "t": "呼吸引导 按节奏吸气 · 停一停 · 呼气，1 分钟",
+     "tag": "button",
+     "cls": "entry-card"
+    },
+    {
+     "k": "id:btnGoComfort",
+     "t": "减缓疼痛 在立体人体上点选痛处，再开始接收能量（放松",
+     "tag": "button",
+     "cls": "entry-card"
+    },
+    {
+     "k": "id:btnGoContribute",
+     "t": "贡献能量 符咒注入 / 意念注入 · 每 5 分钟 ",
+     "tag": "button",
+     "cls": "entry-card"
+    },
+    {
+     "k": "id:btnGoUse",
+     "t": "补充能量 给自己补 · 每天 2 次、每次 ≤15 ",
+     "tag": "button",
+     "cls": "entry-card"
+    },
+    {
+     "k": "id:btnGoVault",
+     "t": "空间能量场 贡献能量 / 补充能量 · 看共享能量指",
+     "tag": "button",
+     "cls": "entry-card"
+    },
+    {
+     "k": "ix:13",
+     "t": "五音 角徵宫商羽 宫音 脾 商音 肺 角音 肝 徵音",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:14",
+     "t": "宫音 脾",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:15",
+     "t": "商音 肺",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:16",
+     "t": "角音 肝",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:17",
+     "t": "徵音 心",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:18",
+     "t": "羽音 肾",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:19",
+     "t": "静心音 本地合成 颂钵 低频泛音，慢慢散开 木鱼 匀",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:20",
+     "t": "颂钵 低频泛音，慢慢散开",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:21",
+     "t": "木鱼 匀速轻点，帮自己坐住",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:22",
+     "t": "雨声 连续白噪音，遮住环境杂音",
+     "tag": "button",
+     "cls": "chip music-chip"
+    },
+    {
+     "k": "ix:23",
+     "t": "佛音 8 条 地藏经（节选·电子诵） 忉利天宫神通品",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:24",
+     "t": "地藏经（节选·电子诵） 忉利天宫神通品第一 · 本站",
+     "tag": "button",
+     "cls": "chant-item"
+    },
+    {
+     "k": "ix:25",
+     "t": "金刚经（节选·电子诵） 法会因由分至如理实见分 · ",
+     "tag": "button",
+     "cls": "chant-item"
+    },
+    {
+     "k": "ix:26",
+     "t": "般若心经（普通话） 心经念诵 · CC0 公有领域",
+     "tag": "button",
+     "cls": "chant-item"
+    },
+    {
+     "k": "ix:27",
+     "t": "灵隐寺梵呗（现场） 杭州灵隐寺 · CC BY-SA",
+     "tag": "button",
+     "cls": "chant-item"
+    },
+    {
+     "k": "ix:28",
+     "t": "楞严咒（节选·长） 宣化上人念诵节选 · CC BY",
+     "tag": "button",
+     "cls": "chant-item"
+    },
+    {
+     "k": "id:musicPlayerBar",
+     "t": "未播放 00:00 播放 停止 5 分钟 10 分钟",
+     "tag": "section",
+     "cls": "card music-player"
+    },
+    {
+     "k": "id:mpToggle",
+     "t": "播放",
+     "tag": "button",
+     "cls": "btn btn-primary btn-sm"
+    },
+    {
+     "k": "id:mpStop",
+     "t": "停止",
+     "tag": "button",
+     "cls": "btn btn-ghost btn-sm"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-music.png"
+  },
+  "screen-breath": {
+   "from": "screen-music",
+   "via": "呼吸引导 按节奏吸气 · 停一停 · 呼气，1 分钟",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "准备好了就开始 0:00 开始 节拍音：关 节拍音：",
+     "tag": "section",
+     "cls": "card breath-card"
+    },
+    {
+     "k": "id:btnBreathStart",
+     "t": "开始",
+     "tag": "button",
+     "cls": "btn btn-primary"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-breath.png"
+  },
+  "screen-energy": {
+   "from": "screen-music",
+   "via": "减缓疼痛 在立体人体上点选痛处，再开始接收能量（放松",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "部位 器官（示意） 拖动可以转着看；点身上的位置选/",
+     "tag": "section",
+     "cls": "card body-card"
+    },
+    {
+     "k": "ix:1",
+     "t": "部位",
+     "tag": "button",
+     "cls": "chip is-on"
+    },
+    {
+     "k": "ix:2",
+     "t": "器官（示意）",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "id:bmEnergy",
+     "t": "补充能量",
+     "tag": "button",
+     "cls": "vc-link"
+    },
+    {
+     "k": "id:bmComfort",
+     "t": "减缓疼痛",
+     "tag": "button",
+     "cls": "vc-link is-on"
+    },
+    {
+     "k": "id:btnBodyInject",
+     "t": "◈ 接收能量",
+     "tag": "button",
+     "cls": "btn-orb btn-orb-primary"
+    },
+    {
+     "k": "id:btnBodyStop",
+     "t": "■ 停止接收",
+     "tag": "button",
+     "cls": "btn-orb btn-orb-stop"
+    },
+    {
+     "k": "id:btnBodyReset",
+     "t": "⟲ 重选",
+     "tag": "button",
+     "cls": "btn-orb"
+    },
+    {
+     "k": "id:btnBodyMode",
+     "t": "切到平面图",
+     "tag": "button",
+     "cls": "btn-orb"
+    },
+    {
+     "k": "id:btnBodyTurn",
+     "t": "↻ 转身",
+     "tag": "button",
+     "cls": "btn-orb"
+    },
+    {
+     "k": "id:btnBodyMute",
+     "t": "♪ 静音",
+     "tag": "button",
+     "cls": "btn-orb"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-energy.png"
+  },
+  "screen-contribute": {
+   "from": "screen-music",
+   "via": "贡献能量 符咒注入 / 意念注入 · 每 5 分钟 ",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "符咒注入 意念注入 符咒会开录音；意念不需要麦克风。",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:btnCChant",
+     "t": "符咒注入",
+     "tag": "button",
+     "cls": "btn btn-primary"
+    },
+    {
+     "k": "id:btnCAbsorb",
+     "t": "意念注入",
+     "tag": "button",
+     "cls": "btn btn-ghost"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-contribute.png"
+  },
+  "screen-vault": {
+   "from": "screen-music",
+   "via": "空间能量场 贡献能量 / 补充能量 · 看共享能量指",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "共享能量指数 10,509 这是参与式体验数值：显示",
+     "tag": "section",
+     "cls": "card vault-hero"
+    },
+    {
+     "k": "id:btnVChant",
+     "t": "符咒注入",
+     "tag": "button",
+     "cls": "btn btn-primary vc-btn"
+    },
+    {
+     "k": "id:btnVAbsorb",
+     "t": "意念注入",
+     "tag": "button",
+     "cls": "btn btn-primary vc-btn"
+    },
+    {
+     "k": "ix:3",
+     "t": "我的 今日 0/30 0 累计次数 0 总能力值 0",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:4",
+     "t": "我的能量流水 点开查看 0 条 流水只增不删；这是你",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:ledgerHead",
+     "t": "我的能量流水 点开查看 0 条",
+     "tag": "div",
+     "cls": "card-head"
+    },
+    {
+     "k": "id:myEnergyCard",
+     "t": "我的能量 今日 0/5 0 能量值 吸收与使用都会累",
+     "tag": "section",
+     "cls": "card vault-myenergy"
+    },
+    {
+     "k": "ix:7",
+     "t": "积分 1:1（1 能力值 = 1 积分） 0 积分 ",
+     "tag": "section",
+     "cls": "card vault-points-card"
+    },
+    {
+     "k": "id:btnGoPoints",
+     "t": "查看积分明细",
+     "tag": "button",
+     "cls": "btn btn-ghost btn-sm"
+    },
+    {
+     "k": "ix:9",
+     "t": "50 积分兑换",
+     "tag": "button",
+     "cls": "btn btn-ghost btn-sm"
+    },
+    {
+     "k": "ix:10",
+     "t": "300 积分兑换",
+     "tag": "button",
+     "cls": "btn btn-ghost btn-sm"
+    },
+    {
+     "k": "ix:11",
+     "t": "贡献榜 我还没上榜 1 爱心用户ce6b 10 查看",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:btnBoardAll",
+     "t": "查看全部",
+     "tag": "button",
+     "cls": "btn btn-ghost btn-sm"
+    },
+    {
+     "k": "ix:13",
+     "t": "积分奖励（暂未开放） 累计满 100 次可参与积分兑",
+     "tag": "section",
+     "cls": "card"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-vault.png"
+  },
+  "screen-mine": {
+   "tab": "mine",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "· 已登录 手机号 138****3675（只用于登",
+     "tag": "section",
+     "cls": "card mine-head"
+    },
+    {
+     "k": "id:mineEnergyCard",
+     "t": "我的当下能量指数 10-26 19:22 80.9/",
+     "tag": "section",
+     "cls": "card mine-energy"
+    },
+    {
+     "k": "id:btnMineRecharge",
+     "t": "去补充",
+     "tag": "button",
+     "cls": "btn btn-ghost btn-sm"
+    },
+    {
+     "k": "ix:3",
+     "t": "✦ 空间能量场 贡献能量 / 补充能量 · 看共享能",
+     "tag": "section",
+     "cls": "card mine-group"
+    },
+    {
+     "k": "id:btnMineVault",
+     "t": "✦ 空间能量场 贡献能量 / 补充能量 · 看共享能",
+     "tag": "button",
+     "cls": "entry-card mine-vault"
+    },
+    {
+     "k": "ix:5",
+     "t": "健康综合管理 我的资料 / 重新建档 已建档 › 今",
+     "tag": "section",
+     "cls": "card mine-group"
+    },
+    {
+     "k": "ix:6",
+     "t": "我的资料 / 重新建档 已建档 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:7",
+     "t": "今日健康指数 / 健康档案 今日 66 分 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:8",
+     "t": "家人管理 未添加 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "id:btnBodyPrefs",
+     "t": "体型与性别（您的元神） 未设性别 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:10",
+     "t": "我的报告 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:11",
+     "t": "状态口述 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:12",
+     "t": "综合健康分（自评） ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:13",
+     "t": "亲密关系 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:14",
+     "t": "专属 AI 保健师 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:15",
+     "t": "我的 我的邀请 › 我的积分 / 推广收益 › 订阅",
+     "tag": "section",
+     "cls": "card mine-group"
+    },
+    {
+     "k": "ix:16",
+     "t": "我的邀请 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:17",
+     "t": "我的积分 / 推广收益 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:18",
+     "t": "订阅会员 未开通 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:19",
+     "t": "好友圈 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:20",
+     "t": "账号与安全 修改密码 / 修改昵称 › 退出登录 ›",
+     "tag": "section",
+     "cls": "card mine-group"
+    },
+    {
+     "k": "ix:21",
+     "t": "修改密码 / 修改昵称 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "id:btnMineLogout",
+     "t": "退出登录 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:23",
+     "t": "帮助与关于 问题解答 › 本草文献 338 味 › ",
+     "tag": "section",
+     "cls": "card mine-group"
+    },
+    {
+     "k": "ix:24",
+     "t": "问题解答 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:25",
+     "t": "本草文献 338 味 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:26",
+     "t": "药食同源 110 条 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:27",
+     "t": "经典药方 37 方 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    },
+    {
+     "k": "ix:28",
+     "t": "两性课堂 30 篇 ›",
+     "tag": "button",
+     "cls": "mine-item"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-mine.png"
+  },
+  "screen-reports": {
+   "from": "screen-mine",
+   "via": "健康综合管理 我的资料 / 重新建档 已建档 › 今",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "上传报告 选择文件 备注（可选） 上传",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "id:btnUploadReport",
+     "t": "上传",
+     "tag": "button",
+     "cls": "btn btn-primary"
+    },
+    {
+     "k": "ix:2",
+     "t": "已上传 还没有上传过报告。体检单、检查单都可以存一份",
+     "tag": "section",
+     "cls": "card"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-reports.png"
+  },
+  "screen-healthscore": {
+   "from": "screen-mine",
+   "via": "综合健康分（自评） ›",
+   "items": [
+    {
+     "k": "ix:0",
+     "t": "当前得分 66 分 时空节律 20% 66 分 生活",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:1",
+     "t": "问卷（每题 5 档） 未填按\"未参与\"处理 吸烟（支",
+     "tag": "section",
+     "cls": "card"
+    },
+    {
+     "k": "ix:2",
+     "t": "很差",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:3",
+     "t": "较差",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:4",
+     "t": "一般",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:5",
+     "t": "较好",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:6",
+     "t": "很好",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:7",
+     "t": "已确诊",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:8",
+     "t": "偏高未控",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:9",
+     "t": "临界",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:10",
+     "t": "正常但超一年未查",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:11",
+     "t": "近一年正常",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:12",
+     "t": "双亲都有",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:13",
+     "t": "父母+兄弟姐妹",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:14",
+     "t": "一位直系",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:15",
+     "t": "祖辈",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:16",
+     "t": "很低落",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:17",
+     "t": "偏低",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:18",
+     "t": "一般",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:19",
+     "t": "较好",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:20",
+     "t": "很好",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:21",
+     "t": "几乎无",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:22",
+     "t": "较低",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:23",
+     "t": "一般",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:24",
+     "t": "较大",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:25",
+     "t": "持续高压",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:26",
+     "t": "很差",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:27",
+     "t": "较差",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:28",
+     "t": "一般",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:29",
+     "t": "较好",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "ix:30",
+     "t": "很好",
+     "tag": "button",
+     "cls": "chip"
+    },
+    {
+     "k": "id:btnHsSave",
+     "t": "保存并计算",
+     "tag": "button",
+     "cls": "btn btn-primary"
+    },
+    {
+     "k": "ix:32",
+     "t": "分数变化记录 每次变化都能说明依据 还没有变化记录。",
+     "tag": "section",
+     "cls": "card"
+    }
+   ],
+   "shot": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\p2_screen-healthscore.png"
+  }
+ },
+ "errors": [],
+ "api_calls": [
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/auth/password/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/subscribe/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/family",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/rhythm/daily?target_date=2026-10-26",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/body/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/timemed/shichen",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/healthscore/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/healthscore/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/healthscore/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/checkin",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/rhythm/daily?target_date=2026-10-26",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/rhythm/history?limit=30",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/timemed/shichen",
+   "ms": null,
+   "view": "screen-rhythm"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/status",
+   "ms": null,
+   "view": "screen-home"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/timemed/table",
+   "ms": null,
+   "view": "screen-rhythm"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music?t=1793013711049",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music/recommend",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music/recommend",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music/recommend",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music/recommend",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music/recommend",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/status",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/ledger",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/leaderboard?limit=5",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/music/recommend",
+   "ms": null,
+   "view": "screen-music"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-mine"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/status",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/ledger",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/leaderboard?limit=5",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-mine"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/status",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/ledger",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/leaderboard?limit=5",
+   "ms": null,
+   "view": "screen-vault"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-mine"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/records/reports",
+   "ms": null,
+   "view": "screen-reports"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-mine"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/records/reports",
+   "ms": null,
+   "view": "screen-reports"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-mine"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/healthscore/status",
+   "ms": null,
+   "view": "screen-healthscore"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/healthscore/history",
+   "ms": null,
+   "view": "screen-healthscore"
+  },
+  {
+   "status": 200,
+   "url": "/api/v1/vault/energy",
+   "ms": null,
+   "view": "screen-mine"
+  }
+ ]
+}

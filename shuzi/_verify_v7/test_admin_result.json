@@ -1,0 +1,2593 @@
+{
+ "summary": {
+  "total": 144,
+  "passed": 144,
+  "failed": 0
+ },
+ "criteria": {
+  "0": [
+   {
+    "name": "打包成功（退出码 0），站点树已更新到 _dist/_stage_site",
+    "ok": true,
+    "detail": "0"
+   },
+   {
+    "name": "admin_api.py 已进入站点树",
+    "ok": true,
+    "detail": "71273 字节"
+   },
+   {
+    "name": "serve.py 已进入站点树",
+    "ok": true,
+    "detail": "55356 字节"
+   },
+   {
+    "name": "social.py 已进入站点树",
+    "ok": true,
+    "detail": "73078 字节"
+   },
+   {
+    "name": "交付物模块从**打包后的站点树**加载（与真服务同一份代码）",
+    "ok": true,
+    "detail": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_dist\\_stage_site\\server\\admin_api.py"
+   },
+   {
+    "name": "后台口令只从环境变量读（源码含 YJK_ADMIN_PASSWORD）",
+    "ok": true,
+    "detail": "已含"
+   },
+   {
+    "name": "源码里没有任何写死的口令（本次随机口令不出现在源码中）",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "口令比对用标准库 hmac.compare_digest（不自造密码学）",
+    "ok": true,
+    "detail": "已使用"
+   },
+   {
+    "name": "CSV 表头与测试期望一致（交付物 ↔ 独立期望 交叉验证）",
+    "ok": true,
+    "detail": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']"
+   },
+   {
+    "name": "合规禁词检查：生命先知 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：先知日历 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：八息象数 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：八息基因 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：ZYDGENE 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：中易道 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：九元情绪 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：华医道 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：老祖太极 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "合规禁词检查：抗量子 不出现在 admin_api.py / social.py",
+    "ok": true,
+    "detail": "不出现"
+   },
+   {
+    "name": "A0 服务就绪且是\"我们自己起的那个\"（health.data_file = 本次独立库）",
+    "ok": true,
+    "detail": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v7\\admin_v7.db"
+   },
+   {
+    "name": "A1-① 游客登录 #1（北京）",
+    "ok": true,
+    "detail": "200 mbr_431104d847ea9ebb"
+   },
+   {
+    "name": "A1-② 建档 #1（北京，出生 1988-11-27 03:47）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-① 游客登录 #2（上海）",
+    "ok": true,
+    "detail": "200 mbr_4338ad2a8b9b8584"
+   },
+   {
+    "name": "A1-② 建档 #2（上海，出生 1975-03-09 18:20）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-① 游客登录 #3（广州）",
+    "ok": true,
+    "detail": "200 mbr_f68af631a35a903d"
+   },
+   {
+    "name": "A1-② 建档 #3（广州，出生 1996-07-15 09:05）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-① 游客登录 #4（成都）",
+    "ok": true,
+    "detail": "200 mbr_a5b53f531f4331b9"
+   },
+   {
+    "name": "A1-② 建档 #4（成都，出生 1962-12-30 23:11）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-① 游客登录 #5（哈尔滨）",
+    "ok": true,
+    "detail": "200 mbr_3b50ed93872e510b"
+   },
+   {
+    "name": "A1-② 建档 #5（哈尔滨，出生 2001-02-03 06:40）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-① 游客登录 #6（乌鲁木齐）",
+    "ok": true,
+    "detail": "200 mbr_5cb1ee13d5d3706b"
+   },
+   {
+    "name": "A1-② 建档 #6（乌鲁木齐，出生 1954-08-21 13:58）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-③ m1 打卡 8 个不同日期 → 基线观测数 8（同一天重复只算一次）",
+    "ok": true,
+    "detail": "[{'observation_count': 8}]"
+   },
+   {
+    "name": "A1-④ m2 用 m1 的邀请码自动成为好友（accepted）",
+    "ok": true,
+    "detail": "200 accepted"
+   },
+   {
+    "name": "A1-⑤ m2 给 m1 送加油（封禁前，正常放行）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "A1-⑥ GET /v1/rhythm/daily 行为不变：index 含 score 与 score_kernel，基线建立后 personalized 非空",
+    "ok": true,
+    "detail": "score=69 kernel=69 personalized=True"
+   },
+   {
+    "name": "A1-⑦ GET /v1/friends 行为不变（正常会员拿到 accepted 好友）",
+    "ok": true,
+    "detail": "200 1"
+   },
+   {
+    "name": "S1 服务端日志里**不含管理口令**原文",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "S2 服务端日志里**不含后台令牌**原文",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "S3 服务端日志已记录后台审计事件（login_ok / user_detail / ban / export）",
+    "ok": true,
+    "detail": "['admin_login_ok', 'admin_user_detail', 'admin_ban', 'admin_export']"
+   },
+   {
+    "name": "S4 服务端日志里记录了\"封禁拦截\"（social_blocked_by_ban ≥ 5 次）",
+    "ok": true,
+    "detail": "7"
+   },
+   {
+    "name": "F1 缺口令时服务仍启动（C 端不受影响：/api/health 200）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "F2 启动即**报错**：stderr 明确写出「独立后台未启用」与变量名",
+    "ok": true,
+    "detail": "['[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。']"
+   },
+   {
+    "name": "F3 后台**整体不启用**：/v1/admin/* 未注册（登录与列表都不是 200）",
+    "ok": true,
+    "detail": "login=400 users=400"
+   },
+   {
+    "name": "F4 连后台表都不建（admin_ban / admin_audit 不存在）",
+    "ok": true,
+    "detail": "无 admin* 表"
+   },
+   {
+    "name": "F5 C 端业务照常（游客登录 200、friends 200）",
+    "ok": true,
+    "detail": "200 / 200"
+   }
+  ],
+  "1": [
+   {
+    "name": "#1-① 错口令 → HTTP 401 + 业务码 20000",
+    "ok": true,
+    "detail": "401 / 20000"
+   },
+   {
+    "name": "#1-② 正确口令 → HTTP 200 + admin_token + expires_in=7200（TTL 2 小时）",
+    "ok": true,
+    "detail": "200=True token_len=43 expires_in=7200"
+   },
+   {
+    "name": "#1-③ 拿令牌可访问受保护接口（GET /v1/admin/users → 200）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "#1-④ 用**后台令牌**调 C 端接口 → 401（后台令牌不是 C 端令牌）",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑤ 用**C 端游客令牌**调后台接口 → 401（两条链路互不相通）",
+    "ok": true,
+    "detail": "401 / 20000"
+   },
+   {
+    "name": "#1-⑥ 不带令牌 → 401（除 login 外所有 /v1/admin/* 都必须校验后台令牌）",
+    "ok": true,
+    "detail": "401 / 20000"
+   },
+   {
+    "name": "#1-⑦ 乱令牌 → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/stats → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/social → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/audit → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/export.csv → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/user/mbr_431104d847ea9ebb → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑧ 无令牌访问 POST /api/v1/admin/ban → 401",
+    "ok": true,
+    "detail": "401"
+   },
+   {
+    "name": "#1-⑨ `/admin`（无尾斜杠）解析到 admin/index.html",
+    "ok": true,
+    "detail": "C:\\Users\\41692\\AppData\\Local\\Temp\\admin_static_erjdwtl2\\admin\\index.html / text/html; charset=utf-8"
+   },
+   {
+    "name": "#1-⑩ `/admin/assets/main.js` 可取且 Content-Type 正确",
+    "ok": true,
+    "detail": "C:\\Users\\41692\\AppData\\Local\\Temp\\admin_static_erjdwtl2\\admin\\assets\\main.js / application/javascript; charset=utf-8"
+   },
+   {
+    "name": "#1-⑪ `/admin/` 下路径穿越一律拒绝（4 种写法）",
+    "ok": true,
+    "detail": "[None, None, None, None]"
+   },
+   {
+    "name": "#1-⑫ 既有静态路由未被影响（/data/x.csv 仍解析为 text/csv）",
+    "ok": true,
+    "detail": "text/csv; charset=utf-8"
+   }
+  ],
+  "3": [
+   {
+    "name": "#3-① 分页结构含 total/page/size/items",
+    "ok": true,
+    "detail": "['items', 'note', 'page', 'pages', 'q', 'size', 'total']"
+   },
+   {
+    "name": "#3-② 共 6 个会员、每页 20 条",
+    "ok": true,
+    "detail": "total=6 size=20"
+   },
+   {
+    "name": "#3-③ items 字段覆盖变更单「用户列表」要求（member_id/昵称/建档状态/基线进度/最近活跃/连续天数）",
+    "ok": true,
+    "detail": "['account_present', 'archive_status', 'banned', 'baseline_progress', 'checkin_days', 'created_at', 'friends_accepted', 'friends_pending', 'has_password', 'invite_code', 'last_active', 'member_id', 'nickname', 'observation_count', 'phone', 'phone_masked', 'profile_completed', 'referrer_member_id', 's"
+   },
+   {
+    "name": "#3-④ 基线进度为 n/7 口径（min_observations=7）",
+    "ok": true,
+    "detail": "['2/7', '8/7', '0/7', '0/7', '0/7', '0/7']"
+   },
+   {
+    "name": "#3-⑤ 分页切片正确（page=1/2，size=2 → 各 2 条、页码回显、不重叠）",
+    "ok": true,
+    "detail": "mbr_4338ad2a8b9b8584 vs mbr_3b50ed93872e510b"
+   },
+   {
+    "name": "#3-⑥ 关键词搜索（邀请码）命中 1 条且就是 m1",
+    "ok": true,
+    "detail": "1 / mbr_431104d847ea9ebb"
+   },
+   {
+    "name": "#3-⑦ 关键词搜索（member_id 前缀）同样命中",
+    "ok": true,
+    "detail": "1"
+   },
+   {
+    "name": "#3-⑧ 支持按封禁状态过滤（当前无人被封 → total=0）",
+    "ok": true,
+    "detail": "0"
+   }
+  ],
+  "4": [
+   {
+    "name": "#4-① 详情接口 200",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "#4-② 前提：库里确实存着**精确出生时刻**与经纬度（不是\"本来就没存\"）",
+    "ok": true,
+    "detail": "1988-11-27 03:47"
+   },
+   {
+    "name": "#4-③ 响应里**不存在**禁止字段名（birth_local / birth_time / blood_pressure / history_note / height_cm / weight_kg / longitude / latitude …）",
+    "ok": true,
+    "detail": "[]"
+   },
+   {
+    "name": "#4-④ 响应序列化后**不含**原始出生串 '1988-11-27 03:47'",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "#4-⑤ 响应序列化后**不含**精确出生时刻 '03:47'",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "#4-⑥ 响应序列化后不含经纬度原文（116.4074 / 39.9042）",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "#4-⑦ 正例：出生信息**确实回到了\"日\"级**（birth_date = 1988-11-27）",
+    "ok": true,
+    "detail": "1988-11-27"
+   },
+   {
+    "name": "#4-⑧ 出生地城市已回（脱敏允许项）且显式标注\"不回精确时刻与经纬度\"",
+    "ok": true,
+    "detail": "北京 / False"
+   },
+   {
+    "name": "#4-⑨ 体征与病史显式标记为\"未采集\"，响应里没有任何数值",
+    "ok": true,
+    "detail": "{\"vitals_collected\": false, \"history_collected\": false, \"note\": \"本服务未采集身高体重血压心率等体征数值与病史自述（无对应存储、无对应接口），因此后台只回该布尔标记，**不返回任何体征数值或病史原文**。\"}"
+   },
+   {
+    "name": "#4-⑩ 打卡记录只回日期与通道数（不回观测数值）",
+    "ok": true,
+    "detail": "[{'on_date': '2026-09-17', 'channels': 12}]"
+   },
+   {
+    "name": "#4-⑪ 全库表结构里不存在体征/病史列（本项目未采集，故无从泄露）",
+    "ok": true,
+    "detail": "[]"
+   },
+   {
+    "name": "#4-⑫ 出口自检存在且 fail-closed（_assert_no_secrets + FORBIDDEN_KEYS）",
+    "ok": true,
+    "detail": "已确认存在"
+   },
+   {
+    "name": "#4-⑬ 详情接口不返回口令/令牌等运维凭据",
+    "ok": true,
+    "detail": "已确认不含"
+   }
+  ],
+  "8": [
+   {
+    "name": "#8-① 查看一次用户详情 → 审计**恰好**新增 1 条",
+    "ok": true,
+    "detail": "3 → 4（+1）"
+   },
+   {
+    "name": "#8-② 审计行含**操作者 / 动作 / 目标 / 时间 / 会话 / IP**",
+    "ok": true,
+    "detail": "{'actor': 'admin', 'action': 'user_detail', 'target': 'mbr_4338ad2a8b9b8584', 'at': '2026-10-09T23:54:56', 'ip': '127.0.0.1', 'session': '8374d6f8a1ff'}"
+   },
+   {
+    "name": "#8-③ 审计时间可解析（ISO 8601）",
+    "ok": true,
+    "detail": "2026-10-09T23:54:56"
+   },
+   {
+    "name": "#8-④ 审计里**不含**口令与后台令牌原文",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "#8-⑤ GET /v1/admin/audit 返回审计日志（分页 + 动作计数）",
+    "ok": true,
+    "detail": "total=4 counts={'login_ok': 1, 'login_fail': 1, 'login_locked': 0, 'user_detail': 2, 'ban': 0, 'unban': 0, 'export': 0, 'reset_password': 0}"
+   },
+   {
+    "name": "#8-⑥ 查看审计日志本身**不**新增审计行（不自我放大）",
+    "ok": true,
+    "detail": "4 → 4"
+   },
+   {
+    "name": "#8-⑦ 审计支持按动作过滤（action=ban）",
+    "ok": true,
+    "detail": "ban"
+   }
+  ],
+  "5": [
+   {
+    "name": "#5-① GET /v1/admin/stats 200 且含运营指标",
+    "ok": true,
+    "detail": "['accounts_total', 'admin', 'archive_rate', 'banned_users', 'checkin_rate_today', 'checkin_users_7d', 'checkin_users_today', 'checkin_users_total', 'friend_circle', 'index_distribution', 'new_today', 'on_date']"
+   },
+   {
+    "name": "#5-② 四档 A/B/C/D 齐全",
+    "ok": true,
+    "detail": "['A', 'B', 'C', 'D']"
+   },
+   {
+    "name": "#5-③ A+B+C+D 占比之和 = 100%（±1 舍入）",
+    "ok": true,
+    "detail": "100.0（各档 [0.0, 33.3, 66.7, 0.0]）"
+   },
+   {
+    "name": "#5-④ 接口自报的 pct_sum 与实际求和一致",
+    "ok": true,
+    "detail": "pct_sum=100.0 实算=100.00"
+   },
+   {
+    "name": "#5-⑤ 分母口径自洽（band_total = Σ各档人数 = profiled_total - unavailable）",
+    "ok": true,
+    "detail": "total=6 Σcount=6 profiled=6 unavailable=0"
+   },
+   {
+    "name": "#5-⑥ 统计口径与 /v1/rhythm/daily 同源（basis 声明含 display 与 band_of）",
+    "ok": true,
+    "detail": "展示分口径：内核 phase_index → 装配层 display_normalize → 内核 band_of；与 GET /v1/rhythm/daily"
+   },
+   {
+    "name": "#5-⑦ 建档率与打卡数一致（6 人全部建档，6/6 = 1.0）",
+    "ok": true,
+    "detail": "6/6 rate=1.0"
+   },
+   {
+    "name": "#5-⑧ 今日新增 = 6（本测试刚建的号）",
+    "ok": true,
+    "detail": "6"
+   },
+   {
+    "name": "#5-⑨ 好友圈规模：1 条 accepted、1 条加油",
+    "ok": true,
+    "detail": "{'accepted': 1, 'pending': 0, 'members_with_friends': 2, 'cheer_total': 1, 'cheer_today': 1}"
+   },
+   {
+    "name": "#5-⑩ 每档给出中文档名（取自内核 band_of，不自造）",
+    "ok": true,
+    "detail": "['优', '良', '中', '需关注']"
+   }
+  ],
+  "6": [
+   {
+    "name": "#6-① GET /v1/admin/export.csv 200 且返回 CSV 文本（带 UTF-8 BOM）",
+    "ok": true,
+    "detail": "200 / 前 60 字节='\\ufeffmember_id,nickname,invite_code,created_at,archive_status,ob'"
+   },
+   {
+    "name": "#6-② 表头与期望（独立写的）逐字一致",
+    "ok": true,
+    "detail": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']"
+   },
+   {
+    "name": "#6-③ 行数正确（表头 + 全部会员数 = 6）",
+    "ok": true,
+    "detail": "6 行"
+   },
+   {
+    "name": "#6-④ 导出的 member_id 集合与用户列表一致",
+    "ok": true,
+    "detail": "6 个 id"
+   },
+   {
+    "name": "#6-⑤ 扫描导出内容：不含任何敏感字段名",
+    "ok": true,
+    "detail": "[]"
+   },
+   {
+    "name": "#6-⑥ 扫描导出内容：不含出生信息（原始串 '1988-11-27 03:47' / 日期 1988-11-27 / 时刻 03:47）",
+    "ok": true,
+    "detail": "已确认不含"
+   },
+   {
+    "name": "#6-⑦ CSV 里没有任何出生相关列（列头不含 birth）",
+    "ok": true,
+    "detail": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']"
+   },
+   {
+    "name": "#6-⑧ 导出含 score/band（与统计同口径），且值为内核分档码 A-D",
+    "ok": true,
+    "detail": "['C', 'C', 'B', 'C', 'C', 'B']"
+   }
+  ],
+  "7": [
+   {
+    "name": "#7-① 前提：封禁前该会员社交功能正常（friends 200 / cheer 200）",
+    "ok": true,
+    "detail": "200 / 200"
+   },
+   {
+    "name": "#7-② POST /v1/admin/ban {banned:true} → 200 且标记生效",
+    "ok": true,
+    "detail": "200 True"
+   },
+   {
+    "name": "#7-③ 封禁后 GET /friends 被拒（可读业务码 30002 + 明确文案）",
+    "ok": true,
+    "detail": "402 / 30002 / 该账号的社交功能已被管理员暂停，如有疑问请联系管理员"
+   },
+   {
+    "name": "#7-④ 封禁后 POST /friends/cheer 被拒（同一业务码）",
+    "ok": true,
+    "detail": "402 / 30002"
+   },
+   {
+    "name": "#7-⑤ 封禁覆盖全部 /v1/friends*（feed/ranking/privacy/templates 同样被拒）",
+    "ok": true,
+    "detail": "[('/api/v1/friends/feed', 402, 30002), ('/api/v1/friends/ranking', 402, 30002), ('/api/v1/friends/privacy', 402, 30002), ('/api/v1/friends/cheer/templates', 402, 30002), ('/api/v1/friends/privacy', 402, 30002)]"
+   },
+   {
+    "name": "#7-⑥ **未封禁的其他人不受影响**（m1 的 friends 仍 200，零回归）",
+    "ok": true,
+    "detail": "200"
+   },
+   {
+    "name": "#7-⑦ 解封后立刻恢复（friends 200 / cheer 200，无需重启、无缓存）",
+    "ok": true,
+    "detail": "200/200/200"
+   },
+   {
+    "name": "#7-⑧ 封禁状态落在 admin_ban 表（解封后行保留 banned=0，留痕不删行）",
+    "ok": true,
+    "detail": "[{'member_id': 'mbr_4338ad2a8b9b8584', 'banned': 0}]"
+   },
+   {
+    "name": "#7-⑨ 封禁不存在的会员 → 明确拒绝（不产生幽灵封禁行）",
+    "ok": true,
+    "detail": "400 / 10002"
+   },
+   {
+    "name": "#7-⑩ 缺少 banned 字段 → 10001 缺字段（不做猜测式解释）",
+    "ok": true,
+    "detail": "10001"
+   },
+   {
+    "name": "#7-⑪ 封禁/解封各写 1 条审计（ban=1 / unban=1）",
+    "ok": true,
+    "detail": "ban=1 unban=1"
+   }
+  ],
+  "9": [
+   {
+    "name": "#9-① `GET /admin/` 返回 200 且是真 HTML（前端产物已落地）",
+    "ok": true,
+    "detail": "HTTP 200 / 13512 字节"
+   },
+   {
+    "name": "#9-② `/admin/app.js` 与 `/admin/style.css` 均可取（服务端托管正常）",
+    "ok": true,
+    "detail": "js=200(43388) css=200(18757)"
+   },
+   {
+    "name": "#9-③ 后台接口返回**同源纯 JSON 信封**（code/message/data/trace_id），前端可直接 fetch，无跨域依赖",
+    "ok": true,
+    "detail": "['code', 'data', 'message', 'trace_id']"
+   },
+   {
+    "name": "#9-④ 前端调用的路径全部落在后端契约内（['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users']）",
+    "ok": true,
+    "detail": "['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users'] / API 声明=True"
+   },
+   {
+    "name": "#9-⑤ 前端的 CSV 导出与登录字段名与后端一致（export.csv / admin_token）",
+    "ok": true,
+    "detail": "已对齐"
+   },
+   {
+    "name": "#9-⑥ 双视口（430×932 / 1440×900）浏览器实测在下一阶段单独跑（无 Playwright 时自动 SKIP，不计入失败）",
+    "ok": true,
+    "detail": "见下一阶段"
+   },
+   {
+    "name": "#9-⑦ 430x932 登录成功且用户列表渲染出真行",
+    "ok": true,
+    "detail": "login=True rows=2"
+   },
+   {
+    "name": "#9-⑧ 430x932 无 JS 运行时错误（pageerror）",
+    "ok": true,
+    "detail": "无"
+   },
+   {
+    "name": "#9-⑨ 430x932 无 console error",
+    "ok": true,
+    "detail": "无"
+   },
+   {
+    "name": "#9-⑩ 430x932 无横向滚动（scrollWidth == innerWidth，登录前后各一次）",
+    "ok": true,
+    "detail": "登录前 [430, 430] / 登录后 [430, 430]"
+   },
+   {
+    "name": "#9-⑦ 1440x900 登录成功且用户列表渲染出真行",
+    "ok": true,
+    "detail": "login=True rows=2"
+   },
+   {
+    "name": "#9-⑧ 1440x900 无 JS 运行时错误（pageerror）",
+    "ok": true,
+    "detail": "无"
+   },
+   {
+    "name": "#9-⑨ 1440x900 无 console error",
+    "ok": true,
+    "detail": "无"
+   },
+   {
+    "name": "#9-⑩ 1440x900 无横向滚动（scrollWidth == innerWidth，登录前后各一次）",
+    "ok": true,
+    "detail": "登录前 [1440, 1440] / 登录后 [1440, 1440]"
+   }
+  ],
+  "2": [
+   {
+    "name": "#2-① 前 5 次错口令都是 401 + 20000，剩余次数递减到 0",
+    "ok": true,
+    "detail": "[4, 3, 2, 1, 0]"
+   },
+   {
+    "name": "#2-② 第 6 次被锁：HTTP 429 + 业务码 40000 + 可读错误",
+    "ok": true,
+    "detail": "429 / 40000 / 口令连续错误次数过多，已锁定 15 分钟"
+   },
+   {
+    "name": "#2-③ 返回**剩余锁定时长**（1..900 秒，锁定口径 15 分钟）",
+    "ok": true,
+    "detail": "remaining_sec=900 lock_seconds=900"
+   },
+   {
+    "name": "#2-④ 锁定期内**即使口令正确**也仍然被拒（锁定按来源 IP）",
+    "ok": true,
+    "detail": "429 / 40000"
+   },
+   {
+    "name": "#2-⑤ 失败与锁定都留了审计（login_fail = 5、login_locked ≥ 1）",
+    "ok": true,
+    "detail": "[{'action': 'login_fail', 'n': 5}, {'action': 'login_locked', 'n': 2}]"
+   }
+  ],
+  "10": [
+   {
+    "name": "#10 社交51：退出码 0 且输出含「合计 51 项子断言，通过 51，失败 0」",
+    "ok": true,
+    "detail": "退出码=0 含=True"
+   },
+   {
+    "name": "#10 内核335：退出码 0 且输出含「Ran 335 tests」",
+    "ok": true,
+    "detail": "退出码=0 含=True"
+   },
+   {
+    "name": "#10 服务端104：退出码 0 且输出含「Ran 104 tests」",
+    "ok": true,
+    "detail": "退出码=0 含=True"
+   },
+   {
+    "name": "#10-④ 三条既有回归全部以 0 退出（无失败）",
+    "ok": true,
+    "detail": "{'社交51': 0, '内核335': 0, '服务端104': 0}"
+   },
+   {
+    "name": "#10-⑤ 服务端回归用系统 Python 3.12 的原因已核实：便携运行时缺 psycopg （缺则 PG/Redis 两组整模块跳过 → 只有 83 项）",
+    "ok": true,
+    "detail": "returncode=1"
+   }
+  ]
+ },
+ "checks": [
+  {
+   "crit": 0,
+   "name": "打包成功（退出码 0），站点树已更新到 _dist/_stage_site",
+   "ok": true,
+   "expect": "0",
+   "actual": "0",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "admin_api.py 已进入站点树",
+   "ok": true,
+   "expect": "存在",
+   "actual": "71273 字节",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "serve.py 已进入站点树",
+   "ok": true,
+   "expect": "存在",
+   "actual": "55356 字节",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "social.py 已进入站点树",
+   "ok": true,
+   "expect": "存在",
+   "actual": "73078 字节",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "交付物模块从**打包后的站点树**加载（与真服务同一份代码）",
+   "ok": true,
+   "expect": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_dist\\_stage_site\\server",
+   "actual": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_dist\\_stage_site\\server\\admin_api.py",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "后台口令只从环境变量读（源码含 YJK_ADMIN_PASSWORD）",
+   "ok": true,
+   "expect": "含环境变量名",
+   "actual": "已含",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "源码里没有任何写死的口令（本次随机口令不出现在源码中）",
+   "ok": true,
+   "expect": "不含本次口令",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "口令比对用标准库 hmac.compare_digest（不自造密码学）",
+   "ok": true,
+   "expect": "compare_digest",
+   "actual": "已使用",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "CSV 表头与测试期望一致（交付物 ↔ 独立期望 交叉验证）",
+   "ok": true,
+   "expect": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']",
+   "actual": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：生命先知 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：先知日历 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：八息象数 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：八息基因 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：ZYDGENE 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：中易道 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：九元情绪 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：华医道 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：老祖太极 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "合规禁词检查：抗量子 不出现在 admin_api.py / social.py",
+   "ok": true,
+   "expect": "不出现",
+   "actual": "不出现",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A0 服务就绪且是\"我们自己起的那个\"（health.data_file = 本次独立库）",
+   "ok": true,
+   "expect": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v7\\admin_v7.db",
+   "actual": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v7\\admin_v7.db",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-① 游客登录 #1（北京）",
+   "ok": true,
+   "expect": "200 + member_id",
+   "actual": "200 mbr_431104d847ea9ebb",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-② 建档 #1（北京，出生 1988-11-27 03:47）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-① 游客登录 #2（上海）",
+   "ok": true,
+   "expect": "200 + member_id",
+   "actual": "200 mbr_4338ad2a8b9b8584",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-② 建档 #2（上海，出生 1975-03-09 18:20）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-① 游客登录 #3（广州）",
+   "ok": true,
+   "expect": "200 + member_id",
+   "actual": "200 mbr_f68af631a35a903d",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-② 建档 #3（广州，出生 1996-07-15 09:05）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-① 游客登录 #4（成都）",
+   "ok": true,
+   "expect": "200 + member_id",
+   "actual": "200 mbr_a5b53f531f4331b9",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-② 建档 #4（成都，出生 1962-12-30 23:11）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-① 游客登录 #5（哈尔滨）",
+   "ok": true,
+   "expect": "200 + member_id",
+   "actual": "200 mbr_3b50ed93872e510b",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-② 建档 #5（哈尔滨，出生 2001-02-03 06:40）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-① 游客登录 #6（乌鲁木齐）",
+   "ok": true,
+   "expect": "200 + member_id",
+   "actual": "200 mbr_5cb1ee13d5d3706b",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-② 建档 #6（乌鲁木齐，出生 1954-08-21 13:58）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-③ m1 打卡 8 个不同日期 → 基线观测数 8（同一天重复只算一次）",
+   "ok": true,
+   "expect": "8",
+   "actual": "[{'observation_count': 8}]",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-④ m2 用 m1 的邀请码自动成为好友（accepted）",
+   "ok": true,
+   "expect": "accepted",
+   "actual": "200 accepted",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-⑤ m2 给 m1 送加油（封禁前，正常放行）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-⑥ GET /v1/rhythm/daily 行为不变：index 含 score 与 score_kernel，基线建立后 personalized 非空",
+   "ok": true,
+   "expect": "index.score/score_kernel 有值 + personalized 非空",
+   "actual": "score=69 kernel=69 personalized=True",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "A1-⑦ GET /v1/friends 行为不变（正常会员拿到 accepted 好友）",
+   "ok": true,
+   "expect": "200 + 1 条好友",
+   "actual": "200 1",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-① 错口令 → HTTP 401 + 业务码 20000",
+   "ok": true,
+   "expect": "401 / 20000",
+   "actual": "401 / 20000",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-② 正确口令 → HTTP 200 + admin_token + expires_in=7200（TTL 2 小时）",
+   "ok": true,
+   "expect": "200 + token + 7200",
+   "actual": "200=True token_len=43 expires_in=7200",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-③ 拿令牌可访问受保护接口（GET /v1/admin/users → 200）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-④ 用**后台令牌**调 C 端接口 → 401（后台令牌不是 C 端令牌）",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑤ 用**C 端游客令牌**调后台接口 → 401（两条链路互不相通）",
+   "ok": true,
+   "expect": "401 / 20000",
+   "actual": "401 / 20000",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑥ 不带令牌 → 401（除 login 外所有 /v1/admin/* 都必须校验后台令牌）",
+   "ok": true,
+   "expect": "401 / 20000",
+   "actual": "401 / 20000",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑦ 乱令牌 → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/stats → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/social → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/audit → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/export.csv → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑧ 无令牌访问 GET /api/v1/admin/user/mbr_431104d847ea9ebb → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑧ 无令牌访问 POST /api/v1/admin/ban → 401",
+   "ok": true,
+   "expect": "401",
+   "actual": "401",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑨ `/admin`（无尾斜杠）解析到 admin/index.html",
+   "ok": true,
+   "expect": "admin/index.html + text/html",
+   "actual": "C:\\Users\\41692\\AppData\\Local\\Temp\\admin_static_erjdwtl2\\admin\\index.html / text/html; charset=utf-8",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑩ `/admin/assets/main.js` 可取且 Content-Type 正确",
+   "ok": true,
+   "expect": "js + application/javascript",
+   "actual": "C:\\Users\\41692\\AppData\\Local\\Temp\\admin_static_erjdwtl2\\admin\\assets\\main.js / application/javascript; charset=utf-8",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑪ `/admin/` 下路径穿越一律拒绝（4 种写法）",
+   "ok": true,
+   "expect": "全部 None",
+   "actual": "[None, None, None, None]",
+   "note": ""
+  },
+  {
+   "crit": 1,
+   "name": "#1-⑫ 既有静态路由未被影响（/data/x.csv 仍解析为 text/csv）",
+   "ok": true,
+   "expect": "text/csv",
+   "actual": "text/csv; charset=utf-8",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-① 分页结构含 total/page/size/items",
+   "ok": true,
+   "expect": "total/page/size/items",
+   "actual": "['items', 'note', 'page', 'pages', 'q', 'size', 'total']",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-② 共 6 个会员、每页 20 条",
+   "ok": true,
+   "expect": "total=6 size=20",
+   "actual": "total=6 size=20",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-③ items 字段覆盖变更单「用户列表」要求（member_id/昵称/建档状态/基线进度/最近活跃/连续天数）",
+   "ok": true,
+   "expect": "['banned', 'baseline_progress', 'invite_code', 'last_active', 'member_id', 'nickname', 'profile_completed', 'streak_days']",
+   "actual": "['account_present', 'archive_status', 'banned', 'baseline_progress', 'checkin_days', 'created_at', 'friends_accepted', 'friends_pending', 'has_password', 'invite_code', 'last_active', 'member_id', 'nickname', 'observation_count', 'phone', 'phone_masked', 'profile_completed', 'referrer_member_id', 'streak_days']",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-④ 基线进度为 n/7 口径（min_observations=7）",
+   "ok": true,
+   "expect": "min_observations=7",
+   "actual": "['2/7', '8/7', '0/7', '0/7', '0/7', '0/7']",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-⑤ 分页切片正确（page=1/2，size=2 → 各 2 条、页码回显、不重叠）",
+   "ok": true,
+   "expect": "各 2 条且不重叠",
+   "actual": "mbr_4338ad2a8b9b8584 vs mbr_3b50ed93872e510b",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-⑥ 关键词搜索（邀请码）命中 1 条且就是 m1",
+   "ok": true,
+   "expect": "1 条 / m1",
+   "actual": "1 / mbr_431104d847ea9ebb",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-⑦ 关键词搜索（member_id 前缀）同样命中",
+   "ok": true,
+   "expect": ">=1",
+   "actual": "1",
+   "note": ""
+  },
+  {
+   "crit": 3,
+   "name": "#3-⑧ 支持按封禁状态过滤（当前无人被封 → total=0）",
+   "ok": true,
+   "expect": "0",
+   "actual": "0",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-① 详情接口 200",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-② 前提：库里确实存着**精确出生时刻**与经纬度（不是\"本来就没存\"）",
+   "ok": true,
+   "expect": "1988-11-27 03:47 + 经纬度",
+   "actual": "1988-11-27 03:47",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-③ 响应里**不存在**禁止字段名（birth_local / birth_time / blood_pressure / history_note / height_cm / weight_kg / longitude / latitude …）",
+   "ok": true,
+   "expect": "无",
+   "actual": "[]",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-④ 响应序列化后**不含**原始出生串 '1988-11-27 03:47'",
+   "ok": true,
+   "expect": "不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑤ 响应序列化后**不含**精确出生时刻 '03:47'",
+   "ok": true,
+   "expect": "不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑥ 响应序列化后不含经纬度原文（116.4074 / 39.9042）",
+   "ok": true,
+   "expect": "不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑦ 正例：出生信息**确实回到了\"日\"级**（birth_date = 1988-11-27）",
+   "ok": true,
+   "expect": "1988-11-27",
+   "actual": "1988-11-27",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑧ 出生地城市已回（脱敏允许项）且显式标注\"不回精确时刻与经纬度\"",
+   "ok": true,
+   "expect": "birth_city 有值 + exact_time_returned=false",
+   "actual": "北京 / False",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑨ 体征与病史显式标记为\"未采集\"，响应里没有任何数值",
+   "ok": true,
+   "expect": "vitals_collected=false / history_collected=false",
+   "actual": "{\"vitals_collected\": false, \"history_collected\": false, \"note\": \"本服务未采集身高体重血压心率等体征数值与病史自述（无对应存储、无对应接口），因此后台只回该布尔标记，**不返回任何体征数值或病史原文**。\"}",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑩ 打卡记录只回日期与通道数（不回观测数值）",
+   "ok": true,
+   "expect": "只有 on_date/channels",
+   "actual": "[{'on_date': '2026-09-17', 'channels': 12}]",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑪ 全库表结构里不存在体征/病史列（本项目未采集，故无从泄露）",
+   "ok": true,
+   "expect": "无此类列",
+   "actual": "[]",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑫ 出口自检存在且 fail-closed（_assert_no_secrets + FORBIDDEN_KEYS）",
+   "ok": true,
+   "expect": "存在",
+   "actual": "已确认存在",
+   "note": ""
+  },
+  {
+   "crit": 4,
+   "name": "#4-⑬ 详情接口不返回口令/令牌等运维凭据",
+   "ok": true,
+   "expect": "不含 password/admin_token",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-① 查看一次用户详情 → 审计**恰好**新增 1 条",
+   "ok": true,
+   "expect": "+1",
+   "actual": "3 → 4（+1）",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-② 审计行含**操作者 / 动作 / 目标 / 时间 / 会话 / IP**",
+   "ok": true,
+   "expect": "actor=admin action=user_detail target=m2 at/ip/session 有值",
+   "actual": "{'actor': 'admin', 'action': 'user_detail', 'target': 'mbr_4338ad2a8b9b8584', 'at': '2026-10-09T23:54:56', 'ip': '127.0.0.1', 'session': '8374d6f8a1ff'}",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-③ 审计时间可解析（ISO 8601）",
+   "ok": true,
+   "expect": "ISO 8601",
+   "actual": "2026-10-09T23:54:56",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-④ 审计里**不含**口令与后台令牌原文",
+   "ok": true,
+   "expect": "不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-⑤ GET /v1/admin/audit 返回审计日志（分页 + 动作计数）",
+   "ok": true,
+   "expect": "200 + total>=3 + user_detail>=2",
+   "actual": "total=4 counts={'login_ok': 1, 'login_fail': 1, 'login_locked': 0, 'user_detail': 2, 'ban': 0, 'unban': 0, 'export': 0, 'reset_password': 0}",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-⑥ 查看审计日志本身**不**新增审计行（不自我放大）",
+   "ok": true,
+   "expect": "相等",
+   "actual": "4 → 4",
+   "note": ""
+  },
+  {
+   "crit": 8,
+   "name": "#8-⑦ 审计支持按动作过滤（action=ban）",
+   "ok": true,
+   "expect": "200 + action=ban",
+   "actual": "ban",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-① GET /v1/admin/stats 200 且含运营指标",
+   "ok": true,
+   "expect": "200 + 指标字段齐全",
+   "actual": "['accounts_total', 'admin', 'archive_rate', 'banned_users', 'checkin_rate_today', 'checkin_users_7d', 'checkin_users_today', 'checkin_users_total', 'friend_circle', 'index_distribution', 'new_today', 'on_date']",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-② 四档 A/B/C/D 齐全",
+   "ok": true,
+   "expect": "['A','B','C','D']",
+   "actual": "['A', 'B', 'C', 'D']",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-③ A+B+C+D 占比之和 = 100%（±1 舍入）",
+   "ok": true,
+   "expect": "100 ± 1",
+   "actual": "100.0（各档 [0.0, 33.3, 66.7, 0.0]）",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-④ 接口自报的 pct_sum 与实际求和一致",
+   "ok": true,
+   "expect": "一致",
+   "actual": "pct_sum=100.0 实算=100.00",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-⑤ 分母口径自洽（band_total = Σ各档人数 = profiled_total - unavailable）",
+   "ok": true,
+   "expect": "total=Σcount 且 total+unavailable=profiled_total",
+   "actual": "total=6 Σcount=6 profiled=6 unavailable=0",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-⑥ 统计口径与 /v1/rhythm/daily 同源（basis 声明含 display 与 band_of）",
+   "ok": true,
+   "expect": "basis 含 display / band_of",
+   "actual": "展示分口径：内核 phase_index → 装配层 display_normalize → 内核 band_of；与 GET /v1/rhythm/daily",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-⑦ 建档率与打卡数一致（6 人全部建档，6/6 = 1.0）",
+   "ok": true,
+   "expect": "6/6 = 1.0",
+   "actual": "6/6 rate=1.0",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-⑧ 今日新增 = 6（本测试刚建的号）",
+   "ok": true,
+   "expect": "6",
+   "actual": "6",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-⑨ 好友圈规模：1 条 accepted、1 条加油",
+   "ok": true,
+   "expect": "accepted=1 cheer=1",
+   "actual": "{'accepted': 1, 'pending': 0, 'members_with_friends': 2, 'cheer_total': 1, 'cheer_today': 1}",
+   "note": ""
+  },
+  {
+   "crit": 5,
+   "name": "#5-⑩ 每档给出中文档名（取自内核 band_of，不自造）",
+   "ok": true,
+   "expect": "四档都有 name",
+   "actual": "['优', '良', '中', '需关注']",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-① GET /v1/admin/export.csv 200 且返回 CSV 文本（带 UTF-8 BOM）",
+   "ok": true,
+   "expect": "200 + BOM + 表头",
+   "actual": "200 / 前 60 字节='\\ufeffmember_id,nickname,invite_code,created_at,archive_status,ob'",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-② 表头与期望（独立写的）逐字一致",
+   "ok": true,
+   "expect": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']",
+   "actual": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-③ 行数正确（表头 + 全部会员数 = 6）",
+   "ok": true,
+   "expect": "表头 + 6 行",
+   "actual": "6 行",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-④ 导出的 member_id 集合与用户列表一致",
+   "ok": true,
+   "expect": "集合相同",
+   "actual": "6 个 id",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-⑤ 扫描导出内容：不含任何敏感字段名",
+   "ok": true,
+   "expect": "无",
+   "actual": "[]",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-⑥ 扫描导出内容：不含出生信息（原始串 '1988-11-27 03:47' / 日期 1988-11-27 / 时刻 03:47）",
+   "ok": true,
+   "expect": "全不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-⑦ CSV 里没有任何出生相关列（列头不含 birth）",
+   "ok": true,
+   "expect": "无出生列",
+   "actual": "['member_id', 'nickname', 'invite_code', 'created_at', 'archive_status', 'observation_count', 'min_observations', 'last_active', 'streak_days', 'checkin_days', 'score', 'band', 'banned']",
+   "note": ""
+  },
+  {
+   "crit": 6,
+   "name": "#6-⑧ 导出含 score/band（与统计同口径），且值为内核分档码 A-D",
+   "ok": true,
+   "expect": "含 score/band 且档码合法",
+   "actual": "['C', 'C', 'B', 'C', 'C', 'B']",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-① 前提：封禁前该会员社交功能正常（friends 200 / cheer 200）",
+   "ok": true,
+   "expect": "200 / 200",
+   "actual": "200 / 200",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-② POST /v1/admin/ban {banned:true} → 200 且标记生效",
+   "ok": true,
+   "expect": "200 + banned=true",
+   "actual": "200 True",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-③ 封禁后 GET /friends 被拒（可读业务码 30002 + 明确文案）",
+   "ok": true,
+   "expect": ">=400 / 30002 / 文案含\"暂停\"",
+   "actual": "402 / 30002 / 该账号的社交功能已被管理员暂停，如有疑问请联系管理员",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-④ 封禁后 POST /friends/cheer 被拒（同一业务码）",
+   "ok": true,
+   "expect": ">=400 / 30002",
+   "actual": "402 / 30002",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑤ 封禁覆盖全部 /v1/friends*（feed/ranking/privacy/templates 同样被拒）",
+   "ok": true,
+   "expect": "全部 >=400 / 30002",
+   "actual": "[('/api/v1/friends/feed', 402, 30002), ('/api/v1/friends/ranking', 402, 30002), ('/api/v1/friends/privacy', 402, 30002), ('/api/v1/friends/cheer/templates', 402, 30002), ('/api/v1/friends/privacy', 402, 30002)]",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑥ **未封禁的其他人不受影响**（m1 的 friends 仍 200，零回归）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑦ 解封后立刻恢复（friends 200 / cheer 200，无需重启、无缓存）",
+   "ok": true,
+   "expect": "200/200/200",
+   "actual": "200/200/200",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑧ 封禁状态落在 admin_ban 表（解封后行保留 banned=0，留痕不删行）",
+   "ok": true,
+   "expect": "banned=0 且行仍在",
+   "actual": "[{'member_id': 'mbr_4338ad2a8b9b8584', 'banned': 0}]",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑨ 封禁不存在的会员 → 明确拒绝（不产生幽灵封禁行）",
+   "ok": true,
+   "expect": ">=400 / 10002",
+   "actual": "400 / 10002",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑩ 缺少 banned 字段 → 10001 缺字段（不做猜测式解释）",
+   "ok": true,
+   "expect": "10001",
+   "actual": "10001",
+   "note": ""
+  },
+  {
+   "crit": 7,
+   "name": "#7-⑪ 封禁/解封各写 1 条审计（ban=1 / unban=1）",
+   "ok": true,
+   "expect": "ban=1 unban=1",
+   "actual": "ban=1 unban=1",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-① `GET /admin/` 返回 200 且是真 HTML（前端产物已落地）",
+   "ok": true,
+   "expect": "200 + HTML",
+   "actual": "HTTP 200 / 13512 字节",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-② `/admin/app.js` 与 `/admin/style.css` 均可取（服务端托管正常）",
+   "ok": true,
+   "expect": "200 + 非空",
+   "actual": "js=200(43388) css=200(18757)",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-③ 后台接口返回**同源纯 JSON 信封**（code/message/data/trace_id），前端可直接 fetch，无跨域依赖",
+   "ok": true,
+   "expect": "200 + 四件套",
+   "actual": "['code', 'data', 'message', 'trace_id']",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-④ 前端调用的路径全部落在后端契约内（['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users']）",
+   "ok": true,
+   "expect": "子集 of ['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users'] 且 API=/api/v1/admin",
+   "actual": "['/audit', '/ban', '/login', '/social', '/stats', '/user/', '/users'] / API 声明=True",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑤ 前端的 CSV 导出与登录字段名与后端一致（export.csv / admin_token）",
+   "ok": true,
+   "expect": "export.csv + admin_token + remaining_sec/attempts",
+   "actual": "已对齐",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑥ 双视口（430×932 / 1440×900）浏览器实测在下一阶段单独跑（无 Playwright 时自动 SKIP，不计入失败）",
+   "ok": true,
+   "expect": "见「验收 #9 · 浏览器实测」",
+   "actual": "见下一阶段",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "S1 服务端日志里**不含管理口令**原文",
+   "ok": true,
+   "expect": "不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "S2 服务端日志里**不含后台令牌**原文",
+   "ok": true,
+   "expect": "不含",
+   "actual": "已确认不含",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "S3 服务端日志已记录后台审计事件（login_ok / user_detail / ban / export）",
+   "ok": true,
+   "expect": "四类事件都在",
+   "actual": "['admin_login_ok', 'admin_user_detail', 'admin_ban', 'admin_export']",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "S4 服务端日志里记录了\"封禁拦截\"（social_blocked_by_ban ≥ 5 次）",
+   "ok": true,
+   "expect": ">=5",
+   "actual": "7",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑦ 430x932 登录成功且用户列表渲染出真行",
+   "ok": true,
+   "expect": "登录成功 + 行数>=1",
+   "actual": "login=True rows=2",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑧ 430x932 无 JS 运行时错误（pageerror）",
+   "ok": true,
+   "expect": "无",
+   "actual": "无",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑨ 430x932 无 console error",
+   "ok": true,
+   "expect": "无",
+   "actual": "无",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑩ 430x932 无横向滚动（scrollWidth == innerWidth，登录前后各一次）",
+   "ok": true,
+   "expect": "scrollWidth <= innerWidth",
+   "actual": "登录前 [430, 430] / 登录后 [430, 430]",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑦ 1440x900 登录成功且用户列表渲染出真行",
+   "ok": true,
+   "expect": "登录成功 + 行数>=1",
+   "actual": "login=True rows=2",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑧ 1440x900 无 JS 运行时错误（pageerror）",
+   "ok": true,
+   "expect": "无",
+   "actual": "无",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑨ 1440x900 无 console error",
+   "ok": true,
+   "expect": "无",
+   "actual": "无",
+   "note": ""
+  },
+  {
+   "crit": 9,
+   "name": "#9-⑩ 1440x900 无横向滚动（scrollWidth == innerWidth，登录前后各一次）",
+   "ok": true,
+   "expect": "scrollWidth <= innerWidth",
+   "actual": "登录前 [1440, 1440] / 登录后 [1440, 1440]",
+   "note": ""
+  },
+  {
+   "crit": 2,
+   "name": "#2-① 前 5 次错口令都是 401 + 20000，剩余次数递减到 0",
+   "ok": true,
+   "expect": "401/20000 ×5，剩余 4→0",
+   "actual": "[4, 3, 2, 1, 0]",
+   "note": ""
+  },
+  {
+   "crit": 2,
+   "name": "#2-② 第 6 次被锁：HTTP 429 + 业务码 40000 + 可读错误",
+   "ok": true,
+   "expect": "429 / 40000",
+   "actual": "429 / 40000 / 口令连续错误次数过多，已锁定 15 分钟",
+   "note": ""
+  },
+  {
+   "crit": 2,
+   "name": "#2-③ 返回**剩余锁定时长**（1..900 秒，锁定口径 15 分钟）",
+   "ok": true,
+   "expect": "remaining_sec ∈ [1,900] 且 lock_seconds=900",
+   "actual": "remaining_sec=900 lock_seconds=900",
+   "note": ""
+  },
+  {
+   "crit": 2,
+   "name": "#2-④ 锁定期内**即使口令正确**也仍然被拒（锁定按来源 IP）",
+   "ok": true,
+   "expect": "429 / 40000",
+   "actual": "429 / 40000",
+   "note": ""
+  },
+  {
+   "crit": 2,
+   "name": "#2-⑤ 失败与锁定都留了审计（login_fail = 5、login_locked ≥ 1）",
+   "ok": true,
+   "expect": "login_fail=5 且 login_locked>=1",
+   "actual": "[{'action': 'login_fail', 'n': 5}, {'action': 'login_locked', 'n': 2}]",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "F1 缺口令时服务仍启动（C 端不受影响：/api/health 200）",
+   "ok": true,
+   "expect": "200",
+   "actual": "200",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "F2 启动即**报错**：stderr 明确写出「独立后台未启用」与变量名",
+   "ok": true,
+   "expect": "含报错文案与变量名",
+   "actual": "['[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。']",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "F3 后台**整体不启用**：/v1/admin/* 未注册（登录与列表都不是 200）",
+   "ok": true,
+   "expect": "非 200",
+   "actual": "login=400 users=400",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "F4 连后台表都不建（admin_ban / admin_audit 不存在）",
+   "ok": true,
+   "expect": "不存在",
+   "actual": "无 admin* 表",
+   "note": ""
+  },
+  {
+   "crit": 0,
+   "name": "F5 C 端业务照常（游客登录 200、friends 200）",
+   "ok": true,
+   "expect": "200 / 200",
+   "actual": "200 / 200",
+   "note": ""
+  },
+  {
+   "crit": 10,
+   "name": "#10 社交51：退出码 0 且输出含「合计 51 项子断言，通过 51，失败 0」",
+   "ok": true,
+   "expect": "退出码 0 且含「合计 51 项子断言，通过 51，失败 0」",
+   "actual": "退出码=0 含=True",
+   "note": ""
+  },
+  {
+   "crit": 10,
+   "name": "#10 内核335：退出码 0 且输出含「Ran 335 tests」",
+   "ok": true,
+   "expect": "退出码 0 且含「Ran 335 tests」",
+   "actual": "退出码=0 含=True",
+   "note": ""
+  },
+  {
+   "crit": 10,
+   "name": "#10 服务端104：退出码 0 且输出含「Ran 104 tests」",
+   "ok": true,
+   "expect": "退出码 0 且含「Ran 104 tests」",
+   "actual": "退出码=0 含=True",
+   "note": ""
+  },
+  {
+   "crit": 10,
+   "name": "#10-④ 三条既有回归全部以 0 退出（无失败）",
+   "ok": true,
+   "expect": "三条退出码均为 0",
+   "actual": "{'社交51': 0, '内核335': 0, '服务端104': 0}",
+   "note": ""
+  },
+  {
+   "crit": 10,
+   "name": "#10-⑤ 服务端回归用系统 Python 3.12 的原因已核实：便携运行时缺 psycopg （缺则 PG/Redis 两组整模块跳过 → 只有 83 项）",
+   "ok": true,
+   "expect": "便携运行时 import psycopg 失败",
+   "actual": "returncode=1",
+   "note": ""
+  }
+ ],
+ "evidence": {
+  "source": {
+   "admin_api.py": {
+    "bytes": 71273,
+    "sha256": "6e45d85aa45626512e21a2c3aae06f214da16882afd140c8b0e5d04963f4abf5"
+   },
+   "social.py": {
+    "bytes": 73078,
+    "sha256": "c84c84f142463f0561200a608d2dfac09036ae81250876eb6292a0b8fb4b2edc"
+   },
+   "serve.py": {
+    "bytes": 55356,
+    "sha256": "6049987f1ad972d65becb3487443e58fcf9dc2b8c5a78ea1694fceb04cb7436f"
+   },
+   "test_admin.py": {
+    "bytes": 78829,
+    "sha256": "f4e4a492f01a51ee9fcbbeec6f687e1d844e55e42d2848aedad49064e2fb6bd1"
+   }
+  },
+  "seed": {
+   "members": [
+    {
+     "member_id": "mbr_431104d847ea9ebb",
+     "city": "北京",
+     "birth": "1988-11-27 03:47"
+    },
+    {
+     "member_id": "mbr_4338ad2a8b9b8584",
+     "city": "上海",
+     "birth": "1975-03-09 18:20"
+    },
+    {
+     "member_id": "mbr_f68af631a35a903d",
+     "city": "广州",
+     "birth": "1996-07-15 09:05"
+    },
+    {
+     "member_id": "mbr_a5b53f531f4331b9",
+     "city": "成都",
+     "birth": "1962-12-30 23:11"
+    },
+    {
+     "member_id": "mbr_3b50ed93872e510b",
+     "city": "哈尔滨",
+     "birth": "2001-02-03 06:40"
+    },
+    {
+     "member_id": "mbr_5cb1ee13d5d3706b",
+     "city": "乌鲁木齐",
+     "birth": "1954-08-21 13:58"
+    }
+   ],
+   "m1_invite_code": "GN3WRYCL"
+  },
+  "regression_spot": {
+   "daily_index": {
+    "score": 69,
+    "band_code": "C",
+    "band": "中",
+    "basis": "按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断",
+    "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+    "ref": 0.35,
+    "channels": [
+     {
+      "channel": "肝",
+      "raw": 0.04,
+      "direction": "平稳",
+      "attention": false
+     },
+     {
+      "channel": "胆",
+      "raw": 0.04,
+      "direction": "平稳",
+      "attention": false
+     },
+     {
+      "channel": "心",
+      "raw": 0.255,
+      "direction": "偏亢",
+      "attention": true
+     },
+     {
+      "channel": "小肠",
+      "raw": 0.09,
+      "direction": "偏亢",
+      "attention": false
+     },
+     {
+      "channel": "脾",
+      "raw": 0.075,
+      "direction": "偏亢",
+      "attention": false
+     },
+     {
+      "channel": "胃",
+      "raw": 0.075,
+      "direction": "偏亢",
+      "attention": false
+     },
+     {
+      "channel": "肺",
+      "raw": 0.255,
+      "direction": "偏亢",
+      "attention": true
+     },
+     {
+      "channel": "大肠",
+      "raw": 0.13,
+      "direction": "偏亢",
+      "attention": true
+     },
+     {
+      "channel": "肾",
+      "raw": 0.17,
+      "direction": "偏亢",
+      "attention": true
+     },
+     {
+      "channel": "膀胱",
+      "raw": 0.13,
+      "direction": "偏亢",
+      "attention": false
+     },
+     {
+      "channel": "心包",
+      "raw": 0.025,
+      "direction": "平稳",
+      "attention": false
+     },
+     {
+      "channel": "三焦",
+      "raw": 0.025,
+      "direction": "平稳",
+      "attention": false
+     }
+    ],
+    "attention": [
+     {
+      "channel": "心",
+      "direction": "偏亢",
+      "raw": 0.255
+     },
+     {
+      "channel": "肺",
+      "direction": "偏亢",
+      "raw": 0.255
+     },
+     {
+      "channel": "肾",
+      "direction": "偏亢",
+      "raw": 0.17
+     },
+     {
+      "channel": "大肠",
+      "direction": "偏亢",
+      "raw": 0.13
+     }
+    ],
+    "windows": [
+     {
+      "name": "心经当令",
+      "start": "11:00",
+      "end": "13:00",
+      "kind": "golden"
+     },
+     {
+      "name": "肺经当令",
+      "start": "03:00",
+      "end": "05:00",
+      "kind": "golden"
+     },
+     {
+      "name": "肾经当令",
+      "start": "17:00",
+      "end": "19:00",
+      "kind": "golden"
+     },
+     {
+      "name": "大肠经当令",
+      "start": "05:00",
+      "end": "07:00",
+      "kind": "golden"
+     }
+    ],
+    "rule_ids": [
+     "CAL-001",
+     "CAL-005",
+     "CAL-007",
+     "OF-001",
+     "OF-002",
+     "YQ-014",
+     "YQ-005",
+     "OF-003",
+     "YQ-006",
+     "ZF-002"
+    ],
+    "phase_note": "冷启动以零点为参照；基线建立后另有个体化口径",
+    "score_kernel": 69,
+    "display": {
+     "kernel_score": 69,
+     "score": 69,
+     "anchors": [
+      [
+       58.57142857142857,
+       40.0
+      ],
+      [
+       78.57142857142857,
+       95.0
+      ]
+     ],
+     "formula": "display = clamp(round(40 + (kernel - 58.57) x 2.75), 0, 100)",
+     "note": "展示层归一化：内核算法、时相参考量 ref 与规则指纹均未改动；内核原分见 kernel_score。"
+    },
+    "basis_kernel": "按出生时空与当日运气推算·非诊断",
+    "basis_note": "当前实际参与计算的是出生时空与当日时相；其余维度将随数据完善逐步纳入。"
+   },
+   "friends": [
+    {
+     "friend_id": "mbr_4338ad2a8b9b8584",
+     "nickname": "用户1708",
+     "status": "accepted",
+     "share_index": false,
+     "share_streak": false,
+     "in_ranking": false,
+     "score": null,
+     "streak_days": null,
+     "last_active": "2026-10-02"
+    }
+   ]
+  },
+  "detail_fields": [
+   {
+    "path": "member_id",
+    "value": "mbr_431104d847ea9ebb"
+   },
+   {
+    "path": "nickname",
+    "value": "用户4801"
+   },
+   {
+    "path": "invite_code",
+    "value": "GN3WRYCL"
+   },
+   {
+    "path": "created_at",
+    "value": "2026-10-09T23:54:55"
+   },
+   {
+    "path": "account_present",
+    "value": "True"
+   },
+   {
+    "path": "profile_completed",
+    "value": "True"
+   },
+   {
+    "path": "archive_status",
+    "value": "已建档"
+   },
+   {
+    "path": "baseline_progress.observation_count",
+    "value": "8"
+   },
+   {
+    "path": "baseline_progress.min_observations",
+    "value": "7"
+   },
+   {
+    "path": "baseline_progress.established",
+    "value": "True"
+   },
+   {
+    "path": "baseline_progress.text",
+    "value": "8/7"
+   },
+   {
+    "path": "last_active",
+    "value": "2026-09-17"
+   },
+   {
+    "path": "streak_days",
+    "value": "0"
+   },
+   {
+    "path": "checkin_days",
+    "value": "8"
+   },
+   {
+    "path": "banned",
+    "value": "False"
+   },
+   {
+    "path": "birth.completed",
+    "value": "True"
+   },
+   {
+    "path": "birth.birth_date",
+    "value": "1988-11-27"
+   },
+   {
+    "path": "birth.precision",
+    "value": "day"
+   },
+   {
+    "path": "birth.birth_city",
+    "value": "北京"
+   },
+   {
+    "path": "birth.birth_region",
+    "value": "华北"
+   },
+   {
+    "path": "birth.city_source",
+    "value": "app.js"
+   },
+   {
+    "path": "birth.exact_time_returned",
+    "value": "False"
+   },
+   {
+    "path": "birth.coordinates_returned",
+    "value": "False"
+   },
+   {
+    "path": "birth.note",
+    "value": "脱敏：只回出生年月日与出生地城市；精确出生时刻与经纬度**不返回**（它们只参与服务端计算）。"
+   },
+   {
+    "path": "archive.vitals_collected",
+    "value": "False"
+   },
+   {
+    "path": "archive.history_collected",
+    "value": "False"
+   },
+   {
+    "path": "archive.note",
+    "value": "本服务未采集身高体重血压心率等体征数值与病史自述（无对应存储、无对应接口），因此后台只回该布尔标记，**不返回任何体征数值或病史原文**。"
+   },
+   {
+    "path": "today_index.date",
+    "value": "2026-10-09"
+   },
+   {
+    "path": "today_index.score",
+    "value": "69"
+   },
+   {
+    "path": "today_index.score_kernel",
+    "value": "69"
+   },
+   {
+    "path": "today_index.band_code",
+    "value": "C"
+   },
+   {
+    "path": "today_index.band",
+    "value": "中"
+   },
+   {
+    "path": "today_index.basis",
+    "value": "与 GET /v1/rhythm/daily 的 index 同一公式（内核分 + 展示层归一化）"
+   },
+   {
+    "path": "checkins.total",
+    "value": "8"
+   },
+   {
+    "path": "checkins.items[0].on_date",
+    "value": "2026-09-17"
+   },
+   {
+    "path": "checkins.items[0].channels",
+    "value": "12"
+   },
+   {
+    "path": "checkins.items[1].on_date",
+    "value": "2026-09-16"
+   },
+   {
+    "path": "checkins.items[1].channels",
+    "value": "12"
+   },
+   {
+    "path": "checkins.items[...共8项]",
+    "value": ""
+   },
+   {
+    "path": "checkins.truncated",
+    "value": "False"
+   },
+   {
+    "path": "checkins.note",
+    "value": "只回打卡日期与通道数；**观测数值不返回**（最小必要）。"
+   },
+   {
+    "path": "social.friends_accepted",
+    "value": "1"
+   },
+   {
+    "path": "social.friends_pending",
+    "value": "0"
+   },
+   {
+    "path": "social.cheer_sent",
+    "value": "0"
+   },
+   {
+    "path": "social.cheer_received",
+    "value": "1"
+   },
+   {
+    "path": "referral",
+    "value": "None"
+   },
+   {
+    "path": "masking_policy[0]",
+    "value": "出生信息只到日（不回精确出生时刻，也不回经纬度）"
+   },
+   {
+    "path": "masking_policy[1]",
+    "value": "体征数值未采集，不返回"
+   },
+   {
+    "path": "masking_policy[...共4项]",
+    "value": ""
+   }
+  ],
+  "audit_newest": {
+   "id": 4,
+   "at": "2026-10-09T23:54:56",
+   "actor": "admin",
+   "session": "8374d6f8a1ff",
+   "action": "user_detail",
+   "target": "mbr_4338ad2a8b9b8584",
+   "ip": "127.0.0.1",
+   "detail": "{\"birth_returned\": \"day-only\", \"score\": 58}"
+  },
+  "stats": {
+   "users_total": 6,
+   "accounts_total": 6,
+   "new_today": 6,
+   "profiled_total": 6,
+   "archive_rate": 1.0,
+   "checkin_users_total": 2,
+   "checkin_users_today": 0,
+   "checkin_users_7d": 0,
+   "checkin_rate_today": 0.0,
+   "index_distribution": {
+    "basis": "展示分口径：内核 phase_index → 装配层 display_normalize → 内核 band_of；与 GET /v1/rhythm/daily 的 index 同一公式",
+    "total": 6,
+    "profiled_total": 6,
+    "unavailable": 0,
+    "items": [
+     {
+      "code": "A",
+      "name": "优",
+      "count": 0,
+      "pct": 0.0,
+      "pct_raw": 0.0
+     },
+     {
+      "code": "B",
+      "name": "良",
+      "count": 2,
+      "pct": 33.3,
+      "pct_raw": 33.3333
+     },
+     {
+      "code": "C",
+      "name": "中",
+      "count": 4,
+      "pct": 66.7,
+      "pct_raw": 66.6667
+     },
+     {
+      "code": "D",
+      "name": "需关注",
+      "count": 0,
+      "pct": 0.0,
+      "pct_raw": 0.0
+     }
+    ],
+    "pct_sum": 100.0,
+    "note": "A+B+C+D 占比之和 = 100%（小数一位；舍入残差并入人数最多的一档，未调整值见 pct_raw）。"
+   },
+   "friend_circle": {
+    "accepted": 1,
+    "pending": 0,
+    "members_with_friends": 2,
+    "cheer_total": 1,
+    "cheer_today": 1
+   },
+   "referral_bound": 1,
+   "banned_users": 0,
+   "admin": {
+    "password_env": "YJK_ADMIN_PASSWORD",
+    "token_ttl_sec": 7200,
+    "login_fail_limit": 5,
+    "login_lock_sec": 900,
+    "login_limit": {
+     "capacity": 5,
+     "per_seconds": 900,
+     "code": 40000
+    },
+    "audit_actions": [
+     "login_ok",
+     "login_fail",
+     "login_locked",
+     "user_detail",
+     "ban",
+     "unban",
+     "export",
+     "reset_password"
+    ],
+    "city_table_source": "app.js",
+    "city_table_rows": 45
+   },
+   "on_date": "2026-10-09"
+  },
+  "csv": {
+   "status": 200,
+   "bytes": 627,
+   "header": [
+    "member_id",
+    "nickname",
+    "invite_code",
+    "created_at",
+    "archive_status",
+    "observation_count",
+    "min_observations",
+    "last_active",
+    "streak_days",
+    "checkin_days",
+    "score",
+    "band",
+    "banned"
+   ],
+   "rows": 6
+  },
+  "ban_before_after": {
+   "before": {
+    "friends_http": 200,
+    "friends_code": 0,
+    "cheer_http": 200,
+    "cheer_code": 0
+   },
+   "after": {
+    "friends_http": 402,
+    "friends_code": 30002,
+    "friends_message": "该账号的社交功能已被管理员暂停，如有疑问请联系管理员",
+    "cheer_http": 402,
+    "cheer_code": 30002,
+    "cheer_message": "该账号的社交功能已被管理员暂停，如有疑问请联系管理员"
+   }
+  },
+  "frontend": {
+   "admin_path_http": 200,
+   "app_js_bytes": 43388,
+   "style_css_bytes": 18757,
+   "front_api_paths": [
+    "/audit",
+    "/ban",
+    "/login",
+    "/social",
+    "/stats",
+    "/user/",
+    "/users"
+   ],
+   "note": "前端页面（web/admin/）由另一位同事交付；后端只做托管与契约对齐。"
+  },
+  "browser": {
+   "430x932": {
+    "login_ok": true,
+    "pageerrors": [],
+    "console_errors": [],
+    "scroll_login": [
+     430,
+     430
+    ],
+    "scroll_app": [
+     430,
+     430
+    ],
+    "rows_login": 0,
+    "rows_app": 2,
+    "text_head": "AI\nAI数显 · 元健康\n会话令牌已就绪\n退出登录\n用户\n运营指标\n好友圈治理\n导出\n审计\n用户\n共 2 位用户\n关键词搜索\n搜索\n重置\n刷新\n用户列表\n用户标识\t昵称\t手机号\t建档状态\t基线进度\t最近活跃\t重置密码\t连续天数\nmbr_8111…97\t（未设置）\t未绑定\t已建档\t1 / 7\t2026-09-11 08"
+   },
+   "1440x900": {
+    "login_ok": true,
+    "pageerrors": [],
+    "console_errors": [],
+    "scroll_login": [
+     1440,
+     1440
+    ],
+    "scroll_app": [
+     1440,
+     1440
+    ],
+    "rows_login": 0,
+    "rows_app": 2,
+    "text_head": "AI\nAI数显 · 元健康\n独立运营后台\n会话令牌已就绪\n退出登录\n用户\n运营指标\n好友圈治理\n导出\n审计\n用户\n共 2 位用户\n关键词搜索\n搜索\n重置\n刷新\n用户列表\n用户标识\t昵称\t手机号\t建档状态\t基线进度\t最近活跃\t重置密码\t连续天数\nmbr_8111…97\t（未设置）\t未绑定\t已建档\t1 / 7\t2026-0"
+   }
+  },
+  "lockout": {
+   "attempts": [
+    {
+     "n": 1,
+     "http": 401,
+     "code": 20000,
+     "remaining_attempts": 4
+    },
+    {
+     "n": 2,
+     "http": 401,
+     "code": 20000,
+     "remaining_attempts": 3
+    },
+    {
+     "n": 3,
+     "http": 401,
+     "code": 20000,
+     "remaining_attempts": 2
+    },
+    {
+     "n": 4,
+     "http": 401,
+     "code": 20000,
+     "remaining_attempts": 1
+    },
+    {
+     "n": 5,
+     "http": 401,
+     "code": 20000,
+     "remaining_attempts": 0
+    }
+   ],
+   "sixth": {
+    "http": 429,
+    "code": 40000,
+    "detail": {
+     "scope": "admin_login",
+     "locked": true,
+     "remaining_sec": 900,
+     "lock_seconds": 900,
+     "attempts": 5,
+     "limit": 5
+    }
+   }
+  },
+  "regression": {
+   "社交51": {
+    "cmd": "D:\\Deepseek智能体\\AI元健康\\shuzi\\runtime\\python.exe D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v3\\test_social.py",
+    "exit": 0,
+    "expect": "合计 51 项子断言，通过 51，失败 0",
+    "found": true,
+    "tail": [
+     "  合计 51 项子断言，通过 51，失败 0；断言 #1-#10 全部通过",
+     "  明细 JSON: D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v3\\test_social_result.json"
+    ],
+    "log": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v7\\reg_社交51.txt"
+   },
+   "内核335": {
+    "cmd": "D:\\Deepseek智能体\\AI元健康\\shuzi\\runtime\\python.exe -m unittest discover -s D:\\Deepseek智能体\\AI元健康\\核心\\tests -t D:\\Deepseek智能体\\AI元健康\\核心",
+    "exit": 0,
+    "expect": "Ran 335 tests",
+    "found": true,
+    "tail": [
+     "Ran 335 tests in 3.228s",
+     "OK"
+    ],
+    "log": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v7\\reg_内核335.txt"
+   },
+   "服务端104": {
+    "cmd": "C:\\Users\\41692\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m unittest discover -s D:\\Deepseek智能体\\AI元健康\\服务端\\tests -t D:\\Deepseek智能体\\AI元健康\\服务端",
+    "exit": 0,
+    "expect": "Ran 104 tests",
+    "found": true,
+    "tail": [
+     "[Redis 测试后端] fakeredis 2.39.0（本机未安装 redis-server，真实实例未验证）",
+     "[撤销时延] revoke→旧令牌被判失效 耗时 0.0010 秒，返回码 20002"
+    ],
+    "log": "D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v7\\reg_服务端104.txt"
+   }
+  }
+ }
+}

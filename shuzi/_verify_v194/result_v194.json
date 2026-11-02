@@ -1,0 +1,167 @@
+[
+ {
+  "name": "music.json 共 10 条",
+  "ok": true,
+  "detail": "10"
+ },
+ {
+  "name": "前四条=地藏/金刚/蒹葭/关雎",
+  "ok": true,
+  "detail": "[('地藏经（节选·电子诵）', -20), ('金刚经（节选·电子诵）', -10), ('吟唱·蒹葭（本站合成）', -9), ('吟唱·关雎（本站合成）', -8)]"
+ },
+ {
+  "name": "排序 -20/-10/-9/-8",
+  "ok": true,
+  "detail": "[('地藏经（节选·电子诵）', -20), ('金刚经（节选·电子诵）', -10), ('吟唱·蒹葭（本站合成）', -9), ('吟唱·关雎（本站合成）', -8)]"
+ },
+ {
+  "name": "文件 yinchang-jianjia-tts.mp3 >100KB",
+  "ok": true,
+  "detail": "253008"
+ },
+ {
+  "name": "文件 yinchang-guanju-tts.mp3 >100KB",
+  "ok": true,
+  "detail": "204912"
+ },
+ {
+  "name": "music.js CHANT_MAX = 6",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js WEB_VER=194",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "version.json web=194",
+  "ok": true,
+  "detail": "194"
+ },
+ {
+  "name": "首条说明=两条吟唱",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "资源戳 20261029a ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "本地 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地接口 10 条",
+  "ok": true,
+  "detail": "10"
+ },
+ {
+  "name": "本地前三=地藏/金刚/蒹葭",
+  "ok": true,
+  "detail": "['地藏经（节选·电子诵）', '金刚经（节选·电子诵）', '吟唱·蒹葭（本站合成）', '吟唱·关雎（本站合成）']"
+ },
+ {
+  "name": "本地音频 200 dizangjing-jiexuan-tts.mp3",
+  "ok": true,
+  "detail": "1352448/1352448"
+ },
+ {
+  "name": "本地音频 200 jingangjing-jiexuan-tts.mp3",
+  "ok": true,
+  "detail": "1291248/1291248"
+ },
+ {
+  "name": "本地音频 200 yinchang-jianjia-tts.mp3",
+  "ok": true,
+  "detail": "253008/253008"
+ },
+ {
+  "name": "本地音频 200 yinchang-guanju-tts.mp3",
+  "ok": true,
+  "detail": "204912/204912"
+ },
+ {
+  "name": "本地：佛音 6 条",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "本地：第 3、4 条=两条吟唱",
+  "ok": true,
+  "detail": "['地藏经（节选·电子诵）', '金刚经（节选·电子诵）', '吟唱·蒹葭（本站合成）', '吟唱·关雎（本站合成）', '般若心经（普通话）', '灵隐寺梵呗（现场）']"
+ },
+ {
+  "name": "本地：第 5、6 条=心经/灵隐寺",
+  "ok": true,
+  "detail": "['地藏经（节选·电子诵）', '金刚经（节选·电子诵）', '吟唱·蒹葭（本站合成）', '吟唱·关雎（本站合成）', '般若心经（普通话）', '灵隐寺梵呗（现场）']"
+ },
+ {
+  "name": "本地：播放器显示吟唱·蒹葭",
+  "ok": true,
+  "detail": "吟唱·蒹葭（本站合成）"
+ },
+ {
+  "name": "本地：计时走动",
+  "ok": true,
+  "detail": "00:03"
+ },
+ {
+  "name": "本地：无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "线上 web=194",
+  "ok": true,
+  "detail": "194"
+ },
+ {
+  "name": "线上接口 10 条",
+  "ok": true,
+  "detail": "10"
+ },
+ {
+  "name": "线上前四=地藏/金刚/蒹葭/关雎",
+  "ok": true,
+  "detail": "['地藏经（节选·电子诵）', '金刚经（节选·电子诵）', '吟唱·蒹葭（本站合成）', '吟唱·关雎（本站合成）']"
+ },
+ {
+  "name": "线上音频 200 yinchang-jianjia-tts.mp3",
+  "ok": true,
+  "detail": "253008/253008"
+ },
+ {
+  "name": "线上音频 200 yinchang-guanju-tts.mp3",
+  "ok": true,
+  "detail": "204912/204912"
+ },
+ {
+  "name": "线上：佛音 6 条",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "线上：第 3、4 条=两条吟唱",
+  "ok": true,
+  "detail": "['地藏经（节选·电子诵）', '金刚经（节选·电子诵）', '吟唱·蒹葭（本站合成）', '吟唱·关雎（本站合成）', '般若心经（普通话）', '灵隐寺梵呗（现场）']"
+ },
+ {
+  "name": "线上：播放器显示吟唱·蒹葭",
+  "ok": true,
+  "detail": "吟唱·蒹葭（本站合成）"
+ },
+ {
+  "name": "线上：计时走动",
+  "ok": true,
+  "detail": "00:03"
+ },
+ {
+  "name": "线上：无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

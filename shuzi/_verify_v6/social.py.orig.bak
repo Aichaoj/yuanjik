@@ -1,0 +1,834 @@
+# -*- coding: utf-8 -*-
+"""
+「元健康 AI 顾问」轻社交三件套（好友圈 / 健康排行 / 健康互促）
+==============================================================
+规格来源：变更单 `2026-10-08-好友圈健康排行健康互促`
+（接口契约 §三、可见性规则、验收标准 §四、数据表 §五）。**字段名一律照抄，不自创口径。**
+
+本模块是**纯新增**：不 import 也不改既有服务层（`服务端/app/*`）与内核
+（`核心/tianyuanheng/*`）的任何一行——护栏与内核指数都是**只读引用**。
+它只吃 dict、只吐 dict，与既有 `ApiV1` 风格一致，注册进同一个 `Router`。
+
+三条硬边界（与变更单 §二 合规红线逐条对应）
+------------------------------------------------
+1. **默认隐私全关**：`share_index` / `share_streak` / `in_ranking` 三项默认 false；
+   每一项只决定**别人看我**，且不做任何缓存——关闭后**下一次请求即生效**。
+2. **未确认（pending）的关系双方互不可见**：分数、连续天数、活跃时间与动态一律不回传；
+   只有 `accepted` 才可见。这条是合规红线，不因调试便利而放宽。
+3. **不存可识别身份**：本模块只落 `member_id` / 昵称 / 邀请码 / 关系 / 加油记录；
+   没有手机号、真名、生辰。生辰只存在于既有 `profile` 表，这里**只读它算分，不复制不落库**。
+
+合规实现要点
+------------
+· 加油模板是**固定白名单**（中性作息文案），且**每次下发前现扫一遍护栏**
+  （`tianyuanheng.guardrail.scan`），命中即剔除——fail-closed，不依赖"构建期检查过一次"。
+· 昵称走同一把护栏：先按护栏词表剥离字面敏感词，剥离后仍命中就**拒收**（不进库）。
+· 每日加油上限按 `on_date` 计，且取**更严口径**：发送方每日总计 3 次 +
+  对同一好友每日 3 次（任一条到达上限即拒），对应变更单 §二「每人每日加油上限 3 次」。
+· 解除好友 = 删除关系行 **并删除双方往来加油记录**（变更单 §五：不保留历史，合规最小化）。
+
+为什么 `DELETE /v1/friends/{friend_id}` 走 `handle_delete()` 而不是 `router.route()`
+----------------------------------------------------------------------------------
+`app.http.Router` 只做**精确路径**匹配（`_routes[(method, path)]` 直接查表），
+不支持路径参数；既有服务层不允许改动。因此本模块内做了**等价适配**：
+鉴权、`RequestContext`、信封、错误码与 HTTP 映射全部沿用 `app.http` 的既有实现，
+口径与 `Router.handle()` 一致（`serve.py` 只多一个转发分支，见该文件注释）。
+"""
+from __future__ import annotations
+
+import datetime as _dt
+import re
+import secrets
+import sqlite3
+import threading
+from urllib.parse import unquote
+
+from app.auth import new_trace_id
+from app.errors import AppError, Err
+from app.http import (RequestContext, clamp_limit, http_status_of, paginate,
+                      respond, respond_error)
+
+# ★ 只读引用内核：护栏（合规卡口）与时相指数（分数的唯一口径）
+from tianyuanheng import guardrail
+from tianyuanheng import phase_index as phase_layer
+
+# ── 口径常量 ────────────────────────────────────────────────────────
+INVITE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0vault:zhengfu.admin.aaa789'
+INVITE_LEN = 8                       # 变更单 §三：8 位大写字母数字
+NICKNAME_MIN, NICKNAME_MAX = 2, 12   # 变更单 §三：昵称 2-12 字
+NICKNAME_PREFIX = '用户'              # 默认昵称 = 用户 + 4 位随机
+CHEER_DAILY_LIMIT = 3                # 变更单 §二：每人每日加油上限 3 次
+FEED_CHEER_SCAN = 300                # 动态流里最多回看的加油条数（够用即可，避免全表扫）
+SCORE_CACHE_MAX = 512                # 展示分缓存上限（仅缓存分数，可见性永不缓存）
+STATUS_PENDING, STATUS_ACCEPTED = 'pending', 'accepted'
+
+# ── 中性加油模板（≥6 条；只写作息与陪伴类中性文案）────────────────────
+# 硬约束：模板里不写任何医疗、用药、体征、身体部位类表述，也不写判断性结论；
+# 下发前逐条过 `guardrail.scan()`，命中即被剔除（见 `_clean_templates`）。
+_TEMPLATES = [
+    {'id': 'care_self',     'text': '今天也照顾好自己'},
+    {'id': 'sleep_early',   'text': '早点休息，明天见'},
+    {'id': 'move_together', 'text': '一起动一动'},
+    {'id': 'drink_water',   'text': '记得喝口水，歇一会儿'},
+    {'id': 'eat_well',      'text': '今天也要好好吃饭'},
+    {'id': 'take_it_easy',  'text': '慢慢来，别着急'},
+    {'id': 'walk_outside',  'text': '出去走走，晒晒太阳'},
+    {'id': 'well_done',     'text': '你今天已经很棒了'},
+]
+
+# ── 数据表（变更单 §五 逐字：表名、列名一字不改；沿用同一份 state.db）──
+_SOCIAL_SCHEMA = (
+    """
+    CREATE TABLE IF NOT EXISTS social_profile (
+        member_id   TEXT PRIMARY KEY,
+        nickname    TEXT NOT NULL,
+        invite_code TEXT NOT NULL UNIQUE,
+        created_at  TEXT NOT NULL DEFAULT ''
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS social_privacy (
+        member_id    TEXT PRIMARY KEY,
+        share_index  INTEGER NOT NULL DEFAULT 0,
+        share_streak INTEGER NOT NULL DEFAULT 0,
+        in_ranking   INTEGER NOT NULL DEFAULT 0,
+        updated_at   TEXT NOT NULL DEFAULT ''
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS social_friend (
+        id           TEXT PRIMARY KEY,
+        a_member     TEXT NOT NULL,
+        b_member     TEXT NOT NULL,
+        status       TEXT NOT NULL,
+        requested_by TEXT NOT NULL,
+        created_at   TEXT NOT NULL DEFAULT '',
+        accepted_at  TEXT,
+        UNIQUE (a_member, b_member)
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS social_cheer (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        from_member TEXT NOT NULL,
+        to_member   TEXT NOT NULL,
+        template_id TEXT NOT NULL,
+        on_date     TEXT NOT NULL,
+        created_at  TEXT NOT NULL DEFAULT ''
+    )
+    """,
+    # 每日限额按 (发送方, 日期) 与 (发送方, 接收方, 日期) 两条路径查询，建两个索引
+    """
+    CREATE INDEX IF NOT EXISTS idx_social_cheer_day
+        ON social_cheer (from_member, on_date)
+    """,
+    """
+    CREATE INDEX IF NOT EXISTS idx_social_cheer_pair
+        ON social_cheer (from_member, to_member, on_date)
+    """,
+    """
+    CREATE INDEX IF NOT EXISTS idx_social_friend_pair
+        ON social_friend (a_member, b_member, status)
+    """,
+)
+
+_ZW_RE = re.compile(r'[\u200b-\u200f\u2060\ufeff]')
+
+
+def _now() -> str:
+    return _dt.datetime.now().replace(microsecond=0).isoformat()
+
+
+def _today() -> str:
+    return _dt.date.today().isoformat()
+
+
+def _as_bool(field: str, value) -> bool:
+    """宽松但确定的布尔解析；拿不准就报错，不做"猜测式"解释。"""
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, int) and value in (0, 1):
+        return bool(value)
+    if isinstance(value, str):
+        v = value.strip().lower()
+        if v in ('true', '1', 'yes', 'on'):
+            return True
+        if v in ('false', '0', 'no', 'off'):
+            return False
+    raise AppError(Err.INVALID_FIELD, detail={'field': field, 'reason': '需要布尔值'})
+
+
+def _pair(x: str, y: str) -> tuple:
+    """无向关系的规范序（小者在前）：这样 UNIQUE(a_member, b_member) 才拦得住重复关系。"""
+    return (x, y) if x <= y else (y, x)
+
+
+class SocialApi:
+    """
+    轻社交三件套的全部接口 + 建表与读写。
+
+    构造即注册：`SocialApi(router, store=..., norm=..., audit=...)`。
+    `norm` 是**装配层的展示分归一化函数**（由 `serve.py` 注入 `display_normalize`），
+    保证“社交里的分数”与 `GET /v1/rhythm/daily` 的 `index.score` **同一口径、同一个公式**，
+    本模块不另写一份映射。
+    """
+
+    def __init__(self, router, *, store, norm, audit=None):
+        self.router = router
+        self.store = store
+        self.norm = norm                       # serve.display_normalize（单一来源）
+        self.audit = audit or (lambda **kw: None)
+        self._score_cache: dict = {}           # (会员, 日期, 建档三要素) → 展示分；只缓存分数
+        self._score_date = _today()
+        self._ensure_schema()
+        self.register(router)
+
+    # ── 建表 ────────────────────────────────────────────────────────
+    def _ensure_schema(self) -> None:
+        """
+        建本模块的四张表。
+
+        ★ 复用 `SqliteStore` 的**同一条连接与同一把写锁**（`store.lock` + `store._conn()`）：
+          若另开一条连接，`SqliteStore(':memory:')`（自测场景）会各持一份空库。
+          这两个名字是本地交付内 `server/store.py` 的既有实现，本模块只读用它、不改它。
+        """
+        with self.store.lock:
+            conn = self.store._conn()
+            for ddl in _SOCIAL_SCHEMA:
+                conn.execute(ddl)
+            conn.commit()
+
+    def _conn(self):
+        return self.store._conn()
+
+    # ── 会员档案：昵称 + 邀请码（首次用到时惰性创建）─────────────────
+    def _profile_row(self, member_id: str):
+        with self.store.lock:
+            return self._conn().execute(
+                'SELECT member_id, nickname, invite_code, created_at'
+                '  FROM social_profile WHERE member_id = ?', (member_id,)).fetchone()
+
+    def _member_by_code(self, invite_code: str):
+        with self.store.lock:
+            return self._conn().execute(
+                'SELECT member_id FROM social_profile WHERE invite_code = ?',
+                (invite_code,)).fetchone()
+
+    def _default_nickname(self) -> str:
+        """默认昵称 = 用户 + 4 位随机（不含任何可识别身份信息）。"""
+        return '%s%04d' % (NICKNAME_PREFIX, secrets.randbelow(10000))
+
+    def _new_invite_code(self) -> str:
+        return ''.join(secrets.choice(INVITE_ALPHABET) for _ in range(INVITE_LEN))
+
+    def _ensure_profile(self, member_id: str):
+        """
+        惰性创建会员社交档案（昵称 + 邀请码）。
+
+        唯一性靠**数据库约束**兜底：`invite_code` 是 UNIQUE，撞车就换一个重试；
+        `member_id` 是主键，并发重复创建时直接读回已有行（幂等）。
+        """
+        row = self._profile_row(member_id)
+        if row is not None:
+            return row
+        for _ in range(16):
+            try:
+                with self.store.lock:
+                    conn = self._conn()
+                    conn.execute(
+                        'INSERT INTO social_profile (member_id, nickname, invite_code,'
+                        ' created_at) VALUES (?, ?, ?, ?)',
+                        (member_id, self._default_nickname(),
+                         self._new_invite_code(), _now()))
+                    conn.commit()
+            except sqlite3.IntegrityError:
+                row = self._profile_row(member_id)      # 同一会员的并发插入 → 读回即可
+                if row is not None:
+                    return row
+                continue                                # 否则是邀请码撞车 → 换一个重试
+            return self._profile_row(member_id)
+        raise AppError(Err.INTERNAL, message='会员社交档案创建失败，请稍后重试')
+
+    def _nickname_of(self, member_id: str) -> str:
+        row = self._profile_row(member_id)
+        return (row['nickname'] if row is not None else '') or ''
+
+    # ── 隐私开关（默认全关；只影响别人看我）─────────────────────────
+    def _privacy(self, member_id: str) -> dict:
+        with self.store.lock:
+            row = self._conn().execute(
+                'SELECT share_index, share_streak, in_ranking'
+                '  FROM social_privacy WHERE member_id = ?', (member_id,)).fetchone()
+        if row is None:
+            # 没有行 = 三项全关（默认隐私全关是红线，不因"库里没行"而放行）
+            return {'share_index': False, 'share_streak': False, 'in_ranking': False}
+        return {'share_index': bool(row['share_index']),
+                'share_streak': bool(row['share_streak']),
+                'in_ranking': bool(row['in_ranking'])}
+
+    def _save_privacy(self, member_id: str, values: dict) -> None:
+        with self.store.lock:
+            conn = self._conn()
+            conn.execute(
+                'INSERT INTO social_privacy (member_id, share_index, share_streak,'
+                ' in_ranking, updated_at) VALUES (?, ?, ?, ?, ?)'
+                ' ON CONFLICT(member_id) DO UPDATE SET'
+                '   share_index = excluded.share_index,'
+                '   share_streak = excluded.share_streak,'
+                '   in_ranking = excluded.in_ranking,'
+                '   updated_at = excluded.updated_at',
+                (member_id, int(bool(values.get('share_index'))),
+                 int(bool(values.get('share_streak'))),
+                 int(bool(values.get('in_ranking'))), _now()))
+            conn.commit()
+
+    # ── 关系（无向；accepted 才互相可见）────────────────────────────
+    def _relation(self, me: str, other: str):
+        a, b = _pair(me, other)
+        with self.store.lock:
+            return self._conn().execute(
+                'SELECT * FROM social_friend WHERE a_member = ? AND b_member = ?',
+                (a, b)).fetchone()
+
+    def _relations_of(self, member_id: str) -> list:
+        with self.store.lock:
+            return self._conn().execute(
+                'SELECT * FROM social_friend WHERE a_member = ? OR b_member = ?'
+                ' ORDER BY created_at, id', (member_id, member_id)).fetchall()
+
+    def _accepted_ids(self, member_id: str) -> list:
+        out = []
+        for row in self._relations_of(member_id):
+            if row['status'] == STATUS_ACCEPTED:
+                out.append(self._other(row, member_id))
+        return out
+
+    @staticmethod
+    def _other(row, me: str) -> str:
+        return row['b_member'] if row['a_member'] == me else row['a_member']
+
+    # ── 分数 / 连续天数 / 最近活跃 ──────────────────────────────────
+    def _score_of(self, member_id: str):
+        """
+        某会员的**当日展示分**，与 `GET /v1/rhythm/daily` 的 `index.score` 同口径：
+            内核 `phase_index.phase_index(...).score` → 装配层 `display_normalize(...)`
+        （映射函数由 serve.py 注入，公式只有一份）。没有建档信息时返回 None，不猜。
+
+        ★ 缓存口径（踩过的坑，写在这里以免重犯）：
+          缓存键含**建档三要素**，且**只缓存有分的结果**。
+          早期版本只按 (会员, 日期) 缓存并连 None 一起缓存 —— 结果是：
+          用户先访问了好友圈（此时还没建档 → 分算出 None 并被缓存），
+          之后建档再回来看，当天永远显示"无分"。分数只依赖建档与日期，
+          所以键里带上建档三要素后，更正生辰也会自然失效，不需要额外的失效钩子。
+        """
+        today = _today()
+        if today != self._score_date:                 # 跨天即清缓存，避免昨日分残留
+            self._score_cache.clear()
+            self._score_date = today
+        profile = self.store.profile_load(member_id)
+        if not profile or self.norm is None:
+            return None
+        ckey = (member_id, today, profile.get('birth_local'),
+                profile.get('longitude'), profile.get('latitude'))
+        if ckey in self._score_cache:
+            return self._score_cache[ckey]
+        value = None
+        try:
+            idx = phase_layer.phase_index(profile.get('birth_local'),
+                                          profile.get('longitude'),
+                                          profile.get('latitude'),
+                                          target_date=today)
+        except Exception as ex:                        # noqa: BLE001 —— 算分异常不得影响社交可用性
+            idx = None
+            self.audit(event='social_score_failed', member_id=member_id,
+                       error=type(ex).__name__, message=str(ex)[:200])
+        if isinstance(idx, dict) and idx.get('score') is not None:
+            value = int(self.norm(idx['score']))
+        if value is not None:                          # 只缓存有分的结果（未建档可随后建档）
+            if len(self._score_cache) >= SCORE_CACHE_MAX:
+                self._score_cache.clear()
+            self._score_cache[ckey] = value
+        return value
+
+    @staticmethod
+    def _band_of(score):
+        """分档沿用内核 `phase_index.band_of`（阈值单一来源，A/B/C/D 非观察等级）。"""
+        if score is None:
+            return None
+        code, _name = phase_layer.band_of(int(score))
+        return code
+
+    def _streak_days(self, member_id: str) -> int:
+        """
+        连续打卡天数：今天有打卡则从今天往前数；今天没有但昨天有则从昨天往前数；否则 0。
+        （口径写在代码里，避免"昨天断了今天还算连续"这类争议。）
+        """
+        rows = self.store.checkin_load(member_id) or {}
+        days = set(rows.keys())
+        if not days:
+            return 0
+        cursor = _dt.date.today()
+        if cursor.isoformat() not in days:
+            cursor = cursor - _dt.timedelta(days=1)
+        n = 0
+        while cursor.isoformat() in days:
+            n += 1
+            cursor = cursor - _dt.timedelta(days=1)
+        return n
+
+    def _last_active(self, member_id: str):
+        """最近一次打卡日期（没有打卡记录则为 None；本模块不猜、不造）。"""
+        rows = self.store.checkin_load(member_id) or {}
+        return max(rows.keys()) if rows else None
+
+    # ── 加油记录 ────────────────────────────────────────────────────
+    def _clean_templates(self) -> list:
+        """只返回**通过护栏扫描**的模板：下发前现扫，命中即剔除（fail-closed）。"""
+        return [t for t in _TEMPLATES if not guardrail.scan(t['text'])]
+
+    def _template(self, template_id: str):
+        return next((t for t in self._clean_templates() if t['id'] == template_id), None)
+
+    def _cheers_of(self, member_id: str) -> list:
+        with self.store.lock:
+            return self._conn().execute(
+                'SELECT * FROM social_cheer WHERE from_member = ? OR to_member = ?'
+                ' ORDER BY created_at DESC, id DESC LIMIT ?',
+                (member_id, member_id, FEED_CHEER_SCAN)).fetchall()
+
+    def _cheer_used(self, member_id: str, on_date: str, to_member: str | None = None) -> int:
+        sql = 'SELECT count(*) FROM social_cheer WHERE from_member = ? AND on_date = ?'
+        args = [member_id, on_date]
+        if to_member is not None:
+            sql += ' AND to_member = ?'
+            args.append(to_member)
+        with self.store.lock:
+            return int(self._conn().execute(sql, tuple(args)).fetchone()[0])
+
+    # ── 路由注册（变更单 §三 的 11 条；DELETE 那条见 handle_delete）──
+    def register(self, r):
+        r.route('GET',  '/v1/me/invite_code')(self.invite_code)
+        r.route('POST', '/v1/me/nickname')(self.set_nickname)
+        r.route('GET',  '/v1/friends')(self.friends)
+        r.route('POST', '/v1/friends/invite')(self.invite)
+        r.route('POST', '/v1/friends/accept')(self.accept)
+        r.route('POST', '/v1/friends/reject')(self.reject)
+        r.route('POST', '/v1/friends/privacy')(self.privacy)
+        # ★ 变更单只定义了 POST；这里**增设**只读的 GET（同一响应体），
+        #   因为前端进入好友圈时要先把三开关读回来（否则换设备后只能靠本机镜像，
+        #   可能把"服务端已关"显示成"已开"）。写路径仍然只有 POST 一条。
+        r.route('GET',  '/v1/friends/privacy')(self.privacy_read)
+        r.route('GET',  '/v1/friends/feed')(self.feed)
+        r.route('GET',  '/v1/friends/ranking')(self.ranking)
+        r.route('GET',  '/v1/friends/cheer/templates')(self.cheer_templates)
+        r.route('POST', '/v1/friends/cheer')(self.cheer)
+        return self
+
+    # ── ① 我的邀请码 ───────────────────────────────────────────────
+    def invite_code(self, *, ctx, body, headers):
+        row = self._ensure_profile(ctx.member_id)
+        return {'invite_code': row['invite_code'], 'nickname': row['nickname']}
+
+    # ── ② 改昵称（2-12 字，去敏感词）───────────────────────────────
+    def set_nickname(self, *, ctx, body, headers):
+        if 'nickname' not in body:
+            raise AppError(Err.MISSING_FIELD, detail={'field': 'nickname'})
+        nickname = self._clean_nickname(body.get('nickname'))
+        self._ensure_profile(ctx.member_id)
+        with self.store.lock:
+            conn = self._conn()
+            conn.execute('UPDATE social_profile SET nickname = ? WHERE member_id = ?',
+                         (nickname, ctx.member_id))
+            conn.commit()
+        self.audit(event='social_nickname_set', account_id=ctx.account_id)
+        return {'nickname': nickname}
+
+    def _clean_nickname(self, raw) -> str:
+        """
+        昵称清洗（变更单 §三「去敏感词」）：
+
+          ① 去零宽字符、折叠空白：先归一，避免用不可见字符绕过检查；
+          ② 按护栏词表**剥离字面敏感词**（只读引用 `guardrail.ALL_BLOCKED`）；
+          ③ 剥离后**再过一次完整护栏**（含内核护栏的正则兜底规则）；
+             仍有命中 → 直接拒收，绝不入库（fail-closed）；
+          ④ 最后校验 2-12 字。
+
+        结果：库里任何昵称都不含敏感词；清洗后不足以成词的一律拒收而不是截断。
+        """
+        s = _ZW_RE.sub('', str(raw if raw is not None else ''))
+        s = re.sub(r'\s+', ' ', s).strip()
+        for word in guardrail.ALL_BLOCKED:
+            if word and word in s:
+                s = s.replace(word, '')
+        s = s.strip()
+        if guardrail.scan(s):
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'nickname', 'reason': '昵称含不适宜内容'})
+        if not (NICKNAME_MIN <= len(s) <= NICKNAME_MAX):
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'nickname',
+                                   'reason': '昵称需 %d-%d 个字' % (NICKNAME_MIN, NICKNAME_MAX)})
+        return s
+
+    # ── ③ 好友列表 ─────────────────────────────────────────────────
+    def friends(self, *, ctx, body, headers):
+        """
+        返回与我**有关联**的全部关系（pending + accepted）。
+
+        `pending` 行：只给 `friend_id` / `nickname` / `status`，其余字段一律 null
+        （未确认前双方互不可见，合规红线）；`accepted` 行才按**对方**的开关逐项回传。
+        """
+        self._ensure_profile(ctx.member_id)
+        out = []
+        for row in self._relations_of(ctx.member_id):
+            other = self._other(row, ctx.member_id)
+            item = {'friend_id': other,
+                    'nickname': self._nickname_of(other),
+                    'status': row['status'],
+                    'share_index': None, 'share_streak': None, 'in_ranking': None,
+                    'score': None, 'streak_days': None, 'last_active': None}
+            if row['status'] == STATUS_ACCEPTED:
+                pv = self._privacy(other)          # ← 只取"对方"的开关（开关只影响别人看我）
+                item['share_index'] = pv['share_index']
+                item['share_streak'] = pv['share_streak']
+                item['in_ranking'] = pv['in_ranking']
+                item['last_active'] = self._last_active(other)
+                if pv['share_index']:
+                    item['score'] = self._score_of(other)
+                if pv['share_streak']:
+                    item['streak_days'] = self._streak_days(other)
+            out.append(item)
+        return {'friends': out}
+
+    # ── ④ 发起添加（pending，需对方确认）────────────────────────────
+    def invite(self, *, ctx, body, headers):
+        code = str(body.get('invite_code') or '').strip().upper()
+        if not code:
+            raise AppError(Err.MISSING_FIELD, detail={'field': 'invite_code'})
+        me = ctx.member_id
+        self._ensure_profile(me)
+        hit = self._member_by_code(code)
+        if hit is None:
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'invite_code', 'reason': '邀请码不存在'})
+        target = hit['member_id']
+        if target == me:
+            raise AppError(Err.INVITE_SELF_NOT_ALLOWED, message='不能添加本人为好友',
+                           detail={'field': 'invite_code'})
+        self._ensure_profile(target)
+        row = self._relation(me, target)
+        if row is not None and row['status'] == STATUS_ACCEPTED:
+            raise AppError(Err.INVITE_ALREADY_CONSUMED, message='你们已经是好友了',
+                           detail={'friend_id': target})
+        if row is not None and row['status'] == STATUS_PENDING:
+            # 幂等：重复发起返回既有待确认关系，不改方向、不产生第二行
+            return {'friend_id': target, 'status': STATUS_PENDING,
+                    'requested_by': row['requested_by'], 'already_requested': True}
+        a, b = _pair(me, target)
+        with self.store.lock:
+            conn = self._conn()
+            conn.execute(
+                'INSERT INTO social_friend (id, a_member, b_member, status, requested_by,'
+                ' created_at, accepted_at) VALUES (?, ?, ?, ?, ?, ?, NULL)',
+                (secrets.token_hex(8), a, b, STATUS_PENDING, me, _now()))
+            conn.commit()
+        self.audit(event='social_invite', account_id=ctx.account_id, to_member=target)
+        return {'friend_id': target, 'status': STATUS_PENDING,
+                'requested_by': me, 'already_requested': False}
+
+    # ── ⑤ 确认 / ⑥ 拒绝 ───────────────────────────────────────────
+    def accept(self, *, ctx, body, headers):
+        fid, row = self._pending_from_other(ctx, body, 'accept')
+        with self.store.lock:
+            conn = self._conn()
+            conn.execute('UPDATE social_friend SET status = ?, accepted_at = ? WHERE id = ?',
+                         (STATUS_ACCEPTED, _now(), row['id']))
+            conn.commit()
+        self.audit(event='social_accept', account_id=ctx.account_id, friend_id=fid)
+        return {'friend_id': fid, 'status': STATUS_ACCEPTED, 'accepted_at': _now()}
+
+    def reject(self, *, ctx, body, headers):
+        fid, row = self._pending_from_other(ctx, body, 'reject')
+        self._drop_relation(row, fid, ctx.member_id)
+        self.audit(event='social_reject', account_id=ctx.account_id, friend_id=fid)
+        return {'friend_id': fid, 'status': 'rejected'}
+
+    def _pending_from_other(self, ctx, body, action: str):
+        """accept / reject 的公共校验：必须存在一条**对方发起**的 pending 关系。"""
+        fid = str(body.get('friend_id') or '').strip()
+        if not fid:
+            raise AppError(Err.MISSING_FIELD, detail={'field': 'friend_id'})
+        row = self._relation(ctx.member_id, fid)
+        if row is None or row['status'] != STATUS_PENDING:
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'friend_id', 'reason': '没有待确认的好友申请'})
+        if row['requested_by'] == ctx.member_id:
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'friend_id', 'reason': '该申请由你发起，请等待对方确认'})
+        return fid, row
+
+    # ── ⑦ 解除（双向移除；DELETE /v1/friends/{friend_id}）──────────
+    def remove_friend(self, *, ctx, body, headers):
+        fid = str(body.get('friend_id') or '').strip()
+        return self._remove(ctx, fid)
+
+    def _remove(self, ctx, friend_id: str):
+        if not friend_id:
+            raise AppError(Err.MISSING_FIELD, detail={'field': 'friend_id'})
+        row = self._relation(ctx.member_id, friend_id)
+        if row is None:
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'friend_id', 'reason': '你们之间没有关系'})
+        self._drop_relation(row, friend_id, ctx.member_id)
+        self.audit(event='social_remove', account_id=ctx.account_id, friend_id=friend_id)
+        return {'friend_id': friend_id, 'status': 'removed', 'removed': True}
+
+    def _drop_relation(self, row, friend_id: str, me: str) -> None:
+        """
+        删除关系行，**并清掉双方往来的加油记录**。
+        依据：变更单 §五「解除好友 = 删除该行；不保留历史（合规最小化）」——
+        若留着加油历史，解除后动态流里还会出现对方，既违反 §四-9 也不符合最小化。
+        """
+        with self.store.lock:
+            conn = self._conn()
+            conn.execute('DELETE FROM social_friend WHERE id = ?', (row['id'],))
+            conn.execute('DELETE FROM social_cheer WHERE (from_member = ? AND to_member = ?)'
+                         ' OR (from_member = ? AND to_member = ?)',
+                         (me, friend_id, friend_id, me))
+            conn.commit()
+
+    def handle_delete(self, path: str, *, headers, client_ip: str = '') -> tuple:
+        """
+        `DELETE /v1/friends/{friend_id}` 的适配入口（由 `serve.py` 转发）。
+
+        为什么单独走这里：`app.http.Router` 只支持**精确路径**，不解析路径参数，
+        而契约要求 friend_id 在路径上。这里把"鉴权 → 上下文 → 处理 → 信封"
+        按 `Router.handle()` 的**同一顺序与同一套函数**做一遍，错误码与 HTTP 映射完全一致，
+        路径参数则在 `Router` 之外解析（不改既有服务层一行）。
+        """
+        h = {k.lower(): v for k, v in (headers or {}).items()}
+        ctx = RequestContext(trace_id=new_trace_id(), client_ip=client_ip,
+                             idempotency_key=h.get('idempotency-key', ''))
+        prefix = '/v1/friends/'
+        try:
+            token = ''
+            authz = h.get('authorization', '')
+            if authz.lower().startswith('bearer '):
+                token = authz[7:].strip()
+            s = self.router.auth.authenticate(token,
+                                              device_id=h.get('x-device-id') or None)
+            ctx.account_id, ctx.member_id, ctx.device_id = s.account_id, s.member_id, s.device_id
+            friend_id = unquote(path[len(prefix):]) if path.startswith(prefix) else ''
+            if not friend_id or '/' in friend_id:
+                raise AppError(Err.INVALID_FIELD, detail={'field': 'friend_id'})
+            data = self._remove(ctx, friend_id)
+            return http_status_of(0), respond(data, ctx)
+        except AppError as ex:
+            return http_status_of(ex.code), respond_error(ex, ctx)
+        except Exception as ex:                                    # noqa: BLE001
+            self.audit(event='unhandled_error', trace_id=ctx.trace_id,
+                       error=type(ex).__name__, message=str(ex)[:200])
+            return 500, respond_error(AppError(Err.INTERNAL, message='服务内部错误'), ctx)
+
+    # ── ⑧ 隐私开关（逐项；未传的保持不变）──────────────────────────
+    def _privacy_view(self, member_id: str) -> dict:
+        pv = self._privacy(member_id)
+        return {'share_index': pv['share_index'],
+                'share_streak': pv['share_streak'],
+                'in_ranking': pv['in_ranking'],
+                'note': '三个开关只影响"别人看我"；关闭后下一次请求即生效（本模块不做缓存）'}
+
+    def privacy_read(self, *, ctx, body, headers):
+        """只读回三开关（GET）。默认全关：没有行时返回三个 false，不是省略字段。"""
+        self._ensure_profile(ctx.member_id)
+        return self._privacy_view(ctx.member_id)
+
+    def privacy(self, *, ctx, body, headers):
+        self._ensure_profile(ctx.member_id)
+        current = self._privacy(ctx.member_id)
+        values = dict(current)
+        for key in ('share_index', 'share_streak', 'in_ranking'):
+            if key in body and body.get(key) is not None:
+                values[key] = _as_bool(key, body.get(key))
+        self._save_privacy(ctx.member_id, values)
+        return self._privacy_view(ctx.member_id)
+
+    # ── ⑨ 动态流（仅 accepted，且按对方开关逐项授权）────────────────
+    def feed(self, *, ctx, body, headers):
+        self._ensure_profile(ctx.member_id)
+        limit = clamp_limit(headers.get('x-limit') or body.get('limit'))
+        cursor = headers.get('x-cursor') or body.get('cursor')
+        today = _today()
+        items = []
+
+        for row in self._relations_of(ctx.member_id):
+            if row['status'] != STATUS_ACCEPTED:       # pending 不进动态流（红线）
+                continue
+            other = self._other(row, ctx.member_id)
+            pv = self._privacy(other)
+            # ★ share_index / share_streak 两个开关原样带上：前端据此决定"显示分数"还是"未公开"，
+            #   只靠 score 是否为 null 无法区分"对方没开"与"对方没建档"。
+            # ★ last_active 与 GET /friends 同口径（变更单 §三 把三个开关绑定到分数与连续天数两项）。
+            item = {'id': 'daily:%s:%s' % (other, today),
+                    'kind': 'daily',
+                    'friend_id': other,
+                    'nickname': self._nickname_of(other),
+                    'is_me': False,
+                    'on_date': today,
+                    'created_at': today + 'T00:00:00',
+                    'share_index': pv['share_index'],
+                    'share_streak': pv['share_streak'],
+                    'score': None, 'score_band': None,
+                    'streak_days': None,
+                    'last_active': self._last_active(other),
+                    'cheer': None}
+            if pv['share_index']:                      # 分数：仅当对方开了 share_index
+                score = self._score_of(other)
+                item['score'] = score
+                item['score_band'] = self._band_of(score)
+            if pv['share_streak']:                     # 连续天数：仅当对方开了 share_streak
+                item['streak_days'] = self._streak_days(other)
+            items.append(item)
+
+        # 健康互促：我收到 / 我送出的加油（双方必须是 accepted，解除后记录已删）
+        accepted = set(self._accepted_ids(ctx.member_id))
+        for r in self._cheers_of(ctx.member_id):
+            other = r['from_member'] if r['to_member'] == ctx.member_id else r['to_member']
+            if other not in accepted:
+                continue
+            tpl = self._template(r['template_id'])
+            text = (tpl or {}).get('text')
+            items.append({'id': 'cheer:%d' % int(r['id']),
+                          'kind': 'cheer',
+                          'friend_id': other,
+                          'nickname': self._nickname_of(other),
+                          'is_me': False,
+                          'on_date': r['on_date'],
+                          'created_at': r['created_at'],
+                          'share_index': None, 'share_streak': None,
+                          'score': None, 'score_band': None,
+                          'streak_days': None, 'last_active': None,
+                          # 顶层同时给出"送/收 + 文案"，前端不必理解嵌套结构
+                          'from_nickname': self._nickname_of(r['from_member']),
+                          'to_nickname': self._nickname_of(r['to_member']),
+                          'from_me': r['to_member'] != ctx.member_id,
+                          'template_id': r['template_id'],
+                          'template_text': text,
+                          'text': text,
+                          'cheer': {'template_id': r['template_id'],
+                                    'text': text,
+                                    'direction': ('in' if r['to_member'] == ctx.member_id
+                                                  else 'out')}})
+
+        items.sort(key=lambda x: (x['created_at'], x['id']), reverse=True)
+        out = paginate(items, limit,
+                       key_of=lambda x: '%s|%s' % (x['created_at'], x['id']),
+                       cursor=cursor)
+        out['on_date'] = today
+        out['note'] = ('只显示已确认（accepted）的好友；分数按对方 share_index、'
+                       '连续天数按对方 share_streak 逐项授权，关闭后下一次请求即不可见。')
+        return out
+
+    # ── ⑩ 圈内排行（仅 in_ranking=true 的 accepted 好友 + 本人）─────
+    def ranking(self, *, ctx, body, headers):
+        self._ensure_profile(ctx.member_id)
+        today = _today()
+        mine = self._privacy(ctx.member_id)
+        my_score = self._score_of(ctx.member_id)
+
+        entries = []
+        if mine['in_ranking']:                        # 本人未开启则自己也不上榜
+            entries.append({'member_id': ctx.member_id,
+                            'nickname': self._nickname_of(ctx.member_id),
+                            'score': my_score, 'is_me': True})
+        for row in self._relations_of(ctx.member_id):
+            if row['status'] != STATUS_ACCEPTED:
+                continue
+            other = self._other(row, ctx.member_id)
+            if not self._privacy(other)['in_ranking']:
+                continue
+            entries.append({'member_id': other,
+                            'nickname': self._nickname_of(other),
+                            'score': self._score_of(other), 'is_me': False})
+
+        # 排序：有分在前，按 score 降序；同分/无分按 member_id 升序（确定性，可复算）
+        entries.sort(key=lambda e: (e['score'] is None,
+                                    -(e['score'] if e['score'] is not None else 0),
+                                    e['member_id']))
+        for i, e in enumerate(entries, 1):
+            e['rank'] = i                          # 重排列表后从 1 开始连续编号
+        me_entry = next((e for e in entries if e['is_me']), None)
+        return {'items': [{'rank': e['rank'], 'member_id': e['member_id'],
+                           'nickname': e['nickname'], 'score': e['score'],
+                           'is_me': e['is_me']} for e in entries],
+                'me': {'member_id': ctx.member_id,
+                       'nickname': self._nickname_of(ctx.member_id),
+                       'rank': (me_entry or {}).get('rank'),      # 未上榜即 null
+                       'score': my_score,
+                       'in_ranking': mine['in_ranking'],
+                       'on_board': me_entry is not None},
+                'on_date': today,
+                'scope': '仅本人好友圈内',
+                'note': ('只列出已确认好友中开启「上排行榜」的人与本人；'
+                         '未开启者不出现，本人未开启时名次为 null。不做全区排行。')}
+
+    # ── ⑪ 中性加油模板（≥6 条，全部过护栏）─────────────────────────
+    def cheer_templates(self, *, ctx, body, headers):
+        """
+        模板列表 + 本人当日剩余加油次数。
+
+        ★ 每条同时给出 `id` 与 `template_id`（同一个值），列表同时挂在 `items` 与 `templates`
+          两个键下 —— 契约只规定"≥6 条中性模板"，字段名由本模块定义；
+          两套键并存是为了让前端无论按哪种写法取值都拿得到**过护栏的那一份**，
+          避免前端退回自带的兜底文案而绕开合规护栏。
+        """
+        items = [{'id': t['id'], 'template_id': t['id'], 'text': t['text']}
+                 for t in self._clean_templates()]
+        used = self._cheer_used(ctx.member_id, _today())
+        return {'items': items,
+                'templates': items,
+                'count': len(items),
+                'daily_limit': CHEER_DAILY_LIMIT,
+                'remaining': max(0, CHEER_DAILY_LIMIT - used),
+                'used_today': used,
+                'guardrail': 'tianyuanheng.guardrail.scan() 逐条现扫，命中即剔除'}
+
+    # ── ⑫ 送加油（每日上限 3 次）───────────────────────────────────
+    def cheer(self, *, ctx, body, headers):
+        fid = str(body.get('friend_id') or '').strip()
+        tid = str(body.get('template_id') or '').strip()
+        if not fid:
+            raise AppError(Err.MISSING_FIELD, detail={'field': 'friend_id'})
+        if not tid:
+            raise AppError(Err.MISSING_FIELD, detail={'field': 'template_id'})
+        tpl = self._template(tid)
+        if tpl is None:
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'template_id', 'reason': '模板不存在或未通过合规护栏'})
+        row = self._relation(ctx.member_id, fid)
+        if row is None or row['status'] != STATUS_ACCEPTED:
+            raise AppError(Err.INVALID_FIELD,
+                           detail={'field': 'friend_id', 'reason': '双方尚未成为好友（需对方确认）'})
+        today = _today()
+        used_total = self._cheer_used(ctx.member_id, today)
+        used_pair = self._cheer_used(ctx.member_id, today, fid)
+        if used_total >= CHEER_DAILY_LIMIT or used_pair >= CHEER_DAILY_LIMIT:
+            # 取更严口径：每日总计 3 次 + 对同一好友 3 次（变更单 §二 防骚扰）
+            raise AppError(Err.RATE_LIMITED,
+                           detail={'scope': 'cheer', 'window': 'day',
+                                   'limit': CHEER_DAILY_LIMIT,
+                                   'used_total': used_total, 'used_to_friend': used_pair,
+                                   'to_member': fid, 'on_date': today})
+        with self.store.lock:
+            conn = self._conn()
+            cur = conn.execute(
+                'INSERT INTO social_cheer (from_member, to_member, template_id, on_date,'
+                ' created_at) VALUES (?, ?, ?, ?, ?)',
+                (ctx.member_id, fid, tid, today, _now()))
+            cheer_id = int(cur.lastrowid)
+            conn.commit()
+        self.audit(event='social_cheer', account_id=ctx.account_id, to_member=fid,
+                   template_id=tid)
+        return {'cheer_id': cheer_id, 'friend_id': fid, 'template_id': tid,
+                'text': tpl['text'], 'on_date': today,
+                'sent_today': used_total + 1, 'daily_limit': CHEER_DAILY_LIMIT}

@@ -1,0 +1,146 @@
+[20:35:37] admin ok
+[20:35:39] UP web\app.js 500336 FD4B3A65DA
+[20:35:43] UP web\index.html 149373 ACC3408195
+[20:35:45] UP web\style.css 133544 D266B5FEB0
+[20:35:50] UP web\version.json 20465 0B737CC5F3
+[20:35:50] UP server\family_link.py 13453 7E65027700
+[20:35:51] UP server\family.py 51709 7FE578E02A
+[20:35:52] UP server\serve.py 76215 C4F14434AF
+[20:35:53] syntax: SYNTAX_OK
+[20:35:54] payload https://img.yuanjk.cn/yjk/2026/11/02/945f21e1132f488281b39d84091d0e5d.ps1
+[20:35:54] delivered: OK out_shuzi_v213_20261102_203554.txt
+[20:36:11] live web=211
+[20:36:11] waiting��
+[20:36:27] live web=211
+[20:36:27] waiting��
+[20:36:43] live web=211
+[20:36:43] waiting��
+[20:37:00] live web=211
+[20:37:00] waiting��
+[20:37:16] live web=211
+[20:37:16] waiting��
+[20:37:32] live web=211
+[20:37:32] waiting��
+[20:37:48] live web=211
+[20:37:48] waiting��
+[20:38:09] live web=211
+[20:38:09] waiting��
+[20:38:25] live web=211
+[20:38:25] waiting��
+[20:38:41] live web=211
+[20:38:41] waiting��
+[20:38:58] live web=211
+[20:38:58] waiting��
+[20:39:14] live web=211
+[20:39:14] waiting��
+[20:39:30] live web=211
+[20:39:30] waiting��
+[20:39:45] live web=211
+[20:39:45] waiting��
+[20:40:01] live web=211
+[20:40:01] waiting��
+[20:40:18] live web=211
+[20:40:18] waiting��
+[20:40:34] live web=211
+[20:40:34] waiting��
+[20:40:50] live web=211
+[20:40:50] waiting��
+[20:41:09] live web=211
+[20:41:09] waiting��
+[20:41:25] live web=211
+[20:41:25] waiting��
+[20:41:43] live web=211
+[20:41:43] waiting��
+[20:42:00] live web=211
+[20:42:00] waiting��
+[20:42:16] live web=211
+[20:42:16] waiting��
+[20:42:32] live web=211
+[20:42:32] waiting��
+[20:42:49] live web=211
+[20:42:49] waiting��
+[20:43:05] live web=211
+[20:43:05] waiting��
+[20:43:21] live web=211
+[20:43:21] waiting��
+[20:43:37] live web=211
+[20:43:37] waiting��
+[20:43:54] live web=211
+[20:43:54] waiting��
+[20:44:10] live web=211
+[20:44:10] waiting��
+[20:44:27] live web=211
+[20:44:27] waiting��
+[20:44:43] live web=211
+[20:44:43] waiting��
+[20:45:00] live web=211
+[20:45:00] waiting��
+[20:45:16] live web=211
+[20:45:16] waiting��
+[20:45:32] live web=211
+[20:45:32] waiting��
+[20:45:47] live web=211
+[20:45:47] waiting��
+[20:46:03] live web=211
+[20:46:03] waiting��
+[20:46:19] live web=211
+[20:46:19] waiting��
+[20:46:35] live web=211
+[20:46:35] waiting��
+[20:46:52] live web=211
+[20:46:52] waiting��
+[20:47:08] live web=211
+[20:47:08] waiting��
+[20:47:25] live web=211
+[20:47:25] waiting��
+[20:47:42] live web=211
+[20:47:42] waiting��
+[20:47:58] live web=211
+[20:47:58] waiting��
+[20:48:13] live web=211
+[20:48:13] waiting��
+[20:48:30] live web=211
+[20:48:30] waiting��
+[20:48:47] live web=211
+[20:48:47] waiting��
+20:48:41 V213_START HOST=WIN-EALBV48S1PE
+20:48:42 DL web\app.js bytes=500336 ok=True
+20:48:43 DL web\index.html bytes=149373 ok=True
+20:48:43 DL web\style.css bytes=133544 ok=True
+20:48:43 DL web\version.json bytes=20465 ok=True
+20:48:43 DL server\family_link.py bytes=13453 ok=True
+20:48:43 DL server\family.py bytes=51709 ok=True
+20:48:43 DL server\serve.py bytes=76215 ok=True
+20:48:44 BAK done -> D:\www\yjk\shuzi\_bak-v213-20261102-204843
+20:48:49 PUT web\app.js
+20:48:49 PUT web\index.html
+20:48:49 PUT web\style.css
+20:48:49 PUT web\version.json
+20:48:49 PUT server\family_link.py
+20:48:49 PUT server\family.py
+20:48:49 PUT server\serve.py
+20:48:57 HEALTH_READY after 5s
+20:48:57 CHK web\app.js match=True
+20:48:57 CHK web\index.html match=True
+20:48:57 CHK web\style.css match=True
+20:48:57 CHK web\version.json match=True
+20:48:57 CHK server\family_link.py match=True
+20:48:57 CHK server\family.py match=True
+20:48:57 CHK server\serve.py match=True
+20:48:57 JS_WEBVER213=True
+20:48:57 JS_V213=True
+20:48:57 VERSION213=True
+20:48:57 ASSET_TOKEN_F=6 OLD=0
+20:48:57 UI_V213=True
+20:48:57 CSS_V213=True
+20:48:57 PY_FAMILY_LINK=True
+20:48:57 PY_FAMILY_LINKED=True
+20:48:57 PY_SERVE_REG=True
+20:48:57 HTTP_TOKEN_F=True
+20:48:57 LIVE_VERSION213=True
+20:48:57 LIVE_ROUTE_FAMILY=401
+20:48:57 SERVICE=Running
+20:48:57 CRIT_FAILURES=0
+20:48:57 EXIT=0
+20:48:57 V213_DONE
+[20:49:03] done=True

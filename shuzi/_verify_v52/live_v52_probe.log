@@ -1,0 +1,15 @@
+guest status=200 member=mbr_22ab688e29d1710b
+profile status=200
+add 探针甲 status=200
+add 探针乙 status=200
+family n=2 channels=12
+family chips=['我', '探针甲', '探针乙']
+self score=55
+  click 探针甲 -> ui=63 api=63
+  click 探针乙 -> ui=69 api=69
+energy card visible=True chips=['我', '探针甲', '探针乙']
+energy family: svg=True who=按「探针甲」的出生时空推算 · 非诊断
+pageerror=[]
+cleanup delete 探针甲 status=200
+cleanup delete 探针乙 status=200
+family after cleanup n=0

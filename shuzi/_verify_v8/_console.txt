@@ -1,0 +1,244 @@
+=== 0 打包（把最新 server/pay.py + serve.py 纳入构件）===
+  SHA256 站点 = C13EA2CC28510D48D4035CDE729FFA3868A6D2B951853475976952CE4B1A73BF
+  SHA256 运行时 = DDA8EDC1FED3C154E6BF77E72960DDC271C7516C0D87F7C2EE90EC5F38D9E1E7
+完成。
+    构件内 server/pay.py    存在: True
+    构件内 server/serve.py  存在: True
+
+=== 1 清库并起真服务（port 15087）===
+    服务健康检查: PASS
+
+=== 2 身份与推荐关系（A=推荐人，B=被推荐人，C=无推荐人，D=自推自买）===
+    A: HTTP 200 member=…8d4cfd88（推荐人）
+    B: HTTP 200 member=…5d624367（被 A 推荐 → 佣金归 A）
+    C: HTTP 200 member=…0911f64e（无推荐人）
+    D: HTTP 200 member=…5e9ae556（自推自买，见断言 #7）
+    套餐: [{"plan_id": "month", "name": "月卡", "days": 30, "price_cents": 9900, "active": true}, {"plan_id": "quarter", "name": "季卡", "days": 90, "price_cents": 19900, "active": true}, {"plan_id": "year", "name": "年卡", "days": 365, "price_cents": 199000, "active": true}]
+    [PASS] 订阅套餐接口可用，季卡价 = 19900（整数积分/整数分）  plan_id→price_cents = {'month': 9900, 'quarter': 19900, 'year': 199000}
+    B 用 A 的码 2TWXADZ1 绑定推荐关系 → HTTP 200 code=0
+    [PASS] 推荐关系（referral 表，一级）已建立：B → A  referral 行数=1
+    测试前置：已为 D 注入"推荐人=自己"的异常推荐行（仅测试侧直写）
+
+=== 断言 #A · 追加 A · 字段名逐字核对（points_account / points_ledger 列名 = 变更单 §三） ===
+    points_account 列 = ['member_id', 'balance', 'earned_total', 'spent_total', 'updated_at']
+    points_ledger  列 = ['id', 'member_id', 'delta', 'reason', 'ref_order_no', 'created_at']
+    [PASS] points_account 列名与变更单 §三 **逐字一致**（顺序也一致）  实测=['member_id', 'balance', 'earned_total', 'spent_total', 'updated_at'] 期望=['member_id', 'balance', 'earned_total', 'spent_total', 'updated_at']
+    [PASS] points_ledger 列名与变更单 §三 **逐字一致**（顺序也一致）  实测=['id', 'member_id', 'delta', 'reason', 'ref_order_no', 'created_at'] 期望=['id', 'member_id', 'delta', 'reason', 'ref_order_no', 'created_at']
+    [PASS] 两张表落在**同一份 state.db**（沿用既有库，不另开库）  DB=D:\shuzi\_verify_v8\points_v8.db
+
+=== 断言 #1 · 新用户积分余额 0；余额不足 → 可读业务码拒绝（不开单或订单 unpaid），不产生佣金 ===
+    新用户 B 的积分：{"member_id": "mbr_409f98ef5d624367", "balance": 0, "earned_total": 0, "spent_total": 0, "unit": "points", "cents_per_point": 1, "cents_equivalent": 0, "convert_note": "1 积分 = 1 分（整数，无小数、无浮点）", "updated_at": "", "withdraw_enabled": false, "withdraw_note": "提现暂不开放：待银联分账通道开通（P3 走银联分账，避免二清）。", "note": "测试期货币（积分）：不接真钱、不出网；佣金按「实付积分 × 30%」计"}
+    [PASS] 新用户积分余额 0（earned/spent 也全 0，未预建账户行）  balance=0 earned=0 spent=0 库内账户行=None
+    余额 0 用积分买季卡 → HTTP 402 code=30002 message=积分余额不足：需要 19900 积分，当前 0 积分，还差 19900 积分
+      detail={"field": "points", "unit": "points", "need": 19900, "balance": 0, "shortfall": 19900, "order_no": "", "member_id": "mbr_409f98ef5d624367", "order_created": false, "commission_created": false, "note": "余额不足即拒绝：不开单、不产生佣金、不写积分明细"}
+    [PASS] 余额不足 → **可读业务码**（既有 30002 / HTTP 402）+ 中文 message  HTTP 402 code=30002 message=积分余额不足：需要 19900 积分，当前 0 积分，还差 19900 积分
+    [PASS] 余额不足 → **不开单**（该幂等键在 sub_order 里 0 行）  B 的订单行数=0
+    [PASS] 余额不足 → **不产生佣金**（commission_ledger 0 行）  佣金行数=0
+    [PASS] 余额不足 → **不写积分明细**、余额仍 0  明细行数=0 余额=0
+
+=== 断言 #2 · 后台发放 20000 积分 → 余额 20000，明细 +1 行 ===
+    后台发放**未登录** → HTTP 401 code=20000 message=缺少后台令牌
+    [PASS] 后台发放积分**未登录一律 401**（既有 20000；复用 admin_api 令牌闸门）  HTTP 401 code=20000
+    [PASS] 后台发放积分**令牌错误 → 401**（不泄露令牌是否存在）  HTTP 401 code=20000
+    后台登录（口令经环境变量注入）→ HTTP 200 token=ZM0vRS3g… expires_in=7200
+    [PASS] 后台登录成功（复用 admin_api 的 /v1/admin/login 令牌）  HTTP 200 token_len=43
+    发放 20000 → HTTP 200 code=0 {"member_id": "mbr_409f98ef5d624367", "balance": 20000, "earned_total": 20000, "spent_total": 0, "unit": "points", "cents_per_point": 1, "cents_equivalent": 20000, "convert_note": "1 积分 = 1 分（整数，无小数、无浮点）", "updated_at": "2026-10-08T11:46:52", "withdraw_enabled": false, "withdraw_note": "提现暂不开放：待银联分账通道开通（P3 走银联分账，避免二清）。", "note": "测试期货币（积分）：不接真钱、不出网；佣金按「实付积分 × 30%」计", "granted": 20000, "reason": "测试期后台发放", "reason_code": "admin_grant", "admin_session": "334b8dcba19c", "ok": true}
+    [PASS] 后台发放 20000 积分 → 余额 20000（累计获得 20000 / 累计消耗 0）  balance=20000 earned=20000 spent=0
+    [PASS] 积分明细 **+1 行**（delta=+20000 / reason=admin_grant）  明细=[{"delta": 20000, "reason": "admin_grant", "ref_order_no": ""}]
+    [PASS] GET /points/ledger?page= 分页可用（total=1，items 逐条带 reason_text）  total=1 items=1
+    [PASS] 后台发放**拒绝非整数积分**（浮点 100.5 → 既有 10002，余额不动）  code=10002
+
+=== 断言 #3 · 用积分买季卡（19900）→ 余额 100、订单 paid、channel=points、佣金 5970、明细再 +1 行（消耗） ===
+    POST /subscribe/order {plan_id:quarter, pay_with:points} → HTTP 200 code=0
+      data={"order_no": "SO202610081146525385AD", "plan_id": "quarter", "amount_cents": 19900, "amount": 19900, "paid_cents": 19900, "status": "paid", "channel": "points", "paid_at": "2026-10-08T11:46:52", "refund_cents": 0, "created_at": "2026-10-08T11:46:52", "currency": "CNY", "unit": "cents", "idempotent_replay": false, "pay_with": "points", "points_spent": 19900, "points_balance": 100, "points_unit": "points", "points_cents_per_point": 1, "basis": "paid_points", "note": "积分支付（测试期货币）：1 积分 = 1 分；佣金基数 = 实付积分 × 30%", "commission": {"amount_cents": 5970, "status": "pending", "reversed_cents": 0, "rate_bp": 3000, "basis": "paid_points"}}
+    [PASS] 订单**直接 paid**、channel=points、实付=19900 积分  status=paid channel=points paid_cents=19900
+    [PASS] 订单落库：status=paid / channel=points / paid_at 非空  sub_order={"status": "paid", "channel": "points", "paid_at": "2026-10-08T11:46:52"}
+    余额（GET /points/balance）= {"member_id": "mbr_409f98ef5d624367", "balance": 100, "earned_total": 20000, "spent_total": 19900, "unit": "points", "cents_per_point": 1, "cents_equivalent": 100, "convert_note": "1 积分 = 1 分（整数，无小数、无浮点）", "updated_at": "2026-10-08T11:46:52", "withdraw_enabled": false, "withdraw_note": "提现暂不开放：待银联分账通道开通（P3 走银联分账，避免二清）。", "note": "测试期货币（积分）：不接真钱、不出网；佣金按「实付积分 × 30%」计"}
+    [PASS] 余额 **100**（20000 - 19900）、累计消耗 19900（整数，无小数）  balance=100 earned=20000 spent=19900
+    佣金行 = [{"id": 1, "order_no": "SO202610081146525385AD", "referrer_member_id": "mbr_edaadc788d4cfd88", "referee_member_id": "mbr_409f98ef5d624367", "base_cents": 19900, "rate_bp": 3000, "amount_cents": 5970, "status": "pending", "reversed_cents": 0, "settled_at": null, "created_at": "2026-10-08T11:46:52"}]
+    [PASS] 佣金 **5970**（基数=实付积分 19900 × rate_bp 3000），归一级推荐人 A  base_cents=19900 rate_bp=3000 amount_cents=5970
+    [PASS] 佣金数字与脚本独立复算一致（19900 → 5970）  独立复算=5970 实测=5970
+    [PASS] 积分明细 **再 +1 行**（消耗：delta=-19900 / reason=subscribe_pay / 关联订单号）  明细=[{"delta": 20000, "reason": "admin_grant", "ref_order_no": ""}, {"delta": -19900, "reason": "subscribe_pay", "ref_order_no": "SO202610081146525385AD"}]
+    A 的推广收益（GET /me/commission）= {"total_cents": 5970, "pending_cents": 5970, "settled_cents": 0, "reversed_cents": 0, "net_cents": 5970, "count": 1, "unit": "points", "basis": "paid_points", "withdraw_enabled": false}
+    [PASS] 我的推广收益：单位说明改为**积分**（unit=points / basis=paid_points）  unit=points basis=paid_points total=5970
+    [PASS] 恒等式成立：balance == earned - spent == Σdelta（B：100 == 100 == 100）  balance=100 Σdelta=100
+
+=== 断言 #4 · 续费再买一次 → 余额不足被拒（100 < 19900）；再发 20000 → 可买，第二条佣金 5970（不合并） ===
+    余额 100 再买季卡（续费）→ HTTP 402 code=30002 message=积分余额不足：需要 19900 积分，当前 100 积分，还差 19800 积分
+    [PASS] 余额不足被拒（100 < 19900）：既有 30002 / HTTP 402，且**不开单**  code=30002 B 的订单数=1
+    [PASS] 被拒时**不产生**第二条佣金（A 名下仍只有 1 行）  佣金行数=1
+    再发放 20000 → 余额 20100
+    [PASS] 再发放 20000 → 余额 20100（100 + 20000）  balance=20100 earned=40000
+    续费下单 → HTTP 200 status=paid channel=points order_no=SO202610081146525397AC balance=200
+    [PASS] 续费可买：订单 paid / channel=points / 余额 200  status=paid balance=200 新订单=True
+    A 名下佣金逐笔 = [{"order_no": "SO202610081146525385AD", "base_cents": 19900, "amount_cents": 5970, "status": "pending"}, {"order_no": "SO202610081146525397AC", "base_cents": 19900, "amount_cents": 5970, "status": "pending"}]
+    [PASS] **第二条佣金 5970 不与首单合并**（2 行、两个不同订单号、金额各 5970）  行数=2 订单=['SO202610081146525385AD', 'SO202610081146525397AC']
+    [PASS] 累计收益 = 11940（5970 × 2），count=2（待结算）  total=11940 count=2 pending=11940
+
+=== 断言 #5 · 退款 19900 → 积分返还 19900、佣金 reversed、余额与明细同步 ===
+    POST /pay/callback/points {order_no:SO202610081146525385AD, result:refund} → HTTP 200 code=0
+      data={"channel": "points", "order_no": "SO202610081146525385AD", "order_status": "refunded", "paid_cents": 19900, "refund_cents": 19900, "replayed": false, "commission_delta_cents": 0, "commission_status": "reversed", "commission_amount_cents": 5970, "commission_reversed_cents": 5970, "note": "退款冲正：本次冲减 5970 分；返还 19900 积分（余额 20100）", "unit": "points", "basis": "paid_points", "points_returned": 19900, "points_balance": 20100, "points_cents_per_point": 1, "commission_basis_note": "commission_ledger.base_cents = 实付积分数"}
+    [PASS] 退款回调经**既有回调链路**受理（验签通过 → HTTP 200 / code=0），订单转 refunded  status=refunded refund_cents=19900
+    [PASS] 积分**返还 19900**，余额 200 → 20100  returned=19900 balance=20100
+    该单佣金 → status=reversed reversed_cents=5970
+    [PASS] 佣金 **reversed**（reversed_cents = 5970，整笔冲正）  status=reversed reversed=5970
+    [PASS] 积分明细 +1 行（返还：delta=+19900 / reason=subscribe_refund / 关联订单号）  明细=[{"delta": 20000, "reason": "admin_grant", "ref_order_no": ""}, {"delta": -19900, "reason": "subscribe_pay", "ref_order_no": "SO202610081146525385AD"}, {"delta": 20000, "reason": "admin_grant", "ref_order_no": ""}, {"delta": -19900, "reason": "subscribe_pay", "ref_order_no": "SO202610081146525397AC"}, {"delta": 19900, "reason": "subscribe_refund", "ref_order_no": "SO202610081146525385AD"}]
+    账户行 = {"member_id": "mbr_409f98ef5d624367", "balance": 20100, "earned_total": 40000, "spent_total": 19900, "updated_at": "2026-10-08T11:46:52"}
+    [PASS] 余额与明细**同步**：账户 20100 = 40000(获得) - 19900(净消耗)，且 = Σdelta  balance=20100 earned=40000 spent=19900 Σdelta=20100
+    A 的收益（退款后）= {"total_cents": 11940, "pending_cents": 5970, "reversed_cents": 5970, "net_cents": 5970, "count": 2}
+    [PASS] 收益口径：total=11940 / reversed=5970 / net=5970（另一单仍待结算）  total=11940 reversed=5970 net=5970
+    [PASS] 退款回调**重放不二次返还**（replayed=true，余额仍 20100、明细仍 5 行）  replayed=True balance=20100 明细行=5
+    [PASS] 已全额退款的订单再退 → 既有 30004（退款窗口关闭），余额不变  code=30004 balance=20100
+
+=== 断言 #6 · 幂等：同 Idempotency-Key 重复下单只扣一次积分、只产生一张订单 ===
+    第 1 次（Idempotency-Key=v8-p6-1008114649）→ order_no=SO2026100811465223EBDF balance=200
+    第 2 次（同一把钥匙）→ order_no=SO2026100811465223EBDF replay=True balance=200
+    [PASS] 重复下单**返回同一张订单**（idempotent_replay=true、order_no 相同）  order_no 一致=True replay=True
+    [PASS] **只扣一次积分**（20100 - 19900 = 200；第二次不多扣一分）  第1次后=200 第2次后=200
+    [PASS] 库里该幂等键**只有 1 张订单**，该单积分明细**只有 1 行**  订单行=1 明细行=1
+    [PASS] 该单**只产生 1 条佣金**（不重复计佣）  佣金行数=1
+
+=== 断言 #7 · 自推自买不计佣（沿用 P1 规则），但积分照扣（订单有效） ===
+    给 D 发放 20000 → 余额 20000
+    D（自推自买）用积分买季卡 → HTTP 200 status=paid channel=points balance=100
+    [PASS] 自推自买：**订单有效**（paid / channel=points）且**积分照扣**（20000 → 100）  status=paid balance=100
+    D 的佣金行 = [{"id": 4, "order_no": "SO20261008114652488C4C", "referrer_member_id": "mbr_c7123dd25e9ae556", "referee_member_id": "mbr_c7123dd25e9ae556", "base_cents": 19900, "rate_bp": 3000, "amount_cents": 0, "status": "manual_review", "reversed_cents": 0, "settled_at": null, "created_at": "2026-10-08T11:46:52"}]
+    [PASS] 自推自买**不计佣**：落人工复核标记（status=manual_review、amount_cents=0）  status=manual_review amount=0
+    [PASS] 自推自买者的收益为 0（total_cents=0、manual_review_count=1）  total=0 review=1
+    [PASS] 自推自买的积分明细照记（-19900 一行，ref_order_no 关联该单）  D 明细行数=2
+    [PASS] 无推荐人（C）：订单有效、积分照扣、**不产生佣金也不报错**  status=paid balance=100 佣金行=0
+
+=== 断言 #8 · 提现接口不存在或明确拒绝且文案含「待银联分账通道开通」（本期不开放） ===
+    POST /api/v1/points/withdraw          → HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    [PASS] 提现路径 POST /api/v1/points/withdraw **明确拒绝**且文案含「待银联分账通道开通」  HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    POST /api/v1/points/cashout           → HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    [PASS] 提现路径 POST /api/v1/points/cashout **明确拒绝**且文案含「待银联分账通道开通」  HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    POST /api/v1/me/commission/withdraw   → HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    [PASS] 提现路径 POST /api/v1/me/commission/withdraw **明确拒绝**且文案含「待银联分账通道开通」  HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    GET  /api/v1/points/withdraw          → HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    [PASS] 提现路径 GET /api/v1/points/withdraw **明确拒绝**且文案含「待银联分账通道开通」  HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）
+    [PASS] 提现口径对前端可见：points/balance 与 me/commission 均 withdraw_enabled=false + 说明  balance.withdraw_enabled=False
+    [PASS] 本期**不实现**任何提现逻辑：拒绝只读/只拒（余额未变、无提现明细行）  balance=200 提现类明细=0
+
+=== 断言 #D · 追加 D · 安全边界：后台发放未登录/错令牌 401；提现全路径拒绝；pay_with 非法拒绝 ===
+    [PASS] pay_with 非法值（alipay）→ 既有 10002（HTTP 400），不落单  HTTP 400 code=10002
+    [PASS] 积分余额接口需登录（无令牌 → 既有 20000 / HTTP 401）  HTTP 401 code=20000
+    [PASS] 积分明细接口需登录（无令牌 → 既有 20000 / HTTP 401）  HTTP 401 code=20000
+    [PASS] 积分回调**未签名 / 签名不符一律拒绝**（既有 20000 / HTTP 401）  未签名 HTTP 401 code=20000；错签名 HTTP 401 code=20000
+    [PASS] 被拒的积分回调**零副作用**（余额不变、佣金状态不变）  balance=200 佣金状态=pending
+    [PASS] 未知通道（nosuchchannel）→ 既有 10002（HTTP 400），fail-closed  HTTP 400 code=10002
+    [PASS] 后台发放负数积分 → 既有 10002（HTTP 400），余额不变  code=10002
+    [PASS] 后台给**不存在的会员**发积分 → 既有 10002（HTTP 400）  code=10002
+
+=== ★ 积分余额与佣金 · 逐笔实际数字（本次运行的库内真值）===
+    A 推荐人                  member=…8d4cfd88 余额=0 累计获得=0 累计消耗=0
+
+=== 积分明细 · A 推荐人（points_ledger 逐笔，A 推荐人 member=…8d4cfd88） ===
+    id | member_id | delta | reason | ref_order_no | created_at
+    行数 = 0
+    B 被推荐人（买家）             member=…5d624367 余额=200 累计获得=40000 累计消耗=39800
+
+=== 积分明细 · B 被推荐人（买家）（points_ledger 逐笔，B 被推荐人（买家） member=…5d624367） ===
+    id | member_id | delta | reason | ref_order_no | created_at
+    1 | mbr_409f98ef5d624367 | 20000 | admin_grant |  | 2026-10-08T11:46:52
+    2 | mbr_409f98ef5d624367 | -19900 | subscribe_pay | SO202610081146525385AD | 2026-10-08T11:46:52
+    3 | mbr_409f98ef5d624367 | 20000 | admin_grant |  | 2026-10-08T11:46:52
+    4 | mbr_409f98ef5d624367 | -19900 | subscribe_pay | SO202610081146525397AC | 2026-10-08T11:46:52
+    5 | mbr_409f98ef5d624367 | 19900 | subscribe_refund | SO202610081146525385AD | 2026-10-08T11:46:52
+    6 | mbr_409f98ef5d624367 | -19900 | subscribe_pay | SO2026100811465223EBDF | 2026-10-08T11:46:52
+    行数 = 6
+    C 无推荐人                 member=…0911f64e 余额=100 累计获得=20000 累计消耗=19900
+
+=== 积分明细 · C 无推荐人（points_ledger 逐笔，C 无推荐人 member=…0911f64e） ===
+    id | member_id | delta | reason | ref_order_no | created_at
+    9 | mbr_cf71f4df0911f64e | 20000 | admin_grant |  | 2026-10-08T11:46:53
+    10 | mbr_cf71f4df0911f64e | -19900 | subscribe_pay | SO202610081146531EDB4C | 2026-10-08T11:46:53
+    行数 = 2
+    D 自推自买                 member=…5e9ae556 余额=100 累计获得=20000 累计消耗=19900
+
+=== 积分明细 · D 自推自买（points_ledger 逐笔，D 自推自买 member=…5e9ae556） ===
+    id | member_id | delta | reason | ref_order_no | created_at
+    7 | mbr_c7123dd25e9ae556 | 20000 | admin_grant |  | 2026-10-08T11:46:52
+    8 | mbr_c7123dd25e9ae556 | -19900 | subscribe_pay | SO20261008114652488C4C | 2026-10-08T11:46:52
+    行数 = 2
+
+=== 佣金账本 · 全量（base_cents = 实付积分数，rate_bp = 3000）（commission_ledger 逐笔） ===
+    id | order_no | base_cents | rate_bp | amount_cents | status | reversed_cents | created_at
+    1 | SO202610081146525385AD | 19900 | 3000 | 5970 | reversed | 5970 | 2026-10-08T11:46:52
+    2 | SO202610081146525397AC | 19900 | 3000 | 5970 | pending | 0 | 2026-10-08T11:46:52
+    3 | SO2026100811465223EBDF | 19900 | 3000 | 5970 | pending | 0 | 2026-10-08T11:46:52
+    4 | SO20261008114652488C4C | 19900 | 3000 | 0 | manual_review | 0 | 2026-10-08T11:46:52
+    行数 = 4
+
+    订单逐笔（sub_order）：
+      SO202610081146525385AD | …5d624367 | quarter | amount=19900 paid=19900 | refunded | points | refund=19900 | idem=v8-p3-1008114649
+      SO202610081146525397AC | …5d624367 | quarter | amount=19900 paid=19900 | paid | points | refund=0 | idem=v8-p4b-1008114649
+      SO2026100811465223EBDF | …5d624367 | quarter | amount=19900 paid=19900 | paid | points | refund=0 | idem=v8-p6-1008114649
+      SO20261008114652488C4C | …5e9ae556 | quarter | amount=19900 paid=19900 | paid | points | refund=0 | idem=v8-p7-1008114649
+      SO202610081146531EDB4C | …0911f64e | quarter | amount=19900 paid=19900 | paid | points | refund=0 | idem=v8-p7c-1008114649
+
+=== 断言 #B · 追加 B · 恒等式复算：balance == earned_total - spent_total；Σdelta == balance ===
+    [PASS] 恒等式（B）：balance == earned - spent == Σdelta  balance=200 earned-spent=200 Σdelta=200
+    [PASS] 恒等式（C）：balance == earned - spent == Σdelta  balance=100 earned-spent=100 Σdelta=100
+    [PASS] 恒等式（D）：balance == earned - spent == Σdelta  balance=100 earned-spent=100 Σdelta=100
+    [PASS] 积分明细表所有 delta 均为**整数**、无 0 行（0 变更不落账）  明细总行数=10
+
+=== 断言 #C · 追加 C · 单位口径：1 积分 = 1 分、rate_bp=3000、base_cents=实付积分、全整数无浮点 ===
+    [PASS] 所有积分类字段都是 int（27 个字段抽样），无 float / str  [["amount_cents", 19900, "int"], ["amount", 19900, "int"], ["paid_cents", 19900, "int"], ["refund_cents", 0, "int"], ["points_spent", 19900, "int"], ["amount_cents", 19900, "int"], ["amount", 19900, "int"], ["paid_cents", 19900, "int"]]
+    [PASS] 额度口径：1 积分 = 1 分（cents_per_point=1，cents_equivalent == balance）  cents_per_point=1
+    [PASS] 佣金口径不变：rate_bp=3000（实付积分 × 30%）、base_cents=实付积分数  rate_bp 集合={3000} base_cents 集合={19900}
+    [PASS] 明细 reason 只用登记过的分类（admin_grant / subscribe_pay / subscribe_refund）  reason 集合={'admin_grant', 'subscribe_refund', 'subscribe_pay'}
+
+=== 断言 #10 · 零回归（零回归：社交 51 / 推荐 45 / 支付佣金 80 / 独立后台 144 / 内核 335 / 服务端 104）===
+    $ D:\shuzi\runtime\python.exe D:\shuzi\_verify_v3\test_social.py
+        断言 #10 昵称去敏感词；invite_code 8 位且唯一（并发创建 50 个不重复）  —— PASS（8/8 项通过）
+        合计 51 项子断言，通过 51，失败 0；断言 #1-#10 全部通过
+        明细 JSON: D:\shuzi\_verify_v3\test_social_result.json
+    [PASS] 社交 51：既有轻社交端到端验证（合计 51 项子断言，通过 51，失败 0，5s）  rc=0 含期望串=True 计数=51
+    $ D:\shuzi\runtime\python.exe D:\shuzi\_verify_v6\test_referral.py
+        断言 #V  补充 V · 不传 auto_accept 时仍是 pending（v3 原路径零改动） —— PASS（3/3 项通过）
+        合计 45 项子断言，通过 45，失败 0；本脚本范围 全部通过
+        明细 JSON: D:\shuzi\_verify_v6\test_referral_result.json
+    [PASS] 推荐 45：既有推荐关系端到端验证（合计 45 项子断言，通过 45，失败 0，5s）  rc=0 含期望串=True 计数=45
+    $ D:\shuzi\runtime\python.exe D:\shuzi\_verify_v7\test_pay_commission.py
+        合计 80 项子断言，通过 80，失败 0；本脚本范围 全部通过
+        未验证项（如实标注）：真实微信/支付宝通道与 P2 资质疑材料、前端订阅页与后台页面、线上部署、真实资金结算与提现（P3）
+        明细 JSON: D:\shuzi\_verify_v7\test_pay_commission_result.json
+    [PASS] 支付佣金 80：P1 自建支付与佣金账本全过（本次扩展未破坏 P1）（合计 80 项子断言，通过 80，失败 0，14s）  rc=0 含期望串=True 计数=80
+    $ D:\shuzi\runtime\python.exe D:\shuzi\_verify_v7\test_admin.py
+        退出码：0
+      ==============================================================================
+      验收明细已写入：D:\shuzi\_verify_v7\test_admin_result.json
+    [PASS] 独立后台 144：既有后台端到端验证（合计 144 项断言，通过 144，失败 0，20s）  rc=0 含期望串=True 计数=144
+    $ D:\shuzi\runtime\python.exe -m unittest discover -s tests -t .
+      ----------------------------------------------------------------------
+      Ran 335 tests in 3.435s
+      OK
+    [PASS] 内核 335：核心测试全过（Ran 335 tests，4s）  rc=0 含期望串=True 计数=335
+    $ C:\Users\41692\AppData\Local\Programs\Python\Python312\python.EXE -m unittest discover -s tests -t .
+      ----------------------------------------------------------------------
+      Ran 104 tests in 0.858s
+      OK
+    [PASS] 服务端 104：服务层测试全过（解释器 C:\Users\41692\AppData\Local\Programs\Python\Python312\python.EXE）（Ran 104 tests，1s）  rc=0 含期望串=True 计数=104
+    [PASS] 既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同（抽查 7 个文件）  全同=7 不一致=无
+
+=== 汇总（#1–#8 = 变更单 §四 1–8 条；#10 = 第 10 条零回归；A/B/C/D = 本次追加）===
+  断言 #1  新用户积分余额 0；余额不足 → 可读业务码拒绝（不开单或订单 unpaid），不产生佣金 —— PASS（5/5 项通过）
+  断言 #2  后台发放 20000 积分 → 余额 20000，明细 +1 行 —— PASS（7/7 项通过）
+  断言 #3  用积分买季卡（19900）→ 余额 100、订单 paid、channel=points、佣金 5970、明细再 —— PASS（9/9 项通过）
+  断言 #4  续费再买一次 → 余额不足被拒（100 < 19900）；再发 20000 → 可买，第二条佣金 5970（不合 —— PASS（6/6 项通过）
+  断言 #5  退款 19900 → 积分返还 19900、佣金 reversed、余额与明细同步 —— PASS（8/8 项通过）
+  断言 #6  幂等：同 Idempotency-Key 重复下单只扣一次积分、只产生一张订单 —— PASS（4/4 项通过）
+  断言 #7  自推自买不计佣（沿用 P1 规则），但积分照扣（订单有效） —— PASS（5/5 项通过）
+  断言 #8  提现接口不存在或明确拒绝且文案含「待银联分账通道开通」（本期不开放） —— PASS（6/6 项通过）
+  断言 #10 零回归：社交 51 / 推荐 45 / 支付佣金 80 / 独立后台 144 / 内核 335 / 服务端 10 —— PASS（7/7 项通过）
+  断言 #A  追加 A · 字段名逐字核对（points_account / points_ledger 列名 = 变更单 § —— PASS（3/3 项通过）
+  断言 #B  追加 B · 恒等式复算：balance == earned_total - spent_total；Σdelt —— PASS（5/5 项通过）
+  断言 #C  追加 C · 单位口径：1 积分 = 1 分、rate_bp=3000、base_cents=实付积分、全整数无 —— PASS（4/4 项通过）
+  断言 #D  追加 D · 安全边界：后台发放未登录/错令牌 401；提现全路径拒绝；pay_with 非法拒绝 —— PASS（8/8 项通过）
+
+  合计 77 项子断言，通过 77，失败 0；本脚本范围 全部通过
+  未验证项（如实标注）：前端订阅页/「我的积分」/提现按钮置灰（验收 #9，另一位同事交付）、真实微信/支付宝通道与 P2 资质、**提现与银联分账（P3）**、线上部署、真实资金结算
+  回退：删 points 相关路由与两张表（订单/佣金表不变，历史订单仍在）。
+  明细 JSON: D:\shuzi\_verify_v8\test_points_result.json
+  控制台完整输出: D:\shuzi\_verify_v8\test_points_output.txt

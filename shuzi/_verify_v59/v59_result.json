@@ -1,0 +1,42 @@
+[
+ {
+  "tag": "D0 测试账号与建档",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "D1 立体图就绪（three.js 懒加载 + canvas 有尺寸）",
+  "ok": true,
+  "detail": "{'ready': True, 'stage3d': True, 'stage2d': True, 'w': 664, 'h': 784, 'three': 'object'}"
+ },
+ {
+  "tag": "D2 两个部位在 3D 里同步选中",
+  "ok": true,
+  "detail": "sel=['upper', 'chest'] chip=已选 2 处"
+ },
+ {
+  "tag": "D3 注入为混音（宫+徵）",
+  "ok": true,
+  "detail": "now={'id': 'mix:gong+zhi', 'name': '混音：宫音 + 徵音', 'kind': 'mix'} note=正在播放：脾、心 对应的五音（混音） · 想停就按「静音」或「重选」"
+ },
+ {
+  "tag": "D4 3D 转身不报错",
+  "ok": true,
+  "detail": "ok"
+ },
+ {
+  "tag": "D5 切回平面图",
+  "ok": true,
+  "detail": "{'s3': True, 's2': False}"
+ },
+ {
+  "tag": "D6 佛音 6 条",
+  "ok": true,
+  "detail": "items=6"
+ },
+ {
+  "tag": "D7 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

@@ -1,0 +1,51 @@
+[13:10:36] �嵥 web\index.html  sha=368990F0CBC4�� url=abf155612e6f488c8da29792c124c2cf.html
+[13:10:36] �嵥 web\app.js  sha=9B77F6C0410B�� url=4a7f7e4d982c4ebf9a04b3c1e416506a.js
+[13:10:36] �嵥 web\body3d.js  sha=A8740711FF14�� url=87fed657faa14d55badf55d8419a80a6.js
+[13:10:36] �嵥 web\energy.js  sha=D5E8EECC8509�� url=99630603e0c945a8bce273cc4bf0407a.js
+[13:10:36] �嵥 web\style.css  sha=7D45560B8790�� url=ff3e530ca66b40a58448c79428a45c44.css
+[13:10:36] �嵥 web\version.json  sha=337A3FB2FB3F�� url=0af448df72fe4027acad1c123e9b9558.json
+[13:10:36] ���غ� D:\Deepseek������\AIԪ����\_����\�����غ�\_shuzi_v207b.ps1��8261 �ֽڣ�
+[13:10:54] �غ��й� �� https://img.yuanjk.cn/yjk/2026/11/01/82fe8c905cd64c478158d1c94586dd25.txt��8261 �ֽڣ�sha һ��=True��
+[13:10:57] Ͷ�ݻ�ִ��OK out_job_shuzi_v207b_20261101_131057.txt
+[13:11:23]   �ȴ������
+[13:12:19]   �ȴ������
+[13:12:44] === �������ض� out_shuzi_v207_20261101_131223.txt ===
+[2026-11-01T13:12:23] tag=shuzi_v207
+
+13:12:09 V207_START
+13:12:09 DL web\index.html bytes=140573 ok=True
+13:12:09 DL web\app.js bytes=461323 ok=True
+13:12:09 DL web\body3d.js bytes=32174 ok=True
+13:12:09 DL web\energy.js bytes=25075 ok=True
+13:12:10 DL web\style.css bytes=128683 ok=True
+13:12:10 DL web\version.json bytes=19394 ok=True
+13:12:10 BAK done -> D:\www\yjk\shuzi\_bak-v207-20261101-131210
+13:12:15 PUT web\index.html
+13:12:15 PUT web\app.js
+13:12:15 PUT web\body3d.js
+13:12:15 PUT web\energy.js
+13:12:15 PUT web\style.css
+13:12:15 PUT web\version.json
+13:12:22 HEALTH_READY after 5s
+13:12:22 CHK web\index.html match=True got=368990F0CBC4
+13:12:22 CHK web\app.js match=True got=9B77F6C0410B
+13:12:22 CHK web\body3d.js match=True got=A8740711FF14
+13:12:22 CHK web\energy.js match=True got=D5E8EECC8509
+13:12:22 CHK web\style.css match=True got=7D45560B8790
+13:12:22 CHK web\version.json match=True got=337A3FB2FB3F
+13:12:22 JS_WEBVER207=True
+13:12:22 VERSION207=True
+13:12:22 JS_ORGAN_NODEPTH=True
+13:12:22 JS_ORGAN_LABEL=True
+13:12:22 JS_ORGAN_LIST=True
+13:12:22 JS_ORGAN_PICKER=True
+13:12:22 HTML_ORGAN_PICKER=True
+13:12:22 ASSET_TOKEN_E=6 OLD=0
+13:12:23 HTTP_TOKEN_E=True
+13:12:23 HTTP_BODY3D_ORGAN=True bytes=32174
+13:12:23 LIVE_VERSION207=True
+13:12:23 SERVICE=Running
+13:12:23 CRIT_FAILURES=0
+13:12:23 EXIT=0
+13:12:23 V207_DONE
+[13:12:44] ������ۣ��ɹ�

@@ -1,0 +1,42 @@
+[
+ {
+  "tag": "N1 开场即结算：+10 / 共享-1 / 场景记录",
+  "ok": true,
+  "detail": "{'session_id': 'vst_2b177668e9e84a', 'started_at': '2026-10-25T12:53:02', 'purpose': 'comfort', 'purpose_name': '舒缓不适（意念痛处）', 'spot': '腰背', 'max_minutes': 15, 'prompt_minutes': 15, 'granted': 10, 'shared_cost': 1, 'shared': {'index': 10009, 'total_contribution': 10, 'total_consumed': 1, 'total_injections': 1, 'participants': 1}, 'mine': {'injections': 1, 'contribution': 10, 'first_at': '2026-10-25"
+ },
+ {
+  "tag": "N1b 指数与积分一致",
+  "ok": true,
+  "detail": "index=10009 contrib=10 consumed=1 points=10"
+ },
+ {
+  "tag": "N3 15 分钟封顶",
+  "ok": true,
+  "detail": "{'closed': True, 'reason': 'max_minutes', 'minutes_total': 15}"
+ },
+ {
+  "tag": "N5 结束返回",
+  "ok": true,
+  "detail": "energy=10 cost=1 minutes=15"
+ },
+ {
+  "tag": "N2 每天 2 次（第 3 次 429）",
+  "ok": true,
+  "detail": "second=200 third=429"
+ },
+ {
+  "tag": "N2b 状态含今日次数与规则",
+  "ok": true,
+  "detail": "{'today': 2, 'limit': 2, 'left': 0, 'max_minutes': 15, 'energy_per_use': 10, 'shared_cost_per_use': 1}"
+ },
+ {
+  "tag": "N6 卡顺序 / 5 圈 / 场景切换",
+  "ok": true,
+  "detail": "order=True rings=5 my=20 spots=True disclaim=True"
+ },
+ {
+  "tag": "N7 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

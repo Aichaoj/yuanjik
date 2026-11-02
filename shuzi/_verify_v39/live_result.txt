@@ -1,0 +1,5 @@
+BADGE_TEXT=APP 1.0.0 · v39
+DOT=False HAS_TABBAR=True BADGE_BOTTOM=766 TABBAR_TOP=780
+SHEET app=1.0.0 web=v39 build=2026-10-21 latest=v39 state=已是最新版本。 updHidden=True
+MINE_RENAME=True OLD=False
+CONSOLE_ERRORS=0 []

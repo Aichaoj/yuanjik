@@ -1,0 +1,72 @@
+[
+ {
+  "name": "A0 服务就绪",
+  "ok": true,
+  "detail": "http://127.0.0.1:15342"
+ },
+ {
+  "name": "A1 注册",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1 无档案 → 不可用（不猜年龄）",
+  "ok": true,
+  "detail": "-1"
+ },
+ {
+  "name": "B2 未成年/无档案时保存 → 403",
+  "ok": true,
+  "detail": "http=403"
+ },
+ {
+  "name": "C1 成年档案 → 可用",
+  "ok": true,
+  "detail": "36"
+ },
+ {
+  "name": "C2 保存（5次+ / 满意 / 无困扰）→ 调整 +1",
+  "ok": true,
+  "detail": "{\"optin\": true, \"freq_bucket\": 3, \"satisfaction\": 5, \"concern\": false, \"adjust\": 1, \"note\": \"已保存（仅你本人可见）。\"}"
+ },
+ {
+  "name": "C3 无频次 + 不满意 + 困扰 → 调整 -2",
+  "ok": true,
+  "detail": "-2"
+ },
+ {
+  "name": "C4 允许保健师查看",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C5 收回分享",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C6 关闭即清空（档位= -1、调整 0）",
+  "ok": true,
+  "detail": "{\"eligible\": true, \"age\": 36, \"notice\": \"性生活状态属敏感个人信息：默认不采集、只存档位、仅你本人可见；要想让保健师看到，需再单独同意一次，且可随时关闭。本产品不提供诊断与治疗建议。\", \"consent_version\": \"v46-2026-10-22\", \"optin\": "
+ },
+ {
+  "name": "C7 非法档位 → 400",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "name": "D1 17 岁 → 不可用",
+  "ok": true,
+  "detail": "10"
+ },
+ {
+  "name": "D2 17 岁保存 → 403",
+  "ok": true,
+  "detail": "http=403"
+ },
+ {
+  "name": "E1 未登录 → 401",
+  "ok": true,
+  "detail": "http=401"
+ }
+]

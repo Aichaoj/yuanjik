@@ -1,0 +1,57 @@
+[
+ {
+  "name": "A0 服务就绪",
+  "ok": true,
+  "detail": "http://127.0.0.1:15252"
+ },
+ {
+  "name": "A0 注册测试账号",
+  "ok": true,
+  "detail": "http=200 member=mbr_b4297475079a99d5"
+ },
+ {
+  "name": "A1 无订单 → 未开通",
+  "ok": true,
+  "detail": "{\"active\": false, \"lifetime\": false, \"plan_id\": null, \"plan_name\": null, \"started_at\": null, \"expires_at\": null, \"days_left\": 0, \"total_days\": 0, \"order_count\": 0, \"last_order_no\": null, \"paid_points_total\": 0}"
+ },
+ {
+  "name": "A2 一张已付季卡 → 已开通 90 天",
+  "ok": true,
+  "detail": "{\"active\": true, \"lifetime\": false, \"plan_id\": \"quarter\", \"plan_name\": \"季卡\", \"started_at\": \"2026-10-21T22:35:13\", \"expires_at\": \"2027-01-19T22:35:13\", \"days_left\": 90, \"total_days\": 90, \"order_count\": 1, \"last_order_no\": \"SO69B55BE021F840D6AF2A\", \"paid_points_total\": 19900}"
+ },
+ {
+  "name": "A3 续费叠一张 → 约 180 天",
+  "ok": true,
+  "detail": "{\"active\": true, \"lifetime\": false, \"plan_id\": \"quarter\", \"plan_name\": \"季卡\", \"started_at\": \"2026-10-21T22:35:13\", \"expires_at\": \"2027-04-19T22:35:13\", \"days_left\": 180, \"total_days\": 180, \"order_count\": 2, \"last_order_no\": \"SODF7673051EC54C3DB4B5\", \"paid_points_total\": 39800}"
+ },
+ {
+  "name": "B1 我的 → 订阅会员（已开通 · 剩 180 天）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B2 订阅屏「当前会员」（已开通 / 当前套餐：季卡 · 到期 2027-04-19（剩 180 天） · 累计开通 ）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B3 重开页面后仍显示已开通（师父报的那一步）",
+  "ok": true,
+  "detail": "已开通 · 剩 180 天"
+ },
+ {
+  "name": "B9 0 条未捕获错误",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "A4 200 天前的订单 → 已到期（不是未开通）",
+  "ok": true,
+  "detail": "{\"active\": false, \"lifetime\": false, \"plan_id\": \"quarter\", \"plan_name\": \"季卡\", \"started_at\": \"2026-03-01T00:00:00\", \"expires_at\": \"2026-08-28T00:00:00\", \"days_left\": 0, \"total_days\": 180, \"order_count\": 2, \"last_order_no\": \"SODF7673051EC54C3DB4B5\", \"paid_points_total\": 39800}"
+ },
+ {
+  "name": "A5 全额退款后 → 不计入（未开通）",
+  "ok": true,
+  "detail": "{\"active\": false, \"lifetime\": false, \"plan_id\": null, \"plan_name\": null, \"started_at\": null, \"expires_at\": null, \"days_left\": 0, \"total_days\": 0, \"order_count\": 0, \"last_order_no\": null, \"paid_points_total\": 0}"
+ }
+]

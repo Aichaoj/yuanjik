@@ -1,0 +1,42 @@
+[
+ {
+  "tag": "V0 账号就绪",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "V1 初始：指数 10000 / 我的 0",
+  "ok": true,
+  "detail": "index=10000 mine={'injections': 0, 'contribution': 0, 'first_at': '', 'last_at': '', 'today': 0, 'remaining': 30}"
+ },
+ {
+  "tag": "V2 注入 +7",
+  "ok": true,
+  "detail": "{'gained': 7, 'times': 1, 'shared': {'index': 10007, 'total_contribution': 7, 'total_injections': 1, 'participants': 1}, 'mine': {'injections': 1, 'contribution': 7, 'first_at': '2026-10-25T10:37:20', 'last_at': '2026-10-25T10:37:20', 'today': 1, 'remaining': 29}}"
+ },
+ {
+  "tag": "V3 流水 1 条 +7",
+  "ok": true,
+  "detail": "[{'id': 'vlt_10411e5c59dc4e', 'amount': 7, 'at': '2026-10-25T10:37:20', 'kind': 'intent', 'rewarded': 0}]"
+ },
+ {
+  "tag": "V4 每日上限 30 次（第 31 次 429）",
+  "ok": true,
+  "detail": "http=429"
+ },
+ {
+  "tag": "V4b 上限后仍为 30 次 / 210 能力值",
+  "ok": true,
+  "detail": "mine={'injections': 30, 'contribution': 210, 'first_at': '2026-10-25T10:37:20', 'last_at': '2026-10-25T10:37:21', 'today': 30, 'remaining': 0}"
+ },
+ {
+  "tag": "V6 页面进入 + 数字一致 + 柱状图",
+  "ok": true,
+  "detail": "index=10,210 my=30 week=1"
+ },
+ {
+  "tag": "V6b 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

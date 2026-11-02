@@ -1,0 +1,51 @@
+{
+  "pass": 9,
+  "total": 9,
+  "items": [
+    {
+      "name": "C0 账号就绪",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C1 城市下拉 ≥700 条、省分组=34",
+      "ok": true,
+      "detail": "{'opts': 707, 'groups': 34}"
+    },
+    {
+      "name": "C2 选义乌 → 120.0751 / 29.3068",
+      "ok": true,
+      "detail": "120.0751 / 29.3068"
+    },
+    {
+      "name": "C3 建档成功（服务端能算出当日指数）",
+      "ok": true,
+      "detail": "status=200 score=66"
+    },
+    {
+      "name": "C4 家人表单也是全国清单",
+      "ok": true,
+      "detail": "{'opts': 707, 'groups': 34}"
+    },
+    {
+      "name": "C5 选洛阳 → 112.454 / 34.6197",
+      "ok": true,
+      "detail": "112.454 / 34.6197"
+    },
+    {
+      "name": "C6 家人经纬度真落库（洛阳）",
+      "ok": true,
+      "detail": "st=200 n=1 {\"family_id\": \"fam_20cd601d62da\", \"nickname\": \"爸爸\", \"relation\": \"母亲\", \"relation_code\": \"mother\", \"birth_local\": \"1958-03-02 12:00\", \"longitude\": 112.454, \"latitude\": 34.6197, \"body\": {\"gender\": \"\", \"h"
+    },
+    {
+      "name": "C7 编辑家人自动认回「洛阳」（不是手动输入态）",
+      "ok": true,
+      "detail": "{'label': '洛阳', 'hint': '已按出生地回填「洛阳」；如需换城市，从下拉里另选一个即可。'}"
+    },
+    {
+      "name": "C8 控制台无真正 JS 报错",
+      "ok": true,
+      "detail": "[]"
+    }
+  ]
+}

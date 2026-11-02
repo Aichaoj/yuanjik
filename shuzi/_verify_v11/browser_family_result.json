@@ -1,0 +1,170 @@
+{
+ "results": [
+  {
+   "name": "430x932：用户区有「添加家人」入口（首页可见、文案为「添加家人」）",
+   "ok": true,
+   "detail": "按钮文案='添加家人'"
+  },
+  {
+   "name": "430x932：建档屏（用户区）内同样有家庭档案入口",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "430x932：进入 screen-family，空态引导可见（一句引导 + 添加按钮）",
+   "ok": true,
+   "detail": "空态文案='还没有添加家人\\n\\n点下面的「添加家人」，填上称呼、关系与出生信息，就能看到 TA 的今日指数； 最多可以添加 8 位家人'"
+  },
+  {
+   "name": "430x932：家庭档案屏**无横向滚动**（scrollWidth 430 ≤ clientWidth 430）",
+   "ok": true,
+   "detail": "{'sw': 430, 'cw': 430}"
+  },
+  {
+   "name": "430x932：**表单展开态**也不溢出、无横向滚动（越界元素 0 个）",
+   "ok": true,
+   "detail": "scroll={'sw': 430, 'cw': 430} 越界=[]"
+  },
+  {
+   "name": "430x932：选城市后自动填入经纬度（['116.4074', '39.9042']）",
+   "ok": true,
+   "detail": "经纬度=['116.4074', '39.9042']"
+  },
+  {
+   "name": "430x932：添加成功 → 卡片出现，显示今日指数（69 分）与分档（C · 中）",
+   "ok": true,
+   "detail": "卡片正文='妈 | 妈妈 | 母亲 · 64 岁 · 1962-03-08 06:20 | 69 | 分 | C · 中 |  | 基线建立中 0/7 |  | 关怀提醒 | 编辑 | 删除'"
+  },
+  {
+   "name": "430x932：卡片显示「基线建立中 0/7」，且**等级一律不显示**（屏内不出现 L0–L4）",
+   "ok": true,
+   "detail": "含基线文案=True"
+  },
+  {
+   "name": "430x932：全家概览更新为「全家 1 人 · 平均指数 … · 需关注 … 人」",
+   "ok": true,
+   "detail": "概览='全家 1 人 · 平均指数 69 · 需关注 1 人'"
+  },
+  {
+   "name": "430x932：卡片与文字都**不溢出、无横向滚动**（越界元素 0 个）",
+   "ok": true,
+   "detail": "scroll={'sw': 430, 'cw': 430} 越界=[]"
+  },
+  {
+   "name": "430x932：家庭档案全流程执行完成",
+   "ok": false,
+   "detail": "TimeoutError: Page.wait_for_selector: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"#screen-home:not([hidden])\") to be visible\n"
+  },
+  {
+   "name": "1440x900：用户区有「添加家人」入口（首页可见、文案为「添加家人」）",
+   "ok": true,
+   "detail": "按钮文案='添加家人'"
+  },
+  {
+   "name": "1440x900：建档屏（用户区）内同样有家庭档案入口",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "1440x900：进入 screen-family，空态引导可见（一句引导 + 添加按钮）",
+   "ok": true,
+   "detail": "空态文案='还没有添加家人\\n\\n点下面的「添加家人」，填上称呼、关系与出生信息，就能看到 TA 的今日指数； 最多可以添加 8 位家人'"
+  },
+  {
+   "name": "1440x900：家庭档案屏**无横向滚动**（scrollWidth 1440 ≤ clientWidth 1440）",
+   "ok": true,
+   "detail": "{'sw': 1440, 'cw': 1440}"
+  },
+  {
+   "name": "1440x900：**表单展开态**也不溢出、无横向滚动（越界元素 0 个）",
+   "ok": true,
+   "detail": "scroll={'sw': 1440, 'cw': 1440} 越界=[]"
+  },
+  {
+   "name": "1440x900：选城市后自动填入经纬度（['116.4074', '39.9042']）",
+   "ok": true,
+   "detail": "经纬度=['116.4074', '39.9042']"
+  },
+  {
+   "name": "1440x900：添加成功 → 卡片出现，显示今日指数（69 分）与分档（C · 中）",
+   "ok": true,
+   "detail": "卡片正文='妈 | 妈妈 | 母亲 · 64 岁 · 1962-03-08 06:20 | 69 | 分 | C · 中 |  | 基线建立中 0/7 |  | 关怀提醒 | 编辑 | 删除'"
+  },
+  {
+   "name": "1440x900：卡片显示「基线建立中 0/7」，且**等级一律不显示**（屏内不出现 L0–L4）",
+   "ok": true,
+   "detail": "含基线文案=True"
+  },
+  {
+   "name": "1440x900：全家概览更新为「全家 1 人 · 平均指数 … · 需关注 … 人」",
+   "ok": true,
+   "detail": "概览='全家 1 人 · 平均指数 69 · 需关注 1 人'"
+  },
+  {
+   "name": "1440x900：卡片与文字都**不溢出、无横向滚动**（越界元素 0 个）",
+   "ok": true,
+   "detail": "scroll={'sw': 1440, 'cw': 1440} 越界=[]"
+  },
+  {
+   "name": "1440x900：家庭档案全流程执行完成",
+   "ok": false,
+   "detail": "TimeoutError: Page.wait_for_selector: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"#screen-home:not([hidden])\") to be visible\n"
+  },
+  {
+   "name": "既有四屏 · 改前 console error 合计 = 0（{'430x932': [], '1440x900': []}）",
+   "ok": true,
+   "detail": "改前=0"
+  },
+  {
+   "name": "既有四屏 · 改后 console error 合计 = 2（{'430x932': ['Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)'], '1440x900': ['Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)']}），**未新增**（改后 ≤ 改前）",
+   "ok": false,
+   "detail": "改前=0 改后=2"
+  },
+  {
+   "name": "家庭档案新屏 · 两个视口 console error 合计 = 0（**新增屏 0 报错**）",
+   "ok": true,
+   "detail": "family={}"
+  },
+  {
+   "name": "整轮浏览器会话未捕获异常 = 0 个",
+   "ok": true,
+   "detail": "异常=[]"
+  }
+ ],
+ "console_errors": {
+  "before": {
+   "430x932": [],
+   "1440x900": []
+  },
+  "after": {
+   "430x932": [
+    "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+   ],
+   "1440x900": [
+    "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+   ]
+  },
+  "family": {},
+  "before_total": 0,
+  "after_total": 2,
+  "family_total": 0
+ },
+ "page_errors": [],
+ "shots": [
+  "shot_1440x900_1_entry_empty.png",
+  "shot_1440x900_2_member_card.png",
+  "shot_1440x900_2a_form_open.png",
+  "shot_1440x900_3_remind_done.png",
+  "shot_1440x900_4_deleted_empty.png",
+  "shot_430x932_1_entry_empty.png",
+  "shot_430x932_2_member_card.png",
+  "shot_430x932_2a_form_open.png",
+  "shot_430x932_3_remind_done.png",
+  "shot_430x932_4_deleted_empty.png"
+ ],
+ "viewports": [
+  "430x932",
+  "1440x900"
+ ],
+ "summary": "浏览器断言 26 项，通过 23，失败 3；console error：改前 0 → 改后 2，新屏 0"
+}

@@ -1,0 +1,112 @@
+[
+ {
+  "name": "index 无 #aiTag 标识条",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index 无分享卡",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "合规声明卡仍在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 无 aiTag 引用",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 无 renderShareCard/buildShareText",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "version.json web=193",
+  "ok": true,
+  "detail": "193"
+ },
+ {
+  "name": "首条说明=删两卡",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "资源戳 d ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "app.js WEB_VER=193",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地：首屏无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "本地：节律屏无 AI 标识条",
+  "ok": true,
+  "detail": "{'aiTag': False, 'shareCard': False, 'compliance': True, 'texts': '合规声明 本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式'}"
+ },
+ {
+  "name": "本地：节律屏无分享卡",
+  "ok": true,
+  "detail": "{'aiTag': False, 'shareCard': False, 'compliance': True, 'texts': '合规声明 本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式'}"
+ },
+ {
+  "name": "本地：合规声明仍有正文",
+  "ok": true,
+  "detail": "合规声明 本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式"
+ },
+ {
+  "name": "本地：节律屏渲染无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "线上 web=193",
+  "ok": true,
+  "detail": "193"
+ },
+ {
+  "name": "线上无 #aiTag",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上无分享卡",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上资源戳 d ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "线上：无 AI 标识条 / 无分享卡",
+  "ok": true,
+  "detail": "{'aiTag': False, 'shareCard': False, 'compliance': True, 'texts': '合规声明 本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式'}"
+ },
+ {
+  "name": "线上：合规声明仍在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上：无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

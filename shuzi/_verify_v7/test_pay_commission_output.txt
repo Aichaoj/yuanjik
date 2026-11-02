@@ -1,0 +1,232 @@
+=== 0 打包（把最新 server/pay.py + serve.py 纳入构件）===
+  SHA256 站点 = E069C60579EBEF349C7EA6BD1279BEB25749AB65F54948B170CCD7D77F924F4C
+  SHA256 运行时 = 80E526F995B8A090978D9CC7DC57373DA4D05B42410CB0E9A9948A9E0E9D248B
+完成。
+    构件内 pay.py 存在: True
+
+=== 1 清库并起真服务（port 15090）===
+    服务健康检查: PASS
+
+=== 2 身份与推荐关系（A=推荐人，B=被推荐人，C=无推荐人，D=自推自买，E=三级链路）===
+    A: HTTP 200 member=…9582db9c（推荐人）
+    B: HTTP 200 member=…7d2b420e（被 A 推荐）
+    C: HTTP 200 member=…e2714262（无推荐人）
+    D: HTTP 200 member=…36d6e672（自推自买，见断言 #6）
+    套餐: [{"plan_id": "month", "name": "月卡", "days": 30, "price_cents": 9900, "active": true}, {"plan_id": "quarter", "name": "季卡", "days": 90, "price_cents": 19900, "active": true}, {"plan_id": "year", "name": "年卡", "days": 365, "price_cents": 199000, "active": true}]
+    [PASS] 订阅套餐接口可用且价格为整数分  plan_id→price_cents = {'month': 9900, 'quarter': 19900, 'year': 199000}
+    B 用 A 的码 EPCW5MQ7 绑定推荐关系 → HTTP 200 code=0
+    [PASS] 推荐关系（referral 表，一级）已建立：B → A  referral 行数=1
+    [PASS] 测试前置：已为 D 注入"推荐人=自己"的异常推荐行（仅测试侧直写）  referee=D referrer=…36d6e672
+
+=== 断言 #1 · 下单幂等：同 idempotency_key 重复请求只产生 1 张订单 ===
+    第 1 次 POST /subscribe/order {plan_id:month, idempotency:v7-idem-1009235438-1}
+      → HTTP 200 code=0 data={"order_no": "SO20261009235441A0C716", "plan_id": "month", "amount_cents": 9900, "amount": 9900, "paid_cents": 0, "status": "created", "channel": "", "paid_at": null, "refund_cents": 0, "created_at": "2026-10-09T23:54:41", "currency": "CNY", "unit": "cents", "idempotent_replay": false}
+    [PASS] 下单成功：status=created、金额=套餐价（整数分）  order_no=SO20261009235441A0C716 amount_cents=9900
+    第 2 次（同 idempotency_key）→ HTTP 200 order_no=SO20261009235441A0C716 replay=True
+    [PASS] 重复请求返回**同一张**订单（不报错、不新建）  order_no 一致=True
+    [PASS] 库里该 idempotency_key 只有 1 张订单  sub_order 行数=1
+    [PASS] 下单**不产生**佣金（计佣只认支付成功）  该单账本行数=0
+    [PASS] 未知套餐 → 既有 10002（HTTP 400），不落单  HTTP 400 code=10002
+
+=== 断言 #2 · 支付回调后订单 status=paid；同一回调重放不重复计佣 ===
+    首次回调（带占位签名）→ HTTP 200 code=0 data={"channel": "mock", "order_no": "SO20261009235441A0C716", "order_status": "paid", "paid_cents": 9900, "refund_cents": 0, "replayed": false, "commission_delta_cents": 2970, "commission_status": "pending", "commission_amount_cents": 2970, "commission_reversed_cents": 0, "note": "计佣基数=实付金额；bucket=referrer"}
+    [PASS] 回调被接受（HTTP 200 / code=0），订单转为 paid  order_status=paid
+    [PASS] 回调同时产生 1 条佣金（实付 9900 分 → 2970 分）  delta=2970 amount=2970
+    [PASS] GET /subscribe/order/{order_no} 查得 status=paid、paid_cents 正确  status=paid paid_cents=9900
+    同一回调**重放** → HTTP 200 replayed=True delta=0
+    [PASS] 重放被识别（replayed=true）且不重复计佣（delta=0）  delta=0
+    [PASS] 重放后该单账本仍只有 1 行  账本行数=1
+    [PASS] 回调留痕：验签通过的报文**只留一行**，重放记在原行上（replay_count=1、可审计）  留痕行数=1 replayed=1 replay_count=1
+    [PASS] 同订单换报文再回调 → 不重复计佣（订单级幂等闸门）  delta=0 账本行数=1
+
+=== 断言 #3 · 佣金金额 = round(实付 × 30%)，逐分比对（19900 → 5970） ===
+    用例                                        套餐标价          实付        期望佣金        实测佣金     判定
+    月卡 9900                                   9900        9900        2970        2970   PASS
+    [PASS] 佣金逐分比对：月卡 9900 → 期望 2970 分、实测 2970 分  order=SO20261009235441A0C716 base_cents=9900 rate_bp=3000
+    季卡 19900                                 19900       19900        5970        5970   PASS
+    [PASS] 佣金逐分比对：季卡 19900 → 期望 5970 分、实测 5970 分  order=SO202610092354416A1BA6 base_cents=19900 rate_bp=3000
+    年卡 199000                               199000      199000       59700       59700   PASS
+    [PASS] 佣金逐分比对：年卡 199000 → 期望 59700 分、实测 59700 分  order=SO20261009235441B9A365 base_cents=199000 rate_bp=3000
+    季卡标价 19900、优惠实付 9900                     19900        9900        2970        2970   PASS
+    [PASS] 佣金逐分比对：季卡标价 19900、优惠实付 9900 → 期望 2970 分、实测 2970 分  order=SO2026100923544194CC17 base_cents=9900 rate_bp=3000
+    [PASS] 变更单样例逐字对上：19900 分 → 5970 分  19900×30%% = 5970
+    [PASS] 优惠实付场景：**基数取实付**（标价 19900、实付 9900 → 佣金 2970，不是 5970）  base_cents=9900 amount_cents=2970
+    [PASS] 佣金比例常量为 3000（万分比 = 30.00%，写在 pay.py 一处）  rate_bp=3000
+
+=== 断言 #4 · 续费订单同样产生 1 条佣金，不与首单合并 ===
+    续费单 SO20261009235441A7D3F0（与首单 SO20261009235441A0C716 不同）→ 回调后 delta=2970
+    [PASS] 续费是新订单号（不是复用首单）  o1=SO20261009235441A0C716 o2=SO20261009235441A7D3F0
+    [PASS] 续费同样产生 1 条佣金（2970 分）  delta=2970
+    [PASS] 续费佣金**不与首单合并**（两行、两个 order_no、各自金额）  首单行=1 续费行=1
+    [PASS] 续费后 A 的累计佣金 = 首单 + 续费（合计 2×2970 = 5940 分）  实测 total_cents=74580 期望=74580
+
+=== 断言 #5 · 全额退款 → 该笔佣金 reversed；部分退款 → reversed_cents 按比例 ===
+    全额退款（季卡 SO202610092354416A1BA6）→ order=refunded 账本=reversed reversed=5970
+    [PASS] 全额退款 → 订单 status=refunded、refund_cents=实付全款  status=refunded refund_cents=19900
+    [PASS] 全额退款 → 该笔佣金 status=reversed、reversed_cents=全额佣金 5970  status=reversed reversed=5970
+    [PASS] 退款回调重放 → 不重复冲正（reversed_cents 不变）  reversed=5970
+    第 1 次部分退 50000 → 订单=partially_refunded 累计退款=50000 账本 reversed=15000（期望按比例 15000）
+    [PASS] 第 1 次部分退 50000：reversed_cents 按比例（累计退 50000 → 冲减 15000）  reversed=15000 期望=15000 status=partially_refunded
+    第 2 次部分退 49000 → 订单=partially_refunded 累计退款=99000 账本 reversed=29700（期望按比例 29700）
+    [PASS] 第 2 次部分退 49000：reversed_cents 按比例（累计退 99000 → 冲减 29700）  reversed=29700 期望=29700 status=partially_refunded
+    第 3 次退清剩余 100000 → 订单=refunded 账本 status=reversed reversed=59700
+    [PASS] 退清后 → 订单 status=refunded、佣金 status=reversed、reversed=全额 59700  status=refunded 账本=reversed reversed=59700
+    [PASS] 未支付订单退款 → 既有 30004 REFUND_WINDOW_CLOSED（不静默成功）  HTTP 402 code=30004
+
+=== 断言 #6 · 自推自买 → 不计佣并落人工复核标记 ===
+    D 买自己的单并支付成功 → HTTP 200 delta=0 账本行=[{"referrer_member_id": "mbr_7c0dedda36d6e672", "referee_member_id": "mbr_7c0dedda36d6e672", "amount_cents": 0, "status": "manual_review", "base_cents": 9900}]
+    [PASS] 自推自买**不计佣**（commission_delta_cents = 0，订单仍正常 paid）  order_status=paid delta=0
+    [PASS] 落了**人工复核标记**（status=manual_review、金额 0、基数照记）  status=manual_review amount=0 base=9900
+    [PASS] 该复核行挂在 D 自己名下（referrer=referee=D），不进推荐人收益  referrer=…36d6e672 referee=…36d6e672
+    [PASS] D 的「我的推广收益」为 0，但能看到 1 条待复核  total=0 manual_review=1
+
+=== 断言 #7 · 无推荐人的订单 → 不产生佣金（不报错） ===
+    C（无推荐人）支付成功 → HTTP 200 code=0 delta=0 账本行数=0
+    [PASS] 无推荐人 → **不报错**（HTTP 200 / code=0，订单照常 paid）  HTTP 200 code=0 status=paid
+    [PASS] 无推荐人 → **不产生佣金**（该单 0 行账本）  账本行数=0 delta=0
+    [PASS] C 的「我的推广收益」为 0（没有被"猜"一个推荐人）  total=0
+
+=== 断言 #C · 追加 C · 金额口径：一切金额为整数分，拒绝浮点 ===
+    [PASS] 浮点实付（9900.5）被拒 → 既有 10002（HTTP 400），不落库不改状态  HTTP 400 code=10002
+    [PASS] 纯数字字符串（"9900"）按整数分受理 → code=0  code=0 paid_cents=9900
+    [PASS] 所有金额字段都是 int（18 个字段抽样），无 float/str  [["paid_cents", 9900, "int"], ["refund_cents", 0, "int"], ["commission_delta_cents", 0, "int"], ["commission_amount_cents", 0, "int"], ["commission_reversed_cents", 0, "int"], ["amount_cents", 9900, "int"]]
+
+=== 断言 #8 · 用户端可查收益明细；后台可查全量流水（分页） ===
+    A 的收益：{"total_cents": 74580, "pending_cents": 8910, "settled_cents": 0, "reversed_cents": 65670, "net_cents": 8910, "count": 5}
+    模型期望：{"total_cents": 74580, "pending_cents": 8910, "settled_cents": 0, "reversed_cents": 65670, "net_cents": 8910, "count": 5}
+    [PASS] 用户端累计/待结算/已结算/冲正/净额/条数 与独立模型**逐项一致**  实测={"total_cents": 74580, "pending_cents": 8910, "settled_cents": 0, "reversed_cents": 65670, "net_cents": 8910, "count": 5}
+    [PASS] 明细逐条可查（条数一致、字段齐全）  items=5
+    [PASS] 提现口径：P1 关闭（withdraw_enabled=false + 说明）  withdraw_enabled=False
+    [PASS] 收益只算自己的：B 的收益为 0（推荐人收益不落到买家名下）  B total=0
+    后台口径：账本共 6 行（A=5 行 + D 复核 1 行），A 的模型 5 行
+    无后台口令访问 /admin/commission → HTTP 401 code=20000
+    [PASS] 后台接口**默认拒绝**（未带口令 → 既有 20000，HTTP 401）  HTTP 401 code=20000
+    带正确口令 page=1&page_size=3 → HTTP 200 total=6 total_pages=2 items=3
+    [PASS] 后台可查**全量**流水（total = 账本总行数，含复核行）  total=6 账本=6
+    [PASS] 后台分页正确（page_size=3 → 3 条、has_more=true）  items=3 has_more=True
+    [PASS] 后台每条流水都带 order_no / 推荐人 / 被推荐人 / 基数 / 比例 / 金额 / 状态  样例={"order_no": "SO202610092354421011F5", "base_cents": 9900, "rate_bp": 3000, "amount_cents": 0, "status": "manual_review", "reversed_cents": 0, "net_cents": 0, "settled_at": null, "created_at": "2026-10-09T23:54:42", "ref
+    [PASS] 末页 has_more=false（不越界、不重复）  page=2 items=3 has_more=False
+    [PASS] 越界页返回空列表且不报错  items=[]
+    [PASS] 后台汇总与用户端口径一致（sum_amount 含 D 的 0 元复核行）  sum=74580 reversed=65670 review=1
+
+=== 断言 #B · 追加 B · 结算口径：T+7 过退款期后 pending → settled ===
+    把 SO20261009235441A0C716 的账本 created_at 改到 8 天前（时间旅行，仅测试侧直写）→ status=settled settled_at=2026-10-09T23:54:42
+    [PASS] T+7 后 pending → settled（惰性结算，读路径触发）  status=settled settled_at=2026-10-09T23:54:42
+    [PASS] 结算后 待结算/已结算 分布与模型一致（净额不变）  实测 settled=2970 pending=5940 net=8910；期望 settled=2970 pending=5940 net=8910
+    [PASS] 结算不改变总额（total 不变，仍 74580 分）  total=74580
+
+=== 断言 #9 · 回调验签位存在且默认拒绝未签名 / 签名不符的请求 ===
+    [PASS] pay.py 存在验签位函数（签名逐字为 verify_signature(channel, headers, raw_body)）  找到=True
+    不带签名头 → HTTP 401 code=20000
+    [PASS] **未签名**一律拒绝（HTTP 401 / 既有 20000）  HTTP 401 code=20000
+    [PASS] **签名不符**一律拒绝（HTTP 401 / 20000）  HTTP 401 code=20000
+    [PASS] 用别的材料算出来的签名同样被拒（占位材料唯一）  HTTP 401 code=20000
+    [PASS] 被拒的回调**不改任何状态**（订单仍 created、无账本行、不重复计佣）  status=created 账本行=0
+    [PASS] 正确签名（脚本按同一算法现算）→ 受理（HTTP 200 / code=0）  HTTP 200 code=0
+    [PASS] pay.py 里**没有**任何真实通道凭据 / 商户号字面量（P1 不接真钱）  凭据字面量=无；P2 清单含 vault: 引用=True
+    [PASS] pay.py 文件头写明 P2 清单（商户号 / API 证书 / 对公账户 / 回调白名单）  四项关键词齐全
+
+=== 断言 #A · 追加 A · 合规断言：仅一级分销、不递归（A←B←E 三级链路实测） ===
+    E 用 B 的码 XRC6IUSA 绑定（链路 A ← B ← E）→ HTTP 200 code=0
+    E 购买并支付 → 账本行=[{"referrer": "7d2b420e", "referee": "ea9326e8", "amount_cents": 2970, "status": "pending"}]
+    [PASS] 三级链路下佣金只给 E 的**直接**推荐人 B（1 行）  账本行数=1 referrer=…7d2b420e
+    [PASS] 上上一级 A **不因下级成交获得任何佣金**（不递归）  A 成交前=77550 成交后=77550
+    [PASS] 账本里同一订单**不存在**第二条给上线的行（无多级分成）  该单账本行数=1
+    [PASS] 无入门费 / 无按人头收费：未支付订单（SO202610092354427031E1）不产生任何账本行  该单账本行数=0
+    [PASS] 合规口径随响应公开（compliance 文案含"仅一级分销 / 无入门费 / 不按人头"）  compliance=仅一级分销（只认 referral 表的一级推荐人，不递归）；按实际成交计佣（基数 = 订单实付金额 paid_cents）；无入门费、不按人头收费；自推自买不计佣并转人工复核
+
+=== 断言 #D · 追加 D · 边界：带参路径鉴权 / 后台闸门 / 未知通道拒绝 ===
+    [PASS] 查单接口**必须鉴权**（无令牌 → 既有 20000 / HTTP 401）  HTTP 401 code=20000
+    [PASS] **别人的单**查不到（同一回答，不泄露订单是否存在）  HTTP 400 code=10002
+    [PASS] 不存在的单同样是 10002（口径一致）  HTTP 400 code=10002
+    [PASS] P1 未支持的通道（wechat）→ 拒绝，不静默放行（P2 才加入白名单）  HTTP 400 code=10002
+    [PASS] 后台**错口令**拒绝（HTTP 401 / 20000）  HTTP 401 code=20000
+    [PASS] 后台只看口令、不看会员令牌（无令牌但口令对 → 放行；P1 口径已写明）  HTTP 200 code=0
+
+=== sub_order（state.db 直读） ===
+    order_no | plan_id | amount_cents | paid_cents | status | channel | refund_cents
+    SO20261009235441A0C716 | month | 9900 | 9900 | paid | mock | 0
+    SO202610092354416A1BA6 | quarter | 19900 | 19900 | refunded | mock | 19900
+    SO20261009235441B9A365 | year | 199000 | 199000 | refunded | mock | 199000
+    SO2026100923544194CC17 | quarter | 19900 | 9900 | paid | mock | 0
+    SO20261009235441A7D3F0 | month | 9900 | 9900 | paid | mock | 0
+    SO202610092354427031E1 | month | 9900 | 0 | created |  | 0
+    SO202610092354421011F5 | month | 9900 | 9900 | paid | mock | 0
+    SO20261009235442D7067F | quarter | 19900 | 19900 | paid | mock | 0
+    SO202610092354425279F8 | month | 9900 | 9900 | paid | mock | 0
+    SO2026100923544249ED53 | month | 9900 | 9900 | paid | mock | 0
+    SO202610092354427F19AA | month | 9900 | 9900 | paid | mock | 0
+    行数 = 11
+
+=== commission_ledger（state.db 直读） ===
+    order_no | referrer | referee | base_cents | rate_bp | amount_cents | status | reversed_cents
+    SO20261009235441A0C716 | 9582db9c | 7d2b420e | 9900 | 3000 | 2970 | settled | 0
+    SO202610092354416A1BA6 | 9582db9c | 7d2b420e | 19900 | 3000 | 5970 | reversed | 5970
+    SO20261009235441B9A365 | 9582db9c | 7d2b420e | 199000 | 3000 | 59700 | reversed | 59700
+    SO2026100923544194CC17 | 9582db9c | 7d2b420e | 9900 | 3000 | 2970 | pending | 0
+    SO20261009235441A7D3F0 | 9582db9c | 7d2b420e | 9900 | 3000 | 2970 | pending | 0
+    SO202610092354421011F5 | 36d6e672 | 36d6e672 | 9900 | 3000 | 0 | manual_review | 0
+    SO2026100923544249ED53 | 9582db9c | 7d2b420e | 9900 | 3000 | 2970 | pending | 0
+    SO202610092354427F19AA | 7d2b420e | ea9326e8 | 9900 | 3000 | 2970 | pending | 0
+    行数 = 8
+
+=== pay_callback_log（state.db 直读） ===
+    channel | order_no | sha12 | signature_ok | accepted | replayed | commission_delta_cents
+    mock | SO20261009235441A0C716 | a6ca368958f9 | 1 | 1 | 1 | 2970
+    mock | SO20261009235441A0C716 | 54a11a5ae5b1 | 1 | 1 | 0 | 0
+    mock | SO202610092354416A1BA6 | d54c6944ddc1 | 1 | 1 | 0 | 5970
+    mock | SO20261009235441B9A365 | 79362579a51c | 1 | 1 | 0 | 59700
+    mock | SO2026100923544194CC17 | 207fdb700600 | 1 | 1 | 0 | 2970
+    mock | SO20261009235441A7D3F0 | 2e60b846fd92 | 1 | 1 | 0 | 2970
+    mock | SO202610092354416A1BA6 | 04cfdae805e3 | 1 | 1 | 1 | -5970
+    mock | SO20261009235441B9A365 | a86ad7bd96ab | 1 | 1 | 0 | -15000
+    mock | SO20261009235441B9A365 | 4326de1a940e | 1 | 1 | 0 | -14700
+    mock | SO20261009235441B9A365 | 0a8bf2e88a96 | 1 | 1 | 0 | -30000
+    mock | SO202610092354421011F5 | e81dfc641372 | 1 | 1 | 0 | 0
+    mock | SO20261009235442D7067F | b20708c090c2 | 1 | 1 | 0 | 0
+    mock | SO202610092354425279F8 | 55f5c9720a54 | 1 | 1 | 0 | 0
+    mock |  | 71adf1ad31a8 | 0 | 0 | 0 | 0
+    mock |  | 71adf1ad31a8 | 0 | 0 | 0 | 0
+    mock |  | 71adf1ad31a8 | 0 | 0 | 0 | 0
+    mock | SO2026100923544249ED53 | 71adf1ad31a8 | 1 | 1 | 0 | 2970
+    mock | SO202610092354427F19AA | c3d3f18eee65 | 1 | 1 | 0 | 2970
+    行数 = 18
+
+    成员对照：A=…9582db9c（推荐人） B=…7d2b420e（被推荐人） C=…e2714262（无推荐人） D=…36d6e672（自推自买） E=…ea9326e8（三级链路末端）
+
+=== 断言 #10 · 既有接口与测试零回归（社交 51 / 内核 335 / 服务端 104） ===
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\test_social.py
+        合计 51 项子断言，通过 51，失败 0；断言 #1-#10 全部通过
+        明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\test_social_result.json
+    [PASS] 社交 51：既有轻社交端到端验证全过（51/51，失败 0，退出码 0，5s）  合计=51 通过=51 失败=0 rc=0
+    $ D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe -m unittest discover -s tests -t .
+      ----------------------------------------------------------------------
+      Ran 335 tests in 3.375s
+      OK
+    [PASS] 内核 335：核心测试全过（Ran 335 tests / OK，4s）  Ran=335 rc=0
+    $ C:\Users\41692\AppData\Local\Programs\Python\Python312\python.EXE -m unittest discover -s tests -t .
+      ----------------------------------------------------------------------
+      Ran 104 tests in 0.856s
+      OK
+    [PASS] 服务端 104：服务层测试全过（Ran 104 tests / OK，1s，解释器 C:\Users\41692\AppData\Local\Programs\Python\Python312\python.EXE）  Ran=104 rc=0
+    [PASS] 既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同（抽查 8 个文件）  全同=8 不一致=无
+
+=== 汇总（#1–#10 = 变更单 §二 验收标准；A/B/C/D = 本次追加）===
+  断言 #1  下单幂等：同 idempotency_key 重复请求只产生 1 张订单 —— PASS（5/5 项通过）
+  断言 #2  支付回调后订单 status=paid；同一回调重放不重复计佣 —— PASS（7/7 项通过）
+  断言 #3  佣金金额 = round(实付 × 30%)，逐分比对（19900 → 5970） —— PASS（9/9 项通过）
+  断言 #4  续费订单同样产生 1 条佣金，不与首单合并 —— PASS（4/4 项通过）
+  断言 #5  全额退款 → 该笔佣金 reversed；部分退款 → reversed_cents 按比例 —— PASS（7/7 项通过）
+  断言 #6  自推自买 → 不计佣并落人工复核标记 —— PASS（5/5 项通过）
+  断言 #7  无推荐人的订单 → 不产生佣金（不报错） —— PASS（3/3 项通过）
+  断言 #8  用户端可查收益明细；后台可查全量流水（分页） —— PASS（11/11 项通过）
+  断言 #9  回调验签位存在且默认拒绝未签名 / 签名不符的请求 —— PASS（8/8 项通过）
+  断言 #10 既有接口与测试零回归（社交 51 / 内核 335 / 服务端 104） —— PASS（4/4 项通过）
+  断言 #A  追加 A · 合规断言：仅一级分销、不递归（A←B←E 三级链路实测） —— PASS（5/5 项通过）
+  断言 #B  追加 B · 结算口径：T+7 过退款期后 pending → settled —— PASS（3/3 项通过）
+  断言 #C  追加 C · 金额口径：一切金额为整数分，拒绝浮点 —— PASS（3/3 项通过）
+  断言 #D  追加 D · 边界：带参路径鉴权 / 后台闸门 / 未知通道拒绝 —— PASS（6/6 项通过）
+
+  合计 80 项子断言，通过 80，失败 0；本脚本范围 全部通过
+  未验证项（如实标注）：真实微信/支付宝通道与 P2 资质疑材料、前端订阅页与后台页面、线上部署、真实资金结算与提现（P3）
+  明细 JSON: D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\test_pay_commission_result.json

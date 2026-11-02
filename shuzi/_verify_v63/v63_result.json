@@ -1,0 +1,42 @@
+[
+ {
+  "tag": "P0 账号就绪",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "P1 注入即折算 7 积分",
+  "ok": true,
+  "detail": "credited=7 balance=7"
+ },
+ {
+  "tag": "P2 状态含积分口径",
+  "ok": true,
+  "detail": "{'balance': 7, 'rate': '1:1（1 能力值 = 1 积分）', 'auto': True, 'expire': '永不清零', 'my_converted': 7}"
+ },
+ {
+  "tag": "P3 积分账本有一条 vault_convert +7",
+  "ok": true,
+  "detail": "[{'id': 1, 'delta': 7, 'reason': 'vault_convert', 'reason_text': '能量仓折算', 'ref_order_no': 'vlt_52efaf74363643', 'created_at': '2026-10-25T11:22:36', 'unit': 'points'}]"
+ },
+ {
+  "tag": "P4 能量流水已标记 rewarded=1",
+  "ok": true,
+  "detail": "rewarded=1"
+ },
+ {
+  "tag": "P5 4 次 = 28 能力值 = 28 积分（Σdelta 与余额一致）",
+  "ok": true,
+  "detail": "inj=4 contrib=28 vault_pts=28 ledger_bal=28"
+ },
+ {
+  "tag": "P7 页面积分卡 + 跳转积分明细",
+  "ok": true,
+  "detail": "bal=28 chip=1:1（1 能力值 = 1 积分） · 永不清零 on_points=True"
+ },
+ {
+  "tag": "P8 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

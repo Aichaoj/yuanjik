@@ -1,0 +1,452 @@
+[
+ {
+  "criteria": "7",
+  "name": "签发接口需后台令牌：未携带 → 401（既有 20000）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "7",
+  "name": "签发接口**错后台令牌 → 401**（不泄露令牌是否存在）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "7",
+  "name": "签发响应**带明文**（api_key）且前缀 = 明文前 8 位、key_id 非空",
+  "ok": true,
+  "detail": "prefix=yjk_VfUc 明文长度=36"
+ },
+ {
+  "criteria": "7",
+  "name": "库里 key_hash == SHA-256(明文)（脚本独立复算，逐字比对）",
+  "ok": true,
+  "detail": "key_hash=6261d6ad4440d7a4…（前 16 位） 独立复算一致=True"
+ },
+ {
+  "criteria": "7",
+  "name": "明文**在库里搜不到**（DB 主文件与 -wal 逐字节搜索均 0 命中）",
+  "ok": true,
+  "detail": "DB 命中=False / WAL 命中=False"
+ },
+ {
+  "criteria": "7",
+  "name": "明文**不进服务端日志**（server 日志逐字节搜索 0 命中）",
+  "ok": true,
+  "detail": "日志文件=D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v10\\test_open_api_server.log"
+ },
+ {
+  "criteria": "7",
+  "name": "默认配额 = **免费 10 万次/月**（未传 monthly_quota 时按常量落库）",
+  "ok": true,
+  "detail": "库里 monthly_quota=100000 响应=100000"
+ },
+ {
+  "criteria": "7",
+  "name": "台账只回前缀与用量：**不含明文、不含 key_hash**（响应体逐字搜索）",
+  "ok": true,
+  "detail": "HTTP 200 明文命中=False key_hash 命中=False"
+ },
+ {
+  "criteria": "7",
+  "name": "二次签发得到**不同的明文**（随机源，非同值重发）",
+  "ok": true,
+  "detail": "key_id=key_5b452c359942"
+ },
+ {
+  "criteria": "1",
+  "name": "GET /api/v1/open/yunqi/2026 → 200，**免鉴权**（未带任何令牌）",
+  "ok": true,
+  "detail": "HTTP 200 code=0"
+ },
+ {
+  "criteria": "1",
+  "name": "运气盘含 license == CC-BY-4.0 与非空 disclaimer",
+  "ok": true,
+  "detail": "license=CC-BY-4.0 disclaimer[:16]=本产品不属于医疗器械，不用于疾病"
+ },
+ {
+  "criteria": "1",
+  "name": "运气盘与**内核直算逐字一致**（ganzhi/中运/太过不及/司天/在泉/六步）",
+  "ok": true,
+  "detail": "ganzhi=丙午 中运=水 六步=6"
+ },
+ {
+  "criteria": "1",
+  "name": "运气盘含 lineage 可解释链（13 条，格式 [规则ID] …）",
+  "ok": true,
+  "detail": "首条=[YQ-001] 天干化五运（中运）｜出处：《素问·五运行大论》｜要点：甲己化土，乙庚化金，丙辛"
+ },
+ {
+  "criteria": "1",
+  "name": "GET /api/v1/open/solar-terms/2026 → 200，免鉴权，**恰好 24 条**",
+  "ok": true,
+  "detail": "HTTP 200 count=24"
+ },
+ {
+  "criteria": "1",
+  "name": "节气时刻与**内核直算逐字一致**（24/24 条全等）",
+  "ok": true,
+  "detail": "首条={\"at\": \"2026-01-05 16:23:10\", \"name\": \"小寒\", \"seq\": 1} 末条={\"at\": \"2026-12-22 04:50:14\", \"name\": \"冬至\", \"seq\": 24}"
+ },
+ {
+  "criteria": "1",
+  "name": "节气响应含 license/disclaimer",
+  "ok": true,
+  "detail": "license=CC-BY-4.0"
+ },
+ {
+  "criteria": "1",
+  "name": "GET /api/v1/open/shichen → 200，免鉴权，**12 条**时辰且起点为子时 23:00–01:00",
+  "ok": true,
+  "detail": "HTTP 200 count=12 首条={\"seq\": 1, \"zhi\": \"子\", \"start\": \"23:00\", \"end\": \"01:00\", \"channel\": \"胆\", \"wuxing\": \"木\", \"kernel_weight_at_center\": 1.0, \"kernel_cross_check\": true}"
+ },
+ {
+  "criteria": "1",
+  "name": "时辰当令脏腑与内核 ZF-002 表逐条一致（12/12），且内核交叉校验位为 true",
+  "ok": true,
+  "detail": "交叉校验=True"
+ },
+ {
+  "criteria": "1",
+  "name": "GET /api/v1/open/wuxing → 200，免鉴权，**5 行**且与内核五行表一致",
+  "ok": true,
+  "detail": "HTTP 200 五行=['木', '火', '土', '金', '水']"
+ },
+ {
+  "criteria": "1",
+  "name": "四条 L1 接口**都不需要任何令牌**（全部 200 且响应含 license=CC-BY-4.0）",
+  "ok": true,
+  "detail": "license 集合={'CC-BY-4.0'}"
+ },
+ {
+  "criteria": "1",
+  "name": "年份越界 → 既有 10002（HTTP 400）+ 可读 detail（不静默兜底）",
+  "ok": true,
+  "detail": "HTTP 400 code=10002 detail={\"field\": \"year\", \"got\": 9999, \"min_year\": 1900, \"max_year\": 2100}"
+ },
+ {
+  "criteria": "2",
+  "name": "POST /api/v1/calc/ganzhi **无 key → 401**（既有 20000）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "2",
+  "name": "POST /api/v1/calc/ganzhi **错 key → 403**（7xxxx 码段的专用码 70005，带可读原因）",
+  "ok": true,
+  "detail": "HTTP 403 code=70005 reason=invalid_api_key"
+ },
+ {
+  "criteria": "2",
+  "name": "POST /api/v1/calc/ganzhi **合法 key → 200 且含 lineage**",
+  "ok": true,
+  "detail": "HTTP 200 四柱=['庚午', '辛巳', '辛未', '壬辰'] lineage=7 条"
+ },
+ {
+  "criteria": "2",
+  "name": "四柱与**内核直算逐字一致**（真太阳时校正后的年/月/日/时柱）",
+  "ok": true,
+  "detail": "pillars=['庚午', '辛巳', '辛未', '壬辰'] 真太阳时=1990-05-06T08:19:00 偏移=-10.854"
+ },
+ {
+  "criteria": "2",
+  "name": "POST /api/v1/calc/chart **无 key → 401**",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "2",
+  "name": "POST /api/v1/calc/chart **合法 key → 200，含 lineage 与 chart_id**",
+  "ok": true,
+  "detail": "HTTP 200 chart_id=chart_65995c6a0a8b624167d2bd98"
+ },
+ {
+  "criteria": "2",
+  "name": "**已停用凭据 → 403 且 code=70006** reason=api_key_revoked（改库后下一次请求即生效，不做缓存）",
+  "ok": true,
+  "detail": "HTTP 403 code=70006 reason=api_key_revoked"
+ },
+ {
+  "criteria": "3",
+  "name": "rule_version 与内核常量逐字一致（TYH-RULES-1.3.0），ai_generated 一律 false（内核确定性推演）",
+  "ok": true,
+  "detail": "L1=TYH-RULES-1.3.0 L2=TYH-RULES-1.3.0"
+ },
+ {
+  "criteria": "3",
+  "name": "param_hash 同输入必得同值（重复调用逐字相等）",
+  "ok": true,
+  "detail": "param_hash=4df3394e042731b3…"
+ },
+ {
+  "criteria": "4",
+  "name": "**键名**扫描 612 个字段名 → 病名/诊断类 0 命中",
+  "ok": true,
+  "detail": "命中=无"
+ },
+ {
+  "criteria": "4",
+  "name": "**取值**扫描 14 份响应正文（已剔除强制携带的固定免责声明）→ 病名列表 0 命中",
+  "ok": true,
+  "detail": "命中=无"
+ },
+ {
+  "criteria": "4",
+  "name": "L2 生辰盘**刻意不输出个体节律结论**（响应里无 score/level/focus 类字段，个人节律属 L3 需授权）",
+  "ok": true,
+  "detail": "字段抽查=[]"
+ },
+ {
+  "criteria": "5",
+  "name": "免费档配额 = **100000 次/月**（响应 quota.monthly_limit 与库里字段一致）",
+  "ok": true,
+  "detail": "响应={\"period\": \"2026-10\", \"unit\": \"call\", \"monthly_limit\": 100000, \"used\": 3, \"remaining\": 99997, \"free_default\": 100000}"
+ },
+ {
+  "criteria": "5",
+  "name": "改额后**前 3 次 200**（used 依次 1/2/3）",
+  "ok": true,
+  "detail": "前三次=[(200, 1), (200, 2), (200, 3)]"
+ },
+ {
+  "criteria": "5",
+  "name": "**第 4 次 429** 且业务码 40001、提示含已用/上限（本月调用额度已用尽（3/3 次，周期 2026-10）：）",
+  "ok": true,
+  "detail": "HTTP 429 code=40001 message=本月调用额度已用尽（3/3 次，周期 2026-10）：免费档默认 100000 次/月，下个自然月自动恢复；需要更高配额请联系运营调整"
+ },
+ {
+  "criteria": "5",
+  "name": "被拒的第 4 次**不耗额度**（库里 used_this_month 仍为 3）",
+  "ok": true,
+  "detail": "库里 used=3"
+ },
+ {
+  "criteria": "5",
+  "name": "额度耗尽只影响该凭据：主凭据（10 万档）仍然 200",
+  "ok": true,
+  "detail": "主凭据 HTTP 200"
+ },
+ {
+  "criteria": "6",
+  "name": "调用 5 次 → 表中**正好 +5 行**（18 → 23）",
+  "ok": true,
+  "detail": "Δ总行数=5 该凭据行数=5"
+ },
+ {
+  "criteria": "6",
+  "name": "每行都带 key_id / 路径 / 状态 / 耗时 / 耗用额度 / 时间，且 cost=1（真实执行）",
+  "ok": true,
+  "detail": "不合格行数=0 列=['code', 'cost', 'created_at', 'elapsed_ms', 'id', 'idempotency_key', 'key_id', 'key_prefix', 'method', 'path', 'status']"
+ },
+ {
+  "criteria": "6",
+  "name": "Σcost == 5 且库里 used_this_month == 5（额度与计量同步）",
+  "ok": true,
+  "detail": "Σcost=5 used=5"
+ },
+ {
+  "criteria": "6",
+  "name": "被拒调用也留痕但**不耗额度**：前面无 key/错 key/429 三类都写过一行（cost=0）",
+  "ok": true,
+  "detail": "cost=0 且状态 401/403/429 的行数=6"
+ },
+ {
+  "criteria": "9",
+  "name": "同 key 同体重复提交 → **同一业务结果**（chart_id 逐字相同、HTTP 200）",
+  "ok": true,
+  "detail": "chart_id=chart_65995c6a0a8b624167d2bd98"
+ },
+ {
+  "criteria": "9",
+  "name": "第 2 次标 idempotent_replay=true（回放首次响应，不重复计算）",
+  "ok": true,
+  "detail": "first=False second=True"
+ },
+ {
+  "criteria": "9",
+  "name": "**只计一次调用**：api_call_log 该凭据 1 行（1 → 1），额度 used 仍为 1",
+  "ok": true,
+  "detail": "行数 1→1 used 1→1"
+ },
+ {
+  "criteria": "9",
+  "name": "**同 key 异体 → 既有 10003（HTTP 409）**，不产生第二次业务",
+  "ok": true,
+  "detail": "HTTP 409 code=10003 行数=2"
+ },
+ {
+  "criteria": "8",
+  "name": "/openapi.json → 200，**可被 json.loads 解析**，openapi 版本为 3.0.x",
+  "ok": true,
+  "detail": "HTTP 200 openapi=3.0.3"
+ },
+ {
+  "criteria": "8",
+  "name": "**接口数与实现一致**：文档 8 个操作 == 期望清单 8 条，且逐条（方法+路径模板）相等",
+  "ok": true,
+  "detail": "文档-期望 差集=[]；计数字段=8"
+ },
+ {
+  "criteria": "8",
+  "name": "文档里每条接口**都能被真服务命中**（L1 200；L2/运营无凭据 → 401；无一条落到「未知接口 10000」）",
+  "ok": true,
+  "detail": "实测状态=[('GET', 200, 0), ('GET', 200, 0), ('GET', 200, 0), ('GET', 200, 0), ('POST', 401, 20000), ('POST', 401, 20000), ('POST', 401, 20000), ('GET', 401, 20000)]"
+ },
+ {
+  "criteria": "8",
+  "name": "文档声明了合规口径：license=CC-BY-4.0、四件套 schema、错误码表、配额与限流",
+  "ok": true,
+  "detail": "license=CC-BY-4.0 x-error-codes=['10002', '10003', '20000', '40000', '40001', '70005', '70006']"
+ },
+ {
+  "criteria": "8",
+  "name": "/docs → 200 且 Content-Type 为 text/html，页面可读（≥4000 字节、含全部 8 条接口路径）",
+  "ok": true,
+  "detail": "HTTP 200 ctype=text/html; charset=utf-8 bytes=9319 缺路径=无"
+ },
+ {
+  "criteria": "8",
+  "name": "/docs 写明鉴权、配额、幂等、许可与免责声明（关键串全在）",
+  "ok": true,
+  "detail": "关键串命中={'X-API-Key': True, '100000': True, 'Idempotency-Key': True, 'CC-BY-4.0': True, '不属于医疗器械': True}"
+ },
+ {
+  "criteria": "F",
+  "name": "api_key 含落库要求全部字段：SHA-256 哈希 / 8 位前缀 / 名称 / 配额 / 已用量 / 状态 / 创建时间",
+  "ok": true,
+  "detail": "缺少=[]"
+ },
+ {
+  "criteria": "F",
+  "name": "api_call_log 含计量要求全部字段：key_id / 路径 / 状态 / 耗时 / 耗用额度 / 时间",
+  "ok": true,
+  "detail": "缺少=[]"
+ },
+ {
+  "criteria": "F",
+  "name": "两张表落在**同一份 state.db**（沿用既有库，不另开库）",
+  "ok": true,
+  "detail": "DB=D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v10\\open_api_v10.db"
+ },
+ {
+  "criteria": "F",
+  "name": "库里**搜不到任何明文凭据**：全表扫 key_prefix/key_hash，明文串 0 命中",
+  "ok": true,
+  "detail": "三把测试凭据明文均未落库；台账 HTTP 200"
+ },
+ {
+  "criteria": "10",
+  "name": "既有 POST /api/v1/auth/guest → 200 且发令牌（游客身份链路不变）",
+  "ok": true,
+  "detail": "HTTP 200 member=…cdf9eb1a"
+ },
+ {
+  "criteria": "10",
+  "name": "既有 GET /api/v1/rhythm/daily → 200，**冻结字段一个都不缺**（19 个）",
+  "ok": true,
+  "detail": "缺=无"
+ },
+ {
+  "criteria": "10",
+  "name": "daily 的 index（时相指数）与 personalized（个体化摘要）仍在，口径字段齐",
+  "ok": true,
+  "detail": "index.score=74 personalized=NoneType"
+ },
+ {
+  "criteria": "10",
+  "name": "daily 的 profile/打卡链路不变（建档与打卡均 200，观测数 ≥1）",
+  "ok": true,
+  "detail": "birth=200 checkin=200 observation_count=1"
+ },
+ {
+  "criteria": "10",
+  "name": "既有 friends 三件套形状不变：friends / 隐私三开关 / 邀请链接",
+  "ok": true,
+  "detail": "friends=200 privacy=200 referral=200"
+ },
+ {
+  "criteria": "10",
+  "name": "既有 /api/health → 200，规则版本 TYH-RULES-1.3.0，服务版本与表清单未变",
+  "ok": true,
+  "detail": "rule=TYH-RULES-1.3.0"
+ },
+ {
+  "criteria": "10",
+  "name": "既有首页与 GEO 静态资产不变：/ 200 且首页直含 JSON-LD（Dataset 与 SoftwareApplication），/llms.txt、/robots.txt、/sitemap.xml 均 200",
+  "ok": true,
+  "detail": "首页 HTTP 200 JSON-LD=True"
+ },
+ {
+  "criteria": "10",
+  "name": "既有信封形状不变：未登录访问受保护接口 → 401，响应键仍为 code/message/data/trace_id",
+  "ok": true,
+  "detail": "HTTP 401 keys=['code', 'data', 'detail', 'message', 'trace_id']"
+ },
+ {
+  "criteria": "3",
+  "name": "全部 30 个成功响应均含四件套且类型/长度合法（disclaimer 非空字符串、ai_generated 布尔、param_hash 为 64 位十六进制、rule_version 非空）",
+  "ok": true,
+  "detail": "通过 30/30；问题项=无"
+ },
+ {
+  "criteria": "3",
+  "name": "四件套覆盖到**全部 8 条接口**（L1 四条 + L2 两条 + 运营两条），不是只覆盖一两条",
+  "ok": true,
+  "detail": "已覆盖 8/8 个资源；缺=无"
+ },
+ {
+  "criteria": "E",
+  "name": "禁用词扫描：6 个文件 × 18 条词表 → **命中 0**（要求 0）",
+  "ok": true,
+  "detail": "命中合计=0"
+ },
+ {
+  "criteria": "10",
+  "name": "社交 51：既有轻社交端到端验证（合计 51 项子断言，通过 51，失败 0，5s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=51（期望 51）"
+ },
+ {
+  "criteria": "10",
+  "name": "推荐 45：既有推荐关系端到端验证（合计 45 项子断言，通过 45，失败 0，5s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=45（期望 45）"
+ },
+ {
+  "criteria": "10",
+  "name": "支付佣金 80：P1 自建支付与佣金账本全过（合计 80 项子断言，通过 80，失败 0，15s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=80（期望 80）"
+ },
+ {
+  "criteria": "10",
+  "name": "独立后台 144：既有后台端到端验证（合计 144 项断言，通过 144，失败 0，20s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=144（期望 144）"
+ },
+ {
+  "criteria": "10",
+  "name": "积分 77：v8 积分余额与佣金路线全过（本次扩展未破坏 v8）（合计 77 项子断言，通过 77，失败 0，54s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=77（期望 77）"
+ },
+ {
+  "criteria": "10",
+  "name": "内核 335：核心测试全过（便携运行时）（Ran 335 tests，4s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=335（期望 335）"
+ },
+ {
+  "criteria": "10",
+  "name": "服务端 104：服务层测试全过（解释器 C:\\Users\\41692\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE）（Ran 104 tests，1s）",
+  "ok": true,
+  "detail": "rc=0 含汇总行=True 项数=104（期望 104）"
+ },
+ {
+  "criteria": "10",
+  "name": "既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同（抽查 8 个文件）",
+  "ok": true,
+  "detail": "全同=8 不一致=无"
+ }
+]

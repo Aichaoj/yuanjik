@@ -1,0 +1,72 @@
+[
+ {
+  "name": "服务健康检查",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A 改名成功",
+  "ok": true,
+  "detail": "HTTP 200 nickname=晨光小友"
+ },
+ {
+  "name": "invite_url 含 ?invite=<码>",
+  "ok": true,
+  "detail": "https://shuzi.yuanjk.cn/?invite=4UAZ94V0"
+ },
+ {
+  "name": "share_text 含昵称与链接",
+  "ok": true,
+  "detail": "我是晨光小友，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=4UAZ94V0"
+ },
+ {
+  "name": "预览接口返回权威昵称（免鉴权）",
+  "ok": true,
+  "detail": "{\"valid\": true, \"nickname\": \"晨光小友\"}"
+ },
+ {
+  "name": "预览响应不含 member_id",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "落地页显示邀请人昵称",
+  "ok": true,
+  "detail": "banner='晨光小友 邀请你一起看每日健康指数'"
+ },
+ {
+  "name": "地址栏已清掉 invite 参数",
+  "ok": true,
+  "detail": "search=''"
+ },
+ {
+  "name": "B 建档后出指数卡（绑定不阻塞）",
+  "ok": true,
+  "detail": "今日健康指数 | 当日时相推算 | 74 | 分 | 良 | 优 | 良 | 中 | 需关注 |  | 按出生时空、地域、基因、环境、个体与家庭等多维度分析·非"
+ },
+ {
+  "name": "自动绑定被调用",
+  "ok": true,
+  "detail": "[(200, '/api/v1/friends/invite')]"
+ },
+ {
+  "name": "前端无未捕获异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "刷新不重复绑定（幂等）",
+  "ok": true,
+  "detail": "1 -> 1"
+ },
+ {
+  "name": "A 侧出现已接受好友",
+  "ok": true,
+  "detail": "[\"用户5541\"]"
+ },
+ {
+  "name": "A 的邀请码仍有效",
+  "ok": true,
+  "detail": ""
+ }
+]

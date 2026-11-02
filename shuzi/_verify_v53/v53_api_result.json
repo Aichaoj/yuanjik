@@ -1,0 +1,106 @@
+{
+  "pass": 20,
+  "total": 20,
+  "items": [
+    {
+      "name": "A1 未登录 GET /v1/body/status → 401（不是 404）",
+      "ok": true,
+      "detail": "status=401"
+    },
+    {
+      "name": "A2 游客登录拿到令牌",
+      "ok": true,
+      "detail": "member=mbr_d09e0c4a84c65bff"
+    },
+    {
+      "name": "A3 新账号体型为「未保存」",
+      "ok": true,
+      "detail": "saved=False"
+    },
+    {
+      "name": "A4 保存体型 200 且回显一致",
+      "ok": true,
+      "detail": "status=200 {'gender': 'male', 'height_cm': 176, 'weight_kg': 72, 'updated_at': '2026-10-23T12:05:04', 'saved': True}"
+    },
+    {
+      "name": "A5 身高 300 → 400 且给可读中文",
+      "ok": true,
+      "detail": "status=400"
+    },
+    {
+      "name": "A6 身高非数字 → 400",
+      "ok": true,
+      "detail": "status=400"
+    },
+    {
+      "name": "A7 注册手机号账号",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "A8 设备A 用手机号登录",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "A9 设备A 保存 162/53",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "A10 设备B（全新 device_id）同一手机号登录",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "★A11 设备B 读到 162/53（换设备仍在 = 甲方诉求①）",
+      "ok": true,
+      "detail": "{'gender': 'female', 'height_cm': 162, 'weight_kg': 53, 'updated_at': '2026-10-23T12:05:04', 'saved': True}"
+    },
+    {
+      "name": "A12 另一个账号读不到别人的体型（隔离）",
+      "ok": true,
+      "detail": "saved=False"
+    },
+    {
+      "name": "A13 全空保存 = 清空（saved=False）",
+      "ok": true,
+      "detail": "saved=False"
+    },
+    {
+      "name": "B1 添加家人可带体型",
+      "ok": true,
+      "detail": "status=200 body={'gender': 'female', 'height_cm': 158, 'weight_kg': 55, 'saved': True}"
+    },
+    {
+      "name": "B2 /family 回 body，且 index.body 同步（能量图才能按体型画）",
+      "ok": true,
+      "detail": "body={'gender': 'female', 'height_cm': 158, 'weight_kg': 55, 'saved': True} index.body={'gender': 'female', 'height_cm': 158, 'weight_kg': 55}"
+    },
+    {
+      "name": "B3 只改体重：其余不变（158 保留）",
+      "ok": true,
+      "detail": "{'gender': 'female', 'height_cm': 158, 'weight_kg': 57, 'saved': True}"
+    },
+    {
+      "name": "B4 家人身高 100 → 400 且可读",
+      "ok": true,
+      "detail": "status=400"
+    },
+    {
+      "name": "B5 家人体型可清空（saved=False）",
+      "ok": true,
+      "detail": "{'gender': '', 'height_cm': 0, 'weight_kg': 0, 'saved': False}"
+    },
+    {
+      "name": "B6 不填体型也能加家人（选填，不破坏老流程）",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "B7 未填体型时 index 不挂 body（不改既有形状）",
+      "ok": true,
+      "detail": "keys=['band', 'band_name', 'basis', 'basis_note', 'channels', 'score', 'score_kernel']"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<!-- AI数显 · 元健康 —— 首页 JSON-LD 注入片段（GEO §7.4.4②） -->
+<!-- 用法：整段粘贴到 index.html 的 </head> 之前。 -->
+<!-- 刻意不使用医疗类 Schema（医疗网页、医疗疾病等类型），以免触发 YMYL 高风险审查。 -->
+<!-- 本片段经自检脚本断言：不含任何医疗类 Schema 的类型名。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "六十甲子五运六气全表（1984–2043）",
+  "description": "按《素问》运气七篇规则推演的一个完整六十甲子周期的中运、司天、在泉、六步客主加临数据。",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "@type": "Organization",
+    "name": "AI数显 · 元健康"
+  },
+  "temporalCoverage": "1984/2043",
+  "variableMeasured": [
+    "中运",
+    "司天",
+    "在泉",
+    "主气",
+    "客气",
+    "客主加临"
+  ],
+  "url": "https://shuzi.yuanjk.cn/data/yunqi-1984-2043.csv"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AI数显 · 元健康 · 天元衡",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "url": "https://shuzi.yuanjk.cn/",
+  "description": "基于个人时空节律的生活方式参考工具。非医疗器械，不用于诊断、治疗或预防。",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI数显 · 元健康"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "2026 年五运六气是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026 年为丙午年，水运太过，少阴君火司天，阳明燥金在泉；六步客主加临与 24 节气时刻见站内知识页与公开数据集。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "五运六气是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "五运六气出自《黄帝内经·素问》运气七篇，是以干支纪年为骨架推演年度气候倾向的模型，基本周期为六十甲子即 60 年。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "十二时辰分别对应哪个脏腑？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "依子午流注学说：子胆、丑肝、寅肺、卯大肠、辰胃、巳脾、午心、未小肠、申膀胱、酉肾、戌心包、亥三焦。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "二十四节气的精确时刻从哪里可以核对？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "本站公开 1900–2100 年共 4824 条节气精确时刻，按东八区标准经线 120°E 发布，可用紫金山天文台公布数据逐年比对。"
+      }
+    }
+  ]
+}
+</script>

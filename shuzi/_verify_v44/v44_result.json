@@ -1,0 +1,72 @@
+[
+ {
+  "name": "A0 服务就绪",
+  "ok": true,
+  "detail": "http://127.0.0.1:15322"
+ },
+ {
+  "name": "A1 注册并拿到 access+refresh",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "name": "B1 refresh → 新 access",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "name": "B2 refresh 轮换（新 refresh 与旧不同）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B4 用新 access 调业务接口可用",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "name": "C1 我的申请（空）",
+  "ok": true,
+  "detail": "{\"items\": [], \"needs_options\": [\"饮食\", \"睡眠\", \"运动\", \"体重\", \"慢病随访\", \"母婴\", \"情绪\", \"其他\"], \"notice\": \"定制专属 AI 保健师为人工服务：提交后由客服联系确"
+ },
+ {
+  "name": "C2 方向选项齐全",
+  "ok": true,
+  "detail": "['饮食', '睡眠', '运动', '体重', '慢病随访', '母婴', '情绪', '其他']"
+ },
+ {
+  "name": "C3 提交申请",
+  "ok": true,
+  "detail": "{\"id\": \"6ce9b1b4844745ddbe756b126fd5bae5\", \"status\": \"pending\", \"updated\": false, \"note\": \"申请已提交，客服会在 1 个工作日内联系你（不会自动扣费）"
+ },
+ {
+  "name": "C4 7 天内重复提交=更新（updated=True）",
+  "ok": true,
+  "detail": "{'id': '6ce9b1b4844745ddbe756b126fd5bae5', 'status': 'pending', 'updated': True, 'note': '已更新你的申请，客服会尽快联系你。'}"
+ },
+ {
+  "name": "C5 仍然只有 1 条（不刷屏）",
+  "ok": true,
+  "detail": "count=1"
+ },
+ {
+  "name": "C6 不选方向 → 400",
+  "ok": true,
+  "detail": "http=400"
+ },
+ {
+  "name": "C7 未登录 → 401",
+  "ok": true,
+  "detail": "http=401"
+ },
+ {
+  "name": "B3 旧 refresh 再用 → 401（重放被拒，并吊销全部会话）",
+  "ok": true,
+  "detail": "http=401"
+ },
+ {
+  "name": "B5 重放后原会话也失效（安全预期）",
+  "ok": true,
+  "detail": "http=401"
+ }
+]

@@ -1,0 +1,127 @@
+[
+ {
+  "name": "服务健康检查",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "游客登录",
+  "ok": true,
+  "detail": "HTTP 200"
+ },
+ {
+  "name": "生辰建档",
+  "ok": true,
+  "detail": "HTTP 200"
+ },
+ {
+  "name": "daily 含 index 字段",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.score 为 0-100 整数",
+  "ok": true,
+  "detail": "score=74"
+ },
+ {
+  "name": "index.band 非空",
+  "ok": true,
+  "detail": "band=良/B"
+ },
+ {
+  "name": "index.basis 含'非诊断'或'参考'",
+  "ok": true,
+  "detail": "basis=按出生时空与当日运气推算·非诊断"
+ },
+ {
+  "name": "index.ref 有值",
+  "ok": true,
+  "detail": "ref=0.35"
+ },
+ {
+  "name": "attention 非空",
+  "ok": true,
+  "detail": "['肺', '大肠', '心', '肝']"
+ },
+ {
+  "name": "windows 非空",
+  "ok": true,
+  "detail": "['肺经当令', '大肠经当令', '心经当令']"
+ },
+ {
+  "name": "calibration 仍在",
+  "ok": true,
+  "detail": "基线建立中（0/7）"
+ },
+ {
+  "name": "level 仍为 null（冷启动不破专利口径）",
+  "ok": true,
+  "detail": "level=None"
+ },
+ {
+  "name": "两次调用 score 一致",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "不同生辰 score 不同",
+  "ok": true,
+  "detail": "74 vs 66"
+ },
+ {
+  "name": "展示分随内核分单调（同向）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "出现 ≥2 个档位（归一化生效）",
+  "ok": true,
+  "detail": "档位=['B', 'C']"
+ },
+ {
+  "name": "展示分与内核分不同（确实做了映射）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "展示分均在 0-100",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "前端出现指数卡",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "指数卡内有分数文本",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "显示 basis（推算口径）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "显示个体化校准提示",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "保留免责声明/AI 标识",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "无横向滚动",
+  "ok": true,
+  "detail": "430 vs 430"
+ },
+ {
+  "name": "无未捕获 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

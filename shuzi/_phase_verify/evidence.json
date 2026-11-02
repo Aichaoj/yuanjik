@@ -1,0 +1,673 @@
+{
+  "ref": 0.35,
+  "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+  "basis": "按出生时空与当日运气推算·非诊断",
+  "phase_note": "冷启动以零点为参照；基线建立后另有个体化口径",
+  "target_date": "2026-10-07",
+  "cases": [
+    {
+      "birth_local": "1985-03-12T08:30",
+      "longitude": 116.4,
+      "latitude": 39.9,
+      "result": {
+        "score": 68,
+        "band_code": "C",
+        "band": "中",
+        "basis": "按出生时空与当日运气推算·非诊断",
+        "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+        "ref": 0.35,
+        "channels": [
+          {
+            "channel": "肝",
+            "raw": 0.115,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "胆",
+            "raw": 0.115,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "心",
+            "raw": 0.265,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "小肠",
+            "raw": 0.09,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "脾",
+            "raw": 0.05,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "胃",
+            "raw": 0.1,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "肺",
+            "raw": 0.22,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "大肠",
+            "raw": 0.13,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "肾",
+            "raw": 0.13,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "膀胱",
+            "raw": 0.09,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "心包",
+            "raw": 0.025,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "三焦",
+            "raw": 0.025,
+            "direction": "平稳",
+            "attention": false
+          }
+        ],
+        "attention": [
+          {
+            "channel": "心",
+            "direction": "偏亢",
+            "raw": 0.265
+          },
+          {
+            "channel": "肺",
+            "direction": "偏亢",
+            "raw": 0.22
+          },
+          {
+            "channel": "大肠",
+            "direction": "偏亢",
+            "raw": 0.13
+          },
+          {
+            "channel": "肾",
+            "direction": "偏亢",
+            "raw": 0.13
+          }
+        ],
+        "windows": [
+          {
+            "name": "心经当令",
+            "start": "11:00",
+            "end": "13:00",
+            "kind": "golden"
+          },
+          {
+            "name": "肺经当令",
+            "start": "03:00",
+            "end": "05:00",
+            "kind": "golden"
+          },
+          {
+            "name": "大肠经当令",
+            "start": "05:00",
+            "end": "07:00",
+            "kind": "golden"
+          },
+          {
+            "name": "肾经当令",
+            "start": "17:00",
+            "end": "19:00",
+            "kind": "golden"
+          }
+        ],
+        "rule_ids": [
+          "CAL-001",
+          "CAL-005",
+          "CAL-007",
+          "OF-001",
+          "OF-002",
+          "YQ-015",
+          "YQ-005",
+          "OF-003",
+          "YQ-006",
+          "ZF-002",
+          "YQ-014"
+        ],
+        "phase_note": "冷启动以零点为参照；基线建立后另有个体化口径"
+      }
+    },
+    {
+      "birth_local": "1990-07-08T14:20",
+      "longitude": 121.5,
+      "latitude": 31.2,
+      "result": {
+        "score": 71,
+        "band_code": "B",
+        "band": "良",
+        "basis": "按出生时空与当日运气推算·非诊断",
+        "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+        "ref": 0.35,
+        "channels": [
+          {
+            "channel": "肝",
+            "raw": 0.155,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "胆",
+            "raw": 0.08,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "心",
+            "raw": 0.225,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "小肠",
+            "raw": 0.15,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "脾",
+            "raw": 0.0,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "胃",
+            "raw": 0.0,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "肺",
+            "raw": 0.335,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "大肠",
+            "raw": 0.22,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "肾",
+            "raw": 0.04,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "膀胱",
+            "raw": 0.0,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "心包",
+            "raw": 0.0,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "三焦",
+            "raw": 0.0,
+            "direction": "平稳",
+            "attention": false
+          }
+        ],
+        "attention": [
+          {
+            "channel": "肺",
+            "direction": "偏亢",
+            "raw": 0.335
+          },
+          {
+            "channel": "心",
+            "direction": "偏亢",
+            "raw": 0.225
+          },
+          {
+            "channel": "大肠",
+            "direction": "偏亢",
+            "raw": 0.22
+          },
+          {
+            "channel": "肝",
+            "direction": "偏亢",
+            "raw": 0.155
+          }
+        ],
+        "windows": [
+          {
+            "name": "肺经当令",
+            "start": "03:00",
+            "end": "05:00",
+            "kind": "golden"
+          },
+          {
+            "name": "心经当令",
+            "start": "11:00",
+            "end": "13:00",
+            "kind": "golden"
+          },
+          {
+            "name": "大肠经当令",
+            "start": "05:00",
+            "end": "07:00",
+            "kind": "golden"
+          },
+          {
+            "name": "肝经当令",
+            "start": "01:00",
+            "end": "03:00",
+            "kind": "golden"
+          }
+        ],
+        "rule_ids": [
+          "CAL-001",
+          "CAL-005",
+          "CAL-007",
+          "OF-001",
+          "OF-002",
+          "YQ-014",
+          "YQ-005",
+          "OF-003",
+          "YQ-007",
+          "YQ-010",
+          "YQ-013",
+          "ZF-002",
+          "YQ-006"
+        ],
+        "phase_note": "冷启动以零点为参照；基线建立后另有个体化口径"
+      }
+    },
+    {
+      "birth_local": "2001-11-30T21:10",
+      "longitude": 113.3,
+      "latitude": 23.1,
+      "result": {
+        "score": 67,
+        "band_code": "C",
+        "band": "中",
+        "basis": "按出生时空与当日运气推算·非诊断",
+        "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+        "ref": 0.35,
+        "channels": [
+          {
+            "channel": "肝",
+            "raw": 0.09,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "胆",
+            "raw": 0.09,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "心",
+            "raw": 0.175,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "小肠",
+            "raw": 0.05,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "脾",
+            "raw": 0.09,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "胃",
+            "raw": 0.04,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "肺",
+            "raw": 0.17,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "大肠",
+            "raw": 0.17,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "肾",
+            "raw": 0.13,
+            "direction": "偏亢",
+            "attention": false
+          },
+          {
+            "channel": "膀胱",
+            "raw": 0.0,
+            "direction": "平稳",
+            "attention": false
+          },
+          {
+            "channel": "心包",
+            "raw": 0.225,
+            "direction": "偏亢",
+            "attention": true
+          },
+          {
+            "channel": "三焦",
+            "raw": 0.175,
+            "direction": "偏亢",
+            "attention": true
+          }
+        ],
+        "attention": [
+          {
+            "channel": "心包",
+            "direction": "偏亢",
+            "raw": 0.225
+          },
+          {
+            "channel": "心",
+            "direction": "偏亢",
+            "raw": 0.175
+          },
+          {
+            "channel": "三焦",
+            "direction": "偏亢",
+            "raw": 0.175
+          },
+          {
+            "channel": "肺",
+            "direction": "偏亢",
+            "raw": 0.17
+          }
+        ],
+        "windows": [
+          {
+            "name": "心包经当令",
+            "start": "19:00",
+            "end": "21:00",
+            "kind": "golden"
+          },
+          {
+            "name": "心经当令",
+            "start": "11:00",
+            "end": "13:00",
+            "kind": "golden"
+          },
+          {
+            "name": "三焦经当令",
+            "start": "21:00",
+            "end": "23:00",
+            "kind": "golden"
+          },
+          {
+            "name": "肺经当令",
+            "start": "03:00",
+            "end": "05:00",
+            "kind": "golden"
+          }
+        ],
+        "rule_ids": [
+          "CAL-001",
+          "CAL-005",
+          "CAL-007",
+          "OF-001",
+          "OF-002",
+          "YQ-015",
+          "YQ-005",
+          "OF-003",
+          "YQ-006",
+          "ZF-002",
+          "YQ-014"
+        ],
+        "phase_note": "冷启动以零点为参照；基线建立后另有个体化口径"
+      }
+    }
+  ],
+  "determinism": [
+    {
+      "birth_local": "1985-03-12T08:30",
+      "bitwise_identical": true,
+      "score_1": 68,
+      "score_2": 68
+    },
+    {
+      "birth_local": "1990-07-08T14:20",
+      "bitwise_identical": true,
+      "score_1": 71,
+      "score_2": 71
+    },
+    {
+      "birth_local": "2001-11-30T21:10",
+      "bitwise_identical": true,
+      "score_1": 67,
+      "score_2": 67
+    }
+  ],
+  "timing_ms": 21.1,
+  "distribution": {
+    "sample": "2026 全年每 15 天 × 3 个生辰 = 72 例",
+    "bands": {
+      "C": 28,
+      "B": 44
+    },
+    "score_min": 64,
+    "score_max": 73,
+    "score_mean": 69.7
+  },
+  "api": {
+    "http_status": 200,
+    "observation_count": 0,
+    "baseline_established": false,
+    "personalized": null,
+    "existing_level": null,
+    "existing_channels": [],
+    "existing_focus": [],
+    "calibration": {
+      "observation_count": 0,
+      "min_observations": 7,
+      "progress_text": "基线建立中（0/7）",
+      "note": "校准完成后，系统才能给出「相对你自己」的节律偏移；在此之前不输出观察等级与关注方向。"
+    },
+    "index": {
+      "score": 68,
+      "band_code": "C",
+      "band": "中",
+      "basis": "按出生时空与当日运气推算·非诊断",
+      "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+      "ref": 0.35,
+      "channels": [
+        {
+          "channel": "肝",
+          "raw": 0.115,
+          "direction": "偏亢",
+          "attention": false
+        },
+        {
+          "channel": "胆",
+          "raw": 0.115,
+          "direction": "偏亢",
+          "attention": false
+        },
+        {
+          "channel": "心",
+          "raw": 0.265,
+          "direction": "偏亢",
+          "attention": true
+        },
+        {
+          "channel": "小肠",
+          "raw": 0.09,
+          "direction": "偏亢",
+          "attention": false
+        },
+        {
+          "channel": "脾",
+          "raw": 0.05,
+          "direction": "平稳",
+          "attention": false
+        },
+        {
+          "channel": "胃",
+          "raw": 0.1,
+          "direction": "偏亢",
+          "attention": false
+        },
+        {
+          "channel": "肺",
+          "raw": 0.22,
+          "direction": "偏亢",
+          "attention": true
+        },
+        {
+          "channel": "大肠",
+          "raw": 0.13,
+          "direction": "偏亢",
+          "attention": true
+        },
+        {
+          "channel": "肾",
+          "raw": 0.13,
+          "direction": "偏亢",
+          "attention": true
+        },
+        {
+          "channel": "膀胱",
+          "raw": 0.09,
+          "direction": "偏亢",
+          "attention": false
+        },
+        {
+          "channel": "心包",
+          "raw": 0.025,
+          "direction": "平稳",
+          "attention": false
+        },
+        {
+          "channel": "三焦",
+          "raw": 0.025,
+          "direction": "平稳",
+          "attention": false
+        }
+      ],
+      "attention": [
+        {
+          "channel": "心",
+          "direction": "偏亢",
+          "raw": 0.265
+        },
+        {
+          "channel": "肺",
+          "direction": "偏亢",
+          "raw": 0.22
+        },
+        {
+          "channel": "大肠",
+          "direction": "偏亢",
+          "raw": 0.13
+        },
+        {
+          "channel": "肾",
+          "direction": "偏亢",
+          "raw": 0.13
+        }
+      ],
+      "windows": [
+        {
+          "name": "心经当令",
+          "start": "11:00",
+          "end": "13:00",
+          "kind": "golden"
+        },
+        {
+          "name": "肺经当令",
+          "start": "03:00",
+          "end": "05:00",
+          "kind": "golden"
+        },
+        {
+          "name": "大肠经当令",
+          "start": "05:00",
+          "end": "07:00",
+          "kind": "golden"
+        },
+        {
+          "name": "肾经当令",
+          "start": "17:00",
+          "end": "19:00",
+          "kind": "golden"
+        }
+      ],
+      "rule_ids": [
+        "CAL-001",
+        "CAL-005",
+        "CAL-007",
+        "OF-001",
+        "OF-002",
+        "YQ-015",
+        "YQ-005",
+        "OF-003",
+        "YQ-006",
+        "ZF-002",
+        "YQ-014"
+      ],
+      "phase_note": "冷启动以零点为参照；基线建立后另有个体化口径"
+    },
+    "data_keys": [
+      "ai_generated",
+      "baseline_established",
+      "calibration",
+      "channels",
+      "date",
+      "disclaimer",
+      "disclaimer_required",
+      "engine_version",
+      "focus",
+      "index",
+      "level",
+      "level_name",
+      "lineage",
+      "member_id",
+      "min_observations",
+      "observation_count",
+      "param_hash",
+      "personalized",
+      "pillars",
+      "referral",
+      "rule_version",
+      "text",
+      "yunqi"
+    ]
+  }
+}

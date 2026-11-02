@@ -1,0 +1,176 @@
+[23:51:15] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=46 service=TYH-SVC-0.1.0
+[23:51:15] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\_verify_v11\family_v11.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15089
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\_verify_v11\family_v11.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+             tianyuanheng=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[23:51:16] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:51:16] login account_id=acc_c47ebbeb061cd788 at=1791561076.6688733 device_id=v11-A-1009235113 device_info={'channel': 'guest'}
+[23:51:16] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:16] login account_id=acc_6ab52048935fc2a3 at=1791561076.6812623 device_id=v11-B-1009235113 device_info={'channel': 'guest'}
+[23:51:16] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 401 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 401 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:16] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_d34e23322d52 relation_code=mother
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:16] login account_id=acc_4f9f370b3955ed95 at=1791561076.773686 device_id=v11-daily-1009235113 device_info={'channel': 'guest'}
+[23:51:16] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_33c6ac9e8c28 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_864d53c69844 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_65675fda01c5 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_6396950c5586 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_a6bd9ba3f905 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_f82bcd586a41 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_4acff0304231 relation_code=father
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 400 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] family_remind account_id=acc_c47ebbeb061cd788 family_id=fam_d34e23322d52 kind=care
+[23:51:17] 127.0.0.1 "POST /api/v1/family/remind HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "POST /api/v1/family/remind HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family/reminders HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "POST /api/v1/family/remind HTTP/1.1" 400 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "DELETE /api/v1/family/members/fam_d34e23322d52 HTTP/1.1" 404 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "DELETE /api/v1/family/members/fam_d34e23322d52 HTTP/1.1" 401 -
+[23:51:17] family_member_removed account_id=acc_c47ebbeb061cd788 family_id=fam_d34e23322d52
+[23:51:17] 127.0.0.1 "DELETE /api/v1/family/members/fam_d34e23322d52 HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "DELETE /api/v1/family/members/fam_d34e23322d52 HTTP/1.1" 404 -
+[23:51:17] family_member_added account_id=acc_c47ebbeb061cd788 family_id=fam_81bf083fad55 relation_code=mother
+[23:51:17] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:51:17] social_invite_auto_accept account_id=acc_6ab52048935fc2a3 to_member=mbr_820591e395fb8800
+[23:51:17] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=8ORNGNTJ HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:17] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /index.html HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /style.css HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /app.js HTTP/1.1" 200 -
+[23:51:18] login account_id=acc_4b64189d04098060 at=1791561078.2157242 device_id=h5-lgsghoanshul9mdvidhv-mv157j5x device_info={'channel': 'guest'}
+[23:51:18] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-09 HTTP/1.1" 422 -
+[23:51:18] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:18] family_member_added account_id=acc_4b64189d04098060 family_id=fam_d05ad711aca9 relation_code=mother
+[23:51:18] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:18] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:26] 127.0.0.1 "GET /index.html HTTP/1.1" 200 -
+[23:51:26] 127.0.0.1 "GET /style.css HTTP/1.1" 200 -
+[23:51:26] 127.0.0.1 "GET /app.js HTTP/1.1" 200 -
+[23:51:26] login account_id=acc_8713709b0b4235f3 at=1791561086.817619 device_id=h5-2xduav7wzmw97lxw1ami-mv157psu device_info={'channel': 'guest'}
+[23:51:26] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:26] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[23:51:26] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:26] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-09 HTTP/1.1" 422 -
+[23:51:26] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:27] family_member_added account_id=acc_8713709b0b4235f3 family_id=fam_1604b631d1e3 relation_code=mother
+[23:51:27] 127.0.0.1 "POST /api/v1/family/members HTTP/1.1" 200 -
+[23:51:27] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:35] login account_id=acc_8f05a772b797d9f7 at=1791561095.642542 device_id=h5-hoqbivvfmv3jcx6oebnb-mv157wkw device_info={'channel': 'guest'}
+[23:51:35] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/friends/feed?limit=20 HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:51:36] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:51:37] 127.0.0.1 "GET /api/v1/subscribe/plans HTTP/1.1" 200 -
+[23:51:37] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:39] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:39] 127.0.0.1 "GET /api/v1/points/ledger?page=1 HTTP/1.1" 200 -
+[23:51:39] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:51:40] login account_id=acc_b62d9b4e8297f4ea at=1791561100.1449246 device_id=h5-1iy8d0spd5lnys68xy04-mv15802k device_info={'channel': 'guest'}
+[23:51:40] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/friends/feed?limit=20 HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:51:41] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:51:42] 127.0.0.1 "GET /api/v1/subscribe/plans HTTP/1.1" 200 -
+[23:51:42] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:43] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:43] 127.0.0.1 "GET /api/v1/points/ledger?page=1 HTTP/1.1" 200 -
+[23:51:43] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:51:44] login account_id=acc_59227182e4465885 at=1791561104.7159476 device_id=h5-gj6krew11ca1wtzz5ux6-mv1583l3 device_info={'channel': 'guest'}
+[23:51:44] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:44] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[23:51:44] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:44] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-09 HTTP/1.1" 422 -
+[23:51:45] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:51:45] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:51:45] 127.0.0.1 "GET /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:51:45] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:51:45] 127.0.0.1 "GET /api/v1/friends/feed?limit=20 HTTP/1.1" 200 -
+[23:51:45] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:51:45] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:51:46] 127.0.0.1 "GET /api/v1/subscribe/plans HTTP/1.1" 200 -
+[23:51:46] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:48] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:48] 127.0.0.1 "GET /api/v1/points/ledger?page=1 HTTP/1.1" 200 -
+[23:51:48] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:51:49] login account_id=acc_0f07bac5a1cc6a5a at=1791561109.1823096 device_id=h5-cz69gyg021feuzrp7zc2-mv158720 device_info={'channel': 'guest'}
+[23:51:49] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:51:49] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[23:51:49] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[23:51:49] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-09 HTTP/1.1" 422 -
+[23:51:50] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:51:50] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:51:50] 127.0.0.1 "GET /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:51:50] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:51:50] 127.0.0.1 "GET /api/v1/friends/feed?limit=20 HTTP/1.1" 200 -
+[23:51:50] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:51:50] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:51:51] 127.0.0.1 "GET /api/v1/subscribe/plans HTTP/1.1" 200 -
+[23:51:51] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:52] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 200 -
+[23:51:52] 127.0.0.1 "GET /api/v1/points/ledger?page=1 HTTP/1.1" 200 -
+[23:51:52] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:51:53] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:51:53] 127.0.0.1 "GET / HTTP/1.1" 200 -

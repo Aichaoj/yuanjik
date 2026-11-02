@@ -1,0 +1,117 @@
+[
+ {
+  "name": "app.js 有 K_LAST_LOGIN",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "登录成功写入",
+  "ok": true,
+  "detail": "2"
+ },
+ {
+  "name": "openAuthSheet 带出",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "密码框聚焦",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "打码函数",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js WEB_VER=195",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "version.json web=195",
+  "ok": true,
+  "detail": "195"
+ },
+ {
+  "name": "首条说明=登录带出",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "资源戳 b ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "旧戳 a 归零",
+  "ok": true,
+  "detail": "0"
+ },
+ {
+  "name": "本地 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "登录后记下手机号",
+  "ok": true,
+  "detail": "13800138000"
+ },
+ {
+  "name": "A 无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "本地：手机号已带出",
+  "ok": true,
+  "detail": "13900139000"
+ },
+ {
+  "name": "本地：提示已打码",
+  "ok": true,
+  "detail": "已带出上次登录的账号：139****9000。换号直接改手机号；密码留空就用默认密码 Aa123456，点「登录」即可。"
+ },
+ {
+  "name": "本地：焦点在密码框",
+  "ok": true,
+  "detail": "inAuthPwd"
+ },
+ {
+  "name": "本地：密码仍为空",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B 无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "线上 web=195",
+  "ok": true,
+  "detail": "195"
+ },
+ {
+  "name": "线上：手机号已带出",
+  "ok": true,
+  "detail": "13900139000"
+ },
+ {
+  "name": "线上：提示已打码",
+  "ok": true,
+  "detail": "已带出上次登录的账号：139****9000。换号直接改手机号；密码留空就用默认密码 Aa123456，点「登录」即可。"
+ },
+ {
+  "name": "线上：焦点在密码框",
+  "ok": true,
+  "detail": "inAuthPwd"
+ },
+ {
+  "name": "线上：无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

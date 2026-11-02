@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二十四节气与真太阳时 ｜ AI数显 · 元健康</title>
+<meta name="description" content="二十四节气是太阳黄经的等分刻度，也是干支纪月与真太阳时校正的基准。本文用固定 5 问说明节气的划分、算法、真太阳时公式，以及经度带来的实际时差。">
+<link rel="canonical" href="https://shuzi.yuanjk.cn/k/ershisijieqi-zhentaiyangshi.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","name":"二十四节气与真太阳时 ｜ AI数显 · 元健康","mainEntity":[{"@type":"Question","name":"Q：二十四节气是什么？怎么划分？","acceptedAnswer":{"@type":"Answer","text":"A：二十四节气是把太阳在黄道上的视运动按每 15° 划分为一节的 24 个刻度，相邻两个节气相隔约 15.2 天，一年 24 节。其中 12 个为「节」（节令）、12 个为「中气」，两者交替排列。干支纪月的换月点用的是 12 个「节」而不是中气，即立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒，寅月起于立春，见天元衡规则 CAL-002。2026 年的第一个节气是小寒 2026-01-05 16:23:10，最后一个是冬至 2026-12-22 04:50:14。"}},{"@type":"Question","name":"Q：节气的精确时刻是怎么算出来的？","acceptedAnswer":{"@type":"Answer","text":"A：节气时刻是天文计算的结果，而不是查表抄来的：它对应太阳视黄经到达特定整度数的瞬间，需要按太阳与地球的实际运动求解。本站不自行编写历法，而是调用天元衡内核 tianyuanheng.calendar_layer，由它统一算出一个公历年内 24 个节气的年、月、日、时、分、秒。官方发布的节气时刻以东八区标准经线 120°E 为准，因此全国使用同一个时刻，与观测者所在地的地方时无关。内核文档同时要求：生产环境须与紫金山天文台公布的节气时刻做全量比对，误差超过 60 秒的年份建立人工修正表。"}},{"@type":"Question","name":"Q：什么是真太阳时？为什么需要它？","acceptedAnswer":{"@type":"Answer","text":"A：真太阳时是以太阳实际过中天为基准的时间，即当地日晷指示的时间；钟表时则是某一时区的统一时间。两者相差两项：经度时差与均时差。公式为：真太阳时 = 标准时 +（当地经度 − 标准经线）× 4 分钟 + 均时差，见天元衡规则 CAL-005。中国全境统一使用东八区，标准经线为 120°E，所以 4 分钟这一项只与当地经度有关。均时差取 NOAA 近似式，精度约 ±0.5 分钟，全年在约 ±16 分钟之间摆动，原因是地球轨道偏心率与黄赤交角使真太阳日长度并不恒定。"}},{"@type":"Question","name":"Q：真太阳时和钟表时实际差多少？","acceptedAnswer":{"@type":"Answer","text":"A：以两个城市为例（只算可精确计算的经度项）：北京经度约 116.4°E，经度项 =（116.4 − 120）× 4 = -14.4 分钟；乌鲁木齐经度约 87.6°E，经度项 =（87.6 − 120）× 4 = -129.6 分钟。也就是说，同一块钟表上的时间，在乌鲁木齐的实际太阳时要比钟表时晚约 129.6 分钟。再加上均时差的 ±16 分钟摆动，中国西部地区的真太阳时与钟表时相差可达两小时以上。这正是天元衡内核在推算时辰与日柱时必须知道出生地经纬度的原因：经度决定真太阳时，真太阳时决定时辰归属。"}},{"@type":"Question","name":"Q：节气时刻和经度有关系吗？地方时和节气怎么配合？","acceptedAnswer":{"@type":"Answer","text":"A：分两层看。第一层：官方发布的节气时刻以东八区标准经线 120°E 为准，因此它是一个全国统一的时间点，与观测者所在经度无关；本站 /data/solar-terms.csv 中的 4824 条记录全部是这一口径。第二层：判断某个地方「当地太阳到没到某个节气点」，需要先把钟表时换算成真太阳时，再做比较。由于节气换界直接决定干支年柱与月柱，出生或起算时刻落在节气前后极近处时结果会敏感，天元衡规则 CAL-001 因此规定：落在立春 ±30 分钟内时同时输出两种年柱口径供参考，而不是静默选一个。另外，本站运气表采用的六个时段分界（大寒、春分、小满、大暑、秋分、小雪）出自《素问·六元正纪大论》对客气六步次序的规定（规则 YQ-004）；主气六步的固定次序出自《素问·六微旨大论》（规则 YQ-005）。"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://shuzi.yuanjk.cn/"},{"@type":"ListItem","position":2,"name":"知识页","item":"https://shuzi.yuanjk.cn/k/index.html"},{"@type":"ListItem","position":3,"name":"二十四节气与真太阳时","item":"https://shuzi.yuanjk.cn/k/ershisijieqi-zhentaiyangshi.html"}]},{"@type":"Dataset","name":"六十甲子五运六气全表（1984–2043）","description":"按《素问》运气七篇规则推演的一个完整六十甲子周期的中运、司天、在泉、六步客主加临数据。","license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"AI数显 · 元健康"},"temporalCoverage":"1984/2043","variableMeasured":["中运","司天","在泉","主气","客气","客主加临"],"url":"https://shuzi.yuanjk.cn/data/yunqi-1984-2043.csv"}]}</script>
+<style>
+:root{--ink:#1d2430;--muted:#5b6675;--line:#e2e6ec;--bg:#f7f8fa;--brand:#1f6f5c;--accent:#0f4c5c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.85;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+header.site{background:#fff;border-bottom:1px solid var(--line);padding:14px 20px}
+header.site .wrap{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+header.site .brand{font-weight:700;color:var(--brand);letter-spacing:.5px}
+header.site nav a{color:var(--muted);text-decoration:none;margin-right:14px;font-size:14px}
+header.site nav a:hover{color:var(--brand)}
+main{max-width:860px;margin:0 auto;padding:26px 20px 60px}
+article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 26px 30px}
+h1{font-size:26px;line-height:1.5;margin:0 0 6px}
+p.lead{color:var(--muted);font-size:15px;margin:0 0 22px}
+h2{font-size:17px;margin:26px 0 8px;padding-left:10px;border-left:4px solid var(--brand)}
+p.answer{margin:0;font-size:15px}
+ol.refs,ul.plain{margin:8px 0 0;padding-left:22px;font-size:14px;color:var(--muted)}
+ol.refs li,ul.plain li{margin-bottom:6px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+th{background:#f0f4f3;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.note{background:#f0f4f3;border-radius:8px;padding:12px 14px;font-size:14px;color:var(--muted);margin:14px 0}
+footer.site{border-top:1px solid var(--line);background:#fff;margin-top:26px;padding:20px}
+footer.site .wrap{max-width:860px;margin:0 auto;font-size:13px;color:var(--muted)}
+footer.site .fbrand{font-weight:700;color:var(--brand);font-size:14px;margin:0 0 6px}
+footer.site .disclaimer{margin:0 0 10px;color:#3c4653}
+footer.site a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><span class="brand">AI数显 · 元健康</span><nav><a href="/">首页</a><a href="/k/index.html">知识页</a><a href="/data/yunqi-1984-2043.csv">运气表</a><a href="/llms.txt">llms.txt</a></nav></div></header>
+<main><article>
+<h1>二十四节气与真太阳时</h1>
+<p class="lead">二十四节气是太阳黄经的等分刻度，也是干支纪月与真太阳时校正的基准。本文用固定 5 问说明节气的划分、算法、真太阳时公式，以及经度带来的实际时差。</p>
+<h2>Q1：二十四节气是什么？怎么划分？</h2>
+<p class="answer">A：二十四节气是把太阳在黄道上的视运动按每 15° 划分为一节的 24 个刻度，相邻两个节气相隔约 15.2 天，一年 24 节。其中 12 个为「节」（节令）、12 个为「中气」，两者交替排列。干支纪月的换月点用的是 12 个「节」而不是中气，即立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒，寅月起于立春，见天元衡规则 CAL-002。2026 年的第一个节气是小寒 2026-01-05 16:23:10，最后一个是冬至 2026-12-22 04:50:14。</p>
+<h2>Q2：节气的精确时刻是怎么算出来的？</h2>
+<p class="answer">A：节气时刻是天文计算的结果，而不是查表抄来的：它对应太阳视黄经到达特定整度数的瞬间，需要按太阳与地球的实际运动求解。本站不自行编写历法，而是调用天元衡内核 tianyuanheng.calendar_layer，由它统一算出一个公历年内 24 个节气的年、月、日、时、分、秒。官方发布的节气时刻以东八区标准经线 120°E 为准，因此全国使用同一个时刻，与观测者所在地的地方时无关。内核文档同时要求：生产环境须与紫金山天文台公布的节气时刻做全量比对，误差超过 60 秒的年份建立人工修正表。</p>
+<h2>Q3：什么是真太阳时？为什么需要它？</h2>
+<p class="answer">A：真太阳时是以太阳实际过中天为基准的时间，即当地日晷指示的时间；钟表时则是某一时区的统一时间。两者相差两项：经度时差与均时差。公式为：真太阳时 = 标准时 +（当地经度 − 标准经线）× 4 分钟 + 均时差，见天元衡规则 CAL-005。中国全境统一使用东八区，标准经线为 120°E，所以 4 分钟这一项只与当地经度有关。均时差取 NOAA 近似式，精度约 ±0.5 分钟，全年在约 ±16 分钟之间摆动，原因是地球轨道偏心率与黄赤交角使真太阳日长度并不恒定。</p>
+<h2>Q4：真太阳时和钟表时实际差多少？</h2>
+<p class="answer">A：以两个城市为例（只算可精确计算的经度项）：北京经度约 116.4°E，经度项 =（116.4 − 120）× 4 = -14.4 分钟；乌鲁木齐经度约 87.6°E，经度项 =（87.6 − 120）× 4 = -129.6 分钟。也就是说，同一块钟表上的时间，在乌鲁木齐的实际太阳时要比钟表时晚约 129.6 分钟。再加上均时差的 ±16 分钟摆动，中国西部地区的真太阳时与钟表时相差可达两小时以上。这正是天元衡内核在推算时辰与日柱时必须知道出生地经纬度的原因：经度决定真太阳时，真太阳时决定时辰归属。</p>
+<h2>Q5：节气时刻和经度有关系吗？地方时和节气怎么配合？</h2>
+<p class="answer">A：分两层看。第一层：官方发布的节气时刻以东八区标准经线 120°E 为准，因此它是一个全国统一的时间点，与观测者所在经度无关；本站 /data/solar-terms.csv 中的 4824 条记录全部是这一口径。第二层：判断某个地方「当地太阳到没到某个节气点」，需要先把钟表时换算成真太阳时，再做比较。由于节气换界直接决定干支年柱与月柱，出生或起算时刻落在节气前后极近处时结果会敏感，天元衡规则 CAL-001 因此规定：落在立春 ±30 分钟内时同时输出两种年柱口径供参考，而不是静默选一个。另外，本站运气表采用的六个时段分界（大寒、春分、小满、大暑、秋分、小雪）出自《素问·六元正纪大论》对客气六步次序的规定（规则 YQ-004）；主气六步的固定次序出自《素问·六微旨大论》（规则 YQ-005）。</p>
+<table><thead><tr><th>序号</th><th>节气</th><th>精确时刻（东八区 120°E）</th><th>日期</th></tr></thead><tbody>
+<tr><td class="num">1</td><td>小寒</td><td>2026-01-05 16:23:10</td><td>2026-01-05</td></tr>
+<tr><td class="num">2</td><td>大寒</td><td>2026-01-20 09:44:56</td><td>2026-01-20</td></tr>
+<tr><td class="num">3</td><td>立春</td><td>2026-02-04 04:02:08</td><td>2026-02-04</td></tr>
+<tr><td class="num">4</td><td>雨水</td><td>2026-02-18 23:51:56</td><td>2026-02-18</td></tr>
+<tr><td class="num">5</td><td>惊蛰</td><td>2026-03-05 21:59:00</td><td>2026-03-05</td></tr>
+<tr><td class="num">6</td><td>春分</td><td>2026-03-20 22:45:59</td><td>2026-03-20</td></tr>
+<tr><td class="num">7</td><td>清明</td><td>2026-04-05 02:40:00</td><td>2026-04-05</td></tr>
+<tr><td class="num">8</td><td>谷雨</td><td>2026-04-20 09:39:08</td><td>2026-04-20</td></tr>
+<tr><td class="num">9</td><td>立夏</td><td>2026-05-05 19:48:44</td><td>2026-05-05</td></tr>
+<tr><td class="num">10</td><td>小满</td><td>2026-05-21 08:36:45</td><td>2026-05-21</td></tr>
+<tr><td class="num">11</td><td>芒种</td><td>2026-06-05 23:48:21</td><td>2026-06-05</td></tr>
+<tr><td class="num">12</td><td>夏至</td><td>2026-06-21 16:24:30</td><td>2026-06-21</td></tr>
+<tr><td class="num">13</td><td>小暑</td><td>2026-07-07 09:56:57</td><td>2026-07-07</td></tr>
+<tr><td class="num">14</td><td>大暑</td><td>2026-07-23 03:13:05</td><td>2026-07-23</td></tr>
+<tr><td class="num">15</td><td>立秋</td><td>2026-08-07 19:42:43</td><td>2026-08-07</td></tr>
+<tr><td class="num">16</td><td>处暑</td><td>2026-08-23 10:18:49</td><td>2026-08-23</td></tr>
+<tr><td class="num">17</td><td>白露</td><td>2026-09-07 22:41:16</td><td>2026-09-07</td></tr>
+<tr><td class="num">18</td><td>秋分</td><td>2026-09-23 08:05:14</td><td>2026-09-23</td></tr>
+<tr><td class="num">19</td><td>寒露</td><td>2026-10-08 14:29:17</td><td>2026-10-08</td></tr>
+<tr><td class="num">20</td><td>霜降</td><td>2026-10-23 17:37:57</td><td>2026-10-23</td></tr>
+<tr><td class="num">21</td><td>立冬</td><td>2026-11-07 17:52:05</td><td>2026-11-07</td></tr>
+<tr><td class="num">22</td><td>小雪</td><td>2026-11-22 15:23:21</td><td>2026-11-22</td></tr>
+<tr><td class="num">23</td><td>大雪</td><td>2026-12-07 10:52:32</td><td>2026-12-07</td></tr>
+<tr><td class="num">24</td><td>冬至</td><td>2026-12-22 04:50:14</td><td>2026-12-22</td></tr>
+</tbody></table>
+<h2>古典出处与规则依据</h2>
+<ol class="refs">
+<li>[YQ-004] 客气六步次序（三阴三阳）｜出处：《素问·六元正纪大论》｜要点：客气按 一阴（厥阴）→二阴（少阴）→三阴（太阴）→一阳（少阳）→二阳（阳明）→三阳（太阳）循环；司天为三之气，在泉为终之气。</li>
+<li>[YQ-005] 主气六步固定次序｜出处：《素问·六微旨大论》｜要点：初之气厥阴风木、二之气少阴君火、三之气少阳相火、四之气太阴湿土、五之气阳明燥金、终之气太阳寒水。</li>
+<li>[CAL-001] 年柱以立春为界｜出处：历法通例｜要点：年柱在立春时刻换界，非正月初一；出生时刻落在立春 ±30 分钟内时输出双解。</li>
+<li>[CAL-002] 月柱以节气为界｜出处：历法通例｜要点：月柱以十二节（立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒）为界，非中气；寅月起于立春。</li>
+<li>[CAL-003] 日柱由儒略日数模六十推得｜出处：历法通例（连续干支纪日）｜要点：日干支序号 =（JDN + 49）mod 60。</li>
+<li>[CAL-004] 时柱用五鼠遁｜出处：口诀「甲己还加甲，乙庚丙作初，丙辛从戊起，丁壬庚子居，戊癸何方发，壬子是真途」。</li>
+<li>[CAL-005] 真太阳时校正｜出处：天文历法通例｜要点：真太阳时 = 标准时 +（当地经度 − 标准经线）× 4 分钟 + 均时差；中国采用东八区，标准经线 120°E；均时差取 NOAA 近似式，精度约 ±0.5 分钟。</li>
+<li>[CAL-007] 十二时辰划分｜出处：历法通例｜要点：子时 23:00–01:00，其后每两小时一个时辰，时支序号 =（hour + 1）// 2 mod 12。</li>
+</ol>
+<h2>数据来源与复核方式</h2>
+<ul class="plain">
+<li>运气字段由天元衡内核 tianyuanheng.yunqi_layer 依规则 YQ-001~YQ-013 推演；可用任意一本万年历独立复核。</li>
+<li>节气时刻由天元衡内核 tianyuanheng.calendar_layer 依规则 CAL-001~CAL-007 计算，按东八区标准经线 120°E 发布。</li>
+<li>全量数据可从 <a href="/data/yunqi-1984-2043.csv">/data/yunqi-1984-2043.csv</a>、<a href="/data/solar-terms.csv">/data/solar-terms.csv</a>、<a href="/data/shichen-dangling.csv">/data/shichen-dangling.csv</a> 下载（CC BY 4.0）。</li>
+<li>真太阳时公式与均时差近似式的实现见内核 calendar_layer.equation_of_time_minutes 与 true_solar_time_offset_minutes。</li>
+</ul>
+</article></main>
+<footer class="site"><div class="wrap"><p class="fbrand">AI数显 · 元健康</p><p class="disclaimer">本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。</p><p>数据来源：天元衡内核（规则 YQ-001~YQ-013、CAL-001~CAL-007、ZF-001~ZF-004）与公开种子数据。公共数据集采用 <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 许可。</p><p><a href="/llms.txt">/llms.txt</a> · <a href="/sitemap.xml">/sitemap.xml</a> · <a href="/data/yunqi-1984-2043.csv">/data/yunqi-1984-2043.csv</a> · <a href="/data/shichen-dangling.csv">/data/shichen-dangling.csv</a> · <a href="/data/solar-terms.csv">/data/solar-terms.csv</a></p></div></footer>
+</body></html>

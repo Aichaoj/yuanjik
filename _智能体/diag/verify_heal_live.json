@@ -1,0 +1,35 @@
+{
+ "member": "mbr_1f5116bbfdca52c2",
+ "items": [
+  {
+   "tag": "L0 线上游客",
+   "ok": true,
+   "detail": "member=mbr_1f5116bbfdca52c2"
+  },
+  {
+   "tag": "L1 建档",
+   "ok": true,
+   "detail": "http=200"
+  },
+  {
+   "tag": "L2 三次签到累加 1/2/3",
+   "ok": true,
+   "detail": "counts=[1, 2, 3]"
+  },
+  {
+   "tag": "L3 出生地变更触发基线重置（契约 §2.6）",
+   "ok": true,
+   "detail": "reset=True"
+  },
+  {
+   "tag": "L4 读接口即自愈到 3（本次修复点）",
+   "ok": true,
+   "detail": "http=200 count=3 text=基线建立中（3/7）"
+  },
+  {
+   "tag": "L5 继续累加为 4（只升不降）",
+   "ok": true,
+   "detail": "count=4"
+  }
+ ]
+}

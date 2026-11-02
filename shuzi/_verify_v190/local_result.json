@@ -1,0 +1,147 @@
+[
+ {
+  "name": "vault.py 计数要求 minutes>=1",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "vault.py 30 秒内复用同一轮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "vault.py 报错说清共用",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 先要麦克风再建会话",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "app.js 不再吞掉 429 真话",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 不再写「每天 2 次」",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "index.html 资源戳 a ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "version.json web=190",
+  "ok": true,
+  "detail": "190"
+ },
+ {
+  "name": "version.json 首条=本次修复",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地服务 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "游客登录拿到令牌",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "3 次空会话后仍可开始（没被白扣）",
+  "ok": true,
+  "detail": "200"
+ },
+ {
+  "name": "剩余次数仍为 5",
+  "ok": true,
+  "detail": "5"
+ },
+ {
+  "name": "30 秒内再点复用同一 session_id",
+  "ok": true,
+  "detail": "('vst_bd10e685be014a', 'vst_bd10e685be014a')"
+ },
+ {
+  "name": "复用不重复扣次数",
+  "ok": true,
+  "detail": "True"
+ },
+ {
+  "name": "第 2 轮心跳 +1 分钟",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "第 3 轮心跳 +1 分钟",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "第 4 轮心跳 +1 分钟",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "第 5 轮心跳 +1 分钟",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "满 5 次后第 6 次 429",
+  "ok": true,
+  "detail": "429"
+ },
+ {
+  "name": "429 说明符咒与意念共用",
+  "ok": true,
+  "detail": "贡献能量今天的次数已用完（5/5）：符咒与意念共用每天 5 次，明天 0 点恢复"
+ },
+ {
+  "name": "换意念注入同样 429（共用额度）",
+  "ok": true,
+  "detail": "429"
+ },
+ {
+  "name": "拒绝麦克风后没有发出 session/start",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "拒绝麦克风提示不占次数",
+  "ok": true,
+  "detail": "没拿到麦克风权限：本轮没有开始，也不占今天的次数；可以改用「意念注入」（不需要麦克风）。"
+ },
+ {
+  "name": "允许麦克风后恰好 1 次 session/start",
+  "ok": true,
+  "detail": "1"
+ },
+ {
+  "name": "开始后提示是贡献口径（每满 5 分钟 / 再 N 分钟 +10）",
+  "ok": true,
+  "detail": "本轮已 1 分钟、累计 +0 能量；再 4 分钟自动 +10。"
+ },
+ {
+  "name": "开始后本次贡献显示 +0（不是虚报 +10）",
+  "ok": true,
+  "detail": "+0"
+ },
+ {
+  "name": "无 JS 异常（拒绝场景）",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "无 JS 异常（允许场景）",
+  "ok": true,
+  "detail": "[]"
+ }
+]

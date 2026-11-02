@@ -1,0 +1,736 @@
+{
+  "checked_at": "2026-10-08 09:38:10",
+  "base_url": "http://127.0.0.1:15311/",
+  "web_dir": "D:\\shuzi\\web",
+  "file_bytes": {
+    "index.html": 32291,
+    "style.css": 46157,
+    "app.js": 122059
+  },
+  "assertions_total": 139,
+  "assertions_passed": 139,
+  "assertions_failed": 0,
+  "console_errors": 0,
+  "page_errors": 0,
+  "console_error_detail": [],
+  "page_error_detail": [],
+  "screenshots": [
+    "shot_1440x900_friends_after_bind.png",
+    "shot_1440x900_friends_rename_ok.png",
+    "shot_1440x900_friends_top.png",
+    "shot_1440x900_home_invite_hint.png",
+    "shot_1440x900_home_invite_hint_n_fallback.png",
+    "shot_1440x900_invite_card.png",
+    "shot_1440x900_invite_card_after_bind.png",
+    "shot_1440x900_invite_card_rename.png",
+    "shot_1440x900_rhythm_bind_toast.png",
+    "shot_430x932_friends_after_bind.png",
+    "shot_430x932_friends_rename_ok.png",
+    "shot_430x932_friends_top.png",
+    "shot_430x932_home_invite_hint.png",
+    "shot_430x932_home_invite_hint_n_fallback.png",
+    "shot_430x932_invite_card.png",
+    "shot_430x932_invite_card_after_bind.png",
+    "shot_430x932_invite_card_referrer.png",
+    "shot_430x932_invite_card_rename.png",
+    "shot_430x932_rhythm_bind_toast.png",
+    "shot_430x932_rhythm_invalid_code.png"
+  ],
+  "results": [
+    {
+      "name": "[S8] 三个文件不含违规词",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S8] app.js 无外网引用（http:// / https:// 只出现在注释与文案里）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S8] 新增功能使用的接口路径齐全",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S8] 复制按钮文案为「复制邀请链接」",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S8] 存在「我的推荐人」区",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S8] 存在修改昵称入口",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S8] 存在邀请落地提示条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S1/430x932] 按钮文案为「复制邀请链接」",
+      "ok": true,
+      "detail": "复制邀请链接"
+    },
+    {
+      "name": "[S1/430x932] 只读邀请链接含 ?invite= 与 8 位码",
+      "ok": true,
+      "detail": "https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/430x932] 链接带分享人昵称参数 n=",
+      "ok": true,
+      "detail": "https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/430x932] 复制成功（走剪贴板 API）",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/430x932] 复制内容含 ?invite= 与 8 位码",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/430x932] 复制内容优先用服务端 share_text（含昵称）",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/430x932] 复制成功 toast 写清用途",
+      "ok": true,
+      "detail": "邀请链接已复制，发给朋友——对方打开并建档后，会自动成为你的好友"
+    },
+    {
+      "name": "[S1/430x932] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 430, 'iw': 430}"
+    },
+    {
+      "name": "[S1/430x932] 复制邀请链接 点击区 ≥44px",
+      "ok": true,
+      "detail": "{'w': 145.8125, 'h': 44}"
+    },
+    {
+      "name": "[S1/430x932] 保存昵称 点击区 ≥44px",
+      "ok": true,
+      "detail": "{'w': 104, 'h': 44}"
+    },
+    {
+      "name": "[S1/430x932] 添加好友 点击区 ≥44px",
+      "ok": true,
+      "detail": "{'w': 92, 'h': 44}"
+    },
+    {
+      "name": "[S1/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S1/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S1/1440x900] 按钮文案为「复制邀请链接」",
+      "ok": true,
+      "detail": "复制邀请链接"
+    },
+    {
+      "name": "[S1/1440x900] 只读邀请链接含 ?invite= 与 8 位码",
+      "ok": true,
+      "detail": "https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/1440x900] 链接带分享人昵称参数 n=",
+      "ok": true,
+      "detail": "https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/1440x900] 复制成功（走剪贴板 API）",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/1440x900] 复制内容含 ?invite= 与 8 位码",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/1440x900] 复制内容优先用服务端 share_text（含昵称）",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S1/1440x900] 复制成功 toast 写清用途",
+      "ok": true,
+      "detail": "邀请链接已复制，发给朋友——对方打开并建档后，会自动成为你的好友"
+    },
+    {
+      "name": "[S1/1440x900] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 1440, 'iw': 1440}"
+    },
+    {
+      "name": "[S1/1440x900] 复制邀请链接 点击区 ≥44px",
+      "ok": true,
+      "detail": "{'w': 145.8125, 'h': 44}"
+    },
+    {
+      "name": "[S1/1440x900] 保存昵称 点击区 ≥44px",
+      "ok": true,
+      "detail": "{'w': 104, 'h': 44}"
+    },
+    {
+      "name": "[S1/1440x900] 添加好友 点击区 ≥44px",
+      "ok": true,
+      "detail": "{'w': 92, 'h': 44}"
+    },
+    {
+      "name": "[S1/1440x900] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S1/1440x900] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S2/430x932] 地址栏参数已清掉（invite= 不再出现）",
+      "ok": true,
+      "detail": "http://127.0.0.1:15311/"
+    },
+    {
+      "name": "[S2/430x932] 首屏提示条显示「<昵称> 邀请你一起看每日健康指数」",
+      "ok": true,
+      "detail": "小明 邀请你一起看每日健康指数"
+    },
+    {
+      "name": "[S2/430x932] 落地页调用了公开 preview 接口",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423454793}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-p6udjaiofgjpzcuwm6ik-muyv9s94'}, 'at': 1791423454793}]"
+    },
+    {
+      "name": "[S2/430x932] 建档后指数卡正常渲染",
+      "ok": true,
+      "detail": "82\n分\n良\n优\n良\n中\n需关注\n\n按出生时空与当日时相推算·仅为生活方式参考"
+    },
+    {
+      "name": "[S2/430x932] 触发了自动绑定",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423456561}]"
+    },
+    {
+      "name": "[S2/430x932] 绑定 toast 含邀请人昵称",
+      "ok": true,
+      "detail": "已与 小明 成为好友"
+    },
+    {
+      "name": "[S2/430x932] 恰好调用一次 friends/invite",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423456561}]"
+    },
+    {
+      "name": "[S2/430x932] 请求体为 {invite_code, auto_accept:true}",
+      "ok": true,
+      "detail": "{'invite_code': 'K7QM2X9P', 'auto_accept': True}"
+    },
+    {
+      "name": "[S2/430x932] 成功后清掉 pending_invite",
+      "ok": true,
+      "detail": "{'pending': None, 'log': '{\"code\":\"K7QM2X9P\",\"ok\":true,\"at\":1791423456562}', 'url': 'http://127.0.0.1:15311/'}"
+    },
+    {
+      "name": "[S2/430x932] 成功后留下绑定留痕 ok=true",
+      "ok": true,
+      "detail": "{\"code\":\"K7QM2X9P\",\"ok\":true,\"at\":1791423456562}"
+    },
+    {
+      "name": "[S2/430x932] 刷新后不重复调用",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423456561}]"
+    },
+    {
+      "name": "[S2/430x932] 再次带邀请码打开仍不重复调用",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423456561}]"
+    },
+    {
+      "name": "[S2/430x932] 好友圈显示「我的推荐人：小明」",
+      "ok": true,
+      "detail": "小明"
+    },
+    {
+      "name": "[S2/430x932] 好友列表含邀请人（自动成为好友）",
+      "ok": true,
+      "detail": "小\n小明\n今日指数 未公开 · 刚刚\n加油\n解除\n\n加油只是一句中性问候，每人每天最多 3 次；对方会在动态里看到。解除好友后双方立刻互不可见。"
+    },
+    {
+      "name": "[S2/430x932] 三隐私开关仍默认全关",
+      "ok": true,
+      "detail": "['false', 'false', 'false']"
+    },
+    {
+      "name": "[S2/430x932] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 430, 'iw': 430}"
+    },
+    {
+      "name": "[S2/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S2/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S2/1440x900] 地址栏参数已清掉（invite= 不再出现）",
+      "ok": true,
+      "detail": "http://127.0.0.1:15311/"
+    },
+    {
+      "name": "[S2/1440x900] 首屏提示条显示「<昵称> 邀请你一起看每日健康指数」",
+      "ok": true,
+      "detail": "小明 邀请你一起看每日健康指数"
+    },
+    {
+      "name": "[S2/1440x900] 落地页调用了公开 preview 接口",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423460396}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-tgl6qnx09qcbyw1p6axp-muyv9wks'}, 'at': 1791423460396}]"
+    },
+    {
+      "name": "[S2/1440x900] 建档后指数卡正常渲染",
+      "ok": true,
+      "detail": "82\n分\n良\n优\n良\n中\n需关注\n\n按出生时空与当日时相推算·仅为生活方式参考"
+    },
+    {
+      "name": "[S2/1440x900] 触发了自动绑定",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423462216}]"
+    },
+    {
+      "name": "[S2/1440x900] 绑定 toast 含邀请人昵称",
+      "ok": true,
+      "detail": "已与 小明 成为好友"
+    },
+    {
+      "name": "[S2/1440x900] 恰好调用一次 friends/invite",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423462216}]"
+    },
+    {
+      "name": "[S2/1440x900] 请求体为 {invite_code, auto_accept:true}",
+      "ok": true,
+      "detail": "{'invite_code': 'K7QM2X9P', 'auto_accept': True}"
+    },
+    {
+      "name": "[S2/1440x900] 成功后清掉 pending_invite",
+      "ok": true,
+      "detail": "{'pending': None, 'log': '{\"code\":\"K7QM2X9P\",\"ok\":true,\"at\":1791423462217}', 'url': 'http://127.0.0.1:15311/'}"
+    },
+    {
+      "name": "[S2/1440x900] 成功后留下绑定留痕 ok=true",
+      "ok": true,
+      "detail": "{\"code\":\"K7QM2X9P\",\"ok\":true,\"at\":1791423462217}"
+    },
+    {
+      "name": "[S2/1440x900] 刷新后不重复调用",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423462216}]"
+    },
+    {
+      "name": "[S2/1440x900] 再次带邀请码打开仍不重复调用",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423462216}]"
+    },
+    {
+      "name": "[S2/1440x900] 好友圈显示「我的推荐人：小明」",
+      "ok": true,
+      "detail": "小明"
+    },
+    {
+      "name": "[S2/1440x900] 好友列表含邀请人（自动成为好友）",
+      "ok": true,
+      "detail": "小\n小明\n今日指数 未公开 · 刚刚\n加油\n解除\n\n加油只是一句中性问候，每人每天最多 3 次；对方会在动态里看到。解除好友后双方立刻互不可见。"
+    },
+    {
+      "name": "[S2/1440x900] 三隐私开关仍默认全关",
+      "ok": true,
+      "detail": "['false', 'false', 'false']"
+    },
+    {
+      "name": "[S2/1440x900] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 1440, 'iw': 1440}"
+    },
+    {
+      "name": "[S2/1440x900] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S2/1440x900] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S3] 码无效时建档仍成功（进入今日节律屏）",
+      "ok": true,
+      "detail": "http://127.0.0.1:15311/"
+    },
+    {
+      "name": "[S3/430x932] 码无效时指数卡仍正常渲染",
+      "ok": true,
+      "detail": "82\n分\n良\n优\n良\n中\n需关注\n\n按出生时空与当日时相推算·仅为生活方式参考"
+    },
+    {
+      "name": "[S3/430x932] 仍尝试了一次绑定",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423467749}]"
+    },
+    {
+      "name": "[S3/430x932] 轻提示「邀请码无效」",
+      "ok": true,
+      "detail": "邀请码无效，未自动添加好友。"
+    },
+    {
+      "name": "[S3/430x932] 无效码不再保留在待绑定状态",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S3/430x932] 失败留痕 ok=false（幂等）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S3/430x932] 无白屏（页面有可读文案）",
+      "ok": true,
+      "detail": "今日节律\n已记录 9 天\n2026年10月8日 星期四\n今日健康指数\n当日时相推算\n82\n分\n良\n优\n良\n中\n需关注\n\n按出生时空与当日时相推算·仅为生活方式参"
+    },
+    {
+      "name": "[S3/430x932] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 430, 'iw': 430}"
+    },
+    {
+      "name": "[S3/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S3/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S4/430x932] 已有推荐人时未调用 friends/invite",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S4/430x932] 已绑定则清掉待绑定状态",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S4/430x932] 我的推荐人显示老王",
+      "ok": true,
+      "detail": "老王"
+    },
+    {
+      "name": "[S4/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S4/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S5/430x932] preview 挂掉时用 n 参数显示「李四 邀请你…」",
+      "ok": true,
+      "detail": "李四 邀请你一起看每日健康指数"
+    },
+    {
+      "name": "[S5/430x932] preview 确实被调用过（才谈得上兜底）",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423471026}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-aqz7ba88v5g6b0k9vnf9-muyva4s2'}, 'at': 1791423471026}]"
+    },
+    {
+      "name": "[S5/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S5/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S5/1440x900] preview 挂掉时用 n 参数显示「李四 邀请你…」",
+      "ok": true,
+      "detail": "李四 邀请你一起看每日健康指数"
+    },
+    {
+      "name": "[S5/1440x900] preview 确实被调用过（才谈得上兜底）",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/invite/preview?invite_code=K7QM2X9P', 'method': 'GET', 'body': None, 'at': 1791423472810}, {'url': '/api/v1/auth/guest', 'method': 'POST', 'body': {'device_id': 'h5-tg0puyzwixxh9sa3r74i-muyva65m'}, 'at': 1791423472811}]"
+    },
+    {
+      "name": "[S5/1440x900] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S5/1440x900] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S6] 无昵称时显示中性文案",
+      "ok": true,
+      "detail": "你的朋友邀请你一起看每日健康指数"
+    },
+    {
+      "name": "[S6] 中性文案不含任何虚构昵称",
+      "ok": true,
+      "detail": "你的朋友邀请你一起看每日健康指数"
+    },
+    {
+      "name": "[S9/430x932] 临时失败时仍提交了一次",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423477776}]"
+    },
+    {
+      "name": "[S9/430x932] 临时失败保留 pending_invite（可再试）",
+      "ok": true,
+      "detail": "K7QM2X9P"
+    },
+    {
+      "name": "[S9/430x932] 失败留痕 ok=false",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S9/430x932] 轻提示提示稍后手工添加",
+      "ok": true,
+      "detail": "邀请人暂时没能加上，可稍后在好友圈手工添加。"
+    },
+    {
+      "name": "[S9/430x932] 24 小时内刷新不重复提交",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423477776}]"
+    },
+    {
+      "name": "[S9/430x932] 重试窗口过后可再提交一次",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423477776}, {'url': '/api/v1/friends/invite', 'method': 'POST', 'body': {'invite_code': 'K7QM2X9P', 'auto_accept': True}, 'at': 1791423479653}]"
+    },
+    {
+      "name": "[S9/430x932] 第二次成功并清掉 pending",
+      "ok": true,
+      "detail": "{\"code\":\"K7QM2X9P\",\"ok\":true,\"at\":1791423479653}"
+    },
+    {
+      "name": "[S9/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S9/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S7/430x932] 改名前的分享文案含旧昵称",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S7/430x932] 改名前的排行榜自己那条是旧昵称",
+      "ok": true,
+      "detail": "1\n用\n用户4821\n我\n82"
+    },
+    {
+      "name": "[S7/430x932] 昵称输入框已回填当前昵称",
+      "ok": true,
+      "detail": "用户4821"
+    },
+    {
+      "name": "[S7/430x932] 昵称过短给出可读提示",
+      "ok": true,
+      "detail": "昵称需要 2–12 个字，请修改后重试。"
+    },
+    {
+      "name": "[S7/430x932] 过短时不发请求",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S7/430x932] 调用了 POST /me/nickname",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/me/nickname', 'method': 'POST', 'body': {'nickname': '健康小明'}, 'at': 1791423483273}]"
+    },
+    {
+      "name": "[S7/430x932] 请求体为 {nickname}（2–12 字）",
+      "ok": true,
+      "detail": "{'nickname': '健康小明'}"
+    },
+    {
+      "name": "[S7/430x932] 我的昵称立即更新",
+      "ok": true,
+      "detail": "昵称：健康小明"
+    },
+    {
+      "name": "[S7/430x932] 分享文案昵称立即变化（含新昵称、不含旧昵称）",
+      "ok": true,
+      "detail": "我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E"
+    },
+    {
+      "name": "[S7/430x932] 分享文案仍含 ?invite= 与 8 位码",
+      "ok": true,
+      "detail": "我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E"
+    },
+    {
+      "name": "[S7/430x932] 排行榜自己那条立即更新",
+      "ok": true,
+      "detail": "1\n健\n健康小明\n我\n82"
+    },
+    {
+      "name": "[S7/430x932] 改名成功 toast",
+      "ok": true,
+      "detail": "昵称已改为「健康小明」。"
+    },
+    {
+      "name": "[S7/430x932] 改名后复制内容也带新昵称",
+      "ok": true,
+      "detail": "我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E"
+    },
+    {
+      "name": "[S7/430x932] 服务端拒绝时显示可读提示",
+      "ok": true,
+      "detail": "昵称包含不允许的内容，请修改后重试。（追踪号 stub-v6-err）"
+    },
+    {
+      "name": "[S7/430x932] 服务端拒绝后昵称未被改动",
+      "ok": true,
+      "detail": "昵称：健康小明"
+    },
+    {
+      "name": "[S7/430x932] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 430, 'iw': 430}"
+    },
+    {
+      "name": "[S7/430x932] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S7/430x932] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S7/1440x900] 改名前的分享文案含旧昵称",
+      "ok": true,
+      "detail": "我是用户4821，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E7%94%A8%E6%88%B74821"
+    },
+    {
+      "name": "[S7/1440x900] 改名前的排行榜自己那条是旧昵称",
+      "ok": true,
+      "detail": "1\n用\n用户4821\n我\n82"
+    },
+    {
+      "name": "[S7/1440x900] 昵称输入框已回填当前昵称",
+      "ok": true,
+      "detail": "用户4821"
+    },
+    {
+      "name": "[S7/1440x900] 昵称过短给出可读提示",
+      "ok": true,
+      "detail": "昵称需要 2–12 个字，请修改后重试。"
+    },
+    {
+      "name": "[S7/1440x900] 过短时不发请求",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "[S7/1440x900] 调用了 POST /me/nickname",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/me/nickname', 'method': 'POST', 'body': {'nickname': '健康小明'}, 'at': 1791423487889}]"
+    },
+    {
+      "name": "[S7/1440x900] 请求体为 {nickname}（2–12 字）",
+      "ok": true,
+      "detail": "{'nickname': '健康小明'}"
+    },
+    {
+      "name": "[S7/1440x900] 我的昵称立即更新",
+      "ok": true,
+      "detail": "昵称：健康小明"
+    },
+    {
+      "name": "[S7/1440x900] 分享文案昵称立即变化（含新昵称、不含旧昵称）",
+      "ok": true,
+      "detail": "我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E"
+    },
+    {
+      "name": "[S7/1440x900] 分享文案仍含 ?invite= 与 8 位码",
+      "ok": true,
+      "detail": "我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E"
+    },
+    {
+      "name": "[S7/1440x900] 排行榜自己那条立即更新",
+      "ok": true,
+      "detail": "1\n健\n健康小明\n我\n82"
+    },
+    {
+      "name": "[S7/1440x900] 改名成功 toast",
+      "ok": true,
+      "detail": "昵称已改为「健康小明」。"
+    },
+    {
+      "name": "[S7/1440x900] 改名后复制内容也带新昵称",
+      "ok": true,
+      "detail": "我是健康小明，邀请你一起看每日健康指数：https://shuzi.yuanjk.cn/?invite=K7QM2X9P&n=%E5%81%A5%E5%BA%B7%E5%B0%8F%E6%98%8E"
+    },
+    {
+      "name": "[S7/1440x900] 服务端拒绝时显示可读提示",
+      "ok": true,
+      "detail": "昵称包含不允许的内容，请修改后重试。（追踪号 stub-v6-err）"
+    },
+    {
+      "name": "[S7/1440x900] 服务端拒绝后昵称未被改动",
+      "ok": true,
+      "detail": "昵称：健康小明"
+    },
+    {
+      "name": "[S7/1440x900] 无横向滚动",
+      "ok": true,
+      "detail": "{'sw': 1440, 'iw': 1440}"
+    },
+    {
+      "name": "[S7/1440x900] console 无 error",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "[S7/1440x900] 无未捕获异常",
+      "ok": true,
+      "detail": "[]"
+    }
+  ]
+}

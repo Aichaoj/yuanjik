@@ -1,0 +1,587 @@
+{
+ "api": [
+  {
+   "tag": "健康分状态",
+   "path": "/healthscore/status",
+   "status": 200,
+   "ms": 3,
+   "bytes": 1452,
+   "ok": true
+  },
+  {
+   "tag": "今日节律",
+   "path": "/daily",
+   "status": 400,
+   "ms": 1,
+   "bytes": 126,
+   "ok": false
+  },
+  {
+   "tag": "我的",
+   "path": "/me",
+   "status": 400,
+   "ms": 21,
+   "bytes": 123,
+   "ok": false
+  },
+  {
+   "tag": "能量场状态",
+   "path": "/vault/status",
+   "status": 200,
+   "ms": 3,
+   "bytes": 1362,
+   "ok": true
+  },
+  {
+   "tag": "能量指数",
+   "path": "/vault/energy",
+   "status": 200,
+   "ms": 6,
+   "bytes": 396,
+   "ok": true
+  },
+  {
+   "tag": "贡献榜",
+   "path": "/vault/leaderboard",
+   "status": 200,
+   "ms": 2,
+   "bytes": 356,
+   "ok": true
+  },
+  {
+   "tag": "曲库公开",
+   "path": "/music",
+   "status": 200,
+   "ms": 1,
+   "bytes": 3269,
+   "ok": true
+  },
+  {
+   "tag": "音乐推荐",
+   "path": "/music/recommend",
+   "status": 200,
+   "ms": 17,
+   "bytes": 1185,
+   "ok": true
+  },
+  {
+   "tag": "积分",
+   "path": "/points/status",
+   "status": 400,
+   "ms": 1,
+   "bytes": 134,
+   "ok": false
+  },
+  {
+   "tag": "家人列表",
+   "path": "/family/list",
+   "status": 400,
+   "ms": 1,
+   "bytes": 132,
+   "ok": false
+  },
+  {
+   "tag": "活动/记录",
+   "path": "/records",
+   "status": 400,
+   "ms": 11,
+   "bytes": 128,
+   "ok": false
+  },
+  {
+   "tag": "健康分状态(2)",
+   "path": "/healthscore/status",
+   "status": 200,
+   "ms": 17,
+   "bytes": 1452,
+   "ok": true
+  }
+ ],
+ "browser": {
+  "mobile": {
+   "perf": {
+    "dcl": 106,
+    "load": 106,
+    "ttfb": 4,
+    "fcp": 104,
+    "nres": 18,
+    "totalTransfer": 688701,
+    "totalDecoded": 683301,
+    "biggest": [
+     {
+      "n": "app.js",
+      "t": 445289,
+      "d": 444989,
+      "ms": 8
+     },
+     {
+      "n": "style.css",
+      "t": 122513,
+      "d": 122213,
+      "ms": 5
+     },
+     {
+      "n": "energy-flow.js",
+      "t": 29946,
+      "d": 29646,
+      "ms": 8
+     },
+     {
+      "n": "music.js",
+      "t": 21427,
+      "d": 21127,
+      "ms": 8
+     },
+     {
+      "n": "energy.js",
+      "t": 17298,
+      "d": 16998,
+      "ms": 7
+     },
+     {
+      "n": "body3d.js",
+      "t": 14737,
+      "d": 14437,
+      "ms": 8
+     },
+     {
+      "n": "version.json",
+      "t": 14249,
+      "d": 13949,
+      "ms": 2
+     },
+     {
+      "n": "daily",
+      "t": 12147,
+      "d": 11847,
+      "ms": 54
+     },
+     {
+      "n": "status",
+      "t": 1811,
+      "d": 1511,
+      "ms": 1
+     },
+     {
+      "n": "status",
+      "t": 1811,
+      "d": 1511,
+      "ms": 2
+     }
+    ],
+    "boot_wall_ms": 688
+   },
+   "home_health": {
+    "innerW": 390,
+    "innerH": 844,
+    "scrollW": 390,
+    "overflowX": 0,
+    "smallTargets": 1,
+    "clipped": [],
+    "brokenImg": 0,
+    "offscreen": []
+   },
+   "console_err": [],
+   "page_err": [],
+   "failed": [],
+   "http_err": [],
+   "tabs": {
+    "home": {
+     "health": {
+      "innerW": 390,
+      "innerH": 844,
+      "scrollW": 390,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "今日签到",
+      "查看今日详细节律",
+      "随手记一下今天的饮食 / 心情"
+     ],
+     "screen": [
+      "screen-home"
+     ]
+    },
+    "rhythm": {
+     "health": {
+      "innerW": 390,
+      "innerH": 844,
+      "scrollW": 390,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "查看十二时辰表",
+      "心 偏亢",
+      "肺 偏亢",
+      "肾 偏亢",
+      "大肠 偏亢",
+      "复制分享文案",
+      "今日打卡",
+      "历史记录"
+     ],
+     "screen": [
+      "screen-rhythm"
+     ]
+    },
+    "music": {
+     "health": {
+      "innerW": 390,
+      "innerH": 844,
+      "scrollW": 390,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "播放",
+      "换一个",
+      "宫音（土 · 脾/胃） 能量 153.8（低于 ",
+      "羽音（水 · 肾/膀胱） 羽音低缓，配合呼吸把节",
+      "地藏经（节选·电子诵） 配合宫音（土 · 脾/胃",
+      "金刚经（节选·电子诵） 配合宫音（土 · 脾/胃",
+      "呼吸引导 按节奏吸气 · 停一停 · 呼气，1 ",
+      "减缓疼痛 在立体人体上点选痛处，再开始接收能量（",
+      "贡献能量 符咒注入 / 意念注入 · 每 5 分",
+      "补充能量 给自己补 · 每天 2 次、每次 ≤1",
+      "空间能量场 贡献能量 / 补充能量 · 看共享能",
+      "宫音 脾",
+      "商音 肺",
+      "角音 肝",
+      "徵音 心",
+      "羽音 肾",
+      "颂钵 低频泛音，慢慢散开",
+      "木鱼 匀速轻点，帮自己坐住",
+      "雨声 连续白噪音，遮住环境杂音",
+      "地藏经（节选·电子诵） 忉利天宫神通品第一 · ",
+      "金刚经（节选·电子诵） 法会因由分至如理实见分 ",
+      "般若心经（普通话） 心经念诵 · CC0 公有领",
+      "灵隐寺梵呗（现场） 杭州灵隐寺 · CC BY-",
+      "楞严咒（节选·长） 宣化上人念诵节选 · CC ",
+      "播放",
+      "停止"
+     ],
+     "screen": [
+      "screen-music"
+     ]
+    },
+    "mall": {
+     "health": {
+      "innerW": 390,
+      "innerH": 844,
+      "scrollW": 390,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "进入健康商城"
+     ],
+     "screen": [
+      "screen-mall"
+     ]
+    },
+    "mine": {
+     "health": {
+      "innerW": 390,
+      "innerH": 844,
+      "scrollW": 390,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "去补充",
+      "✦ 空间能量场 贡献能量 / 补充能量 · 看共",
+      "我的资料 / 重新建档 已建档 ›",
+      "今日健康指数 / 健康档案 今日 66 分 ›",
+      "家人管理 未添加 ›",
+      "体型与性别（您的元神） 未设性别 ›",
+      "我的报告 ›",
+      "状态口述 ›",
+      "综合健康分（自评） ›",
+      "亲密关系 ›",
+      "专属 AI 保健师 ›",
+      "我的邀请 ›",
+      "我的积分 / 推广收益 ›",
+      "订阅会员 未开通 ›",
+      "好友圈 ›",
+      "修改密码 / 修改昵称 ›",
+      "退出登录 ›",
+      "问题解答 ›",
+      "本草文献 338 味 ›",
+      "药食同源 110 条 ›",
+      "经典药方 37 方 ›",
+      "两性课堂 30 篇 ›"
+     ],
+     "screen": [
+      "screen-mine"
+     ]
+    }
+   },
+   "home_text": "\n      \n      \n\n      \n      \n        \n          今日健康指数\n          2026年10月26日 星期一\n        \n        56分中优良中需关注今日 癸酉日 · 肾经当值（日支属肺）　｜　霜降 第 4 天 · 距立冬 12 天按出生时空、地域、基因、环境、个体与家庭等多维度分析·非诊断\n        \n          \n            今日能量指数\n            10-26 19:18\n          \n          81.8/1000\n            需补充\n          \n        \n        \n        戌时 · 心包经当令此刻当令｜心包偏亢 Δ +0.065（今日第 8/12 位）\n        \n          \n            今日签到\n          \n          查看今日详细节律\n        \n        \n          指数为当日时相推算，不依赖打卡次数；连续签到 7 天后可叠加你个人的基线校准。\n        \n      \n\n      \n      \n        \n          今日需注意\n          戌时\n        \n        戌时 · 心包经当令（19:00–20:59）：适合放松：散步、和家人聊聊天，把白天的事放下。个体化校准 0/7：还差 7 天，坚持每天签到；满 7 天后这里换成「相对你自己」的偏移。今天还没记饮食和心情：点下面的「随手记」填一下，10 秒。\n        \n          随手记一下今天的饮食 / 心情\n        \n      \n\n      \n      \n        \n        \n          随手记 · 今天的情况\n          ×\n        \n        \n          \n          \n            昨晚睡眠（小时）\n            \n          \n          \n            上报会计入你的综合健康分，不会公开；只记情况，不做诊断。\n          \n        \n        \n          上报\n        \n      \n\n      \n        数字健康-AI元神\n        \n          做自己的健康导师\n        \n        为自己的健康加分\n        \n          只需出生日期、时刻与出生地，生成属于你个人的时间节律参考，\n          输出「今天宜养、宜慎、宜静」的生活方式取向。\n        \n\n        \n          \n            \n            只与你自己比：结论来自你个人的历史观测基线\n          \n          \n            \n            结论可核验：每条提示都能展开看到依据链与古典出处\n          \n          \n            \n            数据归你：支持导出与删除，随时可撤回同意\n          \n        \n\n        \n          重新建档\n          \n            \n          \n        \n\n        \n      \n\n      \n        \n          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。\n          所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。\n        \n        本内容由 AI 生成，仅供参考。\n      \n    "
+  },
+  "desktop": {
+   "perf": {
+    "dcl": 56,
+    "load": 56,
+    "ttfb": 2,
+    "fcp": 60,
+    "nres": 18,
+    "totalTransfer": 688701,
+    "totalDecoded": 683301,
+    "biggest": [
+     {
+      "n": "app.js",
+      "t": 445289,
+      "d": 444989,
+      "ms": 7
+     },
+     {
+      "n": "style.css",
+      "t": 122513,
+      "d": 122213,
+      "ms": 3
+     },
+     {
+      "n": "energy-flow.js",
+      "t": 29946,
+      "d": 29646,
+      "ms": 5
+     },
+     {
+      "n": "music.js",
+      "t": 21427,
+      "d": 21127,
+      "ms": 5
+     },
+     {
+      "n": "energy.js",
+      "t": 17298,
+      "d": 16998,
+      "ms": 6
+     },
+     {
+      "n": "body3d.js",
+      "t": 14737,
+      "d": 14437,
+      "ms": 6
+     },
+     {
+      "n": "version.json",
+      "t": 14249,
+      "d": 13949,
+      "ms": 2
+     },
+     {
+      "n": "daily",
+      "t": 12147,
+      "d": 11847,
+      "ms": 35
+     },
+     {
+      "n": "status",
+      "t": 1811,
+      "d": 1511,
+      "ms": 2
+     },
+     {
+      "n": "status",
+      "t": 1811,
+      "d": 1511,
+      "ms": 3
+     }
+    ],
+    "boot_wall_ms": 600
+   },
+   "home_health": {
+    "innerW": 1440,
+    "innerH": 900,
+    "scrollW": 1440,
+    "overflowX": 0,
+    "smallTargets": 1,
+    "clipped": [],
+    "brokenImg": 0,
+    "offscreen": []
+   },
+   "console_err": [],
+   "page_err": [],
+   "failed": [],
+   "http_err": [],
+   "tabs": {
+    "home": {
+     "health": {
+      "innerW": 1440,
+      "innerH": 900,
+      "scrollW": 1440,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "今日签到",
+      "查看今日详细节律",
+      "随手记一下今天的饮食 / 心情"
+     ],
+     "screen": [
+      "screen-home"
+     ]
+    },
+    "rhythm": {
+     "health": {
+      "innerW": 1440,
+      "innerH": 900,
+      "scrollW": 1440,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "查看十二时辰表",
+      "心 偏亢",
+      "肺 偏亢",
+      "肾 偏亢",
+      "大肠 偏亢",
+      "复制分享文案",
+      "今日打卡",
+      "历史记录"
+     ],
+     "screen": [
+      "screen-rhythm"
+     ]
+    },
+    "music": {
+     "health": {
+      "innerW": 1440,
+      "innerH": 900,
+      "scrollW": 1440,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "播放",
+      "换一个",
+      "宫音（土 · 脾/胃） 能量 153.8（低于 ",
+      "羽音（水 · 肾/膀胱） 羽音低缓，配合呼吸把节",
+      "地藏经（节选·电子诵） 配合宫音（土 · 脾/胃",
+      "金刚经（节选·电子诵） 配合宫音（土 · 脾/胃",
+      "呼吸引导 按节奏吸气 · 停一停 · 呼气，1 ",
+      "减缓疼痛 在立体人体上点选痛处，再开始接收能量（",
+      "贡献能量 符咒注入 / 意念注入 · 每 5 分",
+      "补充能量 给自己补 · 每天 2 次、每次 ≤1",
+      "空间能量场 贡献能量 / 补充能量 · 看共享能",
+      "宫音 脾",
+      "商音 肺",
+      "角音 肝",
+      "徵音 心",
+      "羽音 肾",
+      "颂钵 低频泛音，慢慢散开",
+      "木鱼 匀速轻点，帮自己坐住",
+      "雨声 连续白噪音，遮住环境杂音",
+      "地藏经（节选·电子诵） 忉利天宫神通品第一 · ",
+      "金刚经（节选·电子诵） 法会因由分至如理实见分 ",
+      "般若心经（普通话） 心经念诵 · CC0 公有领",
+      "灵隐寺梵呗（现场） 杭州灵隐寺 · CC BY-",
+      "楞严咒（节选·长） 宣化上人念诵节选 · CC ",
+      "播放",
+      "停止"
+     ],
+     "screen": [
+      "screen-music"
+     ]
+    },
+    "mall": {
+     "health": {
+      "innerW": 1440,
+      "innerH": 900,
+      "scrollW": 1440,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "进入健康商城"
+     ],
+     "screen": [
+      "screen-mall"
+     ]
+    },
+    "mine": {
+     "health": {
+      "innerW": 1440,
+      "innerH": 900,
+      "scrollW": 1440,
+      "overflowX": 0,
+      "smallTargets": 1,
+      "clipped": [],
+      "brokenImg": 0,
+      "offscreen": []
+     },
+     "buttons": [
+      "去补充",
+      "✦ 空间能量场 贡献能量 / 补充能量 · 看共",
+      "我的资料 / 重新建档 已建档 ›",
+      "今日健康指数 / 健康档案 今日 66 分 ›",
+      "家人管理 未添加 ›",
+      "体型与性别（您的元神） 未设性别 ›",
+      "我的报告 ›",
+      "状态口述 ›",
+      "综合健康分（自评） ›",
+      "亲密关系 ›",
+      "专属 AI 保健师 ›",
+      "我的邀请 ›",
+      "我的积分 / 推广收益 ›",
+      "订阅会员 未开通 ›",
+      "好友圈 ›",
+      "修改密码 / 修改昵称 ›",
+      "退出登录 ›",
+      "问题解答 ›",
+      "本草文献 338 味 ›",
+      "药食同源 110 条 ›",
+      "经典药方 37 方 ›",
+      "两性课堂 30 篇 ›"
+     ],
+     "screen": [
+      "screen-mine"
+     ]
+    }
+   }
+  }
+ },
+ "shots": [
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_mobile_home.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_mobile_home.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_mobile_rhythm.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_mobile_music.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_mobile_mall.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_mobile_mine.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_desktop_home.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_desktop_home.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_desktop_rhythm.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_desktop_music.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_desktop_mall.png",
+  "D:\\Deepseek智能体\\AI元健康\\shuzi\\_audit_v158\\audit_desktop_mine.png"
+ ]
+}

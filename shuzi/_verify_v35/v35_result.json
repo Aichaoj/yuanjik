@@ -1,0 +1,97 @@
+[
+ {
+  "name": "A1 type=\"date\" 残留 = 0",
+  "ok": true,
+  "detail": "count=0"
+ },
+ {
+  "name": "A1 建档与家庭档案各有一组 .date3",
+  "ok": true,
+  "detail": "date3 组数=2"
+ },
+ {
+  "name": "A1 年份/月份/日下拉 id 齐全",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A2 app.js 四个函数都在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A2 启动时两处都初始化",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3 app.js 带版本号（缓存击穿）",
+  "ok": true,
+  "detail": "['<script src=\"app.js?v=20261021\"></script>']"
+ },
+ {
+  "name": "B1 闰年与月天数（2000-02=29 / 1900-02=28 / 2024-02=29 / 2026-02=28 / 04=30）",
+  "ok": true,
+  "detail": "实测=[29, 28, 29, 28, 30, 31]"
+ },
+ {
+  "name": "C0 本地真服务就绪",
+  "ok": true,
+  "detail": "http://127.0.0.1:15201"
+ },
+ {
+  "name": "C1 年份选项覆盖 1900–今年（首项=2026 末项=1900 共 128 项）",
+  "ok": true,
+  "detail": "{'n': 128, 'first': '2026', 'last': '1900'}"
+ },
+ {
+  "name": "C3 2000 年 2 月 → 日上限 29（闰年）",
+  "ok": true,
+  "detail": "上限=29"
+ },
+ {
+  "name": "C3 1900 年 2 月 → 日上限 28（百年不闰）",
+  "ok": true,
+  "detail": "上限=28"
+ },
+ {
+  "name": "C3 1 月 31 日改到 2 月 → 日上限 29、越界的 31 被清空、隐藏值置空",
+  "ok": true,
+  "detail": "{'day': '', 'max': 29, 'hidden': ''}"
+ },
+ {
+  "name": "C2 选 1990/5/12 → 隐藏域 \"1990-05-12\"",
+  "ok": true,
+  "detail": "1990-05-12"
+ },
+ {
+  "name": "C6 三段下拉不产生横向滚动（sw=390 ≤ cw=390）",
+  "ok": true,
+  "detail": "{'sw': 390, 'cw': 390}"
+ },
+ {
+  "name": "C4 服务端收到 birth_local 以 \"1990-05-12 \" 开头（HTTP 200）",
+  "ok": true,
+  "detail": "birth_local='1990-05-12 12:00' status=200"
+ },
+ {
+  "name": "C5 家庭档案三段选择 → 隐藏域 \"1962-03-08\"",
+  "ok": true,
+  "detail": "1962-03-08"
+ },
+ {
+  "name": "C5 家人保存成功（卡片出现）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C5 编辑态回显 1962 / 3 / 8（隐藏域同步）",
+  "ok": true,
+  "detail": "{'y': '1962', 'm': '3', 'd': '8', 'hidden': '1962-03-08'}"
+ },
+ {
+  "name": "C7 全流程 0 条 console error / 0 个未捕获异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

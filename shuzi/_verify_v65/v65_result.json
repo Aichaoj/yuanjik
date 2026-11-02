@@ -1,0 +1,47 @@
+[
+ {
+  "tag": "S1 会话开始",
+  "ok": true,
+  "detail": "{'session_id': 'vst_ead699f8db7c4d', 'started_at': '2026-10-25T12:42:27', 'max_minutes': 120, 'prompt_minutes': 15, 'daily_minutes_left': 180, 'rate_now': 4, 'note': '音频只在本机分析，不上传；念咒或安静待着都可以。'}"
+ },
+ {
+  "tag": "S2 每分钟 1–10 + 累计 + 积分 1:1",
+  "ok": true,
+  "detail": "rates=[6, 7, 7] energy=20 points=20"
+ },
+ {
+  "tag": "S3 有声时的速率 ≥ 静默时",
+  "ok": true,
+  "detail": "A:(6, 8) B:(4, 7)"
+ },
+ {
+  "tag": "S4 120 分钟自动停止",
+  "ok": true,
+  "detail": "{'closed': True, 'reason': 'max_minutes', 'minutes_total': 120}"
+ },
+ {
+  "tag": "S5a 前一轮未结束时再开会被收尾（不报错）",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "tag": "S5 每日 180 分钟上限（再开 429）",
+  "ok": true,
+  "detail": "http=429"
+ },
+ {
+  "tag": "S6 UI 录音开始 + 首个心跳",
+  "ok": true,
+  "detail": "state=进行中 energy=4 active=True hint=本轮上限 120 分钟，每 15 分钟提示一次；今日剩余额度 180 分钟。"
+ },
+ {
+  "tag": "S7 UI 结束 + 会话关闭",
+  "ok": true,
+  "detail": "本轮结束 共 1 分钟、4 能量值，已 1:1 折算积分。"
+ },
+ {
+  "tag": "S8 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

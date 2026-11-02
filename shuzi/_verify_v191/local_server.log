@@ -1,0 +1,89 @@
+[01:47:17] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[01:47:17] music_seeded count=8
+[01:47:17] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=47 service=TYH-SVC-0.1.0
+[01:47:17] boot data_file=C:\Users\41692\AppData\Local\Temp\v191_7isn51hn\state.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15099
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\web（存在）
+  数据文件 : C:\Users\41692\AppData\Local\Temp\v191_7isn51hn\state.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\服务端
+             tianyuanheng=D:\Deepseek智能体\AI元健康\核心
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[01:47:17] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[01:47:17] login account_id=acc_f14df23bccd429a8 at=1793123237.412967 device_id=v191-local-3646 device_info={'channel': 'guest'}
+[01:47:17] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[01:47:17] vault_session_start member=mbr_20c17174f7c32574 purpose=contribute session=vst_5e16b515dad94a
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/end HTTP/1.1" 200 -
+[01:47:17] vault_session_start member=mbr_20c17174f7c32574 purpose=contribute session=vst_94655a81ed0f41
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/end HTTP/1.1" 200 -
+[01:47:17] vault_session_start member=mbr_20c17174f7c32574 purpose=contribute session=vst_6c5ed78a399d40
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/end HTTP/1.1" 200 -
+[01:47:17] vault_session_start member=mbr_20c17174f7c32574 purpose=contribute session=vst_71b8f4a70c3c46
+[01:47:17] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /style.css?v=20261028b HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /music.js?v=20261028b HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /body3d.js?v=20261028b HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /energy-flow.js?v=20261028b HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /energy.js?v=20261028b HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /app.js?v=20261028b HTTP/1.1" 200 -
+[01:47:18] login account_id=acc_4b0024b670d25b7a at=1793123238.4207625 device_id=h5-l9v9u14jjlxo0nrjb5g4-mvqza1ow device_info={'channel': 'guest'}
+[01:47:18] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[01:47:18] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-28 HTTP/1.1" 422 -
+[01:47:18] login account_id=acc_4b0024b670d25b7a at=1793123238.4311564 device_id=h5-l9v9u14jjlxo0nrjb5g4-mvqza1ow device_info={}
+[01:47:18] 127.0.0.1 "POST /api/v1/auth/refresh HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[01:47:18] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[01:47:19] 127.0.0.1 "GET /version.json?t=1793123239622 HTTP/1.1" 200 -
+[01:47:20] 127.0.0.1 "GET /api/v1/music?t=1793123240994 HTTP/1.1" 200 -
+[01:47:20] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[01:47:21] vault_session_start member=mbr_00983d8ce51294c2 purpose=absorb session=vst_233f850d5d5442
+[01:47:21] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[01:47:22] 127.0.0.1 "POST /api/v1/vault/session/tick HTTP/1.1" 200 -
+[01:47:23] 127.0.0.1 "POST /api/v1/vault/session/end HTTP/1.1" 200 -
+[01:47:23] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[01:47:23] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[01:47:23] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /style.css?v=20261028b HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /energy-flow.js?v=20261028b HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /music.js?v=20261028b HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /energy.js?v=20261028b HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /body3d.js?v=20261028b HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /app.js?v=20261028b HTTP/1.1" 200 -
+[01:47:25] login account_id=acc_a4427312758e25ba at=1793123245.5854597 device_id=h5-hsawlva13lzp1uzojnfq-mvqza77x device_info={'channel': 'guest'}
+[01:47:25] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[01:47:25] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-28 HTTP/1.1" 422 -
+[01:47:25] login account_id=acc_a4427312758e25ba at=1793123245.5971575 device_id=h5-hsawlva13lzp1uzojnfq-mvqza77x device_info={}
+[01:47:25] 127.0.0.1 "POST /api/v1/auth/refresh HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[01:47:25] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[01:47:26] 127.0.0.1 "GET /version.json?t=1793123246787 HTTP/1.1" 200 -
+[01:47:28] 127.0.0.1 "GET /api/v1/music?t=1793123248154 HTTP/1.1" 200 -
+[01:47:28] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[01:47:29] vault_session_start member=mbr_a51ce8d3b10623e9 purpose=contribute session=vst_a809cb4ae04846
+[01:47:29] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[01:47:29] 127.0.0.1 "POST /api/v1/vault/session/tick HTTP/1.1" 200 -
+[01:47:32] 127.0.0.1 "POST /api/v1/vault/session/end HTTP/1.1" 200 -
+[01:47:32] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[01:47:32] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[01:47:32] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -

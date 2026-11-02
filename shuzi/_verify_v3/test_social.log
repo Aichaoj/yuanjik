@@ -1,0 +1,106 @@
+[23:55:05] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[23:55:05] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=46 service=TYH-SVC-0.1.0
+[23:55:05] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\social_v3.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15096
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\social_v3.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+             tianyuanheng=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[23:55:06] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:55:06] login account_id=acc_819b6f1a84d10a9b at=1791561306.7607358 device_id=v3-a-1009235504 device_info={'channel': 'guest'}
+[23:55:06] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:55:06] login account_id=acc_90e933bebcf03c3f at=1791561306.762091 device_id=v3-b-1009235504 device_info={'channel': 'guest'}
+[23:55:06] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:55:06] social_invite account_id=acc_819b6f1a84d10a9b to_member=mbr_fac1bc3d3add0953
+[23:55:06] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:06] social_accept account_id=acc_90e933bebcf03c3f friend_id=mbr_e7234b48f3c937c8
+[23:55:06] 127.0.0.1 "POST /api/v1/friends/accept HTTP/1.1" 200 -
+[23:55:06] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[23:55:07] login account_id=acc_525cb8a18a3ecbae at=1791561307.1713426 device_id=v3-c-1009235504 device_info={'channel': 'guest'}
+[23:55:07] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/me/invite_code HTTP/1.1" 200 -
+[23:55:07] social_invite account_id=acc_819b6f1a84d10a9b to_member=mbr_30baab1f48d9c56e
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:55:07] social_accept account_id=acc_525cb8a18a3ecbae friend_id=mbr_e7234b48f3c937c8
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/accept HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/privacy HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:55:07] social_cheer account_id=acc_819b6f1a84d10a9b template_id=care_self to_member=mbr_fac1bc3d3add0953
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 200 -
+[23:55:07] social_cheer account_id=acc_819b6f1a84d10a9b template_id=care_self to_member=mbr_fac1bc3d3add0953
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 200 -
+[23:55:07] social_cheer account_id=acc_819b6f1a84d10a9b template_id=care_self to_member=mbr_fac1bc3d3add0953
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/friends/cheer HTTP/1.1" 429 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/cheer/templates HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] social_remove account_id=acc_819b6f1a84d10a9b friend_id=mbr_fac1bc3d3add0953
+[23:55:07] 127.0.0.1 "DELETE /api/v1/friends/mbr_fac1bc3d3add0953 HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/ranking HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends/feed HTTP/1.1" 200 -
+[23:55:07] social_nickname_set account_id=acc_819b6f1a84d10a9b
+[23:55:07] 127.0.0.1 "POST /api/v1/me/nickname HTTP/1.1" 200 -
+[23:55:07] 127.0.0.1 "POST /api/v1/me/nickname HTTP/1.1" 400 -
+[23:55:07] 127.0.0.1 "POST /api/v1/me/nickname HTTP/1.1" 400 -
+[23:55:07] 127.0.0.1 "GET /api/v1/friends HTTP/1.1" 200 -

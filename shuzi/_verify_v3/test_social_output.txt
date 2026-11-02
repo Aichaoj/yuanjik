@@ -1,0 +1,115 @@
+=== 0 打包 ===
+  SHA256 站点 = 57DCEA060CF591EC7F3295F38224E0D58BA990F1D92EE4116D8548FF67C08663
+  SHA256 运行时 = 01C5B3F93509CEED55E849C0BA7BFFF489557EF0BA0760E417BCD278E9AB559E
+完成。
+
+=== 1 清库并起真服务（port 15096）===
+    服务健康检查: PASS
+    A: HTTP 200 member=mbr_d9d743cb9454952b
+    B: HTTP 200 member=mbr_2069a8990fe20db5
+
+=== 断言 #1 · 新用户 friends 为空、ranking 不含自己（三开关默认全关） ===
+    A 邀请码=0PY1F73T 昵称=用户3204
+    [PASS] invite_code 为 8 位大写字母数字  code=0PY1F73T
+    [PASS] GET /friends 为空  friends=[]
+    [PASS] ranking 不含自己（items 为空）  items=[]
+    [PASS] ranking.me.rank 为 null 且未上榜  me={'member_id': 'mbr_d9d743cb9454952b', 'nickname': '用户3204', 'rank': None, 'score': None, 'in_ranking': False, 'on_board': False}
+    [PASS] 三开关默认全关（GET /friends/privacy 显式返回 false）  share_index=False share_streak=False in_ranking=False
+    [PASS] POST 未传的项保持不变（仍全关）  POST 后={'share_index': False, 'share_streak': False, 'in_ranking': False, 'note': '三个开关只影响"别人看我"；关闭后下一次请求即生效（本模块不做缓存）'}
+
+=== 断言 #2 · A 用 B 的邀请码发起 → pending；A 的 feed/ranking 都不含 B ===
+    [PASS] A 用 B 的邀请码发起 → status=pending  HTTP 200 status=pending
+    [PASS] A 的 /friends 中 B 为 pending 且状态字段一律 null  row={'friend_id': 'mbr_2069a8990fe20db5', 'nickname': '用户4410', 'status': 'pending', 'share_index': None, 'share_streak': None, 'in_ranking': None, 'score': None, 'streak_days': None, 'last_active': None}
+    [PASS] A 的 feed 不含 B  feed 中 B 的条目=[]
+    [PASS] A 的 ranking 不含 B  ranking=[]
+    [PASS] B 的 feed/ranking 也不含 A  B.feed=[] B.ranking=[]
+
+=== 断言 #3 · B accept 后双方 GET /friends 互为 accepted ===
+    [PASS] B accept 成功  HTTP 200 code=0
+    [PASS] A 侧看 B 为 accepted  A→B={'friend_id': 'mbr_2069a8990fe20db5', 'nickname': '用户4410', 'status': 'accepted', 'share_index': False, 'share_streak': False, 'in_ranking': False, 'score': None, 'streak_days': None, 'last_active': None}
+    [PASS] B 侧看 A 为 accepted  B→A={'friend_id': 'mbr_d9d743cb9454952b', 'nickname': '用户3204', 'status': 'accepted', 'share_index': False, 'share_streak': False, 'in_ranking': False, 'score': None, 'streak_days': None, 'last_active': None}
+    B 当日展示分（/v1/rhythm/daily 的 index.score）=66；A=74
+    C=mbr_513451f683168b8f（已与 A 确认，但不开 in_ranking），当日分=58
+
+=== 断言 #4 · 双方都开 in_ranking → ranking 含双方且按 score 降序；未开启者不出现 ===
+    A 的圈内排行: [{"rank": 1, "nickname": "用户3204", "score": 74, "is_me": true}, {"rank": 2, "nickname": "用户4410", "score": 66, "is_me": false}]
+    [PASS] ranking 含本人 A 与已开启的 B  ids=['mbr_d9d743cb9454952b', 'mbr_2069a8990fe20db5']
+    [PASS] 未开启 in_ranking 的 C 不出现  ids=['mbr_d9d743cb9454952b', 'mbr_2069a8990fe20db5']
+    [PASS] 按 score 降序  scores=[74, 66]
+    [PASS] 先逛好友圈、后建档也能出分（"无分"结果未被缓存）  scores=[74, 66]
+    [PASS] 本人关闭后自己不上榜、名次为 null（B 仍在榜）  me={'member_id': 'mbr_d9d743cb9454952b', 'nickname': '用户3204', 'rank': None, 'score': 74, 'in_ranking': False, 'on_board': False}
+
+=== 断言 #5 · B 开 share_index → A 的 feed 出现分数；关闭后下一次请求即看不到 ===
+    B 开 share_index 后，A 的 feed 中 B 条目: score=66 band=C
+    [PASS] B 开 share_index → A 的 feed 中 B 那条出现分数  score=66
+    [PASS] 社交分数与 /v1/rhythm/daily 的 index.score 完全一致（同一公式）  feed=66 daily=66
+    [PASS] B 关闭后，下一次请求即看不到分数  关闭后 score=None
+    [PASS] feed 条目带 share_index/share_streak 开关（前端据此显示"未公开"）  开时=True/False 关时=False
+
+=== 断言 #6 · streak 同理（share_streak 控制） ===
+    B 开 share_streak 后，A 的 feed 中 B 条目: streak_days=2 score=None
+    [PASS] B 开 share_streak → 连续天数出现且为 2（昨+今各一次打卡）  streak_days=2
+    [PASS] share_streak 与 share_index 相互独立（此时分数仍不可见）  score=None
+    [PASS] B 关闭 share_streak 后，下一次请求即看不到连续天数  关闭后 streak_days=None
+
+=== 断言 #7 · 同一好友第 4 次 cheer 被拒（可读业务码 + HTTP 4xx），前 3 次成功 ===
+    可用加油模板 8 条，取第一条用于实测
+    [PASS] 加油前额度为 3/3（当日上限 3 次）  daily_limit=3 remaining=3
+    第 1 次 cheer → HTTP 200 code=0 
+    第 2 次 cheer → HTTP 200 code=0 
+    第 3 次 cheer → HTTP 200 code=0 
+    第 4 次 cheer → HTTP 429 code=40000 {'scope': 'cheer', 'window': 'day', 'limit': 3, 'used_total': 3, 'used_to_friend': 3, 'to_member': 'mbr_2069a8990fe20db5', 'on_date': '2026-10-08'}
+    [PASS] 前 3 次成功（HTTP 200 / code=0）  前三次=[(200, 0), (200, 0), (200, 0)]
+    [PASS] 第 4 次被拒：可读业务码 + HTTP 4xx  HTTP 429 code=40000 detail={"scope": "cheer", "window": "day", "limit": 3, "used_total": 3, "used_to_friend": 3, "to_member": "mbr_2069a8990fe20db5", "on_date": "2026-10-08"}
+    [PASS] 被拒时不落库（当日成功计数仍为 3）  detail={'scope': 'cheer', 'window': 'day', 'limit': 3, 'used_total': 3, 'used_to_friend': 3, 'to_member': 'mbr_2069a8990fe20db5', 'on_date': '2026-10-08'}
+
+=== 断言 #8 · 全部 cheer 模板通过合规护栏（scan 0 命中） ===
+    模板 8 条: ['今天也照顾好自己', '早点休息，明天见', '一起动一动', '记得喝口水，歇一会儿', '今天也要好好吃饭', '慢慢来，别着急', '出去走走，晒晒太阳', '你今天已经很棒了']
+    [PASS] 模板 ≥6 条  count=8
+    [PASS] 每条模板过护栏 scan() 均 0 命中  命中=无（0 命中）
+    [PASS] 模板同时给出 id/template_id，且 items 与 templates 两个键同源  templates=8 items=8
+    [PASS] 模板接口回传本人当日剩余次数（前端显示"今日还可送 N 次"）  加油 3 次之后：daily_limit=3 remaining=0 used_today=3
+    [PASS] feed 中真实下发的加油文案过护栏 0 命中  文案=['今天也照顾好自己', '今天也照顾好自己', '今天也照顾好自己']
+
+=== 断言 #9 · A DELETE /friends/{B} 后：双方 friends/feed/ranking 均不再出现对方 ===
+    解除前 B 的 feed 中含 A 的互促条目: 3 条
+    [PASS] DELETE /api/v1/friends/{B} 返回 removed  HTTP 200 data={"friend_id": "mbr_2069a8990fe20db5", "status": "removed", "removed": true}
+    [PASS] A 的 /friends 不再出现 B  
+    [PASS] B 的 /friends 不再出现 A  
+    [PASS] A 的 feed 不再出现 B  feed=[]
+    [PASS] B 的 feed 不再出现 A  feed=[]
+    [PASS] A 的 ranking 不再含 B  ranking=['mbr_d9d743cb9454952b']
+    [PASS] B 的 ranking 不再含 A  ranking=['mbr_2069a8990fe20db5']
+    [PASS] 往来加油记录一并清除（解除前 3 条 → 解除后 0 条）  
+
+=== 断言 #10 · 昵称去敏感词；invite_code 8 位且唯一（并发创建 50 个不重复） ===
+    [PASS] 昵称去敏感词：提交「全球第一小达人」→ 落库昵称已剥离敏感词  HTTP 200 返回=小达人
+    [PASS] 清洗后不足以成词的一律拒收（HTTP 400 / code=10002）  HTTP 400 code=10002 detail={"field": "nickname", "reason": "昵称需 2-12 个字"}
+    [PASS] 昵称长度 2-12 字校验（1 字被拒）  HTTP 400 code=10002
+    [PASS] HTTP 阶段产生的 3 个邀请码互不相同且格式正确  codes=['0PY1F73T', 'IHTNT090', 'QOTSSUB4']
+    （参考）解除后 A 仍在圈内的好友: ['mbr_513451f683168b8f']
+
+=== 断言 #10 · 昵称去敏感词；invite_code 8 位且唯一（并发创建 50 个不重复） ===
+    停服后：同一份 serve.Stack + 同一份 state.db，进程内 50 路并发建档
+    预建 50 个会员（member_id 去重后 50 个）
+    50 路并发完成，耗时 0.04s；样例: ['9I8SYIZG', '2YP7VSOV', 'ODFV44SS', 'C70CL5S1', 'FRCLVIPY']
+    [PASS] 并发创建的 50 个 invite_code 互不重复  unique=50/50
+    [PASS] 50 个 invite_code 全部为 8 位大写字母数字  样例=['9I8SYIZG', '2YP7VSOV', 'ODFV44SS']
+    [PASS] 同一会员 50 路并发建档幂等（始终同一个邀请码）  unique=1
+    （本阶段的服务端审计行共 50 行，已写入 D:\shuzi\_verify_v3\test_social_conc_audit.log）
+    [PASS] 与 HTTP 阶段已产生的邀请码合并查重（共 53 个）  unique=53/53
+
+=== 汇总 ===
+  断言 #1  新用户 friends 为空、ranking 不含自己（三开关默认全关）  —— PASS（6/6 项通过）
+  断言 #2  A 用 B 的邀请码发起 → pending；A 的 feed/ranking 都不含 B  —— PASS（5/5 项通过）
+  断言 #3  B accept 后双方 GET /friends 互为 accepted  —— PASS（3/3 项通过）
+  断言 #4  双方都开 in_ranking → ranking 含双方且按 score 降序；未开启者不出现  —— PASS（5/5 项通过）
+  断言 #5  B 开 share_index → A 的 feed 出现分数；关闭后下一次请求即看不到  —— PASS（4/4 项通过）
+  断言 #6  streak 同理（share_streak 控制）  —— PASS（3/3 项通过）
+  断言 #7  同一好友第 4 次 cheer 被拒（可读业务码 + HTTP 4xx），前 3 次成功  —— PASS（4/4 项通过）
+  断言 #8  全部 cheer 模板通过合规护栏（scan 0 命中）  —— PASS（5/5 项通过）
+  断言 #9  A DELETE /friends/{B} 后：双方 friends/feed/ranking 均不再出现对方  —— PASS（8/8 项通过）
+  断言 #10 昵称去敏感词；invite_code 8 位且唯一（并发创建 50 个不重复）  —— PASS（8/8 项通过）
+
+  合计 51 项子断言，通过 51，失败 0；断言 #1-#10 全部通过
+  明细 JSON: D:\shuzi\_verify_v3\test_social_result.json

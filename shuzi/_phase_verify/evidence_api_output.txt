@@ -1,0 +1,32 @@
+POST /api/v1/auth/guest -> 200 {"code": 0, "message": "ok", "data": {"access_token": "voy2TlyKdiIOn5v7mrzc5mBW9uaT51TtnMFQ9tvLVCA", "refresh_token": "HXBRAq9qjDb3I8HjO22XLsPNlFsITqpLCD6Aeiuf4Ps", "expires_in": 900, "account_id": "acc_deb6947568268729", "member_id": "mbr_953773840920d476", "profile_completed": false}, "trace_id": "6ac6cda57cc9e4258d4b63d5"}
+access_token 前 12 位: voy2TlyKdiIO …  member_id = mbr_953773840920d476
+
+POST /api/v1/profile/birth -> 200 {"code": 0, "message": "ok", "data": {"member_id": "mbr_953773840920d476", "birth_local": "1985-03-12T08:30", "baseline_reset": false}, "trace_id": "6ac6cda5e661704b46a3f7b6"}
+
+GET /api/v1/rhythm/daily -> HTTP 200
+data 顶层字段: ['ai_generated', 'baseline_established', 'calibration', 'channels', 'date', 'disclaimer', 'disclaimer_required', 'engine_version', 'focus', 'index', 'level', 'level_name', 'lineage', 'member_id', 'min_observations', 'observation_count', 'param_hash', 'personalized', 'pillars', 'referral', 'rule_version', 'text', 'yunqi']
+observation_count = 0 / baseline_established = False
+既有字段 level = None / level_name = None / channels = [] / focus = []
+既有字段 calibration = {"observation_count": 0, "min_observations": 7, "progress_text": "基线建立中（0/7）", "note": "校准完成后，系统才能给出「相对你自己」的节律偏移；在此之前不输出观察等级与关注方向。"}
+personalized = null
+
+=== data.index（0 次观测时的整段）===
+{
+  "score": 68,
+  "band_code": "C",
+  "band": "中",
+  "basis": "按出生时空与当日运气推算·非诊断",
+  "formula": "score = 100 x (1 - min(1, mean(|raw|)/REF))",
+  "ref": 0.35,
+  "channels": [
+    {
+      "channel": "肝",
+      "raw": 0.115,
+      "direction": "偏亢",
+      "attention": false
+    },
+    {
+      "channel": "胆",
+      "raw": 0.115,
+      "direction": "偏亢",
+      "attention": false

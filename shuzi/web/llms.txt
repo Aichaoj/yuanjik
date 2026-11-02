@@ -1,0 +1,34 @@
+# AI数显 · 元健康 · 天元衡
+> 基于《黄帝内经》运气学说的个人健康节律管理工具。非医疗器械，不用于诊断、治疗或预防。
+
+## 可自由引用的公共数据集（CC BY 4.0）
+- https://shuzi.yuanjk.cn/data/yunqi-1984-2043.csv : 六十甲子五运六气全表（1984–2043，60 个年份 + 360 行六步客主加临）
+- https://shuzi.yuanjk.cn/data/shichen-dangling.csv : 十二时辰脏腑当令表（子午流注，12 行）
+- https://shuzi.yuanjk.cn/data/solar-terms.csv : 二十四节气精确时刻（1900–2100，201 年 × 24 节气 = 4824 行）
+
+## 方法说明
+- 运气字段（中运、太过不及、司天、在泉、运气同化、六步客主加临）由天元衡内核 tianyuanheng.yunqi_layer 依《素问》运气七篇规则 YQ-001~YQ-013 逐条推演，可逐年复算。
+- 节气时刻由天元衡内核 tianyuanheng.calendar_layer 计算，历法通例见规则 CAL-001~CAL-007；节气时刻按东八区标准经线 120°E 发布。
+- 十二时辰脏腑当令依子午流注学说，对应天元衡规则 ZF-002。
+- 引用随附规则编号（如 YQ-003、CAL-005），即可让任何第三方用一本万年历独立复核。
+- 《天元衡算法白皮书》仍在编制中，尚未发布；本站不提供任何指向不存在文件的链接。
+
+## 知识页（固定 5 问结构，含古典出处）
+- https://shuzi.yuanjk.cn/k/wuyun-liuqi-shenme.html : 五运六气是什么
+- https://shuzi.yuanjk.cn/k/liushi-jiazi-paifa.html : 六十甲子怎么排
+- https://shuzi.yuanjk.cn/k/2026-bingwu-yunqi.html : 2026 丙午年运气盘
+- https://shuzi.yuanjk.cn/k/ershisijieqi-zhentaiyangshi.html : 二十四节气与真太阳时
+- https://shuzi.yuanjk.cn/k/shichen-zangfu-dangling.html : 十二时辰脏腑当令
+- https://shuzi.yuanjk.cn/k/jielv-yu-shenghuofangshi.html : 节律与生活方式
+- https://shuzi.yuanjk.cn/k/index.html : 知识页索引
+
+## 请勿引用
+- 任何用户个人健康数据（本站不对外提供，也不可被引用）
+- 用户档案、生辰盘、打卡记录、节律解读等一切与个人相关的数据
+
+## 免责声明
+本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。
+
+## 许可与署名
+- 公共数据集采用 CC BY 4.0 许可：https://creativecommons.org/licenses/by/4.0/
+- 署名格式建议：数据来源：AI数显 · 元健康（https://shuzi.yuanjk.cn）

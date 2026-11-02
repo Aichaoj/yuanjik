@@ -1,0 +1,1028 @@
+# -*- coding: utf-8 -*-
+"""
+端到端真服务验证 · 自建支付与佣金账本（P1 · 不碰真钱）
+======================================================
+对 **打包后的站点树**（`D:\\shuzi\\_dist\\_stage_site`）用**便携运行时**起真服务（端口 **15090**），
+按变更单 `2026-10-08_主站后台菜单与自建支付佣金_验收标准` **§二** 的 **10 条验收标准**逐条实测，
+并打印**佣金逐分比对**的实际数字、**续费**与**退款冲正**的状态变化、以及合规断言。
+
+运行：
+    pwsh -NoProfile -File D:\\shuzi\\build_pack.ps1     # 生成 _stage_site（脚本内也会自动跑一次）
+    D:\\shuzi\\runtime\\python.exe D:\\shuzi\\_verify_v7\\test_pay_commission.py
+
+脚本范围与口径（如实说明，不假装做到）
+--------------------------------------
+· 验收 **#1–#9** 在本脚本内逐条打印 PASS/FAIL；**#10**（既有零回归）由本脚本**实跑**三条既有命令：
+    社交 51  = `D:\\shuzi\\runtime\\python.exe D:\\shuzi\\_verify_v3\\test_social.py`
+    内核 335 = `python -m unittest discover -s tests -t .`（工作目录 `核心`）
+    服务端 104 = `python -m unittest discover -s tests -t .`（工作目录 `服务端`）
+  ★ 服务端那 104 项里有 21 项是 PostgreSQL 适配测试，**需要 `psycopg`**；
+    便携运行时（`D:\\shuzi\\runtime`）只带 `lunar_python`，因此这一条**用系统 Python 3.12** 跑
+    （本机实测：系统 Python 有 psycopg 3.3.6 / fakeredis 2.39.0）。这是**环境依赖**，不是代码差异。
+· 追加项（本脚本为把口径钉死而补，不属于变更单 10 条）：
+    A 合规断言：只认 **一级** 推荐人、**不递归**（构造 A←B←E 三级链路实测）
+    B 结算口径：T+7 过退款期后 `pending → settled`（把一条账本的 `created_at` 改到 8 天前实测）
+    C 金额口径：一切金额为**整数分**，**拒绝浮点**（`paid_cents: 9900.5` → 10002）
+    D 边界：带参路径的鉴权、后台接口闸门（无口令 / 错口令一律拒绝）、未知通道拒绝
+· **不接真支付、不发网络请求、不写任何真实凭据**；回调走本机 `mock` 通道，验签用 P1 占位材料。
+· 未验证项（不在本脚本范围）：真实微信/支付宝通道、前端订阅页与后台页面、线上部署。
+"""
+from __future__ import annotations
+
+import datetime as _dt
+import hashlib
+import hmac
+import json
+import os
+import re
+import shutil
+import sqlite3
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+
+try:
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except Exception:                                                   # noqa: BLE001
+    pass
+
+# ── 配置 ────────────────────────────────────────────────────────────
+STAGE = r'D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site'
+PY = r'D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe'                       # 便携运行时（站点用）
+PACK = r'D:\Deepseek智能体\AI元健康\shuzi\build_pack.ps1'
+HERE = r'D:\Deepseek智能体\AI元健康\shuzi\_verify_v7'
+WS = r'D:\Deepseek智能体\AI元健康'
+CORE = os.path.join(WS, '核心')
+SERVER = os.path.join(WS, '服务端')
+SOCIAL_TEST = r'D:\Deepseek智能体\AI元健康\shuzi\_verify_v3\test_social.py'
+PORT = 15090
+BASE = 'http://127.0.0.1:%d' % PORT
+DB = os.path.join(HERE, 'pay_v7.db')
+LOG = os.path.join(HERE, 'test_pay_commission.log')
+RESULT_JSON = os.path.join(HERE, 'test_pay_commission_result.json')
+OUT_TXT = os.path.join(HERE, 'test_pay_commission_output.txt')
+ADMIN_TOKEN = 'p1-local-admin-token'          # 本机自测用的后台口令（环境变量注入，不入代码库）
+RUN = time.strftime('%m%d%H%M%S')             # 本次运行的设备号后缀
+
+# ★ 与 pay.py 的 `P1_PLACEHOLDER_SIGN_MATERIAL` **逐字一致**（P1 占位；P2 换 vault: 引用）。
+#   脚本自己按同一算法算一遍 → 服务端必须接受，才算"验签位"真的通了。
+SIGN_MATERIAL = 'p1-placeholder-sign-material-not-for-production'
+CHANNEL = 'mock'
+COMMISSION_RATE_BP = 3000                     # 师父口径：实付 × 30%（万分比）
+SETTLE_DAYS = 7
+
+RESULTS = []                                   # [(criteria, name, ok, detail)]
+CRIT_TITLE = {
+    '1': '下单幂等：同 idempotency_key 重复请求只产生 1 张订单',
+    '2': '支付回调后订单 status=paid；同一回调重放不重复计佣',
+    '3': '佣金金额 = round(实付 × 30%)，逐分比对（19900 → 5970）',
+    '4': '续费订单同样产生 1 条佣金，不与首单合并',
+    '5': '全额退款 → 该笔佣金 reversed；部分退款 → reversed_cents 按比例',
+    '6': '自推自买 → 不计佣并落人工复核标记',
+    '7': '无推荐人的订单 → 不产生佣金（不报错）',
+    '8': '用户端可查收益明细；后台可查全量流水（分页）',
+    '9': '回调验签位存在且默认拒绝未签名 / 签名不符的请求',
+    '10': '既有接口与测试零回归（社交 51 / 内核 335 / 服务端 104）',
+    'A': '追加 A · 合规断言：仅一级分销、不递归（A←B←E 三级链路实测）',
+    'B': '追加 B · 结算口径：T+7 过退款期后 pending → settled',
+    'C': '追加 C · 金额口径：一切金额为整数分，拒绝浮点',
+    'D': '追加 D · 边界：带参路径鉴权 / 后台闸门 / 未知通道拒绝',
+}
+CRIT_ORDER = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'A', 'B', 'C', 'D']
+
+
+def check(crit, name, ok, detail=''):
+    ok = bool(ok)
+    RESULTS.append((crit, name, ok, str(detail)))
+    print('    [%s] %s  %s' % ('PASS' if ok else 'FAIL', name, detail))
+    return ok
+
+
+def head(crit):
+    print('\n=== 断言 #%s · %s ===' % (crit, CRIT_TITLE[crit]))
+
+
+def expect_commission(base_cents: int) -> int:
+    """脚本侧**独立**复算佣金（整数四舍五入，与 pay.py 同一公式、同一比例）。"""
+    return (int(base_cents) * COMMISSION_RATE_BP + 5000) // 10000
+
+
+# ── HTTP 小工具 ──────────────────────────────────────────────────────
+def http(method, path, raw=None, token=None, extra=None, timeout=60):
+    req = urllib.request.Request(BASE + path, data=raw, method=method)
+    if raw is not None:
+        req.add_header('Content-Type', 'application/json')
+    if token:
+        req.add_header('Authorization', 'Bearer ' + token)
+    for k, v in (extra or {}).items():
+        req.add_header(k, v)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status, json.loads(r.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        try:
+            return e.code, json.loads(e.read().decode('utf-8'))
+        except Exception:                                           # noqa: BLE001
+            return e.code, {}
+
+
+def api(method, path, body=None, token=None, extra=None):
+    raw = None if body is None else json.dumps(
+        body, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    return http(method, path, raw, token, extra)
+
+
+def data_of(payload):
+    if isinstance(payload, tuple):
+        payload = payload[1]
+    return (payload or {}).get('data') or {}
+
+
+def sign_of(channel: str, raw: bytes) -> str:
+    material = ('%s|%s' % (SIGN_MATERIAL, channel)).encode('utf-8')
+    return hmac.new(material, raw, hashlib.sha256).hexdigest()
+
+
+def callback(payload, *, token=None, sign='auto', channel=CHANNEL, headers=None, raw=None):
+    """调一次支付回调；`sign='auto'` 用占位算法现算签名，`None` 表示不带头。"""
+    if raw is None:
+        raw = json.dumps(payload, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    h = dict(headers or {})
+    if sign == 'auto':
+        h['X-Pay-Signature'] = sign_of(channel, raw)
+    elif sign:
+        h['X-Pay-Signature'] = sign
+    return http('POST', '/api/v1/pay/callback/' + channel, raw, token, h)
+
+
+def login(tag):
+    s, j = api('POST', '/api/v1/auth/guest', {'device_id': 'v7-%s-%s' % (tag, RUN)})
+    d = data_of(j)
+    return d.get('access_token', ''), d.get('member_id', ''), s
+
+
+def short(mid):
+    return (mid or '')[-8:]
+
+
+def create_order(token, plan_id, idem=None):
+    body = {'plan_id': plan_id}
+    if idem:
+        body['idempotency'] = idem
+    return api('POST', '/api/v1/subscribe/order', body, token)
+
+
+def get_order(token, order_no):
+    return api('GET', '/api/v1/subscribe/order/' + order_no, None, token)
+
+
+def me_commission(token):
+    return data_of(api('GET', '/api/v1/me/commission', None, token))
+
+
+# ── 直读 / 直写测试库（只为本脚本造证据与造异常数据）────────────────
+def _db(path, uri=False, timeout=15.0):
+    conn = sqlite3.connect(('file:%s?mode=ro' % path.replace('\\', '/')) if uri else path,
+                           uri=uri, timeout=timeout)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def db_rows(sql, args=()):
+    conn = _db(DB, uri=True)
+    try:
+        return [dict(r) for r in conn.execute(sql, args).fetchall()]
+    finally:
+        conn.close()
+
+
+def db_exec(sql, args=()):
+    """测试侧直写（仅在造"异常数据/时间旅行"时用；正常业务路径一律走 HTTP）。"""
+    conn = _db(DB)
+    try:
+        cur = conn.execute(sql, args)
+        conn.commit()
+        return int(cur.rowcount or 0)
+    finally:
+        conn.close()
+
+
+def ledger_rows(order_no=None):
+    if order_no:
+        return db_rows('SELECT * FROM commission_ledger WHERE order_no = ? ORDER BY id', (order_no,))
+    return db_rows('SELECT * FROM commission_ledger ORDER BY id')
+
+
+def order_row(order_no):
+    rows = db_rows('SELECT * FROM sub_order WHERE order_no = ?', (order_no,))
+    return rows[0] if rows else None
+
+
+def print_table(title, rows, cols):
+    print('\n=== %s ===' % title)
+    print('    ' + ' | '.join(cols))
+    for r in rows:
+        print('    ' + ' | '.join(str(r.get(c)) for c in cols))
+    print('    行数 = %d' % len(rows))
+    return rows
+
+
+# ══════════════════════════════════════════════════════════════════
+# 账本的"期望模型"（脚本自己算，服务端必须对上）
+# ══════════════════════════════════════════════════════════════════
+class LedgerModel:
+    """推荐人 A 名下应有佣金行的**独立模型**（不读服务端，只按规则推演）。"""
+
+    def __init__(self):
+        self.rows = []            # [{'order_no','base','amount','state','reversed'}]
+
+    def add(self, order_no, base):
+        self.rows.append({'order_no': order_no, 'base': int(base),
+                          'amount': expect_commission(base), 'state': 'pending',
+                          'reversed': 0})
+
+    def get(self, order_no):
+        for r in self.rows:
+            if r['order_no'] == order_no:
+                return r
+        return None
+
+    def totals(self):
+        total = sum(r['amount'] for r in self.rows)
+        reversed_total = sum(r['reversed'] for r in self.rows)
+        pending = sum(r['amount'] - r['reversed'] for r in self.rows if r['state'] == 'pending')
+        settled = sum(r['amount'] - r['reversed'] for r in self.rows if r['state'] == 'settled')
+        return {'total_cents': total, 'pending_cents': pending, 'settled_cents': settled,
+                'reversed_cents': reversed_total, 'net_cents': pending + settled,
+                'count': len(self.rows)}
+
+
+MODEL = LedgerModel()
+
+
+# ══════════════════════════════════════════════════════════════════
+class _Tee:
+    """把 stdout 同时写到控制台与结果文件（便于"完整输出 + 退出码"一并留档）。"""
+
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, s):
+        for st in self.streams:
+            st.write(s)
+        return len(s)
+
+    def flush(self):
+        for st in self.streams:
+            st.flush()
+
+
+def main():
+    try:
+        sys.stdout = _Tee(sys.stdout, open(OUT_TXT, 'w', encoding='utf-8'))
+    except OSError:
+        pass
+    # ── 0 打包 ──────────────────────────────────────────────────────
+    print('=== 0 打包（把最新 server/pay.py + serve.py 纳入构件）===')
+    r = subprocess.run(['pwsh', '-NoProfile', '-File', PACK],
+                       capture_output=True, text=True, encoding='utf-8', errors='replace')
+    print('\n'.join((r.stdout or '').strip().splitlines()[-3:]))
+    if r.returncode != 0:
+        print((r.stderr or '')[:800])
+        sys.exit(1)
+    staged_pay = os.path.join(STAGE, 'server', 'pay.py')
+    print('    构件内 pay.py 存在: %s' % os.path.isfile(staged_pay))
+
+    # ── 1 清库 + 起真服务 ───────────────────────────────────────────
+    print('\n=== 1 清库并起真服务（port %d）===' % PORT)
+    for suffix in ('', '-wal', '-shm'):
+        try:
+            os.remove(DB + suffix)
+        except OSError:
+            pass
+    os.makedirs(os.path.join(STAGE, 'data'), exist_ok=True)
+    env = dict(os.environ, SHUZI_SRC_ROOT=STAGE, SHUZI_HOST='127.0.0.1',
+               SHUZI_PORT=str(PORT), SHUZI_DATA=DB, PYTHONIOENCODING='utf-8',
+               SHUZI_ADMIN_TOKEN=ADMIN_TOKEN)
+    logf = open(LOG, 'w', encoding='utf-8')
+    proc = subprocess.Popen([PY, os.path.join(STAGE, 'server', 'serve.py')],
+                            env=env, stdout=logf, stderr=subprocess.STDOUT)
+    healthy = False
+    for _ in range(25):
+        time.sleep(1.0)
+        try:
+            with urllib.request.urlopen(BASE + '/api/health', timeout=5) as rr:
+                healthy = rr.status == 200
+                if healthy:
+                    break
+        except Exception:                                           # noqa: BLE001
+            pass
+    print('    服务健康检查: %s' % ('PASS' if healthy else 'FAIL'))
+    if not healthy:
+        proc.kill()
+        print(open(LOG, encoding='utf-8', errors='replace').read()[-2000:])
+        sys.exit(1)
+
+    try:
+        run_phases()
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(timeout=15)
+        except Exception:                                           # noqa: BLE001
+            proc.kill()
+        time.sleep(1)
+        logf.close()
+    summarize()
+
+
+# ══════════════════════════════════════════════════════════════════
+def run_phases():
+    # ── 2 身份与推荐关系准备 ───────────────────────────────────────
+    print('\n=== 2 身份与推荐关系（A=推荐人，B=被推荐人，C=无推荐人，D=自推自买，E=三级链路）===')
+    tok_a, id_a, sa = login('a')
+    tok_b, id_b, sb = login('b')
+    tok_c, id_c, sc = login('c')
+    tok_d, id_d, sd = login('d')
+    print('    A: HTTP %s member=…%s（推荐人）' % (sa, short(id_a)))
+    print('    B: HTTP %s member=…%s（被 A 推荐）' % (sb, short(id_b)))
+    print('    C: HTTP %s member=…%s（无推荐人）' % (sc, short(id_c)))
+    print('    D: HTTP %s member=…%s（自推自买，见断言 #6）' % (sd, short(id_d)))
+
+    plans = data_of(api('GET', '/api/v1/subscribe/plans', None, tok_b)).get('plans') or []
+    price = {p['plan_id']: int(p['price_cents']) for p in plans}
+    print('    套餐: %s' % json.dumps(plans, ensure_ascii=False))
+    check('3', '订阅套餐接口可用且价格为整数分',
+          len(plans) >= 3 and all(isinstance(p['price_cents'], int) for p in plans),
+          'plan_id→price_cents = %s' % price)
+
+    code_a = data_of(api('GET', '/api/v1/me/referral', None, tok_a)).get('invite_code')
+    s_bind, j_bind = api('POST', '/api/v1/friends/invite',
+                         {'invite_code': code_a, 'auto_accept': True}, tok_b)
+    print('    B 用 A 的码 %s 绑定推荐关系 → HTTP %s code=%s' % (code_a, s_bind, j_bind.get('code')))
+    ref_rows = db_rows('SELECT referee_member_id, referrer_member_id FROM referral')
+    check('3', '推荐关系（referral 表，一级）已建立：B → A',
+          any(r['referee_member_id'] == id_b and r['referrer_member_id'] == id_a
+              for r in ref_rows),
+          'referral 行数=%d' % len(ref_rows))
+
+    # D 的"自推自买"是**数据异常**（既有 social 明确禁止自荐 30005），
+    # 这里只能由测试侧直造一行 D→D 来验证账本的防御口径（断言 #6）。
+    db_exec('INSERT OR REPLACE INTO referral (referee_member_id, referrer_member_id, invite_code,'
+            ' bound_at, source) VALUES (?, ?, ?, ?, ?)',
+            (id_d, id_d, 'P1SELFT0', _dt.datetime.now().replace(microsecond=0).isoformat(),
+             'p1-test-injected'))
+    d_ref = db_rows('SELECT referrer_member_id FROM referral WHERE referee_member_id = ?', (id_d,))
+    check('6', '测试前置：已为 D 注入"推荐人=自己"的异常推荐行（仅测试侧直写）',
+          bool(d_ref) and d_ref[0]['referrer_member_id'] == id_d,
+          'referee=D referrer=…%s' % short(d_ref[0]['referrer_member_id']) if d_ref else 'none')
+
+    # ── 断言 #1：下单幂等 ─────────────────────────────────────────
+    head('1')
+    idem = 'v7-idem-%s-1' % RUN
+    s1, j1 = create_order(tok_b, 'month', idem)
+    o1 = data_of(j1).get('order_no')
+    print('    第 1 次 POST /subscribe/order {plan_id:month, idempotency:%s}' % idem)
+    print('      → HTTP %s code=%s data=%s' % (s1, j1.get('code'),
+                                               json.dumps(data_of(j1), ensure_ascii=False)))
+    check('1', '下单成功：status=created、金额=套餐价（整数分）',
+          s1 == 200 and j1.get('code') == 0 and data_of(j1).get('status') == 'created'
+          and data_of(j1).get('amount_cents') == price.get('month'),
+          'order_no=%s amount_cents=%s' % (o1, data_of(j1).get('amount_cents')))
+    s1b, j1b = create_order(tok_b, 'month', idem)
+    o1b = data_of(j1b).get('order_no')
+    print('    第 2 次（同 idempotency_key）→ HTTP %s order_no=%s replay=%s'
+          % (s1b, o1b, data_of(j1b).get('idempotent_replay')))
+    check('1', '重复请求返回**同一张**订单（不报错、不新建）',
+          s1b == 200 and j1b.get('code') == 0 and o1b == o1
+          and data_of(j1b).get('idempotent_replay') is True,
+          'order_no 一致=%s' % (o1b == o1))
+    rows = db_rows('SELECT order_no FROM sub_order WHERE idempotency_key = ?', (idem,))
+    check('1', '库里该 idempotency_key 只有 1 张订单',
+          len(rows) == 1, 'sub_order 行数=%d' % len(rows))
+    check('1', '下单**不产生**佣金（计佣只认支付成功）',
+          len(ledger_rows(o1)) == 0, '该单账本行数=%d' % len(ledger_rows(o1)))
+    s1c, j1c = create_order(tok_b, 'no_such_plan', 'v7-idem-%s-x' % RUN)
+    check('1', '未知套餐 → 既有 10002（HTTP 400），不落单',
+          j1c.get('code') == 10002 and 400 <= s1c < 500,
+          'HTTP %s code=%s' % (s1c, j1c.get('code')))
+
+    # ── 断言 #2：支付回调 + 重放不重复计佣 ────────────────────────
+    head('2')
+    cb1 = {'order_no': o1, 'result': 'success', 'paid_cents': price['month']}
+    s2, j2 = callback(cb1, token=tok_b)
+    d2 = data_of(j2)
+    print('    首次回调（带占位签名）→ HTTP %s code=%s data=%s'
+          % (s2, j2.get('code'), json.dumps(d2, ensure_ascii=False)))
+    check('2', '回调被接受（HTTP 200 / code=0），订单转为 paid',
+          s2 == 200 and j2.get('code') == 0 and d2.get('order_status') == 'paid',
+          'order_status=%s' % d2.get('order_status'))
+    check('2', '回调同时产生 1 条佣金（实付 %d 分 → %d 分）'
+          % (price['month'], expect_commission(price['month'])),
+          d2.get('commission_amount_cents') == expect_commission(price['month'])
+          and d2.get('commission_delta_cents') == expect_commission(price['month']),
+          'delta=%s amount=%s' % (d2.get('commission_delta_cents'),
+                                  d2.get('commission_amount_cents')))
+    s2o, j2o = get_order(tok_b, o1)
+    check('2', 'GET /subscribe/order/{order_no} 查得 status=paid、paid_cents 正确',
+          s2o == 200 and data_of(j2o).get('status') == 'paid'
+          and data_of(j2o).get('paid_cents') == price['month'],
+          'status=%s paid_cents=%s' % (data_of(j2o).get('status'),
+                                       data_of(j2o).get('paid_cents')))
+    MODEL.add(o1, price['month'])
+
+    s2r, j2r = callback(cb1, token=tok_b)                    # 完全相同的报文重放
+    d2r = data_of(j2r)
+    print('    同一回调**重放** → HTTP %s replayed=%s delta=%s'
+          % (s2r, d2r.get('replayed'), d2r.get('commission_delta_cents')))
+    check('2', '重放被识别（replayed=true）且不重复计佣（delta=0）',
+          s2r == 200 and d2r.get('replayed') is True
+          and d2r.get('commission_delta_cents') == 0, 'delta=%s' % d2r.get('commission_delta_cents'))
+    check('2', '重放后该单账本仍只有 1 行',
+          len(ledger_rows(o1)) == 1, '账本行数=%d' % len(ledger_rows(o1)))
+    log1 = db_rows('SELECT * FROM pay_callback_log WHERE order_no = ? ORDER BY id', (o1,))
+    check('2', '回调留痕：验签通过的报文**只留一行**，重放记在原行上（replay_count=1、可审计）',
+          len(log1) == 1 and int(log1[0]['replayed']) == 1
+          and int(log1[0]['replay_count']) == 1 and int(log1[0]['commission_delta_cents']) == 2970,
+          '留痕行数=%d replayed=%s replay_count=%s'
+          % (len(log1), log1[0]['replayed'] if log1 else '-',
+             log1[0]['replay_count'] if log1 else '-'))
+
+    # 不同报文、同一订单：第二道幂等闸门（订单已 paid 不再计佣）
+    cb1b = dict(cb1, channel_trade_no='MOCK-DUP-1')
+    s2b, j2b = callback(cb1b, token=tok_b)
+    check('2', '同订单换报文再回调 → 不重复计佣（订单级幂等闸门）',
+          s2b == 200 and j2b.get('code') == 0
+          and data_of(j2b).get('commission_delta_cents') == 0
+          and len(ledger_rows(o1)) == 1,
+          'delta=%s 账本行数=%d' % (data_of(j2b).get('commission_delta_cents'),
+                                    len(ledger_rows(o1))))
+
+    # ── 断言 #3：佣金逐分比对（基数 = 实付金额）────────────────────
+    head('3')
+    cases = [
+        ('月卡 9900', 'month', None),          # 实付 = 标价 9900 → 2970（= #2 已验，这里再对一次）
+        ('季卡 19900', 'quarter', None),        # 19900 → 5970（变更单样例）
+        ('年卡 199000', 'year', None),          # 199000 → 59700
+        ('季卡标价 19900、优惠实付 9900', 'quarter', 9900),   # 证"基数=实付，不是标价"
+    ]
+    print('    %-34s %11s %11s %11s %11s %6s'
+          % ('用例', '套餐标价', '实付', '期望佣金', '实测佣金', '判定'))
+    paid_orders = {}
+    for label, plan_id, paid in cases:
+        if label.startswith('月卡'):
+            order_no = o1                                  # 复用 #2 已验证的那张
+            row = ledger_rows(order_no)[0]
+            amount = int(price[plan_id])
+        else:
+            _s, _j = create_order(tok_b, plan_id, 'v7-idem-%s-%s' % (RUN, plan_id + str(paid)))
+            order_no = data_of(_j).get('order_no')
+            amount = int(price[plan_id])
+            real_paid = amount if paid is None else int(paid)
+            _sc, _jc = callback({'order_no': order_no, 'result': 'success',
+                                 'paid_cents': real_paid}, token=tok_b)
+            row = ledger_rows(order_no)[0] if ledger_rows(order_no) else {}
+            paid_orders[plan_id if paid is None else label] = order_no
+            if paid is None:
+                MODEL.add(order_no, amount)
+            else:
+                MODEL.add(order_no, real_paid)
+        real_paid = amount if paid is None else int(paid)
+        got = int(row.get('amount_cents', -1))
+        want = expect_commission(real_paid)
+        print('    %-34s %11d %11d %11d %11d %6s'
+              % (label, amount, real_paid, want, got, 'PASS' if got == want else 'FAIL'))
+        check('3', '佣金逐分比对：%s → 期望 %d 分、实测 %d 分' % (label, want, got), got == want,
+              'order=%s base_cents=%s rate_bp=%s'
+              % (order_no, row.get('base_cents'), row.get('rate_bp')))
+    check('3', '变更单样例逐字对上：19900 分 → 5970 分',
+          expect_commission(19900) == 5970 and 5970 == expect_commission(19900),
+          '19900×30%% = 5970')
+    quarter_order = paid_orders.get('quarter')
+    check('3', '优惠实付场景：**基数取实付**（标价 19900、实付 9900 → 佣金 2970，不是 5970）',
+          int(ledger_rows(paid_orders['季卡标价 19900、优惠实付 9900'])[0]['base_cents']) == 9900
+          and int(ledger_rows(paid_orders['季卡标价 19900、优惠实付 9900'])[0]['amount_cents']) == 2970,
+          'base_cents=%d amount_cents=%d'
+          % (int(ledger_rows(paid_orders['季卡标价 19900、优惠实付 9900'])[0]['base_cents']),
+             int(ledger_rows(paid_orders['季卡标价 19900、优惠实付 9900'])[0]['amount_cents'])))
+    check('3', '佣金比例常量为 3000（万分比 = 30.00%，写在 pay.py 一处）',
+          int(ledger_rows(o1)[0]['rate_bp']) == COMMISSION_RATE_BP,
+          'rate_bp=%d' % int(ledger_rows(o1)[0]['rate_bp']))
+
+    # ── 断言 #4：续费 ─────────────────────────────────────────────
+    head('4')
+    _s, _j = create_order(tok_b, 'month', 'v7-renew-%s' % RUN)
+    o2 = data_of(_j).get('order_no')
+    _sc, _jc = callback({'order_no': o2, 'result': 'success', 'paid_cents': price['month']},
+                        token=tok_b)
+    MODEL.add(o2, price['month'])
+    print('    续费单 %s（与首单 %s 不同）→ 回调后 delta=%s'
+          % (o2, o1, data_of(_jc).get('commission_delta_cents')))
+    check('4', '续费是新订单号（不是复用首单）', o2 != o1, 'o1=%s o2=%s' % (o1, o2))
+    check('4', '续费同样产生 1 条佣金（%d 分）' % expect_commission(price['month']),
+          data_of(_jc).get('commission_delta_cents') == expect_commission(price['month']),
+          'delta=%s' % data_of(_jc).get('commission_delta_cents'))
+    check('4', '续费佣金**不与首单合并**（两行、两个 order_no、各自金额）',
+          len(ledger_rows(o1)) == 1 and len(ledger_rows(o2)) == 1
+          and o2 in [r['order_no'] for r in ledger_rows()],
+          '首单行=%d 续费行=%d' % (len(ledger_rows(o1)), len(ledger_rows(o2))))
+    check('4', '续费后 A 的累计佣金 = 首单 + 续费（合计 2×%d = %d 分）'
+          % (expect_commission(price['month']), 2 * expect_commission(price['month'])),
+          me_commission(tok_a).get('total_cents') == MODEL.totals()['total_cents'],
+          '实测 total_cents=%s 期望=%s'
+          % (me_commission(tok_a).get('total_cents'), MODEL.totals()['total_cents']))
+
+    # ── 断言 #5：退款冲正 ─────────────────────────────────────────
+    head('5')
+    # 5.1 全额退款（季卡 19900 / 佣金 5970）
+    amt_q = int(ledger_rows(quarter_order)[0]['amount_cents'])
+    s5, j5 = callback({'order_no': quarter_order, 'result': 'refund'}, token=tok_b)
+    d5 = data_of(j5)
+    row_q = ledger_rows(quarter_order)[0]
+    print('    全额退款（季卡 %s）→ order=%s 账本=%s reversed=%s'
+          % (quarter_order, d5.get('order_status'), row_q['status'], row_q['reversed_cents']))
+    check('5', '全额退款 → 订单 status=refunded、refund_cents=实付全款',
+          d5.get('order_status') == 'refunded'
+          and int(order_row(quarter_order)['refund_cents']) == price['quarter'],
+          'status=%s refund_cents=%s' % (d5.get('order_status'),
+                                         order_row(quarter_order)['refund_cents']))
+    check('5', '全额退款 → 该笔佣金 status=reversed、reversed_cents=全额佣金 %d' % amt_q,
+          row_q['status'] == 'reversed' and int(row_q['reversed_cents']) == amt_q,
+          'status=%s reversed=%s' % (row_q['status'], row_q['reversed_cents']))
+    m = MODEL.get(quarter_order)
+    m['state'], m['reversed'] = 'reversed', m['amount']
+
+    # 5.2 同一退款回调重放：不重复冲正
+    s5r, j5r = callback({'order_no': quarter_order, 'result': 'refund'}, token=tok_b)
+    check('5', '退款回调重放 → 不重复冲正（reversed_cents 不变）',
+          s5r == 200 and data_of(j5r).get('replayed') is True
+          and int(ledger_rows(quarter_order)[0]['reversed_cents']) == amt_q,
+          'reversed=%s' % ledger_rows(quarter_order)[0]['reversed_cents'])
+
+    # 5.3 部分退款（年卡 199000 / 佣金 59700）：分两次，按比例累计冲减
+    year_order = paid_orders.get('year')
+    amt_y = int(ledger_rows(year_order)[0]['amount_cents'])
+    for step, refund in (('第 1 次部分退 50000', 50000), ('第 2 次部分退 49000', 49000)):
+        s, j = callback({'order_no': year_order, 'result': 'refund',
+                         'refund_cents': refund}, token=tok_b)
+        row = ledger_rows(year_order)[0]
+        total_refund = int(order_row(year_order)['refund_cents'])
+        want_rev = expect_commission(total_refund)
+        print('    %s → 订单=%s 累计退款=%d 账本 reversed=%s（期望按比例 %d）'
+              % (step, data_of(j).get('order_status'), total_refund,
+                 row['reversed_cents'], want_rev))
+        check('5', '%s：reversed_cents 按比例（累计退 %d → 冲减 %d）'
+              % (step, total_refund, want_rev),
+              int(row['reversed_cents']) == want_rev
+              and data_of(j).get('order_status') == 'partially_refunded',
+              'reversed=%s 期望=%d status=%s'
+              % (row['reversed_cents'], want_rev, data_of(j).get('order_status')))
+        MODEL.get(year_order)['reversed'] = want_rev
+    # 5.4 退掉剩余部分 → 整单退清 → reversed
+    rest = int(order_row(year_order)['paid_cents']) - int(order_row(year_order)['refund_cents'])
+    s, j = callback({'order_no': year_order, 'result': 'refund', 'refund_cents': rest}, token=tok_b)
+    row = ledger_rows(year_order)[0]
+    print('    第 3 次退清剩余 %d → 订单=%s 账本 status=%s reversed=%s'
+          % (rest, data_of(j).get('order_status'), row['status'], row['reversed_cents']))
+    check('5', '退清后 → 订单 status=refunded、佣金 status=reversed、reversed=全额 %d' % amt_y,
+          data_of(j).get('order_status') == 'refunded' and row['status'] == 'reversed'
+          and int(row['reversed_cents']) == amt_y,
+          'status=%s 账本=%s reversed=%s' % (data_of(j).get('order_status'), row['status'],
+                                             row['reversed_cents']))
+    m = MODEL.get(year_order)
+    m['state'], m['reversed'] = 'reversed', m['amount']
+
+    # 5.5 未支付订单不可退
+    _s, _j = create_order(tok_b, 'month', 'v7-unpaid-%s' % RUN)
+    o_unpaid = data_of(_j).get('order_no')
+    s5u, j5u = callback({'order_no': o_unpaid, 'result': 'refund'}, token=tok_b)
+    check('5', '未支付订单退款 → 既有 30004 REFUND_WINDOW_CLOSED（不静默成功）',
+          j5u.get('code') == 30004, 'HTTP %s code=%s' % (s5u, j5u.get('code')))
+
+    # ── 断言 #6：自推自买 ─────────────────────────────────────────
+    head('6')
+    _s, _j = create_order(tok_d, 'month', 'v7-self-%s' % RUN)
+    o6 = data_of(_j).get('order_no')
+    s6, j6 = callback({'order_no': o6, 'result': 'success', 'paid_cents': price['month']},
+                      token=tok_d)
+    d6 = data_of(j6)
+    rows6 = ledger_rows(o6)
+    print('    D 买自己的单并支付成功 → HTTP %s delta=%s 账本行=%s'
+          % (s6, d6.get('commission_delta_cents'),
+             json.dumps([{k: r[k] for k in ('referrer_member_id', 'referee_member_id',
+                                            'amount_cents', 'status', 'base_cents')}
+                         for r in rows6], ensure_ascii=False)))
+    check('6', '自推自买**不计佣**（commission_delta_cents = 0，订单仍正常 paid）',
+          s6 == 200 and j6.get('code') == 0 and d6.get('order_status') == 'paid'
+          and d6.get('commission_delta_cents') == 0,
+          'order_status=%s delta=%s' % (d6.get('order_status'), d6.get('commission_delta_cents')))
+    check('6', '落了**人工复核标记**（status=manual_review、金额 0、基数照记）',
+          len(rows6) == 1 and rows6[0]['status'] == 'manual_review'
+          and int(rows6[0]['amount_cents']) == 0
+          and int(rows6[0]['base_cents']) == price['month'],
+          'status=%s amount=%s base=%s' % (rows6[0]['status'], rows6[0]['amount_cents'],
+                                           rows6[0]['base_cents']) if rows6 else 'no row')
+    check('6', '该复核行挂在 D 自己名下（referrer=referee=D），不进推荐人收益',
+          bool(rows6) and rows6[0]['referrer_member_id'] == id_d
+          and rows6[0]['referee_member_id'] == id_d,
+          'referrer=…%s referee=…%s'
+          % (short(rows6[0]['referrer_member_id']), short(rows6[0]['referee_member_id']))
+          if rows6 else 'no row')
+    check('6', 'D 的「我的推广收益」为 0，但能看到 1 条待复核',
+          me_commission(tok_d).get('total_cents') == 0
+          and me_commission(tok_d).get('manual_review_count') == 1,
+          'total=%s manual_review=%s' % (me_commission(tok_d).get('total_cents'),
+                                         me_commission(tok_d).get('manual_review_count')))
+
+    # ── 断言 #7：无推荐人 ─────────────────────────────────────────
+    head('7')
+    _s, _j = create_order(tok_c, 'quarter', 'v7-noref-%s' % RUN)
+    o7 = data_of(_j).get('order_no')
+    s7, j7 = callback({'order_no': o7, 'result': 'success', 'paid_cents': price['quarter']},
+                      token=tok_c)
+    d7 = data_of(j7)
+    print('    C（无推荐人）支付成功 → HTTP %s code=%s delta=%s 账本行数=%d'
+          % (s7, j7.get('code'), d7.get('commission_delta_cents'), len(ledger_rows(o7))))
+    check('7', '无推荐人 → **不报错**（HTTP 200 / code=0，订单照常 paid）',
+          s7 == 200 and j7.get('code') == 0 and d7.get('order_status') == 'paid',
+          'HTTP %s code=%s status=%s' % (s7, j7.get('code'), d7.get('order_status')))
+    check('7', '无推荐人 → **不产生佣金**（该单 0 行账本）',
+          len(ledger_rows(o7)) == 0 and d7.get('commission_delta_cents') == 0,
+          '账本行数=%d delta=%s' % (len(ledger_rows(o7)), d7.get('commission_delta_cents')))
+    check('7', 'C 的「我的推广收益」为 0（没有被"猜"一个推荐人）',
+          me_commission(tok_c).get('total_cents') == 0,
+          'total=%s' % me_commission(tok_c).get('total_cents'))
+
+    # ── 追加 C：金额一律整数分，拒绝浮点（放在 #8 之前，避免影响 A 的账本）──
+    head('C')
+    _s, _j = create_order(tok_c, 'month', 'v7-float-%s' % RUN)
+    o_float = data_of(_j).get('order_no')
+    sC1, jC1 = callback({'order_no': o_float, 'result': 'success', 'paid_cents': 9900.5},
+                        token=tok_c)
+    check('C', '浮点实付（9900.5）被拒 → 既有 10002（HTTP 400），不落库不改状态',
+          jC1.get('code') == 10002 and int(order_row(o_float)['status'] == 'created'),
+          'HTTP %s code=%s' % (sC1, jC1.get('code')))
+    sC2, jC2 = callback({'order_no': o_float, 'result': 'success', 'paid_cents': '9900'},
+                        token=tok_c)
+    check('C', '纯数字字符串（"9900"）按整数分受理 → code=0',
+          jC2.get('code') == 0 and int(order_row(o_float)['paid_cents']) == 9900,
+          'code=%s paid_cents=%s' % (jC2.get('code'), order_row(o_float)['paid_cents']))
+    money_fields = []
+    for payload in (jC2, j1, j2, j2o):
+        for k, v in (data_of(payload) or {}).items():
+            if k.endswith('_cents') or k == 'amount':
+                money_fields.append((k, v, type(v).__name__))
+    check('C', '所有金额字段都是 int（%d 个字段抽样），无 float/str' % len(money_fields),
+          all(isinstance(v, int) and not isinstance(v, bool) for _k, v, _t in money_fields),
+          json.dumps(money_fields[:6], ensure_ascii=False))
+
+    # ── 断言 #8：用户端明细 + 后台全量流水（分页）──────────────────
+    head('8')
+    me = me_commission(tok_a)
+    want = MODEL.totals()
+    print('    A 的收益：%s' % json.dumps({k: me.get(k) for k in
+                                          ('total_cents', 'pending_cents', 'settled_cents',
+                                           'reversed_cents', 'net_cents', 'count')},
+                                         ensure_ascii=False))
+    print('    模型期望：%s' % json.dumps(want, ensure_ascii=False))
+    check('8', '用户端累计/待结算/已结算/冲正/净额/条数 与独立模型**逐项一致**',
+          all(me.get(k) == want[k] for k in want),
+          '实测=%s' % json.dumps({k: me.get(k) for k in want}, ensure_ascii=False))
+    check('8', '明细逐条可查（条数一致、字段齐全）',
+          len(me.get('items') or []) == want['count']
+          and all({'order_no', 'base_cents', 'rate_bp', 'amount_cents', 'status',
+                   'reversed_cents', 'net_cents', 'created_at'} <= set(it)
+                  for it in (me.get('items') or [])),
+          'items=%d' % len(me.get('items') or []))
+    check('8', '提现口径：P1 关闭（withdraw_enabled=false + 说明）',
+          me.get('withdraw_enabled') is False and bool(me.get('withdraw_note')),
+          'withdraw_enabled=%s' % me.get('withdraw_enabled'))
+    check('8', '收益只算自己的：B 的收益为 0（推荐人收益不落到买家名下）',
+          me_commission(tok_b).get('total_cents') == 0,
+          'B total=%s' % me_commission(tok_b).get('total_cents'))
+
+    ledger_all = ledger_rows()
+    print('    后台口径：账本共 %d 行（A=%d 行 + D 复核 1 行），A 的模型 %d 行'
+          % (len(ledger_all), len(MODEL.rows), len(MODEL.rows)))
+    sA, jA = api('GET', '/api/v1/admin/commission?page=1&page_size=3', None, tok_a)
+    dA = data_of(jA)
+    print('    无后台口令访问 /admin/commission → HTTP %s code=%s' % (sA, jA.get('code')))
+    check('8', '后台接口**默认拒绝**（未带口令 → 既有 20000，HTTP 401）',
+          sA == 401 and jA.get('code') == 20000, 'HTTP %s code=%s' % (sA, jA.get('code')))
+    sA2, jA2 = api('GET', '/api/v1/admin/commission?page=1&page_size=3', None, tok_a,
+                   {'X-Admin-Token': ADMIN_TOKEN})
+    dA2 = data_of(jA2)
+    print('    带正确口令 page=1&page_size=3 → HTTP %s total=%s total_pages=%s items=%d'
+          % (sA2, dA2.get('total'), dA2.get('total_pages'), len(dA2.get('items') or [])))
+    check('8', '后台可查**全量**流水（total = 账本总行数，含复核行）',
+          sA2 == 200 and jA2.get('code') == 0 and dA2.get('total') == len(ledger_all),
+          'total=%s 账本=%d' % (dA2.get('total'), len(ledger_all)))
+    check('8', '后台分页正确（page_size=3 → 3 条、has_more=true）',
+          len(dA2.get('items') or []) == 3 and dA2.get('has_more') is True
+          and dA2.get('page') == 1 and dA2.get('page_size') == 3,
+          'items=%d has_more=%s' % (len(dA2.get('items') or []), dA2.get('has_more')))
+    check('8', '后台每条流水都带 order_no / 推荐人 / 被推荐人 / 基数 / 比例 / 金额 / 状态',
+          all({'order_no', 'referrer_member_id', 'referee_member_id', 'base_cents',
+               'rate_bp', 'amount_cents', 'status', 'reversed_cents'} <= set(it)
+              for it in (dA2.get('items') or [])),
+          '样例=%s' % json.dumps((dA2.get('items') or [{}])[0], ensure_ascii=False)[:220])
+    last_page = (len(ledger_all) + 2) // 3
+    sA3, jA3 = api('GET', '/api/v1/admin/commission?page=%d&page_size=3' % last_page, None, tok_a,
+                   {'X-Admin-Token': ADMIN_TOKEN})
+    check('8', '末页 has_more=false（不越界、不重复）',
+          data_of(jA3).get('has_more') is False
+          and len(data_of(jA3).get('items') or []) == len(ledger_all) - (last_page - 1) * 3,
+          'page=%d items=%d has_more=%s' % (last_page, len(data_of(jA3).get('items') or []),
+                                            data_of(jA3).get('has_more')))
+    sA4, jA4 = api('GET', '/api/v1/admin/commission?page=99&page_size=3', None, tok_a,
+                   {'X-Admin-Token': ADMIN_TOKEN})
+    check('8', '越界页返回空列表且不报错',
+          jA4.get('code') == 0 and (data_of(jA4).get('items') or []) == [],
+          'items=%s' % data_of(jA4).get('items'))
+    check('8', '后台汇总与用户端口径一致（sum_amount 含 D 的 0 元复核行）',
+          int(dA2.get('sum_amount_cents')) == want['total_cents']
+          and int(dA2.get('sum_reversed_cents')) == want['reversed_cents']
+          and int(dA2.get('count_manual_review')) == 1,
+          'sum=%s reversed=%s review=%s' % (dA2.get('sum_amount_cents'),
+                                            dA2.get('sum_reversed_cents'),
+                                            dA2.get('count_manual_review')))
+
+    # ── 追加 B：T+7 结算（放在 #8 之后，因为它会改变 pending/settled 分布）──
+    head('B')
+    travel_order = MODEL.rows[0]['order_no']
+    old = (_dt.datetime.now() - _dt.timedelta(days=SETTLE_DAYS + 1)).replace(
+        microsecond=0).isoformat()
+    db_exec('UPDATE commission_ledger SET created_at = ? WHERE order_no = ?', (old, travel_order))
+    me_before = me_commission(tok_a)
+    MODEL.get(travel_order)['state'] = 'settled'
+    want_b = MODEL.totals()
+    row_b = [r for r in ledger_rows() if r['order_no'] == travel_order][0]
+    print('    把 %s 的账本 created_at 改到 %d 天前（时间旅行，仅测试侧直写）→ status=%s settled_at=%s'
+          % (travel_order, SETTLE_DAYS + 1, row_b['status'], row_b['settled_at']))
+    check('B', 'T+7 后 pending → settled（惰性结算，读路径触发）',
+          row_b['status'] == 'settled' and bool(row_b['settled_at']),
+          'status=%s settled_at=%s' % (row_b['status'], row_b['settled_at']))
+    check('B', '结算后 待结算/已结算 分布与模型一致（净额不变）',
+          me_before.get('settled_cents') == want_b['settled_cents']
+          and me_before.get('pending_cents') == want_b['pending_cents']
+          and me_before.get('net_cents') == want_b['net_cents'],
+          '实测 settled=%s pending=%s net=%s；期望 settled=%s pending=%s net=%s'
+          % (me_before.get('settled_cents'), me_before.get('pending_cents'),
+             me_before.get('net_cents'), want_b['settled_cents'], want_b['pending_cents'],
+             want_b['net_cents']))
+    check('B', '结算不改变总额（total 不变，仍 %d 分）' % want_b['total_cents'],
+          me_before.get('total_cents') == want_b['total_cents'],
+          'total=%s' % me_before.get('total_cents'))
+
+    # ── 断言 #9：验签位 ───────────────────────────────────────────
+    head('9')
+    src = open(os.path.join(STAGE, 'server', 'pay.py'), encoding='utf-8').read()
+    sig_line = 'def verify_signature(channel: str, headers: dict, raw_body: bytes) -> bool:'
+    check('9', 'pay.py 存在验签位函数（签名逐字为 verify_signature(channel, headers, raw_body)）',
+          sig_line in src, '找到=%s' % (sig_line in src))
+    _s, _j = create_order(tok_b, 'month', 'v7-sig-%s' % RUN)
+    o9 = data_of(_j).get('order_no')
+    s9a, j9a = callback({'order_no': o9, 'result': 'success', 'paid_cents': price['month']},
+                        token=tok_b, sign=None)
+    print('    不带签名头 → HTTP %s code=%s' % (s9a, j9a.get('code')))
+    check('9', '**未签名**一律拒绝（HTTP 401 / 既有 20000）',
+          s9a == 401 and j9a.get('code') == 20000, 'HTTP %s code=%s' % (s9a, j9a.get('code')))
+    s9b, j9b = callback({'order_no': o9, 'result': 'success', 'paid_cents': price['month']},
+                        token=tok_b, sign='deadbeef' * 8)
+    check('9', '**签名不符**一律拒绝（HTTP 401 / 20000）',
+          s9b == 401 and j9b.get('code') == 20000, 'HTTP %s code=%s' % (s9b, j9b.get('code')))
+    other = hmac.new(b'wrong-material|mock',
+                     json.dumps({'order_no': o9, 'result': 'success',
+                                 'paid_cents': price['month']},
+                                ensure_ascii=False, separators=(',', ':')).encode('utf-8'),
+                     hashlib.sha256).hexdigest()
+    s9c, j9c = callback({'order_no': o9, 'result': 'success', 'paid_cents': price['month']},
+                        token=tok_b, sign=other)
+    check('9', '用别的材料算出来的签名同样被拒（占位材料唯一）',
+          s9c == 401 and j9c.get('code') == 20000, 'HTTP %s code=%s' % (s9c, j9c.get('code')))
+    check('9', '被拒的回调**不改任何状态**（订单仍 created、无账本行、不重复计佣）',
+          order_row(o9)['status'] == 'created' and len(ledger_rows(o9)) == 0,
+          'status=%s 账本行=%d' % (order_row(o9)['status'], len(ledger_rows(o9))))
+    s9d, j9d = callback({'order_no': o9, 'result': 'success', 'paid_cents': price['month']},
+                        token=tok_b)
+    MODEL.add(o9, price['month'])
+    check('9', '正确签名（脚本按同一算法现算）→ 受理（HTTP 200 / code=0）',
+          s9d == 200 and j9d.get('code') == 0, 'HTTP %s code=%s' % (s9d, j9d.get('code')))
+    check('9', 'pay.py 里**没有**任何真实通道凭据 / 商户号字面量（P1 不接真钱）',
+          not re.search(r'(mchid|appid|app_id|mch_id)\s*[:=]\s*[\'"][^\'"]+[\'"]', src, re.I)
+          and 'vault:' in src,
+          '凭据字面量=无；P2 清单含 vault: 引用=%s' % ('vault:' in src))
+    check('9', 'pay.py 文件头写明 P2 清单（商户号 / API 证书 / 对公账户 / 回调白名单）',
+          all(k in src for k in ('商户号', 'API 证书', '对公账户', '回调域名白名单')),
+          '四项关键词齐全')
+
+    # ── 追加 A：合规断言——仅一级分销、不递归 ─────────────────────
+    head('A')
+    code_b = data_of(api('GET', '/api/v1/me/referral', None, tok_b)).get('invite_code')
+    tok_e, id_e, se = login('e')
+    sA0, jA0 = api('POST', '/api/v1/friends/invite',
+                   {'invite_code': code_b, 'auto_accept': True}, tok_e)
+    print('    E 用 B 的码 %s 绑定（链路 A ← B ← E）→ HTTP %s code=%s'
+          % (code_b, sA0, jA0.get('code')))
+    a_before = me_commission(tok_a).get('total_cents')
+    _s, _j = create_order(tok_e, 'month', 'v7-l3-%s' % RUN)
+    oE = data_of(_j).get('order_no')
+    sA1, jA1 = callback({'order_no': oE, 'result': 'success', 'paid_cents': price['month']},
+                        token=tok_e)
+    rowsE = ledger_rows(oE)
+    print('    E 购买并支付 → 账本行=%s' % json.dumps(
+        [{'referrer': short(r['referrer_member_id']), 'referee': short(r['referee_member_id']),
+          'amount_cents': r['amount_cents'], 'status': r['status']} for r in rowsE],
+        ensure_ascii=False))
+    check('A', '三级链路下佣金只给 E 的**直接**推荐人 B（1 行）',
+          len(rowsE) == 1 and rowsE[0]['referrer_member_id'] == id_b
+          and rowsE[0]['referee_member_id'] == id_e
+          and int(rowsE[0]['amount_cents']) == expect_commission(price['month']),
+          '账本行数=%d referrer=…%s' % (len(rowsE),
+                                        short(rowsE[0]['referrer_member_id']) if rowsE else '-'))
+    check('A', '上上一级 A **不因下级成交获得任何佣金**（不递归）',
+          me_commission(tok_a).get('total_cents') == a_before
+          and not any(r['referrer_member_id'] == id_a for r in ledger_rows(oE)),
+          'A 成交前=%s 成交后=%s' % (a_before, me_commission(tok_a).get('total_cents')))
+    check('A', '账本里同一订单**不存在**第二条给上线的行（无多级分成）',
+          len([r for r in ledger_rows() if r['order_no'] == oE]) == 1,
+          '该单账本行数=%d' % len([r for r in ledger_rows() if r['order_no'] == oE]))
+    check('A', '无入门费 / 无按人头收费：未支付订单（%s）不产生任何账本行'
+          % o_unpaid, len(ledger_rows(o_unpaid)) == 0,
+          '该单账本行数=%d' % len(ledger_rows(o_unpaid)))
+    check('A', '合规口径随响应公开（compliance 文案含"仅一级分销 / 无入门费 / 不按人头"）',
+          all(k in (me_commission(tok_a).get('compliance') or '')
+              for k in ('一级分销', '无入门费', '按人头')),
+          'compliance=%s' % me_commission(tok_a).get('compliance'))
+
+    # ── 追加 D：边界 ──────────────────────────────────────────────
+    head('D')
+    sD1, jD1 = api('GET', '/api/v1/subscribe/order/' + o1, None, None)
+    check('D', '查单接口**必须鉴权**（无令牌 → 既有 20000 / HTTP 401）',
+          sD1 == 401 and jD1.get('code') == 20000, 'HTTP %s code=%s' % (sD1, jD1.get('code')))
+    sD2, jD2 = get_order(tok_c, o1)
+    check('D', '**别人的单**查不到（同一回答，不泄露订单是否存在）',
+          jD2.get('code') == 10002, 'HTTP %s code=%s' % (sD2, jD2.get('code')))
+    sD3, jD3 = get_order(tok_a, 'SO-NOT-EXIST')
+    check('D', '不存在的单同样是 10002（口径一致）',
+          jD3.get('code') == 10002, 'HTTP %s code=%s' % (sD3, jD3.get('code')))
+    sD4, jD4 = callback({'order_no': o1, 'result': 'success'}, channel='wechat', token=tok_b)
+    check('D', 'P1 未支持的通道（wechat）→ 拒绝，不静默放行（P2 才加入白名单）',
+          jD4.get('code') == 10002, 'HTTP %s code=%s' % (sD4, jD4.get('code')))
+    sD5, jD5 = api('GET', '/api/v1/admin/commission', None, tok_a,
+                   {'X-Admin-Token': 'wrong-token'})
+    check('D', '后台**错口令**拒绝（HTTP 401 / 20000）',
+          sD5 == 401 and jD5.get('code') == 20000, 'HTTP %s code=%s' % (sD5, jD5.get('code')))
+    sD6, jD6 = api('GET', '/api/v1/admin/commission', None, None, {'X-Admin-Token': ADMIN_TOKEN})
+    check('D', '后台只看口令、不看会员令牌（无令牌但口令对 → 放行；P1 口径已写明）',
+          sD6 == 200 and jD6.get('code') == 0, 'HTTP %s code=%s' % (sD6, jD6.get('code')))
+
+    # ── 收尾：打印两张表 ──────────────────────────────────────────
+    print_table('sub_order（state.db 直读）',
+                db_rows('SELECT order_no, plan_id, amount_cents, paid_cents, status, channel,'
+                        ' refund_cents FROM sub_order ORDER BY rowid'),
+                ['order_no', 'plan_id', 'amount_cents', 'paid_cents', 'status', 'channel',
+                 'refund_cents'])
+    print_table('commission_ledger（state.db 直读）',
+                db_rows('SELECT order_no, substr(referrer_member_id, -8) AS referrer,'
+                        ' substr(referee_member_id, -8) AS referee, base_cents, rate_bp,'
+                        ' amount_cents, status, reversed_cents FROM commission_ledger'
+                        ' ORDER BY id'),
+                ['order_no', 'referrer', 'referee', 'base_cents', 'rate_bp', 'amount_cents',
+                 'status', 'reversed_cents'])
+    print_table('pay_callback_log（state.db 直读）',
+                db_rows('SELECT channel, order_no, substr(body_sha256, 1, 12) AS sha12,'
+                        ' signature_ok, accepted, replayed, commission_delta_cents'
+                        ' FROM pay_callback_log ORDER BY id'),
+                ['channel', 'order_no', 'sha12', 'signature_ok', 'accepted', 'replayed',
+                 'commission_delta_cents'])
+    print('\n    成员对照：A=…%s（推荐人） B=…%s（被推荐人） C=…%s（无推荐人）'
+          ' D=…%s（自推自买） E=…%s（三级链路末端）'
+          % (short(id_a), short(id_b), short(id_c), short(id_d), short(id_e)))
+    with open(os.path.join(HERE, 'members.json'), 'w', encoding='utf-8') as fp:
+        json.dump({'a': id_a, 'b': id_b, 'c': id_c, 'd': id_d, 'e': id_e,
+                   'orders': {'o1': o1, 'renew': o2, 'quarter': quarter_order,
+                              'year': year_order, 'unpaid': o_unpaid, 'self': o6,
+                              'noreferrer': o7, 'level3': oE, 'signature': o9}},
+                  fp, ensure_ascii=False, indent=1)
+
+    # ── 断言 #10：既有零回归 ──────────────────────────────────────
+    head('10')
+    if os.environ.get('PAY_SKIP_REGRESSION') == '1':
+        print('    [SKIP] 按 PAY_SKIP_REGRESSION=1 跳过既有回归（**仅用于调试**，正式验收必须跑全）')
+        print('    [SKIP] 正式运行命令：%s %s' % (PY, os.path.abspath(__file__)))
+    else:
+        regression_zero()
+
+
+# ══════════════════════════════════════════════════════════════════
+def _run(cmd, cwd, tail=4):
+    r = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True,
+                       encoding='utf-8', errors='replace')
+    out = ((r.stdout or '') + (r.stderr or ''))
+    lines = [ln for ln in out.splitlines() if ln.strip()]
+    print('    $ %s' % ' '.join(cmd))
+    for ln in lines[-tail:]:
+        print('      %s' % ln)
+    return r.returncode, out
+
+
+def _sha(path: str) -> str:
+    try:
+        with open(path, 'rb') as fp:
+            return hashlib.sha256(fp.read()).hexdigest()
+    except OSError:
+        return 'MISSING'
+
+
+def regression_zero():
+    """#10：三条既有命令实跑（社交 51 / 内核 335 / 服务端 104）。"""
+    # 10.1 社交 51（本脚本已带 pay.py，能跑通即证明既有社交零回归）
+    t0 = time.time()
+    rc, out = _run([PY, SOCIAL_TEST], None, tail=2)
+    m = re.search(r'合计\s*(\d+)\s*项子断言，通过\s*(\d+)，失败\s*(\d+)', out)
+    got = m.groups() if m else ('?', '?', '?')
+    check('10', '社交 51：既有轻社交端到端验证全过（%s/%s，失败 %s，退出码 %d，%.0fs）'
+          % (got[1], got[0], got[2], rc, time.time() - t0),
+          rc == 0 and got[0] == '51' and got[1] == '51' and got[2] == '0',
+          '合计=%s 通过=%s 失败=%s rc=%d' % (got + (rc,)))
+
+    # 10.2 内核 335（便携运行时即可）
+    t0 = time.time()
+    rc, out = _run([PY, '-m', 'unittest', 'discover', '-s', 'tests', '-t', '.'], CORE, tail=3)
+    m = re.search(r'Ran (\d+) tests', out)
+    n = m.group(1) if m else '?'
+    check('10', '内核 335：核心测试全过（Ran %s tests / %s，%.0fs）'
+          % (n, 'OK' if '\nOK' in out else 'FAILED', time.time() - t0),
+          rc == 0 and n == '335' and '\nOK' in out, 'Ran=%s rc=%d' % (n, rc))
+
+    # 10.3 服务端 104（PG 适配测试需要 psycopg → 用系统 Python）
+    sys_py = shutil.which('python') or r'C:\Users\41692\AppData\Local\Programs\Python\Python312\python.exe'
+    try:
+        probe = subprocess.run([sys_py, '-c', 'import psycopg, fakeredis'],
+                               capture_output=True, text=True)
+        has_dep = probe.returncode == 0
+    except Exception:                                               # noqa: BLE001
+        has_dep = False
+    if not has_dep:
+        check('10', '服务端 104：**本机无法复算**（系统 Python 缺 psycopg/fakeredis）',
+              False, 'sys_py=%s 缺依赖；如实标注，不假装通过' % sys_py)
+    else:
+        t0 = time.time()
+        rc, out = _run([sys_py, '-m', 'unittest', 'discover', '-s', 'tests', '-t', '.'], SERVER,
+                       tail=3)
+        m = re.search(r'Ran (\d+) tests', out)
+        n = m.group(1) if m else '?'
+        check('10', '服务端 104：服务层测试全过（Ran %s tests / %s，%.0fs，解释器 %s）'
+              % (n, 'OK' if '\nOK' in out else 'FAILED', time.time() - t0, sys_py),
+              rc == 0 and n == '104' and '\nOK' in out, 'Ran=%s rc=%d' % (n, rc))
+    # 10.4 本期的改动面：只碰 D:\Deepseek智能体\AI元健康\shuzi\server，既有 app / 内核文件一字未动（逐个 SHA-256 比对）
+    same, diff = [], []
+    for rel in (('app', 'api.py'), ('app', 'http.py'), ('app', 'errors.py'),
+                ('app', 'auth.py'), ('app', 'envelope.py'), ('app', 'ratelimit.py'),
+                ('tianyuanheng', 'phase_index.py'), ('tianyuanheng', 'guardrail.py')):
+        staged = os.path.join(STAGE, rel[0], rel[1])
+        origin = os.path.join(WS, '服务端' if rel[0] == 'app' else '核心', rel[0], rel[1])
+        if _sha(staged) == _sha(origin):
+            same.append('%s/%s' % (rel[0], rel[1]))
+        else:
+            diff.append('%s/%s' % (rel[0], rel[1]))
+    check('10', '既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同'
+          '（抽查 %d 个文件）' % len(same), not diff and len(same) == 8,
+          '全同=%d 不一致=%s' % (len(same), diff or '无'))
+
+
+# ══════════════════════════════════════════════════════════════════
+def summarize():
+    print('\n=== 汇总（#1–#10 = 变更单 §二 验收标准；A/B/C/D = 本次追加）===')
+    per = {}
+    for crit, name, ok, detail in RESULTS:
+        per.setdefault(crit, []).append((name, ok, detail))
+    for crit in CRIT_ORDER:
+        rows = per.get(crit) or []
+        if not rows:
+            continue
+        bad = [r for r in rows if not r[2]]        # ★ 2026-10-08 修：ok 在索引 2（原误取 r[1]=名称，导致恒判通过）
+        print('  断言 #%-2s %s —— %s（%d/%d 项通过）'
+              % (crit, CRIT_TITLE[crit], 'PASS' if not bad else 'FAIL',
+                 len(rows) - len(bad), len(rows)))
+        for name, _ok, detail in bad:
+            print('      FAIL: %s  %s' % (name, detail))
+    failed = [r for r in RESULTS if not r[2]]      # ★ 2026-10-08 修：同上（原恒为空 → 恒 exit 0，属"假绿"）
+    print('\n  合计 %d 项子断言，通过 %d，失败 %d；本脚本范围 %s'
+          % (len(RESULTS), len(RESULTS) - len(failed), len(failed),
+             '全部通过' if not failed else '存在失败'))
+    print('  未验证项（如实标注）：真实微信/支付宝通道与 P2 资质疑材料、前端订阅页与后台页面、'
+          '线上部署、真实资金结算与提现（P3）')
+    with open(RESULT_JSON, 'w', encoding='utf-8') as fp:
+        json.dump([{'criteria': c, 'name': n, 'ok': o, 'detail': d}
+                   for c, n, o, d in RESULTS], fp, ensure_ascii=False, indent=1)
+    print('  明细 JSON: %s' % RESULT_JSON)
+    sys.exit(0 if not failed else 2)
+
+
+if __name__ == '__main__':
+    main()

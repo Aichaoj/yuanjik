@@ -1,0 +1,86 @@
+{
+  "pass": 16,
+  "total": 16,
+  "items": [
+    {
+      "name": "测试账号登录",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "默认未开启情绪关怀",
+      "ok": true,
+      "detail": "{'code': 0, 'message': 'ok', 'data': {'enabled': False, 'updated_at': ''}, 'trace_id': '6ae7f396fa3f64e75532e8a2'}"
+    },
+    {
+      "name": "未同意时拒收（no_consent）",
+      "ok": true,
+      "detail": "{'code': 0, 'message': 'ok', 'data': {'accepted': False, 'reason': 'no_consent', 'note': '未开启情绪关怀；不读取、不调分。'}, 'trace_id': '6ae7f39600640b2a9e1b3e13'}"
+    },
+    {
+      "name": "开启情绪关怀",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "首次上报被接受",
+      "ok": true,
+      "detail": "None"
+    },
+    {
+      "name": "单次 3 / 5 生效",
+      "ok": true,
+      "detail": "{'delta_health': 3.0, 'delta_energy': 5.0}"
+    },
+    {
+      "name": "当日累计 3 / 5",
+      "ok": true,
+      "detail": "{'day': '2026-11-02', 'delta_health': 3.0, 'delta_energy': 5.0, 'slots': 1, 'health_cap': 10.0, 'energy_cap': 10.0, 'remaining_health': 7.0, 'remaining_energy': 5.0, 'hour_rule': '每小时只调一次（同一小时内重复上报不再调分）'}"
+    },
+    {
+      "name": "★ 同一小时第二次被拒（hour_limited）",
+      "ok": true,
+      "detail": "{'accepted': False, 'reason': 'hour_limited', 'hour_key': '2026-11-02T10', 'retry_after_sec': 2329, 'today': {'day': '2026-11-02', 'delta_health': 3.0, 'delta_energy': 5.0, 'slots': 1, 'health_cap': 10.0, 'energy_cap': 10.0, 'remaining_health': 7.0, 'remaining_energy': 5.0, 'hour_rule': '每小时只调一次（同一小"
+    },
+    {
+      "name": "被拒后当日累计不变",
+      "ok": true,
+      "detail": "{'day': '2026-11-02', 'delta_health': 3.0, 'delta_energy': 5.0, 'slots': 1, 'health_cap': 10.0, 'energy_cap': 10.0, 'remaining_health': 7.0, 'remaining_energy': 5.0, 'hour_rule': '每小时只调一次（同一小时内重复上报不再调分）'}"
+    },
+    {
+      "name": "当日汇总只有 1 个时段",
+      "ok": true,
+      "detail": "{'code': 0, 'message': 'ok', 'data': {'enabled': True, 'today': {'day': '2026-11-02', 'delta_health': 3.0, 'delta_energy': 5.0, 'slots': 1, 'health_cap': 10.0, 'energy_cap': 10.0, 'remaining_health': 7.0, 'remaining_energy': 5.0, 'hour_rule': '每小时只调一次（同一小时内重复上报不再调分）'}}, 'trace_id': '6ae7f396adf6658a"
+    },
+    {
+      "name": "问卷保存后健康分有值",
+      "ok": true,
+      "detail": "54.0"
+    },
+    {
+      "name": "单日封顶后只放行剩余额度",
+      "ok": true,
+      "detail": "{'delta_health': 2.0, 'delta_energy': 2.0}"
+    },
+    {
+      "name": "当日合计 = 10 / 10（正好到顶）",
+      "ok": true,
+      "detail": "{'day': '2026-11-02', 'delta_health': 10.0, 'delta_energy': 10.0, 'slots': 2, 'health_cap': 10.0, 'energy_cap': 10.0, 'remaining_health': 0.0, 'remaining_energy': 0.0, 'hour_rule': '每小时只调一次（同一小时内重复上报不再调分）'}"
+    },
+    {
+      "name": "健康分接口带情绪块",
+      "ok": true,
+      "detail": "{'delta_health': 10.0, 'delta_energy': 10.0, 'enabled': True, 'hour_rule': '每小时只调一次'}"
+    },
+    {
+      "name": "健康分 = 基准分 + 10（上限 100）",
+      "ok": true,
+      "detail": "(54.0, 64.0)"
+    },
+    {
+      "name": "能量指数含情绪净额（删行后回落 10）",
+      "ok": true,
+      "detail": "with=275.6 without=265.6"
+    }
+  ]
+}

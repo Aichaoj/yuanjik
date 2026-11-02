@@ -1,0 +1,32 @@
+[
+ {
+  "name": "线上 web=206",
+  "ok": true,
+  "detail": "206"
+ },
+ {
+  "name": "线上 body3d 无金色 #ffb03a",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上 body3d 选中白 + 提亮",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "默认只亮肺经",
+  "ok": true,
+  "detail": "['mer_肺']"
+ },
+ {
+  "name": "可切到胃经",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

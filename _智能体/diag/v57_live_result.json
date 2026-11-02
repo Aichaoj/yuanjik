@@ -1,0 +1,30 @@
+{
+ "items": [
+  {
+   "tag": "P1 公网版本与页面",
+   "ok": true,
+   "detail": "ver=200 idx=200"
+  },
+  {
+   "tag": "P2 公网静态与脚本",
+   "ok": true,
+   "detail": "mjs=200 mjson=200 appjs=200"
+  },
+  {
+   "tag": "P4 首页摘要带回服务端记录",
+   "ok": true,
+   "detail": "上次记录：饮食 较好 · 心情 一般 · 睡眠 7h点这里修改或补报今天"
+  },
+  {
+   "tag": "P3 音疗页可用（5/3/空态 + 角音可播）",
+   "ok": true,
+   "detail": "chips={'w': 5, 'a': 3, 'c': '佛音素材准备中：把录音放进 music/ 目录并在 music.json 里登记，这里就会自动出现（不用改代码）。'} cur={'id': 'jue', 'name': '角音（肝）', 'kind': 'wuyin'}"
+  },
+  {
+   "tag": "P5 控制台无真正报错",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "members": []
+}

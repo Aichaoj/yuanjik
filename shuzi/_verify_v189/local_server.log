@@ -1,0 +1,42 @@
+[13:55:54] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[13:55:54] music_seeded count=8
+[13:55:54] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=47 service=TYH-SVC-0.1.0
+[13:55:54] boot data_file=C:\Users\41692\AppData\Local\Temp\v189_m8_7dol9\state.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15099
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\web（存在）
+  数据文件 : C:\Users\41692\AppData\Local\Temp\v189_m8_7dol9\state.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\服务端
+             tianyuanheng=D:\Deepseek智能体\AI元健康\核心
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[13:55:54] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[13:55:54] login account_id=acc_f54ca2c343e7bae7 at=1793080554.2863383 device_id=v189-local-3648 device_info={'channel': 'guest'}
+[13:55:54] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[13:55:54] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /?invite=K6X4JNP8&n=%E5%A4%A7%E8%89%BE HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /style.css?v=20261027i HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /energy-flow.js?v=20261027i HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /music.js?v=20261027i HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /body3d.js?v=20261027i HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /energy.js?v=20261027i HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /app.js?v=20261027i HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/invite/preview?invite_code=K6X4JNP8 HTTP/1.1" 200 -
+[13:55:55] login account_id=acc_1454dfb637cbdd21 at=1793080555.3478622 device_id=h5-b73aa221s2wd0uogo81n-mvq9v77z device_info={'channel': 'guest'}
+[13:55:55] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[13:55:55] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-27 HTTP/1.1" 422 -
+[13:55:55] login account_id=acc_1454dfb637cbdd21 at=1793080555.3566058 device_id=h5-b73aa221s2wd0uogo81n-mvq9v77z device_info={}
+[13:55:55] 127.0.0.1 "POST /api/v1/auth/refresh HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[13:55:55] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -

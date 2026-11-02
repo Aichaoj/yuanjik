@@ -1,0 +1,939 @@
+{
+  "started_at": "2026-10-08T11:48:08",
+  "base_url": "http://127.0.0.1:8791/index.html",
+  "mode": "stub（page.add_init_script 覆盖 window.fetch；未连真实后端、未写 server/）",
+  "viewports": [
+    "430x932",
+    "1440x900"
+  ],
+  "assertions_total": 184,
+  "assertions_failed": 0,
+  "console_errors": 0,
+  "uncaught_exceptions": 0,
+  "console_error_samples": [],
+  "page_error_samples": [],
+  "failed_assertions": [],
+  "assertions": [
+    {
+      "name": "430x932：首页有「订阅」入口",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：套餐卡来自接口 GET /subscribe/plans（未走内置兜底）",
+      "ok": true,
+      "detail": "月卡有效期 30 天 · 约 330 积分/天9,900 积分季卡已选有效期 90 天 · 约 221 积分/天19,900 积分年卡有效期 365 天 · 约 545 积分/天199,000 积分余额不足"
+    },
+    {
+      "name": "430x932：套餐卡 3 张（月/季/年）",
+      "ok": true,
+      "detail": "[{'plan': 'plan_month', 'name': '月卡', 'days': '有效期 30 天 · 约 330 积分/天', 'price': '9,900 积分', 'checked': 'false'}, {'plan': 'plan_quarter', 'name': '季卡已选', 'days': '有效期 90 天 · 约 221 积分/天', 'price': '19,900 积分', 'checked': 'true'}, {'plan': 'plan_year', 'name': '年卡', 'days': '有效期 365 天 · 约 545 积分/天', 'price': '199,000 积分', 'checked': 'false'}]"
+    },
+    {
+      "name": "430x932：月卡 30 天 / 9,900 积分",
+      "ok": true,
+      "detail": "{'plan': 'plan_month', 'name': '月卡', 'days': '有效期 30 天 · 约 330 积分/天', 'price': '9,900 积分', 'checked': 'false'}"
+    },
+    {
+      "name": "430x932：季卡 90 天 / 19,900 积分",
+      "ok": true,
+      "detail": "{'plan': 'plan_quarter', 'name': '季卡已选', 'days': '有效期 90 天 · 约 221 积分/天', 'price': '19,900 积分', 'checked': 'true'}"
+    },
+    {
+      "name": "430x932：年卡 365 天 / 199,000 积分",
+      "ok": true,
+      "detail": "{'plan': 'plan_year', 'name': '年卡', 'days': '有效期 365 天 · 约 545 积分/天', 'price': '199,000 积分', 'checked': 'false'}"
+    },
+    {
+      "name": "430x932：默认选中季卡（role=radio aria-checked）",
+      "ok": true,
+      "detail": "[{'plan': 'plan_month', 'name': '月卡', 'days': '有效期 30 天 · 约 330 积分/天', 'price': '9,900 积分', 'checked': 'false'}, {'plan': 'plan_quarter', 'name': '季卡已选', 'days': '有效期 90 天 · 约 221 积分/天', 'price': '19,900 积分', 'checked': 'true'}, {'plan': 'plan_year', 'name': '年卡', 'days': '有效期 365 天 · 约 545 积分/天', 'price': '199,000 积分', 'checked': 'false'}]"
+    },
+    {
+      "name": "430x932：顶部显示我的积分余额 20,000",
+      "ok": true,
+      "detail": "20,000"
+    },
+    {
+      "name": "430x932：余额充足不显示\"积分不足\"提示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：明确一行「测试期以积分结算，不涉及真实支付」",
+      "ok": true,
+      "detail": "测试期以积分结算，不涉及真实支付。"
+    },
+    {
+      "name": "430x932：免责声明在结果类屏保留",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：选中态摘要显示「季卡 · 19,900 积分 / 90 天」",
+      "ok": true,
+      "detail": "季卡 · 19,900 积分 / 90 天"
+    },
+    {
+      "name": "430x932：键盘 Enter 可切换套餐（年卡 aria-checked=true）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：订阅屏接口全部成功，无错误条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932 · 订阅屏：无横向滚动（scrollWidth 430 ≤ clientWidth 430）",
+      "ok": true,
+      "detail": "{'sw': 430, 'cw': 430}"
+    },
+    {
+      "name": "430x932 · 订阅屏：新屏可点区域均 ≥44px（实测 5 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：余额不足先给前端提示",
+      "ok": true,
+      "detail": "积分不足：还需 19,800 积分（当前 100 积分，需要 19,900 积分）。仍可提交，由服务端最终裁决。"
+    },
+    {
+      "name": "430x932：提示写明还需多少积分（19,900−100=19,800）",
+      "ok": true,
+      "detail": "积分不足：还需 19,800 积分（当前 100 积分，需要 19,900 积分）。仍可提交，由服务端最终裁决。"
+    },
+    {
+      "name": "430x932：不白屏——标题与 3 张套餐卡仍在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：余额不足仍可提交（按钮未禁用）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：余额不足仍提交给后端裁决（1 次 POST /subscribe/order）",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/subscribe/order', 'path': '/subscribe/order', 'method': 'POST', 'idem': 'sub-muyzxpp6-353sh7sec4x06do4', 'auth': 'Bearer stub-token-1', 'body': '{\"plan_id\":\"plan_quarter\",\"pay_with\":\"points\"}'}]"
+    },
+    {
+      "name": "430x932：请求体 {plan_id:plan_quarter, pay_with:\"points\"}",
+      "ok": true,
+      "detail": "{'plan_id': 'plan_quarter', 'pay_with': 'points'}"
+    },
+    {
+      "name": "430x932：写操作带 Idempotency-Key",
+      "ok": true,
+      "detail": "sub-muyzxpp6-353sh7sec4x06do4"
+    },
+    {
+      "name": "430x932：服务端拒绝给出可读提示（含\"积分不足\"）",
+      "ok": true,
+      "detail": "本次未开通：积分不足，无法开通 可先在「我的积分」查看余额。"
+    },
+    {
+      "name": "430x932：订单区显示\"最近一次提交未成功\"",
+      "ok": true,
+      "detail": "最近一次提交未成功套餐：季卡 · 提交时间：2026-10-08 11:48余额不足，未开单。请先在「我的积分」查看余额。"
+    },
+    {
+      "name": "430x932：失败后不白屏——套餐卡与余额仍在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932 · 订阅屏(余额不足)：无横向滚动（scrollWidth 430 ≤ clientWidth 430）",
+      "ok": true,
+      "detail": "{'sw': 430, 'cw': 430}"
+    },
+    {
+      "name": "430x932 · 订阅屏(余额不足)：新屏可点区域均 ≥44px（实测 5 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：订阅成功后余额刷新为 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "430x932：toast 提示订阅成功",
+      "ok": true,
+      "detail": "订阅成功：季卡 已开通，积分与明细正在刷新…"
+    },
+    {
+      "name": "430x932：订单状态显示订单号 PO20261008003",
+      "ok": true,
+      "detail": "最近一笔订单订单号：PO20261008003已开通金额：19,900 积分 · 支付渠道：积分套餐：季卡 · 提交时间：2026-10-08 11:48"
+    },
+    {
+      "name": "430x932：订单状态显示\"已开通\"与渠道\"积分\"",
+      "ok": true,
+      "detail": "最近一笔订单订单号：PO20261008003已开通金额：19,900 积分 · 支付渠道：积分套餐：季卡 · 提交时间：2026-10-08 11:48"
+    },
+    {
+      "name": "430x932：订单金额 19,900 积分",
+      "ok": true,
+      "detail": "最近一笔订单订单号：PO20261008003已开通金额：19,900 积分 · 支付渠道：积分套餐：季卡 · 提交时间：2026-10-08 11:48"
+    },
+    {
+      "name": "430x932：下单成功未出现错误条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932 · 订阅成功：无横向滚动（scrollWidth 430 ≤ clientWidth 430）",
+      "ok": true,
+      "detail": "{'sw': 430, 'cw': 430}"
+    },
+    {
+      "name": "430x932 · 订阅成功：新屏可点区域均 ≥44px（实测 5 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：积分屏余额同步为 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "430x932：累计获得 20,000 / 累计消耗 19,900",
+      "ok": true,
+      "detail": "20,000 积分 | 19,900 积分"
+    },
+    {
+      "name": "430x932：明细已刷新并含本次消耗（订阅开通 / −19,900 / 关联订单）",
+      "ok": true,
+      "detail": "订阅开通2026-10-08 18:00 · 关联订单 PO20261008003−19,900后台发放2026-10-08 17:00+20,000订阅开通2026-10-08 17:10 · 关联订单 PO20261008001−9,900退款返还2026-10-08 17:30 · 关联订单 PO20261008002−19,900"
+    },
+    {
+      "name": "430x932：费率 30% 展示",
+      "ok": true,
+      "detail": "费率 30%"
+    },
+    {
+      "name": "430x932：推广收益按成功后的口径刷新（净收益 11,940）",
+      "ok": true,
+      "detail": "11,940"
+    },
+    {
+      "name": "430x932：明细接口被重取（成功前 1 次 + 成功后 1 次 = 2 次）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "430x932：首页有「我的积分 / 推广收益」入口",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：积分余额 20,000",
+      "ok": true,
+      "detail": "20,000"
+    },
+    {
+      "name": "430x932：累计获得/累计消耗可见",
+      "ok": true,
+      "detail": "20,000 积分 | 9,900 积分"
+    },
+    {
+      "name": "430x932：明细第 1 页 4 条",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "430x932：未知 reason 原样兜底显示（monthly_bonus）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：收入/支出符号与着色区分",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：分页「加载更多」可见",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：加载更多后 6 条，按钮隐藏（has_more=false）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：页码推进（2 次 GET /points/ledger）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "430x932：第 2 页请求带 page=2",
+      "ok": true,
+      "detail": "/api/v1/points/ledger?page=2"
+    },
+    {
+      "name": "430x932：推广收益 累计 11,940 积分",
+      "ok": true,
+      "detail": "11,940 积分"
+    },
+    {
+      "name": "430x932：待结算 5,970 / 已结算 5,970 / 已冲正 5,970",
+      "ok": true,
+      "detail": "5,970 积分 | 5,970 积分 | 5,970 积分"
+    },
+    {
+      "name": "430x932：净收益 5,970",
+      "ok": true,
+      "detail": "5,970"
+    },
+    {
+      "name": "430x932：费率 30% 展示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：说明「按实付积分 × 30% 计」",
+      "ok": true,
+      "detail": "按实付积分 × 30% 计；测试期以积分结算，不涉及真实支付。"
+    },
+    {
+      "name": "430x932：提现按钮置灰（disabled）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：提现说明「待银联分账通道开通后开放。」",
+      "ok": true,
+      "detail": "待银联分账通道开通后开放。"
+    },
+    {
+      "name": "430x932：提现按钮不参与键盘焦点（键盘不可点）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：没有发出任何提现请求",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932 · 积分/收益屏：无横向滚动（scrollWidth 430 ≤ clientWidth 430）",
+      "ok": true,
+      "detail": "{'sw': 430, 'cw': 430}"
+    },
+    {
+      "name": "430x932 · 积分/收益屏：新屏可点区域均 ≥44px（实测 2 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：500 给出可读错误条",
+      "ok": true,
+      "detail": "积分/收益部分内容读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）（其余区块仍可浏览，可退出后重新进入本屏重试。）"
+    },
+    {
+      "name": "430x932：错误条带追踪号 trace-500",
+      "ok": true,
+      "detail": "积分/收益部分内容读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）（其余区块仍可浏览，可退出后重新进入本屏重试。）"
+    },
+    {
+      "name": "430x932：500 不白屏——标题与卡片仍在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：余额降级显示 —",
+      "ok": true,
+      "detail": "—"
+    },
+    {
+      "name": "430x932：明细给出可读失败文案",
+      "ok": true,
+      "detail": "积分明细读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）（可退出后重新进入本屏重试。）"
+    },
+    {
+      "name": "430x932：收益给出可读失败文案",
+      "ok": true,
+      "detail": "推广收益读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）"
+    },
+    {
+      "name": "430x932：500 时提现仍置灰",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932 · 500 降级：无横向滚动（scrollWidth 430 ≤ clientWidth 430）",
+      "ok": true,
+      "detail": "{'sw': 430, 'cw': 430}"
+    },
+    {
+      "name": "430x932 · 500 降级：新屏可点区域均 ≥44px（实测 2 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：401 后重试成功，明细正常渲染 4 条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：明细接口共调用 2 次（首次 401 + 重试 1 次）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "430x932：自动重新取游客令牌（/auth/guest ≥2 次）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "430x932：重试请求带令牌（Bearer），且重试只发生一次",
+      "ok": true,
+      "detail": "['Bearer stub-token-1', 'Bearer stub-token-1']"
+    },
+    {
+      "name": "430x932：重试成功后无错误条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：余额照常渲染 20,000",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：好友圈屏文本不含「我的推荐人」",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：好友圈屏文本不含推荐人归属（无空占位/空行）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：后端返回 referred_by 也不渲染（小明未出现）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "430x932：原容器 #myReferrer 已从 DOM 移除",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：.invite-referrer 节点已不存在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：邀请码照常显示（邀请区未被删坏）",
+      "ok": true,
+      "detail": "AB12CD34"
+    },
+    {
+      "name": "430x932：邀请链接已取到（非占位文案）",
+      "ok": true,
+      "detail": "https://shuzi.yuanjk.cn/?invite=AB12CD34&n=%E6%88%91%E8%87%AA%E5%B7%B1"
+    },
+    {
+      "name": "430x932：落地页「邀请你一起看每日健康指数」提示保留",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：绑定成功 toast「已与 X 成为好友」保留",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：推荐人绑定逻辑仍保留（referrer / referred_by 未删）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：三份前端源码均无「我的推荐人」字样",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：样式表已无 .invite-referrer 规则",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932：脚本已无 renderReferrer / myReferrer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "430x932 · 好友圈：无横向滚动（scrollWidth 430 ≤ clientWidth 430）",
+      "ok": true,
+      "detail": "{'sw': 430, 'cw': 430}"
+    },
+    {
+      "name": "1440x900：首页有「订阅」入口",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：套餐卡来自接口 GET /subscribe/plans（未走内置兜底）",
+      "ok": true,
+      "detail": "月卡有效期 30 天 · 约 330 积分/天9,900 积分季卡已选有效期 90 天 · 约 221 积分/天19,900 积分年卡有效期 365 天 · 约 545 积分/天199,000 积分余额不足"
+    },
+    {
+      "name": "1440x900：套餐卡 3 张（月/季/年）",
+      "ok": true,
+      "detail": "[{'plan': 'plan_month', 'name': '月卡', 'days': '有效期 30 天 · 约 330 积分/天', 'price': '9,900 积分', 'checked': 'false'}, {'plan': 'plan_quarter', 'name': '季卡已选', 'days': '有效期 90 天 · 约 221 积分/天', 'price': '19,900 积分', 'checked': 'true'}, {'plan': 'plan_year', 'name': '年卡', 'days': '有效期 365 天 · 约 545 积分/天', 'price': '199,000 积分', 'checked': 'false'}]"
+    },
+    {
+      "name": "1440x900：月卡 30 天 / 9,900 积分",
+      "ok": true,
+      "detail": "{'plan': 'plan_month', 'name': '月卡', 'days': '有效期 30 天 · 约 330 积分/天', 'price': '9,900 积分', 'checked': 'false'}"
+    },
+    {
+      "name": "1440x900：季卡 90 天 / 19,900 积分",
+      "ok": true,
+      "detail": "{'plan': 'plan_quarter', 'name': '季卡已选', 'days': '有效期 90 天 · 约 221 积分/天', 'price': '19,900 积分', 'checked': 'true'}"
+    },
+    {
+      "name": "1440x900：年卡 365 天 / 199,000 积分",
+      "ok": true,
+      "detail": "{'plan': 'plan_year', 'name': '年卡', 'days': '有效期 365 天 · 约 545 积分/天', 'price': '199,000 积分', 'checked': 'false'}"
+    },
+    {
+      "name": "1440x900：默认选中季卡（role=radio aria-checked）",
+      "ok": true,
+      "detail": "[{'plan': 'plan_month', 'name': '月卡', 'days': '有效期 30 天 · 约 330 积分/天', 'price': '9,900 积分', 'checked': 'false'}, {'plan': 'plan_quarter', 'name': '季卡已选', 'days': '有效期 90 天 · 约 221 积分/天', 'price': '19,900 积分', 'checked': 'true'}, {'plan': 'plan_year', 'name': '年卡', 'days': '有效期 365 天 · 约 545 积分/天', 'price': '199,000 积分', 'checked': 'false'}]"
+    },
+    {
+      "name": "1440x900：顶部显示我的积分余额 20,000",
+      "ok": true,
+      "detail": "20,000"
+    },
+    {
+      "name": "1440x900：余额充足不显示\"积分不足\"提示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：明确一行「测试期以积分结算，不涉及真实支付」",
+      "ok": true,
+      "detail": "测试期以积分结算，不涉及真实支付。"
+    },
+    {
+      "name": "1440x900：免责声明在结果类屏保留",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：选中态摘要显示「季卡 · 19,900 积分 / 90 天」",
+      "ok": true,
+      "detail": "季卡 · 19,900 积分 / 90 天"
+    },
+    {
+      "name": "1440x900：键盘 Enter 可切换套餐（年卡 aria-checked=true）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：订阅屏接口全部成功，无错误条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900 · 订阅屏：无横向滚动（scrollWidth 1440 ≤ clientWidth 1440）",
+      "ok": true,
+      "detail": "{'sw': 1440, 'cw': 1440}"
+    },
+    {
+      "name": "1440x900 · 订阅屏：新屏可点区域均 ≥44px（实测 5 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：余额不足先给前端提示",
+      "ok": true,
+      "detail": "积分不足：还需 19,800 积分（当前 100 积分，需要 19,900 积分）。仍可提交，由服务端最终裁决。"
+    },
+    {
+      "name": "1440x900：提示写明还需多少积分（19,900−100=19,800）",
+      "ok": true,
+      "detail": "积分不足：还需 19,800 积分（当前 100 积分，需要 19,900 积分）。仍可提交，由服务端最终裁决。"
+    },
+    {
+      "name": "1440x900：不白屏——标题与 3 张套餐卡仍在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：余额不足仍可提交（按钮未禁用）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：余额不足仍提交给后端裁决（1 次 POST /subscribe/order）",
+      "ok": true,
+      "detail": "[{'url': '/api/v1/subscribe/order', 'path': '/subscribe/order', 'method': 'POST', 'idem': 'sub-muyzxrjt-gdyuhxjkba7ufq93', 'auth': 'Bearer stub-token-1', 'body': '{\"plan_id\":\"plan_quarter\",\"pay_with\":\"points\"}'}]"
+    },
+    {
+      "name": "1440x900：请求体 {plan_id:plan_quarter, pay_with:\"points\"}",
+      "ok": true,
+      "detail": "{'plan_id': 'plan_quarter', 'pay_with': 'points'}"
+    },
+    {
+      "name": "1440x900：写操作带 Idempotency-Key",
+      "ok": true,
+      "detail": "sub-muyzxrjt-gdyuhxjkba7ufq93"
+    },
+    {
+      "name": "1440x900：服务端拒绝给出可读提示（含\"积分不足\"）",
+      "ok": true,
+      "detail": "本次未开通：积分不足，无法开通 可先在「我的积分」查看余额。"
+    },
+    {
+      "name": "1440x900：订单区显示\"最近一次提交未成功\"",
+      "ok": true,
+      "detail": "最近一次提交未成功套餐：季卡 · 提交时间：2026-10-08 11:48余额不足，未开单。请先在「我的积分」查看余额。"
+    },
+    {
+      "name": "1440x900：失败后不白屏——套餐卡与余额仍在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900 · 订阅屏(余额不足)：无横向滚动（scrollWidth 1440 ≤ clientWidth 1440）",
+      "ok": true,
+      "detail": "{'sw': 1440, 'cw': 1440}"
+    },
+    {
+      "name": "1440x900 · 订阅屏(余额不足)：新屏可点区域均 ≥44px（实测 5 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：订阅成功后余额刷新为 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "1440x900：toast 提示订阅成功",
+      "ok": true,
+      "detail": "订阅成功：季卡 已开通，积分与明细正在刷新…"
+    },
+    {
+      "name": "1440x900：订单状态显示订单号 PO20261008003",
+      "ok": true,
+      "detail": "最近一笔订单订单号：PO20261008003已开通金额：19,900 积分 · 支付渠道：积分套餐：季卡 · 提交时间：2026-10-08 11:48"
+    },
+    {
+      "name": "1440x900：订单状态显示\"已开通\"与渠道\"积分\"",
+      "ok": true,
+      "detail": "最近一笔订单订单号：PO20261008003已开通金额：19,900 积分 · 支付渠道：积分套餐：季卡 · 提交时间：2026-10-08 11:48"
+    },
+    {
+      "name": "1440x900：订单金额 19,900 积分",
+      "ok": true,
+      "detail": "最近一笔订单订单号：PO20261008003已开通金额：19,900 积分 · 支付渠道：积分套餐：季卡 · 提交时间：2026-10-08 11:48"
+    },
+    {
+      "name": "1440x900：下单成功未出现错误条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900 · 订阅成功：无横向滚动（scrollWidth 1440 ≤ clientWidth 1440）",
+      "ok": true,
+      "detail": "{'sw': 1440, 'cw': 1440}"
+    },
+    {
+      "name": "1440x900 · 订阅成功：新屏可点区域均 ≥44px（实测 5 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：积分屏余额同步为 100",
+      "ok": true,
+      "detail": "100"
+    },
+    {
+      "name": "1440x900：累计获得 20,000 / 累计消耗 19,900",
+      "ok": true,
+      "detail": "20,000 积分 | 19,900 积分"
+    },
+    {
+      "name": "1440x900：明细已刷新并含本次消耗（订阅开通 / −19,900 / 关联订单）",
+      "ok": true,
+      "detail": "订阅开通2026-10-08 18:00 · 关联订单 PO20261008003−19,900后台发放2026-10-08 17:00+20,000订阅开通2026-10-08 17:10 · 关联订单 PO20261008001−9,900退款返还2026-10-08 17:30 · 关联订单 PO20261008002−19,900"
+    },
+    {
+      "name": "1440x900：费率 30% 展示",
+      "ok": true,
+      "detail": "费率 30%"
+    },
+    {
+      "name": "1440x900：推广收益按成功后的口径刷新（净收益 11,940）",
+      "ok": true,
+      "detail": "11,940"
+    },
+    {
+      "name": "1440x900：明细接口被重取（成功前 1 次 + 成功后 1 次 = 2 次）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1440x900：首页有「我的积分 / 推广收益」入口",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：积分余额 20,000",
+      "ok": true,
+      "detail": "20,000"
+    },
+    {
+      "name": "1440x900：累计获得/累计消耗可见",
+      "ok": true,
+      "detail": "20,000 积分 | 9,900 积分"
+    },
+    {
+      "name": "1440x900：明细第 1 页 4 条",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "1440x900：未知 reason 原样兜底显示（monthly_bonus）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：收入/支出符号与着色区分",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：分页「加载更多」可见",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：加载更多后 6 条，按钮隐藏（has_more=false）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：页码推进（2 次 GET /points/ledger）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1440x900：第 2 页请求带 page=2",
+      "ok": true,
+      "detail": "/api/v1/points/ledger?page=2"
+    },
+    {
+      "name": "1440x900：推广收益 累计 11,940 积分",
+      "ok": true,
+      "detail": "11,940 积分"
+    },
+    {
+      "name": "1440x900：待结算 5,970 / 已结算 5,970 / 已冲正 5,970",
+      "ok": true,
+      "detail": "5,970 积分 | 5,970 积分 | 5,970 积分"
+    },
+    {
+      "name": "1440x900：净收益 5,970",
+      "ok": true,
+      "detail": "5,970"
+    },
+    {
+      "name": "1440x900：费率 30% 展示",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：说明「按实付积分 × 30% 计」",
+      "ok": true,
+      "detail": "按实付积分 × 30% 计；测试期以积分结算，不涉及真实支付。"
+    },
+    {
+      "name": "1440x900：提现按钮置灰（disabled）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：提现说明「待银联分账通道开通后开放。」",
+      "ok": true,
+      "detail": "待银联分账通道开通后开放。"
+    },
+    {
+      "name": "1440x900：提现按钮不参与键盘焦点（键盘不可点）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：没有发出任何提现请求",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900 · 积分/收益屏：无横向滚动（scrollWidth 1440 ≤ clientWidth 1440）",
+      "ok": true,
+      "detail": "{'sw': 1440, 'cw': 1440}"
+    },
+    {
+      "name": "1440x900 · 积分/收益屏：新屏可点区域均 ≥44px（实测 2 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：500 给出可读错误条",
+      "ok": true,
+      "detail": "积分/收益部分内容读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）（其余区块仍可浏览，可退出后重新进入本屏重试。）"
+    },
+    {
+      "name": "1440x900：错误条带追踪号 trace-500",
+      "ok": true,
+      "detail": "积分/收益部分内容读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）（其余区块仍可浏览，可退出后重新进入本屏重试。）"
+    },
+    {
+      "name": "1440x900：500 不白屏——标题与卡片仍在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：余额降级显示 —",
+      "ok": true,
+      "detail": "—"
+    },
+    {
+      "name": "1440x900：明细给出可读失败文案",
+      "ok": true,
+      "detail": "积分明细读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）（可退出后重新进入本屏重试。）"
+    },
+    {
+      "name": "1440x900：收益给出可读失败文案",
+      "ok": true,
+      "detail": "推广收益读取失败：服务暂时不可用，请稍后重试。（追踪号 trace-500）"
+    },
+    {
+      "name": "1440x900：500 时提现仍置灰",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900 · 500 降级：无横向滚动（scrollWidth 1440 ≤ clientWidth 1440）",
+      "ok": true,
+      "detail": "{'sw': 1440, 'cw': 1440}"
+    },
+    {
+      "name": "1440x900 · 500 降级：新屏可点区域均 ≥44px（实测 2 个）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：401 后重试成功，明细正常渲染 4 条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：明细接口共调用 2 次（首次 401 + 重试 1 次）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1440x900：自动重新取游客令牌（/auth/guest ≥2 次）",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1440x900：重试请求带令牌（Bearer），且重试只发生一次",
+      "ok": true,
+      "detail": "['Bearer stub-token-1', 'Bearer stub-token-1']"
+    },
+    {
+      "name": "1440x900：重试成功后无错误条",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：余额照常渲染 20,000",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：好友圈屏文本不含「我的推荐人」",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：好友圈屏文本不含推荐人归属（无空占位/空行）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：后端返回 referred_by 也不渲染（小明未出现）",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440x900：原容器 #myReferrer 已从 DOM 移除",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：.invite-referrer 节点已不存在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：邀请码照常显示（邀请区未被删坏）",
+      "ok": true,
+      "detail": "AB12CD34"
+    },
+    {
+      "name": "1440x900：邀请链接已取到（非占位文案）",
+      "ok": true,
+      "detail": "https://shuzi.yuanjk.cn/?invite=AB12CD34&n=%E6%88%91%E8%87%AA%E5%B7%B1"
+    },
+    {
+      "name": "1440x900：落地页「邀请你一起看每日健康指数」提示保留",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：绑定成功 toast「已与 X 成为好友」保留",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：推荐人绑定逻辑仍保留（referrer / referred_by 未删）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：三份前端源码均无「我的推荐人」字样",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：样式表已无 .invite-referrer 规则",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900：脚本已无 renderReferrer / myReferrer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440x900 · 好友圈：无横向滚动（scrollWidth 1440 ≤ clientWidth 1440）",
+      "ok": true,
+      "detail": "{'sw': 1440, 'cw': 1440}"
+    }
+  ],
+  "shots_dir": "D:\\shuzi\\web\\_shots_v8"
+}

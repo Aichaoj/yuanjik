@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#D6234A">
+<meta name="description" content="数字健康-AI元神 —— 做自己的健康导师。基于个人时间节律的生活方式参考。本产品不属于医疗器械，不用于疾病的诊断、治疗或预防。">
+<title>数字健康-AI元神 —— 做自己的健康导师</title>
+<!-- 站点图标：内联 data URI，不引用任何外网资源，离线可用 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23D6234A'/%3E%3Cstop offset='1' stop-color='%23FF7A9A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M5 19c3.4 0 4.2-8 7.2-8s3.6 10 7 10 3.2-5 7.8-5' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css?v=20261102f">
+<!-- 数字健康-AI元神 —— 首页 JSON-LD 注入片段（GEO §7.4.4②） -->
+<!-- 用法：整段粘贴到 index.html 的 </head> 之前。 -->
+<!-- 刻意不使用医疗类 Schema（医疗网页、医疗疾病等类型），以免触发 YMYL 高风险审查。 -->
+<!-- 本片段经自检脚本断言：不含任何医疗类 Schema 的类型名。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "六十甲子五运六气全表（1984–2043）",
+  "description": "按《素问》运气七篇规则推演的一个完整六十甲子周期的中运、司天、在泉、六步客主加临数据。",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "@type": "Organization",
+    "name": "数字健康-AI元神"
+  },
+  "temporalCoverage": "1984/2043",
+  "variableMeasured": [
+    "中运",
+    "司天",
+    "在泉",
+    "主气",
+    "客气",
+    "客主加临"
+  ],
+  "url": "https://shuzi.yuanjk.cn/data/yunqi-1984-2043.csv"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "数字健康-AI元神 · 天元衡",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "url": "https://shuzi.yuanjk.cn/",
+  "description": "基于个人时空节律的生活方式参考工具。非医疗器械，不用于诊断、治疗或预防。",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "数字健康-AI元神"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "2026 年五运六气是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026 年为丙午年，水运太过，少阴君火司天，阳明燥金在泉；六步客主加临与 24 节气时刻见站内知识页与公开数据集。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "五运六气是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "五运六气出自《黄帝内经·素问》运气七篇，是以干支纪年为骨架推演年度气候倾向的模型，基本周期为六十甲子即 60 年。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "十二时辰分别对应哪个脏腑？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "依子午流注学说：子胆、丑肝、寅肺、卯大肠、辰胃、巳脾、午心、未小肠、申膀胱、酉肾、戌心包、亥三焦。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "二十四节气的精确时刻从哪里可以核对？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "本站公开 1900–2100 年共 4824 条节气精确时刻，按东八区标准经线 120°E 发布，可用紫金山天文台公布数据逐年比对。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <div class="cosmic-fx" id="cosmicFx" aria-hidden="true"><b class="fcm f1"></b><b class="fcm f2"></b><b class="fcm f3"></b><b class="fcm f4"></b><b class="fcm f5"></b><b class="fcm f6"></b><b class="fcm f7"></b><b class="fcm f8"></b><b class="fcm f9"></b><b class="fcm f10"></b><b class="fcm f11"></b><b class="fcm f12"></b><b class="fcm f13"></b><b class="fcm f14"></b><b class="fcm f15"></b><b class="fcm f16"></b><span class="fx-core"></span></div>
+
+
+<!-- 跳转到主内容：键盘/读屏用户可用 -->
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="app" id="app">
+
+  <!-- ── 顶部品牌区 ─────────────────────────────────────────── -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28" focusable="false">
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#D6234A"/>
+              <stop offset="0.55" stop-color="#E8456B"/>
+              <stop offset="1" stop-color="#FF7A9A"/>
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="9" fill="url(#brandGrad)"/>
+          <path d="M5 19c3.4 0 4.2-8 7.2-8s3.6 10 7 10 3.2-5 7.8-5"
+                fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong class="brand-name">数字健康</strong>
+        <span class="brand-sub">AI元神</span>
+      </span>
+    </div>
+    <!-- 返回按钮：仅在非首屏显示 -->
+    <button type="button" class="btn-back" id="btnBack" hidden>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+        <path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>返回</span>
+    </button>
+    <!-- 登录 / 注册：两个**独立入口**（v12.1，2026-10-09 师父令「要分开」）-->
+    <span class="auth-entry" id="authEntryBox">
+      <button type="button" class="btn-auth" id="btnAuthEntry"
+              aria-haspopup="dialog" aria-controls="authSheet">登录</button>
+      <button type="button" class="btn-auth btn-auth-reg" id="btnAuthEntryReg"
+              aria-haspopup="dialog" aria-controls="authSheet">注册</button>
+    </span>
+  </header>
+
+  <!-- ── 全局错误条（接口异常时显示可读错误，不白屏）─────────── -->
+  <div class="alert" id="alertBox" role="alert" aria-live="assertive" hidden>
+    <span class="alert-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+        <path d="M12 3.6 21 20H3z" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linejoin="round"/>
+        <path d="M12 9.5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="12" cy="17.2" r="1.05" fill="currentColor"/>
+      </svg>
+    </span>
+    <p class="alert-text" id="alertText"></p>
+    <button type="button" class="alert-close" id="alertClose" aria-label="关闭提示">×</button>
+  </div>
+
+  <!-- ── v191：麦克风权限弹窗（拿不到权限时必须让用户确认，而不是只写一行小字）── -->
+  <div class="micdlg" id="micDlg" role="dialog" aria-modal="true" aria-labelledby="micDlgTitle" hidden>
+    <div class="micdlg-card">
+      <h2 class="micdlg-title" id="micDlgTitle">要先允许麦克风</h2>
+      <p class="micdlg-text" id="micDlgText">没拿到麦克风权限。这次没有开始，也不占今天的次数。</p>
+      <ul class="micdlg-list">
+        <li>弹窗询问时点「允许」；以前点过「拒绝」的，到手机「设置 → 应用 → 浏览器 → 权限 → 麦克风」里打开。</li>
+        <li>在微信里打不开：点右上角「…」→「在浏览器打开」，再回来点符咒注入。</li>
+      </ul>
+      <div class="micdlg-actions">
+        <button type="button" class="btn btn-primary" id="micDlgRetry">再试一次</button>
+        <button type="button" class="btn btn-ghost" id="micDlgAbsorb">改用意念注入（不需要麦克风）</button>
+        <button type="button" class="micdlg-close" id="micDlgClose">知道了，先不弄</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="main" id="main">
+
+    <!-- ═══════════ 一、首屏 ═══════════ -->
+    <section class="screen" id="screen-home" aria-labelledby="home-title">
+      <!-- 邀请落地提示：打开带邀请码的链接时，告诉新用户「是谁分享的」 -->
+      <p class="invite-hint" id="homeInviteHint" role="status" hidden></p>
+
+      <!-- ═══ v14 首页今日指数 + 首页签到 ═══
+           师父令（2026-10-09）：「用户登录首页就应该看到打分指数」「在哪里签到」。
+           已建档用户：首屏第一眼就是分数与分档，签到按钮就在分数下面，不用再翻页。
+           未建档用户：整卡隐藏（首屏仍由下方「开始建档」承担引导）。 -->
+      <section class="card home-daily" id="homeDailyCard" aria-labelledby="homeDailyTitle" hidden>
+        <div class="card-head">
+          <h2 class="card-title" id="homeDailyTitle">今日健康指数</h2>
+          <span class="chip" id="homeDailyDate">—</span>
+        </div>
+        <div id="homeDailyBody">
+          <p class="placeholder">正在读取今日指数…</p>
+        </div>
+        <section class="card home-energy" id="homeEnergyRow" hidden>
+          <div class="card-head">
+            <h2 class="card-title">当下能量指数</h2>
+            <span class="chip chip-quiet" id="homeEnergyAt">—</span>
+          </div>
+          <p class="mine-energy-num"><span id="homeEnergyVal">—</span><span class="mine-energy-cap">/1000</span>
+            <span class="mine-energy-band" id="homeEnergyBand">—</span></p>
+          <div class="mine-energy-curve" id="homeEnergyCurve" aria-hidden="true"></div>
+        </section>
+        <!-- v19（2026-10-13 师父令 方案 D）：「此刻时相」行。
+             主分（今日健康指数）走日粒度口径、日内不变；这一行按**此刻真太阳时辰**
+             给出当令通道与观测读数，所以它会随时辰变。未建档 / 接口未给字段时整行隐藏。 -->
+        <p class="idx-now" id="idxPhaseNow" hidden></p>
+        <div class="home-daily-actions">
+          <button type="button" class="btn btn-primary" id="btnHomeCheckin">
+            <span id="homeCheckinText">今日签到</span>
+          </button>
+          <button type="button" class="btn btn-ghost" id="btnHomeDailyMore">查看今日详细节律</button>
+        </div>
+        <p class="fineprint fineprint-dim" id="homeDailyNote">
+          指数为当日时相推算，不依赖打卡次数；连续签到 7 天后可叠加你个人的基线校准。
+        </p>
+      </section>
+
+      <!-- ═══ v56 首页「今日需注意」+ 随时上报（2026-10-24 师父令）═══
+           令：「在显示分数后面或者下面增加：今日需注意什么，和随时饮食、心情情况等上报」。
+           位置：紧跟今日指数卡（分数）之后，不改变分数卡本身的任何字段与口径。
+           内容来自既有接口：/rhythm/daily（节律要点、关注通道）+ /timemed/shichen（当令时辰），
+           上报走既有 /healthscore/save（综合健康分 v3 的同一套输入，先读后合并再写，不覆盖旧的项）。 -->
+      <section class="card home-need" id="homeNeedCard" aria-labelledby="homeNeedTitle" hidden>
+        <div class="card-head">
+          <h2 class="card-title" id="homeNeedTitle">今日需注意</h2>
+          <span class="chip" id="homeNeedPhase" hidden></span>
+        </div>
+        <ul class="need-list" id="homeNeedList">
+          <li class="placeholder">正在读取…</li>
+        </ul>
+        <div class="qr-summary" id="qrSummary">
+          <button type="button" class="qr-summary-btn" id="btnOpenQr">随手记一下今天的饮食 / 心情</button>
+        </div>
+      </section>
+
+      <!-- v57 弹窗式随手记：点上面的按钮才弹出；上报成功后自动收起 -->
+      <section class="sheet" id="qrSheet" role="dialog" aria-modal="true"
+               aria-labelledby="qrSheetTitle" hidden>
+        <div class="sheet-grab" aria-hidden="true"></div>
+        <div class="sheet-head">
+          <h2 class="sheet-title" id="qrSheetTitle">随手记 · 今天的情况</h2>
+          <button type="button" class="sheet-close" id="btnCloseQr" aria-label="关闭">×</button>
+        </div>
+        <div class="sheet-body">
+          <div id="qrChips"></div>
+          <div class="qr-sleep">
+            <label class="qr-label" for="qrSleep">昨晚睡眠（小时）</label>
+            <input class="input input-sm" id="qrSleep" type="number" step="0.5" min="0" max="24"
+                   inputmode="decimal" placeholder="如 7 或 6.5">
+          </div>
+          <p class="fineprint fineprint-dim" id="qrHint" role="status">
+            上报会计入你的综合健康分，不会公开；只记情况，不做诊断。
+          </p>
+        </div>
+        <div class="sheet-foot">
+          <button type="button" class="btn btn-primary" id="btnQuickReport">上报</button>
+        </div>
+      </section>
+
+      <div class="hero">
+        <p class="hero-kicker">数字健康-AI元神</p>
+        <h1 class="hero-title" id="home-title">
+          做自己的健康导师
+        </h1>
+        <p class="hero-slogan">为自己的健康加分</p>
+        <p class="hero-desc">
+          只需出生日期、时刻与出生地，生成属于你个人的时间节律参考，
+          输出「今天宜养、宜慎、宜静」的生活方式取向。
+        </p>
+
+        <ul class="hero-points">
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            只与你自己比：结论来自你个人的历史观测基线
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            结论可核验：每条提示都能展开看到依据链与古典出处
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            数据自主管理：支持导出与删除，随时可对比
+          </li>
+        </ul>
+
+        <button type="button" class="btn btn-primary btn-lg" id="btnStart">
+          <span>开始建档</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- v18（2026-10-10 师父令：「这部分不要放首页，移到用户中心」）：
+             原先堆在首页的这一组入口 —— 查看今日健康指数 / 好友圈 / 订阅 /
+             我的积分·推广收益 / 添加家人 / 重新建档 —— 已全部收进「我的」（用户中心，
+             #screen-mine）的分组列表里，首页只保留「开始建档」这一处主引导（未建档时显示）。
+             ⚠️ 原先的 id（btnHomeRhythm / btnHomeFriends / btnHomeSubscribe /
+                btnHomePoints / btnHomeFamily）**不得再用**，避免与用户中心入口重复。 -->
+      </div>
+
+      <footer class="home-foot">
+        <p class="fineprint" id="homeDisclaimer">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+          所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。
+        </p>
+      </footer>
+    </section>
+
+    <!-- ═══════════ 二、建档屏 ═══════════ -->
+    <section class="screen" id="screen-profile" aria-labelledby="profile-title" hidden>
+      <h1 class="screen-title" id="profile-title">生辰建档</h1>
+      <p class="screen-desc">出生信息仅用于完成真太阳时校正与个人节律模型计算。</p>
+
+      <form id="profileForm" novalidate>
+        <!-- 出生日期 -->
+        <div class="field">
+          <!-- v35（2026-10-21 师父令）：原生 date 控件在部分手机只给到月份，改为年/月/日三段显式选择；
+               隐藏域 #inBirthDate 仍存 YYYY-MM-DD，校验与提交读取路径不变。 -->
+          <label class="field-label" for="inBirthYear">
+            出生日期<span class="req" aria-hidden="true">*</span>
+          </label>
+          <div class="date3" id="inBirthDate3">
+            <select class="input select date3-y" id="inBirthYear" aria-label="出生年份"></select>
+            <select class="input select date3-m" id="inBirthMonth" aria-label="出生月份"></select>
+            <select class="input select date3-d" id="inBirthDay" aria-label="出生日"></select>
+          </div>
+          <input type="hidden" id="inBirthDate" name="birth_date">
+          <!-- v48（2026-10-22 师父令）：阳历 / 阴历切换；阴历录入后换算成阳历再存储 -->
+          <div class="chip-row" id="calTypeRow" style="margin-top:8px">
+            <button type="button" class="chip is-on" data-cal="solar">阳历（公历）</button>
+            <button type="button" class="chip" data-cal="lunar">阴历（农历）</button>
+            <button type="button" class="chip" id="chipLeap" data-leap="1" hidden>闰月</button>
+          </div>
+          <p class="field-hint" id="calHint">按阳历填写。切到阴历会即时换算成阳历，算法只认阳历。</p>
+          <p class="field-err" id="errBirthDate" role="alert" hidden></p>
+        </div>
+
+        <!-- 出生时间（可留空） -->
+        <div class="field">
+          <label class="field-label" for="inBirthTime">
+            出生时间<span class="opt">选填</span>
+          </label>
+          <input class="input" type="time" id="inBirthTime" name="birth_time">
+          <p class="field-hint">不确定可留空，系统将按正午 12:00 参与计算。</p>
+        </div>
+
+        <!-- 出生地：省 → 市 → 区县 三级（v55；区县可选，选了经纬度更精确） -->
+        <div class="field">
+          <label class="field-label" for="inProvince">
+            出生地<span class="req" aria-hidden="true">*</span>
+          </label>
+          <select class="input select" id="inProvince" name="province">
+            <option value="">请选择省份 / 直辖市</option>
+          </select>
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inCity">城市 / 州 / 盟 / 地区</label>
+          <select class="input select" id="inCity" name="city">
+            <option value="">请先选择省份</option>
+          </select>
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inCounty">区县<span class="opt">选填</span></label>
+          <select class="input select" id="inCounty" name="county">
+            <option value="">请先选择城市</option>
+          </select>
+          <p class="field-hint" id="cityHint">先选省份再选城市；区县可以不选，用市的坐标即可。</p>
+        </div>
+
+        <!-- 经纬度 -->
+        <fieldset class="coord-set">
+          <legend class="field-label">经纬度<span class="req" aria-hidden="true">*</span></legend>
+          <div class="coord-grid">
+            <div class="field field-tight">
+              <label class="field-label-sm" for="inLng">经度（东经为正）</label>
+              <input class="input" type="number" id="inLng" name="longitude"
+                     inputmode="decimal" step="0.0001" min="-180" max="180"
+                     placeholder="116.4074" readonly>
+            </div>
+            <div class="field field-tight">
+              <label class="field-label-sm" for="inLat">纬度（北纬为正）</label>
+              <input class="input" type="number" id="inLat" name="latitude"
+                     inputmode="decimal" step="0.0001" min="-90" max="90"
+                     placeholder="39.9042" readonly>
+            </div>
+          </div>
+          <p class="field-err" id="errCoord" role="alert" hidden></p>
+        </fieldset>
+
+        <!-- 单独勾选的数据处理告知同意（默认不勾选） -->
+        <div class="consent">
+          <label class="consent-label" for="inConsent">
+            <input type="checkbox" id="inConsent" name="consent">
+            <span>
+              我已阅读并单独同意
+              <button type="button" class="linklike" id="btnShowConsent">《健康数据处理告知同意书》</button>
+            </span>
+          </label>
+          <div class="consent-body" id="consentBody" hidden>
+            <p>一、处理目的：完成真太阳时校正、生成个人节律模型并输出生活方式参考。</p>
+            <p>二、处理范围：出生日期、出生时刻、出生地经纬度，以及你主动提交的打卡记录。</p>
+            <p>三、保存与撤回：数据默认归你本人所有；你可随时在「我的」中导出或申请删除，
+              也可随时撤回本同意，撤回后系统将停止相应处理。</p>
+            <p>四、边界说明：本产品不属于医疗器械，不用于疾病的诊断、治疗或预防。
+              涉及身体不适请咨询执业医师。</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitProfile">
+          <span id="submitProfileText">完成建档</span>
+        </button>
+        <p class="fineprint fineprint-dim form-note">
+          提交后本内容由 AI 生成，仅供参考；不用于疾病的诊断、治疗或预防。
+        </p>
+      </form>
+
+      <!-- v11：用户区（建档屏）内的家庭档案入口，与首页入口共用同一处文案与跳转逻辑 -->
+      <p class="fam-profile-entry">
+        <button type="button" class="linklike" id="btnFamilyFromProfile">家庭健康档案</button>
+        <span class="field-hint">把家人的称呼与出生信息录进来，就能在一屏里看到全家人的今日指数。</span>
+      </p>
+    </section>
+
+    <!-- ═══════════ 三、今日节律屏 ═══════════ -->
+    <section class="screen" id="screen-rhythm" aria-labelledby="rhythm-title" hidden>
+      <div class="rhythm-head">
+        <h1 class="screen-title" id="rhythm-title">今日节律</h1>
+        <span class="rhythm-head-right">
+          <!-- 连续记录天数：由打卡结果或历史记录推导，取不到就不显示 -->
+          <span class="chip chip-quiet" id="streakChip" hidden></span>
+          <span class="chip" id="rhythmDate">—</span>
+        </span>
+      </div>
+
+      <!-- v213（2026-11-02 师父令）：「我 / 家人」切换升到本屏顶部 —— 一屏之内，
+           健康指数、能量指数、人类能量粒子流变图跟着同一个人变。
+           病根：v52 只在能量图卡里放切换、只切那张图，上面的健康指数不动，师父报「切了不变」。 -->
+      <div class="fam-switch rhythm-switch" id="energySwitch" role="tablist"
+           aria-label="切换查看谁的健康指数与能量指数" hidden></div>
+      <p class="rhythm-who" id="rhythmWho" hidden></p>
+
+      <!-- 危机转介引导（仅当接口返回危机转介时出现） -->
+      <div class="crisis" id="crisisBox" role="alert" hidden>
+        <h2 class="crisis-title">请优先寻求专业帮助</h2>
+        <p class="crisis-text" id="crisisText"></p>
+        <ul class="crisis-list">
+          <li>全国心理援助热线 <strong>12356</strong></li>
+          <li>北京心理危机研究与干预中心 <strong>010-82951332</strong></li>
+          <li>紧急情况请直接拨打 <strong>120</strong>，或前往就近医院急诊</li>
+        </ul>
+        <p class="crisis-text crisis-dim">本页不提供任何健康解读，请以专业人员的判断为准。</p>
+      </div>
+
+      <!-- ═══ ① 今日健康指数：建档成功后首屏第一眼就是它 ═══ -->
+      <article class="card index-card" id="indexCard" aria-labelledby="indexCardTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="indexCardTitle">今日健康指数</h2>
+          <span class="card-note">当日时相推算</span>
+        </div>
+        <div id="indexBody">
+          <p class="placeholder">正在读取今日指数…</p>
+        </div>
+      </article>
+
+      <!-- ═══ ①′ v213（2026-11-02 师父令）能量指数卡：紧贴健康指数下方 ═══
+           本人 → /vault/energy；家人（已绑定）→ /family/energy 只读；
+           家人未绑定 → 「—」+ 邀请按钮（不拿 0 或估算值冒充）。 -->
+      <article class="card energy-idx-card" id="energyIdxCard" hidden aria-labelledby="energyIdxTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="energyIdxTitle">我的能量指数</h2>
+          <span class="card-note" id="energyIdxAt">—</span>
+        </div>
+        <div id="energyIdxBody">
+          <p class="placeholder">正在读取能量指数…</p>
+        </div>
+      </article>
+
+      <!-- ═══ ①″ v24（2026-10-19 师父令）人类能量粒子流变图 ═══
+           把**已经算出来的**十二通道读数画在自绘人体图上：粒子沿周天回路流动（纯装饰），
+           当日偏离较大的通道用**反色**高亮。数值全部来自 index.channels，不新增任何算法；
+           缺数据 / 脚本未加载 → 整卡隐藏（不留空壳）。 -->
+      <article class="card energy-card" id="energyCard" hidden aria-labelledby="energyTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="energyTitle">人类能量粒子流变图</h2>
+          <span class="card-note">读数可视化 · 非诊断</span>
+        </div>
+        <!-- v213：「我 / 家人」切换已上移到本屏顶部（id 仍是 energySwitch），
+             这张图随之联动；这里只留一行"按谁的出生时空推算"的说明。 -->
+        <p class="energy-who" id="energyWho" hidden></p>
+        <div id="energyBody"></div>
+      </article>
+
+      <!-- ═══ ①′ v16 时辰作息参考：紧贴指数卡下方 ═══
+           只做「时间 → 当令经络/时段」的映射（师父 2026-10-09 定的范围）：
+           纯时间推算、作息参考，不含取穴、不做诊断、不给用方建议；卡片底部固定显示 basis。 -->
+      <article class="card shichen-card" id="shichenCard" hidden aria-labelledby="shichenTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="shichenTitle">此刻时辰</h2>
+          <span class="chip" id="shichenChip">—</span>
+        </div>
+        <div id="shichenBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+        <button type="button" class="btn btn-ghost sc-more" id="btnShichenTable"
+                aria-expanded="false">查看十二时辰表</button>
+        <div class="sc-table" id="shichenTable" hidden></div>
+      </article>
+
+      <!-- ═══ ② 个体化校准进度：紧贴指数卡下方，与时相推算区分开 ═══ -->
+      <section class="card calib-card" id="calibCard" hidden>
+        <div class="card-head">
+          <h2 class="card-title">个体化校准</h2>
+          <span class="chip chip-quiet" id="calibChip" hidden>校准中</span>
+        </div>
+        <div id="calibBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ═══ ③ 个体化结果：personalized 非空后才出现（指数卡本身不变）═══ -->
+      <section class="card" id="personalizedCard" hidden aria-labelledby="personalizedTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="personalizedTitle">个体化</h2>
+          <span class="chip" id="personalizedChip" hidden></span>
+        </div>
+        <div id="personalizedBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ═══ ④ 今日关注：index.attention 的通道标签，点击展开中性说明 ═══ -->
+      <section class="card" id="attentionCard" aria-labelledby="attentionTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="attentionTitle">今日关注</h2>
+          <span class="card-note">点击标签查看依据</span>
+        </div>
+        <div id="attentionBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ═══ ⑤ 黄金时段：index.windows 渲染成 24 小时时间条 ═══ -->
+      <section class="card" id="windowsCard" aria-labelledby="windowsTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="windowsTitle">黄金时段</h2>
+          <span class="card-note">00:00–24:00</span>
+        </div>
+        <div id="windowsBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 观察等级：仅在个人基线建立后展示（未建立时由上面的校准卡承担） -->
+      <article class="card level-card" id="levelCard" aria-live="polite">
+        <div class="card-head">
+          <h2 class="card-title">观察等级</h2>
+          <span class="chip chip-quiet" id="levelChip" hidden></span>
+        </div>
+        <div id="levelBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </article>
+
+      <!-- 关注通道（个体化，相对个人基线的 Δ） -->
+      <section class="card" id="focusCard">
+        <div class="card-head">
+          <h2 class="card-title">关注通道</h2>
+          <span class="card-note">Δ 为相对你个人基线的偏移量（需 7 次打卡）</span>
+        </div>
+        <div id="focusBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 生活方式取向 / 建议 -->
+      <section class="card" id="adviceCard">
+        <div class="card-head">
+          <h2 class="card-title">生活方式取向</h2>
+        </div>
+        <div id="adviceBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 十二通道态势（可折叠） -->
+      <details class="card accordion" id="channelsAcc">
+        <summary>
+          <span class="card-title">十二通道态势</span>
+          <span class="acc-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-body" id="channelsBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </details>
+
+      <!-- 依据链（可折叠） -->
+      <details class="card accordion" id="lineageAcc">
+        <summary>
+          <span class="card-title">依据链</span>
+          <span class="acc-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-body" id="lineageBody">
+          <p class="placeholder">展开后显示规则 ID 与古典出处。</p>
+        </div>
+      </details>
+
+      <!-- 合规声明区 -->
+      <section class="card compliance" id="complianceCard">
+        <h2 class="card-title">合规声明</h2>
+        <p class="compliance-text" id="disclaimerText">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+          所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。
+        </p>
+        <p class="compliance-text compliance-referral" id="referralText">
+          建议咨询执业医师或前往正规医疗机构。
+        </p>
+        <dl class="meta-list" id="metaList"></dl>
+      </section>
+
+      <!-- 底部操作 -->
+      <div class="actions">
+        <button type="button" class="btn btn-primary btn-lg" id="btnCheckin">
+          <span id="checkinText">今日打卡</span>
+        </button>
+        <button type="button" class="btn btn-ghost" id="btnHistory">历史记录</button>
+      </div>
+    </section>
+
+    <!-- ═══════════ 四、好友圈（轻社交三件套） ═══════════ -->
+    <section class="screen" id="screen-friends" aria-labelledby="friends-title" hidden>
+      <h1 class="screen-title" id="friends-title">好友圈</h1>
+      <p class="screen-desc">
+        只和你的好友互相看见。每一项要不要公开，都由你单独决定，随时可以关掉。
+      </p>
+
+      <!-- ① 我的邀请链接（复制的是带邀请码的注册链接）+ 推荐人 + 添加好友 + 待确认 -->
+      <section class="card" id="inviteCard" aria-labelledby="inviteTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="inviteTitle">我的邀请链接</h2>
+          <span class="card-note" id="myNickname"></span>
+        </div>
+
+        <!-- 只读邀请链接 + 复制按钮；复制内容含 ?invite= 与 8 位邀请码 -->
+        <div class="invite-row">
+          <span class="invite-link" id="inviteLink" aria-label="我的邀请链接">正在获取邀请链接…</span>
+          <button type="button" class="btn btn-ghost invite-copy" id="btnCopyInvite">
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
+              <rect x="9" y="9" width="11" height="11" rx="2.4" fill="none"
+                    stroke="currentColor" stroke-width="1.8"/>
+              <path d="M15.5 5.6A2 2 0 0 0 13.6 4H6.4A2.4 2.4 0 0 0 4 6.4v7.2a2 2 0 0 0 1.6 1.96"
+                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span>复制邀请链接</span>
+          </button>
+        </div>
+
+        <!-- 复制内容预览：带昵称的分享文案，改昵称后这里立刻变化 -->
+        <p class="invite-share-label">复制的内容：</p>
+        <p class="invite-share" id="inviteSharePreview">正在获取邀请文案…</p>
+
+        <!-- 推荐人归属：师父 2026-10-08 指令「系统知道即可，不用让用户看到」——
+             区块已整体删除（含标签与容器），底层绑定照旧、后台可见。 -->
+
+        <!-- ★ 2026-10-09：改昵称已**收口**到「我的 → 账号与安全 → 我的昵称」。
+             这里原来的第二份输入框（#inNickname / #btnSaveNickname / #nicknameErr）已删除：
+             两个同 id 元素会让 getElementById 只认第一个，绑定错位。 -->
+        <p class="card-note invite-note">
+          想改昵称？到「<strong>我的 → 账号与安全 → 我的昵称</strong>」里改（全站唯一，7 天可改一次）。
+        </p>
+
+        <!-- 白话教学：告诉新用户整条链路怎么走 -->
+        <p class="card-note invite-note">
+          把链接发给朋友 → 朋友打开 → 建档完成即自动加为好友，不用再输码。
+        </p>
+
+        <!-- 备用：8 位邀请码（链接打不开时，可让对方手工填码） -->
+        <div class="invite-row invite-code-row">
+          <span class="invite-code" id="inviteCode" aria-label="我的邀请码">········</span>
+        </div>
+        <p class="card-note invite-note">
+          链接打不开时，也可以让朋友在下面填入这 8 位邀请码；你填入对方的码，则等对方确认后互相可见。
+        </p>
+        <div class="invite-add">
+          <label class="sr-only" for="inInviteCode">对方邀请码</label>
+          <input class="input" type="text" id="inInviteCode" maxlength="8" inputmode="text"
+                 placeholder="输入对方 8 位邀请码" autocomplete="off"
+                 autocapitalize="characters" spellcheck="false">
+          <button type="button" class="btn btn-primary invite-add-btn" id="btnAddFriend">添加</button>
+        </div>
+        <p class="field-err" id="inviteErr" role="alert" hidden></p>
+
+        <div class="pending-wrap" id="pendingWrap" hidden>
+          <h3 class="mini-title">待确认</h3>
+          <div class="fr-list" id="pendingList"></div>
+        </div>
+      </section>
+
+      <!-- ② 隐私开关：三件套的合规核心，默认全部关闭 -->
+      <section class="card" id="privacyCard" aria-labelledby="privacyTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="privacyTitle">隐私开关</h2>
+          <span class="chip chip-quiet">默认全部关闭</span>
+        </div>
+        <div class="switch-list" id="privacyBody"></div>
+        <p class="bar-scale-note">
+          三个开关互相独立，只影响「别人能不能看到你」，不影响你自己看到的内容。
+          关闭后下一次请求即生效，随时可以再打开。
+        </p>
+      </section>
+
+      <!-- ③ 好友圈动态 -->
+      <section class="card" id="feedCard" aria-labelledby="feedTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="feedTitle">好友圈</h2>
+          <span class="card-note">只显示对方愿意公开的项</span>
+        </div>
+        <div id="feedBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ④ 健康排行 -->
+      <section class="card" id="rankingCard" aria-labelledby="rankingTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="rankingTitle">健康排行</h2>
+          <span class="card-note">仅在好友圈内</span>
+        </div>
+        <div id="rankingBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ⑤ 健康互促 -->
+      <section class="card" id="cheerCard" aria-labelledby="cheerTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="cheerTitle">健康互促</h2>
+          <span class="chip chip-quiet" id="cheerQuota">今日还可送 3 次</span>
+        </div>
+        <div id="cheerBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 合规声明（结果类屏保留） -->
+      <section class="card compliance" id="friendsCompliance">
+        <h2 class="card-title">合规声明</h2>
+        <div class="ai-tag">
+          <span class="ai-tag-mark" aria-hidden="true">AI</span>
+          <span>本内容由 AI 生成，仅供参考。</span>
+        </div>
+        <p class="compliance-text">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+        </p>
+        <p class="compliance-text">
+          好友圈只展示昵称与指数分档/分数，不展示任何出生信息与体征数据；
+          你可以随时关闭公开项或解除好友关系。
+        </p>
+      </section>
+    </section>
+
+    <!-- ═══════════ 五、订阅屏（测试期用积分支付，不接真钱） ═══════════ -->
+    <section class="screen" id="screen-subscribe" aria-labelledby="subscribe-title" hidden>
+      <h1 class="screen-title" id="subscribe-title">订阅</h1>
+      <p class="screen-desc">选好时长，用积分开通。开通即刻生效，有效期自开通当日起算。</p>
+
+      <!-- 顶部第一眼：我的积分余额 -->
+      <section class="card balance-card" aria-labelledby="subBalanceTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="subBalanceTitle">我的积分余额</h2>
+          <button type="button" class="linklike" id="btnSubToPoints">看积分明细</button>
+        </div>
+        <p class="balance-line">
+          <b class="balance-num" id="subBalance">—</b>
+          <span class="balance-unit">积分</span>
+        </p>
+        <p class="balance-note" id="subBalanceNote">
+          测试期以积分结算，不涉及真实支付（1 积分 = 1 分）。
+        </p>
+      </section>
+
+      <!-- v40：当前会员（**服务端口径**；旧版只看本次会话买没买，重开就显示未开通） -->
+      <section class="card" id="subStatusCard" aria-labelledby="subStatusTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="subStatusTitle">当前会员</h2>
+          <span class="chip" id="subStatusChip">读取中…</span>
+        </div>
+        <p class="balance-note" id="subStatusNote">正在读取会员状态…</p>
+      </section>
+
+      <!-- 套餐卡：由 GET /subscribe/plans 渲染，三档（月/季/年） -->
+      <section class="card" aria-labelledby="planTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="planTitle">选择套餐</h2>
+          <span class="card-note">点击卡片选中</span>
+        </div>
+        <div class="plan-list" id="planList" role="radiogroup" aria-label="订阅套餐">
+          <p class="placeholder">正在读取套餐…</p>
+        </div>
+      </section>
+
+      <!-- 下单：余额不足先给提示（还需多少积分），仍可提交由服务端裁决 -->
+      <section class="card" aria-labelledby="subOrderTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="subOrderTitle">确认开通</h2>
+          <span class="chip chip-quiet" id="subSelectedChip" hidden></span>
+        </div>
+        <p class="sub-notice" id="subNotice" role="status" hidden></p>
+        <button type="button" class="btn btn-primary btn-lg" id="btnSubscribe">
+          <span id="subscribeText">用积分订阅</span>
+        </button>
+        <p class="sub-pay-note">支付方式：积分（channel = points）。</p>
+        <p class="sub-pay-note sub-pay-strong">测试期以积分结算，不涉及真实支付。</p>
+        <!-- 最近一笔订单状态 -->
+        <div class="order-box" id="orderBox" hidden aria-live="polite"></div>
+      </section>
+
+      <!-- 合规声明（结果类屏保留） -->
+      <section class="card compliance" id="subscribeCompliance">
+        <h2 class="card-title">合规声明</h2>
+        <div class="ai-tag">
+          <span class="ai-tag-mark" aria-hidden="true">AI</span>
+          <span>本内容由 AI 生成，仅供参考。</span>
+        </div>
+        <p class="compliance-text">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+        </p>
+        <p class="compliance-text">
+          测试期订阅以积分结算，不涉及真实支付，不产生任何真实资金往来；
+          积分与推广收益仅用于功能测试与账务核对。
+        </p>
+      </section>
+    </section>
+
+    <!-- ═══════════ 六、我的积分 / 推广收益屏 ═══════════ -->
+    <section class="screen" id="screen-points" aria-labelledby="points-title" hidden>
+      <h1 class="screen-title" id="points-title">我的积分 / 推广收益</h1>
+      <p class="screen-desc">测试期以积分结算，不涉及真实支付；1 积分 = 1 分。</p>
+
+      <!-- ① 积分总览 -->
+      <section class="card balance-card" aria-labelledby="ptTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="ptTitle">我的积分</h2>
+          <button type="button" class="linklike" id="btnPtToSubscribe">去订阅</button>
+        </div>
+        <p class="balance-line">
+          <b class="balance-num" id="ptBalance">—</b>
+          <span class="balance-unit">积分</span>
+        </p>
+        <dl class="stat-grid">
+          <div class="stat-cell">
+            <dt>累计获得</dt>
+            <dd id="ptEarned">—</dd>
+          </div>
+          <div class="stat-cell">
+            <dt>累计消耗</dt>
+            <dd id="ptSpent">—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ② 积分明细（分页「加载更多」） -->
+      <section class="card" aria-labelledby="ledgerTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="ledgerTitle">积分明细</h2>
+          <span class="card-note" id="ledgerCount"></span>
+        </div>
+        <div class="ledger-list" id="ledgerBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+        <button type="button" class="btn btn-ghost ledger-more" id="btnMoreLedger" hidden>
+          加载更多
+        </button>
+      </section>
+
+      <!-- ③ 推广收益（费率 30% 展示；提现本期不开放） -->
+      <section class="card" aria-labelledby="cmTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="cmTitle">推广收益</h2>
+          <span class="chip" id="cmRateChip">费率 30%</span>
+        </div>
+        <p class="balance-line">
+          <b class="balance-num" id="cmNet">—</b>
+          <span class="balance-unit">积分</span>
+        </p>
+        <p class="cm-net-label">净收益（累计 − 已冲正）</p>
+        <dl class="stat-grid">
+          <div class="stat-cell">
+            <dt>累计</dt>
+            <dd id="cmTotal">—</dd>
+          </div>
+          <div class="stat-cell">
+            <dt>待结算</dt>
+            <dd id="cmPending">—</dd>
+          </div>
+          <div class="stat-cell">
+            <dt>已结算</dt>
+            <dd id="cmSettled">—</dd>
+          </div>
+          <div class="stat-cell">
+            <dt>已冲正</dt>
+            <dd id="cmReversed">—</dd>
+          </div>
+        </dl>
+        <p class="cm-note" id="cmNote">按实付积分 × 30% 计；测试期以积分结算，不涉及真实支付。</p>
+
+        <!-- 提现：本期不开放（按钮置灰 + 说明） -->
+        <button type="button" class="btn btn-ghost btn-lg" id="btnWithdraw" disabled
+                aria-describedby="withdrawNote">提现</button>
+        <p class="fineprint fineprint-dim withdraw-note" id="withdrawNote">
+          待银联分账通道开通后开放。
+        </p>
+      </section>
+
+      <!-- 合规声明（结果类屏保留） -->
+      <section class="card compliance" id="pointsCompliance">
+        <h2 class="card-title">合规声明</h2>
+        <div class="ai-tag">
+          <span class="ai-tag-mark" aria-hidden="true">AI</span>
+          <span>本内容由 AI 生成，仅供参考。</span>
+        </div>
+        <p class="compliance-text">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+        </p>
+        <p class="compliance-text">
+          测试期积分与推广收益仅用于功能测试与账务核对，不涉及真实支付，
+          不构成任何形式的资金收付；提现功能待分账通道开通后另行开放。
+        </p>
+      </section>
+    </section>
+
+    <!-- ═══════════ 七、家庭健康档案（v11：添加家人） ═══════════ -->
+    <section class="screen" id="screen-family" aria-labelledby="family-title" hidden>
+      <h1 class="screen-title" id="family-title">家庭健康档案</h1>
+      <p class="screen-desc">
+        把家人的称呼、关系与出生信息录进来，就能在一屏里看到全家人的今日指数与分档，
+        并给某位家人发一条关怀提醒。家人不必有账号；家人在自己手机上用 AI元神时，
+        也可以用邀请码绑定，看到 TA 自己建立的能量档案。这些资料只属于你本人。
+      </p>
+
+      <!-- v213：家人自己也有账号时，用 6 位邀请码把两边绑在一起（双向确认） -->
+      <section class="card fam-bind-card" aria-labelledby="famBindTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="famBindTitle">家人也在这里？</h2>
+          <span class="card-note">双向确认</span>
+        </div>
+        <p class="card-note">
+          家人在自己手机上也会用 AI元神时，把 TA 收到的 6 位邀请码填进来，两边就绑在一起：
+          你能看到 TA 的今日健康指数与能量指数（只读），TA 也能随时解绑。
+        </p>
+        <button type="button" class="btn btn-ghost" id="btnFamBindOpen">绑定家庭（输入邀请码）</button>
+      </section>
+
+      <!-- v213：如果我自己是被家人邀请的一方，这里显示绑定关系与解绑入口 -->
+      <section class="card" id="myFamLinkCard" hidden aria-labelledby="myFamLinkTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="myFamLinkTitle">我绑定的家庭</h2>
+          <span class="chip chip-quiet">只读共享</span>
+        </div>
+        <p class="fam-summary" id="myFamLinkText">—</p>
+        <button type="button" class="btn btn-ghost" id="btnMyFamUnbind">解绑</button>
+      </section>
+
+      <!-- ① 全家概览：人数 / 平均指数 / 需关注人数 -->
+      <section class="card" aria-labelledby="famSummaryTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="famSummaryTitle">全家概览</h2>
+          <span class="chip chip-quiet" id="famSeatChip">— / 8 位</span>
+        </div>
+        <p class="fam-summary" id="famSummary">正在读取…</p>
+        <p class="card-note">
+          指数为当日时相分档（A 优 / B 良 / C 中 / D 需关注），与「我的今日节律」同一口径；
+          家人没有观测历史，因此不评定任何等级，只显示「基线建立中」。
+        </p>
+      </section>
+
+      <!-- ①b v51（2026-10-22 师父令）：「我 / 家人」切换 —— 点名字看那一位的今日指数 -->
+      <section class="card fam-focus" aria-labelledby="famFocusTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="famFocusTitle">今日指数</h2>
+          <span class="card-note">点名字切换</span>
+        </div>
+        <div class="fam-switch" id="famSwitch" role="tablist" aria-label="切换查看谁的今日指数"></div>
+        <div class="fam-focus-body" id="famFocusBody">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- ② 家人列表 + 空态引导 -->
+      <section class="card" aria-labelledby="famListTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="famListTitle">我的家人</h2>
+          <button type="button" class="linklike" id="btnFamAddTop">添加家人</button>
+        </div>
+        <div class="fam-list" id="famList"></div>
+        <div class="fam-empty" id="famEmpty" hidden>
+          <p class="fam-empty-title">还没有添加家人</p>
+          <p class="placeholder">
+            点下面的「添加家人」，填上称呼、关系与出生信息，就能看到 TA 的今日指数；
+            最多可以添加 8 位家人。
+          </p>
+          <button type="button" class="btn btn-primary btn-lg" id="btnFamAdd">添加家人</button>
+        </div>
+      </section>
+
+      <!-- ③ 添加 / 编辑家人（默认收起，点「添加家人」或卡片上的「编辑」展开） -->
+      <section class="card" id="famFormCard" aria-labelledby="famFormTitle" hidden>
+        <div class="card-head">
+          <h2 class="card-title" id="famFormTitle">添加家人</h2>
+          <button type="button" class="linklike" id="btnFamFormCancel">收起</button>
+        </div>
+
+        <form id="famForm" novalidate>
+          <div class="field">
+            <label class="field-label" for="famNickname">
+              称呼<span class="req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" type="text" id="famNickname" maxlength="12" inputmode="text"
+                   placeholder="如：妈妈" autocomplete="off" spellcheck="false">
+            <p class="field-err" id="famNicknameErr" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="famRelation">
+              关系<span class="req" aria-hidden="true">*</span>
+            </label>
+            <select class="input select" id="famRelation"></select>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="famBirthYear">
+              出生日期<span class="req" aria-hidden="true">*</span>
+            </label>
+            <div class="date3" id="famBirthDate3">
+              <select class="input select date3-y" id="famBirthYear" aria-label="出生年份"></select>
+              <select class="input select date3-m" id="famBirthMonth" aria-label="出生月份"></select>
+              <select class="input select date3-d" id="famBirthDay" aria-label="出生日"></select>
+            </div>
+            <input type="hidden" id="famBirthDate">
+            <p class="field-err" id="famBirthErr" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="famBirthTime">
+              出生时间<span class="opt">选填</span>
+            </label>
+            <input class="input" type="time" id="famBirthTime">
+            <p class="field-hint">不确定可留空，系统将按正午 12:00 参与计算。</p>
+          </div>
+
+          <!-- ★ v53（2026-10-23 师父令）：家人也能填身高体重，用来把能量图里的数字人画成 TA 的体型 -->
+          <fieldset class="coord-set" id="famBodySet">
+            <legend class="field-label">体型<span class="opt">选填</span></legend>
+            <p class="field-hint">只用来把能量图里的数字人画成 TA 的体型；不填按默认体型画，不参与指数计算。</p>
+            <div class="seg" id="famGender" role="group" aria-label="性别">
+              <button type="button" class="seg-btn is-on" data-fam-gender="" aria-pressed="true">不填</button>
+              <button type="button" class="seg-btn" data-fam-gender="male" aria-pressed="false">男</button>
+              <button type="button" class="seg-btn" data-fam-gender="female" aria-pressed="false">女</button>
+            </div>
+            <div class="body-hw">
+              <div class="field field-tight">
+                <label class="field-label-sm" for="famHeight">身高（cm）</label>
+                <input class="input" type="number" id="famHeight" inputmode="numeric"
+                       min="120" max="220" step="1" placeholder="选填">
+              </div>
+              <div class="field field-tight">
+                <label class="field-label-sm" for="famWeight">体重（kg）</label>
+                <input class="input" type="number" id="famWeight" inputmode="numeric"
+                       min="30" max="200" step="1" placeholder="选填">
+              </div>
+            </div>
+            <p class="field-err" id="famBodyErr" role="alert" hidden></p>
+          </fieldset>
+
+          <div class="field">
+            <label class="field-label" for="famProvince">
+              出生地<span class="req" aria-hidden="true">*</span>
+            </label>
+            <select class="input select" id="famProvince">
+              <option value="">请选择省份 / 直辖市</option>
+            </select>
+          </div>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="famCity">城市 / 州 / 盟 / 地区</label>
+            <select class="input select" id="famCity">
+              <option value="">请先选择省份</option>
+            </select>
+          </div>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="famCounty">区县<span class="opt">选填</span></label>
+            <select class="input select" id="famCounty">
+              <option value="">请先选择城市</option>
+            </select>
+            <p class="field-hint" id="famCityHint">先选省份再选城市；区县可以不选，用市的坐标即可。</p>
+          </div>
+
+          <fieldset class="coord-set">
+            <legend class="field-label">经纬度<span class="req" aria-hidden="true">*</span></legend>
+            <div class="coord-grid">
+              <div class="field field-tight">
+                <label class="field-label-sm" for="famLng">经度（东经为正）</label>
+                <input class="input" type="number" id="famLng" inputmode="decimal" step="0.0001"
+                       min="-180" max="180" placeholder="116.4074" readonly>
+              </div>
+              <div class="field field-tight">
+                <label class="field-label-sm" for="famLat">纬度（北纬为正）</label>
+                <input class="input" type="number" id="famLat" inputmode="decimal" step="0.0001"
+                       min="-90" max="90" placeholder="39.9042" readonly>
+              </div>
+            </div>
+            <p class="field-err" id="famCoordErr" role="alert" hidden></p>
+          </fieldset>
+
+          <p class="field-err fam-form-err" id="famFormErr" role="alert" hidden></p>
+
+          <button type="submit" class="btn btn-primary btn-lg" id="btnFamSave">
+            <span id="famSaveText">保存家人</span>
+          </button>
+          <p class="fineprint fineprint-dim form-note">
+            家人的出生信息只用于按同一条链路推算当日指数；不做任何诊断，不用于疾病的诊断、治疗或预防。
+          </p>
+        </form>
+      </section>
+
+      <!-- ④ 我发出的关怀提醒 -->
+      <section class="card" aria-labelledby="famRemindTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="famRemindTitle">最近的关怀提醒</h2>
+          <span class="card-note">我发出的</span>
+        </div>
+        <div class="fam-remind-list" id="famRemindList">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+
+      <!-- 合规声明（结果类屏保留） -->
+      <section class="card compliance" id="famCompliance">
+        <h2 class="card-title">合规声明</h2>
+        <div class="ai-tag">
+          <span class="ai-tag-mark" aria-hidden="true">AI</span>
+          <span>本内容由 AI 生成，仅供参考。</span>
+        </div>
+        <p class="compliance-text">
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+        </p>
+        <p class="compliance-text">
+          家人的称呼与出生信息由你录入、只归你本人可见，不会出现在好友圈、排行榜或邀请链接里；
+          你可以随时修改或删除。家人自己也有账号时，可用一次性邀请码（6 位、24 小时、一码一人）
+          绑定：绑定后双方只读互看今日健康指数与能量指数，看不到短信、通话与情绪记录，随时可解绑。
+          家人没有观测历史，因此不评定观察等级。
+        </p>
+      </section>
+    </section>
+
+    <!-- ═══════════ 七之一、音疗（v57 · 2026-10-24 师父令）═══════════
+         令：「根据不同的人播放相应的音乐，五音疗疾的和各种佛音。用户也可以选择。」
+         三条边界（写死在代码里，不靠自觉）：
+           · 只做「声音陪伴 / 静心」：不承诺疗效、不出现病名、不替代就医（合规口径同根）；
+           · 推荐只来自既有节律读数（`/rhythm/daily` 的 focus = 相对你自己基线偏虚的通道），
+             映射用中医五行—五音的传统对应，属公有领域常识，且**只作为选择建议**；
+           · 音频两类：五音/钵/木鱼/雨声由浏览器**本地合成**（无版权、不占带宽、离线可用）；
+             佛音等真实录音**按清单加载**（`music.json` + `music/` 目录），素材到位即出现，不改代码。 -->
+    <section class="screen" id="screen-music" aria-labelledby="music-title" hidden>
+      <h1 class="screen-title" id="music-title">能量场</h1>
+      <p class="screen-desc">按你自己的今日节律给一个建议，也可以随手换；声音只做陪伴，不是治疗。</p>
+
+      <section class="card music-rec" id="musicRecCard">
+        <div class="card-head">
+          <h2 class="card-title">今天建议听</h2>
+          <span class="chip chip-quiet" id="musicRecReason">—</span>
+        </div>
+        <div class="music-rec-main">
+          <span class="music-rec-name" id="musicRecName">宫音</span>
+          <span class="music-rec-sub" id="musicRecSub">脾 · 土</span>
+        </div>
+        <div class="music-rec-actions">
+          <button type="button" class="btn btn-primary" id="btnPlayRec">播放</button>
+          <button type="button" class="btn btn-ghost" id="btnPlayNext">换一个</button>
+        </div>
+        <div class="music-rec-list" id="musicRecList"></div>
+        <p class="fineprint fineprint-dim" id="musicRecWhy">推荐依据：能量指数 / 经络基线（观察满 7 次）/ 时段 / 今日使用记录。</p>
+      </section>
+
+      <!-- ═══ v58（参照「能量场」流程）：选部位 → 补充 → 边听边放松；呼吸引导单独一屏 ═══ -->
+      <section class="card entry-pair">
+        
+        <button type="button" class="entry-card" id="btnGoBreath">
+          <span class="entry-title">呼吸引导</span>
+          <span class="entry-sub">按节奏吸气 · 停一停 · 呼气，1 分钟起</span>
+        </button>
+        <button type="button" class="entry-card" id="btnGoComfort">
+          <span class="entry-title">减缓疼痛</span>
+          <span class="entry-sub">在立体人体上点选痛处，再开始接收能量（放松练习，不是止痛治疗）</span>
+        </button>
+        <button type="button" class="entry-card" id="btnGoContribute">
+          <span class="entry-title">贡献能量</span>
+          <span class="entry-sub">符咒注入 / 意念注入 · 每 5 分钟 +10</span>
+        </button>
+        <button type="button" class="entry-card" id="btnGoUse">
+          <span class="entry-title">补充能量</span>
+          <span class="entry-sub">给自己补 · 每天 5 次、每次 ≤15 分钟</span>
+        </button>
+        <button type="button" class="entry-card" id="btnGoVault">
+          <span class="entry-title">空间能量场</span>
+          <span class="entry-sub">贡献能量 / 补充能量 · 看共享能量指数</span>
+        </button>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2 class="card-title">五音</h2>
+          <span class="chip chip-quiet">角徵宫商羽</span></div>
+        <div class="chip-row music-chips" id="wuyinChips"></div>
+        <p class="fineprint fineprint-dim" id="wuyinNote">
+          传统五声调式（宫=土/脾、商=金/肺、角=木/肝、徵=火/心、羽=水/肾），
+          这里只作静心与作息参考，不是治疗，也不能替代就医。
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2 class="card-title">静心音</h2>
+          <span class="chip chip-quiet">本地合成</span></div>
+        <div class="chip-row music-chips" id="ambientChips"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2 class="card-title">佛音</h2>
+          <span class="chip chip-quiet" id="chantCount">—</span></div>
+        <div id="chantList" class="chant-list">
+          <p class="placeholder">正在读取曲目…</p>
+        </div>
+        <p class="fineprint fineprint-dim">
+          佛音按曲目清单加载（`music.json`），曲目版权与来源以清单为准；没有曲目时这里留空，不影响其它功能。
+        </p>
+      </section>
+
+      <section class="card music-player" id="musicPlayerBar">
+        <div class="mp-line">
+          <span class="mp-name" id="mpName">未播放</span>
+          <span class="mp-time" id="mpTime">00:00</span>
+        </div>
+        <div class="mp-line mp-actions">
+          <div class="mp-btn-row">
+            <button type="button" class="btn btn-primary btn-sm" id="mpToggle">播放</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="mpStop">停止</button>
+          </div>
+          <select class="input input-sm" id="mpTimer" aria-label="定时关闭">
+            <option value="5" selected>5 分钟</option>
+            <option value="10">10 分钟</option>
+            <option value="15">15 分钟</option>
+            <option value="20">20 分钟</option>
+            <option value="30">30 分钟</option>
+            <option value="0">不定时</option>
+          </select>
+          <input class="mp-vol" id="mpVol" type="range" min="0" max="100" value="60" aria-label="音量">
+        </div>
+        <p class="fineprint fineprint-dim" id="mpHint">戴上耳机、音量放小一点更舒服；有不适立刻停。</p>
+      </section>
+    </section>
+
+    <!-- ═══ v58 补充能量（参照「能量场 → 能量空间」流程，去掉功效表述）═══════
+         流程：点身上位置（可多选）→ 转身看背面 → 补充 → 播对应五音 → 静音/结束。
+         不做的：面部判证、量子能量传递、"修复"类功效承诺——只做"注意力 + 声音陪伴"。 -->
+    <section class="screen" id="screen-energy" aria-labelledby="energy-title" hidden>
+      <div class="rhythm-head">
+        <h1 class="screen-title" id="energy-title">补充能量</h1>
+        <span class="chip chip-quiet" id="energyChip">未选部位</span>
+      </div>
+      <p class="screen-desc">点一下想关注的位置（可以选好几处），再按「补充」：它会配一段相应的静心音，让你安静几分钟。</p>
+
+      <section class="card body-card">
+        <div class="chip-row body-layers" id="bodyLayerChips">
+          <button type="button" class="chip is-on" data-layer="part">部位</button>
+          <button type="button" class="chip" data-layer="organ">器官</button>
+          <button type="button" class="chip" data-layer="meridian">经络</button>
+        </div>
+        <!-- v205：十二经选择条（默认只亮一条，避免二十四条线糊成一片） -->
+        <div class="chip-row mer-picker" id="meridianPicker" hidden
+             style="flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:6px;margin:2px 0 6px;-webkit-overflow-scrolling:touch"></div>
+        <!-- v207（师父令「器官部分不全」）：十二脏腑选择条；五行色点 + 名称，点名字整组选中 -->
+        <div class="chip-row org-picker" id="organPicker" hidden
+             style="flex-wrap:wrap;justify-content:flex-start;gap:6px;margin:2px 0 8px"></div>
+        <div class="body-stage" id="bodyStage">
+          <div class="body-glow" id="bodyGlow" aria-hidden="true"></div>
+          <div class="pyramid" id="pyramid" aria-hidden="true"></div>
+          <svg class="body-figure" id="bodyFigure" viewBox="0 0 200 360"
+               role="img" aria-label="人体示意图（前/背两面）">
+            <g class="fig-skin">
+              <circle cx="100" cy="38" r="21"/>
+              <rect x="92" y="57" width="16" height="12" rx="5"/>
+              <path d="M100 68 C82 68 70 78 68 96 L64 150 C63 160 70 166 78 166
+                       L82 166 L84 214 C84 226 90 232 100 232
+                       C110 232 116 226 116 214 L118 166 L122 166
+                       C130 166 137 160 136 150 L132 96 C130 78 118 68 100 68 Z"/>
+              <path d="M70 96 C62 104 58 120 56 140 L52 176 C51 184 56 189 62 189
+                       C68 189 72 184 73 176 L78 140 Z"/>
+              <path d="M130 96 C138 104 142 120 144 140 L148 176 C149 184 144 189 138 189
+                       C132 189 128 184 127 176 L122 140 Z"/>
+              <path d="M84 232 L82 300 C81 314 86 322 94 322 C102 322 106 314 105 300 L104 232 Z"/>
+              <path d="M116 232 L118 300 C119 314 114 322 106 322 C98 322 94 314 95 300 L96 232 Z"/>
+              <path d="M82 322 L105 322 C108 334 104 344 94 344 C84 344 80 334 82 322 Z" class="fig-foot"/>
+              <path d="M118 322 L95 322 C92 334 96 344 106 344 C116 344 120 334 118 322 Z" class="fig-foot"/>
+            </g>
+            <!-- v148：背面视图（脊柱 + 肩胛 + 腰线），点「转身」时才显示；画在穴位圈下面 -->
+            <g class="fig-back" id="bodyFigureBack" aria-hidden="true">
+              <path class="fig-spine" d="M100 74 L100 300"/>
+              <path class="fig-blade" d="M76 98 C86 106 93 116 95 126"/>
+              <path class="fig-blade" d="M124 98 C114 106 107 116 105 126"/>
+              <path class="fig-waist" d="M84 186 C94 190 106 190 116 186"/>
+            </g>
+            <g class="hotspots" id="bodyHotspots"></g>
+          </svg>
+          <span class="body-face-tag" id="bodyFaceTag" hidden>正面</span>
+          <p class="body-hint" id="bodyHint">点一下想关注的位置</p>
+        </div>
+        <!-- v59 立体图舞台（默认隐藏；点「切到立体图」时才懒加载 three.js） -->
+        <div class="body3d-stage" id="body3dStage" hidden>
+          <div class="stage-stars" aria-hidden="true"></div>
+          <canvas id="body3dCanvas"></canvas>
+          <div class="stage-platform" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="body-hint" id="bodyHint3d">拖动可以转着看；点身上的位置选/取消</p>
+        </div>
+        <div class="vc-row" id="bodyModeRow" style="justify-content:center;margin:6px 0">
+          <button type="button" class="vc-link" data-bmode="energy" id="bmEnergy">补充能量</button>
+          <span class="vc-dot">·</span>
+          <button type="button" class="vc-link" data-bmode="comfort" id="bmComfort">减缓疼痛</button>
+        </div>
+<div class="body-actions">
+          <div class="body-col body-col-left">
+            <button type="button" class="btn-orb btn-orb-primary" id="btnBodyInject"><i>◈</i>接收能量</button>
+            <button type="button" class="btn-orb btn-orb-stop" id="btnBodyStop"><i>■</i>停止接收</button>
+            <button type="button" class="btn-orb" id="btnBodyReset"><i>⟲</i>重选</button>
+          </div>
+          <div class="body-col body-col-right">
+            <button type="button" class="btn-orb" id="btnBodyMode"><i>◇</i>立体图</button>
+            <button type="button" class="btn-orb" id="btnBodyTurn"><i>↻</i>转身</button>
+            <button type="button" class="btn-orb" id="btnBodyMute"><i>♪</i>静音</button>
+          </div>
+        </div>
+        <p class="fineprint fineprint-dim" id="energyNote">已选：无</p>
+      </section>
+    </section>
+
+    <!-- ═══ v58 呼吸引导（4-4-6，圆形节奏）══════════════════════════ -->
+    <section class="screen" id="screen-breath" aria-labelledby="breath-title" hidden>
+      <h1 class="screen-title" id="breath-title">呼吸引导</h1>
+      <p class="screen-desc">跟着圆圈：吸气 4 秒 · 停 4 秒 · 呼气 6 秒。头晕或不舒服就立刻停。</p>
+      <section class="card breath-card">
+        <div class="breath-stage">
+          <div class="breath-circle" id="breathCircle"></div>
+          <p class="breath-phase" id="breathPhase">准备好了就开始</p>
+          <p class="breath-count" id="breathCount">0:00</p>
+        </div>
+        <div class="breath-actions">
+          <button type="button" class="btn btn-primary" id="btnBreathStart">开始</button>
+          <select class="input input-sm" id="breathCue" aria-label="节拍音">
+            <option value="off">节拍音：关</option>
+            <option value="soft" selected>节拍音：轻</option>
+            <option value="wood">节拍音：木鱼</option>
+          </select>
+          <select class="input input-sm" id="breathScene" aria-label="呼吸场景">
+            <option value="calm">静心</option>
+            <option value="sleep">减压助眠</option>
+            <option value="focus">提神醒脑</option>
+          </select>
+          <select class="input input-sm" id="breathMin" aria-label="呼吸时长">
+            <option value="1">1 分钟</option>
+            <option value="3" selected>3 分钟</option>
+            <option value="5">5 分钟</option>
+          </select>
+        </div>
+        <p class="fineprint fineprint-dim" id="breathHint">坐着或躺着都行，肩膀放松，用鼻子吸气。</p>
+      </section>
+    </section>
+
+    <!-- v101：贡献能量（独立页） -->
+    <section class="screen" id="screen-contribute" aria-labelledby="contribute-title" hidden>
+      <h1 class="screen-title" id="contribute-title">贡献能量</h1>
+      <p class="screen-desc">把能量送进能量场：满 5 分钟后，自动增加相应能量。念咒或静心都可。</p>
+      <div class="cosmic" id="cosmic" aria-hidden="true">
+        <b class="cm c1"></b><b class="cm c2"></b><b class="cm c3"></b><b class="cm c4"></b>
+        <b class="cm c5"></b><b class="cm c6"></b><b class="cm c7"></b><b class="cm c8"></b>
+        <span class="cosmic-core"></span>
+      </div>
+      <section class="card">
+        <div class="vc-row">
+          <button type="button" class="btn btn-primary" id="btnCChant">符咒注入</button>
+          <button type="button" class="btn btn-ghost" id="btnCAbsorb">意念注入</button>
+        </div>
+        <p class="fineprint fineprint-dim">符咒会开录音；意念不需要麦克风。录音只留在本机内存里，不上传。</p>
+      </section>
+
+      <!-- v191：录音条（录起来才出现；可点击回放；只在本机内存，不上传、不落盘） -->
+      <div class="recbar" id="vsRecBar" hidden>
+        <span class="recbar-dot" aria-hidden="true"></span>
+        <span class="recbar-state" id="vsRecState">录音中</span>
+        <span class="recbar-time" id="vsRecTime">00:00</span>
+        <div class="recbar-track" aria-hidden="true"><i class="recbar-fill" id="vsRecFill"></i></div>
+        <button type="button" class="recbar-btn" id="vsRecPlay" aria-label="回放刚才的录音">▶ 回放</button>
+      </div>
+      <audio id="vsRecAudio" preload="metadata"></audio>
+    </section>
+
+    <!-- v101：补充能量（独立页） -->
+    <section class="screen" id="screen-use" aria-labelledby="use-title" hidden>
+      <h1 class="screen-title" id="use-title">补充能量</h1>
+      <p class="screen-desc">给自己补：每次 ≤15 分钟、每天 5 次；每次共享能量 −1、我的能量 +10。</p>
+      <!-- v151：意念注入的汇入动画（与贡献能量页同一套，点「意念注入」才点亮） -->
+      <div class="cosmic" id="cosmicUse" aria-hidden="true">
+        <b class="cm c1"></b><b class="cm c2"></b><b class="cm c3"></b><b class="cm c4"></b>
+        <b class="cm c5"></b><b class="cm c6"></b><b class="cm c7"></b><b class="cm c8"></b>
+        <span class="cosmic-core"></span>
+      </div>
+      <section class="card">
+        <div class="vc-row">
+          <button type="button" class="btn btn-primary" id="btnCEnergy">咒语注入</button>
+          <button type="button" class="btn btn-ghost" id="btnCEnergySilent">意念注入</button>
+        </div>
+        <p class="fineprint fineprint-dim">咒语会开录音；意念不需要麦克风。</p>
+      </section>
+    </section>
+
+    <!-- ═══ v61 空间能量场（参与式体验数值；只增不删；积分奖励仅预留）═══ -->
+    <section class="screen" id="screen-vault" aria-labelledby="vault-title" hidden>
+      <div class="rhythm-head">
+        <h1 class="screen-title" id="vault-title">空间能量场</h1>
+        <span class="chip chip-quiet" id="vaultParticipants">—</span>
+      </div>
+      <p class="screen-desc">你在任何地方贡献能量，都会计入这个共享的场；</p>
+
+      <!-- v151：本页「意念注入」的汇入动画（同一套样式，按页各自点亮） -->
+      <div class="cosmic" id="cosmicVault" aria-hidden="true">
+        <b class="cm c1"></b><b class="cm c2"></b><b class="cm c3"></b><b class="cm c4"></b>
+        <b class="cm c5"></b><b class="cm c6"></b><b class="cm c7"></b><b class="cm c8"></b>
+        <span class="cosmic-core"></span>
+      </div>
+
+      <section class="card vault-hero">
+        <p class="vault-label">共享能量指数</p>
+        <p class="vault-index" id="vaultIndex">10,000</p>
+        <div class="vault-orb" id="vaultOrb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+
+        <p class="vault-hint" id="vaultHint">这是参与式体验数值：显示的是你在空间能量场里投入的"能量值"，不构成任何健康结论或疗效；记录保留，使用能量时会从共享场扣减。</p>
+      </section>
+        <div class="vc-row" id="vcRow">
+          <span class="vc-label">贡献能量</span>
+          <button type="button" class="btn btn-primary vc-btn" id="btnVChant">符咒注入</button>
+          <span class="vc-dot">·</span>
+          <button type="button" class="btn btn-primary vc-btn" id="btnVAbsorb">意念注入</button>
+        </div>
+        
+
+
+
+      <section class="card vault-session" id="vsCard" hidden>
+        <div class="card-head"><h2 class="card-title" id="vsTitle">补充能量</h2>
+          <span class="chip chip-quiet" id="vsState">未开始</span></div>
+        <p class="vs-desc">开启录音后，念咒语或安静待着都可以。录音只留在<strong>本机内存</strong>里给你回放，<strong>不上传、不落盘</strong>，本轮结束或离开页面就释放。<br>
+          普通用户每日最长时限为<strong>60分钟</strong>，会员<strong>180分钟</strong>；满 <strong>5 分钟</strong>后，自动增加相应能量。</p>
+
+
+        <div class="chip-row vs-spots" id="vsSpots" hidden>
+          <span class="vs-spot-label">把意念放在：</span>
+          <button type="button" class="chip" data-spot="头部">头部</button>
+          <button type="button" class="chip" data-spot="颈肩">颈肩</button>
+          <button type="button" class="chip" data-spot="腰背">腰背</button>
+          <button type="button" class="chip" data-spot="关节">关节</button>
+          <button type="button" class="chip" data-spot="腹部">腹部</button>
+          <button type="button" class="chip" data-spot="其他">其他</button>
+        </div>
+        <p class="fineprint fineprint-dim vs-disclaim" id="vsDisclaim" hidden>
+          舒缓不适是放松与注意力练习，<strong>不是止痛治疗</strong>；疼痛持续、加重或伴随其他症状，请及时就医。<br>
+          做法：① 把意念轻轻放在不适处，不使劲；② 跟着心跳/呼吸慢慢数；③ 结束时慢慢睁眼、喝口温水。
+        </p>
+
+        <div class="vs-grid">
+          <div class="vs-cell"><b id="vsMin">0</b><span id="lbMin">分钟</span></div>
+          <div class="vs-cell"><b id="vsEnergy">0</b><span id="lbEnergy">本次我的能量</span></div>
+          <div class="vs-cell"><b id="vsShared">—</b><span>共享能量</span></div>
+          <div class="vs-cell"><b id="vsCost">0</b><span id="lbCost">本次扣共享</span></div>
+        </div>
+        <div class="vs-actions">
+          <button type="button" class="btn btn-primary" id="btnVsStart">开始（开启录音）</button>
+          <button type="button" class="btn btn-ghost" id="btnVsSilent">静默模式</button>
+          <button type="button" class="btn btn-ghost" id="btnVsPause" hidden>暂停</button>
+          <button type="button" class="btn btn-ghost" id="btnVsStop" hidden>结束本轮</button>
+        </div>
+        <p class="fineprint fineprint-dim" id="vsHint">今天还可以用 5 次。</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2 class="card-title">我的</h2>
+          <span class="chip chip-quiet" id="vaultToday">今日 0/30</span></div>
+        <div class="vault-stats">
+          <div class="vault-stat"><span class="vault-num" id="vaultMyCount">0</span><span class="vault-cap">累计次数</span></div>
+          <div class="vault-stat"><span class="vault-num" id="vaultMyEnergy">0</span><span class="vault-cap">总能力值</span></div>
+          <div class="vault-stat"><span class="vault-num" id="vaultWeekCount">0</span><span class="vault-cap">近七日次数</span></div>
+        </div>
+        <div class="vault-week" id="vaultWeek" aria-label="近七日能量次数"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head" id="ledgerHead" role="button" tabindex="0"><h2 class="card-title">我的能量流水</h2><span class="chip chip-quiet" id="ledgerChip">点开查看</span>
+          <span class="chip chip-quiet" id="vaultLedgerTotal">—</span></div>
+        <div id="vaultLedger" class="vault-ledger" hidden><p class="placeholder">正在读取…</p></div>
+        <p class="fineprint fineprint-dim">流水只增不删；这是你自己的记录，别人看不到。</p>
+      </section>
+
+      <!-- 使用能量（v67）：场景可选「补充能量 / 舒缓不适（意念痛处）」；每次 ≤15 分钟、每天 5 次；
+           每次 共享能量 −1、我的能量 +10；音频只在本机分析，不上传。 -->
+
+
+
+
+      <!-- 我的能量（v67）：个人能量值与今日剩余次数 -->
+      <section class="card vault-myenergy" id="myEnergyCard">
+        <div class="card-head"><h2 class="card-title">我的能量</h2>
+          <span class="chip chip-quiet" id="myEnergySessions">今日 0/5</span></div>
+        <p class="myenergy-num"><span id="myEnergyValue">0</span> <span class="myenergy-unit">能量值</span></p>
+        <p class="fineprint fineprint-dim" id="myEnergyHint">
+          吸收与使用都会累加到「我的能量」；使用能量时能量场 −1、我的能量 +10（补充能量与减缓疼痛各 5 次/天、每次 ≤15 分钟）。
+        </p>
+      </section>
+
+      <section class="card vault-points-card">
+        <div class="card-head"><h2 class="card-title">积分</h2>
+          <span class="chip chip-quiet" id="vaultPointsChip">1:1 自动折算</span></div>
+        <p class="vault-points-num"><span id="vaultPointsBalance">0</span> <span class="vault-points-unit">积分</span></p>
+        <p class="fineprint fineprint-dim" id="vaultPointsHint">
+          能量值按 <strong>1:1</strong> 自动折算成积分；可用于站内权益（兑换规则暂未开放）。
+        </p>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnGoPoints">查看积分明细</button>
+        <div class="vault-perks" id="vaultPerks"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2 class="card-title">贡献榜</h2>
+          <span class="chip chip-quiet" id="vaultMyRank">—</span></div>
+        <div id="vaultBoard" class="vault-board"><p class="placeholder">正在读取…</p></div>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnBoardAll">查看全部</button>
+        <p class="fineprint fineprint-dim">只显示昵称（或脱敏标识）与贡献值，不显示手机号与会员号。</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2 class="card-title">积分奖励（暂未开放）</h2></div>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="vaultRewardBar">
+          <span class="progress-fill" id="vaultRewardFill" style="width:0%"></span>
+        </div>
+        <p class="fineprint" id="vaultRewardHint">累计满 100 次可参与积分兑换（暂未开放，规则另行公告）。</p>
+      </section>
+    </section>
+
+    <!-- ═══════════ 七之二、健康商城（v18 · 2026-10-10 师父令）═══════════
+         师父令：「底部的 今日节律 后面增加一个：健康商城」。
+         商城是独立站点（yuanjk.cn），AI元神这边只做入口与说明：
+         浏览、下单、支付、售后都在商城内完成，AI元神不代收货款、不读取健康数据。 -->
+    <section class="screen" id="screen-mall" aria-labelledby="mall-title" hidden>
+      <h1 class="screen-title" id="mall-title">健康商城</h1>
+      <p class="screen-desc">元健康商城：健康食品、养生器具与日常好物，独立站点运营。</p>
+
+      <section class="card mall-hero">
+        <div class="mall-hero-top">
+          <span class="mall-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5.4 8h13.2l-1 11.2a1.6 1.6 0 0 1-1.6 1.4H8a1.6 1.6 0 0 1-1.6-1.4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h2 class="card-title" id="mallHeroTitle">去商城逛逛</h2>
+            <p class="mall-url" id="mallUrl">yuanjk.cn</p>
+          </div>
+        </div>
+        <p class="mall-desc">
+          商品浏览、下单、支付与售后都在商城内完成；<strong>AI元神这边只做健康指数与作息参考</strong>，
+          不代收货款，也不把你的出生信息与健康数据带到商城。
+        </p>
+        <button type="button" class="btn btn-primary btn-lg" id="btnOpenMall">进入健康商城</button>
+        <p class="fineprint fineprint-dim" id="mallOpenNote">
+          在手机 APP 内点击会用系统浏览器打开商城；回来时仍停在这一页。
+        </p>
+      </section>
+
+      <section class="card mine-group" aria-labelledby="mallG1">
+        <h2 class="card-title" id="mallG1">关于商城</h2>
+        <div class="mine-list">
+          <div class="mall-item">
+            <span class="mall-item-k">独立结算</span>
+            <span class="mall-item-v">订单、发票与退换货由商城按平台规则处理</span>
+          </div>
+          <div class="mall-item">
+            <span class="mall-item-k">数据分离</span>
+            <span class="mall-item-v">进入商城只带一个入口链接，不带任何健康数据</span>
+          </div>
+          <div class="mall-item">
+            <span class="mall-item-k">人工客服</span>
+            <span class="mall-item-v">售前售后问题请在商城内联系客服</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="home-foot">
+        <p class="fineprint" id="mallDisclaimer">
+          商城所售商品与AI元神提供的健康指数、作息参考相互独立；
+          本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。
+        </p>
+      </footer>
+    </section>
+
+    <!-- ═══════════ 八、我的（用户中心）═══════════
+         2026-10-09 师父令：「别人的用户中心，基本的都要做上去」。
+         把原先散落在首页那一堆按钮里的入口，收成一处；并补齐基本项：
+         账号信息（昵称/手机号掩码/订阅）、健康综合管理、我的、账号与安全、帮助与关于。 -->
+    <section class="screen" id="screen-mine" aria-labelledby="mine-title" hidden>
+      <h1 class="screen-title" id="mine-title">我的</h1>
+
+      <!-- ① 账号卡：头像（昵称首字）+ 昵称 + 手机号掩码（仅自己可见）+ 订阅状态 -->
+      <section class="card mine-head">
+        <div class="mine-avatar" id="mineAvatar" aria-hidden="true">·</div>
+        <div class="mine-id">
+          <p class="mine-nick" id="mineNick">未登录</p>
+          <p class="mine-sub" id="mineSub">用手机号或昵称登录，随时可用</p>
+        </div>
+        <button type="button" class="btn btn-ghost mine-login" id="btnMineLogin">登录 / 注册</button>
+      </section>
+
+      <!-- ①之一 我的当下能量指数（v68）：白天消耗、夜间回补 90%、补充即增 -->
+      <section class="card mine-energy" id="mineEnergyCard" hidden>
+        <div class="card-head"><h2 class="card-title">我的当下能量指数</h2>
+          <span class="chip chip-quiet" id="mineEnergyAt">—</span>
+</div>
+
+        <p class="mine-energy-num"><span id="mineEnergyValue">—</span><span class="mine-energy-cap">/1000</span>
+          <span class="mine-energy-band" id="mineEnergyBand">—</span></p>
+        <div class="mine-energy-curve" id="mineEnergyCurve" aria-hidden="true"></div>
+        <div class="mine-energy-low" id="mineEnergyLow" hidden>
+          <span>能量低于 <b>200</b>，建议补充</span>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnMineRecharge">去补充</button>
+        </div>
+
+      </section>
+
+      <!-- ①之二 空间能量场入口（v61） -->
+      <section class="card mine-group">
+        <button type="button" class="entry-card mine-vault" id="btnMineVault" style="width:100%">
+          <span class="mv-emblem" aria-hidden="true">✦</span>
+          <span class="mv-text">
+            <span class="entry-title">空间能量场</span>
+            <span class="entry-sub">贡献能量 / 补充能量 · 看共享能量指数 · 我的次数与总能力值</span>
+          </span>
+          <span class="mv-arrow" aria-hidden="true">›</span>
+        </button>
+      </section>
+
+      <!-- ② 健康综合管理 -->
+      <section class="card mine-group" aria-labelledby="mineG1">
+        <h2 class="card-title" id="mineG1">健康综合管理</h2>
+        <div class="mine-list">
+          <button type="button" class="mine-item" data-goto="profile">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="8.2" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 19.4c0-3.4 3.1-5.6 7-5.6s7 2.2 7 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">我的资料 / 重新建档</span>
+            <span class="mine-item-note" id="mineProfileNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="rhythm">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 13.5h3.2l2-5 2.6 9 2.2-6 1.4 2h4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="mine-item-label">今日健康指数 / 健康档案</span>
+            <span class="mine-item-note" id="mineRhythmNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="family">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 10.6 12 4l8 6.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.2 10.2V19a1 1 0 0 0 1 1h9.6a1 1 0 0 0 1-1v-8.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">家人管理</span>
+            <span class="mine-item-note" id="mineFamilyNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <!-- v36（2026-10-21 师父令）：数字人按「性别 + 身高 + 体重」个性化 -->
+          <button type="button" class="mine-item" id="btnBodyPrefs">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="5.6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8.6v6.2M12 9.4 7.8 12M12 9.4 16.2 12M12 14.8 9 20M12 14.8 15 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">体型与性别（您的元神）</span>
+            <span class="mine-item-note" id="mineBodyNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <!-- ═══ v43（2026-10-21 师父令）：报告上传 + 状态口述 ═══ -->
+          <button type="button" class="mine-item" data-goto="reports">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6.4 3.6h8.2l4 4v11.2a1.6 1.6 0 0 1-1.6 1.6H6.4a1.6 1.6 0 0 1-1.6-1.6V5.2a1.6 1.6 0 0 1 1.6-1.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.2 3.8V8h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 12.4h6.8M8.6 15.6h4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">我的报告</span>
+            <span class="mine-item-note" id="mineReportNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="dictation">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><rect x="9" y="3.4" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.6 11.4a6.4 6.4 0 0 0 12.8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 17.8v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">状态口述</span>
+            <span class="mine-item-note" id="mineVoiceNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <!-- v44/v45（2026-10-22 师父令）：专属 AI 保健师（原「申请定制专属 AI 保健师」） -->
+          <!-- v46（2026-10-22 师父令）：亲密关系状态（仅成年用户；默认不采集） -->
+          <!-- v47（2026-10-22 师父令）：综合健康分 v2（自报问卷，50/30/10/10） -->
+          <button type="button" class="mine-item" data-goto="healthscore">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4.6 17.4 9 9.6l3 5.2 2.4-3.4 4.9 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20.4h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">综合健康分（自评）</span>
+            <span class="mine-item-note" id="mineHealthNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="intimacy">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 20.2s-6.8-4.1-6.8-9a3.9 3.9 0 0 1 6.8-2.5 3.9 3.9 0 0 1 6.8 2.5c0 4.9-6.8 9-6.8 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="mine-item-label">亲密关系</span>
+            <span class="mine-item-note" id="mineIntimacyNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="bespoke">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.8 19.6c0-3.6 3.2-5.8 7.2-5.8s7.2 2.2 7.2 5.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.4 5.2v3.4M16.7 6.9h3.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">专属 AI 保健师</span>
+            <span class="mine-item-note" id="mineBespokeNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ③ 我的 -->
+      <section class="card mine-group" aria-labelledby="mineG2">
+        <h2 class="card-title" id="mineG2">我的</h2>
+        <div class="mine-list">
+          <button type="button" class="mine-item" data-goto="friends">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="9.2" cy="8.2" r="3.3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.4 19.2c0-3.1 2.6-5.3 5.8-5.3s5.8 2.2 5.8 5.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">我的邀请</span>
+            <span class="mine-item-note" id="mineInviteNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="points">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.4v9.2M9.4 9.6h4.2a2 2 0 0 1 0 4H9.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">我的积分 / 推广收益</span>
+            <span class="mine-item-note" id="minePointsNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="subscribe">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="5.5" width="18" height="13" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </span>
+            <span class="mine-item-label">订阅会员</span>
+            <span class="mine-item-note" id="mineSubNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="friends">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 6.5h16v11H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 8.5l8 5 8-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="mine-item-label">好友圈</span>
+            <span class="mine-item-note" id="mineFriendsNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ④ 账号与安全：昵称 / 密码 / 退出 / 注销 —— 都在这一页收口 -->
+      <section class="card mine-group" aria-labelledby="mineG3">
+        <h2 class="card-title" id="mineG3">账号与安全</h2>
+        <div class="mine-list">
+          <button type="button" class="mine-item" data-goto="account">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><rect x="4.5" y="10.4" width="15" height="9" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 10.4V8a3.8 3.8 0 0 1 7.6 0v2.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">修改密码 / 修改昵称</span>
+            <span class="mine-item-note" id="mineAccountNote"></span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" id="btnMineLogout">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M14 5.5H6.4A1.4 1.4 0 0 0 5 6.9v10.2a1.4 1.4 0 0 0 1.4 1.4H14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12.5 12h7m0 0-2.6-2.6M19.5 12l-2.6 2.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="mine-item-label">退出登录</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ⑤ 帮助与关于 -->
+      <section class="card mine-group" aria-labelledby="mineG4">
+        <h2 class="card-title" id="mineG4">帮助与关于</h2>
+        <div class="mine-list">
+          <a class="mine-item" id="science-boundary-link" href="/docs.html#science-boundary" target="_blank" rel="noopener">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3.2 4.5 7v5c0 4.2 3.2 7.6 7.5 8.8 4.3-1.2 7.5-4.6 7.5-8.8V7L12 3.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12 2.2 2.2 4.2-4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="mine-item-label">科学边界与可证伪声明</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </a>
+          <button type="button" class="mine-item" data-goto="help">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.3 2.4c-.6.2-.9.7-.9 1.3v.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1" fill="currentColor"/></svg>
+            </span>
+            <span class="mine-item-label">问题解答</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="bencao">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 4.8h9.2A2.8 2.8 0 0 1 17 7.6v11.6H7.8A2.8 2.8 0 0 1 5 16.4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.2 9h6M8.2 12.4h6M8.2 15.8h3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">本草文献</span>
+            <span class="mine-item-note">338 味</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <!-- v37（2026-10-21 师父令）：文本文献下面增加「药食同源」「经典药方」 -->
+          <button type="button" class="mine-item" data-goto="yaoshi">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 20c0-4.4 2.6-7.6 6.4-8.6C18.4 15.6 15.8 19 12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 20C12 15.6 9.4 12.4 5.6 11.4 5.6 15.6 8.2 19 12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 20v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">药食同源</span>
+            <span class="mine-item-note" id="mineYaoshiNote">110 条</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="mine-item" data-goto="fangji">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 3.6h8.4A2.4 2.4 0 0 1 16.8 6v14.4l-5.4-3-5.4 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M19 7.2h-.6A2.4 2.4 0 0 0 16 9.6v10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">经典药方</span>
+            <span class="mine-item-note" id="mineFangjiNote">37 方</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+          <!-- v38（2026-10-21 师父令）：经典药方下面增加「两性课堂」 -->
+          <button type="button" class="mine-item" data-goto="lxkt">
+            <span class="mine-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="9" cy="8.4" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="9.4" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.4 19.4c0-3.1 2.6-5 5.6-5s5.6 1.9 5.6 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 14.6c2.4 0 4.4 1.4 4.4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="mine-item-label">两性课堂</span>
+            <span class="mine-item-note" id="mineLxktNote">30 篇</span>
+            <span class="mine-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <!-- ═══════════ v43 · 我的报告（只存档、不解读）═══════════ -->
+    <section class="screen" id="screen-reports" aria-labelledby="reports-title" hidden>
+      <h1 class="screen-title" id="reports-title">我的报告</h1>
+      <p class="screen-desc">
+        上传体检 / 检查报告（JPG / PNG / WebP / PDF，单件 ≤ 5 MB）。
+        <strong>只存档，不解读、不诊断</strong>；仅你本人可见，可随时删除。
+      </p>
+
+      <section class="card" aria-labelledby="repUpTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="repUpTitle">上传报告</h2>
+          <span class="chip chip-quiet" id="repUpChip" hidden></span>
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inReportFile">选择文件</label>
+          <input class="input" type="file" id="inReportFile"
+                 accept="image/jpeg,image/png,image/webp,application/pdf">
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inReportNote">备注（可选）</label>
+          <input class="input" type="text" id="inReportNote" maxlength="60"
+                 placeholder="例如：2026 年体检">
+        </div>
+        <p class="field-err" id="reportErr" role="alert" hidden></p>
+        <button type="button" class="btn btn-primary" id="btnUploadReport">上传</button>
+      </section>
+
+      <section class="card" aria-labelledby="repListTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="repListTitle">已上传</h2>
+          <span class="card-note" id="reportCount"></span>
+        </div>
+        <div id="reportList">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- ═══════════ v43 · 状态口述（录音 + 可选文字；不转写）═══════════ -->
+    <section class="screen" id="screen-dictation" aria-labelledby="dictation-title" hidden>
+      <h1 class="screen-title" id="dictation-title">状态口述</h1>
+      <p class="screen-desc">
+        把此刻的感觉说出来（≤60 秒），也可以只打字。<strong>只记录、不诊断、不转写</strong>。
+      </p>
+
+      <section class="card" aria-labelledby="recTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="recTitle">录一段</h2>
+          <span class="chip chip-quiet" id="recState">未开始</span>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" id="btnRecStart">开始录音</button>
+          <button type="button" class="btn btn-ghost" id="btnRecStop" hidden>停止</button>
+        </div>
+        <audio id="recPreview" controls hidden style="width:100%;margin-top:10px"></audio>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inVoiceNote">文字补充（可选）</label>
+          <textarea class="input" id="inVoiceNote" rows="3" maxlength="500"
+                    placeholder="例如：今早起来头有点沉，昨晚 1 点才睡"></textarea>
+        </div>
+        <p class="field-err" id="voiceErr" role="alert" hidden></p>
+        <button type="button" class="btn btn-ghost" id="btnVoiceSave">保存（没有录音就只存文字）</button>
+      </section>
+
+      <section class="card" aria-labelledby="voiceListTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="voiceListTitle">我的记录</h2>
+          <span class="card-note" id="voiceCount"></span>
+        </div>
+        <div id="voiceList">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- ═══════════ v47 · 综合健康分（自评；50/30/10/10）═══════════ -->
+    <section class="screen" id="screen-healthscore" aria-labelledby="hs-title" hidden>
+      <h1 class="screen-title" id="hs-title">综合健康分（自评）</h1>
+      <p class="screen-desc" id="hsNotice">
+        这是<strong>生活方式风险参考</strong>，不是诊断。内核指数另有其分，两者口径不同。
+      </p>
+      <section class="card" aria-labelledby="hsScoreTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="hsScoreTitle">当前得分</h2>
+          <span class="chip" id="hsScoreChip">未评</span>
+        </div>
+        <div id="hsDomains" class="hs-domains"></div>
+        <p class="field-hint" id="hsHabitNote" style="margin-bottom:4px"></p>
+        <p class="field-hint" id="hsUpdated"></p>
+      </section>
+      <section class="card" aria-labelledby="hsQTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="hsQTitle">问卷（每题 5 档）</h2>
+          <span class="card-note">未填按"未参与"处理</span>
+        </div>
+        <div id="hsQuestions"></div>
+        <p class="field-err" id="hsErr" role="alert" hidden></p>
+        <button type="button" class="btn btn-primary" id="btnHsSave">保存并计算</button>
+      </section>
+      <section class="card" aria-labelledby="hsHistTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="hsHistTitle">分数变化记录</h2>
+          <span class="card-note">每次变化都能说明依据</span>
+        </div>
+        <div id="hsHistory" class="hs-history"><p class="placeholder">还没有变化记录。</p></div>
+      </section>
+    </section>
+        <!-- ═══════════ v46 · 亲密关系（18+，敏感个人信息；默认不采集）═══════════ -->
+    <section class="screen" id="screen-intimacy" aria-labelledby="intimacy-title" hidden>
+      <h1 class="screen-title" id="intimacy-title">亲密关系</h1>
+      <p class="screen-desc" id="intimacyNotice">
+        这部分属<strong>敏感个人信息</strong>：默认不采集、只存档位、仅你本人可见。
+        想让保健师看到，需再单独同意一次，随时可关。
+      </p>
+
+      <section class="card" id="intimacyBlocked" hidden>
+        <div class="card-head"><h2 class="card-title">这项功能仅对成年用户开放</h2></div>
+        <p class="field-hint" id="intimacyBlockedHint">
+          未满 18 岁或档案里没有出生日期时，本入口不提供记录功能。
+        </p>
+      </section>
+
+      <section class="card" id="intimacyForm" hidden aria-labelledby="intimacyFormTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="intimacyFormTitle">状态记录</h2>
+          <span class="chip chip-quiet" id="intimacyStateChip">未开启</span>
+        </div>
+
+        <div class="chip-row" id="intimacyOptinRow">
+          <button type="button" class="chip" id="chipIntimacyOptin" data-optin="1">开启并记录</button>
+        </div>
+
+        <div id="intimacyFields">
+          <p class="field-label-sm">近 7 天频次</p>
+          <div class="chip-row" id="intimacyFreq"></div>
+
+          <p class="field-label-sm">满意度（1–5）</p>
+          <div class="chip-row" id="intimacySat"></div>
+
+          <p class="field-label-sm">是否因此有困扰</p>
+          <div class="chip-row" id="intimacyConcern"></div>
+
+          <p class="field-err" id="intimacyErr" role="alert" hidden></p>
+          <button type="button" class="btn btn-primary" id="btnIntimacySave">保存</button>
+        </div>
+
+        <p class="field-hint" id="intimacyShareHint">
+          想让已绑定的保健师看到？需要单独同意；关掉后对方立刻看不到。
+        </p>
+        <div class="chip-row" id="intimacyShareRow">
+          <button type="button" class="chip" id="chipIntimacyShare" data-share="1">允许保健师查看</button>
+        </div>
+        <p class="field-hint" id="intimacyAdjustNote"></p>
+      </section>
+    </section>
+<!-- ═══════════ v44/v45 · 专属 AI 保健师（人工服务，只收申请）═══════════ -->
+    <section class="screen" id="screen-bespoke" aria-labelledby="bespoke-title" hidden>
+      <h1 class="screen-title" id="bespoke-title">专属 AI 保健师</h1>
+      <p class="screen-desc">
+        说说你想改善的方向，客服会在 1 个工作日内联系你确认需求与费用。
+        <strong>人工服务、不自动扣费；不提供诊断与治疗建议。</strong>
+      </p>
+
+      <section class="card" aria-labelledby="bespokeFormTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="bespokeFormTitle">想改善什么</h2>
+          <span class="card-note">可多选</span>
+        </div>
+        <div class="chip-row" id="bespokeNeeds"></div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inBespokePhone">联系手机号（可选）</label>
+          <input class="input" type="tel" id="inBespokePhone" maxlength="20"
+                 placeholder="方便客服联系你；不填则用账号手机号">
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inBespokeNote">补充说明（可选）</label>
+          <textarea class="input" id="inBespokeNote" rows="3" maxlength="300"
+                    placeholder="例如：想重点管睡眠和体重，希望每天有人提醒"></textarea>
+        </div>
+        <p class="field-err" id="bespokeErr" role="alert" hidden></p>
+        <button type="button" class="btn btn-primary" id="btnBespokeApply">提交申请</button>
+      </section>
+
+      <section class="card" aria-labelledby="bespokeListTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="bespokeListTitle">我的申请</h2>
+          <span class="card-note" id="bespokeCount"></span>
+        </div>
+        <div id="bespokeList">
+          <p class="placeholder">正在读取…</p>
+        </div>
+      </section>
+    </section>
+    <!-- ═══════════ 九、账号与安全（改昵称 / 改密码 / 注销）═══════════ -->
+    <section class="screen" id="screen-account" aria-labelledby="account-title" hidden>
+      <h1 class="screen-title" id="account-title">账号与安全</h1>
+      <p class="screen-desc">昵称是对外展示名，也<strong>可以当登录名</strong>；手机号只用于登录，不会对外显示。</p>
+
+      <!-- 昵称 -->
+      <section class="card" aria-labelledby="accNickTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="accNickTitle">我的昵称</h2>
+          <span class="chip chip-quiet" id="nickCoolChip" hidden></span>
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inNickname">昵称（2–12 个字，全站唯一）</label>
+          <input class="input" type="text" id="inNickname" maxlength="12" autocomplete="off"
+                 placeholder="起一个别人好记的名字">
+          <p class="field-hint">昵称会出现在好友圈、排行榜与你的分享链接里；分享链接形如
+            <code>?invite=你的昵称</code>。<strong>7 天只能改一次。</strong></p>
+          <p class="field-err" id="nicknameErr" role="alert" hidden></p>
+        </div>
+        <button type="button" class="btn btn-primary" id="btnSaveNickname">保存昵称</button>
+      </section>
+
+      <!-- 密码 -->
+      <section class="card" aria-labelledby="accPwdTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="accPwdTitle">登录密码</h2>
+          <span class="chip chip-quiet" id="pwdStateChip" hidden></span>
+        </div>
+        <form id="pwdForm" novalidate>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="inOldPwd">当前密码</label>
+            <input class="input" type="password" id="inOldPwd" autocomplete="current-password">
+          </div>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="inNewPwd">新密码（6–32 位，不含空格）</label>
+            <input class="input" type="password" id="inNewPwd" autocomplete="new-password">
+          </div>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="inNewPwd2">确认新密码</label>
+            <input class="input" type="password" id="inNewPwd2" autocomplete="new-password">
+          </div>
+          <p class="field-err" id="pwdErr" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary" id="btnChangePwd">保存新密码</button>
+        </form>
+        <p class="fineprint fineprint-dim" id="pwdNoAccountHint" hidden>
+          当前账号还没设置过密码 —— 请回到登录面板用「忘记密码 / 设置密码」先设一个。
+        </p>
+      </section>
+
+      <!-- ═══ v41（2026-10-21 师父令）：支付密码 —— 6 位数字，只在积分订阅付款时校验 ═══ -->
+      <section class="card" aria-labelledby="paypwdTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="paypwdTitle">支付密码</h2>
+          <span class="chip chip-quiet" id="paypwdChip">未设置</span>
+        </div>
+        <p class="field-hint" id="paypwdHint">
+          6 位数字。设置后，用积分订阅时必须输入它；<strong>修改需先验证原支付密码</strong>（由服务端校验）。
+        </p>
+        <form id="paypwdForm" novalidate>
+          <div class="field field-tight" id="paypwdOldWrap" hidden>
+            <label class="field-label-sm" for="inOldPayPwd">当前支付密码</label>
+            <input class="input" type="password" id="inOldPayPwd" inputmode="numeric"
+                   maxlength="6" autocomplete="off" placeholder="6 位数字">
+          </div>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="inPayPwd">新支付密码（6 位数字）</label>
+            <input class="input" type="password" id="inPayPwd" inputmode="numeric"
+                   maxlength="6" autocomplete="off" placeholder="例如 123456">
+          </div>
+          <div class="field field-tight">
+            <label class="field-label-sm" for="inPayPwd2">确认新支付密码</label>
+            <input class="input" type="password" id="inPayPwd2" inputmode="numeric"
+                   maxlength="6" autocomplete="off" placeholder="再输一次">
+          </div>
+          <p class="field-err" id="paypwdErr" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary" id="btnSavePayPwd">设置支付密码</button>
+        </form>
+      </section>
+
+      <!-- ═══ v209（2026-11-02 师父令 · A 案）：情绪关怀开关 ═══ -->
+      <section class="card" aria-labelledby="emoTitle" id="emoCard">
+        <div class="card-head">
+          <h2 class="card-title" id="emoTitle">情绪关怀</h2>
+          <span class="chip chip-quiet" id="emoChip">未开启</span>
+        </div>
+        <p class="field-hint" id="emoDesc">
+          开启后，App <strong>只在你手机本地</strong>分析你授权的短信与通话记录，估计近来的情绪状态，
+          并据此<strong>小幅调整</strong>健康指数与能量指数：每小时最多一次，单日 ±10 分。
+          <strong>原文不会上传、不会保存</strong>；你可以随时关闭。
+        </p>
+        <button type="button" class="btn btn-ghost" id="btnEmoCare">开启情绪关怀</button>
+        <p class="fineprint fineprint-dim" id="emoNote" hidden></p>
+      </section>
+
+      <!-- 登录标识说明（手机号只登录）-->
+      <section class="card" aria-labelledby="accIdTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="accIdTitle">登录方式</h2>
+        </div>
+        <p class="placeholder" id="loginWaysText">—</p>
+      </section>
+
+      <!-- 注销 -->
+      <section class="card danger-card" aria-labelledby="accDelTitle">
+        <div class="card-head">
+          <h2 class="card-title" id="accDelTitle">注销账号</h2>
+        </div>
+        <p class="fineprint">
+          注销后本机将退出登录，账号与档案按合规要求处理；如需删除全部数据，请联系客服。
+        </p>
+        <button type="button" class="btn btn-ghost danger-btn" id="btnDeleteAccount">申请注销</button>
+      </section>
+    </section>
+
+    <!-- ═══════════ 十、问题解答 ═══════════ -->
+    <section class="screen" id="screen-help" aria-labelledby="help-title" hidden>
+      <h1 class="screen-title" id="help-title">问题解答</h1>
+      <p class="screen-desc">常见问题都在这里；还有疑问可联系客服。</p>
+
+      <section class="card">
+        <div class="accordion-list" id="helpList">
+          <p class="placeholder">正在加载…</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- ═══════════ 十一、本草文献检索 ═══════════
+         2026-10-09 师父令：把外部中医知识库里「好的、我们没有的」增加上去，
+         本草部分**做成文献检索入口（只展示原文、不给建议）**。
+         合规边界：只按**药名**检索历代本草著作的**古籍原文**；
+         不提供按症状查药、不给剂量与配伍建议、不做任何结论；
+         顶部与每条详情底部固定显示免责声明。 -->
+    <section class="screen" id="screen-bencao" aria-labelledby="bencao-title" hidden>
+      <h1 class="screen-title" id="bencao-title">本草文献</h1>
+      <p class="screen-desc">
+        历代本草著作的<strong>原文摘录</strong>（《神农本草经》《名医别录》《本草纲目》等）。
+        仅作古籍文献查阅，<strong>非医疗建议，不作为用药依据</strong>。
+      </p>
+
+      <div class="bc-search">
+        <label class="sr-only" for="inBencaoSearch">检索药名</label>
+        <input class="input" type="search" id="inBencaoSearch" autocomplete="off"
+               placeholder="输入药名检索，例如：甘草、黄芪、当归">
+        <button type="button" class="btn btn-ghost bc-clear" id="btnBencaoClear" hidden>清空</button>
+      </div>
+      <p class="bc-count" id="bencaoCount" role="status"></p>
+
+      <div class="bc-list" id="bencaoList">
+        <p class="placeholder">正在读取文献目录…</p>
+      </div>
+
+      <div class="bc-detail" id="bencaoDetail" hidden></div>
+
+      <p class="bc-foot">
+        以上内容为<strong>历代本草古籍原文摘录</strong>，仅反映古人的记述，未经现代医学验证；
+        <strong>非医疗建议，不作为用药依据</strong>，请勿据此自行用药。
+        如有身体不适，请就医并遵医嘱。
+      </p>
+    </section>
+
+    <!-- ═══════════ 十一之二、药食同源（v37，2026-10-21 师父令）═══════════
+         只做两件事：① 照录《按照传统既是食品又是中药材的物质目录》名单；
+         ② 该物质若在历代本草里有记载，就显示**古籍原文**。
+         合规边界：不写功效主治、不给食疗处方、不做「什么体质吃什么」的映射。 -->
+    <section class="screen" id="screen-yaoshi" aria-labelledby="yaoshi-title" hidden>
+      <h1 class="screen-title" id="yaoshi-title">药食同源</h1>
+      <p class="screen-desc">
+        《按照传统既是食品又是中药材的物质目录》名单（四批公告逐条录入），
+        以及该物质在历代本草中的<strong>原文摘录</strong>。
+        仅作目录与文献查阅，<strong>不是食疗处方，也不构成用药建议</strong>。
+      </p>
+
+      <div class="bc-search">
+        <label class="sr-only" for="inYaoshiSearch">检索名称</label>
+        <input class="input" type="search" id="inYaoshiSearch" autocomplete="off"
+               placeholder="输入名称检索，例如：山药、枸杞子、茯苓">
+        <button type="button" class="btn btn-ghost bc-clear" id="btnYaoshiClear" hidden>清空</button>
+      </div>
+      <p class="bc-count" id="yaoshiCount" role="status"></p>
+
+      <div class="bc-list" id="yaoshiList">
+        <p class="placeholder">正在读取目录…</p>
+      </div>
+
+      <div class="bc-detail" id="yaoshiDetail" hidden></div>
+
+      <p class="bc-foot">
+        名单按四批公告逐条录入（2002 · 2019 · 2023 · 2024）。不同汇总口径对这四批的计数略有出入
+        （常见写作 106 种），本页<strong>以公告名单条目为准，不删条</strong>。
+        本草原文仅反映古人记述，未经现代医学验证；<strong>非医疗建议</strong>，请勿据此自行使用。
+      </p>
+    </section>
+
+    <!-- ═══════════ 十一之三、经典药方（v37，2026-10-21 师父令）═══════════
+         只记录：方名 / 出处 / 组成（药名）。
+         **刻意不写**：剂量、煎服法、功效、主治、适应证、加减法 —— 那些属于诊疗内容。 -->
+    <section class="screen" id="screen-fangji" aria-labelledby="fangji-title" hidden>
+      <h1 class="screen-title" id="fangji-title">经典药方</h1>
+      <p class="screen-desc">
+        古籍所载方剂的<strong>方名、出处与组成药味</strong>，按原书药名照录。
+        只作方剂文献查阅：<strong>不提供剂量与煎服法，不说明治什么，不构成用药建议</strong>。
+      </p>
+
+      <div class="bc-search">
+        <label class="sr-only" for="inFangjiSearch">检索方名</label>
+        <input class="input" type="search" id="inFangjiSearch" autocomplete="off"
+               placeholder="输入方名检索，例如：桂枝汤、四君子汤">
+        <button type="button" class="btn btn-ghost bc-clear" id="btnFangjiClear" hidden>清空</button>
+      </div>
+      <p class="bc-count" id="fangjiCount" role="status"></p>
+
+      <div class="bc-list" id="fangjiList">
+        <p class="placeholder">正在读取方剂目录…</p>
+      </div>
+
+      <div class="bc-detail" id="fangjiDetail" hidden></div>
+
+      <p class="bc-foot">
+        方名、出处与组成按古籍与通行《方剂学》表述录入；<strong>剂量、煎服法、功效与主治一律不录</strong>。
+        古籍方剂是历史文献，不是给个人的处方；<strong>请勿据此自行配药或服用</strong>，有身体不适请就医。
+      </p>
+    </section>
+
+    <!-- ═══════════ 十一之四、两性课堂（v38，2026-10-21 师父令）═══════════
+         只做健康科普 / 防护 / 就医指引：不给诊断、不给治疗方案、不推荐药物品牌；
+         不做色情描述、不配图、不写具体行为细节；
+         涉及法律只陈述公开法条事实（性同意年龄 14 周岁）；
+         每条末尾给「什么时候该就医」，把用户导向正规医疗。 -->
+    <section class="screen" id="screen-lxkt" aria-labelledby="lxkt-title" hidden>
+      <h1 class="screen-title" id="lxkt-title">两性课堂</h1>
+      <p class="screen-desc">
+        身体常识 · 避孕与防护 · 性传播感染 · 同意与边界 · 常见误区 · 就医指引。
+        <strong>科普性质，不含诊疗建议，也不含色情内容</strong>。
+      </p>
+
+      <div class="lx-notice" id="lxktNotice" role="note"></div>
+
+      <div class="lx-list" id="lxktList">
+        <p class="placeholder">正在读取课程…</p>
+      </div>
+
+      <p class="bc-foot" id="lxktBasis"></p>
+    </section>
+
+    <!-- ═══════════ 底部导航（只在首页 / 今日节律 / 我的 三个顶级页显示）═══════════ -->
+    <nav class="tabbar" id="tabbar" hidden aria-label="主导航">
+      <button type="button" class="tab-item" data-tab="home">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 10.6 12 4l8 6.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.2 10.2V19a1 1 0 0 0 1 1h9.6a1 1 0 0 0 1-1v-8.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>首页</span>
+      </button>
+      <button type="button" class="tab-item" data-tab="rhythm">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.6V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>今日节律</span>
+      </button>
+      <!-- v57（2026-10-24 师父令）：今日节律后面加「音疗」 -->
+      <button type="button" class="tab-item" data-tab="music">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 21 19H3z"/><path d="M12 3v16" opacity=".55"/><path d="M7.5 11h9" opacity=".55"/></svg>
+        <span>能量场</span>
+      </button>
+      <!-- v18：师父令「今日节律后面增加一个：健康商城」-->
+      <button type="button" class="tab-item" data-tab="mall">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5.4 8h13.2l-1 11.2a1.6 1.6 0 0 1-1.6 1.4H8a1.6 1.6 0 0 1-1.6-1.4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>健康商城</span>
+      </button>
+      <button type="button" class="tab-item" data-tab="mine">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8.2" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 19.4c0-3.4 3.1-5.6 7-5.6s7 2.2 7 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>我的</span>
+      </button>
+    </nav>
+
+  </main>
+
+  <!-- ── 历史记录：抽屉面板 ─────────────────────────────────── -->
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <section class="sheet" id="historySheet" role="dialog" aria-modal="true"
+           aria-labelledby="historyTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="historyTitle">打卡历史</h2>
+      <button type="button" class="sheet-close" id="btnCloseHistory" aria-label="关闭历史记录">×</button>
+    </div>
+    <div class="sheet-body" id="historyBody">
+      <p class="placeholder">正在读取…</p>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost btn-sm" id="btnMoreHistory" hidden>
+        加载更多
+      </button>
+    </div>
+  </section>
+
+  <!-- ── 加油模板选择（健康互促）────────────────────────────── -->
+  <section class="sheet" id="cheerSheet" role="dialog" aria-modal="true"
+           aria-labelledby="cheerSheetTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="cheerSheetTitle">送一句加油</h2>
+      <button type="button" class="sheet-close" id="btnCloseCheer" aria-label="关闭加油面板">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-tip" id="cheerSheetTip"></p>
+      <div class="tmpl-list" id="tmplList"></div>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnCancelCheer">取消</button>
+    </div>
+  </section>
+
+  <!-- ── v213：邀请家人建立自己的能量档案（6 位数字 / 24 小时 / 一码一人）── -->
+  <section class="sheet" id="famInviteSheet" role="dialog" aria-modal="true"
+           aria-labelledby="famInviteTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="famInviteTitle">邀请家人建立能量档案</h2>
+      <button type="button" class="sheet-close" id="btnFamInviteClose" aria-label="关闭邀请码">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-tip" id="famInviteTip">把这 6 位数字发给家人。TA 在自己手机上登录后，
+        点「绑定家庭」输入并同意，即可建立自己的能量档案。</p>
+      <p class="fam-invite-code" id="famInviteCode">— — — — — —</p>
+      <p class="fam-invite-left" id="famInviteLeft">有效期 24:00:00</p>
+      <p class="field-err" id="famInviteErr" role="alert" hidden></p>
+      <p class="sheet-tip">一码一人、24 小时内有效；TA 确认后你这边才会看到 TA 的指数。
+        绑定是只读的，家人可随时解绑。</p>
+    </div>
+    <div class="sheet-foot confirm-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnFamInviteRegen">重新生成</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnFamInviteCopy">复制邀请码</button>
+    </div>
+  </section>
+
+  <!-- ── v213：家人侧「绑定家庭」—— 输入 6 位码 + 二次确认（双向同意）── -->
+  <section class="sheet" id="famBindSheet" role="dialog" aria-modal="true"
+           aria-labelledby="famBindSheetTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="famBindSheetTitle">绑定家庭</h2>
+      <button type="button" class="sheet-close" id="btnFamBindClose" aria-label="关闭绑定面板">×</button>
+    </div>
+    <div class="sheet-body">
+      <label class="field-label" for="famBindCode">家人给你的 6 位邀请码</label>
+      <input class="input" type="text" id="famBindCode" inputmode="numeric" maxlength="6"
+             placeholder="例如 123456" autocomplete="one-time-code" spellcheck="false">
+      <p class="field-err" id="famBindErr" role="alert" hidden></p>
+      <p class="sheet-tip">下一步会请你确认一次：同意让发起邀请的家人看到你的<strong>今日健康指数与能量指数</strong>
+        （只读）。看不到你的短信、通话与情绪记录；你可以随时解绑。</p>
+    </div>
+    <div class="sheet-foot confirm-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnFamBindCancel">取消</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnFamBindSubmit">下一步</button>
+    </div>
+  </section>
+
+  <!-- ── 二次确认（解除好友等）────────────────────────────────── -->
+  <section class="sheet" id="confirmSheet" role="dialog" aria-modal="true"
+           aria-labelledby="confirmTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="confirmTitle">确认操作</h2>
+      <button type="button" class="sheet-close" id="btnConfirmClose" aria-label="关闭确认框">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="confirm-text" id="confirmText"></p>
+    </div>
+    <div class="sheet-foot confirm-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnConfirmCancel">取消</button>
+      <button type="button" class="btn btn-danger btn-sheet" id="btnConfirmOk">确认</button>
+    </div>
+  </section>
+
+  <!-- ── 登录 / 注册（v12.1：两个独立面板，互不串）────────────────── -->
+  <section class="sheet" id="authSheet" role="dialog" aria-modal="true"
+           aria-labelledby="authTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="authTitle">登录</h2>
+      <button type="button" class="sheet-close" id="btnCloseAuth" aria-label="关闭面板">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-tip" id="authNotice" role="status" aria-live="polite"></p>
+      <div class="auth-form" id="authForm">
+        <!-- v15：登录时这一栏接受「手机号 或 昵称」，属性由 setAuthMode() 按模式切换
+             （注册/找回仍是手机号 → 切回数字键盘 + maxlength 11）。 -->
+        <label class="field-label" for="inAuthPhone" id="authPhoneLabel">手机号 / 昵称</label>
+        <input class="input" type="text" id="inAuthPhone" maxlength="32"
+               placeholder="请输入手机号或昵称" autocomplete="username">
+        <label class="field-label" for="inAuthPwd">密码</label>
+        <input class="input" type="password" id="inAuthPwd" maxlength="32"
+               placeholder="Aa123456" autocomplete="current-password"
+               data-default-pwd="Aa123456">
+        <div id="authConfirmWrap" hidden>
+          <label class="field-label" for="inAuthPwd2">确认密码</label>
+          <input class="input" type="password" id="inAuthPwd2" maxlength="32"
+                 placeholder="Aa123456" autocomplete="new-password">
+        </div>
+        <p class="field-hint" id="authPwdHint">默认密码 Aa123456，可直接点登录；也可自己改。</p>
+        <p class="field-err" id="authErr" role="alert" hidden></p>
+        <button type="button" class="auth-link" id="btnAuthForgot">
+          忘记密码 / 收不到验证码？点这里，用本机当前账号直接设置新密码
+        </button>
+      </div>
+      <div id="authLoggedWrap" hidden>
+        <p class="sheet-tip" id="authLoggedTip"></p>
+      </div>
+    </div>
+    <div class="sheet-foot confirm-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnAuthLogout" hidden>退出登录</button>
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnAuthCancel">关闭</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnAuthSubmit">登录</button>
+    </div>
+  </section>
+
+  <!-- ── 关怀提醒（家庭健康档案）────────────────────────────── -->
+  <section class="sheet" id="famRemindSheet" role="dialog" aria-modal="true"
+           aria-labelledby="famRemindSheetTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="famRemindSheetTitle">发一条关怀提醒</h2>
+      <button type="button" class="sheet-close" id="btnFamRemindClose" aria-label="关闭关怀提醒面板">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-tip" id="famRemindTip"></p>
+      <div class="tmpl-list" id="famKindList"></div>
+      <div class="field field-tight fam-remind-field">
+        <label class="field-label-sm" for="famRemindText">提醒内容（选填，≤60 字）</label>
+        <input class="input" type="text" id="famRemindText" maxlength="60" autocomplete="off"
+               placeholder="留空则用所选类型的默认文案">
+      </div>
+      <p class="field-err" id="famRemindErr" role="alert" hidden></p>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnFamRemindCancel">取消</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnFamRemindSend">发送提醒</button>
+    </div>
+  </section>
+
+  <!-- ── 体型与性别（您的元神）· v36；v39 标题随师父令改名 ─────────── -->
+  <section class="sheet" id="bodySheet" role="dialog" aria-modal="true"
+           aria-labelledby="bodySheetTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="bodySheetTitle">体型与性别（您的元神）</h2>
+      <button type="button" class="sheet-close" id="btnCloseBody" aria-label="关闭面板">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-tip">用来把「能量粒子流变图」里的数字人画成你的体型。
+        保存在你的账号里，换手机登录也还在；只有你本人能看到，不对外分享、不参与指数计算。</p>
+      <label class="field-label">性别</label>
+      <div class="seg" id="bodyGender" role="group" aria-label="性别">
+        <button type="button" class="seg-btn" data-gender="male">男</button>
+        <button type="button" class="seg-btn" data-gender="female">女</button>
+      </div>
+      <div class="body-hw">
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inBodyHeight">身高（cm）</label>
+          <input class="input" type="number" id="inBodyHeight" inputmode="numeric"
+                 min="120" max="220" step="1" placeholder="170">
+        </div>
+        <div class="field field-tight">
+          <label class="field-label-sm" for="inBodyWeight">体重（kg）</label>
+          <input class="input" type="number" id="inBodyWeight" inputmode="numeric"
+                 min="30" max="200" step="1" placeholder="65">
+        </div>
+      </div>
+      <p class="field-err" id="bodyErr" role="alert" hidden></p>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnBodyCancel">取消</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnBodySave">保存</button>
+    </div>
+  </section>
+
+  <!-- ═══ v39（2026-10-21 师父令）：右下角 APP 版本显示 + 升级入口 ═══
+       位置：有底栏的顶级页浮在底栏上方，二级页贴右下角（CSS 见 .ver-badge）。
+       文案由 app.js 用 WEB_VER / APK_VER 覆盖，静态文字只是无脚本兜底。 -->
+  <button type="button" class="ver-badge" id="verBadge" title="查看版本与更新"
+          aria-label="版本信息与更新">
+    <span class="ver-dot" id="verDot" hidden aria-hidden="true"></span>
+    <span class="ver-txt" id="verText">APP 1.0.0 · v39</span>
+  </button>
+
+  <!-- ── 版本与更新：抽屉（v39）──────────────────────────────── -->
+  <section class="sheet" id="verSheet" role="dialog" aria-modal="true"
+           aria-labelledby="verSheetTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="verSheetTitle">版本与更新</h2>
+      <button type="button" class="sheet-close" id="btnCloseVer" aria-label="关闭版本信息">×</button>
+    </div>
+    <div class="sheet-body">
+      <ul class="ver-rows">
+        <li><span>客户端包版本</span><b id="verApp">1.0.0</b></li>
+        <li><span>网页版本</span><b id="verWeb">v39</b></li>
+        <li><span>构建日期</span><b id="verBuild">2026-10-21</b></li>
+        <li><span>最新版本</span><b id="verLatest">检查中…</b></li>
+        <li><span>安装包大小</span><b id="verSize">—</b></li>
+      </ul>
+      <p class="ver-state" id="verStateText" role="status">正在检查版本…</p>
+      <div class="ver-notes" id="verNotes" hidden>
+        <h3 class="ver-notes-title">本版更新</h3>
+        <ul id="verNotesList"></ul>
+      </div>
+      <p class="sheet-tip">网页版本随站点发布自动更新；客户端包版本在重新打包后同步。</p>
+    </div>
+    <div class="sheet-foot ver-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnVerCheck">检查版本</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnVerUpdate">立即更新</button>
+    </div>
+  </section>
+
+  <!-- ── v41：付款前输入支付密码（只在已设置支付密码时出现）────── -->
+  <section class="sheet" id="paypwdSheet" role="dialog" aria-modal="true"
+           aria-labelledby="paypwdSheetTitle" hidden>
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="paypwdSheetTitle">输入支付密码</h2>
+      <button type="button" class="sheet-close" id="btnClosePayPwdPrompt" aria-label="关闭支付密码输入">×</button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-tip" id="paypwdPromptTip">请输入 6 位支付密码确认本次支付。</p>
+      <div class="field field-tight">
+        <label class="field-label-sm" for="inPayPwdPrompt">支付密码（6 位数字）</label>
+        <input class="input" type="password" id="inPayPwdPrompt" inputmode="numeric"
+               maxlength="6" autocomplete="off" placeholder="6 位数字">
+      </div>
+      <p class="field-err" id="paypwdPromptErr" role="alert" hidden></p>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost btn-sheet" id="btnPayPwdPromptCancel">取消</button>
+      <button type="button" class="btn btn-primary btn-sheet" id="btnPayPwdPromptOk">确认支付</button>
+    </div>
+  </section>
+
+  <!-- ── 轻提示 ─────────────────────────────────────────────── -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- ── 全屏忙碌遮罩 ───────────────────────────────────────── -->
+  <div class="busy" id="busy" hidden aria-hidden="true">
+    <span class="spinner"></span>
+  </div>
+
+</div>
+
+<script src="energy-flow.js?v=20261102f"></script>
+<script src="music.js?v=20261102f"></script>
+<script src="energy.js?v=20261102f"></script>
+<script src="body3d.js?v=20261102f"></script>
+<script src="app.js?v=20261102f"></script>
+<!-- ═══ v211（2026-11-02 师父令）：情绪快问（早/中/晚各一次，可跳过）═══ -->
+<div id="moodAsk" hidden>
+  <div class="mood-card">
+    <button type="button" class="mood-x" id="moodLater" aria-label="稍后">×</button>
+    <p class="mood-title">主人，我是你的AI元神</p>
+    <p class="mood-sub">随时关注您的健康。请选择，或者主动告诉我您现在的情况：</p>
+    <div class="mood-opts">
+      <button type="button" data-mood="A">A　很开心</button>
+      <button type="button" data-mood="B">B　心情常态</button>
+      <button type="button" data-mood="C">C　遇到烦心事</button>
+      <button type="button" data-mood="D">D　特别痛苦</button>
+    </div>
+    <textarea id="moodText" maxlength="120" rows="2"
+              placeholder="也可以用一句话告诉我（只在手机上分析，不上传原文）"></textarea>
+    <div class="mood-actions">
+      <button type="button" class="btn btn-ghost" id="moodVoice">语音输入</button>
+      <button type="button" class="btn btn-primary" id="moodOk">告诉元神</button>
+    </div>
+    <p class="mood-note">你的回答只用于小幅调整健康指数与能量指数（每小时最多一次，单日 ±10），可随时在「我的 → 账号与安全 → 情绪关怀」关闭。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  function bindMood() {
+    var box = document.getElementById('moodAsk');
+    if (!box) { return; }
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('[data-mood]') : null;
+      if (b) {
+        var bs = box.querySelectorAll('[data-mood]');
+        for (var i = 0; i < bs.length; i++) { bs[i].classList.remove('is-on'); }
+        b.classList.add('is-on');
+      }
+    });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bindMood); }
+  else { bindMood(); }
+})();
+</script>
+<div id="gRec" hidden>
+  <span class="grec-dot" id="gRecPulse" aria-hidden="true"></span>
+  <span class="grec-txt">录音中</span>
+  <span class="grec-time" id="gRecSec">00:00</span>
+  <i class="grec-track" aria-hidden="true"><i class="grec-fill" id="gRecFill"></i></i>
+</div>
+</body>
+</html>

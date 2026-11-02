@@ -1,0 +1,8 @@
+.agent/
+_资料/
+健康超市网/
+*.db
+*.db-shm
+*.db-wal
+__pycache__/
+*.pyc

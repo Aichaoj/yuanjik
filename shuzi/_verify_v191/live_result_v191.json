@@ -1,0 +1,82 @@
+[
+ {
+  "name": "线上 web=191",
+  "ok": true,
+  "detail": "191"
+ },
+ {
+  "name": "首条=麦克风弹窗",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上资源戳 b ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "线上有权限弹窗",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上有录音条",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上文案=本机内存",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上 WEB_VER=191",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上录音走 Blob",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上：录音条出现",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上：时长在走",
+  "ok": true,
+  "detail": "00:03"
+ },
+ {
+  "name": "线上：录音是本地 blob",
+  "ok": true,
+  "detail": "blob:https://shuzi.yua"
+ },
+ {
+  "name": "线上：回放真的在播",
+  "ok": true,
+  "detail": "t=1.44 paused=False"
+ },
+ {
+  "name": "线上：无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "线上：拒绝权限 → 弹窗",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上：弹窗说不占次数",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上：拒绝时没发 session/start",
+  "ok": true,
+  "detail": "[]"
+ }
+]

@@ -1,0 +1,544 @@
+==========================================================================
+元健康 AI 顾问 · 端到端自测（证据脚本）
+==========================================================================
+端口 15041 已被占用，自测改用空闲端口 45134（不影响 15041 的既有服务）
+  服务地址            : http://127.0.0.1:45134
+  模式              : 自起临时实例
+  数据文件            : D:\shuzi\data\_selftest_state.db
+  服务日志            : D:\shuzi\data\_selftest_server.log
+  设备号             : shuzi-selftest-device-0001
+  生辰              : 1990-05-12T09:30  经纬度 116.4,39.9
+  打卡日期            : 2026-10-02、2026-10-03、2026-10-04、2026-10-05、2026-10-06、2026-10-07、2026-10-08
+  app 源码          : D:\shuzi\_dist\_stage_site
+  内核源码            : D:\shuzi\_dist\_stage_site
+  静态目录            : D:\shuzi\web
+  解释器             : D:\shuzi\runtime\python.exe
+
+服务启动日志（前 8 行）：
+    数据文件 : D:\shuzi\data\_selftest_state.db
+    源码定位 : app=D:\shuzi\_dist\_stage_site
+               tianyuanheng=D:\shuzi\_dist\_stage_site
+    解释器   : D:\shuzi\runtime\python.exe
+    内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+    接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+  
+  [02:52:41] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+
+--------------------------------------------------------------------------
+【1】健康检查   GET /api/health
+--------------------------------------------------------------------------
+  HTTP 状态码                      : 200
+  code                          : 0
+  engine_version                : TYH-ENGINE-0.1.0
+  rule_version                  : TYH-RULES-1.3.0
+  rules_total                   : 46
+  backend                       : sqlite
+  data_file                     : D:\shuzi\data\_selftest_state.db
+  trace_id                      : 6ac694f93a6fd79c3c9d93db
+  [PASS] 健康检查 HTTP=200   ← actual=200
+  [PASS] 健康检查 code=0   ← actual=0
+  [PASS] 健康检查 data.ok=True
+
+--------------------------------------------------------------------------
+【2】未授权访问   GET /api/v1/auth/me（不带令牌）
+--------------------------------------------------------------------------
+  HTTP 状态码                      : 401
+  code                          : 20000
+  message                       : 请求无法完成
+  data                          : None
+  trace_id                      : 6ac694f9c2e036a98a6d667f
+  [PASS] 未授权 HTTP=401   ← actual=401
+  [PASS] 未授权 code=20000   ← actual=20000
+  [PASS] 未授权 data 为 null
+  [PASS] 响应带 trace_id
+  [PASS] 响应形状含 code/message/data/trace_id   ← keys=['code', 'data', 'detail', 'message', 'trace_id']
+
+--------------------------------------------------------------------------
+【3】静态资源兜底   GET /（web/ 目录：D:\shuzi\web）
+--------------------------------------------------------------------------
+  web/index.html 存在             : True
+  HTTP 状态码                      : 200
+  Content-Type                  : text/html; charset=utf-8
+  响应前 60 字节                     : <!DOCTYPE html> <html lang="zh-CN"> <head> <meta charset="ut
+  [PASS] 静态请求返回 200 或 404（无 5xx / 无崩溃）   ← actual=200
+  [PASS] web/index.html 存在时 GET / = 200   ← actual=200
+  [PASS] 静态 404 后服务仍存活（健康检查仍 200）   ← actual=200
+  GET /style.css                : 200
+  GET /app.js                   : 200
+  GET /favicon.ico              : 404
+
+--------------------------------------------------------------------------
+【4】游客登录   POST /api/v1/auth/guest
+--------------------------------------------------------------------------
+  入参 device_id                  : shuzi-selftest-device-0001
+  HTTP 状态码                      : 200
+  code                          : 0
+  message                       : ok
+  account_id                    : acc_b703f74ecba5e71b
+  member_id                     : mbr_7d1e8c7103c7f4d4
+  access_token（前缀）              : DUP32I7S2C_9iOST…
+  refresh_token（前缀）             : FbBB7rGtCFKluNqn…
+  expires_in（秒）                 : 900
+  profile_completed             : False
+  trace_id                      : 6ac694f980ea357f8b18a8b1
+  [PASS] 游客登录 HTTP=200   ← actual=200
+  [PASS] 游客登录 code=0   ← actual=0
+  [PASS] 拿到 member_id
+  [PASS] 拿到 access_token
+  [PASS] access TTL = 900 秒   ← actual=900
+  [PASS] 未建档时 profile_completed=False
+  同设备二次登录 member_id             : mbr_7d1e8c7103c7f4d4
+  [PASS] 同一 device_id → 同一 member_id（身份稳定）   ← mbr_7d1e8c7103c7f4d4 vs mbr_7d1e8c7103c7f4d4
+  另一 device_id 的 member_id      : mbr_700ee9abaad6457a
+  [PASS] 不同 device_id → 不同 member_id
+  缺 device_id：HTTP / code       : 400 / 10001
+  [PASS] 缺 device_id 返回 10001   ← actual=10001
+
+--------------------------------------------------------------------------
+【5】生辰建档   POST /api/v1/profile/birth
+--------------------------------------------------------------------------
+  入参 birth_local                : 1990-05-12T09:30
+  入参 经纬度                        : 116.4, 39.9
+  HTTP 状态码                      : 200
+  code                          : 0
+  member_id                     : mbr_7d1e8c7103c7f4d4
+  birth_local                   : 1990-05-12T09:30
+  baseline_reset                : False
+  [PASS] 建档 HTTP=200   ← actual=200
+  [PASS] 建档 code=0   ← actual=0
+  [PASS] 建档 member_id 与登录一致
+  [PASS] 首次建档 baseline_reset=False
+
+--------------------------------------------------------------------------
+【6】冷启动今日节律   GET /api/v1/rhythm/daily（打卡 0 次）
+--------------------------------------------------------------------------
+  HTTP 状态码                      : 200
+  code                          : 0
+  baseline_established          : False
+  observation_count             : 0
+  min_observations              : 7
+  level（观察等级）                   : null
+  level_name                    : null
+  calibration.progress_text     : 基线建立中（0/7）
+  channels（关注通道）                : []
+  focus                         : []
+  text 是否含「正在校准（0/7）」           : True
+  disclaimer 含「医疗器械」            : True
+  text 含「AI 生成」                 : True
+  ai_generated                  : True
+  [PASS] 冷启动 HTTP=200 且 code=0
+  [PASS] 冷启动 baseline_established=False
+  [PASS] 冷启动 observation_count=0   ← actual=0
+  [PASS] ★ 冷启动 level 为 null（不得出现观察等级）   ← actual=null
+  [PASS] ★ 冷启动 level_name 为 null
+  [PASS] ★ 冷启动 focus 为空（不得出现关注通道）
+  [PASS] ★ 冷启动 channels 为空
+  [PASS] 冷启动输出「正在校准（0/7）」
+  [PASS] 冷启动 progress_text = 基线建立中（0/7）   ← actual=基线建立中（0/7）
+  [PASS] ★ 免责声明含「医疗器械」口径
+  [PASS] ★ 文本含「AI 生成」标识
+  [PASS] ai_generated=True
+  [PASS] 带 rule_version / param_hash
+  冷启动 GET /api/v1/rhythm/daily 的实际返回（data 原样）:
+    {
+      "date": "2026-10-08",
+      "param_hash": "84129d4aaecfd5bedb9797a8cbdd07e4",
+      "rule_version": "TYH-RULES-1.3.0",
+      "engine_version": "TYH-ENGINE-0.1.0",
+      "baseline_established": false,
+      "observation_count": 0,
+      "min_observations": 7,
+      "pillars": [
+        "庚午",
+        "辛巳",
+        "丁丑",
+        "乙巳"
+      ],
+      "yunqi": {
+        "ganzhi": "丙午",
+        "zhongyun": "水",
+        "yun_state": "太过",
+        "sitian": "少阴君火",
+        "zaiquan": "阳明燥金",
+        "tonghua": []
+      },
+      "channels": [],
+      "focus": [],
+      "level": null,
+      "level_name": null,
+      "text": {
+        "text": "【今日节律参考】\n你的个人基线正在校准（0/7）。\n校准完成后，系统才能给出「相对你自己」的节律偏移，在此之前不输出观察等级与关注方向。\n今天可以先做一件事：记录一次睡眠与情绪，帮助基线更快稳定。\n\n本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。\n本内容由 AI 生成，仅供参考。",
+        "guardrail_action": "pass",
+        "guardrail_hits": [],
+        "rule_version": "TYH-RULES-1.3.0",
+        "param_hash": "84129d4aaecfd5bedb9797a8cbdd07e4"
+      },
+      "lineage": [
+        "[OF-001] 个体内对照（不做跨人比较）｜出处：本方案自有设计（非古籍）｜要点：偏移量 Δ(t) = S(t) − S_ref，S_ref 为该个体自身的平稳基线",
+        "[OF-002] 观察等级按分位数归一｜出处：本方案自有设计｜要点：对 |Δ| 做分位数归一后映射为观察等级；阈值固定并公开",
+        "[OF-004] 反馈只进 B·R(t)，不修改 D 与 E｜出处：本方案自有设计｜要点：S(t) = S₀ + A·D(E(t)) − B·R(t)；用户反馈仅作用于 B·R(t)",
+        "[CAL-001] 年柱以立春为界｜出处：历法通例（干支纪年换年点）｜要点：年柱在立春时刻换界，非正月初一",
+        "[CAL-002] 月柱以节气为界｜出处：历法通例（干支纪月换月点）｜要点：月柱以十二节（立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒）为界",
+        "[CAL-003] 日柱由儒略日数模六十推得｜出处：历法通例（连续干支纪日）｜要点：日干支序号 = (JDN + 49) mod 60",
+        "[CAL-004] 时柱用五鼠遁｜出处：口诀：甲己还加甲，乙庚丙作初，丙辛从戊起，丁壬庚子居，戊癸何方发，壬子是真途｜要点：子时天干序号 = (日干序号 mod 5) × 2；时干序号 = (子时干序号 + 时支序号) mod 10",
+        "[CAL-005] 真太阳时校正｜出处：天文历法通例｜要点：真太阳时 = 标准时 + (当地经度 − 标准经线) × 4分钟 + 均时差(Equation of Time)",
+        "[CAL-006] 晚子时日柱归属｜出处：历法争议项｜要点：23:00–24:00（晚子时）的日柱是否进一位，命理界有两派",
+        "[CAL-007] 十二时辰划分｜出处：历法通例｜要点：子时 23:00–01:00，其后每两小时一个时辰，时支序号 = ((hour + 1) // 2) mod 12",
+        "[YQ-001] 天干化五运（中运）｜出处：《素问·五运行大论》｜要点：甲己化土，乙庚化金，丙辛化水，丁壬化木，戊癸化火",
+        "[YQ-002] 阳干太过、阴干不及｜出处：《素问·天元纪大论》《气交变大论》｜要点：阳干（甲丙戊庚壬）主岁运太过；阴干（乙丁己辛癸）主岁运不及",
+        "[YQ-003] 地支化六气（司天）｜出处：《素问·五运行大论》｜要点：子午之上，少阴主之；丑未之上，太阴主之；寅申之上，少阳主之；卯酉之上，阳明主之；辰戌之上，太阳主之；巳亥之上，厥阴主之",
+        "[YQ-004] 客气六步次序（三阴三阳）｜出处：《素问·六元正纪大论》｜要点：客气按 一阴(厥阴)→二阴(少阴)→三阴(太阴)→一阳(少阳)→二阳(阳明)→三阳(太阳) 循环；司天为三之气，在泉为终之气",
+        "[YQ-005] 主气六步固定次序｜出处：《素问·六微旨大论》｜要点：初之气厥阴风木、二之气少阴君火、三之气少阳相火、四之气太阴湿土、五之气阳明燥金、终之气太阳寒水",
+        "[YQ-006] 客主加临：主胜逆，客胜从｜出处：《素问·至真要大论》｜要点：「主胜逆，客胜从，天之道也。」",
+        "[YQ-007] 君位臣则顺，臣位君则逆｜出处：《素问·六微旨大论》｜要点：「君位臣则顺，臣位君则逆。」",
+        "[YQ-008] 主运五步与太少相生｜出处：《素问·阴阳应象大论》五行相生 + 运气学通例｜要点：主运五步固定为 角(木)→徵(火)→宫(土)→商(金)→羽(水)；阳年起太，阴年起少，逐运交替",
+        "[YQ-009] 客运以中运为初运｜出处：运气学通例｜要点：客运以中运为初运，依五行相生顺序、太少相生推演五步",
+        "[YQ-010] 天符（中运与司天同气）｜出处：《素问·六微旨大论》｜要点：中运之气与司天之气相同者，为天符",
+        "[YQ-011] 岁会（中运临年支正位）｜出处：《素问·六微旨大论》｜要点：「木运临卯，火运临午，土运临四季，金运临酉，水运临子，所谓岁会，气之平也。」",
+        "[YQ-012] 太乙天符（天符 + 岁会）｜出处：《素问·六微旨大论》｜要点：既是天符又是岁会者，为太乙天符",
+        "[YQ-013] 同天符 / 同岁会｜出处：《素问·六元正纪大论》｜要点：阳年太过而中运与在泉同气者为同天符；阴年不及而中运与在泉同气者为同岁会",
+        "心 Δ+0.150 ← 水运太过 → 克其所胜（火），心受病为主",
+        "肾 Δ+0.080 ← 水运太过 → 本脏肾气盛为次",
+        "心 Δ+0.100 ← 司天（上半年） 少阴君火 → 本气所主 心 气偏胜",
+        "小肠 Δ+0.100 ← 司天（上半年） 少阴君火 → 本气所主 小肠 气偏胜",
+        "肺 Δ+0.080 ← 司天（上半年） 少阴君火 克 金 → 肺 受抑",
+        "大肠 Δ+0.080 ← 司天（上半年） 少阴君火 克 金 → 大肠 受抑",
+        "肺 Δ+0.100 ← 在泉（下半年） 阳明燥金 → 本气所主 肺 气偏胜",
+        "大肠 Δ+0.100 ← 在泉（下半年） 阳明燥金 → 本气所主 大肠 气偏胜",
+        "肝 Δ+0.080 ← 在泉（下半年） 阳明燥金 克 木 → 肝 受抑",
+        "胆 Δ+0.080 ← 在泉（下半年） 阳明燥金 克 木 → 胆 受抑",
+        "肺 Δ+0.080 ← 第5气（少阳相火加临阳明燥金） 客胜主 → 主气所主脏腑 肺 受病",
+        "大肠 Δ+0.080 ← 第5气（少阳相火加临阳明燥金） 客胜主 → 主气所主脏腑 大肠 受病",
+        "心包 Δ+0.050 ← 第5气（少阳相火加临阳明燥金） 客气本气偏盛 → 心包",
+        "三焦 Δ+0.050 ← 第5气（少阳相火加临阳明燥金） 客气本气偏盛 → 三焦",
+        "心 Δ+0.200 ← 午时当令 → 心 活跃（此时调养事半功倍）",
+        "心 Δ-0.100 ← 午时当令 → 心 亦为此时段最易耗损之脏"
+      ],
+      "disclaimer_required": true,
+      "member_id": "mbr_7d1e8c7103c7f4d4",
+      "calibration": {
+        "observation_count": 0,
+        "min_observations": 7,
+        "progress_text": "基线建立中（0/7）",
+        "note": "校准完成后，系统才能给出「相对你自己」的节律偏移；在此之前不输出观察等级与关注方向。"
+      },
+      "disclaimer": "本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。",
+      "referral": "建议咨询执业医师或前往正规医疗机构。",
+      "ai_generated": true
+    }
+
+--------------------------------------------------------------------------
+【7】连续 7 次打卡   POST /api/v1/checkin（按日聚合，同日只算一次）
+--------------------------------------------------------------------------
+  第 1 次（2026-10-02）HTTP/code    : 200 / 0
+    observation_count           : 1
+    established                 : False
+  [PASS] 第 1 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 1 次打卡 observation_count=1   ← actual=1
+  [PASS] 第 1 次打卡 established=False   ← actual=False
+  第 2 次（2026-10-03）HTTP/code    : 200 / 0
+    observation_count           : 2
+    established                 : False
+  [PASS] 第 2 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 2 次打卡 observation_count=2   ← actual=2
+  [PASS] 第 2 次打卡 established=False   ← actual=False
+  第 3 次（2026-10-04）HTTP/code    : 200 / 0
+    observation_count           : 3
+    established                 : False
+  [PASS] 第 3 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 3 次打卡 observation_count=3   ← actual=3
+  [PASS] 第 3 次打卡 established=False   ← actual=False
+
+--------------------------------------------------------------------------
+【7-b】校准中途今日节律   GET /api/v1/rhythm/daily（打卡 3 次）
+--------------------------------------------------------------------------
+  HTTP 状态码                      : 200
+  code                          : 0
+  baseline_established          : False
+  observation_count             : 3
+  ★ level（观察等级）                 : null
+  ★ focus                       : []
+  calibration.progress_text     : 基线建立中（3/7）
+  text 是否含「正在校准（3/7）」           : True
+  [PASS] ★ 校准中(3/7) level 仍为 null   ← actual=null
+  [PASS] ★ 校准中(3/7) focus 仍为空
+  [PASS] 校准中(3/7) progress_text = 基线建立中（3/7）   ← actual=基线建立中（3/7）
+  [PASS] 校准中(3/7) 文本输出「正在校准（3/7）」
+  第 4 次（2026-10-05）HTTP/code    : 200 / 0
+    observation_count           : 4
+    established                 : False
+  [PASS] 第 4 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 4 次打卡 observation_count=4   ← actual=4
+  [PASS] 第 4 次打卡 established=False   ← actual=False
+  第 5 次（2026-10-06）HTTP/code    : 200 / 0
+    observation_count           : 5
+    established                 : False
+  [PASS] 第 5 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 5 次打卡 observation_count=5   ← actual=5
+  [PASS] 第 5 次打卡 established=False   ← actual=False
+  第 6 次（2026-10-07）HTTP/code    : 200 / 0
+    observation_count           : 6
+    established                 : False
+  [PASS] 第 6 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 6 次打卡 observation_count=6   ← actual=6
+  [PASS] 第 6 次打卡 established=False   ← actual=False
+  第 7 次（2026-10-08）HTTP/code    : 200 / 0
+    observation_count           : 7
+    established                 : True
+  [PASS] 第 7 次打卡 HTTP=200 且 code=0   ← actual=200/0
+  [PASS] 第 7 次打卡 observation_count=7   ← actual=7
+  [PASS] 第 7 次打卡 established=True   ← actual=True
+  第 7 天再打一次 observation_count   : 7
+  [PASS] ★ 同日重复打卡不再增计数（仍为 7）   ← actual=7
+
+--------------------------------------------------------------------------
+【8】达标后今日节律   GET /api/v1/rhythm/daily（打卡 7 次）
+--------------------------------------------------------------------------
+  HTTP 状态码                      : 200
+  code                          : 0
+  baseline_established          : True
+  observation_count             : 7
+  ★ level（观察等级）                 : "L2"
+  ★ level_name                  : "宜养"
+  ★ channels 条数                 : 12
+  ★ 关注的通道列表                     : 脾、胃、膀胱、心
+  calibration                   : null
+  disclaimer 含「医疗器械」            : True
+  text 含「AI 生成」                 : True
+  ai_generated                  : True
+  [PASS] 达标后 HTTP=200 且 code=0
+  [PASS] ★ 达标后 baseline_established=True
+  [PASS] ★ 达标后 observation_count=7   ← actual=7
+  [PASS] ★★ 达标后出现观察等级 level   ← actual="L2"
+  [PASS] ★ 达标后 level_name 非空
+  [PASS] ★ 达标后出现关注通道 channels（12 条）   ← actual=12
+  [PASS] ★ 达标后 focus 非空   ← actual=["脾", "胃", "膀胱", "心"]
+  [PASS] 达标后 calibration 为 null（不再校准中）
+  [PASS] 达标后仍带免责声明（医疗器械口径）
+  [PASS] 达标后仍带「AI 生成」标识
+  达标后 GET /api/v1/rhythm/daily 的实际返回（data 原样）:
+    {
+      "date": "2026-10-08",
+      "param_hash": "b29c9957f9731072c133b2096b0b417d",
+      "rule_version": "TYH-RULES-1.3.0",
+      "engine_version": "TYH-ENGINE-0.1.0",
+      "baseline_established": true,
+      "observation_count": 7,
+      "min_observations": 7,
+      "pillars": [
+        "庚午",
+        "辛巳",
+        "丁丑",
+        "乙巳"
+      ],
+      "yunqi": {
+        "ganzhi": "丙午",
+        "zhongyun": "水",
+        "yun_state": "太过",
+        "sitian": "少阴君火",
+        "zaiquan": "阳明燥金",
+        "tonghua": []
+      },
+      "channels": [
+        {
+          "channel": "肝",
+          "delta": -0.12,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "胆",
+          "delta": -0.12,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "心",
+          "delta": 0.15,
+          "direction": "偏亢"
+        },
+        {
+          "channel": "小肠",
+          "delta": -0.1,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "脾",
+          "delta": -0.2,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "胃",
+          "delta": -0.2,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "肺",
+          "delta": 0.06,
+          "direction": "偏亢"
+        },
+        {
+          "channel": "大肠",
+          "delta": 0.06,
+          "direction": "偏亢"
+        },
+        {
+          "channel": "肾",
+          "delta": -0.12,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "膀胱",
+          "delta": -0.2,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "心包",
+          "delta": -0.15,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "三焦",
+          "delta": -0.15,
+          "direction": "偏虚"
+        }
+      ],
+      "focus": [
+        {
+          "channel": "脾",
+          "delta": -0.2,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "胃",
+          "delta": -0.2,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "膀胱",
+          "delta": -0.2,
+          "direction": "偏虚"
+        },
+        {
+          "channel": "心",
+          "delta": 0.15,
+          "direction": "偏亢"
+        }
+      ],
+      "level": "L2",
+      "level_name": "宜养",
+      "text": {
+        "text": "【今日节律参考】\n今日节律波动相对明显的是：脾（偏虚）、胃（偏虚）、膀胱（偏虚）、心（偏亢）。\n整体观察等级：L2（宜养）。\n生活方式取向参考：健脾温养、温肾固本、清心降火。\n当下运气：丙午年，中运水太过，少阴君火司天、阳明燥金在泉。\n\n本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。\n本内容由 AI 生成，仅供参考。",
+        "guardrail_action": "pass",
+        "guardrail_hits": [],
+        "rule_version": "TYH-RULES-1.3.0",
+        "param_hash": "b29c9957f9731072c133b2096b0b417d"
+      },
+      "lineage": [
+        "[OF-001] 个体内对照（不做跨人比较）｜出处：本方案自有设计（非古籍）｜要点：偏移量 Δ(t) = S(t) − S_ref，S_ref 为该个体自身的平稳基线",
+        "[OF-002] 观察等级按分位数归一｜出处：本方案自有设计｜要点：对 |Δ| 做分位数归一后映射为观察等级；阈值固定并公开",
+        "[OF-004] 反馈只进 B·R(t)，不修改 D 与 E｜出处：本方案自有设计｜要点：S(t) = S₀ + A·D(E(t)) − B·R(t)；用户反馈仅作用于 B·R(t)",
+        "[CAL-001] 年柱以立春为界｜出处：历法通例（干支纪年换年点）｜要点：年柱在立春时刻换界，非正月初一",
+        "[CAL-002] 月柱以节气为界｜出处：历法通例（干支纪月换月点）｜要点：月柱以十二节（立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒）为界",
+        "[CAL-003] 日柱由儒略日数模六十推得｜出处：历法通例（连续干支纪日）｜要点：日干支序号 = (JDN + 49) mod 60",
+        "[CAL-004] 时柱用五鼠遁｜出处：口诀：甲己还加甲，乙庚丙作初，丙辛从戊起，丁壬庚子居，戊癸何方发，壬子是真途｜要点：子时天干序号 = (日干序号 mod 5) × 2；时干序号 = (子时干序号 + 时支序号) mod 10",
+        "[CAL-005] 真太阳时校正｜出处：天文历法通例｜要点：真太阳时 = 标准时 + (当地经度 − 标准经线) × 4分钟 + 均时差(Equation of Time)",
+        "[CAL-006] 晚子时日柱归属｜出处：历法争议项｜要点：23:00–24:00（晚子时）的日柱是否进一位，命理界有两派",
+        "[CAL-007] 十二时辰划分｜出处：历法通例｜要点：子时 23:00–01:00，其后每两小时一个时辰，时支序号 = ((hour + 1) // 2) mod 12",
+        "[YQ-001] 天干化五运（中运）｜出处：《素问·五运行大论》｜要点：甲己化土，乙庚化金，丙辛化水，丁壬化木，戊癸化火",
+        "[YQ-002] 阳干太过、阴干不及｜出处：《素问·天元纪大论》《气交变大论》｜要点：阳干（甲丙戊庚壬）主岁运太过；阴干（乙丁己辛癸）主岁运不及",
+        "[YQ-003] 地支化六气（司天）｜出处：《素问·五运行大论》｜要点：子午之上，少阴主之；丑未之上，太阴主之；寅申之上，少阳主之；卯酉之上，阳明主之；辰戌之上，太阳主之；巳亥之上，厥阴主之",
+        "[YQ-004] 客气六步次序（三阴三阳）｜出处：《素问·六元正纪大论》｜要点：客气按 一阴(厥阴)→二阴(少阴)→三阴(太阴)→一阳(少阳)→二阳(阳明)→三阳(太阳) 循环；司天为三之气，在泉为终之气",
+        "[YQ-005] 主气六步固定次序｜出处：《素问·六微旨大论》｜要点：初之气厥阴风木、二之气少阴君火、三之气少阳相火、四之气太阴湿土、五之气阳明燥金、终之气太阳寒水",
+        "[YQ-006] 客主加临：主胜逆，客胜从｜出处：《素问·至真要大论》｜要点：「主胜逆，客胜从，天之道也。」",
+        "[YQ-007] 君位臣则顺，臣位君则逆｜出处：《素问·六微旨大论》｜要点：「君位臣则顺，臣位君则逆。」",
+        "[YQ-008] 主运五步与太少相生｜出处：《素问·阴阳应象大论》五行相生 + 运气学通例｜要点：主运五步固定为 角(木)→徵(火)→宫(土)→商(金)→羽(水)；阳年起太，阴年起少，逐运交替",
+        "[YQ-009] 客运以中运为初运｜出处：运气学通例｜要点：客运以中运为初运，依五行相生顺序、太少相生推演五步",
+        "[YQ-010] 天符（中运与司天同气）｜出处：《素问·六微旨大论》｜要点：中运之气与司天之气相同者，为天符",
+        "[YQ-011] 岁会（中运临年支正位）｜出处：《素问·六微旨大论》｜要点：「木运临卯，火运临午，土运临四季，金运临酉，水运临子，所谓岁会，气之平也。」",
+        "[YQ-012] 太乙天符（天符 + 岁会）｜出处：《素问·六微旨大论》｜要点：既是天符又是岁会者，为太乙天符",
+        "[YQ-013] 同天符 / 同岁会｜出处：《素问·六元正纪大论》｜要点：阳年太过而中运与在泉同气者为同天符；阴年不及而中运与在泉同气者为同岁会",
+        "心 Δ+0.150 ← 水运太过 → 克其所胜（火），心受病为主",
+        "肾 Δ+0.080 ← 水运太过 → 本脏肾气盛为次",
+        "心 Δ+0.100 ← 司天（上半年） 少阴君火 → 本气所主 心 气偏胜",
+        "小肠 Δ+0.100 ← 司天（上半年） 少阴君火 → 本气所主 小肠 气偏胜",
+        "肺 Δ+0.080 ← 司天（上半年） 少阴君火 克 金 → 肺 受抑",
+        "大肠 Δ+0.080 ← 司天（上半年） 少阴君火 克 金 → 大肠 受抑",
+        "肺 Δ+0.100 ← 在泉（下半年） 阳明燥金 → 本气所主 肺 气偏胜",
+        "大肠 Δ+0.100 ← 在泉（下半年） 阳明燥金 → 本气所主 大肠 气偏胜",
+        "肝 Δ+0.080 ← 在泉（下半年） 阳明燥金 克 木 → 肝 受抑",
+        "胆 Δ+0.080 ← 在泉（下半年） 阳明燥金 克 木 → 胆 受抑",
+        "肺 Δ+0.080 ← 第5气（少阳相火加临阳明燥金） 客胜主 → 主气所主脏腑 肺 受病",
+        "大肠 Δ+0.080 ← 第5气（少阳相火加临阳明燥金） 客胜主 → 主气所主脏腑 大肠 受病",
+        "心包 Δ+0.050 ← 第5气（少阳相火加临阳明燥金） 客气本气偏盛 → 心包",
+        "三焦 Δ+0.050 ← 第5气（少阳相火加临阳明燥金） 客气本气偏盛 → 三焦",
+        "心 Δ+0.200 ← 午时当令 → 心 活跃（此时调养事半功倍）",
+        "心 Δ-0.100 ← 午时当令 → 心 亦为此时段最易耗损之脏"
+      ],
+      "disclaimer_required": true,
+      "member_id": "mbr_7d1e8c7103c7f4d4",
+      "calibration": null,
+      "disclaimer": "本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。",
+      "referral": "建议咨询执业医师或前往正规医疗机构。",
+      "ai_generated": true
+    }
+
+--------------------------------------------------------------------------
+【9】历史分页   GET /api/v1/rhythm/history（游标分页，limit=3）
+--------------------------------------------------------------------------
+  HTTP 状态码                      : 200
+  code                          : 0
+  第 1 页 items 条数                : 3
+  第 1 页 日期                      : 2026-10-08、2026-10-07、2026-10-06
+  第 1 页 has_more                : True
+  第 1 页 next_cursor             : eyJhZnRlciI6IjIwMjYtMTAtMDYifQ
+  [PASS] 历史第 1 页 HTTP=200 且 code=0
+  [PASS] 历史第 1 页 items=3   ← actual=3
+  [PASS] 历史第 1 页 has_more=True
+  [PASS] 历史第 1 页 next_cursor 非空
+  [PASS] 历史按日期倒序   ← actual=['2026-10-08', '2026-10-07', '2026-10-06']
+  第 2 页 items 条数                : 3
+  第 2 页 日期                      : 2026-10-05、2026-10-04、2026-10-03
+  第 2 页 has_more                : True
+  第 2 页 next_cursor             : eyJhZnRlciI6IjIwMjYtMTAtMDMifQ
+  [PASS] 历史第 2 页 code=0
+  [PASS] 历史第 2 页 items=3   ← actual=3
+  [PASS] 历史第 2 页无重复（游标生效）
+  第 3 页 items 条数                : 1
+  第 3 页 日期                      : 2026-10-02
+  第 3 页 has_more                : False
+  [PASS] 历史第 3 页 items=1（7 条共 3 页）   ← actual=1
+  [PASS] 历史第 3 页 has_more=False
+  三页合计条数                        : 7
+  [PASS] 三页合计 = 7 条
+
+--------------------------------------------------------------------------
+【10】并发请求（8 线程 × 24 次 GET /api/v1/auth/me）
+--------------------------------------------------------------------------
+  全部成功条数                        : 24 / 24
+  耗时（秒）                         : 0.031
+  状态码分布                         : [200]
+  code 分布                       : [0]
+  [PASS] ★ 并发 24 次全部 HTTP=200 且 code=0   ← actual=24
+
+--------------------------------------------------------------------------
+【11】重启后持久化   （基线 / 账号 / 建档 / 打卡 是否还在库里）
+--------------------------------------------------------------------------
+  [PASS] 重启后服务可用
+  重启后重登 member_id               : mbr_7d1e8c7103c7f4d4
+  [PASS] ★ 重启后同设备仍是同一 member_id（账号已持久化）   ← mbr_7d1e8c7103c7f4d4 vs mbr_7d1e8c7103c7f4d4
+  [PASS] 重启后未建档标志为 False（建档已持久化）   ← actual=True
+  重启后 observation_count         : 7
+  重启后 baseline_established      : True
+  重启后 level                     : "L2"
+  重启后 param_hash                : b29c9957f9731072c133b2096b0b417d
+  [PASS] ★ 重启后基线计数仍为 7（基线已持久化）   ← actual=7
+  [PASS] ★ 重启后 baseline_established 仍为 True
+  [PASS] ★ 重启后观察等级仍在   ← actual="L2"
+  [PASS] ★ 重启前后 param_hash 一致（同输入同结果）   ← b29c9957f9731072c133b2096b0b417d vs b29c9957f9731072c133b2096b0b417d
+  重启后历史条数                       : 7
+  [PASS] ★ 重启后历史 7 条仍在（打卡已持久化）   ← actual=7
+
+==========================================================================
+结论：断言 93 条，通过 93，失败 0，跳过 0
+RESULT: PASS
+EXIT  : 0
+==========================================================================

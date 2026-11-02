@@ -1,0 +1,97 @@
+[
+ {
+  "name": "A1 figureGeom / torsoD / hairCapD / hairBackD 都在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A2 手与脚：一体成形的手部路径（无指条耙子）+ 足部路径",
+  "ok": true,
+  "detail": "handX 次数=15"
+ },
+ {
+  "name": "A3 本体已并入 ef-scale（与经络同变换）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A4 我的入口 + 面板 + 版本号",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A5 app.js 三个函数都在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1 三种性别识别正确",
+  "ok": true,
+  "detail": "[['male', 'male'], ['female', 'female'], ['neutral', 'neutral'], ['heavy', 'male']]"
+ },
+ {
+  "name": "B2 男女 SVG 不同（分形生效）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B2 女性有后层长发、男性没有",
+  "ok": true,
+  "detail": "female=True male=False"
+ },
+ {
+  "name": "B3 身高体重改变缩放（160/52 sx=0.903 sy=0.941；170/95 sx=1.179）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B4 data-gender / data-sx / data-sy 存在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3 本体在 scale 组内（渲染层次）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "头部三穴仍在（百会/印堂/太阳 = 3）",
+  "ok": true,
+  "detail": "3"
+ },
+ {
+  "name": "C0 真服务 + 静态前端就绪",
+  "ok": true,
+  "detail": "http://127.0.0.1:15203 → api http://127.0.0.1:15202"
+ },
+ {
+  "name": "C1 我的 → 体型与性别 → 面板打开",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C2 保存写入本机 + 入口摘要更新（'女 · 160 cm · 52 kg'）",
+  "ok": true,
+  "detail": "{\"gender\":\"female\",\"height_cm\":160,\"weight_kg\":52}"
+ },
+ {
+  "name": "C3 刷新后设置仍在（'女 · 160 cm · 52 kg'）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C4 建档后数字人按「女」渲染（data-gender=female）",
+  "ok": true,
+  "detail": "female"
+ },
+ {
+  "name": "C4 换「男」后同一张图改画男性（data-gender=male，图形有差异=True）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C5 全流程 0 条代码错",
+  "ok": true,
+  "detail": "[]"
+ }
+]

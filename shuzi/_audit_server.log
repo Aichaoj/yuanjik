@@ -1,0 +1,571 @@
+[19:17:28] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[19:17:28] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=47 service=TYH-SVC-0.1.0
+[19:17:28] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\data\state.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15041
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\data\state.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\服务端
+             tianyuanheng=D:\Deepseek智能体\AI元健康\核心
+  解释器   : C:\Users\41692\AppData\Local\Programs\Python\Python312\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[19:17:34] 127.0.0.1 "GET /version.json HTTP/1.1" 200 -
+[19:17:58] login account_id=acc_5331be4430bdeb4f at=1793013478.066093 device_id=auditc152-r device_info={'channel': 'password'}
+[19:17:58] password_register account_id=acc_5331be4430bdeb4f phone_masked=137****3477
+[19:17:58] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:17:58] login account_id=acc_5331be4430bdeb4f at=1793013478.130154 device_id=auditc152 device_info={'channel': 'password'}
+[19:17:58] password_login account_id=acc_5331be4430bdeb4f phone_masked=137****3477
+[19:17:58] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/daily HTTP/1.1" 400 -
+[19:17:58] 127.0.0.1 "GET /api/v1/me HTTP/1.1" 400 -
+[19:17:58] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/vault/leaderboard HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/music HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:17:58] 127.0.0.1 "GET /api/v1/points/status HTTP/1.1" 400 -
+[19:17:58] 127.0.0.1 "GET /api/v1/family/list HTTP/1.1" 400 -
+[19:17:58] 127.0.0.1 "GET /api/v1/records HTTP/1.1" 400 -
+[19:17:58] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:17:59] timemed_shichen zhi=戌
+[19:17:59] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:17:59] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:18:00] 127.0.0.1 "GET /version.json?t=1793013480629 HTTP/1.1" 200 -
+[19:18:01] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:18:01] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:18:04] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:18:04] timemed_shichen zhi=戌
+[19:18:04] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:18:07] 127.0.0.1 "GET /api/v1/music?t=1793013487213 HTTP/1.1" 200 -
+[19:18:07] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:18:12] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:18:15] timemed_shichen zhi=戌
+[19:18:15] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:18:15] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:18:16] 127.0.0.1 "GET /version.json?t=1793013496791 HTTP/1.1" 200 -
+[19:18:17] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:18:17] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:18:20] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:18:20] timemed_shichen zhi=戌
+[19:18:20] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:18:23] 127.0.0.1 "GET /api/v1/music?t=1793013503136 HTTP/1.1" 200 -
+[19:18:23] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:18:28] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:18:37] 127.0.0.1 "GET /api/v1/daily HTTP/1.1" 400 -
+[19:18:37] 127.0.0.1 "GET /api/v1/me HTTP/1.1" 400 -
+[19:18:37] 127.0.0.1 "GET /api/v1/points/status HTTP/1.1" 400 -
+[19:18:37] 127.0.0.1 "GET /api/v1/family/list HTTP/1.1" 400 -
+[19:18:37] 127.0.0.1 "GET /api/v1/records HTTP/1.1" 400 -
+[19:18:44] 127.0.0.1 "GET /api/v1/daily HTTP/1.1" 400 -
+[19:18:44] 127.0.0.1 "GET /api/v1/me HTTP/1.1" 400 -
+[19:18:44] 127.0.0.1 "GET /api/v1/points/status HTTP/1.1" 400 -
+[19:18:44] 127.0.0.1 "GET /api/v1/family/list HTTP/1.1" 400 -
+[19:18:44] 127.0.0.1 "GET /api/v1/records HTTP/1.1" 400 -
+[19:19:31] login account_id=acc_c5adb264b91373a9 at=1793013571.8745577 device_id=audit2c0c3-r device_info={'channel': 'password'}
+[19:19:31] password_register account_id=acc_c5adb264b91373a9 phone_masked=138****3571
+[19:19:31] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:19:31] login account_id=acc_c5adb264b91373a9 at=1793013571.9517846 device_id=audit2c0c3 device_info={'channel': 'password'}
+[19:19:31] password_login account_id=acc_c5adb264b91373a9 phone_masked=138****3571
+[19:19:31] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:19:36] login account_id=acc_81a7aa9ee31fbfed at=1793013576.60495 device_id=audit21e51-r device_info={'channel': 'password'}
+[19:19:36] password_register account_id=acc_81a7aa9ee31fbfed phone_masked=138****3576
+[19:19:36] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:19:36] login account_id=acc_81a7aa9ee31fbfed at=1793013576.6840894 device_id=audit21e51 device_info={'channel': 'password'}
+[19:19:36] password_login account_id=acc_81a7aa9ee31fbfed phone_masked=138****3576
+[19:19:36] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:19:36] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:19:37] timemed_shichen zhi=戌
+[19:19:37] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:19:37] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:19:38] 127.0.0.1 "GET /version.json?t=1793013578625 HTTP/1.1" 200 -
+[19:19:39] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:19:39] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:19:43] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:19:43] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:19:43] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:19:45] timemed_shichen zhi=戌
+[19:19:45] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:19:46] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:19:46] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:19:56] 127.0.0.1 "GET /api/v1/timemed/table HTTP/1.1" 200 -
+[19:20:12] 127.0.0.1 "GET /api/v1/music?t=1793013612101 HTTP/1.1" 200 -
+[19:20:12] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:20:21] 127.0.0.1 "GET /music/dizangjing-jiexuan-tts.mp3 HTTP/1.1" 200 -
+[19:20:30] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:20:30] 127.0.0.1 "GET /vendor/three.min.js?v=20261025a HTTP/1.1" 200 -
+[19:20:32] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:20:35] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:20:37] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:20:38] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:20:38] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[19:20:38] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[19:20:39] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:21:15] login account_id=acc_ab0f33af0900721b at=1793013675.630987 device_id=audit2452c-r device_info={'channel': 'password'}
+[19:21:15] password_register account_id=acc_ab0f33af0900721b phone_masked=138****3675
+[19:21:15] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:21:15] login account_id=acc_ab0f33af0900721b at=1793013675.7085795 device_id=audit2452c device_info={'channel': 'password'}
+[19:21:15] password_login account_id=acc_ab0f33af0900721b phone_masked=138****3675
+[19:21:15] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:21:15] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:21:16] timemed_shichen zhi=戌
+[19:21:16] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:21:16] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:21:17] 127.0.0.1 "GET /version.json?t=1793013677641 HTTP/1.1" 200 -
+[19:21:18] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:21:18] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:21:22] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:21:22] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:21:22] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:21:24] timemed_shichen zhi=戌
+[19:21:24] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:21:25] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:21:25] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:21:35] 127.0.0.1 "GET /api/v1/timemed/table HTTP/1.1" 200 -
+[19:21:51] 127.0.0.1 "GET /api/v1/music?t=1793013711049 HTTP/1.1" 200 -
+[19:21:51] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:21:59] 127.0.0.1 "GET /music/dizangjing-jiexuan-tts.mp3 HTTP/1.1" 200 -
+[19:22:08] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:22:09] 127.0.0.1 "GET /vendor/three.min.js?v=20261025a HTTP/1.1" 200 -
+[19:22:11] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:22:13] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:22:16] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:22:16] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:22:16] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[19:22:16] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[19:22:18] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:22:20] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:22:26] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:22:26] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[19:22:26] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[19:22:28] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:22:31] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:22:31] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[19:22:31] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[19:22:33] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:22:34] 127.0.0.1 "GET /api/v1/records/reports HTTP/1.1" 200 -
+[19:22:35] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:22:47] 127.0.0.1 "GET /api/v1/records/reports HTTP/1.1" 200 -
+[19:22:48] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:22:52] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:22:52] 127.0.0.1 "GET /api/v1/healthscore/history HTTP/1.1" 200 -
+[19:22:54] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:23:47] login account_id=acc_19792f732282687e at=1793013827.592037 device_id=audit3816d-r device_info={'channel': 'password'}
+[19:23:47] password_register account_id=acc_19792f732282687e phone_masked=139****3827
+[19:23:47] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:23:47] login account_id=acc_19792f732282687e at=1793013827.6811266 device_id=audit3816d device_info={'channel': 'password'}
+[19:23:47] password_login account_id=acc_19792f732282687e phone_masked=139****3827
+[19:23:47] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:23:47] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:23:48] timemed_shichen zhi=戌
+[19:23:48] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:23:48] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:23:49] 127.0.0.1 "GET /version.json?t=1793013829679 HTTP/1.1" 200 -
+[19:23:51] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:23:51] timemed_shichen zhi=戌
+[19:23:51] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:23:52] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:23:54] 127.0.0.1 "GET /api/v1/music?t=1793013834560 HTTP/1.1" 200 -
+[19:23:54] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:23:56] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:23:56] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:23:57] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:23:57] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:24:00] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:24:01] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:24:08] 127.0.0.1 "GET /music/dizangjing-jiexuan-tts.mp3 HTTP/1.1" 200 -
+[19:24:14] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:24:20] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:24:22] vault_session_start member=mbr_39915b80a5dcb11a purpose=absorb session=vst_ae356d5fb99a4d
+[19:24:22] 127.0.0.1 "POST /api/v1/vault/session/start HTTP/1.1" 200 -
+[19:24:23] 127.0.0.1 "POST /api/v1/vault/session/tick HTTP/1.1" 200 -
+[19:24:25] 127.0.0.1 "POST /api/v1/vault/session/end HTTP/1.1" 200 -
+[19:24:25] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:24:25] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:24:25] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[19:24:25] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[19:24:27] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:24:27] 127.0.0.1 "GET /api/v1/vault/ledger HTTP/1.1" 200 -
+[19:24:27] 127.0.0.1 "GET /api/v1/vault/leaderboard?limit=5 HTTP/1.1" 200 -
+[19:24:29] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:24:40] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:25:03] login account_id=acc_bd5dce3cb2f94eb6 at=1793013903.3049023 device_id=diag3903-r device_info={'channel': 'password'}
+[19:25:03] password_register account_id=acc_bd5dce3cb2f94eb6 phone_masked=135****3903
+[19:25:03] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:25:03] login account_id=acc_bd5dce3cb2f94eb6 at=1793013903.3863273 device_id=diag3903 device_info={'channel': 'password'}
+[19:25:03] password_login account_id=acc_bd5dce3cb2f94eb6 phone_masked=135****3903
+[19:25:03] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:25:03] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:25:03] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:25:03] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:25:03] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:25:03] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:25:03] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:25:21] login account_id=acc_2331bef1bbb36da2 at=1793013921.0096982 device_id=ck3920-r device_info={'channel': 'password'}
+[19:25:21] password_register account_id=acc_2331bef1bbb36da2 phone_masked=134****3920
+[19:25:21] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:25:21] login account_id=acc_2331bef1bbb36da2 at=1793013921.1082478 device_id=ck3920 device_info={'channel': 'password'}
+[19:25:21] password_login account_id=acc_2331bef1bbb36da2 phone_masked=134****3920
+[19:25:21] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:25:21] timemed_shichen zhi=戌
+[19:25:21] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:25:21] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:25:23] 127.0.0.1 "GET /version.json?t=1793013923141 HTTP/1.1" 200 -
+[19:25:25] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:25:25] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:25:25] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:25:28] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:25:49] login account_id=acc_1b194c76dd3c92e0 at=1793013949.99037 device_id=rc3949-r device_info={'channel': 'password'}
+[19:25:49] password_register account_id=acc_1b194c76dd3c92e0 phone_masked=133****3949
+[19:25:49] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:25:50] login account_id=acc_1b194c76dd3c92e0 at=1793013950.0641344 device_id=rc3949 device_info={'channel': 'password'}
+[19:25:50] password_login account_id=acc_1b194c76dd3c92e0 phone_masked=133****3949
+[19:25:50] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:25:50] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:25:50] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:25:50] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:25:50] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:25:50] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:26:00] login account_id=acc_89e3dbcefc9a280c at=1793013960.7978199 device_id=A3960-r device_info={'channel': 'password'}
+[19:26:00] password_register account_id=acc_89e3dbcefc9a280c phone_masked=132****0699
+[19:26:00] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:26:00] login account_id=acc_89e3dbcefc9a280c at=1793013960.8868897 device_id=A3960 device_info={'channel': 'password'}
+[19:26:00] password_login account_id=acc_89e3dbcefc9a280c phone_masked=132****0699
+[19:26:00] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:26:00] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:26:00] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:26:00] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:26:01] login account_id=acc_60bc7e918861a061 at=1793013961.2991095 device_id=B3961-r device_info={'channel': 'password'}
+[19:26:01] password_register account_id=acc_60bc7e918861a061 phone_masked=132****1234
+[19:26:01] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:26:01] login account_id=acc_60bc7e918861a061 at=1793013961.37984 device_id=B3961 device_info={'channel': 'password'}
+[19:26:01] password_login account_id=acc_60bc7e918861a061 phone_masked=132****1234
+[19:26:01] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:26:01] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:26:01] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:26:01] 127.0.0.1 "GET /api/v1/music/recommend HTTP/1.1" 200 -
+[19:27:12] login account_id=acc_c08cf78ba9daf1cc at=1793014032.8286803 device_id=p44032-r device_info={'channel': 'password'}
+[19:27:12] password_register account_id=acc_c08cf78ba9daf1cc phone_masked=131****4032
+[19:27:12] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:27:12] login account_id=acc_c08cf78ba9daf1cc at=1793014032.908949 device_id=p44032 device_info={'channel': 'password'}
+[19:27:12] password_login account_id=acc_c08cf78ba9daf1cc phone_masked=131****4032
+[19:27:12] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:27:12] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:27:13] timemed_shichen zhi=戌
+[19:27:13] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:27:13] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:27:14] 127.0.0.1 "GET /version.json?t=1793014034838 HTTP/1.1" 200 -
+[19:27:17] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:27:17] healthscore_saved alcohol_dx=0 alcohol_liang_week=-1 bmi_x10=-1 diastolic=-1 diet=4 environment=-1 exercise_min=-1 low_two_weeks=0 member_id=mbr_c0c8304fa9fcdb0f mood=-1 sedentary_hours_x10=-1 sleep_hours_x10=75 smoking_cigs=-1 smoking_dx=0 systolic=-1 waist_cm=-1 work_stress=-1
+[19:27:17] 127.0.0.1 "POST /api/v1/healthscore/save HTTP/1.1" 200 -
+[19:27:17] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:27:20] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:27:20] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:27:21] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:28:00] login account_id=acc_cde3f6f6d5e89dd2 at=1793014080.884871 device_id=p44080-r device_info={'channel': 'password'}
+[19:28:00] password_register account_id=acc_cde3f6f6d5e89dd2 phone_masked=131****4080
+[19:28:00] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:28:00] login account_id=acc_cde3f6f6d5e89dd2 at=1793014080.968195 device_id=p44080 device_info={'channel': 'password'}
+[19:28:00] password_login account_id=acc_cde3f6f6d5e89dd2 phone_masked=131****4080
+[19:28:00] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:28:00] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:28:01] timemed_shichen zhi=戌
+[19:28:01] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:01] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:02] 127.0.0.1 "GET /version.json?t=1793014082926 HTTP/1.1" 200 -
+[19:28:05] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:05] healthscore_saved alcohol_dx=0 alcohol_liang_week=-1 bmi_x10=-1 diastolic=-1 diet=4 environment=-1 exercise_min=-1 low_two_weeks=0 member_id=mbr_e37dc5f9c3443ca3 mood=-1 sedentary_hours_x10=-1 sleep_hours_x10=75 smoking_cigs=-1 smoking_dx=0 systolic=-1 waist_cm=-1 work_stress=-1
+[19:28:05] 127.0.0.1 "POST /api/v1/healthscore/save HTTP/1.1" 200 -
+[19:28:05] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:08] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:08] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:28:10] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:28:14] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:28:15] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:15] 127.0.0.1 "GET /api/v1/healthscore/history HTTP/1.1" 200 -
+[19:28:18] healthscore_saved alcohol_dx=0 alcohol_liang_week=-1 bmi_x10=-1 diastolic=-1 diet=3 environment=-1 exercise_min=-1 low_two_weeks=0 member_id=mbr_e37dc5f9c3443ca3 mood=-1 sedentary_hours_x10=-1 sleep_hours_x10=75 smoking_cigs=-1 smoking_dx=0 systolic=-1 waist_cm=-1 work_stress=-1
+[19:28:18] 127.0.0.1 "POST /api/v1/healthscore/save HTTP/1.1" 200 -
+[19:28:18] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:18] 127.0.0.1 "GET /api/v1/healthscore/history HTTP/1.1" 200 -
+[19:28:18] 127.0.0.1 "GET /api/v1/healthscore/history HTTP/1.1" 200 -
+[19:28:20] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:28:22] 127.0.0.1 "GET /bencao/index.json HTTP/1.1" 200 -
+[19:28:25] 127.0.0.1 "GET /admin/ HTTP/1.1" 200 -
+[19:28:25] 127.0.0.1 "GET /admin/music.html HTTP/1.1" 200 -
+[19:28:25] 127.0.0.1 "GET /admin/vault.html HTTP/1.1" 200 -
+[19:28:49] login account_id=acc_e04bf4544ebc7b1a at=1793014129.1535072 device_id=ck24129-r device_info={'channel': 'password'}
+[19:28:49] password_register account_id=acc_e04bf4544ebc7b1a phone_masked=130****4129
+[19:28:49] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:28:49] login account_id=acc_e04bf4544ebc7b1a at=1793014129.242048 device_id=ck24129 device_info={'channel': 'password'}
+[19:28:49] password_login account_id=acc_e04bf4544ebc7b1a phone_masked=130****4129
+[19:28:49] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:28:49] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:28:50] timemed_shichen zhi=戌
+[19:28:50] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:28:50] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:50] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:50] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:28:51] 127.0.0.1 "GET /version.json?t=1793014131116 HTTP/1.1" 200 -
+[19:28:53] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:28:53] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:28:53] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:29:04] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 400 -
+[19:29:26] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 401 -
+[19:29:26] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:29:26] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:29:26] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 401 -
+[19:29:26] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 401 -
+[19:29:26] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 401 -
+[19:29:26] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 401 -
+[19:29:27] 127.0.0.1 "GET /version.json?t=1793014167928 HTTP/1.1" 200 -
+[19:30:05] login account_id=acc_db89574d74a1853f at=1793014205.5604982 device_id=ck24205-r device_info={'channel': 'password'}
+[19:30:05] password_register account_id=acc_db89574d74a1853f phone_masked=130****4205
+[19:30:05] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 200 -
+[19:30:05] login account_id=acc_db89574d74a1853f at=1793014205.6314144 device_id=ck24205 device_info={'channel': 'password'}
+[19:30:05] password_login account_id=acc_db89574d74a1853f phone_masked=130****4205
+[19:30:05] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 200 -
+[19:30:05] 127.0.0.1 "POST /api/v1/profile/birth HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/vault/status HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/body/status HTTP/1.1" 200 -
+[19:30:06] timemed_shichen zhi=戌
+[19:30:06] 127.0.0.1 "GET /api/v1/timemed/shichen HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:30:06] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 200 -
+[19:30:07] 127.0.0.1 "GET /version.json?t=1793014207512 HTTP/1.1" 200 -
+[19:30:09] 127.0.0.1 "POST /api/v1/checkin HTTP/1.1" 200 -
+[19:30:09] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 200 -
+[19:30:09] 127.0.0.1 "GET /api/v1/rhythm/history?limit=30 HTTP/1.1" 200 -
+[19:30:21] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 200 -
+[19:30:28] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 400 -
+[19:30:28] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 401 -
+[19:30:29] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:30:29] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:29] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 401 -
+[19:30:29] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 401 -
+[19:30:29] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 401 -
+[19:30:29] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 401 -
+[19:30:30] 127.0.0.1 "GET /version.json?t=1793014230663 HTTP/1.1" 200 -
+[19:30:31] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:44] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 400 -
+[19:30:44] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 401 -
+[19:30:44] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 401 -
+[19:30:44] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:44] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 401 -
+[19:30:44] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 401 -
+[19:30:44] 127.0.0.1 "GET /api/v1/me/nickname HTTP/1.1" 400 -
+[19:30:45] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:30:45] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:45] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 401 -
+[19:30:45] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 401 -
+[19:30:45] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 401 -
+[19:30:45] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 401 -
+[19:30:46] 127.0.0.1 "GET /version.json?t=1793014246496 HTTP/1.1" 200 -
+[19:30:48] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:50] 127.0.0.1 "POST /api/v1/auth/password/register HTTP/1.1" 400 -
+[19:30:50] 127.0.0.1 "POST /api/v1/auth/password/login HTTP/1.1" 401 -
+[19:30:50] 127.0.0.1 "GET /api/v1/healthscore/status HTTP/1.1" 401 -
+[19:30:50] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:50] 127.0.0.1 "GET /api/v1/points/balance HTTP/1.1" 401 -
+[19:30:50] 127.0.0.1 "GET /api/v1/rhythm/daily HTTP/1.1" 401 -
+[19:30:50] 127.0.0.1 "GET /api/v1/me/nickname HTTP/1.1" 400 -
+[19:30:51] 127.0.0.1 "GET / HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /style.css?v=20261026k HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /music.js?v=20261026k HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /body3d.js?v=20261026k HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /energy.js?v=20261026k HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /app.js?v=20261026k HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /energy-flow.js?v=20261026k HTTP/1.1" 200 -
+[19:30:51] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -
+[19:30:51] 127.0.0.1 "GET /api/v1/auth/password/status HTTP/1.1" 401 -
+[19:30:51] 127.0.0.1 "GET /api/v1/subscribe/status HTTP/1.1" 401 -
+[19:30:51] 127.0.0.1 "GET /api/v1/family HTTP/1.1" 401 -
+[19:30:51] 127.0.0.1 "GET /api/v1/rhythm/daily?target_date=2026-10-26 HTTP/1.1" 401 -
+[19:30:52] 127.0.0.1 "GET /version.json?t=1793014252277 HTTP/1.1" 200 -
+[19:30:54] 127.0.0.1 "GET /api/v1/vault/energy HTTP/1.1" 401 -

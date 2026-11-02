@@ -1,0 +1,133 @@
+[23:54:40] admin_disabled env=YJK_ADMIN_PASSWORD reason=missing_env
+
+[错误] 独立后台未启用：未配置环境变量 YJK_ADMIN_PASSWORD —— 后台整体不启用（不注册任何 /v1/admin/* 路由）。请由密钥通道注入管理口令后重启服务。
+[错误] /api/v1/admin/* 全部未注册（C 端接口不受影响）。
+
+[23:54:40] boot engine=TYH-ENGINE-0.1.0 rules=TYH-RULES-1.3.0 rules_total=46 service=TYH-SVC-0.1.0
+[23:54:40] boot data_file=D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\pay_v7.db static_ready=True web_dir=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web
+
+元健康 AI 顾问 · 本地服务已启动
+  监听地址 : http://127.0.0.1:15090
+  静态目录 : D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site\web（存在）
+  数据文件 : D:\Deepseek智能体\AI元健康\shuzi\_verify_v7\pay_v7.db
+  源码定位 : app=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+             tianyuanheng=D:\Deepseek智能体\AI元健康\shuzi\_dist\_stage_site
+  解释器   : D:\Deepseek智能体\AI元健康\shuzi\runtime\python.exe
+  内核版本 : TYH-ENGINE-0.1.0 / 规则 TYH-RULES-1.3.0
+  接口前缀 : /api/v1/...（+ POST /api/v1/auth/guest，+ GET /api/health）
+
+[23:54:41] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[23:54:41] login account_id=acc_fc2337ae0c322731 at=1791561281.6787019 device_id=v7-a-1009235438 device_info={'channel': 'guest'}
+[23:54:41] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:41] login account_id=acc_ac59ee72a0c72400 at=1791561281.6910818 device_id=v7-b-1009235438 device_info={'channel': 'guest'}
+[23:54:41] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:41] login account_id=acc_4e27da08cf280dc7 at=1791561281.708577 device_id=v7-c-1009235438 device_info={'channel': 'guest'}
+[23:54:41] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:41] login account_id=acc_4df970b816d2e73b at=1791561281.7246609 device_id=v7-d-1009235438 device_info={'channel': 'guest'}
+[23:54:41] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "GET /api/v1/subscribe/plans HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:41] social_invite_auto_accept account_id=acc_ac59ee72a0c72400 to_member=mbr_269c52759582db9c
+[23:54:41] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:41] pay_order_created amount_cents=9900 member_id=mbr_ab1da4237d2b420e order_no=SO20261009235441A0C716 pay_with=channel plan_id=month trace_id=6ac90e41e903ae3f0cdf3f43
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 400 -
+[23:54:41] pay_order_paid channel=mock commission_bucket=referrer commission_cents=2970 order_no=SO20261009235441A0C716 paid_cents=9900 trace_id=6ac90e415f6d20b82f0229c5
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "GET /api/v1/subscribe/order/SO20261009235441A0C716 HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_callback_duplicate_order order_no=SO20261009235441A0C716 status=paid trace_id=6ac90e4159876ffd7a65966b
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_order_created amount_cents=19900 member_id=mbr_ab1da4237d2b420e order_no=SO202610092354416A1BA6 pay_with=channel plan_id=quarter trace_id=6ac90e41ae0e9ae707fafb0e
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:41] pay_order_paid channel=mock commission_bucket=referrer commission_cents=5970 order_no=SO202610092354416A1BA6 paid_cents=19900 trace_id=6ac90e41962ff6cebc606619
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_order_created amount_cents=199000 member_id=mbr_ab1da4237d2b420e order_no=SO20261009235441B9A365 pay_with=channel plan_id=year trace_id=6ac90e41adcd6361216e743e
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:41] pay_order_paid channel=mock commission_bucket=referrer commission_cents=59700 order_no=SO20261009235441B9A365 paid_cents=199000 trace_id=6ac90e41e0a493f363535d25
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_order_created amount_cents=19900 member_id=mbr_ab1da4237d2b420e order_no=SO2026100923544194CC17 pay_with=channel plan_id=quarter trace_id=6ac90e4156b9aa4bcef1f36b
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:41] pay_order_paid channel=mock commission_bucket=referrer commission_cents=2970 order_no=SO2026100923544194CC17 paid_cents=9900 trace_id=6ac90e41b0a8b9f1f3dbbd4c
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_order_created amount_cents=9900 member_id=mbr_ab1da4237d2b420e order_no=SO20261009235441A7D3F0 pay_with=channel plan_id=month trace_id=6ac90e411961a8dc8f8961ad
+[23:54:41] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:41] pay_order_paid channel=mock commission_bucket=referrer commission_cents=2970 order_no=SO20261009235441A7D3F0 paid_cents=9900 trace_id=6ac90e41787970cd3fac510a
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:41] pay_order_refunded channel=mock full=True order_no=SO202610092354416A1BA6 refund_cents=19900 returned_points=0 reversed_cents=5970 total_refund_cents=19900 trace_id=6ac90e411368e019bcda1ed9
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_order_refunded channel=mock full=False order_no=SO20261009235441B9A365 refund_cents=50000 returned_points=0 reversed_cents=15000 total_refund_cents=50000 trace_id=6ac90e413a8ee23ba4c53212
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:41] pay_order_refunded channel=mock full=False order_no=SO20261009235441B9A365 refund_cents=49000 returned_points=0 reversed_cents=14700 total_refund_cents=99000 trace_id=6ac90e41514d40d5f0fe3637
+[23:54:41] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] pay_order_refunded channel=mock full=True order_no=SO20261009235441B9A365 refund_cents=100000 returned_points=0 reversed_cents=30000 total_refund_cents=199000 trace_id=6ac90e425a98d9bffcc601eb
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] pay_order_created amount_cents=9900 member_id=mbr_ab1da4237d2b420e order_no=SO202610092354427031E1 pay_with=channel plan_id=month trace_id=6ac90e42cce91f73b9c9a79b
+[23:54:42] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 402 -
+[23:54:42] pay_order_created amount_cents=9900 member_id=mbr_7c0dedda36d6e672 order_no=SO202610092354421011F5 pay_with=channel plan_id=month trace_id=6ac90e42f5ca35f51150282e
+[23:54:42] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:42] pay_commission_manual_review order_no=SO202610092354421011F5 reason=self_purchase trace_id=6ac90e42a5075f31648f762f
+[23:54:42] pay_order_paid channel=mock commission_bucket=manual_review commission_cents=0 order_no=SO202610092354421011F5 paid_cents=9900 trace_id=6ac90e42a5075f31648f762f
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] pay_order_created amount_cents=19900 member_id=mbr_67dca98de2714262 order_no=SO20261009235442D7067F pay_with=channel plan_id=quarter trace_id=6ac90e4205e76e2860201190
+[23:54:42] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:42] pay_commission_skipped order_no=SO20261009235442D7067F reason=no_referrer trace_id=6ac90e42c84b549511c9c515
+[23:54:42] pay_order_paid channel=mock commission_bucket=none commission_cents=0 order_no=SO20261009235442D7067F paid_cents=19900 trace_id=6ac90e42c84b549511c9c515
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] pay_order_created amount_cents=9900 member_id=mbr_67dca98de2714262 order_no=SO202610092354425279F8 pay_with=channel plan_id=month trace_id=6ac90e42317389dfe8ed890d
+[23:54:42] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 400 -
+[23:54:42] pay_commission_skipped order_no=SO202610092354425279F8 reason=no_referrer trace_id=6ac90e423cf994e65989431f
+[23:54:42] pay_order_paid channel=mock commission_bucket=none commission_cents=0 order_no=SO202610092354425279F8 paid_cents=9900 trace_id=6ac90e423cf994e65989431f
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/admin/commission?page=1&page_size=3 HTTP/1.1" 401 -
+[23:54:42] 127.0.0.1 "GET /api/v1/admin/commission?page=1&page_size=3 HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/admin/commission?page=2&page_size=3 HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/admin/commission?page=99&page_size=3 HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] pay_order_created amount_cents=9900 member_id=mbr_ab1da4237d2b420e order_no=SO2026100923544249ED53 pay_with=channel plan_id=month trace_id=6ac90e421268f392aa71d70a
+[23:54:42] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:42] pay_callback_rejected channel=mock reason=signature trace_id=6ac90e42a37e7c158c934584
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 401 -
+[23:54:42] pay_callback_rejected channel=mock reason=signature trace_id=6ac90e4256bd1df130f4124f
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 401 -
+[23:54:42] pay_callback_rejected channel=mock reason=signature trace_id=6ac90e42f323882b1e6d5af7
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 401 -
+[23:54:42] pay_order_paid channel=mock commission_bucket=referrer commission_cents=2970 order_no=SO2026100923544249ED53 paid_cents=9900 trace_id=6ac90e422489c370a02ec111
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/referral HTTP/1.1" 200 -
+[23:54:42] login account_id=acc_18d0e4b301806b08 at=1791561282.3587675 device_id=v7-e-1009235438 device_info={'channel': 'guest'}
+[23:54:42] 127.0.0.1 "POST /api/v1/auth/guest HTTP/1.1" 200 -
+[23:54:42] social_invite_auto_accept account_id=acc_18d0e4b301806b08 to_member=mbr_ab1da4237d2b420e
+[23:54:42] 127.0.0.1 "POST /api/v1/friends/invite HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] pay_order_created amount_cents=9900 member_id=mbr_d5445d2bea9326e8 order_no=SO202610092354427F19AA pay_with=channel plan_id=month trace_id=6ac90e425c725bf18e18f295
+[23:54:42] 127.0.0.1 "POST /api/v1/subscribe/order HTTP/1.1" 200 -
+[23:54:42] pay_order_paid channel=mock commission_bucket=referrer commission_cents=2970 order_no=SO202610092354427F19AA paid_cents=9900 trace_id=6ac90e4245e402ae57e7507b
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/mock HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/me/commission HTTP/1.1" 200 -
+[23:54:42] 127.0.0.1 "GET /api/v1/subscribe/order/SO20261009235441A0C716 HTTP/1.1" 401 -
+[23:54:42] 127.0.0.1 "GET /api/v1/subscribe/order/SO20261009235441A0C716 HTTP/1.1" 400 -
+[23:54:42] 127.0.0.1 "GET /api/v1/subscribe/order/SO-NOT-EXIST HTTP/1.1" 400 -
+[23:54:42] 127.0.0.1 "POST /api/v1/pay/callback/wechat HTTP/1.1" 400 -
+[23:54:42] 127.0.0.1 "GET /api/v1/admin/commission HTTP/1.1" 401 -
+[23:54:42] 127.0.0.1 "GET /api/v1/admin/commission HTTP/1.1" 200 -

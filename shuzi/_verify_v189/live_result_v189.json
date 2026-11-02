@@ -1,0 +1,92 @@
+[
+ {
+  "name": "线上 version.json web=189",
+  "ok": true,
+  "detail": "189"
+ },
+ {
+  "name": "线上首条版本说明含「邀请」",
+  "ok": true,
+  "detail": "邀请文案改为「邀请您建立自己的AI元神，随时查看自己的健康指数」；邀请落地提示同步改为「邀请您建立自己的AI元神」"
+ },
+ {
+  "name": "线上 index.html 资源戳 i ×6",
+  "ok": true,
+  "detail": "6"
+ },
+ {
+  "name": "线上 index.html 旧资源戳 h 已清零",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上 app.js 含新文案",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上 app.js 不含旧文案",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上 app.js WEB_VER=189",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "游客登录成功（拿令牌）",
+  "ok": true,
+  "detail": "http=200 code=0"
+ },
+ {
+  "name": "GET /me/referral 成功",
+  "ok": true,
+  "detail": "http=200"
+ },
+ {
+  "name": "share_text 含新文案",
+  "ok": true,
+  "detail": "我是用户7343，邀请您建立自己的AI元神，随时查看自己的健康指数：https://shuzi.yuanjk.cn/?invite=%E7%94%A8%E6%88%B77343"
+ },
+ {
+  "name": "share_text 不含旧文案",
+  "ok": true,
+  "detail": "我是用户7343，邀请您建立自己的AI元神，随时查看自己的健康指数：https://shuzi.yuanjk.cn/?invite=%E7%94%A8%E6%88%B77343"
+ },
+ {
+  "name": "share_text 以「我是<nickname>，」开头",
+  "ok": true,
+  "detail": "我是用户7343，邀请您建立自己的AI元神，随时查看自己的健康指数：https://shuzi.yuanjk.cn/?invite=%E7%94%A8%E6%88%B77343"
+ },
+ {
+  "name": "share_text 含邀请链接",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "线上落地提示含「大艾」",
+  "ok": true,
+  "detail": "大艾 邀请您建立自己的AI元神"
+ },
+ {
+  "name": "线上落地提示=邀请您建立自己的AI元神",
+  "ok": true,
+  "detail": "大艾 邀请您建立自己的AI元神"
+ },
+ {
+  "name": "线上落地提示不含旧文案",
+  "ok": true,
+  "detail": "大艾 邀请您建立自己的AI元神"
+ },
+ {
+  "name": "线上版本徽标含 v189",
+  "ok": true,
+  "detail": "APP 1.1.3 · v189"
+ },
+ {
+  "name": "线上页面无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]

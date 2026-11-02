@@ -1,0 +1,22 @@
+PASS login A/B  
+PASS create code 6 digits  055930
+PASS expires_in ~24h  86400
+PASS reuse active code  
+PASS member accepts  ok
+PASS one code one person  ����������Ѿ���ʹ���ˡ�
+PASS cannot bind self  ����������Ѿ���ʹ���ˡ�
+PASS family list linked=true  [{'family_id': 'fam_v213_web', 'nickname': '���Լ���', 'relation': '����', 'relation_code': 'father', 'birth_local': '1970-01-01T08:00', 'longitude': 120.0, 'latitude': 30.0, 'body': {'gender': '', 'height_
+PASS linked_at filled  [{'family_id': 'fam_v213_web', 'nickname': '���Լ���', 'relation': '����', 'relation_code': 'father', 'birth_local': '1970-01-01T08:00', 'longitude': 120.0, 'latitude': 30.0, 'body': {'gender': '', 'height_
+PASS owner reads family energy  139.8
+PASS member sees own link  {'linked': True, 'family_id': 'fam_v213_web', 'family_nickname': '���Լ���', 'linked_at': '2026-11-02T20:25:33'}
+PASS status linked  {'family_id': 'fam_v213_web', 'nickname': '���Լ���', 'linked': True, 'linked_at': '2026-11-02T20:25:33', 'code': '', 'expires_in': 0}
+PASS owner unbind  �ѽ�󡣼����Ǳ߲����������ͥ����ָ����
+PASS after unbind energy=null  {'family_id': 'fam_v213_web', 'linked': False, 'index': None, 'note': '���˻�û�н���������������������������ɡ�'}
+PASS after unbind list linked=false  
+PASS member link cleared  {'linked': False}
+PASS new code after unbind differs  050882
+PASS rebind ok  
+PASS member self-unbind  {'unlinked': True, 'family_id': 'fam_v213_web', 'by': 'member', 'note': '�ѽ�󡣼����Ǳ߲��ٿ������ָ����'}
+PASS self-unbind -> owner sees null  {'family_id': 'fam_v213_web', 'linked': False, 'index': None, 'note': '���˻�û�н���������������������������ɡ�'}
+PASS family contract fields intact  ['disclaimer', 'members', 'reminders', 'summary']
+RESULT 21/21

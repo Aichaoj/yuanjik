@@ -1,0 +1,117 @@
+[
+ {
+  "name": "A1 徽标 + 版本抽屉 + 兜底文案",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A2 app.js 三常量",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3 version.json 与常量一致（web=39 app=1.0.0）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A4 缓存版本号已 bump（app.js 20261021h / style.css 20261021i）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A5 改名：新文案 3 处 / 旧文案 0 处",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A6 verSheet 进 SHEET_IDS + 检查/更新函数在",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1 徽标可见、文案正确（APP 1.0.0 · v39）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B2 命中测试：中心点命中徽标",
+  "ok": true,
+  "detail": "{'hit': True, 'bottom': 766, 'vh': 844, 'tabbar': 779.609375, 'hasBar': True}"
+ },
+ {
+  "name": "B3 有底栏时在底栏上方（徽标 766 ≤ 底栏 780）",
+  "ok": true,
+  "detail": "{'hit': True, 'bottom': 766, 'vh': 844, 'tabbar': 779.609375, 'hasBar': True}"
+ },
+ {
+  "name": "B4 抽屉四行数值正确（1.0.0 / v39 / 2026-10-21 / v39）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B4 当前最新时无红点",
+  "ok": true,
+  "detail": "False"
+ },
+ {
+  "name": "B5 二级页贴右下角（bottom 830 / 高 844）",
+  "ok": true,
+  "detail": "{'bottom': 830, 'vh': 844, 'hasBar': False, 'vis': True}"
+ },
+ {
+  "name": "B10a 我的页显示「体型与性别（您的元神）」",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B10b 面板标题一致（体型与性别（您的元神））",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C1 v38 两性课堂不回归（6 节 / 30 条）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B9 全流程 0 条代码错",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "name": "B6a 红点亮 + has-new",
+  "ok": true,
+  "detail": "{'dot': True, 'cls': 'ver-badge has-new', 'toast': '发现新版本 v40，点右下角可更新', 'toastHidden': False}"
+ },
+ {
+  "name": "B6b 一次性提示（发现新版本 v40，点右下角可更新）",
+  "ok": true,
+  "detail": "{'dot': True, 'cls': 'ver-badge has-new', 'toast': '发现新版本 v40，点右下角可更新', 'toastHidden': False}"
+ },
+ {
+  "name": "B6c 抽屉显示新版本（v40 / 发现新版本，点「立即更新」即可。 / 立即更新）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B7 点「立即更新」→ URL 带 v=40 重载",
+  "ok": true,
+  "detail": "http://127.0.0.1:15223/index.html?v=40&t=1792591660640"
+ },
+ {
+  "name": "B8a 接口 500 时无红点、无错误条、徽标仍在",
+  "ok": true,
+  "detail": "{'dot': False, 'alert': True, 'badge': True}"
+ },
+ {
+  "name": "B8b 抽屉如实说明查不到更新",
+  "ok": true,
+  "detail": "版本与更新 / × / 客户端包版本 / 1.0.0 / 网页版本 / v39 / 构建日期 / 2026-10-21 / 最新版本 / 暂时查不到 /  / 网络不通，暂时无法检查更新；不影响使用。 /  / "
+ },
+ {
+  "name": "B8c 无未捕获错误",
+  "ok": true,
+  "detail": "[]"
+ }
+]

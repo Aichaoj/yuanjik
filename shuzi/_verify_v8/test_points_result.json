@@ -1,0 +1,464 @@
+[
+ {
+  "criteria": "3",
+  "name": "订阅套餐接口可用，季卡价 = 19900（整数积分/整数分）",
+  "ok": true,
+  "detail": "plan_id→price_cents = {'month': 9900, 'quarter': 19900, 'year': 199000}"
+ },
+ {
+  "criteria": "3",
+  "name": "推荐关系（referral 表，一级）已建立：B → A",
+  "ok": true,
+  "detail": "referral 行数=1"
+ },
+ {
+  "criteria": "A",
+  "name": "points_account 列名与变更单 §三 **逐字一致**（顺序也一致）",
+  "ok": true,
+  "detail": "实测=['member_id', 'balance', 'earned_total', 'spent_total', 'updated_at'] 期望=['member_id', 'balance', 'earned_total', 'spent_total', 'updated_at']"
+ },
+ {
+  "criteria": "A",
+  "name": "points_ledger 列名与变更单 §三 **逐字一致**（顺序也一致）",
+  "ok": true,
+  "detail": "实测=['id', 'member_id', 'delta', 'reason', 'ref_order_no', 'created_at'] 期望=['id', 'member_id', 'delta', 'reason', 'ref_order_no', 'created_at']"
+ },
+ {
+  "criteria": "A",
+  "name": "两张表落在**同一份 state.db**（沿用既有库，不另开库）",
+  "ok": true,
+  "detail": "DB=D:\\Deepseek智能体\\AI元健康\\shuzi\\_verify_v8\\points_v8.db"
+ },
+ {
+  "criteria": "1",
+  "name": "新用户积分余额 0（earned/spent 也全 0，未预建账户行）",
+  "ok": true,
+  "detail": "balance=0 earned=0 spent=0 库内账户行=None"
+ },
+ {
+  "criteria": "1",
+  "name": "余额不足 → **可读业务码**（既有 30002 / HTTP 402）+ 中文 message",
+  "ok": true,
+  "detail": "HTTP 402 code=30002 message=积分余额不足：需要 19900 积分，当前 0 积分，还差 19900 积分"
+ },
+ {
+  "criteria": "1",
+  "name": "余额不足 → **不开单**（该幂等键在 sub_order 里 0 行）",
+  "ok": true,
+  "detail": "B 的订单行数=0"
+ },
+ {
+  "criteria": "1",
+  "name": "余额不足 → **不产生佣金**（commission_ledger 0 行）",
+  "ok": true,
+  "detail": "佣金行数=0"
+ },
+ {
+  "criteria": "1",
+  "name": "余额不足 → **不写积分明细**、余额仍 0",
+  "ok": true,
+  "detail": "明细行数=0 余额=0"
+ },
+ {
+  "criteria": "2",
+  "name": "后台发放积分**未登录一律 401**（既有 20000；复用 admin_api 令牌闸门）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "2",
+  "name": "后台发放积分**令牌错误 → 401**（不泄露令牌是否存在）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "2",
+  "name": "后台登录成功（复用 admin_api 的 /v1/admin/login 令牌）",
+  "ok": true,
+  "detail": "HTTP 200 token_len=43"
+ },
+ {
+  "criteria": "2",
+  "name": "后台发放 20000 积分 → 余额 20000（累计获得 20000 / 累计消耗 0）",
+  "ok": true,
+  "detail": "balance=20000 earned=20000 spent=0"
+ },
+ {
+  "criteria": "2",
+  "name": "积分明细 **+1 行**（delta=+20000 / reason=admin_grant）",
+  "ok": true,
+  "detail": "明细=[{\"delta\": 20000, \"reason\": \"admin_grant\", \"ref_order_no\": \"\"}]"
+ },
+ {
+  "criteria": "2",
+  "name": "GET /points/ledger?page= 分页可用（total=1，items 逐条带 reason_text）",
+  "ok": true,
+  "detail": "total=1 items=1"
+ },
+ {
+  "criteria": "2",
+  "name": "后台发放**拒绝非整数积分**（浮点 100.5 → 既有 10002，余额不动）",
+  "ok": true,
+  "detail": "code=10002"
+ },
+ {
+  "criteria": "3",
+  "name": "订单**直接 paid**、channel=points、实付=19900 积分",
+  "ok": true,
+  "detail": "status=paid channel=points paid_cents=19900"
+ },
+ {
+  "criteria": "3",
+  "name": "订单落库：status=paid / channel=points / paid_at 非空",
+  "ok": true,
+  "detail": "sub_order={\"status\": \"paid\", \"channel\": \"points\", \"paid_at\": \"2026-10-09T23:54:27\"}"
+ },
+ {
+  "criteria": "3",
+  "name": "余额 **100**（20000 - 19900）、累计消耗 19900（整数，无小数）",
+  "ok": true,
+  "detail": "balance=100 earned=20000 spent=19900"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金 **5970**（基数=实付积分 19900 × rate_bp 3000），归一级推荐人 A",
+  "ok": true,
+  "detail": "base_cents=19900 rate_bp=3000 amount_cents=5970"
+ },
+ {
+  "criteria": "3",
+  "name": "佣金数字与脚本独立复算一致（19900 → 5970）",
+  "ok": true,
+  "detail": "独立复算=5970 实测=5970"
+ },
+ {
+  "criteria": "3",
+  "name": "积分明细 **再 +1 行**（消耗：delta=-19900 / reason=subscribe_pay / 关联订单号）",
+  "ok": true,
+  "detail": "明细=[{\"delta\": 20000, \"reason\": \"admin_grant\", \"ref_order_no\": \"\"}, {\"delta\": -19900, \"reason\": \"subscribe_pay\", \"ref_order_no\": \"SO20261009235427846F5C\"}]"
+ },
+ {
+  "criteria": "3",
+  "name": "我的推广收益：单位说明改为**积分**（unit=points / basis=paid_points）",
+  "ok": true,
+  "detail": "unit=points basis=paid_points total=5970"
+ },
+ {
+  "criteria": "B",
+  "name": "恒等式成立：balance == earned - spent == Σdelta（B：100 == 100 == 100）",
+  "ok": true,
+  "detail": "balance=100 Σdelta=100"
+ },
+ {
+  "criteria": "4",
+  "name": "余额不足被拒（100 < 19900）：既有 30002 / HTTP 402，且**不开单**",
+  "ok": true,
+  "detail": "code=30002 B 的订单数=1"
+ },
+ {
+  "criteria": "4",
+  "name": "被拒时**不产生**第二条佣金（A 名下仍只有 1 行）",
+  "ok": true,
+  "detail": "佣金行数=1"
+ },
+ {
+  "criteria": "4",
+  "name": "再发放 20000 → 余额 20100（100 + 20000）",
+  "ok": true,
+  "detail": "balance=20100 earned=40000"
+ },
+ {
+  "criteria": "4",
+  "name": "续费可买：订单 paid / channel=points / 余额 200",
+  "ok": true,
+  "detail": "status=paid balance=200 新订单=True"
+ },
+ {
+  "criteria": "4",
+  "name": "**第二条佣金 5970 不与首单合并**（2 行、两个不同订单号、金额各 5970）",
+  "ok": true,
+  "detail": "行数=2 订单=['SO20261009235427846F5C', 'SO202610092354276AF9D7']"
+ },
+ {
+  "criteria": "4",
+  "name": "累计收益 = 11940（5970 × 2），count=2（待结算）",
+  "ok": true,
+  "detail": "total=11940 count=2 pending=11940"
+ },
+ {
+  "criteria": "5",
+  "name": "退款回调经**既有回调链路**受理（验签通过 → HTTP 200 / code=0），订单转 refunded",
+  "ok": true,
+  "detail": "status=refunded refund_cents=19900"
+ },
+ {
+  "criteria": "5",
+  "name": "积分**返还 19900**，余额 200 → 20100",
+  "ok": true,
+  "detail": "returned=19900 balance=20100"
+ },
+ {
+  "criteria": "5",
+  "name": "佣金 **reversed**（reversed_cents = 5970，整笔冲正）",
+  "ok": true,
+  "detail": "status=reversed reversed=5970"
+ },
+ {
+  "criteria": "5",
+  "name": "积分明细 +1 行（返还：delta=+19900 / reason=subscribe_refund / 关联订单号）",
+  "ok": true,
+  "detail": "明细=[{\"delta\": 20000, \"reason\": \"admin_grant\", \"ref_order_no\": \"\"}, {\"delta\": -19900, \"reason\": \"subscribe_pay\", \"ref_order_no\": \"SO20261009235427846F5C\"}, {\"delta\": 20000, \"reason\": \"admin_grant\", \"ref_order_no\": \"\"}, {\"delta\": -19900, \"reason\": \"subscribe_pay\", \"ref_order_no\": \"SO202610092354276AF9D7\"}, {\"delta\": 19900, \"reason\": \"subscribe_refund\", \"ref_order_no\": \"SO20261009235427846F5C\"}]"
+ },
+ {
+  "criteria": "5",
+  "name": "余额与明细**同步**：账户 20100 = 40000(获得) - 19900(净消耗)，且 = Σdelta",
+  "ok": true,
+  "detail": "balance=20100 earned=40000 spent=19900 Σdelta=20100"
+ },
+ {
+  "criteria": "5",
+  "name": "收益口径：total=11940 / reversed=5970 / net=5970（另一单仍待结算）",
+  "ok": true,
+  "detail": "total=11940 reversed=5970 net=5970"
+ },
+ {
+  "criteria": "5",
+  "name": "退款回调**重放不二次返还**（replayed=true，余额仍 20100、明细仍 5 行）",
+  "ok": true,
+  "detail": "replayed=True balance=20100 明细行=5"
+ },
+ {
+  "criteria": "5",
+  "name": "已全额退款的订单再退 → 既有 30004（退款窗口关闭），余额不变",
+  "ok": true,
+  "detail": "code=30004 balance=20100"
+ },
+ {
+  "criteria": "6",
+  "name": "重复下单**返回同一张订单**（idempotent_replay=true、order_no 相同）",
+  "ok": true,
+  "detail": "order_no 一致=True replay=True"
+ },
+ {
+  "criteria": "6",
+  "name": "**只扣一次积分**（20100 - 19900 = 200；第二次不多扣一分）",
+  "ok": true,
+  "detail": "第1次后=200 第2次后=200"
+ },
+ {
+  "criteria": "6",
+  "name": "库里该幂等键**只有 1 张订单**，该单积分明细**只有 1 行**",
+  "ok": true,
+  "detail": "订单行=1 明细行=1"
+ },
+ {
+  "criteria": "6",
+  "name": "该单**只产生 1 条佣金**（不重复计佣）",
+  "ok": true,
+  "detail": "佣金行数=1"
+ },
+ {
+  "criteria": "7",
+  "name": "自推自买：**订单有效**（paid / channel=points）且**积分照扣**（20000 → 100）",
+  "ok": true,
+  "detail": "status=paid balance=100"
+ },
+ {
+  "criteria": "7",
+  "name": "自推自买**不计佣**：落人工复核标记（status=manual_review、amount_cents=0）",
+  "ok": true,
+  "detail": "status=manual_review amount=0"
+ },
+ {
+  "criteria": "7",
+  "name": "自推自买者的收益为 0（total_cents=0、manual_review_count=1）",
+  "ok": true,
+  "detail": "total=0 review=1"
+ },
+ {
+  "criteria": "7",
+  "name": "自推自买的积分明细照记（-19900 一行，ref_order_no 关联该单）",
+  "ok": true,
+  "detail": "D 明细行数=2"
+ },
+ {
+  "criteria": "7",
+  "name": "无推荐人（C）：订单有效、积分照扣、**不产生佣金也不报错**",
+  "ok": true,
+  "detail": "status=paid balance=100 佣金行=0"
+ },
+ {
+  "criteria": "8",
+  "name": "提现路径 POST /api/v1/points/withdraw **明确拒绝**且文案含「待银联分账通道开通」",
+  "ok": true,
+  "detail": "HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）"
+ },
+ {
+  "criteria": "8",
+  "name": "提现路径 POST /api/v1/points/cashout **明确拒绝**且文案含「待银联分账通道开通」",
+  "ok": true,
+  "detail": "HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）"
+ },
+ {
+  "criteria": "8",
+  "name": "提现路径 POST /api/v1/me/commission/withdraw **明确拒绝**且文案含「待银联分账通道开通」",
+  "ok": true,
+  "detail": "HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）"
+ },
+ {
+  "criteria": "8",
+  "name": "提现路径 GET /api/v1/points/withdraw **明确拒绝**且文案含「待银联分账通道开通」",
+  "ok": true,
+  "detail": "HTTP 402 code=30002 message=提现本期不开放：待银联分账通道开通后另行实施（本站只记账、不代收代付、不沉淀资金）"
+ },
+ {
+  "criteria": "8",
+  "name": "提现口径对前端可见：points/balance 与 me/commission 均 withdraw_enabled=false + 说明",
+  "ok": true,
+  "detail": "balance.withdraw_enabled=False"
+ },
+ {
+  "criteria": "8",
+  "name": "本期**不实现**任何提现逻辑：拒绝只读/只拒（余额未变、无提现明细行）",
+  "ok": true,
+  "detail": "balance=200 提现类明细=0"
+ },
+ {
+  "criteria": "D",
+  "name": "pay_with 非法值（alipay）→ 既有 10002（HTTP 400），不落单",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "D",
+  "name": "积分余额接口需登录（无令牌 → 既有 20000 / HTTP 401）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "D",
+  "name": "积分明细接口需登录（无令牌 → 既有 20000 / HTTP 401）",
+  "ok": true,
+  "detail": "HTTP 401 code=20000"
+ },
+ {
+  "criteria": "D",
+  "name": "积分回调**未签名 / 签名不符一律拒绝**（既有 20000 / HTTP 401）",
+  "ok": true,
+  "detail": "未签名 HTTP 401 code=20000；错签名 HTTP 401 code=20000"
+ },
+ {
+  "criteria": "D",
+  "name": "被拒的积分回调**零副作用**（余额不变、佣金状态不变）",
+  "ok": true,
+  "detail": "balance=200 佣金状态=pending"
+ },
+ {
+  "criteria": "D",
+  "name": "未知通道（nosuchchannel）→ 既有 10002（HTTP 400），fail-closed",
+  "ok": true,
+  "detail": "HTTP 400 code=10002"
+ },
+ {
+  "criteria": "D",
+  "name": "后台发放负数积分 → 既有 10002（HTTP 400），余额不变",
+  "ok": true,
+  "detail": "code=10002"
+ },
+ {
+  "criteria": "D",
+  "name": "后台给**不存在的会员**发积分 → 既有 10002（HTTP 400）",
+  "ok": true,
+  "detail": "code=10002"
+ },
+ {
+  "criteria": "B",
+  "name": "恒等式（B）：balance == earned - spent == Σdelta",
+  "ok": true,
+  "detail": "balance=200 earned-spent=200 Σdelta=200"
+ },
+ {
+  "criteria": "B",
+  "name": "恒等式（C）：balance == earned - spent == Σdelta",
+  "ok": true,
+  "detail": "balance=100 earned-spent=100 Σdelta=100"
+ },
+ {
+  "criteria": "B",
+  "name": "恒等式（D）：balance == earned - spent == Σdelta",
+  "ok": true,
+  "detail": "balance=100 earned-spent=100 Σdelta=100"
+ },
+ {
+  "criteria": "B",
+  "name": "积分明细表所有 delta 均为**整数**、无 0 行（0 变更不落账）",
+  "ok": true,
+  "detail": "明细总行数=10"
+ },
+ {
+  "criteria": "C",
+  "name": "所有积分类字段都是 int（27 个字段抽样），无 float / str",
+  "ok": true,
+  "detail": "[[\"amount_cents\", 19900, \"int\"], [\"amount\", 19900, \"int\"], [\"paid_cents\", 19900, \"int\"], [\"refund_cents\", 0, \"int\"], [\"points_spent\", 19900, \"int\"], [\"amount_cents\", 19900, \"int\"], [\"amount\", 19900, \"int\"], [\"paid_cents\", 19900, \"int\"]]"
+ },
+ {
+  "criteria": "C",
+  "name": "额度口径：1 积分 = 1 分（cents_per_point=1，cents_equivalent == balance）",
+  "ok": true,
+  "detail": "cents_per_point=1"
+ },
+ {
+  "criteria": "C",
+  "name": "佣金口径不变：rate_bp=3000（实付积分 × 30%）、base_cents=实付积分数",
+  "ok": true,
+  "detail": "rate_bp 集合={3000} base_cents 集合={19900}"
+ },
+ {
+  "criteria": "C",
+  "name": "明细 reason 只用登记过的分类（admin_grant / subscribe_pay / subscribe_refund）",
+  "ok": true,
+  "detail": "reason 集合={'subscribe_pay', 'subscribe_refund', 'admin_grant'}"
+ },
+ {
+  "criteria": "10",
+  "name": "社交 51：既有轻社交端到端验证（合计 51 项子断言，通过 51，失败 0，5s）",
+  "ok": true,
+  "detail": "rc=0 含期望串=True 计数=51"
+ },
+ {
+  "criteria": "10",
+  "name": "推荐 45：既有推荐关系端到端验证（合计 45 项子断言，通过 45，失败 0，5s）",
+  "ok": true,
+  "detail": "rc=0 含期望串=True 计数=45"
+ },
+ {
+  "criteria": "10",
+  "name": "支付佣金 80：P1 自建支付与佣金账本全过（本次扩展未破坏 P1）（合计 80 项子断言，通过 80，失败 0，15s）",
+  "ok": true,
+  "detail": "rc=0 含期望串=True 计数=80"
+ },
+ {
+  "criteria": "10",
+  "name": "独立后台 144：既有后台端到端验证（合计 144 项断言，通过 144，失败 0，20s）",
+  "ok": true,
+  "detail": "rc=0 含期望串=True 计数=144"
+ },
+ {
+  "criteria": "10",
+  "name": "内核 335：核心测试全过（Ran 335 tests，3s）",
+  "ok": true,
+  "detail": "rc=0 含期望串=True 计数=335"
+ },
+ {
+  "criteria": "10",
+  "name": "服务端 104：服务层测试全过（解释器 C:\\Users\\41692\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE）（Ran 104 tests，1s）",
+  "ok": true,
+  "detail": "rc=0 含期望串=True 计数=104"
+ },
+ {
+  "criteria": "10",
+  "name": "既有源码一字未动：构件内 app/* 与 tianyuanheng/* 与工作区正本 SHA-256 全同（抽查 7 个文件）",
+  "ok": true,
+  "detail": "全同=7 不一致=无"
+ }
+]

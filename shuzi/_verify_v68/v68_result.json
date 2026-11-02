@@ -1,0 +1,37 @@
+[
+ {
+  "tag": "E1 数值自洽且 24 点曲线",
+  "ok": true,
+  "detail": "index=42.6 calc=42.6 parts={'index': 42.6, 'base': 60.0, 'gain_today': 0.0, 'day_drain': 17.4, 'night_back': 0.0, 'today_energy': 0}"
+ },
+ {
+  "tag": "E2 06:00 起开始消耗",
+  "ok": true,
+  "detail": "curve[6]=60.0 curve[7]=57.5"
+ },
+ {
+  "tag": "E3 越晚越低",
+  "ok": true,
+  "detail": "curve[13]=42.5 curve[21]=22.5"
+ },
+ {
+  "tag": "E4 22:00 后开始回补",
+  "ok": true,
+  "detail": "curve[22]=20.0 curve[23]=24.5"
+ },
+ {
+  "tag": "E5 补充能量后指数上升",
+  "ok": true,
+  "detail": "before=42.6 after=49.8 (+7.2)"
+ },
+ {
+  "tag": "E6 用户中心能量卡",
+  "ok": true,
+  "detail": "shown=True value=49.8 bars=24"
+ },
+ {
+  "tag": "E7 无真正 JS 报错",
+  "ok": true,
+  "detail": ""
+ }
+]

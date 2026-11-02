@@ -1,0 +1,150 @@
+$ErrorActionPreference = 'Continue'
+# v209: login stability (timeout / instant wrong-password / remember & auto-login) +
+#   emotion pulse server module (one adjustment per hour, +/-10 per day, consent switch).
+#   ASCII ONLY.
+# v209c: host check relaxed -> record hostname, keep going
+$R = 'D:\www\yjk\shuzi'; $WEB = 'D:\www\yjk\shuzi\web'; $PKG = 'D:\www\yjk\pkgs'
+$SINK = 'http://jianyi.aliqq.cc/agent86sink.ashx'; $nssm = 'D:\www\yjk\tools\nssm.exe'
+$OUT = "$WEB\_deploy_v212.txt"
+$MAN = @(
+'web\app.js|h|572F03D136B33DAFE3D525E3BA2A8589CF4B6CA0D8E1B3B4530687AD3420FAC7|https://img.yuanjk.cn/yjk/2026/11/02/1972bc01adb349868036a25d3105d1e2.js'
+'web\index.html|h|9978981D7402B36E5F757338EFA1A083243984C91977DB1A6B097E5633E5544C|https://img.yuanjk.cn/yjk/2026/11/02/6795064473d940e1acaf8a64462e2bb4.html'
+'web\version.json|h|1F96B5EE6E41AE749774D71B7F58A5CA9516BE61456977E4BA3F475BDCD7279D|https://img.yuanjk.cn/yjk/2026/11/02/5522e67cebaa47b68f4eac9ce9f30fec.json'
+'server\emotion.py|h|5E57704C9C6EB2F8DBF2FAB4F682007CA4FDBA8464C44BBF332D26C1EFCE9487|https://img.yuanjk.cn/yjk/2026/11/02/f13a97866469474cb74812425fb4555b.py'
+'server\serve.py|h|F152A0B9AAC36553BA0464C6320DA66136089D7CABE071DD20FF9BFFDB5BD192|https://img.yuanjk.cn/yjk/2026/11/02/7f0f11b47af4432b95fcc08d4c3e5bc1.py'
+'server\records.py|h|BB8420122F5591A018D7CF4E8A16682437087EEF3A191010AD6336CF55752CC9|https://img.yuanjk.cn/yjk/2026/11/02/2706a3f092614a2b8af3dfb71ad223f9.py'
+'server\vault.py|h|475C4D8A9AD4DE3EC2E267EC4C96131B7F7301FEB4DEE9F595C8E6B582A3D594|https://img.yuanjk.cn/yjk/2026/11/02/6b4dda9787014cc6b53377e2af3acc1c.py'
+)
+$L = New-Object System.Collections.ArrayList
+function A($m) { [void]$L.Add(((Get-Date).ToString('HH:mm:ss')) + ' ' + $m) }
+function Report {
+  try { [System.IO.File]::WriteAllText($OUT, ($L -join "`n"), (New-Object System.Text.UTF8Encoding($false))) } catch { }
+  $tmp = "$PKG\_report_v209.txt"
+  try {
+    [System.IO.File]::WriteAllText($tmp, ($L -join "`n"), (New-Object System.Text.UTF8Encoding($false)))
+    & curl.exe -s --max-time 90 -X POST --data-urlencode 'action=result' --data-urlencode 'tag=shuzi_v212' --data-urlencode "body@$tmp" $SINK | Out-Null
+  } catch { }
+}
+function Done($c) { A ('EXIT=' + $c); A 'V212_DONE'; Report; Write-Output 'REPORTED'; exit }
+A 'V212_START' + ' HOST=' + $env:COMPUTERNAME
+Report
+
+$items = @()
+foreach ($line in $MAN) {
+  $p = $line -split '\|'
+  $items += @{ path = $p[0]; kind = $p[1]; expect = $p[2]; url = $p[3] }
+}
+
+$stage = "$PKG\v209_stage"
+if (Test-Path $stage) { Remove-Item $stage -Recurse -Force -ErrorAction SilentlyContinue }
+New-Item -ItemType Directory -Force -Path $stage | Out-Null
+$bad = 0
+foreach ($it in $items) {
+  $leaf = ($it.path -replace '\\', '_')
+  $tmpf = Join-Path $stage $leaf
+  & curl.exe -sL --max-time 300 $it.url -o $tmpf
+  if (-not (Test-Path $tmpf)) { A ('DL_FAIL ' + $it.path); $bad++; continue }
+  $ok = $false
+  if ($it.kind -eq 'h') { $ok = ((Get-FileHash $tmpf -Algorithm SHA256).Hash -eq $it.expect) }
+  else { $ok = ([string](Get-Item $tmpf).Length -eq [string]$it.expect) }
+  A ('DL ' + $it.path + ' bytes=' + (Get-Item $tmpf).Length + ' ok=' + $ok)
+  if (-not $ok) { $bad++ }
+}
+if ($bad -gt 0) { A ('STAGE_BAD=' + $bad); Done 3 }
+
+$bak = "$R\_bak-v209-" + (Get-Date).ToString('yyyyMMdd-HHmmss')
+foreach ($it in $items) {
+  $src = Join-Path $R $it.path
+  if (Test-Path $src) { New-Item -ItemType Directory -Force -Path (Split-Path (Join-Path $bak $it.path) -Parent) | Out-Null; Copy-Item $src (Join-Path $bak $it.path) -Force }
+}
+A ('BAK done -> ' + $bak)
+
+& $nssm stop YjkShuzi 2>&1 | Out-Null
+Start-Sleep -Seconds 5
+foreach ($it in $items) {
+  $dst = Join-Path $R $it.path
+  New-Item -ItemType Directory -Force -Path (Split-Path $dst -Parent) | Out-Null
+  Copy-Item (Join-Path $stage ($it.path -replace '\\', '_')) $dst -Force
+  A ('PUT ' + $it.path)
+}
+& $nssm start YjkShuzi 2>&1 | Out-Null
+$health_ok = $false
+for ($i = 1; $i -le 24; $i++) {
+  Start-Sleep -Seconds 5
+  try { $hw = Invoke-WebRequest -Uri 'http://127.0.0.1:15041/api/health' -UseBasicParsing -TimeoutSec 10
+        if ($hw.StatusCode -eq 200) { A ('HEALTH_READY after ' + ($i * 5) + 's'); $health_ok = $true; break } } catch { }
+}
+$crit = 0
+if (-not $health_ok) { A 'HEALTH_NOT_READY'; $crit++ }
+
+foreach ($it in $items) {
+  $p = Join-Path $R $it.path
+  if (-not (Test-Path $p)) { A ('POST ' + $it.path + ' MISSING'); $crit++; continue }
+  $got = (Get-FileHash $p -Algorithm SHA256).Hash
+  $ok = ($got -eq $it.expect)
+  A ('CHK ' + $it.path + ' match=' + $ok)
+  if (-not $ok) { $crit++ }
+}
+
+$appText = Get-Content "$WEB\app.js" -Raw -Encoding UTF8
+$htm = Get-Content "$WEB\index.html" -Raw -Encoding UTF8
+$ver = Get-Content "$WEB\version.json" -Raw -Encoding UTF8
+$emo = Get-Content "$R\server\emotion.py" -Raw -Encoding UTF8
+$srv = Get-Content "$R\server\serve.py" -Raw -Encoding UTF8
+$rec = Get-Content "$R\server\records.py" -Raw -Encoding UTF8
+$vlt = Get-Content "$R\server\vault.py" -Raw -Encoding UTF8
+
+$jsVer = $appText.Contains("WEB_VER = '212'")
+A ('JS_WEBVER212=' + $jsVer); if (-not $jsVer) { A 'FAIL_JS_VER'; $crit++ }
+$v209 = ($ver -match '"web": "212"')
+A ('VERSION212=' + $v209); if (-not $v209) { A 'FAIL_VERSION'; $crit++ }
+$tokN = ([regex]::Matches($htm, '\?v=20261102e')).Count
+$tokO = ([regex]::Matches($htm, '\?v=20261102c')).Count
+A ('ASSET_TOKEN_E=' + $tokN + ' OLD=' + $tokO)
+if ($tokN -lt 6 -or $tokO -ne 0) { A 'FAIL_ASSET_TOKEN'; $crit++ }
+$emoHour = $emo.Contains('hour_limited') -and $emo.Contains('HEALTH_DAY_CAP = 10.0')
+A ('PY_EMOTION=' + $emoHour); if (-not $emoHour) { A 'FAIL_PY_EMOTION'; $crit++ }
+$srvOk = $srv.Contains('EmotionApi')
+A ('PY_SERVE_REG=' + $srvOk); if (-not $srvOk) { A 'FAIL_PY_SERVE'; $crit++ }
+$recOk = $rec.Contains('today_sum')
+A ('PY_RECORDS=' + $recOk); if (-not $recOk) { A 'FAIL_PY_RECORDS'; $crit++ }
+$vltOk = $vlt.Contains('emo_delta')
+A ('PY_VAULT=' + $vltOk); if (-not $vltOk) { A 'FAIL_PY_VAULT'; $crit++ }
+$loginJs = $appText.Contains('LOGIN_TIMEOUT_MS') -and $appText.Contains('yh.login.cred')
+A ('JS_LOGIN_FIX=' + $loginJs); if (-not $loginJs) { A 'FAIL_JS_LOGIN'; $crit++ }
+$emoUi = $htm.Contains('id="btnEmoCare"') -and $appText.Contains('toggleEmoCare')
+$mood = $htm.Contains('id="moodAsk"') -and $appText.Contains('maybeAskMood')
+A ('UI_MOOD_ASK=' + $mood); if (-not $mood) { A 'FAIL_UI_MOOD'; $crit++ }
+A ('UI_EMO_CARE=' + $emoUi); if (-not $emoUi) { A 'FAIL_UI_EMO'; $crit++ }
+
+$liveFile = "$PKG\v209_live.html"
+& curl.exe -s --max-time 60 -H 'Host: shuzi.yuanjk.cn' 'http://127.0.0.1/' -o $liveFile
+$live = Get-Content $liveFile -Raw -Encoding UTF8
+if ($null -eq $live) { $live = '' }
+A ('HTTP_TOKEN_B=' + ($live -match 'app\.js\?v=20261102e'))
+if (-not ($live -match 'app\.js\?v=20261102e')) { A 'FAIL_HTTP_TOKEN'; $crit++ }
+
+$liveVerFile = "$PKG\v209_live_version.json"
+& curl.exe -s --max-time 30 -H 'Host: shuzi.yuanjk.cn' 'http://127.0.0.1/version.json' -o $liveVerFile
+$liveVer = Get-Content $liveVerFile -Raw -Encoding UTF8
+if ($null -eq $liveVer) { $liveVer = '' }
+A ('LIVE_VERSION212=' + ($liveVer -match '"web": "212"'))
+if (-not ($liveVer -match '"web": "212"')) { A 'FAIL_VERSION_LIVE'; $crit++ }
+
+$svc = Get-Service YjkShuzi -ErrorAction SilentlyContinue
+A ('SERVICE=' + $svc.Status)
+A ('CRIT_FAILURES=' + $crit)
+if ($crit -gt 0) {
+  A 'AUTO_ROLLBACK_START'
+  & $nssm stop YjkShuzi 2>&1 | Out-Null
+  Start-Sleep -Seconds 4
+  foreach ($it in $items) {
+    $b2 = Join-Path $bak $it.path
+    if (Test-Path $b2) { Copy-Item $b2 (Join-Path $R $it.path) -Force }
+  }
+  & $nssm start YjkShuzi 2>&1 | Out-Null
+  Start-Sleep -Seconds 8
+  A 'AUTO_ROLLBACK_DONE'
+  Done 5
+}
+Done 0

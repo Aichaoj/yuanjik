@@ -1,0 +1,13 @@
+--- feed before ---
+用用户4821我刚刚今日指数 未公开小小明 给 我 加油：早点休息，明天见小小明刚刚今日指数 91 分连续记录 12 天
+tmpl count = 6
+--- feed after cheer ---
+用用户4821我刚刚今日指数 未公开用用户4821 给 小明 加油：今天也照顾好自己小小明 给 我 加油：早点休息，明天见小小明刚刚今日指数 91 分连续记录 12 天
+--- feed after ---
+用用户4821我刚刚今日指数 未公开我我 给 小明 加油：s1
+--- cheer after ---
+还没有好友。把上方邀请码发给朋友，或填入对方的邀请码发起添加；对方确认后就能互相加油。
+--- localFeed / feed state ---
+{'local': [{'url': '/api/v1/me/invite_code', 'method': 'GET', 'body': None}, {'url': '/api/v1/friends/privacy', 'method': 'GET', 'body': None}, {'url': '/api/v1/friends', 'method': 'GET', 'body': None}, {'url': '/api/v1/friends/feed?limit=20', 'method': 'GET', 'body': None}, {'url': '/api/v1/friends/ranking', 'method': 'GET', 'body': None}, {'url': '/api/v1/friends/cheer/templates', 'method': 'GET', 'body': None}]}
+--- feed html ---
+<div class="feed-item is-me"><div class="feed-top"><span class="fr-avatar" aria-hidden="true">用</span><span class="feed-name">用户4821<span class="me-tag">我</span></span><span class="feed-time">刚刚</span></div><div class="feed-stats"><span class="fm is-private">今日指数 未公开</span></div></div><div class="feed-cheer"><span class="fr-avatar" aria-hidden="true">我</span><span>我 给 <b>小明</b> 加油：s1</span></div>

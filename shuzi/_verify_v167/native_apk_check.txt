@@ -1,0 +1,36 @@
+== aapt2 dump badging ==
+package: name='com.yuanjk.shuzi' versionCode='8' versionName='1.1.1' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.RECORD_AUDIO'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.FOREGROUND_SERVICE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS'
+uses-permission: name='android.permission.REQUEST_INSTALL_PACKAGES'
+uses-permission: name='android.permission.PACKAGE_USAGE_STATS'
+sdkVersion:'24'
+targetSdkVersion:'33'
+
+== permissions ==
+package: com.yuanjk.shuzi
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.RECORD_AUDIO'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.FOREGROUND_SERVICE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS'
+uses-permission: name='android.permission.REQUEST_INSTALL_PACKAGES'
+uses-permission: name='android.permission.PACKAGE_USAGE_STATS'
+
+== signature ==
+Signer #1 certificate DN: CN=NEXUS Shell, OU=StarHub, O=NEXUS, C=CN
+Signer #1 certificate SHA-256 digest: 5ccad1c22fbbb7a7278efce38e8636d8d54341072309ff75652b5ba4402f44a1
+Signer #1 certificate SHA-1 digest: 2eed16c8af104d178670404342a2362639cce903
+Signer #1 certificate MD5 digest: 863e73cbbf69d83b732780fda149b704
+
+== hashes ==
+SHA256=C2F4CB0CBEAB2A57CB428E12BA99A1DDA6B9634A19CC5DA8DA367610CE7EDFCB
+MD5=D2539BACF7FD83CA951B9C21E4C5697E
+SIZE=45859

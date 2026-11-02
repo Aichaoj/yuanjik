@@ -1,0 +1,27 @@
+原版 834 行 -> 新版 1084 行；变更块 26 处；新增 269 行 / 删除 19 行
+变更#1  insert   原    7-6    -> 新    7-26   (+20/-0) | 
+变更#2  insert   原   50-49   -> 新   70-72   (+3/-0) | # ★ 只读引用既有令牌桶限流（`app/ratelimit.py` 的 RateLimiter 与 LIMITS 是唯一口径源）：
+变更#3  insert   原   64-63   -> 新   87-97   (+11/-0) | 
+变更#4  insert   原  120-119  -> 新  154-164  (+11/-0) |     # ★ 推荐关系（变更单 `2026-10-08-邀请链接与自动推荐绑定` §四，列名逐字照抄）：
+变更#5  insert   原  132-131  -> 新  177-181  (+5/-0) |     """,
+变更#6  insert   原  174-173  -> 新  224-227  (+4/-0) | 
+变更#7  replace  原  176-176  -> 新  230-230  (+1/-1) |     def __init__(self, router, *, store, norm, audit=None, limiter=None):
+变更#8  insert   原  181-180  -> 新  235-236  (+2/-0) |         # 公开接口（邀请预览）的防枚举限流；口径来自 app.ratelimit.LIMITS['api_anon']
+变更#9  insert   原  310-309  -> 新  366-437  (+72/-0) |     def _mark_accepted(self, row) -> None:
+变更#10 insert   原  411-410  -> 新  539-544  (+6/-0) |         # ★ 新增（变更单 `2026-10-08-邀请链接与自动推荐绑定` §三）：邀请链接 + 我的推荐人
+变更#11 insert   原  432-431  -> 新  566-622  (+57/-0) |     # ── ①′ 我的邀请链接 + 我的推荐人（新增，v6）────────────────────
+变更#12 insert   原  434-433  -> 新  625-631  (+7/-0) |         """
+变更#13 insert   原  443-442  -> 新  641-642  (+2/-0) |         # 回读一次，确保"回传的昵称"就是库里那一份（不是内存里的入参）
+变更#14 replace  原  444-444  -> 新  644-644  (+1/-1) |         return {'nickname': saved}
+变更#15 insert   原  450-449  -> 新  650-651  (+2/-0) |           ⓪ **类型先卡**：非字符串（数字 / 对象 / 数组 / null）一律 `10002`，
+变更#16 replace  原  458-458  -> 新  660-663  (+4/-1) |         if not isinstance(raw, str):                # ⓪ 只接受字符串，其它类型直接拒
+变更#17 replace  原  503-503  -> 新  708-708  (+1/-1) |     # ── ④ 发起添加（pending，需对方确认）/ 邀请链接自动成为好友 ──────
+变更#18 insert   原  505-504  -> 新  710-722  (+13/-0) |         """
+变更#19 insert   原  508-507  -> 新  726-729  (+4/-0) |         # ★ 新增可选字段：缺省即 false（既有调用方不传，行为与 v3 完全相同）
+变更#20 insert   原  519-518  -> 新  741-741  (+1/-0) |         source = REFERRAL_SOURCE_LINK if auto_accept else REFERRAL_SOURCE_MANUAL
+变更#21 replace  原  521-522  -> 新  744-752  (+9/-2) |             if not auto_accept:
+变更#22 replace  原  524-526  -> 新  754-763  (+10/-3) |             if not auto_accept:
+变更#23 insert   原  528-527  -> 新  765-765  (+1/-0) |         status = STATUS_ACCEPTED if auto_accept else STATUS_PENDING
+变更#24 replace  原  532-533  -> 新  770-772  (+3/-2) |                 ' created_at, accepted_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+变更#25 replace  原  535-537  -> 新  774-791  (+18/-3) |         self.audit(event=('social_invite_auto_accept' if auto_accept else 'socia
+变更#26 replace  原  542-546  -> 新  796-796  (+1/-5) |         self._mark_accepted(row)                    # 与 auto_accept 走同一条置为 accep

@@ -1,0 +1,457 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "AI数显 · 元健康 开放 API（L1 开放数据 + L2 计算能力）",
+  "version": "TYH-ENGINE-0.1.0",
+  "description": "**分层**：L1 免鉴权开放数据（运气盘 / 节气 / 时辰 / 五行字典，CC-BY-4.0）；L2 计算能力（干支四柱 / 生辰盘，需请求头 X-API-Key，免费 100000 次/月）。L3 个人节律与 L4 群体接口需用户授权与合同，本期不开放。\n\n**响应铁律**：每个成功响应都携带 disclaimer / ai_generated / rule_version / param_hash 四个字段与 lineage 可解释链；**绝不返回病名、诊断或风险概率字段**。\n\n**计量与幂等**：每次真实调用写一行 api_call_log；带 Idempotency-Key 的重复提交只算一次调用（回放首次响应）。\n\n**路径前缀**：本站真实地址是 `/api`，即下表路径前加 `/api`。",
+  "license": {
+   "name": "CC-BY-4.0",
+   "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "contact": {
+   "name": "元健康 · 开放 API",
+   "url": "https://shuzi.yuanjk.cn"
+  },
+  "x-service-endpoints": [
+   "GET /v1/open/yunqi/{year}",
+   "GET /v1/open/solar-terms/{year}",
+   "GET /v1/open/shichen",
+   "GET /v1/open/wuxing",
+   "POST /v1/calc/ganzhi",
+   "POST /v1/calc/chart",
+   "POST /v1/admin/api-keys",
+   "GET /v1/admin/api-keys"
+  ],
+  "x-service-endpoint-count": 8,
+  "x-disclaimer": "本产品不属于医疗器械，不用于疾病的诊断、治疗或预防，不替代专业医疗意见。所提供内容为基于个人时空节律的生活方式参考，如出现持续不适请及时就医。",
+  "x-rule-version": "TYH-RULES-1.3.0",
+  "x-rate-limits": {
+   "anonymous": "api_anon 60 次/60 秒/IP",
+   "with_key": "api 120 次/60 秒/凭据",
+   "monthly_quota_free": 100000
+  },
+  "x-error-codes": {
+   "20000": "缺少 X-API-Key（HTTP 401）",
+   "70005": "开放 API 凭据无效（HTTP 403）",
+   "70006": "开放 API 凭据已停用（HTTP 403）",
+   "40001": "本月额度用尽（HTTP 429）",
+   "10002": "入参不合法（HTTP 400）",
+   "10003": "同一幂等键换了请求体（HTTP 409）",
+   "40000": "限流（HTTP 429）"
+  }
+ },
+ "servers": [
+  {
+   "url": "/api",
+   "description": "本站真实前缀（与本文件路径拼接）"
+  },
+  {
+   "url": "https://shuzi.yuanjk.cn/api",
+   "description": "线上"
+  }
+ ],
+ "tags": [
+  {
+   "name": "L1",
+   "description": "开放数据，免鉴权，CC-BY-4.0"
+  },
+  {
+   "name": "L2",
+   "description": "计算能力，需 X-API-Key"
+  },
+  {
+   "name": "运营",
+   "description": "凭据签发与台账，需后台令牌"
+  }
+ ],
+ "paths": {
+  "/v1/open/yunqi/{year}": {
+   "get": {
+    "tags": [
+     "L1"
+    ],
+    "summary": "年度运气盘（中运 / 司天 / 在泉 / 六步客主加临 / 运气同化）",
+    "description": "按《素问》运气七篇规则推演某公历年的运气盘，年份以立春为界。数据为传统历法与气候推演口径，非医学结论。免鉴权，CC-BY-4.0。",
+    "operationId": "get_v1_open_yunqi__year_",
+    "responses": {
+     "200": {
+      "description": "运气盘（含 lineage 可解释链与合规四件套）"
+     },
+     "400": {
+      "description": "年份格式不合法或超出支持范围"
+     },
+     "429": {
+      "description": "限流"
+     }
+    },
+    "parameters": [
+     {
+      "name": "year",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer"
+      },
+      "description": "公历年（1900–2100）"
+     }
+    ]
+   }
+  },
+  "/v1/open/solar-terms/{year}": {
+   "get": {
+    "tags": [
+     "L1"
+    ],
+    "summary": "二十四节气精确时刻（按公历年，24 条）",
+    "description": "返回该公历年的 24 个节气时刻（东八区标准时），seq 从 1（小寒）到 24（冬至）。时刻由随包历法库给出，上线前须与紫金山天文台公布值全量比对。免鉴权，CC-BY-4.0。",
+    "operationId": "get_v1_open_solar_terms__year_",
+    "responses": {
+     "200": {
+      "description": "24 条节气（含 lineage 与合规四件套）"
+     },
+     "400": {
+      "description": "年份格式不合法或超出支持范围"
+     },
+     "429": {
+      "description": "限流"
+     }
+    },
+    "parameters": [
+     {
+      "name": "year",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer"
+      },
+      "description": "公历年（1900–2100）"
+     }
+    ]
+   }
+  },
+  "/v1/open/shichen": {
+   "get": {
+    "tags": [
+     "L1"
+    ],
+    "summary": "十二时辰脏腑当令表（含起止钟点与五行）",
+    "description": "十二条时辰的起止钟点（子时 23:00–01:00 起，每两小时一辰）与当令脏腑、脏腑五行；并带内核 realtime 的钟形权重交叉校验位。免鉴权，CC-BY-4.0。",
+    "operationId": "get_v1_open_shichen",
+    "responses": {
+     "200": {
+      "description": "12 条时辰（含 lineage 与合规四件套）"
+     },
+     "429": {
+      "description": "限流"
+     }
+    }
+   }
+  },
+  "/v1/open/wuxing": {
+   "get": {
+    "tags": [
+     "L1"
+    ],
+    "summary": "五行对应字典（脏 / 腑 / 通道 / 六气 / 生克 / 当令时辰 / 对冲取向）",
+    "description": "五行到脏腑、十二通道、六气、五音、生克关系与当令时辰的对应字典；对冲取向只给生活方式方向，不含药物与剂量。免鉴权，CC-BY-4.0。",
+    "operationId": "get_v1_open_wuxing",
+    "responses": {
+     "200": {
+      "description": "5 行（含 lineage 与合规四件套）"
+     },
+     "429": {
+      "description": "限流"
+     }
+    }
+   }
+  },
+  "/v1/calc/ganzhi": {
+   "post": {
+    "tags": [
+     "L2"
+    ],
+    "summary": "干支四柱换算（入参：时刻 + 经纬度）",
+    "description": "入参时刻按出生地民用时理解，日柱与时柱按真太阳时推算；返回四柱、真太阳时偏移、时辰、节气上下文、边界告警与可解释链。需请求头 X-API-Key；写调用计量但不产生任何业务副作用。",
+    "operationId": "post_v1_calc_ganzhi",
+    "responses": {
+     "200": {
+      "description": "四柱与可解释链（含合规四件套）"
+     },
+     "400": {
+      "description": "入参不合法"
+     },
+     "401": {
+      "description": "缺少 X-API-Key"
+     },
+     "403": {
+      "description": "凭据无效或已停用"
+     },
+     "409": {
+      "description": "同一幂等键换了请求体"
+     },
+     "429": {
+      "description": "限流或额度用尽"
+     }
+    },
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "required": [
+         "local",
+         "longitude",
+         "latitude"
+        ],
+        "properties": {
+         "local": {
+          "type": "string",
+          "description": "YYYY-MM-DDTHH:MM（或 YYYY-MM-DD，缺时刻按正午 12:00）",
+          "example": "1990-05-06T08:30"
+         },
+         "longitude": {
+          "type": "number",
+          "description": "经度，东经为正（-180..180）"
+         },
+         "latitude": {
+          "type": "number",
+          "description": "纬度（-90..90）"
+         },
+         "late_zi_rolls_day": {
+          "type": "boolean",
+          "description": "晚子时是否进位（CAL-006，默认 true）"
+         }
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "ApiKeyAuth": []
+     }
+    ]
+   }
+  },
+  "/v1/calc/chart": {
+   "post": {
+    "tags": [
+     "L2"
+    ],
+    "summary": "生辰盘（真太阳时校正 + 盘型 ID + 该年运气盘摘要）",
+    "description": "在干支四柱之上给出真太阳时、时辰、节气上下文、边界告警、出生年运气盘摘要与由入参指纹派生的 chart_id（不含任何用户标识，可直接当幂等键）。需请求头 X-API-Key。**不输出任何个体节律或健康结论**（那是 L3，需用户授权）。",
+    "operationId": "post_v1_calc_chart",
+    "responses": {
+     "200": {
+      "description": "生辰盘与可解释链（含合规四件套）"
+     },
+     "400": {
+      "description": "入参不合法"
+     },
+     "401": {
+      "description": "缺少 X-API-Key"
+     },
+     "403": {
+      "description": "凭据无效或已停用"
+     },
+     "409": {
+      "description": "同一幂等键换了请求体"
+     },
+     "429": {
+      "description": "限流或额度用尽"
+     }
+    },
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "required": [
+         "local",
+         "longitude",
+         "latitude"
+        ],
+        "properties": {
+         "local": {
+          "type": "string",
+          "description": "YYYY-MM-DDTHH:MM（或 YYYY-MM-DD，缺时刻按正午 12:00）"
+         },
+         "longitude": {
+          "type": "number",
+          "description": "经度，东经为正（-180..180）"
+         },
+         "latitude": {
+          "type": "number",
+          "description": "纬度（-90..90）"
+         },
+         "late_zi_rolls_day": {
+          "type": "boolean",
+          "description": "晚子时是否进位（CAL-006，默认 true）"
+         }
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "ApiKeyAuth": []
+     }
+    ]
+   }
+  },
+  "/v1/admin/api-keys": {
+   "post": {
+    "tags": [
+     "运营"
+    ],
+    "summary": "签发 L2 API 凭据（明文只返回一次）",
+    "description": "闸门是既有后台令牌 Authorization: Bearer <admin_token>（admin_api.AdminApi._require_admin）。明文凭据只在本次响应返回一次；库中只存 SHA-256 哈希与前 8 位前缀。",
+    "operationId": "post_v1_admin_api_keys",
+    "responses": {
+     "200": {
+      "description": "凭据（api_key 明文只此一次）"
+     },
+     "400": {
+      "description": "入参不合法"
+     },
+     "401": {
+      "description": "缺少或错误的后台令牌"
+     }
+    },
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object",
+        "required": [],
+        "properties": {
+         "name": {
+          "type": "string",
+          "description": "名称 / 用途（默认「未命名用途」）"
+         },
+         "monthly_quota": {
+          "type": "integer",
+          "description": "每月配额，默认 100000（免费档）"
+         }
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "AdminToken": []
+     }
+    ]
+   },
+   "get": {
+    "tags": [
+     "运营"
+    ],
+    "summary": "凭据台账（只回前缀与用量，不回哈希、不回明文）",
+    "description": "闸门同上（既有后台令牌）。用于运维核对配额与最近使用时间。",
+    "operationId": "get_v1_admin_api_keys",
+    "responses": {
+     "200": {
+      "description": "台账列表"
+     },
+     "401": {
+      "description": "缺少或错误的后台令牌"
+     }
+    },
+    "security": [
+     {
+      "AdminToken": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "securitySchemes": {
+   "ApiKeyAuth": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "X-API-Key",
+    "description": "运营签发的 L2 凭据；明文只在签发时返回一次"
+   },
+   "AdminToken": {
+    "type": "http",
+    "scheme": "bearer",
+    "description": "既有后台令牌（POST /api/v1/admin/login 取得）"
+   }
+  },
+  "schemas": {
+   "Compliance": {
+    "type": "object",
+    "required": [
+     "disclaimer",
+     "ai_generated",
+     "rule_version",
+     "param_hash"
+    ],
+    "properties": {
+     "disclaimer": {
+      "type": "string",
+      "description": "固定免责声明（内核常量）"
+     },
+     "ai_generated": {
+      "type": "boolean",
+      "description": "是否由生成式模型产出；本 API 均为 false（内核确定性推演）"
+     },
+     "rule_version": {
+      "type": "string",
+      "description": "规则版本；规则升级后 param_hash 同步变化"
+     },
+     "param_hash": {
+      "type": "string",
+      "description": "入参指纹（SHA-256 十六进制），同输入必得同值"
+     },
+     "lineage": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "可解释链：规则 ID + 古典出处 + 要点"
+     },
+     "license": {
+      "type": "string",
+      "description": "CC-BY-4.0"
+     }
+    }
+   },
+   "Response": {
+    "type": "object",
+    "required": [
+     "code",
+     "message",
+     "data",
+     "trace_id"
+    ],
+    "properties": {
+     "code": {
+      "type": "integer",
+      "description": "0 = 成功"
+     },
+     "message": {
+      "type": "string"
+     },
+     "data": {
+      "$ref": "#/components/schemas/Compliance"
+     },
+     "trace_id": {
+      "type": "string"
+     },
+     "detail": {
+      "type": "object",
+      "description": "仅失败时出现"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,87 @@
+[
+ {
+  "name": "有 function tPoint(",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "有 function armPoint(",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "有 function legPoint(",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "有 function facePoint(",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "旧 meridPoint 已移除",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "经络条数 12",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "左右各一条（镜像）",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "胆经 side=both",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "按朝向显示函数",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "本地 /api/health 200",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "已进入 screen-energy",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "立体图就绪",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "当前层=meridian",
+  "ok": true,
+  "detail": "meridian"
+ },
+ {
+  "name": "经络管 24 条（12 经 × 左右）",
+  "ok": true,
+  "detail": "{'total': 24, 'visible': 18, 'sides': ['front', 'front', 'front', 'front', 'front', 'front', 'front', 'front', 'back', 'back', 'back', 'back', 'front', 'front', 'both', 'both', 'back', 'back', 'front', 'front', 'front', 'front', 'front', 'front']}"
+ },
+ {
+  "name": "前视可见 18 条（8 前 + 8 前镜像 + 胆 2）",
+  "ok": true,
+  "detail": "18"
+ },
+ {
+  "name": "背视可见 8 条（三焦/小肠/膀胱 各 2 + 胆 2）",
+  "ok": true,
+  "detail": "8"
+ },
+ {
+  "name": "无 JS 异常",
+  "ok": true,
+  "detail": "[]"
+ }
+]
